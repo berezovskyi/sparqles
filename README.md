@@ -17,7 +17,28 @@ SPARQL Endpoint Status project aims at monitoring SPARQL Endpoints based on 4 as
 -frontend/ (frontend code based on NodeJS technology)
 ```
 
-## Deploying the application
+## Deploying via Docker Compose
+
+Prerequisites:
+
+- Docker
+- Docker Compose
+
+Run the first time (or when you need to recreate the DB from the dump):
+
+```
+docker image rm sparqles_database-svc --force ; \
+    rm -rf data/db/ ;
+    docker-compose up --build
+```
+
+With a production database:
+
+```
+docker-compose up -d
+```
+
+## Deploying the application manually
 
 ### Prerequisites
 In order to run both backend and frontend of SPARQLES application you need to install the following programs:
