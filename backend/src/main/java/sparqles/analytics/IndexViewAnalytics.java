@@ -197,18 +197,20 @@ public class IndexViewAnalytics implements Task<Index>{
 			iv.setNoDescription(v/(double)stats.get("total"));
 		}else
 			iv.setNoDescription(0D);
-		
-		if(stats.containsKey("sd"))
-			v =stats.get("sd");
-		else v=0;
-		
-		iv.setSDDescription(v/(double)stats.get("total"));
-		
-		if(stats.containsKey("void"))
-			v = stats.get("void");
-		else v=0;
-	
-		iv.setVoIDDescription(v/(double)stats.get("total"));
+
+		v = stats.getOrDefault("sd", 0);
+
+		Integer totalVal = stats.get("total");
+		if(totalVal != null) {
+			iv.setSDDescription(v / (double) totalVal);
+
+			v = stats.getOrDefault("void", 0);
+			iv.setVoIDDescription(v/(double)totalVal);
+		} else {
+			log.error("Total value is missing");
+			iv.setSDDescription(-1.0);
+			iv.setVoIDDescription(-1.0);
+		}
 	}
 
 	private void updateInteroperability(Index idx, SimpleHistogram[] interStats) {

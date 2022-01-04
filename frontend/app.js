@@ -89,17 +89,17 @@ app.get('/', function(req, res){
                     index:index,
                     indexInterop:indexInterop,
                     nbEndpointsSearch: nbEndpointsSearch,
-					nbEndpointsVoID: nbEndpointsVoID,
-					nbEndpointsSD: nbEndpointsSD,
-					nbEndpointsServerName: nbEndpointsServerName,
-					nbEndpointsTotal: nbEndpointsTotal,
-					nbEndpointsNoDesc: nbEndpointsNoDesc,
-                    lastUpdate: lastUpdate[0].lastUpdate,
+                    nbEndpointsVoID: nbEndpointsVoID,
+                    nbEndpointsSD: nbEndpointsSD,
+                    nbEndpointsServerName: nbEndpointsServerName,
+                    nbEndpointsTotal: nbEndpointsTotal,
+                    nbEndpointsNoDesc: nbEndpointsNoDesc,
+                    lastUpdate: (lastUpdate.length > 0 ? lastUpdate[0].lastUpdate : 0),
                     perf: {"threshold":10000 /*mostCommonThreshold[0]*/,"data":[{"key": "Cold Tests","color": "#1f77b4","values": [{"label" : "Median ASK" ,"value" : avgASKCold },{"label" : "Median JOIN" ,"value" : avgJOINCold}]},{"key": "Warm Tests","color": "#2ca02c","values": [{"label" : "Median ASK" ,"value" : avgASKWarm} ,{"label" : "Median JOIN" ,"value" : avgJOINWarm}]}]},
                     configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
                     configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
                     configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
-					configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json'))
+				          	configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json'))
                   });
 /*
                 res.render('content/index.jade',{
