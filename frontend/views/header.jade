@@ -1,0 +1,33 @@
+header
+        a#logo(title='SPARQL Endpoints Status', href='/')
+          img(alt='SPARQL Endpoints Status', src='/images/SES_small.png')
+        nav
+          ul
+            //-li.wrpl
+              a(title='', href='/')
+                | Highlights
+                span At a glance
+            li.wrpl
+              a(title='', href='/availability')
+                | Availability
+                span Up And  Down
+            li.wrpl
+              a(title='', href='/performance')
+                | Performance
+                span Cold / Warm
+            li.wrpl
+              a(title='', href='/interoperability')
+                | Interoperability
+                span SPARQL 1.0 / 1.1
+            li.wrpl
+              a(title='', href='/discoverability')
+                | Discoverability
+                span VoID, Server
+            li.wrpl
+              form(action='')
+                #searchDiv(style='margin-top:1em;')
+                   input#footer-search.typeahead(type='text', placeholder=' #{nbEndpointsSearch} endpoints', autocomplete='off')
+            //-li.wrpl
+                form(action='',method='get')
+                  input(type='text', name='s', id='footer-search', class='wrp error', value='Search an endpoint...')
+      .line

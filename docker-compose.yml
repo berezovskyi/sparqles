@@ -1,0 +1,39 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  frontend-svc:
+    build: ./frontend/
+    restart: always
+    environment:
+      # - NODE_ENV=production
+      - NODE_ENV=development
+      - DBHOST=database-svc
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    # volumes:
+    #   - .:/code
+    #   - logvolume01:/var/log
+    links:
+      - database-svc
+  backend-svc:
+    build: ./backend/
+    restart: always
+    # ports:
+    #   - "5000:5000"
+    # volumes:
+    #   - .:/code
+    #   - logvolume01:/var/log
+    volumes:
+      - './data/backend/:/usr/local/sparqles/data.dir'
+    links:
+      - database-svc
+  database-svc:
+    build: ./database/
+    restart: always
+    volumes:
+      - './data/db/:/data/db'
+    ports:
+      # for debug
+      - "27017:27017"
+# volumes:
+#   logvolume01: {}

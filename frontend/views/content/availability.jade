@@ -1,0 +1,92 @@
+extends ../layout
+block content
+      section#post
+        article
+          header.wrpl
+            h1 Availability
+            time Last update: #{lastUpdate}
+            details
+              summary Description:
+              p
+                | To assess the reliability of SPARQL Endpoints, we test hourly (by default) each endpoint's uptime. In order to accommodate patchy SPARQL compliance, we try two queries to test availability for each endpoint:
+              p
+                span.dimensionDescriptionCode ASK WHERE{ ?s ?p ?o . }
+              p
+                span.dimensionDescriptionCode SELECT ?s WHERE{ ?s ?p ?o . } LIMIT 1
+              p If the ASK query fails (e.g., is not supported) we try the SELECT query. We count the endpoint as available at a given point in time if it can return a valid SPARQL response to one of these queries. The hourly availability queries can then be aggregated into weekly/monthly/etc. availability by taking the ratio of successful responses to total queries issued in the given time period
+      .line
+      section#posts.default-area
+        article.wrp(style='padding-bottom: 1em;')
+          .wrplInnerBox(style='height: 100%;')
+            section
+              .wrpl(style='padding-left: 2em;')
+                img(src='/images/green.png')
+                span(style='padding-left: 0.75em;') Operating normally
+              .wrpl(style='padding-left: 2em;')
+                img(src='/images/orange.png')
+                span(style='padding-left: 0.75em;') Available but problems this last 24h
+              .wrpl(style='padding-left: 2em;')
+                img(src='/images/red.png')
+                span(style='padding-left: 0.75em;') Service disruption
+              .wrpl(style='padding-left: 2em;')
+                img(src='/images/gray.png')
+                span(style='padding-left: 0.75em;') Still alive?
+        article.wrp
+          .wrplInnerBox(style='height: 100%;')
+            div
+              b #{parseFloat((nbEndpointsUp/nbEndpointsTotal*100).toFixed(2))+ '%'} 
+              | (#{nbEndpointsUp}/#{nbEndpointsTotal}) endpoints are 
+              b available
+            br
+            -//#{JSON.stringify(atasks_agg[0])}
+            table#table_current.sortable.psp-table(cellspacing='0', cellpadding='0', border='0', width='100%')
+              thead
+                tr
+                  th.sorttable_nosort.tablehead(width='5%') 
+                  th.tablehead(width='45%') SPARQL Endpoint
+                  th.tablehead(width='25%') Uptime Last 24h
+                  th.tablehead(width='25%') Uptime Last 7 days
+              tbody
+                - each ep, i in atasks_agg
+                  tr(class=(i % 2 == 0) ? 'odd' : 'even')
+                    //-Display Availability color image
+                    td
+                      if ep.upNow == true
+                        if ep.uptimeLast24h <1
+                          img(src='/images/orange.png')
+                        else
+                          img(src='/images/green.png')
+                      else
+                        if ep.uptimeLast7d >0
+                          img(src='/images/red.png')
+                        else
+                          img(src='/images/gray.png')
+                    //-Display Endpoint Label
+                    if ep.endpoint.datasets.length>1
+                      - var generateTooltip = function(datasets){tooltipHtml='This endpoint includes <b>'+datasets.length+' datasets</b>:<ul>';
+                      -   for(var i in datasets){tooltipHtml+='<li>'+datasets[i].label+'</li>';}
+                      -   tooltipHtml+='</ul>';
+                      -   return tooltipHtml;
+                      - }
+                      td
+                        a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}")
+                          span(onmouseover='tooltip.show(\'#{generateTooltip(ep.endpoint.datasets)}\')', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
+                    else
+                      if ep.endpoint.datasets.length>0
+                        td 
+                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.datasets[0].label}
+                      else 
+                        td
+                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.uri}
+                    //-Display uptime last 24h
+                    td 
+                      if ep.uptimeLast24h==0
+                        .textDisabled 0%
+                      else
+                        | #{parseFloat((ep.uptimeLast24h*100).toFixed(2))+ '%'}
+                    //-Display uptime last 7d
+                    td
+                      if ep.uptimeLast7d==0
+                        .textDisabled 0%
+                      else
+                        | #{parseFloat((ep.uptimeLast7d*100).toFixed(2))+ '%'}

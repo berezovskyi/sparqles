@@ -1,0 +1,80 @@
+-//Filter limit threshold
+-//compute most common limit threshold
+-//compute pct enforced endpoints
+extends ../layout
+block content
+      section#post
+        article
+          header.wrpl
+            h1 Performance
+            time Last update: #{lastUpdate}
+            details
+              summary Description:
+              p The performance of a SPARQL endpoint is crucial for any application using this service. SPARQLES thus performs some tests to estimate the performance of an endpoint relative to other endpoints. In particular, we run a variety of ASK, JOIN and LIMIT queries against endpoints. These queries are designed to estimate performance in a comparable way.
+              p ASK queries are single-triple pattern queries with a mix of constants in all positions. For example, the ASK_SP query is ASK { <x> <y> ?z } , where <x> and <y> are replaced with random URIs for each pair of COLD/WARM runs such that the URIs should not appear in the remote data. We run ASK_S, ASK_P, ASK_O, ASK_SP, ASK_PO, ASK_SO, ASK_SPO queries.
+              p JOIN queries invoke a fixed number of join lookups in the remote engine for three different positions. For example, a JOIN_SS query would be SELECT DISTINCT ?s ?p2 WHERE { ?s ?p ?o . OPTIONAL {?s ?p2 <x> .} } LIMIT 1000, where <x> is replaced with a random URI for each pair of COLD/WARM runs. Even though <x> does not exist in the remote data, the use of optional forces the engine to run the join, making the performance comparable across endpoints with different content (assuming 1000 results are returned).
+              p We also run LIMIT queries of the form SELECT * WHERE { ?s ?p ?o } LIMIT 100002 to test the throughput of raw results. Although for brevity we do not report the performance of such queries here, we do report the result-size thresholds detected using this query.
+              p The results presented here are the mean COLD/WARM performance for each group of queries (e.g., the mean of the seven ASK queries and the mean of three JOIN queries) for the last run of the performance experiments.
+              p Performance experiments are run on a daily basis.
+      .line
+      section#posts.default-area
+        article.wrp(style='padding-bottom: 1em;')
+          .wrplInnerBox(style='height: 100%;')
+            - function numberWithCommas(x) {if (x) return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
+            div
+              b #{parseFloat((nbEndpointsWithThreshold/nbEndpointsTotal*100).toFixed(2))+ '%'} 
+              | (#{nbEndpointsWithThreshold}/#{nbEndpointsTotal)) 
+              | of the available endpoints are suspected to 
+              b enforce a result-size threshold
+
+            div
+              b #{numberWithCommas(mostCommonThreshold)} 
+              | is the 
+              b most common result-size threshold  
+        article.wrp
+          .wrplInnerBox(style='height: 100%;')
+            table#table_current.sortable.psp-table(cellspacing='0', cellpadding='0', border='0', width='100%')
+              thead
+                tr
+                  th.tablehead(scope='col', width='50%') SPARQL Endpoint
+                  th.tablehead(width='10%') 
+                    span(onmouseover='tooltip.show(\'#{configPerformance["Result-size thresholds"]}\')', onmouseout='tooltip.hide();') Result-size thresholds
+                  th.tablehead(width='20%') 
+                    p(onmouseover='tooltip.show(\'#{configPerformance["ASK queries"]}\')', onmouseout='tooltip.hide();') ASK queries mean runtime 
+                    p(onmouseover='tooltip.show(\'#{configPerformance["Cold-Warm"]}\')', onmouseout='tooltip.hide();') (Cold-Warm)
+                  th.tablehead(width='20%') 
+                    p(onmouseover='tooltip.show(\'#{configPerformance["JOIN queries"]}\')', onmouseout='tooltip.hide();') Join queries mean runtime 
+                    p(onmouseover='tooltip.show(\'#{configPerformance["Cold-Warm"]}\')', onmouseout='tooltip.hide();') (Cold-Warm)
+              tbody
+                - each ep, i in ptasks_agg
+                  tr(class=(i % 2 == 0) ? 'odd' : 'even')
+                    //-Display Endpoint Label
+                    //-TODO: if more than one endpoint then display how many and their names 
+                    if ep.endpoint.datasets.length>1
+                      - var generateTooltip = function(datasets){tooltipHtml='This endpoint includes <b>'+datasets.length+' datasets</b>:<ul>';
+                      -   for(var i in datasets){tooltipHtml+='<li>'+datasets[i].label+'</li>';}
+                      -   tooltipHtml+='</ul>';
+                      -   return tooltipHtml;
+                      - }
+                      td
+                        a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}")
+                          span(onmouseover='tooltip.show(\'#{generateTooltip(ep.endpoint.datasets)}\')', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
+                    else
+                      td 
+                        a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.datasets[0].label}
+                    //-Display Threshold 
+                    td.tdright 
+                      if ep.threshold>0  && ep.threshold%100==0
+                        | #{numberWithCommas(ep.threshold)}
+                    //-Display ASK
+                    td.tdright 
+                      if ep.askMeanCold+ep.askMeanWarm>0
+                        | #{parseFloat(ep.askMeanCold.toFixed(2))}-#{parseFloat(ep.askMeanWarm.toFixed(2))} s
+                      else
+                        .textDisabled n/a
+                    //-Display Join
+                    td.tdright 
+                      if ep.joinMeanCold+ep.joinMeanWarm>0
+                        | #{parseFloat(ep.joinMeanCold.toFixed(2))}-#{parseFloat(ep.joinMeanWarm.toFixed(2))} s
+                      else
+                        .textDisabled n/a

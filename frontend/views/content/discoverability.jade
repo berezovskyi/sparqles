@@ -1,0 +1,90 @@
+extends ../layout
+block content
+      section#post
+        article
+          header.wrpl
+            h1 Discoverability
+            time Last update: #{lastUpdate}
+            details
+              summary Description:
+              p For any data consumer to find relevant information about an endpoint (what type of data does it contains? what features are supported? etc.) the data publisher needs to publish some fundamental metadata about the policies, features and content of its endpoint. The discoverability experiments search for VoID metadata about the endpoint indexed in the SPARQL Endpoint itself (which must explicitly mention the endpoint; i.e., it cannot just be generic VoID data), in its well-known VoID location (http://{domain}/.well-known/void), or in the document dereferenced by the endpoint URL. We also look for a SPARQL 1.1 Service Description (SD) in the document dereferenced from the endpoint URL. Finally, sometimes the engine used to power an endpoint can be apparent from the HTTP Server header field. We report the value of this field also.
+              p To see in which location the respective description was found, please click on a specific endpoint.
+              p Discoverability experiments are updated on a weekly basis.
+      .line
+      section#posts.default-area
+        article.wrp(style='padding-bottom: 1em;')
+          .wrplInnerBox(style='height: 100%;')
+            div
+              b #{parseFloat((nbEndpointsVoID/nbEndpointsTotal*100).toFixed(2))+ '%'} 
+              | (#{nbEndpointsVoID}/#{nbEndpointsTotal}) of the endpoints present a  
+              b VoID descriptions
+            div
+              b #{parseFloat((nbEndpointsSD/nbEndpointsTotal*100).toFixed(2))+ '%'} 
+              | (#{nbEndpointsSD}/#{nbEndpointsTotal}) of the endpoints present a 
+              b Service description
+            div
+              b #{parseFloat((nbEndpointsServerName/nbEndpointsTotal*100).toFixed(2))+ '%'} 
+              | (#{nbEndpointsServerName}/#{nbEndpointsTotal}) of the endpoints have a 
+              b meaningful server name 
+              | in the HTTP Get answer
+        article.wrp(style='padding-bottom: 1em;')
+          .wrplInnerBox(style='height: 100%;')
+            section
+              .wrpl(style='padding-left: 2em;')
+                img(src='/images/green.png')
+                span(style='padding-left: 0.75em;') Description available
+              .wrpl(style='padding-left: 2em;')
+                img(src='/images/gray.png')
+                span(style='padding-left: 0.75em;') Description not available
+        article.wrp
+          .wrplInnerBox(style='height: 100%;')
+            table#table_current.sortable.psp-table(cellspacing='0', cellpadding='0', border='0', width='100%')
+              thead
+                tr
+                  th.tablehead(scope='col', width='50%') SPARQL Endpoint
+                  th.tablehead(width='15%') 
+                    span(onmouseover='tooltip.show(\'#{configDisco["VoID Description"]}\')', onmouseout='tooltip.hide();') VoID Description
+                  th.tablehead(width='15%') 
+                    span(onmouseover='tooltip.show(\'#{configDisco["Service Description"]}\')', onmouseout='tooltip.hide();') Service Description
+                  th.tablehead(width='20%') 
+                    span(onmouseover='tooltip.show(\'#{configDisco["Server Name"]}\')', onmouseout='tooltip.hide();') Server name (HTTP GET)
+              tbody
+                - each ep, i in dtasks_agg
+                  tr(class=(i % 2 == 0) ? 'odd' : 'even')
+                    //-Display Endpoint Label
+                    if ep.endpoint.datasets.length>1
+                      - var generateTooltip = function(datasets){tooltipHtml='This endpoint includes <b>'+datasets.length+' datasets</b>:<ul>';
+                      -   for(var i in datasets){tooltipHtml+='<li>'+datasets[i].label+'</li>';}
+                      -   tooltipHtml+='</ul>';
+                      -   return tooltipHtml;
+                      - }
+                      td
+                        a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}")
+                          span(onmouseover='tooltip.show(\'#{generateTooltip(ep.endpoint.datasets)}\')', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
+                    else
+                      if ep.endpoint.datasets.length>0
+                        td 
+                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.datasets[0].label}
+                      else 
+                        td
+                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.uri}
+                    //-Display VoID Description
+                    if ep.VoID
+                      td.tdcenter(sorttable_customkey="1")
+                        img(src='/images/green.png')
+                    else
+                      td.tdcenter(sorttable_customkey="2")
+                        img(src='/images/gray.png')
+                    //-Display SD Description
+                    if ep.SD
+                      td.tdcenter(sorttable_customkey="1")
+                        img(src='/images/green.png')
+                    else
+                      td.tdcenter(sorttable_customkey="2")
+                        img(src='/images/gray.png')
+                    //-Display VoID Description
+                    td.tdcenter
+                      if ep.serverName=='missing'
+                        .textDisabled missing
+                      else
+                        | #{ep.serverName}

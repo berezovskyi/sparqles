@@ -11,10 +11,10 @@ SPARQL Endpoint Status project aims at monitoring SPARQL Endpoints based on 4 as
 
 ## Directory structure
 ```
--node/ (frontend code based on NodeJS technology)
--sampleData/ (sample data to populate MongoDB for setting up or testing purposes)
--scripts/ (shell scripts used to run global operations such as dumping the data)
--src/ (backend Java code used to monitor the SPARQL Endpoints)
+-backend/ (backend Java code used to monitor the SPARQL Endpoints)
+-bin/ (shell scripts used to run global operations such as dumping the data)
+-data/ (sample data to populate MongoDB for setting up or testing purposes)
+-frontend/ (frontend code based on NodeJS technology)
 ```
 
 ## Deploying the application
@@ -26,13 +26,10 @@ In order to run both backend and frontend of SPARQLES application you need to in
 - NodeJS (tested with version 0.12.4)
 - npm
 
-Get the code from GitHub: https://github.com/pyvandenbussche/sparqles
-
 ### Loading sample data
-For you to test the frontend, you can load the sample data provided in the **sampleData** folder. Use **mongorestore** command to load the unzipped data into a database named **sparqles**:
+For you to test the frontend, you can load the sample data provided in the **data** folder. Use **mongorestore** command to load the unzipped data into a database named **sparqles**:
 
-    git clone https://github.com/pyvandenbussche/sparqles
-    cd sampleData
+    cd data
     unzip mongoDump.zip
     mongod &
     mongorestore -d sparqles dump/sparqles
@@ -41,7 +38,7 @@ For you to test the frontend, you can load the sample data provided in the **sam
 ### Running the frontend
 Make sure the **sparqles** database is present in MongoDB and populated. You can now run the frontend by executing the following command:
 
-    cd node
+    cd frontend
     npm install
     npm start
 
@@ -55,6 +52,7 @@ You can now access your application at the following URL: [http://localhost:3001
 
 Make sure the `mongod` is running. Then, under the project folder root, run the following:
 
+    cd backend
     mvn clean package appassembler:assemble
     sh bin/sparqles -p src/main/resources/sparqles.properties -i
 

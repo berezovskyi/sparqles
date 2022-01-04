@@ -1,16 +1,25 @@
 # Logs & other files
 /*.csv
 /logs/
-/sampleData/dump/
+/database/dump/
+/data/
 
 # Node
-/node/npm-debug.log
-/node/node_modules/
+npm-debug.log
+node_modules/
 
 # Java
+.project
+
+backend/bin/
+.settings/
+.classpath
+target/
 build/
-/code
-/bin
+
+repo/
+conf/
+
 /code.zip
 /j-schedule
 /h2-2013-05-25
@@ -21,9 +30,3 @@ build/
 /h2-2013-05-25.zip
 /hsqldb-2.3.0.zip
 /jetty-distribution-9.0.4.v20130625.zip
-/target
-.classpath
-.project
-.settings/
-repo/
-conf/
