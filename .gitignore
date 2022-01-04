@@ -9,6 +9,9 @@ npm-debug.log
 node_modules/
 
 # Java
+.idea/
+*.iml
+
 .project
 
 backend/bin/
