@@ -1,6 +1,6 @@
 # Debian apt fail
-FROM mongo:2.6
-# FROM mongo:3.2
+# FROM mongo:2.6
+FROM mongo:3.2
 # FROM mongo:3.4
 # FROM mongo:3.7
 # FROM mongo:4.0
@@ -16,9 +16,9 @@ RUN mongod --fork --logpath /var/log/mongodb.log && \
 	mongorestore -d sparqles /tmp/dump/sparqles && \
 	mongod --shutdown
 
-# before 3.2
+# up to 3.2 incl
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["mongod"]
-
 # after 3.2
-# CMD docker-entrypoint.sh mongod
+# ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["mongod"]

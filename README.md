@@ -79,7 +79,7 @@ Make sure the `mongod` is running. Then, under the project folder root, run the 
 
 The first command compiles the code, packages the jar, and generates wrapper scripts. The second command initialises the MongoDB database (as specified in `/src/main/resources/sparqles.properties`, by default `sparqles` on `localhost`) with the datasets from the [Datahub](https://datahub.io).
 
-In order to obtain all metrics and update the stats counters, run the following commands:
+In order to obtain all metrics and update the stats counters, run the following commands (inside `backend/`):
 
     sh bin/sparqles -p src/main/resources/sparqles.properties -run atask
     sh bin/sparqles -p src/main/resources/sparqles.properties -run ptask

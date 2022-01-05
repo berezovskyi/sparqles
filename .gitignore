@@ -1,6 +1,6 @@
 # Logs & other files
 /*.csv
-/logs/
+/backend/logs/
 /database/dump/
 /data/
 
@@ -14,7 +14,7 @@ node_modules/
 
 .project
 
-backend/bin/
+/backend/bin/
 .settings/
 .classpath
 target/
