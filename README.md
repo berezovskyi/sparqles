@@ -38,6 +38,13 @@ With a production database:
 docker-compose up -d
 ```
 
+While the MongoDB is running, you need to initialize the scheduler by fetching the endpoints from from the databus.io first and then generating the schedule:
+
+```
+sh bin/sparqles -p src/main/resources/sparqles.properties -i
+sh bin/sparqles -p src/main/resources/sparqles.properties -rs
+```
+
 ## Deploying the application manually
 
 ### Prerequisites
