@@ -107,19 +107,6 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-			<!-- <type>jar</type> <scope>runtime</scope> <exclusions> <exclusion> 
-				<groupId>javax.mail</groupId> <artifactId>mail</artifactId> </exclusion> 
-				<exclusion> <groupId>javax.jms</groupId> <artifactId>jms</artifactId> </exclusion> 
-				<exclusion> <groupId>com.sun.jdmk</groupId> <artifactId>jmxtools</artifactId> 
-				</exclusion> <exclusion> <groupId>com.sun.jmx</groupId> <artifactId>jmxri</artifactId> 
-				</exclusion> </exclusions> -->
-		</dependency>
-
-
-		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.2.3</version>
@@ -130,15 +117,9 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>log4j</artifactId>
-					<groupId>log4j</groupId>
-				</exclusion>
-			</exclusions>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-reload4j</artifactId>
+		    <version>1.7.36</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.avro</groupId>
