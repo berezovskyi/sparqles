@@ -68,8 +68,8 @@ public class DatahubAccess {
 
 			// Set verifier     
 			HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-			String apiURL="https://datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000";
-			apiURL="https://datahub.io/api/3/action/resource_search?query=format:api/sparql";
+			String apiURL="https://old.datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000";
+			apiURL="https://old.datahub.io/api/3/action/resource_search?query=format:api/sparql";
 			HttpGet getRequest = new HttpGet(apiURL);
 			
 			getRequest.addHeader("User-Agent", CONSTANTS.USER_AGENT);
@@ -148,7 +148,7 @@ public class DatahubAccess {
 		log.debug("[GET] dataset info for {} and {}", datasetId,ep);
 		HttpGet getRequest = null;
 		try {
-			getRequest = new HttpGet("https://datahub.io/api/3/action/package_show?id="+datasetId);
+			getRequest = new HttpGet("https://old.datahub.io/api/3/action/package_show?id="+datasetId);
 			getRequest.addHeader("User-Agent", CONSTANTS.USER_AGENT);
 			System.out.println(getRequest);
 			HttpResponse response = httpClient.execute(getRequest);

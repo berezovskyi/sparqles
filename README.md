@@ -84,7 +84,7 @@ Make sure the `mongod` is running. Then, under the project folder root, run the 
     mvn clean package appassembler:assemble
     sh bin/sparqles -p src/main/resources/sparqles.properties -i
 
-The first command compiles the code, packages the jar, and generates wrapper scripts. The second command initialises the MongoDB database (as specified in `/src/main/resources/sparqles.properties`, by default `sparqles` on `localhost`) with the datasets from the [Datahub](https://datahub.io).
+The first command compiles the code, packages the jar, and generates wrapper scripts. The second command initialises the MongoDB database (as specified in `/src/main/resources/sparqles.properties`, by default `sparqles` on `localhost`) with the datasets from the [Datahub](https://old.datahub.io).
 
 In order to obtain all metrics and update the stats counters, run the following commands (inside `backend/`):
 
