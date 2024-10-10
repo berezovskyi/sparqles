@@ -6,13 +6,11 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: CI Backend (Java/Maven)
+name: Dependabot advanced scan (Java/Maven)
 
 on:
   workflow_dispatch: 
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -53,7 +51,8 @@ jobs:
         cd backend
         mvn -B clean verify
 
-    - name: Build the Docker image
-      working-directory: backend
-      run: docker build .
-  
+    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    - name: Update dependency graph
+      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+      with:
+        directory: "backend/"
