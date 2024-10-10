@@ -1,4 +1,4 @@
-name: Docker Image CI (MongoDB)
+name: CI DB (MongoDB/Docker)
 
 on:
   push:
