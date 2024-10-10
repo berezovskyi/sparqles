@@ -60,5 +60,6 @@ jobs:
         directory: "backend/"
 
     - name: Build the Docker image
-      run: docker build . --file backend/Dockerfile
+      working-directory: backend
+      run: docker build .
   
