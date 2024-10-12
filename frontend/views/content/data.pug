@@ -35,6 +35,6 @@ block content
                   - var dateString = date.toUTCString();
                   tr
                     td
-                      a(href='/dumps/#{file.name}', target='_blank') #{file.name}
+                      a(href=`/dumps/${file.name}`, target='_blank') #{file.name}
                     td.tdcenter #{dateString}
                     td.tdcenter #{file.size}

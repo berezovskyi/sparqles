@@ -23,45 +23,45 @@ block content
             .wrplInnerBox(style='height: 380px;')
               a(title='', href='./availability')
                 h2 
-                  span(onmouseover='tooltip.show(\'#{configAvailability["availability"]}\')', onmouseout='tooltip.hide();') Availability
+                  span(onmouseover='tooltip.show('`${configAvailability["availability"]}`')', onmouseout='tooltip.hide();') Availability
               svg#avail(style='height: 350px; padding-right:10px;')
           article.wrpl(style='min-width: 400px;')
             .wrplInnerBox(style='height: 380px;')
               - function numberWithCommas(x) {if (x) return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
               a(title='', href='./performance')
                 h2 
-                  span(onmouseover='tooltip.show(\'#{configPerformance["performance"]}\')', onmouseout='tooltip.hide();') Performance
+                  span(onmouseover='tooltip.show('`${configPerformance["performance"]}`')', onmouseout='tooltip.hide();') Performance
               span
                 b #{numberWithCommas(perf.threshold)} 
                 | is the most common 
-                span(onmouseover='tooltip.show(\'#{configPerformance["Result-size thresholds"]}\')', onmouseout='tooltip.hide();') result-size threshold
+                span(onmouseover='tooltip.show('`${configPerformance["Result-size thresholds"]}`')', onmouseout='tooltip.hide();') result-size threshold
               svg#perf
           article.wrpl(style='min-width: 400px;')
             .wrplInnerBox(style='height: 380px;')
               a(title='', href='./interoperability')
                 h2#log
-                  span(onmouseover='tooltip.show(\'#{configInterop["interoperability"]}\')', onmouseout='tooltip.hide();') Interoperability
+                  span(onmouseover='tooltip.show('`${configInterop["interoperability"]}`')', onmouseout='tooltip.hide();') Interoperability
               svg#interop
           article.wrpl(style='min-width: 400px;')
             .wrplInnerBox(style='height: 380px;')
               a(title='', href='./discoverability')
                 h2 
-                  span(onmouseover='tooltip.show(\'#{configDisco["discoverability"]}\')', onmouseout='tooltip.hide();') Discoverability
+                  span(onmouseover='tooltip.show('`${configDisco["discoverability"]}`')', onmouseout='tooltip.hide();') Discoverability
               div
                 b #{parseFloat((nbEndpointsVoID/nbEndpointsTotal*100).toFixed(2))+ '%'} 
                 | of the endpoints provide a 
-                span(onmouseover='tooltip.show(\'#{configDisco["VoID Description"]}\')', onmouseout='tooltip.hide();') VoID description
+                span(onmouseover='tooltip.show('`${configDisco["VoID Description"]}`')', onmouseout='tooltip.hide();') VoID description
               div
                 b #{parseFloat((nbEndpointsSD/nbEndpointsTotal*100).toFixed(2))+ '%'} 
                 | of the endpoints provide a 
-                span(onmouseover='tooltip.show(\'#{configDisco["Service Description"]}\')', onmouseout='tooltip.hide();') SD description
+                span(onmouseover='tooltip.show('`${configDisco["Service Description"]}`')', onmouseout='tooltip.hide();') SD description
               div
                 b #{parseFloat((nbEndpointsNoDesc/nbEndpointsTotal*100).toFixed(2))+ '%'} 
                 | of the endpoints have 
                 b no 
                 | description
               br
-              span(onmouseover='tooltip.show(\'#{configDisco["Server Name"]}\')', onmouseout='tooltip.hide();') Server name:
+              span(onmouseover='tooltip.show('`${configDisco["Server Name"]}`')', onmouseout='tooltip.hide();') Server name:
               svg#disco(style='height: 350px;margin-top:-50px;')
       script.
         var colors = d3.scale.category20();

@@ -62,9 +62,9 @@ block content
                 tr
                   th.tablehead(scope='col', width='50%') SPARQL Endpoint
                   th.tablehead(width='25%') 
-                    span(onmouseover='tooltip.show(\'#{configInterop["SPARQL 1.0"]}\')', onmouseout='tooltip.hide();') SPARQL 1.0 features
+                    span(onmouseover='tooltip.show('`${configInterop["SPARQL 1.0"]}`')', onmouseout='tooltip.hide();') SPARQL 1.0 features
                   th.tablehead(width='25%') 
-                    span(onmouseover='tooltip.show(\'#{configInterop["SPARQL 1.1"]}\')', onmouseout='tooltip.hide();') SPARQL 1.1 features
+                    span(onmouseover='tooltip.show('`${configInterop["SPARQL 1.1"]}`')', onmouseout='tooltip.hide();') SPARQL 1.1 features
               tbody
                 - each ep, i in ftasks_agg
                   tr(class=(i % 2 == 0) ? 'odd' : 'even')
@@ -78,7 +78,7 @@ block content
                       - }
                       td
                         a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}")
-                          span(onmouseover='tooltip.show(\'#{generateTooltip(ep.endpoint.datasets)}\')', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
+                          span(onmouseover='tooltip.show('`${generateTooltip(ep.endpoint.datasets)}`')', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
                     else
                       if ep.endpoint.datasets.length>0
                         td 
