@@ -29,65 +29,62 @@ import org.mortbay.log.Log;
 import sparqles.core.CONSTANTS;
 
 
-
 public class ConnectionManager {
-
+    
     private DefaultHttpClient _client;
-	private IdleConnectionMonitorThread _monitor;
-
-	
-
+    private IdleConnectionMonitorThread _monitor;
+    
     
     public ConnectionManager(String proxyHost, int proxyPort, String puser, String ppassword, int connections) {
-    	// general setup
-    	SchemeRegistry supportedSchemes = new SchemeRegistry();
-
-    	// Register the "http" and "https" protocol schemes, they are
-    	// required by the default operator to look up socket factories.
-    	supportedSchemes.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-    	supportedSchemes.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-
-    	// prepare parameters
-    	HttpParams params = new BasicHttpParams();
-    	HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-    	HttpProtocolParams.setContentCharset(params, "UTF-8");
-    	HttpProtocolParams.setUseExpectContinue(params, true);
-    	
-    	HttpClientParams.setRedirecting(params, true);
-
-    	//connection params 
-    	params.setParameter(CoreConnectionPNames.SO_TIMEOUT, CONSTANTS.SOCKET_TIMEOUT);
+        // general setup
+        SchemeRegistry supportedSchemes = new SchemeRegistry();
+        
+        // Register the "http" and "https" protocol schemes, they are
+        // required by the default operator to look up socket factories.
+        supportedSchemes.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+        supportedSchemes.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+        
+        // prepare parameters
+        HttpParams params = new BasicHttpParams();
+        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+        HttpProtocolParams.setContentCharset(params, "UTF-8");
+        HttpProtocolParams.setUseExpectContinue(params, true);
+        
+        HttpClientParams.setRedirecting(params, true);
+        
+        //connection params 
+        params.setParameter(CoreConnectionPNames.SO_TIMEOUT, CONSTANTS.SOCKET_TIMEOUT);
 //    	params.setParameter(CoreConnectionPNames.TCP_NODELAY, true);
-    	params.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, CONSTANTS.CONNECTION_TIMEOUT);
-
-    	ConnManagerParams.setMaxTotalConnections(params, connections);
-    	ClientConnectionManager cm = new ThreadSafeClientConnManager(params, supportedSchemes);
-    	
-    	_client = new DefaultHttpClient(cm, params);
-    	
-
-    	// check if we have a proxy
-    	if (proxyHost != null) {
-    		HttpHost proxy = new HttpHost(proxyHost, proxyPort, "http");
-    		_client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
-    		
-    		if (puser != null) {
-    			_client.getCredentialsProvider().setCredentials(
-    					new AuthScope(proxyHost, proxyPort),
-    					new UsernamePasswordCredentials(puser, new String(ppassword))); 
-    		}
-    	}
-    	_monitor = new IdleConnectionMonitorThread(cm);
-    	_monitor.start();
- 	}
-    
-   
-    public void shutdown() {
-    	_client.getConnectionManager().shutdown();
+        params.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, CONSTANTS.CONNECTION_TIMEOUT);
+        
+        ConnManagerParams.setMaxTotalConnections(params, connections);
+        ClientConnectionManager cm = new ThreadSafeClientConnManager(params, supportedSchemes);
+        
+        _client = new DefaultHttpClient(cm, params);
+        
+        
+        // check if we have a proxy
+        if (proxyHost != null) {
+            HttpHost proxy = new HttpHost(proxyHost, proxyPort, "http");
+            _client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
+            
+            if (puser != null) {
+                _client.getCredentialsProvider().setCredentials(
+                    new AuthScope(proxyHost, proxyPort),
+                    new UsernamePasswordCredentials(puser, new String(ppassword)));
+            }
+        }
+        _monitor = new IdleConnectionMonitorThread(cm);
+        _monitor.start();
     }
-
+    
+    
+    public void shutdown() {
+        _client.getConnectionManager().shutdown();
+    }
+    
     public HttpResponse connect(HttpGet get) throws ClientProtocolException, IOException {
-    	return _client.execute(get);
+        return _client.execute(get);
     }
     
     static class IdleConnectionMonitorThread extends Thread {
@@ -99,7 +96,7 @@ public class ConnectionManager {
             super();
             this.connMgr = connMgr;
         }
-
+        
         @Override
         public void run() {
             try {

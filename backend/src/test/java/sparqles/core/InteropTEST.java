@@ -1,47 +1,43 @@
 package sparqles.core;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import sparqles.avro.Endpoint;
 import sparqles.avro.features.FResult;
 import sparqles.utils.MongoDBManager;
 
+import java.io.File;
+
 public class InteropTEST {
+    
+    private MongoDBManager m;
+    
+    
+    @Before
+    public void setUp() throws Exception {
+        SPARQLESProperties.init(new File("src/test/resources/ends.properties"));
+        m = new MongoDBManager();
+        
+        
+    }
+    
+    @After
+    public void tearDown() throws Exception {
+        m.close();
+    }
+    
+    
+    @Test
+    public void testSingle() throws Exception {
+        Endpoint ep = Endpoints.DBPEDIA;
+        
+        Task<FResult> t = TaskFactory.create(CONSTANTS.FTASK, ep, m, null);
+        FResult res = t.call();
+        System.out.println(res);
+        m.insert(res);
+    }
 
-	private MongoDBManager m;
-
-
-	@Before
-	public void setUp() throws Exception {
-		SPARQLESProperties.init(new File("src/test/resources/ends.properties"));
-		m = new MongoDBManager();
-		
-		
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		m.close();
-	}
-	
-	
-	@Test
-	public void testSingle() throws Exception {
-		Endpoint ep = Endpoints.DBPEDIA;
-	
-		Task<FResult> t = TaskFactory.create(CONSTANTS.FTASK, ep, m, null);
-		FResult res = t.call();
-		System.out.println(res);
-		m.insert(res);
-	}
-	
 //	@Test
 //	public void testGroup() throws Exception {
 //		

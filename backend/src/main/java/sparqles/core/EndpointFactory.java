@@ -1,24 +1,24 @@
 package sparqles.core;
 
+import sparqles.avro.Dataset;
+import sparqles.avro.Endpoint;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import sparqles.avro.Dataset;
-import sparqles.avro.Endpoint;
-
 public class EndpointFactory {
-
-	public static Endpoint newEndpoint(URI uri) {
-		Endpoint ep = new Endpoint();
-		ep.setUri(uri.toString());
-		ep.setDatasets(new ArrayList<Dataset>());
-		return ep;
-	}
-
-	public static Endpoint newEndpoint(String epURI) throws URISyntaxException {
-		return newEndpoint(new URI(epURI));
-		
-	}
-
+    
+    public static Endpoint newEndpoint(URI uri) {
+        Endpoint ep = new Endpoint();
+        ep.setUri(uri.toString());
+        ep.setDatasets(new ArrayList<Dataset>());
+        return ep;
+    }
+    
+    public static Endpoint newEndpoint(String epURI) throws URISyntaxException {
+        return newEndpoint(new URI(epURI));
+        
+    }
+    
 }

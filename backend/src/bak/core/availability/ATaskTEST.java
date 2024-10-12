@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.hp.hpl.jena.util.FileManager;
+import org.apache.jena.util.FileManager;
 
 import core.Endpoints;
 
@@ -15,9 +15,9 @@ import sparqles.core.availability.ATask;
 import sparqles.utils.MongoDBManager;
 
 public class ATaskTEST {
-
-	@Test
-	public void testATask() throws Exception {
-		
-	}
+    
+    @Test
+    public void testATask() throws Exception {
+        
+    }
 }

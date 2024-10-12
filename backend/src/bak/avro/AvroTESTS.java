@@ -29,41 +29,38 @@ import sparqles.utils.DateFormater;
 import sparqles.core.Endpoint;
 
 public class AvroTESTS {
-
-	 private Schema a,b,c, ep, epres, dres;
-	
-
-     @Before
-     public void setUp() throws Exception {
+    
+    private Schema a, b, c, ep, epres, dres;
+    
+    
+    @Before
+    public void setUp() throws Exception {
 
 //             a = AvroUtils.parseSchema(new File("test/avro/A.avsc"));
 //             b = AvroUtils.parseSchema(new File("test/avro/B.avsc"));
 //             c = AvroUtils.parseSchema(new File("test/avro/test/C.avsc"));
-     		
-             ep = AvroUtils.parseSchema(new File("test/avro/Endpoint.avsc"));
-             epres = AvroUtils.parseSchema(new File("test/avro/EndpointResult.avsc"));
-             dres = AvroUtils.parseSchema(new File("test/avro/test/DResultGET.avsc"));
-
-     }
-
-     @Test
-     public void testSimpleInheritance() throws Exception{
-    	 //new Utf8("Doctor Who")
-    	 GenericRecord ar = new GenericData.Record(ep);
-    	 GenericRecord br = new GenericData.Record(epres);
-    	 GenericRecord cr = new GenericData.Record(dres);
-    	 
-    	 ar.put("uri", "http::");
-    	 br.put("endpoint", ar);
-    	 br.put("date", DateFormater.getDataAsString(DateFormater.ISO8601));
-    	 cr.put("endpointResult", br);
-    	 System.out.println(ar);
-    	 System.out.println(br);
-    	 System.out.println(cr);
-    	 
-    	 
-    	 
-    	 
-    	 
-     }
+        
+        ep = AvroUtils.parseSchema(new File("test/avro/Endpoint.avsc"));
+        epres = AvroUtils.parseSchema(new File("test/avro/EndpointResult.avsc"));
+        dres = AvroUtils.parseSchema(new File("test/avro/test/DResultGET.avsc"));
+        
+    }
+    
+    @Test
+    public void testSimpleInheritance() throws Exception {
+        //new Utf8("Doctor Who")
+        GenericRecord ar = new GenericData.Record(ep);
+        GenericRecord br = new GenericData.Record(epres);
+        GenericRecord cr = new GenericData.Record(dres);
+        
+        ar.put("uri", "http::");
+        br.put("endpoint", ar);
+        br.put("date", DateFormater.getDataAsString(DateFormater.ISO8601));
+        cr.put("endpointResult", br);
+        System.out.println(ar);
+        System.out.println(br);
+        System.out.println(cr);
+        
+        
+    }
 }

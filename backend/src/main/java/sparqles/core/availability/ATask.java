@@ -1,10 +1,10 @@
 package sparqles.core.availability;
 
 import org.apache.http.HttpException;
-import org.apache.http.conn.ConnectionPoolTimeoutException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.jena.query.QueryExecution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import sparqles.avro.Endpoint;
 import sparqles.avro.EndpointResult;
 import sparqles.avro.availability.AResult;
@@ -13,8 +13,7 @@ import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
 
-import com.hp.hpl.jena.query.QueryExecution;
-
+import java.net.ConnectException;
 import java.net.UnknownHostException;
 
 /**
@@ -49,7 +48,8 @@ public class ATask extends EndpointTask<AResult> {
         long start = System.currentTimeMillis();
         try {
             QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), ASKQUERY);
-            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
+            // FIXME: find a new way
+            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
             boolean response = qe.execAsk();
             if (response) {
                 result.setResponseTime((System.currentTimeMillis() - start));
@@ -84,7 +84,8 @@ public class ATask extends EndpointTask<AResult> {
         long start = System.currentTimeMillis();
         try {
             QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), SELECTQUERY);
-            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
+            // FIXME
+            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
             boolean response = qe.execSelect().hasNext();
             
             if (response) {
@@ -103,7 +104,7 @@ public class ATask extends EndpointTask<AResult> {
                 log.debug("executed no response {}", epr.getEndpoint().getUri().toString());
                 return result;
             }
-        } catch (ConnectionPoolTimeoutException e) {
+        } catch (ConnectTimeoutException | ConnectException e) {
             result.setIsAvailable(false);
             String msg = "🐌 connection timeout while connecting to " + _epURI;
             log.info(msg);
@@ -116,6 +117,20 @@ public class ATask extends EndpointTask<AResult> {
             result.setExplanation(msg);
             return result;
         } catch (HttpException e) {
+            if (e.getCause() instanceof UnknownHostException) {
+                result.setIsAvailable(false);
+                String msg = "🕳️ host not found while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
+                return result;
+            }
+            if (e.getCause() instanceof ConnectTimeoutException || e.getCause() instanceof ConnectException) {
+                result.setIsAvailable(false);
+                String msg = "🐌 connection timeout while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
+                return result;
+            }
             if (e.getMessage().contains("400")) {
                 result.setIsAvailable(false);
                 String msg = "👾 host did not like our request (400); while connecting to " + _epURI;

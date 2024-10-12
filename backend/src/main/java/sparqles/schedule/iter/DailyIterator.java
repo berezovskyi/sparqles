@@ -7,11 +7,11 @@ import java.util.Date;
 public class DailyIterator implements ScheduleIterator {
     private final int hourOfDay, minute, second;
     private final Calendar calendar = Calendar.getInstance();
-
+    
     public DailyIterator(int hourOfDay, int minute, int second) {
         this(hourOfDay, minute, second, new Date());
     }
-
+    
     public DailyIterator(int hourOfDay, int minute, int second, Date date) {
         this.hourOfDay = hourOfDay;
         this.minute = minute;
@@ -25,10 +25,10 @@ public class DailyIterator implements ScheduleIterator {
             calendar.add(Calendar.DATE, -1);
         }
     }
-
+    
     public Date next() {
         calendar.add(Calendar.DATE, 1);
         return calendar.getTime();
     }
-
+    
 }

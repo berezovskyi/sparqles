@@ -1,234 +1,245 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>okfn.com</groupId>
-	<artifactId>sparqles</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<properties>
-		<jdkLevel>11</jdkLevel>
-		<maven.compiler.release>${jdkLevel}</maven.compiler.release>
-		<maven.compiler.target>${jdkLevel}</maven.compiler.target>
-		<maven.compiler.source>${jdkLevel}</maven.compiler.source>
-		<requiredMavenVersion>[2.1,)</requiredMavenVersion>
-		<main.basedir>${project.basedir}</main.basedir>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
-		<maven.compiler>2.0.2</maven.compiler>
-		<avro.version>1.7.5</avro.version>
-		<maven.test.skip>true</maven.test.skip>
-		<v.slf4j>1.7.36</v.slf4j>
-	</properties>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>okfn.com</groupId>
+  <artifactId>sparqles</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <jdkLevel>11</jdkLevel>
+    <maven.compiler.release>${jdkLevel}</maven.compiler.release>
+    <maven.compiler.target>${jdkLevel}</maven.compiler.target>
+    <maven.compiler.source>${jdkLevel}</maven.compiler.source>
+    <requiredMavenVersion>[2.1,)</requiredMavenVersion>
+    <main.basedir>${project.basedir}</main.basedir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+    <maven.compiler>2.0.2</maven.compiler>
+    <avro.version>1.7.5</avro.version>
+    <!--  FIXME: all tests require network/setup  -->
+    <maven.test.skip>true</maven.test.skip>
+    <v.slf4j>2.0.13</v.slf4j>
+    <!--		<v.jena>2.13.0</v.jena>-->
+    <!--		<v.jena>3.17.0</v.jena>-->
+    <!--		<v.jena>4.10.0</v.jena>-->
+    <v.jena>5.1.0</v.jena>
+  </properties>
 
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<usedDependencies>
-						<!-- loaded at runtime, no code refs -->
-						<dependency>org.slf4j:slf4j-reload4j</dependency>
-					</usedDependencies>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>3.5.0</version>
-				<executions>
-					<execution>
-						<id>enforce-maven</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>3.6.0</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-									<version>11</version>
-								</requireJavaVersion>
-								<bannedDependencies>
-									<excludes>
-										<!-- TODO: bring back, we are not there yet -->
-										<!-- <exclude>xerces</exclude> -->
-										<!-- <exclude>xml-apis</exclude> -->
-										<!-- <exclude>com.sun.xml.bind:jaxb-impl</exclude> -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <usedDependencies>
+            <!-- loaded at runtime, no code refs -->
+            <dependency>org.slf4j:slf4j-reload4j</dependency>
+          </usedDependencies>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.6.0</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>11</version>
+                </requireJavaVersion>
+                <bannedDependencies>
+                  <excludes>
+                    <!-- TODO: bring back, we are not there yet -->
+                    <!-- <exclude>xerces</exclude> -->
+                    <!-- <exclude>xml-apis</exclude> -->
+                    <!-- <exclude>com.sun.xml.bind:jaxb-impl</exclude> -->
 
-										<!-- https://github.com/eclipse/lyo/pull/220 -->
-										<!--                    <exclude>log4j:log4j</exclude>-->
-										<!--log4j
-										v2 is not used, just for the future-->
-										<!-- <exclude>org.apache.logging.log4j:log4j-core</exclude> -->
-									</excludes>
-								</bannedDependencies>
-								<banDuplicatePomDependencyVersions />
-								<requireUpperBoundDeps>
-									<excludes>
-										<exclude>org.osgi:org.osgi.core</exclude>
-										<exclude>org.slf4j:slf4j-api</exclude>
-									</excludes>
-								</requireUpperBoundDeps>
-								<reactorModuleConvergence>
-									<message>The reactor is not valid</message>
-									<ignoreModuleDependencies>false</ignoreModuleDependencies>
-								</reactorModuleConvergence>
-							</rules>
-							<fail>true</fail>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.13.0</version>
-				<configuration>
-					<showDeprecation>true</showDeprecation>
-					<showWarnings>true</showWarnings>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<configuration>
-					<mainClass>sparqles.core.Main</mainClass>
-				</configuration>
-			</plugin>
+                    <!-- https://github.com/eclipse/lyo/pull/220 -->
+                    <!--                    <exclude>log4j:log4j</exclude>-->
+                    <!--log4j
+                    v2 is not used, just for the future-->
+                    <!-- <exclude>org.apache.logging.log4j:log4j-core</exclude> -->
+                  </excludes>
+                </bannedDependencies>
+                <banDuplicatePomDependencyVersions/>
+                <requireUpperBoundDeps>
+                  <excludes>
+                    <exclude>org.osgi:org.osgi.core</exclude>
+                    <exclude>org.slf4j:slf4j-api</exclude>
+                  </excludes>
+                </requireUpperBoundDeps>
+                <reactorModuleConvergence>
+                  <message>The reactor is not valid</message>
+                  <ignoreModuleDependencies>false</ignoreModuleDependencies>
+                </reactorModuleConvergence>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>sparqles.core.Main</mainClass>
+        </configuration>
+      </plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>appassembler-maven-plugin</artifactId>
-				<version>2.1.0</version>
-				<configuration>
-					<configurationDirectory>conf</configurationDirectory>
-					<configurationSourceDirectory>src/main/config</configurationSourceDirectory>
-					<copyConfigurationDirectory>true</copyConfigurationDirectory>
-					<!-- set alternative assemble directory -->
-					<assembleDirectory>${basedir}</assembleDirectory>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>appassembler-maven-plugin</artifactId>
+        <version>2.1.0</version>
+        <configuration>
+          <configurationDirectory>conf</configurationDirectory>
+          <configurationSourceDirectory>src/main/config</configurationSourceDirectory>
+          <copyConfigurationDirectory>true</copyConfigurationDirectory>
+          <!-- set alternative assemble directory -->
+          <assembleDirectory>${basedir}</assembleDirectory>
 
-					<!-- Docker on JDK 11+ will set the -X** from RAM % correctly -->
-					<!--					<extraJvmArguments>-Xmx1024m</extraJvmArguments>-->
+          <!-- Docker on JDK 11+ will set the -X** from RAM % correctly -->
+          <!--					<extraJvmArguments>-Xmx1024m</extraJvmArguments>-->
 
-					<!-- Generate bin scripts for windows and unix pr default -->
-					<platforms>
-						<platform>windows</platform>
-						<platform>unix</platform>
-					</platforms>
+          <!-- Generate bin scripts for windows and unix pr default -->
+          <platforms>
+            <platform>windows</platform>
+            <platform>unix</platform>
+          </platforms>
 
-					<daemons>
-						<daemon>
-							<id>sparqles_service</id>
-							<mainClass>sparqles.core.Main</mainClass>
-							<commandLineArguments>
-								<commandLineArgument>SPARQLES</commandLineArgument>
-							</commandLineArguments>
-							<platforms>
-								<platform>jsw</platform>
-							</platforms>
-						</daemon>
-					</daemons>
+          <daemons>
+            <daemon>
+              <id>sparqles_service</id>
+              <mainClass>sparqles.core.Main</mainClass>
+              <commandLineArguments>
+                <commandLineArgument>SPARQLES</commandLineArgument>
+              </commandLineArguments>
+              <platforms>
+                <platform>jsw</platform>
+              </platforms>
+            </daemon>
+          </daemons>
 
 
-					<programs>
-						<program>
-							<mainClass>sparqles.core.Main</mainClass>
-							<commandLineArguments>
-								<!-- Add two predefined command line arguments to the call of App3 -->
-								<commandLineArgument>SPARQLES</commandLineArgument>
-							</commandLineArguments>
-							<name>sparqles</name>
-							<!-- <jvmSettings> <extraArguments>
-							<extraArgument>-Dlog4j.configuration=../conf/log4j.properties</extraArgument> 
-								</extraArguments> </jvmSettings> -->
-						</program>
-						<program>
-							<mainClass>sparqles.analytics.AEvol</mainClass>
-							<name>aEvol</name>
-						</program>
-					</programs>
-				</configuration>
-				<!-- <executions>
-					<execution>
-						<id>generate-jsw-scripts</id>
-						<phase>package</phase>
-						<goals>
-							<goal>generate-daemons</goal>
-						</goals>
-					</execution>
-				</executions>
-				 -->
-			</plugin>
-		</plugins>
-	</build>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.fasterxml.jackson</groupId>
-				<artifactId>jackson-bom</artifactId>
-				<version>2.16.1</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
-				<version>${v.slf4j}</version>
-			</dependency>	
-		</dependencies>
-	</dependencyManagement>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.4.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.13</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-cli</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${v.slf4j}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-reload4j</artifactId>
-			<version>${v.slf4j}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>avro-tools</artifactId>
-			<version>${avro.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-
-			</exclusions>
-		</dependency>
+          <programs>
+            <program>
+              <mainClass>sparqles.core.Main</mainClass>
+              <commandLineArguments>
+                <!-- Add two predefined command line arguments to the call of App3 -->
+                <commandLineArgument>SPARQLES</commandLineArgument>
+              </commandLineArguments>
+              <name>sparqles</name>
+              <!-- <jvmSettings> <extraArguments>
+              <extraArgument>-Dlog4j.configuration=../conf/log4j.properties</extraArgument> 
+                </extraArguments> </jvmSettings> -->
+            </program>
+            <program>
+              <mainClass>sparqles.analytics.AEvol</mainClass>
+              <name>aEvol</name>
+            </program>
+          </programs>
+        </configuration>
+        <!-- <executions>
+          <execution>
+            <id>generate-jsw-scripts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>generate-daemons</goal>
+            </goals>
+          </execution>
+        </executions>
+         -->
+      </plugin>
+    </plugins>
+  </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.fasterxml.jackson</groupId>
+        <artifactId>jackson-bom</artifactId>
+        <version>2.16.1</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.jena</groupId>
+        <artifactId>jena-bom</artifactId>
+        <version>${v.jena}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${v.slf4j}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.17.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${v.slf4j}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-reload4j</artifactId>
+      <version>${v.slf4j}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro-tools</artifactId>
+      <version>${avro.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
@@ -239,68 +250,54 @@
 			<artifactId>jongo</artifactId>
 			<version>1.4.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.9</version>
-		</dependency>
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.jena</groupId>
-			<artifactId>jena-core</artifactId>
-			<version>2.13.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.jena</groupId>
-			<artifactId>jena-arq</artifactId>
-			<version>2.13.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>3.2</version>
-		</dependency>
-	</dependencies>
-	<repositories>
-		<repository>
-			<id>apache-repo-snapshots</id>
-			<url>https://repository.apache.org/content/repositories/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>1.4.01</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-arq</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-cmds</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-math3</artifactId>
+      <version>3.2</version>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <repository>
+      <id>apache-repo-snapshots</id>
+      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>

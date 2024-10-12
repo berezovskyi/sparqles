@@ -24,7 +24,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(logger('dev'))
 app.set('views', __dirname + '/views')
-app.set('view engine', 'jade')
+app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride())
@@ -92,7 +92,7 @@ app.get('/', function (req, res) {
                     if (docs[i].serverName.length > 0 && docs[i].serverName != 'missing')
                       nbEndpointsServerName++
                   }
-                  res.render('content/index.jade', {
+                  res.render('content/index.pug', {
                     configInstanceTitle: configApp.get('configInstanceTitle'),
                     baseUri: configApp.get('baseUri'),
                     gitRepo: configApp.get('gitRepo'),
@@ -133,7 +133,7 @@ app.get('/', function (req, res) {
                     configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json')),
                   })
                   /*
-                                res.render('content/index.jade',{
+                                res.render('content/index.pug',{
                                   configInstanceTitle: configApp.get('configInstanceTitle'),
                                   amonths: amonths,
                                   index:index,
@@ -296,7 +296,7 @@ app.get('/endpoint', function (req, res) {
 
               docs[0].discoverability.SDDescription = SDDescription
 
-              res.render('content/endpoint.jade', {
+              res.render('content/endpoint.pug', {
                 configInstanceTitle: configApp.get('configInstanceTitle'),
                 baseUri: configApp.get('baseUri'),
                 gitRepo: configApp.get('gitRepo'),
@@ -370,7 +370,7 @@ app.get('/availability', function (req, res) {
         if (docs[i].upNow == true) nbEndpointsUp++
         if (docs[i].lastUpdate > lastUpdate) lastUpdate = docs[i].lastUpdate
       }
-      res.render('content/availability.jade', {
+      res.render('content/availability.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
         gitRepo: configApp.get('gitRepo'),
@@ -400,7 +400,7 @@ app.get('/discoverability', function (req, res) {
         if (docs[i].serverName.length > 0 && docs[i].serverName != 'missing')
           nbEndpointsServerName++
       }
-      res.render('content/discoverability.jade', {
+      res.render('content/discoverability.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
         gitRepo: configApp.get('gitRepo'),
@@ -441,7 +441,7 @@ app.get('/performance', function (req, res) {
         }
       }
       //console.log(mostCommonThreshold);
-      res.render('content/performance.jade', {
+      res.render('content/performance.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
         gitRepo: configApp.get('gitRepo'),
@@ -484,7 +484,7 @@ app.get('/interoperability', function (req, res) {
         if (docs[i].lastUpdate > lastUpdate) lastUpdate = docs[i].lastUpdate
       }
       //console.log(nbCompliantSPARQL1Features+' - '+nbFullCompliantSPARQL1Features+' - '+nbCompliantSPARQL11Features+' - '+nbFullCompliantSPARQL11Features);
-      res.render('content/interoperability.jade', {
+      res.render('content/interoperability.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
         gitRepo: configApp.get('gitRepo'),
@@ -521,7 +521,7 @@ app.get('/data', function (req, res) {
         size: bytesToSize(fs.statSync(dir + v).size),
       }
     })
-    res.render('content/data.jade', {
+    res.render('content/data.pug', {
       configInstanceTitle: configApp.get('configInstanceTitle'),
       baseUri: configApp.get('baseUri'),
       gitRepo: configApp.get('gitRepo'),
@@ -534,7 +534,7 @@ app.get('/data', function (req, res) {
 app.get('/iswc2013', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
     mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
-      res.render('content/iswc2013.jade', {
+      res.render('content/iswc2013.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
         gitRepo: configApp.get('gitRepo'),
@@ -547,7 +547,7 @@ app.get('/iswc2013', function (req, res) {
 app.get('/api', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
     mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
-      res.render('content/api.jade', {
+      res.render('content/api.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
         gitRepo: configApp.get('gitRepo'),
