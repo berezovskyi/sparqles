@@ -6,7 +6,10 @@
 	<artifactId>sparqles</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<jdkLevel>1.8</jdkLevel>
+		<jdkLevel>11</jdkLevel>
+		<maven.compiler.release>${jdkLevel}</maven.compiler.release>
+		<maven.compiler.target>${jdkLevel}</maven.compiler.target>
+		<maven.compiler.source>${jdkLevel}</maven.compiler.source>
 		<requiredMavenVersion>[2.1,)</requiredMavenVersion>
 		<main.basedir>${project.basedir}</main.basedir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,19 +26,17 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<configuration>
-					 <usedDependencies>
-							<!-- loaded at runtime, no code refs -->
-						  <dependency>org.slf4j:slf4j-reload4j</dependency>
-					 </usedDependencies>
+					<usedDependencies>
+						<!-- loaded at runtime, no code refs -->
+						<dependency>org.slf4j:slf4j-reload4j</dependency>
+					</usedDependencies>
 				</configuration>
-		  </plugin>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
-					<source>${jdkLevel}</source>
-					<target>${jdkLevel}</target>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 				</configuration>
@@ -146,12 +147,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.36</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-reload4j</artifactId>
 			<version>1.7.36</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.avro</groupId>

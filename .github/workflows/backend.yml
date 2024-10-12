@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        jdk: ['8', '11']
+        jdk: ['11']
         # temurin is Eclipse/AdoptOpenJDK/Adoptium
         # 'liberica' is a preferred Spring SDK
         # zulu has 2030 EOL for JDK 8
