@@ -4,12 +4,13 @@ services:
     build: ./frontend/
     restart: always
     environment:
-      # - NODE_ENV=production
-      - NODE_ENV=development
+      - NODE_ENV=production
+      # - NODE_ENV=development
       - DBHOST=database-svc
       - PORT=3001
     ports:
-      - "3001:3001"
+      - "127.0.0.1:3001:3001"
+      - './dataset:/dumps'
     links:
       - database-svc
   backend-svc:
