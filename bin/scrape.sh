@@ -15,7 +15,7 @@ main() {
   pushd "${SCRIPT_DIR}/../" || exit 1
   curl_safe "https://old.datahub.io/api/3/action/resource_search?query=format:api/sparql" "./dataset/datahub_sparql_endpoints" "application/json" ".json" "Datahub query for all SPARQL endpoints"
   curl_safe "https://sparqles.demo.openlinksw.com/api/endpoint/list" "./dataset/sparqles_endpoint_list-openlink_3dfed" "application/json" ".json" "Endpoint list from OpenlinkSW SPARQLES instance for 3DFed"
-  curl_safe "https://sparqles.ai.wu.ac.at/api/endpoint/list" "./dataset/sparqles_endpoint_list-openlink_3dfed" "application/json" ".json" "Endpoint list from OpenlinkSW SPARQLES instance for 3DFed"
+  curl_safe "https://sparqles.ai.wu.ac.at/api/endpoint/list" "./dataset/sparqles_endpoint_list-tuwien" "application/json" ".json" "Endpoint list from OpenlinkSW SPARQLES instance for 3DFed"
   popd || exit 1
 }
 
