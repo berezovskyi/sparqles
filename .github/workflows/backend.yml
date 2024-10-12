@@ -22,20 +22,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        jdk: ['8']
+        jdk: ['8', '11']
         # temurin is Eclipse/AdoptOpenJDK/Adoptium
         # 'liberica' is a preferred Spring SDK
         # zulu has 2030 EOL for JDK 8
         distribution: ['zulu']
         experimental: [false]
         include:
-          - jdk: '11'
+          - jdk: '17'
             distribution: temurin
             experimental: true
-          - jdk: '17'
+          - jdk: '21'
             distribution: liberica
             experimental: true
-          - jdk: '21'
+          - jdk: '23'
+            # current, can test on Oracle JDK while it's supported for 6mo
+            distribution: oracle
+            experimental: true
+          - jdk: '24-ea'
             distribution: zulu
             experimental: true
     continue-on-error: ${{ matrix.experimental }}
