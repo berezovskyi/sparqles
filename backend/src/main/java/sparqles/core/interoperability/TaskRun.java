@@ -133,8 +133,8 @@ public abstract class TaskRun {
 //                    + (close - b4));
         } catch (QueryException e) {
             r.setException(ExceptionHandler.getExceptionSummary(e.getMessage()));
-            if (log.isDebugEnabled()) {
-                log.debug("SPARQL query failed against endpoint {} (cause: {}...)", 
+            if (log.isInfoEnabled()) {
+                log.info("SPARQL query failed against endpoint {} (cause: {}...)", 
                     _ep.getUri(), ExceptionHandler.getExceptionSummary(e.getCause().getMessage()));
             }
         } catch (Exception e) {
