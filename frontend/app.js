@@ -10,6 +10,7 @@ var logger = require('morgan')
 var bodyParser = require('body-parser')
 var methodOverride = require('method-override')
 var errorHandler = require('errorhandler')
+var compression = require('compression')
 
 var ConfigProvider = require('./configprovider').ConfigProvider
 var MongoDBProvider = require('./mongodbprovider').MongoDBProvider
@@ -21,6 +22,7 @@ var app = express()
 // all environments
 app.set('port', process.env.PORT || 3001)
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
+app.use(compression())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(logger('dev'))
 app.set('views', __dirname + '/views')
@@ -530,6 +532,10 @@ app.get('/data', function (req, res) {
     })
   })
 })
+
+app.get('/dumps/:filename', function(req, res) {
+  res.sendFile(req.params['filename'], { root: "/dumps" });
+});
 
 app.get('/iswc2013', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {

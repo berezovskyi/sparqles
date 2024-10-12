@@ -6,14 +6,15 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "nconf": "~0.12.1",
+    "express": "^4.21.1",
+    "serve-favicon": "^2.5.0",
     "body-parser": "^1.20.3",
     "errorhandler": "^1.5.1",
-    "express": "^4.21.1",
-    "pug": "^3.0.0",
+    "compression": "^1.7.4",
     "method-override": "^3.0.0",
-    "mongodb": "~3.6.0",
+    "pug": "^3.0.0",
     "morgan": "^1.10.0",
-    "nconf": "~0.12.1",
-    "serve-favicon": "^2.5.0"
+    "mongodb": "~3.6.0"
   }
 }
