@@ -9,6 +9,17 @@ I suggest to fix only font-size, visibility and positioning code here
 all the rest of the style can be managed with http://lesscss.org
 */
 
+@import url("./inter.css");
+
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1, 'ss02' 1, 'cv10' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+
+
 /*	Resets
 	------	*/
 .inner-border-vertical {
@@ -56,7 +67,7 @@ all the rest of the style can be managed with http://lesscss.org
   /*
 			background-color: @footer;
 			color:@grey;
-			text-shadow: 0px -1px 0px rgba(0,0,0,.5);ù
+			text-shadow: 0px -1px 0px rgba(0,0,0,.5);ï¿½
 			*/
 
 }
@@ -92,9 +103,7 @@ all the rest of the style can be managed with http://lesscss.org
 .contents p {
   text-shadow: 1px 1px 0px white;
 }
-* {
-  font-family: 'Terminal Dosis', helvetica, arial, sans-serif;
-}
+
 /* DEFAULTS */
 a {
   text-decoration: none;
