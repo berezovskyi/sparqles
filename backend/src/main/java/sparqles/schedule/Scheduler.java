@@ -172,7 +172,7 @@ public class Scheduler {
 			_monitor.submit(SERVICE.schedule(t, startTime, TimeUnit.MILLISECONDS));
 		
 //		log.info("SCHEDULED {} next:'{}' ",task, time);
-		log.info("SCHEDULED {} next:'{}' policy:'{}'",task, time, iter);
+		log.debug("SCHEDULED {} next:'{}' policy:'{}'",task, time, iter);
 	}
 
 
@@ -199,7 +199,7 @@ public class Scheduler {
 		schedule(task, iter, time);
 		
 		Object [] s = {task, time, iter};
-		log.info("RESCHEDULED {} next:'{}' policy:'{}'",s);
+		log.debug("RESCHEDULED {} next:'{}' policy:'{}'",s);
 	}
 
 

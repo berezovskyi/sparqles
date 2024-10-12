@@ -67,7 +67,7 @@ public class TaskFactory {
 			((EndpointTask)t).setAnalytics(a);
 		
 		if(t != null)
-			log.info("Successfully create {} task for {}", task, ep.getUri());
+			log.trace("Successfully create {} task for {}", task, ep.getUri());
 		return t;
 	}
 }

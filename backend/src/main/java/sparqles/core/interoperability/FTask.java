@@ -35,7 +35,7 @@ public class FTask extends EndpointTask<FResult>{
 		super(ep);
 		_tasks = tasks;
 		Object [] s = {ep.getUri().toString(), tasks.length, SPARQLESProperties.getFTASK_WAITTIME()};
-		log.info("INIT {} with {} tasks and {} ms wait time", this, tasks.length, SPARQLESProperties.getPTASK_WAITTIME());
+		log.debug("INIT {} with {} tasks and {} ms wait time", this, tasks.length, SPARQLESProperties.getPTASK_WAITTIME());
     }
 
     @Override
