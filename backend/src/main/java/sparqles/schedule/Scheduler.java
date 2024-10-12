@@ -52,11 +52,17 @@ public class Scheduler {
 	 */
 	private final static Map<String,String> taskSchedule = new HashMap<String,String>();
 	static{
+		// availability
 		taskSchedule.put(ATASK, CRON_EVERY_HOUR);
+		// performance
 		taskSchedule.put(PTASK, CRON_EVERY_ONETEN);
+		// interoperability
 		taskSchedule.put(FTASK, CRON_EVERY_SUN_AT_310);
+		// discoverability
 		taskSchedule.put(DTASK, CRON_EVERY_SAT_AT_310);
+		// index
 		taskSchedule.put(ITASK, CRON_EVERY_DAY_AT_715);
+		// datahub refresh
 		taskSchedule.put(ETASK, CRON_EVERY_DAY_AT_215);
 	}
 
