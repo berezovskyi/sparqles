@@ -85,6 +85,8 @@ app.get('/', function(req, res){
                   }
                   res.render('content/index.jade',{
                     configInstanceTitle: configApp.get('configInstanceTitle'),
+                    baseUri: configApp.get('baseUri'),
+                    gitRepo: configApp.get('gitRepo'),
                     amonths: amonths,
                     index:index,
                     indexInterop:indexInterop,

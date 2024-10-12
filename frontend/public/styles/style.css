@@ -1415,13 +1415,3 @@ px      68    160    252    344    436    */
 	
 	
 }
-
-#maintenance {
-    position: absolute;
-    text-align: center;
-    color: red;
-    top: 10px;
-    width: 700px;
-    margin-left: -350px;
-    left: 50%;
-}

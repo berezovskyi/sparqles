@@ -1296,3 +1296,33 @@ p a var {
   background-color: white;
 }
 
+
+/* #maintenance {
+  position: absolute;
+  text-align: center;
+  color: red;
+  top: 10px;
+  width: 700px;
+  margin-left: -350px;
+  left: 50%;
+} */
+
+#maintenance {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  width: 1500px;
+  margin-left: -750px;
+  left: 50%;
+  width: 100%;
+  line-height: 38px;
+}
+
+#maintenance.info {
+  background: antiquewhite;
+}
+
+#maintenance.warn {
+  color: #58151c;
+  background: #f8d7da;
+}

@@ -1,3 +1,5 @@
 {
-	"configInstanceTitle":"<a href='http://datahub.io/' target='_blank'>> Datahub.io</a>"
+	"configInstanceTitle":"<a href='http://datahub.io/' target='_blank'>> Datahub.io</a>",
+	"baseUri": "https://sparqles.sv.berezovskyi.me",
+	"gitRepo": "https://github.com/berezovskyi/sparqles"
 }
