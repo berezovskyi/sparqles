@@ -4,6 +4,8 @@
 /database/dump/
 /data/
 
+*.tmp
+
 # Node
 npm-debug.log
 node_modules/
