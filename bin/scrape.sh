@@ -8,7 +8,7 @@ SCRIPT_PATH="$(readlink -f "$0")"
 SCRIPT_DIR="$(dirname "${SCRIPT_PATH}")"
 
 # "Accept: text/turtle, application/trig, application/rdf+xml;q=0.9, application/ld+json;q=0.9, application/n-triples;q=0.5, application/n-quads;q=0.5"
-CURLOPT="-L  --connect-timeout 10 --fail --silent --show-error"
+CURLOPT="-L  --connect-timeout 10 --max-time 60 --fail --silent --show-error"
 # CURLOPT="-L --fail --silent -w %{stderr}%{http_code}"
 
 main() {
