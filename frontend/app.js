@@ -23,7 +23,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/dumps', express.static('/usr/local/sparqles/dumps'));
+// TODO: bring it back under Docker setup
+// app.use('/dumps', express.static('/usr/local/sparqles/dumps'));
 
 // set the default timezone to London
 process.env.TZ = 'Europe/London';
@@ -34,15 +35,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function (req, res) {
-  /*var eps = JSON.parse(fs.readFileSync('./examples/index.json'));*/
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    //console.log(docs);
     mongoDBProvider.getLastUpdate(function (error, lastUpdate) {
-      //console.log(lastUpdate);
       mongoDBProvider.getIndex(function (error, index) {
-        //console.log(index);
         mongoDBProvider.getAMonths(function (error, amonths) {
-          //console.log(JSON.stringify(amonths));
           var indexInterop = JSON.parse(JSON.stringify(index.interoperability.data), function (k, v) {
             if (k === "data")
               this.values = v;
@@ -51,10 +47,10 @@ app.get('/', function (req, res) {
           });
           // rename availability colors range
           for (var i = 0; i < amonths.length; i++) {
-            if (amonths[i]['key'] == "0-5") amonths[i]['key'] = "[0-5[";
-            if (amonths[i]['key'] == "5-75") amonths[i]['key'] = "[5-75[";
-            if (amonths[i]['key'] == "75-95") amonths[i]['key'] = "[75-95[";
-            if (amonths[i]['key'] == "95-99") amonths[i]['key'] = "[95-99[";
+            if (amonths[i]['key'] == "0-5") amonths[i]['key'] = "[0-5)";
+            if (amonths[i]['key'] == "5-75") amonths[i]['key'] = "[5-75)";
+            if (amonths[i]['key'] == "75-95") amonths[i]['key'] = "[75-95)";
+            if (amonths[i]['key'] == "95-99") amonths[i]['key'] = "[95-99)";
             if (amonths[i]['key'] == "99-100") amonths[i]['key'] = "[99-100]";
           }
           //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
