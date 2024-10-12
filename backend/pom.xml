@@ -25,6 +25,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.7.0</version>
 				<configuration>
 					<usedDependencies>
 						<!-- loaded at runtime, no code refs -->
@@ -35,7 +36,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.13.0</version>
 				<configuration>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
@@ -54,8 +55,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>appassembler-maven-plugin</artifactId>
 				<version>1.5</version>
-
-
 				<configuration>
 					<configurationDirectory>conf</configurationDirectory>
 					<configurationSourceDirectory>src/main/config</configurationSourceDirectory>
@@ -63,7 +62,8 @@
 					<!-- set alternative assemble directory -->
 					<assembleDirectory>${basedir}</assembleDirectory>
 
-					<extraJvmArguments>-Xmx1024m</extraJvmArguments>
+					<!-- Docker on JDK 11+ will set the -X** from RAM % correctly -->
+<!--					<extraJvmArguments>-Xmx1024m</extraJvmArguments>-->
 
 					<!-- Generate bin scripts for windows and unix pr default -->
 					<platforms>
@@ -136,7 +136,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.2.3</version>
+			<version>4.5.13</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
@@ -187,7 +187,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.3.1</version>
+			<version>2.8.9</version>
 		</dependency>
 		<dependency>
 			<groupId>xml-apis</groupId>
