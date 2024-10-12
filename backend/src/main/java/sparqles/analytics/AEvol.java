@@ -46,7 +46,7 @@ public class AEvol {
                 System.out.println("Computing month aggregation from date [" + sdf.format(cal.getTime()) + " to " + sdf.format(calEnd.getTime()) + "[");
                 
                 //read the list of endpoints
-                String json = readUrl("http://sparqles.ai.wu.ac.at/api/endpoint/list");
+                String json = readUrl(SPARQLESProperties.getAppHostBase() + "/api/endpoint/list");
                 AvailEpFromList[] epArray = gson.fromJson(json, AvailEpFromList[].class);
                 MongoCollection atasksColl = jongo.getCollection(MongoDBManager.COLL_AVAIL);
 //				System.out.println(atasksColl.count("{'endpointResult.start': {$gt : #}}", cal.getTimeInMillis()));

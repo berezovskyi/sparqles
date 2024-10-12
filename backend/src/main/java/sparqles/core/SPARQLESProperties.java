@@ -83,6 +83,11 @@ public class SPARQLESProperties {
         }
     }
     
+    private static String _appHostBase;
+    
+    public static String getAppHostBase() {
+        return _appHostBase;
+    }
     
     public static void init(Properties props) {
         
@@ -106,8 +111,12 @@ public class SPARQLESProperties {
         
         SCHEDULE_CRON = props.getProperty("schedule.cron");
         
+        _appHostBase = props.getProperty("app.hostBase");
+        
+        
         Object[] t = {DATA_DIR, DB_HOST, DB_PORT};
         log.debug("[LOAD] properties: {}", props);
         
     }
+
 }
