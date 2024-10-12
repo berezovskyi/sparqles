@@ -56,7 +56,7 @@ function curl_safe() {
    { curl "$uri" --header "Accept: ${accept}" $CURLOPT >"${outpath}${ext}.tmp" ; } || { rm -f "${outpath}${ext}.tmp"; }
    delete_if_html "${outpath}${ext}.tmp"
    if [ -s "${outpath}${ext}.tmp" ]; then
-      if [[ "${ext}" == ".json" ]] && [[ -x "$(command -v jq >/dev/null 2>&1)" ]]; then
+      if [[ "${ext}" == ".json" ]] && [[ -x "$(command -v jq 2>/dev/null)" ]]; then
         echo "jq postprocess"
         jq '.' "${outpath}${ext}.tmp" > "${outpath}${ext}"
       else
