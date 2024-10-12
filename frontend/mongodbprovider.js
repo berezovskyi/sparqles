@@ -1,21 +1,31 @@
-var Db = require('mongodb').Db;
-var Connection = require('mongodb').Connection;
-var Server = require('mongodb').Server;
-var BSON = require('mongodb').BSON;
-var ObjectID = require('mongodb').ObjectID;
+// var Db = require('mongodb').Db;
+// var Connection = require('mongodb').Connection;
+// var Server = require('mongodb').Server;
+// var BSON = require('mongodb').BSON;
+// var ObjectID = require('mongodb').ObjectID;
+const { MongoClient, ObjectID } = require('mongodb');
 
 MongoDBProvider = function (host, port) {
-  this.db = new Db('sparqles', new Server(host, port, { auto_reconnect: true }, {}), { safe: true });
-  this.db.open(function () { });
+  const url = `mongodb://${host}:${port}`;
+  this.client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  this.client.connect((err) => {
+    if (err) {
+      console.error('Failed to connect to the database');
+      process.exit(1);
+    }
+    this.db = this.client.db('sparqles');
+  });
 };
 
 //getCollection
 
 MongoDBProvider.prototype.getCollection = function (collectionName, callback) {
-  this.db.collection(collectionName, function (error, collection) {
-    if (error) callback(error);
-    else callback(null, collection);
-  });
+  try {
+    const collection = this.db.collection(collectionName);
+    callback(null, collection);
+  } catch (error) {
+    callback(error);
+  }
 };
 
 //Availability
