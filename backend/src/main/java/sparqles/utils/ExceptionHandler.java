@@ -67,6 +67,9 @@ public class ExceptionHandler {
     
     public static String getExceptionSummary(String message) {
         int cutoff = message.indexOf('\n');
+        if (cutoff == -1 ) {
+            cutoff = message.length();
+        }
         if (cutoff > 160) {
             cutoff = 160;
         }
