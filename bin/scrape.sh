@@ -8,14 +8,17 @@ SCRIPT_PATH="$(readlink -f "$0")"
 SCRIPT_DIR="$(dirname "${SCRIPT_PATH}")"
 
 # "Accept: text/turtle, application/trig, application/rdf+xml;q=0.9, application/ld+json;q=0.9, application/n-triples;q=0.5, application/n-quads;q=0.5"
-CURLOPT="-L --fail --silent --show-error"
+CURLOPT="-L  --connect-timeout 10 --fail --silent --show-error"
 # CURLOPT="-L --fail --silent -w %{stderr}%{http_code}"
 
 main() {
   pushd "${SCRIPT_DIR}/../" || exit 1
   curl_safe "https://old.datahub.io/api/3/action/resource_search?query=format:api/sparql" "./dataset/datahub_sparql_endpoints" "application/json" ".json" "Datahub query for all SPARQL endpoints"
+  # pro tip: google for "SPARQL Endpoints Status tool monitors the availability, performance, interoperability and discoverability"
   curl_safe "https://sparqles.demo.openlinksw.com/api/endpoint/list" "./dataset/sparqles_endpoint_list-openlink_3dfed" "application/json" ".json" "Endpoint list from OpenlinkSW SPARQLES instance for 3DFed"
-  curl_safe "https://sparqles.ai.wu.ac.at/api/endpoint/list" "./dataset/sparqles_endpoint_list-tuwien" "application/json" ".json" "Endpoint list from OpenlinkSW SPARQLES instance for 3DFed"
+  curl_safe "https://sparqles.ai.wu.ac.at/api/endpoint/list" "./dataset/sparqles_endpoint_list-tuwien" "application/json" ".json" "Endpoint list from the TU Wien SPARQLES instance"
+  curl_safe "https://sparqles.okfn.org/api/endpoint/list" "./dataset/sparqles_endpoint_list-okfn" "application/json" ".json" "Endpoint list from the OKFN SPARQLES instance"
+  curl_safe "https://sparqles.org/api/endpoint/list" "./dataset/sparqles_endpoint_list-okfn" "application/json" ".json" "Endpoint list from SPARQLES rehosted  .org instance"
   popd || exit 1
 }
 
