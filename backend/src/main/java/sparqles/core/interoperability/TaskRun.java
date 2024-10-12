@@ -2,6 +2,7 @@ package sparqles.core.interoperability;
 
 import org.apache.jena.graph.Triple;
 import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryException;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
@@ -130,9 +131,16 @@ public abstract class TaskRun {
 //            System.out.println( _ep.getUri() + "\t" + sols
 //                    + "\t" + (cnxion - b4) + "\t" + (iter - b4) + "\t"
 //                    + (close - b4));
+        } catch (QueryException e) {
+            r.setException(ExceptionHandler.getExceptionSummary(e.getMessage()));
+            if (log.isDebugEnabled()) {
+                log.debug("SPARQL query failed against endpoint {} (cause: {}...)", 
+                    _ep.getUri(), ExceptionHandler.getExceptionSummary(e.getCause().getMessage()));
+            }
         } catch (Exception e) {
-            log.debug("[EXC] {} over {}; {}:{}:", _queryFile, _ep.getUri().toString(), e.getClass().getSimpleName(), e.getMessage(), e.getCause());
-            r.setException(ExceptionHandler.logAndtoString(e));
+            log.debug("[EXC] {} over {}; {}:{}:", _queryFile, 
+                _ep.getUri().toString(), e.getClass().getSimpleName(), e.getMessage(), e.getCause());
+            r.setException(ExceptionHandler.toFullString(e));
         }
         
         return r;

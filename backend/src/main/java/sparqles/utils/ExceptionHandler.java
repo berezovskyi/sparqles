@@ -65,4 +65,7 @@ public class ExceptionHandler {
         log.info(id, e);
     }
     
+    public static String getExceptionSummary(String message) {
+        return message.substring(0, Math.min(160, message.indexOf('\n')));
+    }
 }
