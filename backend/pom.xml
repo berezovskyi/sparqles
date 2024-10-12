@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>okfn.com</groupId>
@@ -12,9 +13,8 @@
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<maven.compiler>2.0.2</maven.compiler>
 		<avro.version>1.7.5</avro.version>
-	    <maven.test.skip>true</maven.test.skip>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
-
 
 
 	<build>
@@ -43,12 +43,12 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>appassembler-maven-plugin</artifactId>
 				<version>1.5</version>
-				
+
 
 				<configuration>
 					<configurationDirectory>conf</configurationDirectory>
- 				 	<configurationSourceDirectory>src/main/config</configurationSourceDirectory>
-  					<copyConfigurationDirectory>true</copyConfigurationDirectory>
+					<configurationSourceDirectory>src/main/config</configurationSourceDirectory>
+					<copyConfigurationDirectory>true</copyConfigurationDirectory>
 					<!-- set alternative assemble directory -->
 					<assembleDirectory>${basedir}</assembleDirectory>
 
@@ -74,7 +74,6 @@
 					</daemons>
 
 
-
 					<programs>
 						<program>
 							<mainClass>sparqles.core.Main</mainClass>
@@ -83,12 +82,13 @@
 								<commandLineArgument>SPARQLES</commandLineArgument>
 							</commandLineArguments>
 							<name>sparqles</name>
-							<!-- <jvmSettings> <extraArguments> <extraArgument>-Dlog4j.configuration=../conf/log4j.properties</extraArgument> 
+							<!-- <jvmSettings> <extraArguments>
+							<extraArgument>-Dlog4j.configuration=../conf/log4j.properties</extraArgument> 
 								</extraArguments> </jvmSettings> -->
 						</program>
-            <program>
+						<program>
 							<mainClass>sparqles.analytics.AEvol</mainClass>
-              <name>aEvol</name>
+							<name>aEvol</name>
 						</program>
 					</programs>
 				</configuration>
@@ -105,6 +105,17 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>2.16.1</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -117,9 +128,9 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-reload4j</artifactId>
-		    <version>1.7.36</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-reload4j</artifactId>
+			<version>1.7.36</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.avro</groupId>
@@ -147,15 +158,15 @@
 			<version>2.11.3</version>
 		</dependency>
 		<dependency>
-	      <groupId>org.jongo</groupId>
-	      <artifactId>jongo</artifactId>
-	      <version>1.1</version>
-	    </dependency> 
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.3.1</version>
-    </dependency>
+			<groupId>org.jongo</groupId>
+			<artifactId>jongo</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-arq</artifactId>
