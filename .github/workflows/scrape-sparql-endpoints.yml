@@ -3,7 +3,7 @@ name: Scrape latest data
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '29 5,19 * * *'
+    - cron:  '29 5 * * SUN,TUE'
 
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
         fetch-depth: 0
     - name: Fetch latest data
       run: |-
-        curl -fsSL https://old.datahub.io/api/3/action/resource_search?query=format:api/sparql | jq > endpoints_scraped.json      
+        bin/scrape.sh      
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
