@@ -12,7 +12,7 @@
     "express": "^4.0.0",
     "jade": "~1.11.0",
     "method-override": "^3.0.0",
-    "mongodb": "~2.0.0",
+    "mongodb": "~2.2.36",
     "morgan": "^1.10.0",
     "nconf": "~0.6.9",
     "serve-favicon": "^2.5.0",
