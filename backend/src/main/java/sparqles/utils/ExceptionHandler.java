@@ -1,5 +1,6 @@
 package sparqles.utils;
 
+import joptsimple.internal.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,6 +67,9 @@ public class ExceptionHandler {
     }
     
     public static String getExceptionSummary(String message) {
+        if (Strings.isNullOrEmpty(message)) {
+            return "N/A";
+        }
         int cutoff = message.indexOf('\n');
         if (cutoff == -1 ) {
             cutoff = message.length();
