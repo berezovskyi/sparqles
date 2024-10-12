@@ -20,14 +20,14 @@ var app = express()
 
 // all environments
 app.set('port', process.env.PORT || 3001)
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(logger('dev'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
-app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride())
-app.use(express.static(path.join(__dirname, 'public')))
 // TODO: bring it back under Docker setup
 // app.use('/dumps', express.static('/usr/local/sparqles/dumps'));
 
