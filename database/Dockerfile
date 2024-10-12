@@ -17,8 +17,8 @@ RUN mongod --fork --logpath /var/log/mongodb.log && \
 	mongod --shutdown
 
 # up to 3.2 incl
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
 # after 3.2
-# ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["mongod"]
