@@ -238,30 +238,35 @@ app.get('/endpoint', function (req, res) {
               else return v
             })
             // do ASK COLD
-            for (var y = 0; y < perfParsed.ask[0].values.length; y++) {
-              var o = perfParsed.ask[0].values[y]
-              o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_cold']
+            if (perfParsed.ask[0].values) {
+              perfParsed.ask[0].values.forEach(function (o) {
+                o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_cold']
+              })
             }
             // do ASK WARM
-            for (var y = 0; y < perfParsed.ask[1].values.length; y++) {
-              var o = perfParsed.ask[1].values[y]
-              o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_warm']
+            if (perfParsed.ask[1].values) {
+              perfParsed.ask[1].values.forEach(function (o) {
+                o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_warm']
+              })
             }
             // do JOIN COLD
-            for (var y = 0; y < perfParsed.join[0].values.length; y++) {
-              var o = perfParsed.join[0].values[y]
-              o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_cold']
+            if (perfParsed.join[0].values) {
+              perfParsed.join[0].values.forEach(function (o) {
+                o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_cold']
+              })
             }
             // do JOIN WARM
-            for (var y = 0; y < perfParsed.join[1].values.length; y++) {
-              var o = perfParsed.join[1].values[y]
-              o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_warm']
+            if (perfParsed.join[1].values) {
+              perfParsed.join[1].values.forEach(function (o) {
+                o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_warm']
+              })
             }
-            for (var i in docs[0].availability.data.values) {
-              if (docs[0].availability.data.values[i].x == 1421625600000) {
-                docs[0].availability.data.values.splice(i, 1)
-                break
-              }
+            if (docs[0].availability.data.values) {
+              docs[0].availability.data.values.forEach(function (value, index) {
+                if (value.x == 1421625600000) {
+                  docs[0].availability.data.values.splice(index, 1)
+                }
+              })
             }
 
             mongoDBProvider.getLatestDisco(uri, function (error, latestDisco) {
@@ -325,7 +330,7 @@ app.get('/fix-encoding', function (req, res) {
           taskColl.update(
             { 'endpoint.uri': endpoint.uri },
             { $set: { 'endpoint.datasets': endpoint.datasets } },
-            function (err, result) {}
+            function (err, result) { }
           )
         }
       })
@@ -336,7 +341,7 @@ app.get('/fix-encoding', function (req, res) {
           taskColl.update(
             { 'endpoint.uri': endpoint.uri },
             { $set: { 'endpoint.datasets': endpoint.datasets } },
-            function (err, result) {}
+            function (err, result) { }
           )
         }
       })
@@ -347,7 +352,7 @@ app.get('/fix-encoding', function (req, res) {
           taskColl.update(
             { 'endpoint.uri': endpoint.uri },
             { $set: { 'endpoint.datasets': endpoint.datasets } },
-            function (err, result) {}
+            function (err, result) { }
           )
         }
       })
