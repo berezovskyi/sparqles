@@ -10,6 +10,7 @@ var logger = require('morgan')
 var bodyParser = require('body-parser')
 var methodOverride = require('method-override')
 var errorHandler = require('errorhandler')
+var compression = require('compression')
 
 var ConfigProvider = require('./configprovider').ConfigProvider
 var MongoDBProvider = require('./mongodbprovider').MongoDBProvider
@@ -21,6 +22,7 @@ var app = express()
 // all environments
 app.set('port', process.env.PORT || 3001)
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
+app.use(compression())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(logger('dev'))
 app.set('views', __dirname + '/views')
@@ -28,8 +30,6 @@ app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride())
-// TODO: bring it back under Docker setup
-// app.use('/dumps', express.static('/usr/local/sparqles/dumps'));
 
 // set the default timezone to London
 // process.env.TZ = 'Europe/London';
@@ -530,6 +530,8 @@ app.get('/data', function (req, res) {
     })
   })
 })
+
+app.use('/dumps', express.static('/dumps'));
 
 app.get('/iswc2013', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
