@@ -30,8 +30,6 @@ app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride())
-// TODO: bring it back under Docker setup
-// app.use('/dumps', express.static('/usr/local/sparqles/dumps'));
 
 // set the default timezone to London
 // process.env.TZ = 'Europe/London';
@@ -533,9 +531,7 @@ app.get('/data', function (req, res) {
   })
 })
 
-app.get('/dumps/:filename', function(req, res) {
-  res.sendFile(req.params['filename'], { root: "/dumps" });
-});
+app.use('/dumps', express.static('/dumps'));
 
 app.get('/iswc2013', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
