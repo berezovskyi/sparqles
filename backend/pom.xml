@@ -17,6 +17,7 @@
 		<maven.compiler>2.0.2</maven.compiler>
 		<avro.version>1.7.5</avro.version>
 		<maven.test.skip>true</maven.test.skip>
+		<v.slf4j>1.7.36</v.slf4j>
 	</properties>
 
 
@@ -32,6 +33,55 @@
 						<dependency>org.slf4j:slf4j-reload4j</dependency>
 					</usedDependencies>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.5.0</version>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.6.0</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>11</version>
+								</requireJavaVersion>
+								<bannedDependencies>
+									<excludes>
+										<!-- TODO: bring back, we are not there yet -->
+										<!-- <exclude>xerces</exclude> -->
+										<!-- <exclude>xml-apis</exclude> -->
+										<!-- <exclude>com.sun.xml.bind:jaxb-impl</exclude> -->
+
+										<!-- https://github.com/eclipse/lyo/pull/220 -->
+										<!--                    <exclude>log4j:log4j</exclude>-->
+										<!--log4j
+										v2 is not used, just for the future-->
+										<!-- <exclude>org.apache.logging.log4j:log4j-core</exclude> -->
+									</excludes>
+								</bannedDependencies>
+								<banDuplicatePomDependencyVersions />
+								<requireUpperBoundDeps>
+									<excludes>
+										<exclude>org.osgi:org.osgi.core</exclude>
+										<exclude>org.slf4j:slf4j-api</exclude>
+									</excludes>
+								</requireUpperBoundDeps>
+								<reactorModuleConvergence>
+									<message>The reactor is not valid</message>
+									<ignoreModuleDependencies>false</ignoreModuleDependencies>
+								</reactorModuleConvergence>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -63,7 +113,7 @@
 					<assembleDirectory>${basedir}</assembleDirectory>
 
 					<!-- Docker on JDK 11+ will set the -X** from RAM % correctly -->
-<!--					<extraJvmArguments>-Xmx1024m</extraJvmArguments>-->
+					<!--					<extraJvmArguments>-Xmx1024m</extraJvmArguments>-->
 
 					<!-- Generate bin scripts for windows and unix pr default -->
 					<platforms>
@@ -125,13 +175,18 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${v.slf4j}</version>
+			</dependency>	
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
-			<version>4.2.2</version>
+			<version>4.4.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -146,12 +201,12 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.36</version>
+			<version>${v.slf4j}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-reload4j</artifactId>
-			<version>1.7.36</version>
+			<version>${v.slf4j}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
