@@ -57,7 +57,8 @@ function curl_safe() {
    delete_if_html "${outpath}${ext}.tmp"
    if [ -s "${outpath}${ext}.tmp" ]; then
       if [[ "${ext}" == ".json" ]] && [[ -x "$(command -v jq >/dev/null 2>&1)" ]]; then
-        jq "${outpath}${ext}.tmp" > "${outpath}${ext}"
+        echo "jq postprocess"
+        jq '.' "${outpath}${ext}.tmp" > "${outpath}${ext}"
       else
         mv "${outpath}${ext}.tmp" "${outpath}${ext}"
       fi
