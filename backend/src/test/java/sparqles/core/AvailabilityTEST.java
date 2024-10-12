@@ -1,52 +1,45 @@
 package sparqles.core;
 
 
-import java.io.File;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import sparqles.avro.Endpoint;
-
-
 import sparqles.avro.availability.AResult;
-import sparqles.avro.schedule.Schedule;
 import sparqles.core.availability.ATask;
-import sparqles.schedule.Scheduler;
 import sparqles.utils.MongoDBManager;
 
+import java.io.File;
+
 public class AvailabilityTEST {
-
-	private MongoDBManager m;
-
-
-	@Before
-	public void setUp() throws Exception {
-		SPARQLESProperties.init(new File("src/main/resources/sparqles.properties"));
+    
+    private MongoDBManager m;
+    
+    
+    @Before
+    public void setUp() throws Exception {
+        SPARQLESProperties.init(new File("src/main/resources/sparqles.properties"));
 //		m = new MongoDBManager();
-		
-		
-	}
+        
+        
+    }
+    
+    @After
+    public void tearDown() throws Exception {
+        m.close();
+    }
+    
+    
+    @Test
+    public void testSingle() throws Exception {
+        
+        ATask a = new ATask(Endpoints.DBPEDIA);
+        //a.setDBManager(m);
+        
+        AResult ar = a.call();
 
-	@After
-	public void tearDown() throws Exception {
-		m.close();
-	}
-	
-	
-
-	@Test
-	public void testSingle() throws Exception {
-		
-		ATask a = new ATask(Endpoints.DBPEDIA);
-		//a.setDBManager(m);
-		
-		AResult ar = a.call();
-		
 //		m.insert(ar);
-	}
-	
+    }
+
 //	@Test
 //	public void test() {
 //

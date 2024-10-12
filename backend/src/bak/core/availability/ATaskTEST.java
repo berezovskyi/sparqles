@@ -15,9 +15,9 @@ import sparqles.core.availability.ATask;
 import sparqles.utils.MongoDBManager;
 
 public class ATaskTEST {
-
-	@Test
-	public void testATask() throws Exception {
-		
-	}
+    
+    @Test
+    public void testATask() throws Exception {
+        
+    }
 }

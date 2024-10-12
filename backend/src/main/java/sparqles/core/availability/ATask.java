@@ -2,10 +2,9 @@ package sparqles.core.availability;
 
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
-import org.apache.http.conn.ConnectionPoolTimeoutException;
+import org.apache.jena.query.QueryExecution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import sparqles.avro.Endpoint;
 import sparqles.avro.EndpointResult;
 import sparqles.avro.availability.AResult;
@@ -13,8 +12,6 @@ import sparqles.core.EndpointTask;
 import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
-
-import org.apache.jena.query.QueryExecution;
 
 import java.net.ConnectException;
 import java.net.UnknownHostException;
