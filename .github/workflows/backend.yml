@@ -24,14 +24,20 @@ jobs:
       matrix:
         jdk: ['8']
         # temurin is Eclipse/AdoptOpenJDK/Adoptium
-        # zulu has 2030 EOL for JDK 8
         # 'liberica' is a preferred Spring SDK
+        # zulu has 2030 EOL for JDK 8
         distribution: ['zulu']
         experimental: [false]
-        # include:
-        #   - jdk: '21'
-        #     distribution: zulu
-        #     experimental: false
+        include:
+          - jdk: '11'
+            distribution: temurin
+            experimental: true
+          - jdk: '17'
+            distribution: liberica
+            experimental: true
+          - jdk: '21'
+            distribution: zulu
+            experimental: true
     continue-on-error: ${{ matrix.experimental }}
 
     steps:
