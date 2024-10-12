@@ -1,6 +1,6 @@
 # Debian apt fail
 # FROM mongo:2.6
-FROM mongo:3.2
+FROM mongo:3.3
 # FROM mongo:3.4
 # FROM mongo:3.7
 # FROM mongo:4.0
