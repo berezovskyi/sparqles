@@ -10,13 +10,13 @@ import sparqles.utils.FileManager;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
 
-import com.hp.hpl.jena.graph.Triple;
-import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.QuerySolution;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.sparql.util.FmtUtils;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.sparql.util.FmtUtils;
 
 public abstract class TaskRun {
 
@@ -67,7 +67,8 @@ public abstract class TaskRun {
             Query q = QueryFactory.create(this._query);
             QueryExecution qexec = QueryManager.getExecution(_ep, _query);
             
-            qexec.setTimeout(FIRST_RESULT_TIMEOUT, FIRST_RESULT_TIMEOUT);
+            // FIXME: find a new way to set these timeouts
+//            qexec.setTimeout(FIRST_RESULT_TIMEOUT, FIRST_RESULT_TIMEOUT);
             cnxion = System.currentTimeMillis();
             
             if (q.isSelectType())

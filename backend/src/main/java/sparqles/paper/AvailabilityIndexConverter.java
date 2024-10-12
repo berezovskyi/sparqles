@@ -16,7 +16,7 @@ import sparqles.paper.objects.AvailEp;
 import sparqles.paper.objects.AvailEvolMonthList;
 import sparqles.paper.objects.AvailIndexJson;
 import sparqles.paper.objects.AvailJson;
-import arq.cmdline.CmdGeneral;
+import org.apache.jena.cmd.CmdGeneral;
 
 import com.google.gson.Gson;
 
@@ -49,7 +49,7 @@ public class AvailabilityIndexConverter extends CmdGeneral  {
 	@Override
 	protected void processModulesAndArgs() {
 		if (getPositional().size() < 1) {
-			doHelp();
+			this.printHelp();
 		}
 		availabilityEvoPath = getPositionalArg(0);
 	}

@@ -14,7 +14,7 @@ import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
 
-import com.hp.hpl.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecution;
 
 import java.net.ConnectException;
 import java.net.UnknownHostException;
@@ -51,7 +51,8 @@ public class ATask extends EndpointTask<AResult> {
         long start = System.currentTimeMillis();
         try {
             QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), ASKQUERY);
-            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
+            // FIXME: find a new way
+            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
             boolean response = qe.execAsk();
             if (response) {
                 result.setResponseTime((System.currentTimeMillis() - start));
@@ -86,7 +87,8 @@ public class ATask extends EndpointTask<AResult> {
         long start = System.currentTimeMillis();
         try {
             QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), SELECTQUERY);
-            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
+            // FIXME
+            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
             boolean response = qe.execSelect().hasNext();
             
             if (response) {

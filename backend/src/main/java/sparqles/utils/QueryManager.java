@@ -5,12 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
 
-import org.apache.jena.riot.web.HttpOp;
+import org.apache.jena.http.HttpEnv;
+import org.apache.jena.http.HttpOp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
 
 import sparqles.core.CONSTANTS;
 import sparqles.avro.Endpoint;
@@ -72,10 +73,11 @@ public class QueryManager {
 	}
 		public static QueryExecution getExecution(String epURL, String query) throws Exception {
 		try {
-
-			HttpOp.setUserAgent(CONSTANTS.USER_AGENT);
+            // FIXME
+//            HttpEnv.getDftHttpClient()
+//			HttpOp.setUserAgent(CONSTANTS.USER_AGENT);
 			log.debug("INIT QueryExecution for {} with query  {}",epURL,query.replaceAll("\n", ""));
-			return QueryExecutionFactory.sparqlService(epURL, query);
+			return QueryExecution.service(epURL, query);
 		}
 		catch (Exception e) {  
 			throw new Exception(e.getMessage());

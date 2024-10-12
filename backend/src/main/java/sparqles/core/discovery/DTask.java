@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -15,9 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -29,26 +25,18 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.riot.lang.PipedRDFIterator;
-import org.apache.jena.riot.lang.PipedRDFStream;
-import org.apache.jena.riot.lang.PipedTriplesStream;
-import org.apache.xerces.parsers.XMLParser;
+import org.apache.jena.riot.system.AsyncParser;
 import org.osjava.norbert.NoRobotClient;
 import org.osjava.norbert.NoRobotException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
-import com.hp.hpl.jena.graph.Triple;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.query.ResultSetFactory;
-import com.hp.hpl.jena.query.ResultSetRewindable;
-import com.hp.hpl.jena.rdf.model.RDFNode;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFactory;
+import org.apache.jena.query.ResultSetRewindable;
+import org.apache.jena.rdf.model.RDFNode;
 
 import sparqles.avro.Endpoint;
 import sparqles.avro.EndpointResult;
@@ -333,20 +321,17 @@ public class DTask extends EndpointTask<DResult> {
 				String content = EntityUtils.toString(resp.getEntity());	
 				content= content.replaceAll("\t",	" ");
 				info.setContent(content);
-				PipedRDFIterator<Triple> iter = new PipedRDFIterator<Triple>();
-				final PipedRDFStream<Triple> inputStream = new PipedTriplesStream(iter);
-				ByteArrayInputStream bais = new ByteArrayInputStream(content.getBytes());
-				RDFDataMgr.parse(inputStream, bais,url, getLangFromType(type));
-
-				while(iter.hasNext()){
-					Triple t = iter.next();
-					String pred  = t.getPredicate().toString();
-					if(pred.startsWith(sparqDescNS)){
-						update(pred.replace(sparqDescNS, ""), spdsPred );
-					}else if(pred.startsWith(voidNS)){
-						update( pred.replace(voidNS, ""), voidPred );
-					}
-				}
+                
+                var tripleIter = AsyncParser.asyncParseTriples(url);
+                
+                tripleIter.forEachRemaining(t -> {
+                    String pred = t.getPredicate().toString();
+                    if (pred.startsWith(sparqDescNS)) {
+                        update(pred.replace(sparqDescNS, ""), spdsPred);
+                    } else if (pred.startsWith(voidNS)) {
+                        update(pred.replace(voidNS, ""), voidPred);
+                    }
+                });
 			}
 		}catch(Exception e ){
 			log.warn("failed checking for VOID "+url+" for "+_epURI, ExceptionHandler.logAndtoString(e,true));

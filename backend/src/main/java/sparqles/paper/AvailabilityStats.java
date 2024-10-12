@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.jena.cmd.CmdGeneral;
 import sparqles.paper.objects.AvailEp;
 import sparqles.paper.objects.AvailEpFromList;
 import sparqles.paper.objects.AvailEvolMonthList;
 import sparqles.paper.objects.AvailJson;
-import arq.cmdline.CmdGeneral;
 
 import com.google.gson.Gson;
 
-public class AvailabilityStats extends CmdGeneral  {
+public class AvailabilityStats extends CmdGeneral {
 	private String atasksPath=null;
 	private File listEndpointsFile=null;
 	private File outputFolderFile=null;
@@ -56,7 +56,7 @@ public class AvailabilityStats extends CmdGeneral  {
 	@Override
 	protected void processModulesAndArgs() {
 		if (getPositional().size() < 3) {
-			doHelp();
+			printHelp();
 		}
 		atasksPath = getPositionalArg(0);
 		try {

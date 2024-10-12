@@ -36,10 +36,10 @@ import sparqles.core.EndpointFactory;
 import sparqles.core.SPARQLESProperties;
 
 
-import com.hp.hpl.jena.graph.Triple;
-import com.hp.hpl.jena.query.QuerySolution;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.sparql.util.FmtUtils;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.sparql.util.FmtUtils;
 
 
 /**
@@ -221,7 +221,7 @@ public class FileManager {
 
 
 	public int writeSPARQLResults(ResultSet results, String queryFile,
-			Endpoint ep, Long start) {
+                                  Endpoint ep, Long start) {
 		
 		PrintWriter out=null;
 		try {
