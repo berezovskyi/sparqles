@@ -9,7 +9,7 @@ var express = require('express')
 var ConfigProvider = require('./configprovider').ConfigProvider;
 var MongoDBProvider = require('./mongodbprovider').MongoDBProvider;
 var mongoDBProvider = new MongoDBProvider(process.env.DBHOST || 'localhost', 27017);
-var configApp = new ConfigProvider('../config.json');
+var configApp = new ConfigProvider('./config.json');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/dumps',express.static('/usr/local/sparqles/dumps'));
 
-// set default timezon in London
+// set the default timezone to London
 process.env.TZ = 'Europe/London';
 
 // development only
