@@ -66,7 +66,7 @@ public class FTask extends EndpointTask<FResult> {
                 failures++;
                 
                 String exec = fres.getRun().getException().toString();
-                if (exec.contains("QueryExceptionHTTP")) {
+                if (exec.contains("QueryExceptionHTTP") || exec.contains("HttpException")) {
                     consequExcept++;
                 } else {
                     consequExcept = 0;

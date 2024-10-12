@@ -24,10 +24,11 @@ public class QueryManager {
             try {
                 scanner = new Scanner(new File(fold, qFile));
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                log.error("Query file not found: {}", qFile, e);
             }
         } else {
-            InputStream res = QueryManager.class.getClassLoader().getSystemResourceAsStream(folder + qFile);
+            QueryManager.class.getClassLoader();
+            InputStream res = ClassLoader.getSystemResourceAsStream(folder + qFile);
             if (res != null)
                 scanner = new Scanner(res);
         }
@@ -73,7 +74,8 @@ public class QueryManager {
             log.debug("INIT QueryExecution for {} with query  {}", epURL, query.replaceAll("\n", ""));
             return QueryExecution.service(epURL, query);
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            throw e;
+//            throw new Exception(e.getMessage());
         }
     }
 }
