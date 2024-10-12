@@ -1,10 +1,15 @@
 // Module dependencies.
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path')
-  , fs = require('fs');
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+var fs = require('fs');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var errorHandler = require('errorhandler');
 
 var ConfigProvider = require('./configprovider').ConfigProvider;
 var MongoDBProvider = require('./mongodbprovider').MongoDBProvider;
@@ -17,21 +22,23 @@ var app = express();
 app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 // TODO: bring it back under Docker setup
 // app.use('/dumps', express.static('/usr/local/sparqles/dumps'));
 
 // set the default timezone to London
-process.env.TZ = 'Europe/London';
+// process.env.TZ = 'Europe/London';
+// process.env.TZ = 'Europe/Stockholm';
+process.env.TZ = 'UTC';
 
 // development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+if (app.get('env') === 'development') {
+  app.use(errorHandler());
 }
 
 app.get('/', function (req, res) {
@@ -123,7 +130,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api/endpointsAutoComplete', function (req, res) {
-  mongoDBProvider.autocomplete(req.param('q'), function (error, docs) {
+  mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
     //for(i in docs)console.log(docs[i].uri);
     if (docs) {
       res.json(docs);
@@ -144,7 +151,7 @@ app.get('/api/endpoint/list', function (req, res) {
 });
 
 app.get('/api/endpoint/autocomplete', function (req, res) {
-  mongoDBProvider.autocomplete(req.param('q'), function (error, docs) {
+  mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
     //for(i in docs)console.log(docs[i].uri);
     if (docs) {
       res.json(docs);
@@ -298,7 +305,6 @@ app.get('/endpoint', function (req, res) {
 });
 
 
-
 app.get('/fix-encoding', function (req, res) {
   mongoDBProvider.getCollection('endpoints', function (error, coll) {
     coll.find({}).toArray(function (err, endpoints) {
@@ -328,6 +334,8 @@ app.get('/fix-encoding', function (req, res) {
     })
   })
 })
+
+
 app.get('/availability', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
     mongoDBProvider.getAvailView(function (error, docs) {
@@ -351,6 +359,7 @@ app.get('/availability', function (req, res) {
     });
   });
 });
+
 
 app.get('/discoverability', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
@@ -383,6 +392,7 @@ app.get('/discoverability', function (req, res) {
     });
   });
 });
+
 
 app.get('/performance', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
@@ -423,6 +433,7 @@ app.get('/performance', function (req, res) {
     });
   });
 });
+
 
 app.get('/interoperability', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
@@ -497,7 +508,7 @@ app.get('/data', function (req, res) {
 
 app.get('/iswc2013', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.autocomplete(req.param('q'), function (error, docs) {
+    mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
       res.render('content/iswc2013.jade', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
@@ -510,7 +521,7 @@ app.get('/iswc2013', function (req, res) {
 
 app.get('/api', function (req, res) {
   mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.autocomplete(req.param('q'), function (error, docs) {
+    mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
       res.render('content/api.jade', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
