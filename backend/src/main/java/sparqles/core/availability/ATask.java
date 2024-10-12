@@ -14,6 +14,8 @@ import sparqles.utils.QueryManager;
 
 import com.hp.hpl.jena.query.QueryExecution;
 
+import java.net.UnknownHostException;
+
 /**
  * This class performs the required task to study the availability of an endpoint.
  * <p>
@@ -104,6 +106,13 @@ public class ATask extends EndpointTask<AResult> {
         catch(ConnectionPoolTimeoutException e) {
             result.setIsAvailable(false);
             String msg = "🐌 connection timeout while connecting to " + _epURI;
+            log.info(msg);
+            result.setExplanation(msg);
+            return result;
+        }
+        catch(UnknownHostException e) {
+            result.setIsAvailable(false);
+            String msg = "🕳️ host not found while connecting to " + _epURI;
             log.info(msg);
             result.setExplanation(msg);
             return result;
