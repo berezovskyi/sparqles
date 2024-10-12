@@ -1,5 +1,6 @@
 package sparqles.core.availability;
 
+import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectionPoolTimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -116,6 +117,22 @@ public class ATask extends EndpointTask<AResult> {
             log.info(msg);
             result.setExplanation(msg);
             return result;
+        }
+        catch (HttpException e){
+            if (e.getMessage().contains("400")) {
+                result.setIsAvailable(false);
+                String msg = "👾 host did not like our request (400); while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
+                return result;
+            } else if (e.getMessage().contains("401")) {
+                result.setIsAvailable(false);
+                String msg = "✋ host requires authn (401); while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
+                result.setIsPrivate(true);
+                return result;
+            }
         }
         catch (Exception e1) {
             result.setIsAvailable(false);
