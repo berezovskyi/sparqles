@@ -238,34 +238,34 @@ app.get('/endpoint', function (req, res) {
               else return v
             })
             // do ASK COLD
-            if (perfParsed.ask[0].values) {
+            if (typeof perfParsed.ask[0] !== 'undefined' && perfParsed.ask[0] !== null) {
               perfParsed.ask[0].values.forEach(function (o) {
-                o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_cold']
+              o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_cold']
               })
             }
             // do ASK WARM
-            if (perfParsed.ask[1].values) {
+            if (typeof perfParsed.ask[1] !== 'undefined' && perfParsed.ask[1] !== null) {
               perfParsed.ask[1].values.forEach(function (o) {
-                o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_warm']
+              o.value = lastTenObj['ASK' + o.label.toUpperCase() + '_warm']
               })
             }
             // do JOIN COLD
-            if (perfParsed.join[0].values) {
+            if (typeof perfParsed.join[0] !== 'undefined' && perfParsed.join[0] !== null) {
               perfParsed.join[0].values.forEach(function (o) {
-                o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_cold']
+              o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_cold']
               })
             }
             // do JOIN WARM
-            if (perfParsed.join[1].values) {
+            if (typeof perfParsed.join[1] !== 'undefined' && perfParsed.join[1] !== null) {
               perfParsed.join[1].values.forEach(function (o) {
-                o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_warm']
+              o.value = lastTenObj['JOIN' + o.label.toUpperCase() + '_warm']
               })
             }
-            if (docs[0].availability.data.values) {
+            if (typeof docs[0].availability.data !== 'undefined' && docs[0].availability.data !== null) {
               docs[0].availability.data.values.forEach(function (value, index) {
-                if (value.x == 1421625600000) {
-                  docs[0].availability.data.values.splice(index, 1)
-                }
+              if (value.x == 1421625600000) {
+                docs[0].availability.data.values.splice(index, 1)
+              }
               })
             }
 
