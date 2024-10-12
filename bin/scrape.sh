@@ -63,9 +63,8 @@ function curl_safe() {
         mv "${outpath}${ext}.tmp" "${outpath}${ext}"
       fi
       echo -n " ✅";
-   else
-      rm -f "${outpath}${ext}.tmp"
    fi
+   rm -f "${outpath}${ext}.tmp"
    echo
 }
 
