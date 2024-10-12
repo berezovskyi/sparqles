@@ -30,7 +30,7 @@ block content
                   th.tablehead(width='50%') Last Modified
                   th.tablehead(width='25%') Size
               tbody
-                - each file in files
+                each file in files
                   - var date = new Date(file.time);
                   - var dateString = date.toUTCString();
                   tr

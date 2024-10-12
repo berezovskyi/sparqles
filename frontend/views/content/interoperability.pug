@@ -62,11 +62,11 @@ block content
                 tr
                   th.tablehead(scope='col', width='50%') SPARQL Endpoint
                   th.tablehead(width='25%') 
-                    span(onmouseover='tooltip.show('`${configInterop["SPARQL 1.0"]}`')', onmouseout='tooltip.hide();') SPARQL 1.0 features
+                    span(onmouseover='tooltip.show(`${configInterop["SPARQL 1.0"]}`)', onmouseout='tooltip.hide();') SPARQL 1.0 features
                   th.tablehead(width='25%') 
-                    span(onmouseover='tooltip.show('`${configInterop["SPARQL 1.1"]}`')', onmouseout='tooltip.hide();') SPARQL 1.1 features
+                    span(onmouseover='tooltip.show(`${configInterop["SPARQL 1.1"]}`)', onmouseout='tooltip.hide();') SPARQL 1.1 features
               tbody
-                - each ep, i in ftasks_agg
+                each ep, i in ftasks_agg
                   tr(class=(i % 2 == 0) ? 'odd' : 'even')
                     //-Display Endpoint Label
                     //-TODO: if more than one endpoint then display how many and their names 
@@ -77,16 +77,16 @@ block content
                       -   return tooltipHtml;
                       - }
                       td
-                        a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}")
-                          span(onmouseover='tooltip.show('`${generateTooltip(ep.endpoint.datasets)}`')', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
+                        a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`)
+                          span(onmouseover!=`tooltip.show('${generateTooltip(ep.endpoint.datasets)}')`, onmouseout!='tooltip.hide();') !{ep.endpoint.uri} (!{ep.endpoint.datasets.length})
                     else
                       if ep.endpoint.datasets.length>0
                         td 
-                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.datasets[0].label}
+                          a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) !{ep.endpoint.datasets[0].label}
                       else 
                         td
-                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.uri}
-                     //-Display SPARQL 1.0 
+                          a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) !{ep.endpoint.uri}
+                    //-Display SPARQL 1.0 
                     if ep.nbCompliantSPARQL1Features==nbSPARQL1Features
                       td.tdcenter(sorttable_customkey="1")
                         img(src='/images/green.png')

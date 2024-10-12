@@ -47,7 +47,7 @@ block content
                   th.tablehead(width='25%') Uptime Last 24h
                   th.tablehead(width='25%') Uptime Last 7 days
               tbody
-                - each ep, i in atasks_agg
+                each ep, i in atasks_agg
                   tr(class=(i % 2 == 0) ? 'odd' : 'even')
                     //-Display Availability color image
                     td
@@ -69,15 +69,15 @@ block content
                       -   return tooltipHtml;
                       - }
                       td
-                        a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}")
-                          span(onmouseover='tooltip.show(\`${generateTooltip(ep.endpoint.datasets)}\`)', onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
+                        a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`)
+                          span(onmouseover=`tooltip.show('${generateTooltip(ep.endpoint.datasets)}')`, onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
                     else
                       if ep.endpoint.datasets.length>0
                         td 
-                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.datasets[0].label}
+                          a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{ep.endpoint.datasets[0].label}
                       else 
                         td
-                          a(href="/endpoint?uri=#{encodeURIComponent(ep.endpoint.uri)}") #{ep.endpoint.uri}
+                          a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{ep.endpoint.uri}
                     //-Display uptime last 24h
                     td 
                       if ep.uptimeLast24h==0
