@@ -1,5 +1,7 @@
 # SPARQL Endpoint Status
 
+> <h2><a href="https://github.com/berezovskyi/sparqles/releases">:tada: Project (fork) releases</a></h2>
+
 ## Introduction
 
 SPARQL Endpoint Status project aims at monitoring SPARQL Endpoints based on 4 aspects:
