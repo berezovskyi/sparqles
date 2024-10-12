@@ -17,29 +17,31 @@ echo "Starting SPARQLes server"
 # do
 	echo "Running SPARQLes full cycle"
    # interop
-	# echo "Running SPARQLes full cycle [ftask]"
-	# bin/sparqles $CMDARGS -run ftask
+	echo "Running SPARQLes full cycle [ftask]"
+	bin/sparqles $CMDARGS -run ftask
    # # availability
 	# echo "Running SPARQLes full cycle [atask]"
 	# bin/sparqles $CMDARGS -run atask
    # # performance
-	# echo "Running SPARQLes full cycle [ptask]"
-	# bin/sparqles $CMDARGS -run ptask
-   # index
-	# echo "Running SPARQLes full cycle [itask]"
-	# bin/sparqles $CMDARGS -run itask
+	echo "Running SPARQLes full cycle [ptask]"
+	bin/sparqles $CMDARGS -run ptask
 	# # discoverability
-   # echo "Running SPARQLes full cycle [dtask]"
-	# bin/sparqles $CMDARGS -run dtask
+   echo "Running SPARQLes full cycle [dtask]"
+	bin/sparqles $CMDARGS -run dtask
+   # index view
+	echo "Running SPARQLes full cycle [iv]"
+	bin/sparqles $CMDARGS -iv
+   # stats
+	echo "Running SPARQLes full cycle [st]"
+	bin/sparqles $CMDARGS -st
+
    # # recompute
 	# echo "Running SPARQLes full cycle [r]"
 	# bin/sparqles $CMDARGS -r
-   # # index view
-	# echo "Running SPARQLes full cycle [iv]"
-	# bin/sparqles $CMDARGS -iv
-   # # stats
-	# echo "Running SPARQLes full cycle [st]"
-	# bin/sparqles $CMDARGS -st
+   # index from old.datahub.io
+	# echo "Running SPARQLes full cycle [itask]"
+	# bin/sparqles $CMDARGS -run itask
+
 # 	echo "SPARQLes full cycle FININSHED"
 # 	sleep $DELAY
 # done
