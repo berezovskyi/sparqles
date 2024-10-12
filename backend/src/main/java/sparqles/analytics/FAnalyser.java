@@ -27,7 +27,7 @@ public class FAnalyser extends Analytics<FResult> {
     
     @Override
     public boolean analyse(FResult pres) {
-        log.info("[Analytics] {}", pres);
+        log.trace("[Analytics] {}", pres);
         
         Endpoint ep = pres.getEndpointResult().getEndpoint();
         
