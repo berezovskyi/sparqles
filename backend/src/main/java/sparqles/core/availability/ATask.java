@@ -1,6 +1,7 @@
 package sparqles.core.availability;
 
 import org.apache.http.HttpException;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.conn.ConnectionPoolTimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -103,7 +104,7 @@ public class ATask extends EndpointTask<AResult> {
                 log.debug("executed no response {}", epr.getEndpoint().getUri().toString());
                 return result;
             }
-        } catch (ConnectionPoolTimeoutException e) {
+        } catch (ConnectTimeoutException e) {
             result.setIsAvailable(false);
             String msg = "🐌 connection timeout while connecting to " + _epURI;
             log.info(msg);
