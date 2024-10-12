@@ -103,22 +103,19 @@ public class ATask extends EndpointTask<AResult> {
                 log.debug("executed no response {}", epr.getEndpoint().getUri().toString());
                 return result;
             }
-        }
-        catch(ConnectionPoolTimeoutException e) {
+        } catch (ConnectionPoolTimeoutException e) {
             result.setIsAvailable(false);
             String msg = "🐌 connection timeout while connecting to " + _epURI;
             log.info(msg);
             result.setExplanation(msg);
             return result;
-        }
-        catch(UnknownHostException e) {
+        } catch (UnknownHostException e) {
             result.setIsAvailable(false);
             String msg = "🕳️ host not found while connecting to " + _epURI;
             log.info(msg);
             result.setExplanation(msg);
             return result;
-        }
-        catch (HttpException e){
+        } catch (HttpException e) {
             if (e.getMessage().contains("400")) {
                 result.setIsAvailable(false);
                 String msg = "👾 host did not like our request (400); while connecting to " + _epURI;
@@ -133,8 +130,7 @@ public class ATask extends EndpointTask<AResult> {
                 result.setIsPrivate(true);
                 return result;
             }
-        }
-        catch (Exception e1) {
+        } catch (Exception e1) {
             result.setIsAvailable(false);
             String ex = ExceptionHandler.logAndtoString(e1);
             result.setException(ex);
