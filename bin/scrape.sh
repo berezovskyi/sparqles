@@ -19,6 +19,7 @@ main() {
   curl_safe "https://sparqles.ai.wu.ac.at/api/endpoint/list" "./dataset/sparqles_endpoint_list-tuwien" "application/json" ".json" "Endpoint list from the TU Wien SPARQLES instance"
   curl_safe "https://sparqles.okfn.org/api/endpoint/list" "./dataset/sparqles_endpoint_list-okfn" "application/json" ".json" "Endpoint list from the OKFN SPARQLES instance"
   curl_safe "https://sparqles.org/api/endpoint/list" "./dataset/sparqles_endpoint_list-okfn" "application/json" ".json" "Endpoint list from SPARQLES rehosted  .org instance"
+  curl_safe "https://lod-cloud.net/lod-data.json" "./dataset/lodcloud_lod-data" "application/json" ".json" "LODcloud current crawl, includes some SPARQL endpoints"
   popd || exit 1
 }
 
