@@ -1,1 +1,2 @@
 ./dataset/mappings/datahub.yarrrml.yml dataset/datahub_sparql_endpoints.json
+./dataset/mappings/lodcloud.yarrrml.yml dataset/lodcloud_lod-data.json
