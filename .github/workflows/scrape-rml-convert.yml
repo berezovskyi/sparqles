@@ -1,4 +1,4 @@
-name: "Dataset: convert JSON into W3C SPARQL 1.2 Service Descriptions" 
+name: "Dataset :: convert JSON into W3C SPARQL 1.2 Service Descriptions" 
 
 on:
   push:
