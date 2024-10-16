@@ -1,0 +1,15 @@
+prefixes:
+ sd: "http://www.w3.org/ns/sparql-service-description#"
+
+mappings:
+  person:
+    sources:
+      - ['../lodcloud_lod-data.json~jsonpath', '$.[*].sparql[*]']
+    # seems silly but that's how the SD 1.2 spec examples look
+    #   -> not setting the subject to the endpoint itself
+    # s: $(url)
+    po:
+      - [a, sd:Service]
+      - [sd:endpoint, $(access_url)]
+      - [dcterms:title, $(title)]
+      - [dcterms:description, $(description)]
