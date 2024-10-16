@@ -1,11 +1,13 @@
 package sparqles.utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
@@ -29,6 +31,22 @@ public class ExceptionHandler {
         
         String id = ExceptionHandler.getExceptionID(e);
         ExceptionHandler.log(id, e);
+        
+//        if(ExceptionUtils.indexOfThrowable(e, Error.class) != -1) {
+        if(ExceptionUtils.indexOfThrowable(e, VirtualMachineError.class) != -1) {
+//        if(ExceptionUtils.indexOfThrowable(e, OutOfMemoryError.class) != -1) {
+            // 1) no point going further
+            // 2) no clue who/how a descendant of java.lang.Error was caught and not rethrown
+            // REVISIT: consider terminating on Error.class
+            // TODO: remove this crutch and ensure no part of the system does something that
+            // requires this hack
+            try {
+                System.exit(1);
+            } catch(Throwable e2) { // last resort
+                e2.printStackTrace(); // last resort
+                Runtime.getRuntime().exit(255); // last resort
+            }
+        }
         
         StringBuilder sb = new StringBuilder();
         if (withExceptionID) {
