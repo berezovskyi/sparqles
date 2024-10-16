@@ -1,0 +1,1 @@
+./dataset/mappings/datahub.yarrrml.yml dataset/datahub_sparql_endpoints.json

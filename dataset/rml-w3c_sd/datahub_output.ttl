@@ -1,0 +1,3070 @@
+@prefix : <http://mapping.example.com/> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+
+_:0 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://id.ndl.go.jp/auth/ndla/" .
+
+_:1 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://epsrc.rkbexplorer.com/sparql" .
+
+_:10 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:100 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://citeseer.rkbexplorer.com/sparql/" .
+
+_:101 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://skos.um.es/sparql/" .
+
+_:102 a sd:Service;
+  dc:description "Linked Open Data relevant to the organizational structure and research activities of Athens University of Economics and Business.";
+  sd:endpoint "http://modip.aueb.gr/d2rq/sparql" .
+
+_:103 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://greek-lod.math.auth.gr/kalikratis/sparql" .
+
+_:104 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:105 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ecs.rkbexplorer.com/sparql" .
+
+_:106 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://apps.ideaconsult.net:8080/ontology" .
+
+_:107 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/openlibrary/services/sparql" .
+
+_:108 a sd:Service;
+  dc:description "The SPARQL Endpoint that let's you access the data of the endpoint by standardised SPARQL Queries.";
+  sd:endpoint "http://zaire.dimis.fim.uni-passau.de:8890/sparql" .
+
+_:109 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://www.lotico.com:3030/lotico/sparql" .
+
+_:11 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://wikipathways.bio2rdf.org/sparql" .
+
+_:110 a sd:Service;
+  dc:description "Hosted by Virtuoso";
+  sd:endpoint "https://ruian.linked.opendata.cz/sparql" .
+
+_:111 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linguistic.linkeddata.es/sparql" .
+
+_:112 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://acm.rkbexplorer.com/sparql/" .
+
+_:113 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://nl.dbpedia.org/sparql" .
+
+_:114 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dblp.rkbexplorer.com/sparql/" .
+
+_:115 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://meducator.open.ac.uk/resourcesrestapi/rest/meducator/sparql" .
+
+_:116 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linguistic.linkeddata.es/terminesp/sparql-editor" .
+
+_:117 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://id.ndl.go.jp/auth/ndlsh/" .
+
+_:118 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbsnp.bio2rdf.org/sparql" .
+
+_:119 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/drugbank/sparql" .
+
+_:12 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://clinicaltrials.bio2rdf.org/sparql" .
+
+_:120 a sd:Service;
+  dc:description "SPARQL endpoint for datos-artium-org dataset";
+  sd:endpoint "http://datos.artium.org/sparql" .
+
+_:121 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://iserve.kmi.open.ac.uk/iserve/sparql" .
+
+_:122 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://frb.270a.info/sparql" .
+
+_:123 a sd:Service;
+  dc:description "SPARQL endpoint of AragoDBpedia ";
+  sd:endpoint "http://opendata.aragon.es/sparql" .
+
+_:124 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://commons.dbpedia.org/sparql" .
+
+_:125 a sd:Service;
+  dc:description "SPARQL endpoint of the dataset";
+  sd:endpoint "http://data.noticias.universia.net/d2r-server/snorql/" .
+
+_:126 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:127 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://genbank.bio2rdf.org/sparql" .
+
+_:128 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://data.oceandrilling.org/sparql" .
+
+_:129 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://cau.eagle-i.net/sparqler/sparql" .
+
+_:13 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov/sparql" .
+
+_:130 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://foodpedia.tk/sparql" .
+
+_:131 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://webconf.rkbexplorer.com/sparql" .
+
+_:132 a sd:Service;
+  dc:description "SPARQL endpoint for data from the OpenMobileNetwork";
+  sd:endpoint "http://sparql.openmobilenetwork.org" .
+
+_:133 a sd:Service;
+  dc:description "Hosted by Virtuoso";
+  sd:endpoint "https://linked.opendata.cz/sparql" .
+
+_:134 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbtune.org/magnatune/sparql/" .
+
+_:135 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/bbc-backstage/services/sparql" .
+
+_:136 a sd:Service;
+  dc:description "main sparql EndPoint";
+  sd:endpoint "http://dati.isprambiente.it/sparql" .
+
+_:137 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/eutc-productions/services/sparql" .
+
+_:138 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://www.ss-framework.com/sparql" .
+
+_:139 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://mgi.bio2rdf.org/sparql" .
+
+_:14 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sgd.bio2rdf.org/sparql" .
+
+_:140 a sd:Service;
+  dc:description "Hellenic Police SPARQL endpoint";
+  sd:endpoint "http://greek-lod.auth.gr/police/sparql" .
+
+_:141 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ecb.270a.info/sparql" .
+
+_:142 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:143 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.reegle.info/" .
+
+_:144 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://pt.dbpedia.org/sparql" .
+
+_:145 a sd:Service;
+  dc:description "Hosted by Virtuoso";
+  sd:endpoint "https://linked.opendata.cz/sparql" .
+
+_:146 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://webscience.rkbexplorer.com/sparql" .
+
+_:147 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/stitch/sparql" .
+
+_:148 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://sparql.data.southampton.ac.uk/" .
+
+_:149 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://data.oceandrilling.org/sparql" .
+
+_:15 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://budapest.rkbexplorer.com/sparql/" .
+
+_:150 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://api.kasabi.com/dataset/federal-reserve-economic-data/apis/sparql" .
+
+_:151 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://harvard.eagle-i.net/sparqler/sparql" .
+
+_:152 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:153 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:154 a sd:Service;
+  dc:description "SPARQL endpoint for the application ";
+  sd:endpoint "https://datagraft.io/prodatamarket_publisher/sparql_endpoints/norwegian-state-of-estate-report-04693e1f-4060-48c1-8ab9-888a6c95f6d6" .
+
+_:155 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://kisti.rkbexplorer.com/sparql/" .
+
+_:156 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://api.talis.com/stores/whoiswho/services/sparql" .
+
+_:157 a sd:Service;
+  dc:description "SPARQL enpdoint";
+  sd:endpoint "http://sparql.linkedopendata.it/musei" .
+
+_:158 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://virtuoso-eurosentiment.paradigmatecnologico.com/sparql" .
+
+_:159 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://tuskegee.eagle-i.net/sparqler/sparql" .
+
+_:16 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://visualdataweb.infor.uva.es/sparql" .
+
+_:160 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://wormbase.bio2rdf.org/sparql" .
+
+_:161 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.nature.com/query" .
+
+_:162 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.my-eventos.com/en/services/sparql/" .
+
+_:163 a sd:Service;
+  dc:description "SPARQL endpoint for TCGA";
+  sd:endpoint "http://hcls.deri.org:8080/openrdf-sesame/repositories/tcga" .
+
+_:164 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:165 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:166 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.kasabi.com/dataset/un-hazardous-material-numbers/apis/sparql" .
+
+_:167 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://en.openei.org/sparql" .
+
+_:168 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://hgnc.bio2rdf.org/sparql" .
+
+_:169 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://nsf.rkbexplorer.com/sparql/" .
+
+_:17 a sd:Service;
+  dc:description "The Sparql endpoint for the US Political Violence dataset. You can query the dataset by appending valid SPARQL queries to the end of this URL";
+  sd:endpoint "http://dacura.cs.tcd.ie/sparql" .
+
+_:170 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://homologene.bio2rdf.org/sparql" .
+
+_:171 a sd:Service;
+  dc:description "SPARQL endpoint provided by linkedup project";
+  sd:endpoint "http://data.linkedu.eu/slidewiki/query" .
+
+_:172 a sd:Service;
+  dc:description "Linked Data Fragments Endpoint";
+  sd:endpoint "https://hdt.lod.labs.vu.nl/?g=LOD-a-lot" .
+
+_:173 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://crm.rkbexplorer.com/sparql" .
+
+_:174 a sd:Service;
+  dc:description "main sparql EndPoint";
+  sd:endpoint "http://dati.isprambiente.it/sparql" .
+
+_:175 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:176 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ibm.rkbexplorer.com/sparql/" .
+
+_:177 a sd:Service;
+  dc:description "Hosted by Virtuoso";
+  sd:endpoint "https://nkod.opendata.cz/sparql" .
+
+_:178 a sd:Service;
+  dc:description "SPARQL endpoint for the Key Information Set RDF dataset";
+  sd:endpoint "http://data.linkedu.eu/kis/query" .
+
+_:179 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://eur-lex.publicdata.eu/sparql" .
+
+_:18 a sd:Service;
+  dc:description "Data about the structure and organization of UTPL";
+  sd:endpoint "http://data.utpl.edu.ec/utpl/lod/sparql" .
+
+_:180 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://italy.rkbexplorer.com/sparql" .
+
+_:181 a sd:Service;
+  dc:description "SPARQL endpoint for CORE data";
+  sd:endpoint "http://core.kmi.open.ac.uk/squery" .
+
+_:182 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://eurecom.rkbexplorer.com/sparql/" .
+
+_:183 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://wikidata.dbpedia.org/sparql" .
+
+_:184 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://fun.rkbexplorer.com/sparql" .
+
+_:185 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://roma.rkbexplorer.com/sparql/" .
+
+_:186 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://rhea.bio2rdf.org/sparql" .
+
+_:187 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://hcls.deri.org/sparql" .
+
+_:188 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://agalpha.mathbiol.org/repositories/tcga" .
+
+_:189 a sd:Service;
+  dc:description "Educational programs - SISVU endpoint";
+  sd:endpoint "http://kent.zpr.fer.hr:8080/educationalProgram/sparql" .
+
+_:19 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://orphanet.bio2rdf.org/sparql" .
+
+_:190 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://resex.rkbexplorer.com/sparql/" .
+
+_:191 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:192 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://reactome.bio2rdf.org/sparql" .
+
+_:193 a sd:Service;
+  dc:description "";
+  sd:endpoint "" .
+
+_:194 a sd:Service;
+  dc:description "SPARQL endpoint datos.bne.es dataset";
+  sd:endpoint "http://datos.bne.es/sparql" .
+
+_:195 a sd:Service;
+  dc:description "Public SPARQL-Endpoint";
+  sd:endpoint "http://sparql.yovisto.com/" .
+
+_:196 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sabiork.bio2rdf.org/sparql" .
+
+_:197 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://ccny-cuny.eagle-i.net/sparqler/sparql" .
+
+_:198 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://enaktingpsi.rkbexplorer.com/sparql" .
+
+_:199 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:2 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:20 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dotac.rkbexplorer.com/sparql/" .
+
+_:200 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://vocabulary.wolterskluwer.de/PoolParty/sparql/arbeitsrecht" .
+
+_:201 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ctd.bio2rdf.org/sparql" .
+
+_:202 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://curriculum.rkbexplorer.com/sparql/" .
+
+_:203 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.aalto.fi/sparql" .
+
+_:204 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:205 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:206 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://montana.eagle-i.net/sparqler/sparql" .
+
+_:207 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://identifiers.org/services/sparql" .
+
+_:208 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:209 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://geo.linkeddata.es/sparql" .
+
+_:21 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://famu.eagle-i.net/sparqler/sparql" .
+
+_:210 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:211 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://pubmed.bio2rdf.org/sparql" .
+
+_:212 a sd:Service;
+  dc:description "Access to papers published by ecuadorian authors ";
+  sd:endpoint "http://data.utpl.edu.ec/ecuadorresearch/lod/sparql" .
+
+_:213 a sd:Service;
+  dc:description """Auckland Museum has embraced the Linked Open Data concept in order to facilitate collaboration and sharing of their rich collections data. 
+Linked data describes a method of publishing structured data so that it can be interlinked and become more useful through semantic queries. It builds upon standard Web technologies such as HTTP, RDF and URIs, but rather than using them to serve web pages for human readers, it extends them to share information in a way that can be read automatically by computers. This enables data from different sources to be connected and queried.
+
+The following resources are available via the API:
+
+/swagger
+/search
+/id
+/id/media
+/sparql
+
+You can also view a HTML version of the API for any object in the Auckland Museum Collections.
+http://api.aucklandmuseum.com/id/humanhistory/object/100923 
+""";
+  sd:endpoint "http://api.aucklandmuseum.com" .
+
+_:214 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://psm.eagle-i.net/sparqler/sparql" .
+
+_:215 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:216 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://utsa.eagle-i.net/sparqler/sparql" .
+
+_:217 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sider.bio2rdf.org/sparql" .
+
+_:218 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://hawaii.eagle-i.net/sparqler/sparql" .
+
+_:219 a sd:Service;
+  dc:description "SPARQL endpoint on the heritagedata site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:22 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://labs.mondeca.com/endpoint/ends" .
+
+_:220 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lod.apc.gov.tw/sparql" .
+
+_:221 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://abs.270a.info/sparql" .
+
+_:222 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://upr.eagle-i.net/sparqler/sparql" .
+
+_:223 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/moseley/services/sparql" .
+
+_:224 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://gdlc.rkbexplorer.com/sparql" .
+
+_:225 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbtune.org/bbc/peel/sparql/" .
+
+_:226 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.linkedu.eu/ocw/query" .
+
+_:227 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/dblp/sparql" .
+
+_:228 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:229 a sd:Service;
+  dc:description "SPARQL endpoint for the DIVE+ data layer, which also includes Amsterdam Museum";
+  sd:endpoint "http://data.dive.beeldengeluid.nl/sparql/" .
+
+_:23 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/pokedex/services/sparql" .
+
+_:230 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbtune.org/myspace/sparql/" .
+
+_:231 a sd:Service;
+  dc:description "main sparql EndPoint";
+  sd:endpoint "http://dati.isprambiente.it/sparql" .
+
+_:232 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://onto.mondis.cz/openrdf-sesame/repositories/mondis-record-owlim" .
+
+_:233 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://howard.eagle-i.net/sparqler/sparql" .
+
+_:234 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:235 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://doc.metalex.eu:8000/sparql/" .
+
+_:236 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:237 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://vocabulary.wolterskluwer.de/PoolParty/sparql/court" .
+
+_:238 a sd:Service;
+  dc:description "SPARQL endpoint for Ege University linked open data";
+  sd:endpoint "http://data.ege.edu.tr/ep/sparql" .
+
+_:239 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:24 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://healthdata.tw.rpi.edu/sparql" .
+
+_:240 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.bib.uni-mannheim.de/sparql" .
+
+_:241 a sd:Service;
+  dc:description "SPARQL endpoint of the LinkedUp Data Catalogue";
+  sd:endpoint "http://linkedu.eu/catalogue/sparql/" .
+
+_:242 a sd:Service;
+  dc:description "Uppsala SPARQL end point.";
+  sd:endpoint "http://rdf.farmbio.uu.se/chembl/sparql" .
+
+_:243 a sd:Service;
+  dc:description "SPARQL endpoint with tool descriptions";
+  sd:endpoint "http://seek.rkbexplorer.com/sparql/" .
+
+_:244 a sd:Service;
+  dc:description "";
+  sd:endpoint "https://data.ox.ac.uk/sparql/" .
+
+_:245 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://msm.eagle-i.net/sparqler/sparql" .
+
+_:246 a sd:Service;
+  dc:description "";
+  sd:endpoint "https://www.ebi.ac.uk/rdf/services/biomodels/sparql" .
+
+_:247 a sd:Service;
+  dc:description "it's possible to use the GRAPH http:/dati.camera.it/ocd/bpr/";
+  sd:endpoint "http://dati.camera.it/sparql" .
+
+_:248 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://bioportal.bio2rdf.org/sparql" .
+
+_:249 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://transparency.270a.info/sparql" .
+
+_:25 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://utep.eagle-i.net/sparqler/sparql" .
+
+_:250 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://photos.rkbexplorer.com/sparql" .
+
+_:251 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.kasabi.com/dataset/sanskrit-english-lexicon/apis/sparql" .
+
+_:252 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://os.rkbexplorer.com/sparql/" .
+
+_:253 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ndc.bio2rdf.org/sparql" .
+
+_:254 a sd:Service;
+  dc:description "AGRIS RECORDS RDF Sparql Endpoint";
+  sd:endpoint "http://202.45.139.84:10035/catalogs/fao/repositories/agris" .
+
+_:255 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://api.talis.com/stores/schemapedia/services/sparql" .
+
+_:256 a sd:Service;
+  dc:description "Semantic Web Journal SPARQL Endpoint";
+  sd:endpoint "http://semantic-web-journal.com:3030/sparql.tpl" .
+
+_:257 a sd:Service;
+  dc:description "The sparql endpoint of Public Library of Veroia ";
+  sd:endpoint "http://libver.math.auth.gr/sparql" .
+
+_:258 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ldf.fi/ww1lod/sparql" .
+
+_:259 a sd:Service;
+  dc:description "A SPARQL endpoint for the entire Verrijkt Koninkrijk Semantic Layer an interactive SPARQL editor available at http://semanticweb. cs.vu.nl/verrijktkoninkrijk/flint";
+  sd:endpoint "http://semanticweb.cs.vu.nl/verrijktkoninkrijk/sparql/" .
+
+_:26 a sd:Service;
+  dc:description "sparql endpoint";
+  sd:endpoint "http://gov.tso.co.uk/transport/sparql" .
+
+_:260 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://unodc.publicdata.eu/sparql" .
+
+_:261 a sd:Service;
+  dc:description "Use the graph http://cdec.opendams.org/lod/shoah/  to query the endpoint";
+  sd:endpoint "http://lod.xdams.org/sparql" .
+
+_:262 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.linkedu.eu/prod/query" .
+
+_:263 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://enipedia.tudelft.nl/sparql" .
+
+_:264 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/cordis/sparql" .
+
+_:265 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:266 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://kwijibo.talis.com/latc-linksets/sparql" .
+
+_:267 a sd:Service;
+  dc:description "";
+  sd:endpoint "https://www.ebi.ac.uk/rdf/services/biosamples/sparql" .
+
+_:268 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://mesh.bio2rdf.org/sparql" .
+
+_:269 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://meharry.eagle-i.net/sparqler/sparql" .
+
+_:27 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://bnb.data.bl.uk/sparql" .
+
+_:270 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/airports/services/sparql" .
+
+_:271 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://dartmouth.eagle-i.net/sparqler/sparql" .
+
+_:272 a sd:Service;
+  dc:description "Standard  W3C SPARQL result format  allowing the implementation of LinkedData SPARQL endpoint . The web-form provided is an  interface with the endpoint presenting a set of examples that can be used for querying the data and ontology.";
+  sd:endpoint "http://www.inertia-linkeddata.iti.gr:9090/inertia-endpoint/" .
+
+_:273 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:274 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:275 a sd:Service;
+  dc:description "SPARQL endpoint (named graph: http://data-observatory.org/ted_talks)";
+  sd:endpoint "http://data.linkededucation.org/request/ted/sparql" .
+
+_:276 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dewey.info/sparql.php" .
+
+_:277 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:278 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://soa4all.isoco.net/luf/sparql" .
+
+_:279 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.euscreen.eu/sparql" .
+
+_:28 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://inoh.bio2rdf.org/sparql" .
+
+_:280 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://193.145.57.56:8890/sparql" .
+
+_:281 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://newcastle.rkbexplorer.com/sparql/" .
+
+_:282 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.bibsys.no/data/query_authority.html" .
+
+_:283 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://cultura.linkeddata.es/sparql" .
+
+_:284 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:285 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/dailymed/sparql" .
+
+_:286 a sd:Service;
+  dc:description "SPARQL endpoint with all triples including ontologies. This endpoint is CORS compliant.";
+  sd:endpoint "http://rdf.muninn-project.org/sparql" .
+
+_:287 a sd:Service;
+  dc:description "Sparql-endpoint";
+  sd:endpoint "http://visualdataweb.infor.uva.es/sparql" .
+
+_:288 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/bbc-wildlife/services/sparql" .
+
+_:289 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://epo.publicdata.eu/sparql" .
+
+_:29 a sd:Service;
+  dc:description "Linked Logainm SPARQL Endpoint";
+  sd:endpoint "http://data.logainm.ie/sparql" .
+
+_:290 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ckan.eurohelp.es:8890/sparql" .
+
+_:291 a sd:Service;
+  dc:description "SPARQL endpoint for data-szepmuveszeti-hu dataset";
+  sd:endpoint "http://data.szepmuveszeti.hu/sparql" .
+
+_:292 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://tkm.kiom.re.kr/ontology/sparql" .
+
+_:293 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://wordnet.rkbexplorer.com/sparql/" .
+
+_:294 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:295 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:296 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.uni-muenster.de/sparql" .
+
+_:297 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data-gov.ie/sparql" .
+
+_:298 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:299 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:3 a sd:Service;
+  dc:description "SPARQL endpoint of the dataset";
+  sd:endpoint "http://webenemasuno.linkeddata.es/sparql" .
+
+_:30 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/reference/sparql" .
+
+_:300 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://kegg.bio2rdf.org/sparql" .
+
+_:301 a sd:Service;
+  dc:description "SPARQL endpoint  to query the weather dataset of  Irstea. The data start in August 2018 and are updated daily. The weather station is part of the AgroTechnopole located at Montoldre, France.";
+  sd:endpoint "http://ontology.irstea.fr/weather/snorql" .
+
+_:302 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:303 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:304 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://zhishi.me/sparql" .
+
+_:305 a sd:Service;
+  dc:description "SPARQL end point";
+  sd:endpoint "http://factforge.net/sparql" .
+
+_:306 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://pid.bio2rdf.org/sparql" .
+
+_:307 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://wordnet.okfn.gr:8890/sparql/" .
+
+_:308 a sd:Service;
+  dc:description "DBpedia in Spanish dataset. Part of the DBpedia internationalisation effort. Data are extracted here from Spanish language pages of wikipedia (es.wikipedia.org).";
+  sd:endpoint "http://es.dbpedia.org/sparql" .
+
+_:309 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://worldbank.270a.info/sparql" .
+
+_:31 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://rae2001.rkbexplorer.com/sparql/" .
+
+_:310 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/statistics/sparql" .
+
+_:311 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:312 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://api.talis.com/stores/eupmedia/services/sparql" .
+
+_:313 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://www.ebi.ac.uk/rdf/services/atlas/sparql" .
+
+_:314 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/musicbrainz/services/sparql" .
+
+_:315 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://91.239.64.176:8890/sparql" .
+
+_:316 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/eures/sparql" .
+
+_:317 a sd:Service;
+  dc:description "SPARQL endpoint containing all the triples";
+  sd:endpoint "http://www.opmw.org/sparql" .
+
+_:318 a sd:Service;
+  dc:description "Morelab's SPARQL endpoint";
+  sd:endpoint "http://apps.morelab.deusto.es/labman/sparql" .
+
+_:319 a sd:Service;
+  dc:description "ERIS SPARQL Endpoint";
+  sd:endpoint "http://eris.okfn.org/sparql" .
+
+_:32 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://collection.britishmuseum.org/Sparql" .
+
+_:320 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://vocabulary.semantic-web.at/PoolParty/sparql/semweb" .
+
+_:321 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:322 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://linkedopencommerce.com/sparql" .
+
+_:323 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/transport/sparql" .
+
+_:324 a sd:Service;
+  dc:description "EMBL-EBI provides SPARQL access for a number of datasets through its RDF Platform.";
+  sd:endpoint "https://www.ebi.ac.uk/rdf/services/chembl/sparql" .
+
+_:325 a sd:Service;
+  dc:description "See: http://data.persee.fr/explorer/schemas-de-donnees/";
+  sd:endpoint "http://data.persee.fr/sparql" .
+
+_:326 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lod.gesis.org/thesoz/sparql" .
+
+_:327 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://twarql.org:8890/sparql" .
+
+_:328 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://pubchem.bio2rdf.org/sparql" .
+
+_:329 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://roni.rkbexplorer.com/sparql" .
+
+_:33 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lsr.bio2rdf.org/sparql" .
+
+_:330 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://linkeddata.uriburner.com/sparql" .
+
+_:331 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://goa.bio2rdf.org/sparql" .
+
+_:332 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://hunter-cuny.eagle-i.net/sparqler/sparql" .
+
+_:333 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://cordis.rkbexplorer.com/sparql/" .
+
+_:334 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://unlocode.rkbexplorer.com/sparql/" .
+
+_:335 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://linkedlifedata.com/sparql" .
+
+_:336 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://biolit.rkbexplorer.com/sparql" .
+
+_:337 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.globalchange.gov/sparql" .
+
+_:338 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://darmstadt.rkbexplorer.com/sparql/" .
+
+_:339 a sd:Service;
+  dc:description "sparql endpoint";
+  sd:endpoint "http://gov.tso.co.uk/dclg/sparql" .
+
+_:34 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/sider/sparql" .
+
+_:340 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lofd.tw.rpi.edu/sparql" .
+
+_:341 a sd:Service;
+  dc:description "SPARQL endpoint of the dataset";
+  sd:endpoint "http://aemet.linkeddata.es/sparql" .
+
+_:342 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://smartlink.open.ac.uk/smartlink/sparql" .
+
+_:343 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:344 a sd:Service;
+  dc:description "";
+  sd:endpoint "https://www.ebi.ac.uk/rdf/services/reactome/sparql" .
+
+_:345 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://catalogus-professorum.org/sparql" .
+
+_:346 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ontology.irstea.fr/bsv/" .
+
+_:347 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/euraxess/sparql" .
+
+_:348 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:349 a sd:Service;
+  dc:description "SPARQL endpoint of INSEMTIVES's platform.";
+  sd:endpoint "http://services.insemtives.eu/forest/sparql" .
+
+_:35 a sd:Service;
+  dc:description "Hosted by Virtuoso";
+  sd:endpoint "https://linked.opendata.cz/sparql" .
+
+_:350 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://pisa.rkbexplorer.com/sparql/" .
+
+_:351 a sd:Service;
+  dc:description "SPARQL 1.1 endpoint for Dutch Ships and Sailors. Anonymous access possible. An interactive (human-readable) SPARQL interface can be found at http://semanticweb.cs.vu.nl/dss/yasgui";
+  sd:endpoint "http://semanticweb.cs.vu.nl/dss/sparql/" .
+
+_:352 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.b3kat.de/sparql" .
+
+_:353 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://pathwaycommons.bio2rdf.org/sparql" .
+
+_:354 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://id.sgcb.mcu.es/sparql" .
+
+_:355 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://europeana.ontotext.com/sparql" .
+
+_:356 a sd:Service;
+  dc:description "Hosted by Virtuoso";
+  sd:endpoint "https://linked.opendata.cz/sparql" .
+
+_:357 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:358 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://affymetrix.bio2rdf.org/sparql" .
+
+_:359 a sd:Service;
+  dc:description """AMOn+ is ontology suite designed with a priori ontology modularisation methodology. In this methodology modularisation is performed from the outset. We have derived following four AMOn+ modules: first three of these modules form Core of AMOn+. The DBpedia mappings, is the extension of the core to cover concrete instantiation pertaining to Cultural interpersonal communication.
+
+    Activity Module
+    Interpersonal Communication Activity Module
+    Cultural Aspects in Interpersonal Communication Module
+    DBpedia mappings
+""";
+  sd:endpoint "http://imash.leeds.ac.uk:8080/openrdf-workbench/repositories/AMOnSPARQL/" .
+
+_:36 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://api.talis.com/stores/eurobarometer/services/sparql" .
+
+_:360 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbtune.org/classical/sparql/" .
+
+_:361 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/eccompetition/sparql" .
+
+_:362 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:363 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lov.okfn.org/endpoint/lov" .
+
+_:364 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/productdb/services/sparql" .
+
+_:365 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://drugbank.bio2rdf.org/sparql" .
+
+_:366 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://eprints.rkbexplorer.com/sparql/" .
+
+_:367 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://tsu.eagle-i.net/sparqler/sparql" .
+
+_:368 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://agrinepaldata.com/sparql" .
+
+_:369 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/rsinger-dev4/services/sparql" .
+
+_:37 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://cdrewu.eagle-i.net/sparqler/sparql" .
+
+_:370 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://eu.dbpedia.org/sparql" .
+
+_:371 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://wiktionary.dbpedia.org/sparql" .
+
+_:372 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:373 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://courseware.rkbexplorer.com/sparql/" .
+
+_:374 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://cb.semsol.org/sparql" .
+
+_:375 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://oecd.270a.info/sparql" .
+
+_:376 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://data.oceandrilling.org/sparql" .
+
+_:377 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://jisc.rkbexplorer.com/sparql/" .
+
+_:378 a sd:Service;
+  dc:description "SPARQL enpdoint";
+  sd:endpoint "http://sparql.linkedopendata.it/los" .
+
+_:379 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lisbon.rkbexplorer.com/sparql" .
+
+_:38 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://irit.rkbexplorer.com/sparql/" .
+
+_:380 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://140.109.28.64:2020/sparql" .
+
+_:381 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/gutendata/sparql" .
+
+_:382 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.oceandrilling.org/sparql" .
+
+_:383 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://helheim.deusto.es/linkedstats/sparql" .
+
+_:384 a sd:Service;
+  dc:description """
+
+The Alexandria Digital Library (ADL) Gazetteer containing about 8 million places and their toponyms and uses the ADL Feature Type Thesaurus for typing. Contains co-reference resolution via owl:sameAs assertions to Dbpedia and TGN.
+
+triples 73665666
+
+sameAs:dbpedia 149016
+
+sameAs:tgn 48231
+""";
+  sd:endpoint "http://adl-gazetteer.geog.ucsb.edu:8080/sparql/select" .
+
+_:385 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://xula.eagle-i.net/sparqler/sparql" .
+
+_:386 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://ohsu.eagle-i.net/sparqler/sparql" .
+
+_:387 a sd:Service;
+  dc:description "Sparql Endpoint";
+  sd:endpoint "http://de.dbpedia.org/sparql" .
+
+_:388 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://biordf.net/sparql" .
+
+_:389 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://taxonomy.bio2rdf.org/sparql" .
+
+_:39 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://notube.rkbexplorer.com/sparql" .
+
+_:390 a sd:Service;
+  dc:description "SPARQL endpoint provides access to data 2015 Reference Map Bogotá D.C. containing the data of the basic elements of the District territory in its urban and rural areas, such as hydrography, cadastral, administrative units, relief, transportation, land control, geographic names, and social. ";
+  sd:endpoint "http://geografia.ideca.gov.co/fuseki/dataset.html?tab=query&ds=/inf" .
+
+_:391 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://genage.bio2rdf.org/sparql" .
+
+_:392 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "https://eagle-i.ea.vanderbilt.edu/sparqler/sparql" .
+
+_:393 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://resrev.ilrt.bris.ac.uk/data-server-workshop/sparql" .
+
+_:394 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://data.oceandrilling.org/sparql" .
+
+_:395 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://miuras.inf.um.es/sparql" .
+
+_:396 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://jsu.eagle-i.net/sparqler/sparql" .
+
+_:397 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/medicare/sparql" .
+
+_:398 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://prelex.publicdata.eu/sparql" .
+
+_:399 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://nlg.okfn.gr/sparql" .
+
+_:4 a sd:Service;
+  dc:description "The ontologies can also be queried through this SPARQL endpoint ";
+  sd:endpoint "http://neuroweb.med.yale.edu:8890/sparql" .
+
+_:40 a sd:Service;
+  dc:description "MSC2010-SKOS SPARQL endpoint";
+  sd:endpoint "http://sparql.msc2010.org" .
+
+_:400 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/massobservation/services/sparql" .
+
+_:401 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://gendr.bio2rdf.org/sparql" .
+
+_:402 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.linkedmdb.org/sparql" .
+
+_:403 a sd:Service;
+  dc:description "SPARQL endpoint to access data in RDF";
+  sd:endpoint "http://data.linkedu.eu/don/query" .
+
+_:404 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:405 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/smcjournals/services/sparql" .
+
+_:406 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://pharmgkb.bio2rdf.org/sparql" .
+
+_:407 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.open.ac.uk/query" .
+
+_:408 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://wiki.rkbexplorer.com/sparql/" .
+
+_:409 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://fao.270a.info/sparql" .
+
+_:41 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:410 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://www.auth.gr/sparql" .
+
+_:411 a sd:Service;
+  dc:description "SPARQL endpoint hosted by Virtuoso";
+  sd:endpoint "https://data.gov.cz/sparql" .
+
+_:412 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/eurostat/sparql" .
+
+_:413 a sd:Service;
+  dc:description "Last update: March 2016";
+  sd:endpoint "http://digitale.bncf.firenze.sbn.it/openrdf-workbench/repositories/NS/query" .
+
+_:414 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://asev.l3s.uni-hannover.de:8085/openrdf-sesame/repositories/TERENCE_STORY" .
+
+_:415 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://irefindex.bio2rdf.org/sparql" .
+
+_:416 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://n-lex.publicdata.eu/sparql" .
+
+_:417 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://www.eclap.eu/sparql" .
+
+_:418 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:419 a sd:Service;
+  dc:description "The \"Isidore Sparql Endpoint\" is the sparql endpoint of Isidore, the main access to arts and humanities data in France.";
+  sd:endpoint "http://www.rechercheisidore.fr/sparql" .
+
+_:42 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ulm.rkbexplorer.com/sparql/" .
+
+_:420 a sd:Service;
+  dc:description "SPARQL enpdoint";
+  sd:endpoint "http://sparql.linkedopendata.it/loc " .
+
+_:421 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://agencies.publicdata.eu/sparql" .
+
+_:422 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://vocabulary.semantic-web.at/PoolParty/sparql/OpenData" .
+
+_:423 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://revyu.com/sparql" .
+
+_:424 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://purl.org/twc/arrayexpress/virtuoso/sparql" .
+
+_:425 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://dati.camera.it/sparql" .
+
+_:426 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://eurostat.linked-statistics.org/sparql" .
+
+_:427 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ld.panlex.org/sparql" .
+
+_:428 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.my-eventos.com/en/services/sparql/" .
+
+_:429 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:43 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://api.talis.com/stores/ordnance-survey/services/sparql" .
+
+_:430 a sd:Service;
+  dc:description "Virtuoso SPARQL endpoint and query editor.";
+  sd:endpoint "http://www.linklion.org:8890/sparql" .
+
+_:431 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://linkeddata.ge.imati.cnr.it:8890/sparql" .
+
+_:432 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/diseasome/sparql" .
+
+_:433 a sd:Service;
+  dc:description "SPARQL endpoint with all triples including ontologies. This endpoint is CORS compliant.";
+  sd:endpoint "http://sparql.cwrc.ca/sparql" .
+
+_:434 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://laas.rkbexplorer.com/sparql/" .
+
+_:435 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://uccaribe.eagle-i.net/sparqler/sparql" .
+
+_:436 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://chembl.bio2rdf.org/sparql" .
+
+_:437 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://gov.tso.co.uk/coins/sparql" .
+
+_:438 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://linkedspl.bio2rdf.org/sparql" .
+
+_:439 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://fr.dbpedia.org/sparql" .
+
+_:44 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://greek-lod.math.auth.gr/intervalue/sparql" .
+
+_:440 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:441 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ieee.rkbexplorer.com/sparql/" .
+
+_:442 a sd:Service;
+  dc:description "Linked Data of OCW and OER resources";
+  sd:endpoint "http://serendipity.utpl.edu.ec/lod/sparql" .
+
+_:443 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:444 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://kaunas.rkbexplorer.com/sparql" .
+
+_:445 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://biopax.biomodels.bio2rdf.org/sparql" .
+
+_:446 a sd:Service;
+  dc:description "List of SPARQL enpoints containing part of Linked TCGA ";
+  sd:endpoint "http://tcga.deri.ie" .
+
+_:447 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/jgoodwin-genealogy/services/sparql" .
+
+_:448 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.kasabi.com/dataset/openflights-routes/apis/sparql" .
+
+_:449 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.imagesnippets.com/sparql/images" .
+
+_:45 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:450 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.linkedopendata.it/cap" .
+
+_:451 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://rijksmuseum.dydra.com/lizzyjongma/rijksmuseum-collection/sparql" .
+
+_:452 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://foreign.rkbexplorer.com/sparql/" .
+
+_:453 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://vocab.getty.edu/sparql" .
+
+_:454 a sd:Service;
+  dc:description "SPARQL endpoint ";
+  sd:endpoint "http://minsky.gsi.dit.upm.es/semanticwiki/index.php/Special:SPARQLEndpoint" .
+
+_:455 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ja.dbpedia.org/sparql" .
+
+_:456 a sd:Service;
+  dc:description "Temporary URL for the SPARQL endpoint that allows access to this dataset";
+  sd:endpoint "http://crtm.linkeddata.es/sparql" .
+
+_:457 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.linkedu.eu/kis1112/query" .
+
+_:458 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.ac/bdls/sparql" .
+
+_:459 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://demo.spraakdata.gu.se/ltlod/test/" .
+
+_:46 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ft.rkbexplorer.com/sparql/" .
+
+_:460 a sd:Service;
+  dc:description "The SPARQL endpoint of \"Infulence Tracker\" service";
+  sd:endpoint "http://www.influencetracker.com:8890/sparql" .
+
+_:461 a sd:Service;
+  dc:description "SPARQL end point";
+  sd:endpoint "http://link.informatics.stonybrook.edu/sparql/" .
+
+_:462 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://environment.data.gov.uk/sparql/bwq/query" .
+
+_:463 a sd:Service;
+  dc:description "SPARQL endpoint containing the circulation data re-modelled as RDF using the DataCube, AIISO and BIBO vocabularies.";
+  sd:endpoint "http://data.linkedu.eu/hud/query" .
+
+_:464 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/climb/services/sparql" .
+
+_:465 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dblp.l3s.de/d2r/sparql" .
+
+_:466 a sd:Service;
+  dc:description "URI for SPARQL API interface.";
+  sd:endpoint "http://data.allie.dbcls.jp/sparql" .
+
+_:467 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.neurocommons.org:8890/nsparql/" .
+
+_:468 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://pomelo.iis.sinica.edu.tw:2020/sparql" .
+
+_:469 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://rdf.myexperiment.org/sparql/" .
+
+_:47 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/gunnbib-digitalmanuskripter/sparql" .
+
+_:470 a sd:Service;
+  dc:description "SPARQL endpoint ";
+  sd:endpoint "http://sparql.jesandco.org:8890/sparql" .
+
+_:471 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/education/sparql" .
+
+_:472 a sd:Service;
+  dc:description "test";
+  sd:endpoint "http://modip.aueb.gr/d2rq/sparql" .
+
+_:473 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://crime.rkbexplorer.com/sparql/" .
+
+_:474 a sd:Service;
+  dc:description "This SPARQL-Endpoint enables running queries against the central union database of HeBIS, which contains more than 17 million records as linked open data for all types of publication (print media, E-books, E-journals,online resources).";
+  sd:endpoint "http://lod.hebis.de/sparql" .
+
+_:475 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.open-biomed.org.uk/sparql/endpoint/flybase" .
+
+_:476 a sd:Service;
+  dc:description "SPARQL end point";
+  sd:endpoint "http://crystaleye.ch.cam.ac.uk/sparql/" .
+
+_:477 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:478 a sd:Service;
+  dc:description "sparql endpoint";
+  sd:endpoint "http://os.services.tso.co.uk/geo/sparql" .
+
+_:479 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://provenanceweb.org/sparql" .
+
+_:48 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://bis.270a.info/sparql" .
+
+_:480 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://data.oceandrilling.org/sparql" .
+
+_:481 a sd:Service;
+  dc:description "SPARQL endpoint for data from Linked Crowdsourced Data";
+  sd:endpoint "http://sparql.contextdatacloud.org" .
+
+_:482 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://diwis.imis.athena-innovation.gr:8181/sparql" .
+
+_:483 a sd:Service;
+  dc:description "PROV does not yet have a SPARQL Endpoint. In the meantime web services such as this one will allow you to query the data. Just insert the url http://wiki.prov.vic.gov.au/rdf/Public_Record_Office_Victoria_Semantic_Wiki.rdf into the <Target graph URI> field of the form.";
+  sd:endpoint "http://www.sparql.org/sparql.html" .
+
+_:484 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/bbc-backstage/services/sparql" .
+
+_:485 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:486 a sd:Service;
+  dc:description "sparql endpoint";
+  sd:endpoint "http://openuplabs.tso.co.uk/sparql/gov-education" .
+
+_:487 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://helheim.deusto.es/bizkaisense/sparql" .
+
+_:488 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/eumida/services/sparql" .
+
+_:489 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://sparql.linkedopendata.it/istat" .
+
+_:49 a sd:Service;
+  dc:description "SPARQL endpoint provides access to data 2015 Reference Map Bogotá D.C. containing the data of the basic elements of the District territory in its urban and rural areas, such as hydrography, cadastral, administrative units, relief, transportation, land control, geographic names, and social.";
+  sd:endpoint "http://geografia.ideca.gov.co/fuseki/dataset.html?tab=query&ds=/inf" .
+
+_:490 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lexinfo.net/corpora/alpino/query.php" .
+
+_:491 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.cnr.it/sparql-proxy/" .
+
+_:492 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://biopax.kegg.bio2rdf.org/sparql" .
+
+_:493 a sd:Service;
+  dc:description "Punto de acceso y consulta a el SPARQL Endpoint de la plataforma de publicación y gestión de tesauros semánticos PoolParty";
+  sd:endpoint "http://academia6.poolparty.biz/PoolParty/sparql/Tesauro-Materias-BUPM" .
+
+_:494 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/patents/sparql" .
+
+_:495 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://dbkwik.webdatacommons.org/sparql" .
+
+_:496 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sw.unime.it:8890/sparql" .
+
+_:497 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://futurewavehosting.com:3030/my-family-lineage/sparql" .
+
+_:498 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.kasabi.com/dataset/pali-english-lexicon/apis/sparql" .
+
+_:499 a sd:Service;
+  dc:description "SPARQL endpoint of the dataset";
+  sd:endpoint "http://tour-pedia.org/sparql" .
+
+_:5 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.linkedu.eu/forge/query" .
+
+_:50 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:500 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "https://taxref.mnhn.fr/sparql" .
+
+_:501 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ndb.publink.lod2.eu/sparql" .
+
+_:502 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.linkedopendata.it/grrp" .
+
+_:503 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.opendiscoveryspace.eu/sparql.tpl" .
+
+_:504 a sd:Service;
+  dc:description "Sparql Endpoint for publicspending.gr";
+  sd:endpoint "http://publicspending.medialab.ntua.gr/sparql" .
+
+_:505 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://spending.lichfielddc.gov.uk/sparql" .
+
+_:506 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.linkedct.org/sparql" .
+
+_:507 a sd:Service;
+  dc:description "sparql endpoint";
+  sd:endpoint "http://gov.tso.co.uk/legislation/sparql" .
+
+_:508 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://imgpedia.dcc.uchile.cl/sparql" .
+
+_:509 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.nobelprize.org/sparql" .
+
+_:51 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:510 a sd:Service;
+  dc:description "SPARQL Endpoint, latest data";
+  sd:endpoint "http://bnb.data.bl.uk/sparql" .
+
+_:511 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://el.dbpedia.org/sparql" .
+
+_:512 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.open-biomed.org.uk/sparql/endpoint/flyted" .
+
+_:513 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/research/sparql" .
+
+_:514 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://sparql.odw.tw" .
+
+_:515 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://demo.spraakdata.gu.se/ltlod/test/" .
+
+_:516 a sd:Service;
+  dc:description "SPARQL endpoint running Openlink Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:517 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://purl.org/twc/arrayexpress/virtuoso/sparql" .
+
+_:518 a sd:Service;
+  dc:description "NextProt SPARQL endpoint";
+  sd:endpoint "http://nextprot.bio2rdf.org/sparql" .
+
+_:519 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://rdf.disgenet.org/sparql/" .
+
+_:52 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.linkedu.eu/kis1112/query" .
+
+_:520 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://rdfabout.com/sparql" .
+
+_:521 a sd:Service;
+  dc:description """SPARQL endpoint for querying the dataset. 
+
+**Version 1.0**: Use the graph http://linkeddata.finki.ukim.mk/lod/data/loddw# to access the data from the dataset.
+
+**Version 2.1**: Use the graph http://linkeddata.finki.ukim.mk/lod/data/godd# to access the data from the dataset.""";
+  sd:endpoint "http://linkeddata.finki.ukim.mk/sparql" .
+
+_:522 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://webisa.webdatacommons.org/sparql" .
+
+_:523 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://bfs.270a.info/sparql" .
+
+_:524 a sd:Service;
+  dc:description "SPARQL endpoint for directly querying the PreMOn dataset";
+  sd:endpoint "http://premon.fbk.eu/sparql" .
+
+_:525 a sd:Service;
+  dc:description "Official UniProt Sparql Endpoint";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:526 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://cr.eionet.europa.eu/sparql" .
+
+_:527 a sd:Service;
+  dc:description "main sparql EndPoint";
+  sd:endpoint "http://dati.isprambiente.it/sparql" .
+
+_:528 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/business/sparql" .
+
+_:529 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/pbac/services/sparql" .
+
+_:53 a sd:Service;
+  dc:description "Sparql Endpoint";
+  sd:endpoint "http://vocabulary.semantic-web.at/PoolParty/sparql/AustrianSkiTeam" .
+
+_:530 a sd:Service;
+  dc:description "Linked Data exposure of ARIADNE learning resources";
+  sd:endpoint "http://data.ariadne-eu.org/sparql.tpl" .
+
+_:531 a sd:Service;
+  dc:description "Enpoint Sparql";
+  sd:endpoint "http://dati.isma.roma.it/sparql/" .
+
+_:532 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://chebi.bio2rdf.org/sparql" .
+
+_:533 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://km.aifb.kit.edu/services/xlike-lexicon/" .
+
+_:534 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:535 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/theviewfrom/services/sparql" .
+
+_:536 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.rism.info/sparql" .
+
+_:537 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://cr.eionet.europa.eu/sparql" .
+
+_:538 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://edit.elte.hu/sparql" .
+
+_:539 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://sparql.wikipathways.org/" .
+
+_:54 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://el-devtc01.tugraz.at/~ldv/interlinking/endpoint_handler.php" .
+
+_:540 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lobid.org/sparql/" .
+
+_:541 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.ngii.go.kr/SPARQL/sparql" .
+
+_:542 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.open-biomed.org.uk/sparql/endpoint/flyatlas" .
+
+_:543 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://semantic.eea.europa.eu/sparql" .
+
+_:544 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ring.ciard.net/sparql1" .
+
+_:545 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.rism.info/sparql" .
+
+_:546 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.linkedopendata.it/scuole" .
+
+_:547 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ichoose.tw.rpi.edu/sparql" .
+
+_:548 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://linkedgeodata.org/sparql/" .
+
+_:549 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.sstu.ru:3030/speciality-vocabulary/query" .
+
+_:55 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbtune.org/musicbrainz/sparql" .
+
+_:550 a sd:Service;
+  dc:description "Kasabi page for Foodista SPARQL Endpoint";
+  sd:endpoint "http://kasabi.com/api/sparql-endpoint-foodista" .
+
+_:551 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.open-biomed.org.uk/sparql/endpoint/bdgp_20081030" .
+
+_:552 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:553 a sd:Service;
+  dc:description "The SPARQL endpoint for the collection";
+  sd:endpoint "http://rdf.ng-london.org.uk/raphael" .
+
+_:554 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ecb.publicdata.eu/sparql" .
+
+_:555 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.semanticweb.org/sparql" .
+
+_:556 a sd:Service;
+  dc:description "SPARQL endpoint with all triples including ontologies. This endpoint is CORS compliant.";
+  sd:endpoint "http://canlink.library.ualberta.ca/sparql" .
+
+_:557 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://live.dbpedia.org/sparql" .
+
+_:558 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbpedia.org/sparql" .
+
+_:559 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://symbolicdata.org:8890/sparql" .
+
+_:56 a sd:Service;
+  dc:description "sparql endpoint";
+  sd:endpoint "http://ecowlim.tfri.gov.tw/sparql/query" .
+
+_:560 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://semantic.ckan.net/sparql/" .
+
+_:561 a sd:Service;
+  dc:description "SPARQL Endpoint - Geologic Unit";
+  sd:endpoint "http://resource.geolba.ac.at/PoolParty/sparql/GeologicUnit" .
+
+_:562 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://netpath.bio2rdf.org/sparql" .
+
+_:563 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.linkedopendata.it/grrt" .
+
+_:564 a sd:Service;
+  dc:description "SPARQL API to the data";
+  sd:endpoint "http://purl.org/openbibliosets/iucrsparql" .
+
+_:565 a sd:Service;
+  dc:description "SPARQL endpont";
+  sd:endpoint "https://dbmi-icode-01.dbmi.pitt.edu/sparql" .
+
+_:566 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://corpora.nlp2rdf.org/sparql" .
+
+_:567 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://202.45.139.84:10035/catalogs/fao/repositories/agrovoc" .
+
+_:568 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://foreign.rkbexplorer.com/sparql" .
+
+_:569 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:57 a sd:Service;
+  dc:description "SPARQL endpoint with learning objects oriented to teachers, scholars and students. ";
+  sd:endpoint "http://sparql-procomun.educalab.es/" .
+
+_:570 a sd:Service;
+  dc:description "Punto de acceso SPARQL dónde se pueden realizar consultas sobre los datos.";
+  sd:endpoint "http://http://opendata.intellidomo.es:8080/sparql/" .
+
+_:571 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://setaria.oszk.hu/sparql" .
+
+_:572 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://purl.org/twc/hub/sparql" .
+
+_:573 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://vocabularies.unesco.org/sparql" .
+
+_:574 a sd:Service;
+  dc:description "SPARQL end point";
+  sd:endpoint "http://eculture2.cs.vu.nl:8890/sparql" .
+
+_:575 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linkeddata.ge.imati.cnr.it:8890/sparql" .
+
+_:576 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://mlode.nlp2rdf.org/sparql" .
+
+_:577 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.kasabi.com/dataset/ecco-tcp-eighteenth-century-collections-online-texts/apis/sparql" .
+
+_:578 a sd:Service;
+  dc:description "API only";
+  sd:endpoint "http://anonymous:anonymous@151.80.27.58:5820/ruthes-cloud/query" .
+
+_:579 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/metoffice/services/sparql" .
+
+_:58 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:580 a sd:Service;
+  dc:description "LODStats The Data Web Census SPARQL endpoint. Running on virtuoso opensource.";
+  sd:endpoint "http://lodstats.aksw.org/sparql" .
+
+_:581 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://imf.270a.info/sparql" .
+
+_:582 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:583 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://vocab.nerc.ac.uk/sparql/" .
+
+_:584 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://api.talis.com/stores/ordnance-survey/services/sparql" .
+
+_:585 a sd:Service;
+  dc:description "SPARQL endpoint for querying the HIFM LODD dataset and ontology. Use the graph http://linkeddata.finki.ukim.mk/lod/data/hifm# for the HIFM data, and the http://linkeddata.finki.ukim.mk/lod/ontology/hifm# graph for the HIFM ontology.";
+  sd:endpoint "http://linkeddata.finki.ukim.mk/sparql" .
+
+_:586 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:587 a sd:Service;
+  dc:description "SPARQL endpoint for scholarlydata dataset.";
+  sd:endpoint "https://w3id.org/scholarlydata/sparql" .
+
+_:588 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://uis.270a.info/sparql" .
+
+_:589 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://mlode.nlp2rdf.org/sparql" .
+
+_:59 a sd:Service;
+  dc:description "Sparql End point of Organic Edunet";
+  sd:endpoint "http://data.organic-edunet.eu/sparql" .
+
+_:590 a sd:Service;
+  dc:description "Use the SPARQL interface to query the data of the linkedarc.net dataset.";
+  sd:endpoint "http://linkedarc.net/sparql" .
+
+_:591 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:592 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://spatial.ucd.ie/lod/sparql" .
+
+_:593 a sd:Service;
+  dc:description "SPARQL endpoint.";
+  sd:endpoint "http://helheim.deusto.es/hedatuz/sparql" .
+
+_:594 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://api.talis.com/stores/trafficscotland/services/sparql" .
+
+_:595 a sd:Service;
+  dc:description "SPARQL enpdoint";
+  sd:endpoint "http://www.rdfabout.com/sparql" .
+
+_:596 a sd:Service;
+  dc:description """Contains (provisional) PHOIBLE RDF Linked Data for the LLOD, created by Martin Brümmer for MLODE-2012.
+
+(Update May 18, 2014: Moved to http://linked-data.org/sparql)
+
+Sample query: 
+
+http://linked-data.org/sparql?default-graph-uri=http%3A%2F%2Fmlode.nlp2rdf.org%2Fresource%2Fphoible%2F&should-sponge=&query=select+%3Fa+%3Fb+%3Fc+where+%7B%3Fa+%3Fb+%3Fc%7D+LIMIT+100&format=text%2Fhtml&debug=on&timeout=""";
+  sd:endpoint "http://linked-data.org/sparql" .
+
+_:597 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:598 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linkedspending.aksw.org/sparql" .
+
+_:599 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:6 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.duraark.eu/sparql" .
+
+_:60 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://oai.rkbexplorer.com/sparql/" .
+
+_:600 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:601 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:602 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:603 a sd:Service;
+  dc:description "api";
+  sd:endpoint "http://www.open-biomed.org.uk/sparql/endpoint/tcm" .
+
+_:604 a sd:Service;
+  dc:description "A sparql endpoint for query ";
+  sd:endpoint "http://datos.bcn.cl/sparql" .
+
+_:605 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://mlode.nlp2rdf.org/sparql" .
+
+_:606 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.archivesdefrance.culture.gouv.fr/thesaurus/sparql" .
+
+_:607 a sd:Service;
+  dc:description "http://govwild.org/sparql?query=<query>";
+  sd:endpoint "http://govwild.org/sparql" .
+
+_:608 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.bibbase.org:2020/sparql" .
+
+_:609 a sd:Service;
+  dc:description "SPARQL endpoint (not up to date)";
+  sd:endpoint "http://api.talis.com/stores/datagovuk/services/sparql" .
+
+_:61 a sd:Service;
+  dc:description "This SPARQL endpoint provides query access to the evaluation result dataset for both dbo:Person and dbo:Place.";
+  sd:endpoint "http://linkeddata.es/resource/ldqm/sparql" .
+
+_:610 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://demo.spraakdata.gu.se/ltlod/test/" .
+
+_:611 a sd:Service;
+  dc:description "SPARQL";
+  sd:endpoint "http://api.talis.com/stores/nvd/services/sparql" .
+
+_:612 a sd:Service;
+  dc:description "SPARQL endpoint for Nasa";
+  sd:endpoint "http://api.kasabi.com/dataset/nasa/apis/sparql" .
+
+_:613 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:614 a sd:Service;
+  dc:description "SPARQL endpoint for the data (note: demo endpoint, uptime and response time not guaranteed)";
+  sd:endpoint "http://www.ida.liu.se/projects/semtech/openrdf-sesame/repositories/energy" .
+
+_:615 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://data.fundacionctic.org/sparql" .
+
+_:616 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://platform.uberblic.org/api/v1/sparql" .
+
+_:617 a sd:Service;
+  dc:description "Linked Open Commerce SPARQL endpoint";
+  sd:endpoint "http://linkedopencommerce.com/sparql" .
+
+_:618 a sd:Service;
+  dc:description "SPARQL endpoint to the DIKB";
+  sd:endpoint "https://dbmi-icode-01.dbmi.pitt.edu/dikb/sparql" .
+
+_:619 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://opendap.tw.rpi.edu/sparql" .
+
+_:62 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.lenka.no/sparql" .
+
+_:620 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://services.data.gov.uk/environment/sparql" .
+
+_:621 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:622 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://cr3.eionet.europa.eu/sparql" .
+
+_:623 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www.rdfabout.com/sparql" .
+
+_:624 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:625 a sd:Service;
+  dc:description "SPARQL endpoint ";
+  sd:endpoint "http://babelnet.org/sparql/" .
+
+_:626 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://demo.spraakdata.gu.se/ltlod/test/" .
+
+_:627 a sd:Service;
+  dc:description "SPARQL endpoint 1";
+  sd:endpoint "http://colinda.org/endpoint.php" .
+
+_:628 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://geoname.linkedopendata.tw/sparql" .
+
+_:629 a sd:Service;
+  dc:description "";
+  sd:endpoint "https://stirdf.jglobal.jst.go.jp/sparql" .
+
+_:63 a sd:Service;
+  dc:description "SPARQL endpoint for querying teseo.";
+  sd:endpoint "http://apps.morelab.deusto.es/teseo/sparql" .
+
+_:630 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://api.talis.com/stores/elections/services/sparql" .
+
+_:631 a sd:Service;
+  dc:description "SPARQL Endpoint for Kasabi's Musicnet";
+  sd:endpoint "http://api.kasabi.com/dataset/musicnet/apis/sparql" .
+
+_:632 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:633 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://socialarchive.iath.virginia.edu/sparql/eac" .
+
+_:634 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://logd.tw.rpi.edu/sparql" .
+
+_:635 a sd:Service;
+  dc:description "SPARQL endpoint ";
+  sd:endpoint "http://eventmedia.eurecom.fr/sparql" .
+
+_:636 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:637 a sd:Service;
+  dc:description "Graph IRI: http://data.hnm.hu/colls/lib/bib";
+  sd:endpoint "http://data.hnm.hu/sparql" .
+
+_:638 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:639 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.lider-project.eu/usage/sparql" .
+
+_:64 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://omim.bio2rdf.org/sparql" .
+
+_:640 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lsd.taxonconcept.org/sparql" .
+
+_:641 a sd:Service;
+  dc:description "The SPARQL endpoint for live USGS-LD data.";
+  sd:endpoint "http://usgs-stko.geog.ucsb.edu:8080/sparql/select" .
+
+_:642 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:643 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lobid.org/sparql/" .
+
+_:644 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:645 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://nomisma.org/sparql" .
+
+_:646 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:647 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:648 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://semantic.eea.europa.eu/sparql" .
+
+_:649 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:65 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://biopax.pharmgkb.bio2rdf.org/sparql" .
+
+_:650 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://opendata-bundestag.de/sparql" .
+
+_:651 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:652 a sd:Service;
+  dc:description "SPARQL endpoint deref-vocab ";
+  sd:endpoint "http://opendatacommunities.org/sparql" .
+
+_:653 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://156.35.82.103/sparql" .
+
+_:654 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:655 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:656 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:657 a sd:Service;
+  dc:description """This endpoint is the 'official' one and is hosted by the Huygens institute. 
+
+The endpoint is SPARQL 1.1 compliant and hosted by ClioPatria. Anonymous access possible. An interactive (human-readable) SPARQL interface can be found at http://dutchshipsandsailors.nl/data/yasgui""";
+  sd:endpoint "http://dutchshipsandsailors.nl/data/sparql/" .
+
+_:658 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://vocab.getty.edu/sparql" .
+
+_:659 a sd:Service;
+  dc:description "SPARQL Endpoint data.bnf.fr";
+  sd:endpoint "http://data.bnf.fr/sparql" .
+
+_:66 a sd:Service;
+  dc:description "main sparql EndPoint";
+  sd:endpoint "http://dati.isprambiente.it/sparql" .
+
+_:660 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://mlode.nlp2rdf.org/sparql" .
+
+_:661 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://www.icane.es/opendata/sparql" .
+
+_:662 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://156.35.31.156/sparql" .
+
+_:663 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://river.styx.org/sparql" .
+
+_:664 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:665 a sd:Service;
+  dc:description "SPARQL enpdoint 2";
+  sd:endpoint "http://data.colinda.org/endpoint.php" .
+
+_:666 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:667 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:668 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:669 a sd:Service;
+  dc:description "Sudoc is one graph amon Sindice SPARQL endpoint graphs";
+  sd:endpoint "http://sparql.sindice.com/sparql" .
+
+_:67 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:670 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://sparql.uniprot.org" .
+
+_:671 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ieeevis.tw.rpi.edu/nosparql" .
+
+_:672 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://sparql.data.southampton.ac.uk/" .
+
+_:673 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lsd.taxonconcept.org/sparql" .
+
+_:674 a sd:Service;
+  dc:description "A SPARQL endpoint to browse dbnary data. The data URIs are resolvable";
+  sd:endpoint "http://kaiko.getalp.org/sparql" .
+
+_:675 a sd:Service;
+  dc:description "Temporary experimental SPARQL endpoint";
+  sd:endpoint "http://202.73.13.50:55824/catalogs/performance/repositories/jita " .
+
+_:676 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://mlode.nlp2rdf.org/sparql" .
+
+_:677 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://socialarchive.iath.virginia.edu/sparql/snac-viaf" .
+
+_:678 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://purl.org/weso/sparql" .
+
+_:679 a sd:Service;
+  dc:description "SPARQL endpoint to the KUPKB";
+  sd:endpoint "http://sparql.kupkb.org/sparql" .
+
+_:68 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:680 a sd:Service;
+  dc:description "COD SPARQL endpoint";
+  sd:endpoint "http://www.crystallography.net:2020/snorql/" .
+
+_:681 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://aksw.org/sparql" .
+
+_:682 a sd:Service;
+  dc:description "Fatal Traffic Accidents in greek roads SPARQL endpoint";
+  sd:endpoint "http://http://crashmap.okfn.gr:8890/sparql" .
+
+_:683 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://data.semanticuniverse.com/sparql" .
+
+_:684 a sd:Service;
+  dc:description "SPARQL endpoint (beta)";
+  sd:endpoint "http://zbw.eu/beta/sparql/stw/query" .
+
+_:685 a sd:Service;
+  dc:description "Hellenic Fire Brigade SPARQL endpoint";
+  sd:endpoint "http://greek-lod.auth.gr/fire-brigade/sparql" .
+
+_:686 a sd:Service;
+  dc:description "graph name http://crashmap.okfn.gr/roadAccidentsStats";
+  sd:endpoint "http://crashmap.okfn.gr:8890/sparql" .
+
+_:687 a sd:Service;
+  dc:description "Access to a small sample of Copac linked data";
+  sd:endpoint "http://data.copac.ac.uk/sparql" .
+
+_:688 a sd:Service;
+  dc:description "SPARQL endpoint to the dataset";
+  sd:endpoint "http://212.81.220.68:2020/elviajero" .
+
+_:689 a sd:Service;
+  dc:description "The SPARQL endpoint for street light data.";
+  sd:endpoint "http://farolas.linkeddata.es/sparql" .
+
+_:69 a sd:Service;
+  dc:description "SPARQL endpoint for aliada-scanbit-net dataset";
+  sd:endpoint "http://aliada.scanbit.net:8891/sparql" .
+
+_:690 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://lod.kipo.kr/data/sparql" .
+
+_:691 a sd:Service;
+  dc:description "Danish Governmental Agricultural Data SPARQL endpoint";
+  sd:endpoint "http://extbi.lab.aau.dk/sparql/" .
+
+_:692 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:693 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:694 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus ";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:695 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:696 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:697 a sd:Service;
+  dc:description "The SPARQL endpoint currently contains a subset of about 5% of the dataset.";
+  sd:endpoint "http://l3s.de/tweetsKB/endpoint/" .
+
+_:698 a sd:Service;
+  dc:description """SPARQL endpoint containig the licenses
+sparql_graph_name http://test.com/rdflicense""";
+  sd:endpoint "http://linkeddata4.dia.fi.upm.es:8907/sparql" .
+
+_:699 a sd:Service;
+  dc:description "SPARQL endpoint for Bricklink";
+  sd:endpoint "http://api.kasabi.com/dataset/bricklink/apis/sparql" .
+
+_:7 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://idi.fundacionctic.org/classifications_endpoint/eurovoc" .
+
+_:70 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://spike.bio2rdf.org/sparql" .
+
+_:700 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:701 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:702 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:703 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:704 a sd:Service;
+  dc:description "SPARQL endpoint for Foodista";
+  sd:endpoint "http://api.kasabi.com/dataset/foodista/apis/sparql" .
+
+_:705 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:706 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:707 a sd:Service;
+  dc:description "SPARQL Endpoint - Geologic Time Scale";
+  sd:endpoint "http://resource.geolba.ac.at/PoolParty/sparql/GeologicTimeScale" .
+
+_:708 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:709 a sd:Service;
+  dc:description "SPARQL endpoint for Renewable Energy Generators";
+  sd:endpoint "http://api.kasabi.com/dataset/renewable-energy-generators/apis/sparql" .
+
+_:71 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lab3.libris.kb.se/sparql" .
+
+_:710 a sd:Service;
+  dc:description "SPARQL endpoint for Prelinger Archives";
+  sd:endpoint "http://api.kasabi.com/dataset/prelinger-archives/apis/sparql" .
+
+_:711 a sd:Service;
+  dc:description "SPARQL endpoint for English Heritage";
+  sd:endpoint "http://api.kasabi.com/dataset/english-heritage/apis/sparql" .
+
+_:712 a sd:Service;
+  dc:description "SPARQL endpoint for Yahoo Geoplanet";
+  sd:endpoint "http://api.kasabi.com/dataset/yahoo-geoplanet/apis/sparql" .
+
+_:713 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://telegraphis.net/data/countries/sparql" .
+
+_:714 a sd:Service;
+  dc:description "SPARQL endpoint on the HeritageData site giving access to the RDF data for the thesaurus";
+  sd:endpoint "http://heritagedata.org/live/sparql" .
+
+_:715 a sd:Service;
+  dc:description "SPARQL endpoint (no browser query interface)";
+  sd:endpoint "http://data.lod2.eu/sparql" .
+
+_:716 a sd:Service;
+  dc:description "Sparql Endpoint (No GUI)";
+  sd:endpoint "http://aseg.cs.concordia.ca/secold/sparqlendpoint" .
+
+_:717 a sd:Service;
+  dc:description "SPARQL EndPoint";
+  sd:endpoint "http://onto.beef.org.pl/sparql" .
+
+_:718 a sd:Service;
+  dc:description "SPARQL Endpoint - Lithology";
+  sd:endpoint "http://resource.geolba.ac.at/PoolParty/sparql/lithology" .
+
+_:719 a sd:Service;
+  dc:description "Sparql endpoint query service";
+  sd:endpoint "http://data.organic-edunet.eu/snorql/" .
+
+_:72 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://iproclass.bio2rdf.org/sparql" .
+
+_:720 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.xdams.org/sparql" .
+
+_:721 a sd:Service;
+  dc:description "Sparql endpoint";
+  sd:endpoint "http://lab.environment.data.gov.au/sparql" .
+
+_:722 a sd:Service;
+  dc:description "SPARQL Endpoint - Lithotectonic Unit";
+  sd:endpoint "http://resource.geolba.ac.at/PoolParty/sparql/tectonicunit" .
+
+_:723 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://cr.eionet.europa.eu/sparql" .
+
+_:73 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://afcsid.bio2rdf.org/sparql" .
+
+_:74 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://dbtune.org/jamendo/sparql/" .
+
+_:75 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.linkededucation.org/request/lak-conference/sparql" .
+
+_:76 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://era.rkbexplorer.com/sparql/" .
+
+_:77 a sd:Service;
+  dc:description """Public Sparql endpoint allowing queries against the eagle-i dataset.
+
+To obtain only instance data, use 'default-graph-uri=http://eagle-i.org/ont/repo/1.0/NG_Published'. To obtain instance data and ontology triples, use 'view=published' (eagle-i extension).
+
+Detailed API documentation:
+https://open.med.harvard.edu/display/eaglei/Repository+Design+Specification+and+API+Manual""";
+  sd:endpoint "http://alaska.eagle-i.net/sparqler/sparql" .
+
+_:78 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://interpro.bio2rdf.org/sparql" .
+
+_:79 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://risks.rkbexplorer.com/sparql/" .
+
+_:8 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:80 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:81 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://deploy.rkbexplorer.com/sparql/" .
+
+_:82 a sd:Service;
+  dc:description "LODsyndesis-SPARQL Endpoint";
+  sd:endpoint "http://www.ics.forth.gr/isl/LODsyndesis/" .
+
+_:83 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://deepblue.rkbexplorer.com/sparql/" .
+
+_:84 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://ldf.fi/warsa/sparql" .
+
+_:85 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://opendata.ccd.uniroma2.it/LMF/sparql/select" .
+
+_:86 a sd:Service;
+  dc:description "SPARQL Endpoint";
+  sd:endpoint "http://eculture2.cs.vu.nl:5020/sparql/" .
+
+_:87 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://ncbigene.bio2rdf.org/sparql" .
+
+_:88 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://sonicbanana.cs.wright.edu:8890/sparql" .
+
+_:89 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.sztaki.hu/sparql" .
+
+_:9 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://lod.kaist.ac.kr/sparql" .
+
+_:90 a sd:Service;
+  dc:description "Running Virtuoso";
+  sd:endpoint "http://linked.opendata.cz/sparql" .
+
+_:91 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://semanticweb.cs.vu.nl/iati/sparql/" .
+
+_:92 a sd:Service;
+  dc:description "Sparql endpoint for Archives Hub Linked Data";
+  sd:endpoint "http://data.archiveshub.ac.uk/sparql" .
+
+_:93 a sd:Service;
+  dc:description "Sparql Endpoint";
+  sd:endpoint "http://fintrans.publicdata.eu/sparql" .
+
+_:94 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://biomodels.bio2rdf.org/sparql" .
+
+_:95 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://lod.openlinksw.com/sparql" .
+
+_:96 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://digitaleconomy.rkbexplorer.com/sparql" .
+
+_:97 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://southampton.rkbexplorer.com/sparql/" .
+
+_:98 a sd:Service;
+  dc:description "";
+  sd:endpoint "http://data.ox.ac.uk/sparql/" .
+
+_:99 a sd:Service;
+  dc:description "SPARQL endpoint";
+  sd:endpoint "http://www4.wiwiss.fu-berlin.de/factbook/sparql" .
