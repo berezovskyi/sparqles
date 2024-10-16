@@ -1,0 +1,26 @@
+prefixes:
+  sd: "http://www.w3.org/ns/sparql-service-description#"
+  void: "http://rdfs.org/ns/void#"
+
+mappings:
+  sd1:
+    sources:
+      - ['../sparqles_endpoint_list-openlink_3dfed.json~jsonpath', '$.[*]']
+    # hard to link without a subject
+    s: urn:sd:$(uri)
+    po:
+      - [a, sd:Service]
+      - [ sd:endpoint, $(uri~iri) ]
+  void-inverse:
+    sources:
+      - ['../sparqles_endpoint_list-openlink_3dfed.json~jsonpath', '$.[*]']
+    s: $(datasets[*].uri)
+    po:
+      - [ void:sparqlEndpoint, urn:sd:$(uri~iri) ]
+  void1:
+    sources:
+      - ['../sparqles_endpoint_list-openlink_3dfed.json~jsonpath', '$.[*].datasets.[*]']
+    s: $(uri)
+    po:
+      - [ a, void:Dataset ]
+      - [ rdfs:label, $(label) ]
