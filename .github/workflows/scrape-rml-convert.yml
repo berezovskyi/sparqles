@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GLOBAL_PATTERN: "dataset/mappings/*.yml"
+      GLOBAL_PATTERN: "*.yarrrml.yml"
       SERIALIZATION_FORMAT: turtle
       OUTPUT_DIRECTORY: "dataset/rml-w3c_sd/"
       CONVERT_ALL: true
