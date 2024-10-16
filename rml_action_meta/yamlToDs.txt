@@ -1,2 +1,3 @@
 ./dataset/mappings/datahub.yarrrml.yml dataset/datahub_sparql_endpoints.json
+./dataset/mappings/sparqles_endpoints-openlinksw.yarrrml.yml dataset/sparqles_endpoint_list-openlink_3dfed.json dataset/sparqles_endpoint_list-openlink_3dfed.json dataset/sparqles_endpoint_list-openlink_3dfed.json
 ./dataset/mappings/lodcloud.yarrrml.yml dataset/lodcloud_lod-data.json

@@ -1,4 +1,8 @@
 5488fa36b59c5432d859cb8e8b8bf627  ./dataset/mappings/datahub.yarrrml.yml
 f40b736a69949240e429fab05dfd9427  dataset/datahub_sparql_endpoints.json
+d618c8ae508273d39487390b6777cb18  ./dataset/mappings/sparqles_endpoints-openlinksw.yarrrml.yml
+272b593545fb20e539c306bc8eb53484  dataset/sparqles_endpoint_list-openlink_3dfed.json
+272b593545fb20e539c306bc8eb53484  dataset/sparqles_endpoint_list-openlink_3dfed.json
+272b593545fb20e539c306bc8eb53484  dataset/sparqles_endpoint_list-openlink_3dfed.json
 1c561fbe0554fb4a8cdf74a4077f50e0  ./dataset/mappings/lodcloud.yarrrml.yml
 bd4ed8fb0e468627bf97b0cca5dc67da  dataset/lodcloud_lod-data.json
