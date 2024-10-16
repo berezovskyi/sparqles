@@ -10,7 +10,7 @@ CMDARGS="-p src/main/resources/sparqles_docker.properties"
 # DELAY="${DELAY:=300}"
 
 echo "Starting SPARQLes server"
-
+export JAVA_OPTS="-XX:MaxRAMPercentage=80"
 # sleep $GRACE
 
 # while :
@@ -46,7 +46,8 @@ echo "Starting SPARQLes server"
 # 	sleep $DELAY
 # done
 
+echo "${JAVA_OPTS}"
 
 ## Fully automatic
-bin/sparqles $CMDARGS --start
+JAVA_OPTS="${JAVA_OPTS} " bin/sparqles $CMDARGS --start
 
