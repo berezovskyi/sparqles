@@ -1,0 +1,47 @@
+name: Convert to RDF Workflow
+
+on:
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GLOBAL_PATTERN: "dataset/*.yml"
+      SERIALIZATION_FORMAT: turtle
+      OUTPUT_DIRECTORY: dataset/rml-w3c_sd/
+      CONVERT_ALL: true
+    steps:
+      # Checks-out your repository
+      - uses: actions/checkout@v2
+
+      - name: Converts YARRRML rules to RDF
+        uses: RMLio/rml-action@v1.0.0
+        with:
+          # the global pattern for all YARRRML mappings
+          global-pattern: ${{  env.GLOBAL_PATTERN  }}
+          # serialization format is optional; default - "nquads"
+          serialization-format: ${{  env.SERIALIZATION_FORMAT  }}
+          # the name of the directory where all the output files will be stored
+          output-directory: ${{  env.OUTPUT_DIRECTORY  }}
+          # convert-all is optional; default - "false"
+          # if convert-all is "true", the action will always convert all the files to
+          # RDF based on the yarrrml-files provided by `GLOBAL_PATTERN`, even if no
+          # changes were detected
+          convert-all: ${{ env.CONVERT_ALL }}
+
+      # Push the generated RDF files to the repository
+      - name: Commit and push the output
+        run: |
+          git config --global user.name 'RML action'
+          git config --global user.email 'actions@users.noreply.github.com'
+          git add .
+          set +e
+          git status | grep "nothing to commit, working tree clean"
+          if [ $? -eq 0 ]; then set -e; echo "INFO: No changes since last run"; else set -e; \
+            git commit -m "feat: convert to RDF with Github Actions"; git push; fi
+        shell: bash
