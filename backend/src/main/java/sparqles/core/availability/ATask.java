@@ -13,8 +13,10 @@ import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
 
+import javax.net.ssl.SSLHandshakeException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
+import java.net.http.HttpConnectTimeoutException;
 
 /**
  * This class performs the required task to study the availability of an endpoint.
@@ -124,9 +126,16 @@ public class ATask extends EndpointTask<AResult> {
                 result.setExplanation(msg);
                 return result;
             }
-            if (e.getCause() instanceof ConnectTimeoutException || e.getCause() instanceof ConnectException) {
+            if (e.getCause() instanceof ConnectTimeoutException || e.getCause() instanceof ConnectException || e.getCause() instanceof HttpConnectTimeoutException) {
                 result.setIsAvailable(false);
                 String msg = "🐌 connection timeout while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
+                return result;
+            }
+            if (e.getCause() instanceof SSLHandshakeException) {
+                result.setIsAvailable(false);
+                String msg = "🏰 failed to establish a TLS connection to " + _epURI;
                 log.info(msg);
                 result.setExplanation(msg);
                 return result;
@@ -143,6 +152,12 @@ public class ATask extends EndpointTask<AResult> {
                 log.info(msg);
                 result.setExplanation(msg);
                 result.setIsPrivate(true);
+                return result;
+            } else if (e.getMessage().contains("502")) {
+                result.setIsAvailable(false);
+                String msg = "🕳 server is likely down behind reverse proxy (502); while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
                 return result;
             }
         } catch (Exception e1) {
