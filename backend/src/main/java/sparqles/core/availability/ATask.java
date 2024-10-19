@@ -159,6 +159,12 @@ public class ATask extends EndpointTask<AResult> {
                 log.info(msg);
                 result.setExplanation(msg);
                 return result;
+            } else if (e.getMessage().contains("503")) {
+                result.setIsAvailable(false);
+                String msg = "🕳 endpoint is overloaded or gone (503); while connecting to " + _epURI;
+                log.info(msg);
+                result.setExplanation(msg);
+                return result;
             }
         } catch (Exception e1) {
             result.setIsAvailable(false);
