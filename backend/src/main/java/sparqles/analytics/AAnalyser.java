@@ -1,7 +1,6 @@
 package sparqles.analytics;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -35,7 +34,6 @@ public class AAnalyser extends Analytics<AResult> {
     /**
      * Computes the aggregated statistics for the Availability task
      *
-     * @param ep
      */
     public boolean analyse(AResult ares) {
         try {
@@ -171,7 +169,7 @@ public class AAnalyser extends Analytics<AResult> {
         AvailabilityView view = null;
         List<AvailabilityView> views = _db.getResults(ep, AvailabilityView.class, AvailabilityView.SCHEMA$);
         if (views.size() != 1) {
-            Log.warn("We have {} AvailabilityView, expected was 1", views.size());
+            log.warn("We have {} AvailabilityView, expected was 1", views.size());
         }
         if (views.size() == 0) {
             view = new AvailabilityView();

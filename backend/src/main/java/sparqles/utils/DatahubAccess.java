@@ -1,5 +1,9 @@
 package sparqles.utils;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -12,9 +16,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.util.EntityUtils;
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Dataset;
@@ -45,7 +46,6 @@ public class DatahubAccess {
     /**
      * This class fetch the SPARQL endpoint list from datahub using the datahub API
      *
-     * @param epm
      **/
     public static Collection<Endpoint> checkEndpointList() {
         Map<String, Endpoint> results = new HashMap<String, Endpoint>();
@@ -84,18 +84,18 @@ public class DatahubAccess {
             ObjectMapper mapper = new ObjectMapper(factory);
             JsonNode rootNode = mapper.readTree(respString);
             
-            JsonNode res = rootNode.get("result");
-            res = res.get("results");
+            var resNode = rootNode.get("result");
+            var res = (ArrayNode) resNode.get("results");
             log.info("We found {} datasets", res.size());
-            Iterator<JsonNode> iter = res.getElements();
+            Iterator<JsonNode> iter = res.elements();
             int c = 1;
             
             
             Map<String, Set<String>> map = new HashMap<String, Set<String>>();
             while (iter.hasNext()) {
                 JsonNode node = iter.next();
-                String endpointURL = node.findPath("url").getTextValue().trim();
-                String datasetId = node.findPath("package_id").getTextValue().trim();
+                String endpointURL = node.findPath("url").asText().trim();
+                String datasetId = node.findPath("package_id").asText().trim();
                 
                 Set<String> s = map.get(endpointURL);
                 if (s == null) {
@@ -161,7 +161,7 @@ public class DatahubAccess {
             JsonNode res = rootNode.get("result");
 
 //			System.out.println(rootNode);
-            String ckan_url = res.findPath("url").getTextValue();
+            String ckan_url = res.findPath("url").asText();
             List<JsonNode> titles = res.findValues("title");
             String title = null;
             for (JsonNode s : titles) {

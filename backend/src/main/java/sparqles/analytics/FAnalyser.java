@@ -1,6 +1,5 @@
 package sparqles.analytics;
 
-import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -80,7 +79,7 @@ public class FAnalyser extends Analytics<FResult> {
         InteroperabilityView view = null;
         List<InteroperabilityView> views = _db.getResults(ep, InteroperabilityView.class, InteroperabilityView.SCHEMA$);
         if (views.size() != 1) {
-            Log.warn("We have {} FeatureView, expected was 1", views.size());
+            log.warn("We have {} FeatureView, expected was 1", views.size());
         }
         if (views.size() == 0) {
             view = new InteroperabilityView();

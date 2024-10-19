@@ -1,7 +1,8 @@
 package sparqles.analytics;
 
 import org.apache.avro.specific.SpecificRecordBase;
-import org.mortbay.log.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
 import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewAvailability;
@@ -28,6 +29,7 @@ import java.util.List;
  */
 public abstract class Analytics<V extends SpecificRecordBase> {
     
+    private static Logger Log = LoggerFactory.getLogger(Analytics.class);
     
     protected final MongoDBManager _db;
     
