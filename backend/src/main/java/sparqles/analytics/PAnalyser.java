@@ -1,7 +1,6 @@
 package sparqles.analytics;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -123,7 +122,7 @@ public class PAnalyser extends Analytics<PResult> {
         PerformanceView view = null;
         List<PerformanceView> views = _db.getResults(ep, PerformanceView.class, PerformanceView.SCHEMA$);
         if (views.size() != 1) {
-            Log.warn("We have {} AvailabilityView, expected was 1", views.size());
+            log.warn("We have {} AvailabilityView, expected was 1", views.size());
         }
         if (views.size() == 0) {
             view = new PerformanceView();

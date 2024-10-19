@@ -1,8 +1,6 @@
 package sparqles.core;
 
-import org.apache.jena.http.HttpOp;
 import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.ResultSet;
 import org.junit.After;
 import org.junit.Before;

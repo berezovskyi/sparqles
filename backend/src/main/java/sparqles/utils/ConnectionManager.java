@@ -24,7 +24,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
-import org.mortbay.log.Log;
 
 import sparqles.core.CONSTANTS;
 

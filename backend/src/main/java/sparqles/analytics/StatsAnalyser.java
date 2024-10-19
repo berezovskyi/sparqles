@@ -1,6 +1,6 @@
 package sparqles.analytics;
 
-import org.apache.commons.math.stat.descriptive.SummaryStatistics;
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import sparqles.avro.EndpointResult;
 import sparqles.avro.analytics.Index;
 import sparqles.avro.availability.AResult;
