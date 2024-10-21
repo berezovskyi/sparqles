@@ -23,7 +23,7 @@ jobs:
       CONVERT_ALL: true
     steps:
       # Checks-out your repository
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Converts YARRRML rules to RDF
         uses: RMLio/rml-action@v1.0.0
