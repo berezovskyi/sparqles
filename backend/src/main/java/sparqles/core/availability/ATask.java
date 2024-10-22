@@ -175,7 +175,7 @@ public class ATask extends EndpointTask<AResult> {
                 if (e1.getMessage().contains("401 Authorization Required"))
                     result.setIsPrivate(true);
             
-            log.warn("failed SELECT query for {}, {}", _epURI, ExceptionHandler.logAndtoString(e1, true));
+            log.warn("failed SELECT query for {}, {} (type {})", _epURI, ExceptionHandler.logAndtoString(e1, true), e1.getClass().getName());
         }
         return result;
     }
