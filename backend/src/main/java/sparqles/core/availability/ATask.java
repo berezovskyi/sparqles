@@ -3,6 +3,7 @@ package sparqles.core.availability;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.jena.query.QueryExecution;
+import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -118,7 +119,7 @@ public class ATask extends EndpointTask<AResult> {
             log.info(msg);
             result.setExplanation(msg);
             return result;
-        } catch (HttpException e) {
+        } catch (QueryExceptionHTTP | HttpException e) {
             if (e.getCause() instanceof UnknownHostException) {
                 result.setIsAvailable(false);
                 String msg = "🕳️ host not found while connecting to " + _epURI;
