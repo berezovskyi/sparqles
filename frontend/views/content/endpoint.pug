@@ -17,8 +17,12 @@ block content
               li
                 a(href=epDetails.datasets[i].uri, target="_blank") #{epDetails.datasets[i].label}
           else
-            | Dataset:  
-            a(href=epDetails.datasets[0].uri, target="_blank") #{epDetails.datasets[0].label}
+            if epDetails.datasets && epDetails.datasets[0]
+              | Dataset:
+              if epDetails.datasets[0].uri  
+                a(href=epDetails.datasets[0].uri, target="_blank") #{epDetails.datasets[0].label}
+              else
+                em #{epDetails.datasets[0].label}
   .line
   section#posts.default-area
       article.wrpl(style='min-width: 400px; width:100%;')
