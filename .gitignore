@@ -22,6 +22,9 @@ node_modules/
 target/
 build/
 
+# VS Code
+.vscode/
+
 repo/
 conf/
 
