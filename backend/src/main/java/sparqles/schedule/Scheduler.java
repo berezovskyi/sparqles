@@ -75,8 +75,8 @@ public class Scheduler {
     public Scheduler(int threads) {
         int athreads = (int) (threads * 0.3);
         int tthreads = threads - athreads;
-        SERVICE = Executors.newScheduledThreadPool(tthreads);
-        ASERVICE = Executors.newScheduledThreadPool(athreads);
+        SERVICE = Executors.newScheduledThreadPool(tthreads, Thread.ofVirtual().factory());
+        ASERVICE = Executors.newScheduledThreadPool(athreads, Thread.ofVirtual().factory());
 
         _monitor = new SchedulerMonitor();
         _monitor.start();

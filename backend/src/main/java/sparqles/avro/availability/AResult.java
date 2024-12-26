@@ -5,10 +5,17 @@
  */
 package sparqles.avro.availability;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class AResult extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -3710164031125842257L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,20 +25,88 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.EndpointResult endpointResult;
-    @Deprecated public long responseTime;
-    @Deprecated public boolean isAvailable;
-    @Deprecated public boolean isPrivate;
-    @Deprecated public java.lang.CharSequence Exception;
-    @Deprecated public java.lang.CharSequence explanation;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<AResult> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<AResult> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<AResult> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<AResult> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<AResult> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this AResult to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a AResult from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a AResult instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static AResult fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.EndpointResult endpointResult;
+    private long responseTime;
+    private boolean isAvailable;
+    private boolean isPrivate;
+    private java.lang.CharSequence Exception;
+    private java.lang.CharSequence explanation;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public AResult() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpointResult The new value for endpointResult
+     * @param responseTime The new value for responseTime
+     * @param isAvailable The new value for isAvailable
+     * @param isPrivate The new value for isPrivate
+     * @param Exception The new value for Exception
+     * @param explanation The new value for explanation
+     */
     public AResult(
             sparqles.avro.EndpointResult endpointResult,
             java.lang.Long responseTime,
@@ -47,11 +122,18 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         this.explanation = explanation;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -67,11 +149,12 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             case 5:
                 return explanation;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -94,11 +177,15 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
                 explanation = (java.lang.CharSequence) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpointResult' field. */
+    /**
+     * Gets the value of the 'endpointResult' field.
+     *
+     * @return The value of the 'endpointResult' field.
+     */
     public sparqles.avro.EndpointResult getEndpointResult() {
         return endpointResult;
     }
@@ -112,8 +199,12 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         this.endpointResult = value;
     }
 
-    /** Gets the value of the 'responseTime' field. */
-    public java.lang.Long getResponseTime() {
+    /**
+     * Gets the value of the 'responseTime' field.
+     *
+     * @return The value of the 'responseTime' field.
+     */
+    public long getResponseTime() {
         return responseTime;
     }
 
@@ -122,12 +213,16 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setResponseTime(java.lang.Long value) {
+    public void setResponseTime(long value) {
         this.responseTime = value;
     }
 
-    /** Gets the value of the 'isAvailable' field. */
-    public java.lang.Boolean getIsAvailable() {
+    /**
+     * Gets the value of the 'isAvailable' field.
+     *
+     * @return The value of the 'isAvailable' field.
+     */
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 
@@ -136,12 +231,16 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setIsAvailable(java.lang.Boolean value) {
+    public void setIsAvailable(boolean value) {
         this.isAvailable = value;
     }
 
-    /** Gets the value of the 'isPrivate' field. */
-    public java.lang.Boolean getIsPrivate() {
+    /**
+     * Gets the value of the 'isPrivate' field.
+     *
+     * @return The value of the 'isPrivate' field.
+     */
+    public boolean getIsPrivate() {
         return isPrivate;
     }
 
@@ -150,11 +249,15 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setIsPrivate(java.lang.Boolean value) {
+    public void setIsPrivate(boolean value) {
         this.isPrivate = value;
     }
 
-    /** Gets the value of the 'Exception' field. */
+    /**
+     * Gets the value of the 'Exception' field.
+     *
+     * @return The value of the 'Exception' field.
+     */
     public java.lang.CharSequence getException() {
         return Exception;
     }
@@ -168,7 +271,11 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         this.Exception = value;
     }
 
-    /** Gets the value of the 'explanation' field. */
+    /**
+     * Gets the value of the 'explanation' field.
+     *
+     * @return The value of the 'explanation' field.
+     */
     public java.lang.CharSequence getExplanation() {
         return explanation;
     }
@@ -182,28 +289,52 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         this.explanation = value;
     }
 
-    /** Creates a new AResult RecordBuilder */
+    /**
+     * Creates a new AResult RecordBuilder.
+     *
+     * @return A new AResult RecordBuilder
+     */
     public static sparqles.avro.availability.AResult.Builder newBuilder() {
         return new sparqles.avro.availability.AResult.Builder();
     }
 
-    /** Creates a new AResult RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new AResult RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new AResult RecordBuilder
+     */
     public static sparqles.avro.availability.AResult.Builder newBuilder(
             sparqles.avro.availability.AResult.Builder other) {
-        return new sparqles.avro.availability.AResult.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.availability.AResult.Builder();
+        } else {
+            return new sparqles.avro.availability.AResult.Builder(other);
+        }
     }
 
-    /** Creates a new AResult RecordBuilder by copying an existing AResult instance */
+    /**
+     * Creates a new AResult RecordBuilder by copying an existing AResult instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new AResult RecordBuilder
+     */
     public static sparqles.avro.availability.AResult.Builder newBuilder(
             sparqles.avro.availability.AResult other) {
-        return new sparqles.avro.availability.AResult.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.availability.AResult.Builder();
+        } else {
+            return new sparqles.avro.availability.AResult.Builder(other);
+        }
     }
 
     /** RecordBuilder for AResult instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AResult>
             implements org.apache.avro.data.RecordBuilder<AResult> {
 
         private sparqles.avro.EndpointResult endpointResult;
+        private sparqles.avro.EndpointResult.Builder endpointResultBuilder;
         private long responseTime;
         private boolean isAvailable;
         private boolean isPrivate;
@@ -212,45 +343,58 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.availability.AResult.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.availability.AResult.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpointResult)) {
                 this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointResultBuilder()) {
+                this.endpointResultBuilder =
+                        sparqles.avro.EndpointResult.newBuilder(other.getEndpointResultBuilder());
             }
             if (isValidValue(fields()[1], other.responseTime)) {
                 this.responseTime = data().deepCopy(fields()[1].schema(), other.responseTime);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.isAvailable)) {
                 this.isAvailable = data().deepCopy(fields()[2].schema(), other.isAvailable);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.isPrivate)) {
                 this.isPrivate = data().deepCopy(fields()[3].schema(), other.isPrivate);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.Exception)) {
                 this.Exception = data().deepCopy(fields()[4].schema(), other.Exception);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.explanation)) {
                 this.explanation = data().deepCopy(fields()[5].schema(), other.explanation);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
         }
 
-        /** Creates a Builder by copying an existing AResult instance */
+        /**
+         * Creates a Builder by copying an existing AResult instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.availability.AResult other) {
-            super(sparqles.avro.availability.AResult.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpointResult)) {
                 this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointResultBuilder = null;
             if (isValidValue(fields()[1], other.responseTime)) {
                 this.responseTime = data().deepCopy(fields()[1].schema(), other.responseTime);
                 fieldSetFlags()[1] = true;
@@ -273,38 +417,106 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'endpointResult' field */
+        /**
+         * Gets the value of the 'endpointResult' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.EndpointResult getEndpointResult() {
             return endpointResult;
         }
 
-        /** Sets the value of the 'endpointResult' field */
+        /**
+         * Sets the value of the 'endpointResult' field.
+         *
+         * @param value The value of 'endpointResult'.
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder setEndpointResult(
                 sparqles.avro.EndpointResult value) {
             validate(fields()[0], value);
+            this.endpointResultBuilder = null;
             this.endpointResult = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpointResult' field has been set */
+        /**
+         * Checks whether the 'endpointResult' field has been set.
+         *
+         * @return True if the 'endpointResult' field has been set, false otherwise.
+         */
         public boolean hasEndpointResult() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpointResult' field */
+        /**
+         * Gets the Builder instance for the 'endpointResult' field and creates one if it doesn't
+         * exist yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.EndpointResult.Builder getEndpointResultBuilder() {
+            if (endpointResultBuilder == null) {
+                if (hasEndpointResult()) {
+                    setEndpointResultBuilder(
+                            sparqles.avro.EndpointResult.newBuilder(endpointResult));
+                } else {
+                    setEndpointResultBuilder(sparqles.avro.EndpointResult.newBuilder());
+                }
+            }
+            return endpointResultBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpointResult' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.availability.AResult.Builder setEndpointResultBuilder(
+                sparqles.avro.EndpointResult.Builder value) {
+            clearEndpointResult();
+            endpointResultBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpointResult' field has an active Builder instance
+         *
+         * @return True if the 'endpointResult' field has an active Builder instance
+         */
+        public boolean hasEndpointResultBuilder() {
+            return endpointResultBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpointResult' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder clearEndpointResult() {
             endpointResult = null;
+            endpointResultBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'responseTime' field */
-        public java.lang.Long getResponseTime() {
+        /**
+         * Gets the value of the 'responseTime' field.
+         *
+         * @return The value.
+         */
+        public long getResponseTime() {
             return responseTime;
         }
 
-        /** Sets the value of the 'responseTime' field */
+        /**
+         * Sets the value of the 'responseTime' field.
+         *
+         * @param value The value of 'responseTime'.
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder setResponseTime(long value) {
             validate(fields()[1], value);
             this.responseTime = value;
@@ -312,23 +524,40 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'responseTime' field has been set */
+        /**
+         * Checks whether the 'responseTime' field has been set.
+         *
+         * @return True if the 'responseTime' field has been set, false otherwise.
+         */
         public boolean hasResponseTime() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'responseTime' field */
+        /**
+         * Clears the value of the 'responseTime' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder clearResponseTime() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'isAvailable' field */
-        public java.lang.Boolean getIsAvailable() {
+        /**
+         * Gets the value of the 'isAvailable' field.
+         *
+         * @return The value.
+         */
+        public boolean getIsAvailable() {
             return isAvailable;
         }
 
-        /** Sets the value of the 'isAvailable' field */
+        /**
+         * Sets the value of the 'isAvailable' field.
+         *
+         * @param value The value of 'isAvailable'.
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder setIsAvailable(boolean value) {
             validate(fields()[2], value);
             this.isAvailable = value;
@@ -336,23 +565,40 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'isAvailable' field has been set */
+        /**
+         * Checks whether the 'isAvailable' field has been set.
+         *
+         * @return True if the 'isAvailable' field has been set, false otherwise.
+         */
         public boolean hasIsAvailable() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'isAvailable' field */
+        /**
+         * Clears the value of the 'isAvailable' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder clearIsAvailable() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'isPrivate' field */
-        public java.lang.Boolean getIsPrivate() {
+        /**
+         * Gets the value of the 'isPrivate' field.
+         *
+         * @return The value.
+         */
+        public boolean getIsPrivate() {
             return isPrivate;
         }
 
-        /** Sets the value of the 'isPrivate' field */
+        /**
+         * Sets the value of the 'isPrivate' field.
+         *
+         * @param value The value of 'isPrivate'.
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder setIsPrivate(boolean value) {
             validate(fields()[3], value);
             this.isPrivate = value;
@@ -360,23 +606,40 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'isPrivate' field has been set */
+        /**
+         * Checks whether the 'isPrivate' field has been set.
+         *
+         * @return True if the 'isPrivate' field has been set, false otherwise.
+         */
         public boolean hasIsPrivate() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'isPrivate' field */
+        /**
+         * Clears the value of the 'isPrivate' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder clearIsPrivate() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'Exception' field */
+        /**
+         * Gets the value of the 'Exception' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getException() {
             return Exception;
         }
 
-        /** Sets the value of the 'Exception' field */
+        /**
+         * Sets the value of the 'Exception' field.
+         *
+         * @param value The value of 'Exception'.
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder setException(
                 java.lang.CharSequence value) {
             validate(fields()[4], value);
@@ -385,24 +648,41 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'Exception' field has been set */
+        /**
+         * Checks whether the 'Exception' field has been set.
+         *
+         * @return True if the 'Exception' field has been set, false otherwise.
+         */
         public boolean hasException() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'Exception' field */
+        /**
+         * Clears the value of the 'Exception' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder clearException() {
             Exception = null;
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'explanation' field */
+        /**
+         * Gets the value of the 'explanation' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getExplanation() {
             return explanation;
         }
 
-        /** Sets the value of the 'explanation' field */
+        /**
+         * Sets the value of the 'explanation' field.
+         *
+         * @param value The value of 'explanation'.
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder setExplanation(
                 java.lang.CharSequence value) {
             validate(fields()[5], value);
@@ -411,12 +691,20 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'explanation' field has been set */
+        /**
+         * Checks whether the 'explanation' field has been set.
+         *
+         * @return True if the 'explanation' field has been set, false otherwise.
+         */
         public boolean hasExplanation() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'explanation' field */
+        /**
+         * Clears the value of the 'explanation' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.availability.AResult.Builder clearExplanation() {
             explanation = null;
             fieldSetFlags()[5] = false;
@@ -424,13 +712,23 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public AResult build() {
             try {
                 AResult record = new AResult();
-                record.endpointResult =
-                        fieldSetFlags()[0]
-                                ? this.endpointResult
-                                : (sparqles.avro.EndpointResult) defaultValue(fields()[0]);
+                if (endpointResultBuilder != null) {
+                    try {
+                        record.endpointResult = this.endpointResultBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpointResult"));
+                        throw e;
+                    }
+                } else {
+                    record.endpointResult =
+                            fieldSetFlags()[0]
+                                    ? this.endpointResult
+                                    : (sparqles.avro.EndpointResult) defaultValue(fields()[0]);
+                }
                 record.responseTime =
                         fieldSetFlags()[1]
                                 ? this.responseTime
@@ -452,8 +750,148 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.explanation
                                 : (java.lang.CharSequence) defaultValue(fields()[5]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<AResult> WRITER$ =
+            (org.apache.avro.io.DatumWriter<AResult>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<AResult> READER$ =
+            (org.apache.avro.io.DatumReader<AResult>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpointResult.customEncode(out);
+
+        out.writeLong(this.responseTime);
+
+        out.writeBoolean(this.isAvailable);
+
+        out.writeBoolean(this.isPrivate);
+
+        if (this.Exception == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.Exception);
+        }
+
+        if (this.explanation == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.explanation);
+        }
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpointResult == null) {
+                this.endpointResult = new sparqles.avro.EndpointResult();
+            }
+            this.endpointResult.customDecode(in);
+
+            this.responseTime = in.readLong();
+
+            this.isAvailable = in.readBoolean();
+
+            this.isPrivate = in.readBoolean();
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.Exception = null;
+            } else {
+                this.Exception =
+                        in.readString(
+                                this.Exception instanceof Utf8 ? (Utf8) this.Exception : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.explanation = null;
+            } else {
+                this.explanation =
+                        in.readString(
+                                this.explanation instanceof Utf8 ? (Utf8) this.explanation : null);
+            }
+
+        } else {
+            for (int i = 0; i < 6; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpointResult == null) {
+                            this.endpointResult = new sparqles.avro.EndpointResult();
+                        }
+                        this.endpointResult.customDecode(in);
+                        break;
+
+                    case 1:
+                        this.responseTime = in.readLong();
+                        break;
+
+                    case 2:
+                        this.isAvailable = in.readBoolean();
+                        break;
+
+                    case 3:
+                        this.isPrivate = in.readBoolean();
+                        break;
+
+                    case 4:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.Exception = null;
+                        } else {
+                            this.Exception =
+                                    in.readString(
+                                            this.Exception instanceof Utf8
+                                                    ? (Utf8) this.Exception
+                                                    : null);
+                        }
+                        break;
+
+                    case 5:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.explanation = null;
+                        } else {
+                            this.explanation =
+                                    in.readString(
+                                            this.explanation instanceof Utf8
+                                                    ? (Utf8) this.explanation
+                                                    : null);
+                        }
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

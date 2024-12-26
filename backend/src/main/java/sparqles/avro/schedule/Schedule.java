@@ -5,10 +5,17 @@
  */
 package sparqles.avro.schedule;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 1371232787442374287L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,22 +25,92 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public java.lang.CharSequence ATask;
-    @Deprecated public java.lang.CharSequence FTask;
-    @Deprecated public java.lang.CharSequence PTask;
-    @Deprecated public java.lang.CharSequence DTask;
-    @Deprecated public java.lang.CharSequence CTask;
-    @Deprecated public java.lang.CharSequence ITask;
-    @Deprecated public java.lang.CharSequence ETask;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<Schedule> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<Schedule> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<Schedule> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<Schedule> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<Schedule> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this Schedule to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a Schedule from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a Schedule instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static Schedule fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private java.lang.CharSequence ATask;
+    private java.lang.CharSequence FTask;
+    private java.lang.CharSequence PTask;
+    private java.lang.CharSequence DTask;
+    private java.lang.CharSequence CTask;
+    private java.lang.CharSequence ITask;
+    private java.lang.CharSequence ETask;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public Schedule() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param ATask The new value for ATask
+     * @param FTask The new value for FTask
+     * @param PTask The new value for PTask
+     * @param DTask The new value for DTask
+     * @param CTask The new value for CTask
+     * @param ITask The new value for ITask
+     * @param ETask The new value for ETask
+     */
     public Schedule(
             sparqles.avro.Endpoint endpoint,
             java.lang.CharSequence ATask,
@@ -53,11 +130,18 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.ETask = ETask;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -77,11 +161,12 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             case 7:
                 return ETask;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -110,11 +195,15 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
                 ETask = (java.lang.CharSequence) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -128,7 +217,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'ATask' field. */
+    /**
+     * Gets the value of the 'ATask' field.
+     *
+     * @return The value of the 'ATask' field.
+     */
     public java.lang.CharSequence getATask() {
         return ATask;
     }
@@ -142,7 +235,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.ATask = value;
     }
 
-    /** Gets the value of the 'FTask' field. */
+    /**
+     * Gets the value of the 'FTask' field.
+     *
+     * @return The value of the 'FTask' field.
+     */
     public java.lang.CharSequence getFTask() {
         return FTask;
     }
@@ -156,7 +253,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.FTask = value;
     }
 
-    /** Gets the value of the 'PTask' field. */
+    /**
+     * Gets the value of the 'PTask' field.
+     *
+     * @return The value of the 'PTask' field.
+     */
     public java.lang.CharSequence getPTask() {
         return PTask;
     }
@@ -170,7 +271,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.PTask = value;
     }
 
-    /** Gets the value of the 'DTask' field. */
+    /**
+     * Gets the value of the 'DTask' field.
+     *
+     * @return The value of the 'DTask' field.
+     */
     public java.lang.CharSequence getDTask() {
         return DTask;
     }
@@ -184,7 +289,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.DTask = value;
     }
 
-    /** Gets the value of the 'CTask' field. */
+    /**
+     * Gets the value of the 'CTask' field.
+     *
+     * @return The value of the 'CTask' field.
+     */
     public java.lang.CharSequence getCTask() {
         return CTask;
     }
@@ -198,7 +307,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.CTask = value;
     }
 
-    /** Gets the value of the 'ITask' field. */
+    /**
+     * Gets the value of the 'ITask' field.
+     *
+     * @return The value of the 'ITask' field.
+     */
     public java.lang.CharSequence getITask() {
         return ITask;
     }
@@ -212,7 +325,11 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.ITask = value;
     }
 
-    /** Gets the value of the 'ETask' field. */
+    /**
+     * Gets the value of the 'ETask' field.
+     *
+     * @return The value of the 'ETask' field.
+     */
     public java.lang.CharSequence getETask() {
         return ETask;
     }
@@ -226,28 +343,52 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.ETask = value;
     }
 
-    /** Creates a new Schedule RecordBuilder */
+    /**
+     * Creates a new Schedule RecordBuilder.
+     *
+     * @return A new Schedule RecordBuilder
+     */
     public static sparqles.avro.schedule.Schedule.Builder newBuilder() {
         return new sparqles.avro.schedule.Schedule.Builder();
     }
 
-    /** Creates a new Schedule RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new Schedule RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new Schedule RecordBuilder
+     */
     public static sparqles.avro.schedule.Schedule.Builder newBuilder(
             sparqles.avro.schedule.Schedule.Builder other) {
-        return new sparqles.avro.schedule.Schedule.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.schedule.Schedule.Builder();
+        } else {
+            return new sparqles.avro.schedule.Schedule.Builder(other);
+        }
     }
 
-    /** Creates a new Schedule RecordBuilder by copying an existing Schedule instance */
+    /**
+     * Creates a new Schedule RecordBuilder by copying an existing Schedule instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new Schedule RecordBuilder
+     */
     public static sparqles.avro.schedule.Schedule.Builder newBuilder(
             sparqles.avro.schedule.Schedule other) {
-        return new sparqles.avro.schedule.Schedule.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.schedule.Schedule.Builder();
+        } else {
+            return new sparqles.avro.schedule.Schedule.Builder(other);
+        }
     }
 
     /** RecordBuilder for Schedule instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Schedule>
             implements org.apache.avro.data.RecordBuilder<Schedule> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private java.lang.CharSequence ATask;
         private java.lang.CharSequence FTask;
         private java.lang.CharSequence PTask;
@@ -258,53 +399,66 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.schedule.Schedule.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.schedule.Schedule.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.ATask)) {
                 this.ATask = data().deepCopy(fields()[1].schema(), other.ATask);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.FTask)) {
                 this.FTask = data().deepCopy(fields()[2].schema(), other.FTask);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.PTask)) {
                 this.PTask = data().deepCopy(fields()[3].schema(), other.PTask);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.DTask)) {
                 this.DTask = data().deepCopy(fields()[4].schema(), other.DTask);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.CTask)) {
                 this.CTask = data().deepCopy(fields()[5].schema(), other.CTask);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.ITask)) {
                 this.ITask = data().deepCopy(fields()[6].schema(), other.ITask);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
             }
             if (isValidValue(fields()[7], other.ETask)) {
                 this.ETask = data().deepCopy(fields()[7].schema(), other.ETask);
-                fieldSetFlags()[7] = true;
+                fieldSetFlags()[7] = other.fieldSetFlags()[7];
             }
         }
 
-        /** Creates a Builder by copying an existing Schedule instance */
+        /**
+         * Creates a Builder by copying an existing Schedule instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.schedule.Schedule other) {
-            super(sparqles.avro.schedule.Schedule.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.ATask)) {
                 this.ATask = data().deepCopy(fields()[1].schema(), other.ATask);
                 fieldSetFlags()[1] = true;
@@ -335,37 +489,104 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setEndpoint(sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.schedule.Schedule.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'ATask' field */
+        /**
+         * Gets the value of the 'ATask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getATask() {
             return ATask;
         }
 
-        /** Sets the value of the 'ATask' field */
+        /**
+         * Sets the value of the 'ATask' field.
+         *
+         * @param value The value of 'ATask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setATask(java.lang.CharSequence value) {
             validate(fields()[1], value);
             this.ATask = value;
@@ -373,24 +594,41 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ATask' field has been set */
+        /**
+         * Checks whether the 'ATask' field has been set.
+         *
+         * @return True if the 'ATask' field has been set, false otherwise.
+         */
         public boolean hasATask() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'ATask' field */
+        /**
+         * Clears the value of the 'ATask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearATask() {
             ATask = null;
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'FTask' field */
+        /**
+         * Gets the value of the 'FTask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getFTask() {
             return FTask;
         }
 
-        /** Sets the value of the 'FTask' field */
+        /**
+         * Sets the value of the 'FTask' field.
+         *
+         * @param value The value of 'FTask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setFTask(java.lang.CharSequence value) {
             validate(fields()[2], value);
             this.FTask = value;
@@ -398,24 +636,41 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'FTask' field has been set */
+        /**
+         * Checks whether the 'FTask' field has been set.
+         *
+         * @return True if the 'FTask' field has been set, false otherwise.
+         */
         public boolean hasFTask() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'FTask' field */
+        /**
+         * Clears the value of the 'FTask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearFTask() {
             FTask = null;
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'PTask' field */
+        /**
+         * Gets the value of the 'PTask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getPTask() {
             return PTask;
         }
 
-        /** Sets the value of the 'PTask' field */
+        /**
+         * Sets the value of the 'PTask' field.
+         *
+         * @param value The value of 'PTask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setPTask(java.lang.CharSequence value) {
             validate(fields()[3], value);
             this.PTask = value;
@@ -423,24 +678,41 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'PTask' field has been set */
+        /**
+         * Checks whether the 'PTask' field has been set.
+         *
+         * @return True if the 'PTask' field has been set, false otherwise.
+         */
         public boolean hasPTask() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'PTask' field */
+        /**
+         * Clears the value of the 'PTask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearPTask() {
             PTask = null;
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'DTask' field */
+        /**
+         * Gets the value of the 'DTask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getDTask() {
             return DTask;
         }
 
-        /** Sets the value of the 'DTask' field */
+        /**
+         * Sets the value of the 'DTask' field.
+         *
+         * @param value The value of 'DTask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setDTask(java.lang.CharSequence value) {
             validate(fields()[4], value);
             this.DTask = value;
@@ -448,24 +720,41 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'DTask' field has been set */
+        /**
+         * Checks whether the 'DTask' field has been set.
+         *
+         * @return True if the 'DTask' field has been set, false otherwise.
+         */
         public boolean hasDTask() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'DTask' field */
+        /**
+         * Clears the value of the 'DTask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearDTask() {
             DTask = null;
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'CTask' field */
+        /**
+         * Gets the value of the 'CTask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getCTask() {
             return CTask;
         }
 
-        /** Sets the value of the 'CTask' field */
+        /**
+         * Sets the value of the 'CTask' field.
+         *
+         * @param value The value of 'CTask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setCTask(java.lang.CharSequence value) {
             validate(fields()[5], value);
             this.CTask = value;
@@ -473,24 +762,41 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'CTask' field has been set */
+        /**
+         * Checks whether the 'CTask' field has been set.
+         *
+         * @return True if the 'CTask' field has been set, false otherwise.
+         */
         public boolean hasCTask() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'CTask' field */
+        /**
+         * Clears the value of the 'CTask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearCTask() {
             CTask = null;
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'ITask' field */
+        /**
+         * Gets the value of the 'ITask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getITask() {
             return ITask;
         }
 
-        /** Sets the value of the 'ITask' field */
+        /**
+         * Sets the value of the 'ITask' field.
+         *
+         * @param value The value of 'ITask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setITask(java.lang.CharSequence value) {
             validate(fields()[6], value);
             this.ITask = value;
@@ -498,24 +804,41 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ITask' field has been set */
+        /**
+         * Checks whether the 'ITask' field has been set.
+         *
+         * @return True if the 'ITask' field has been set, false otherwise.
+         */
         public boolean hasITask() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'ITask' field */
+        /**
+         * Clears the value of the 'ITask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearITask() {
             ITask = null;
             fieldSetFlags()[6] = false;
             return this;
         }
 
-        /** Gets the value of the 'ETask' field */
+        /**
+         * Gets the value of the 'ETask' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getETask() {
             return ETask;
         }
 
-        /** Sets the value of the 'ETask' field */
+        /**
+         * Sets the value of the 'ETask' field.
+         *
+         * @param value The value of 'ETask'.
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder setETask(java.lang.CharSequence value) {
             validate(fields()[7], value);
             this.ETask = value;
@@ -523,12 +846,20 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ETask' field has been set */
+        /**
+         * Checks whether the 'ETask' field has been set.
+         *
+         * @return True if the 'ETask' field has been set, false otherwise.
+         */
         public boolean hasETask() {
             return fieldSetFlags()[7];
         }
 
-        /** Clears the value of the 'ETask' field */
+        /**
+         * Clears the value of the 'ETask' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.schedule.Schedule.Builder clearETask() {
             ETask = null;
             fieldSetFlags()[7] = false;
@@ -536,13 +867,23 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public Schedule build() {
             try {
                 Schedule record = new Schedule();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.ATask =
                         fieldSetFlags()[1]
                                 ? this.ATask
@@ -572,8 +913,246 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.ETask
                                 : (java.lang.CharSequence) defaultValue(fields()[7]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<Schedule> WRITER$ =
+            (org.apache.avro.io.DatumWriter<Schedule>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<Schedule> READER$ =
+            (org.apache.avro.io.DatumReader<Schedule>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        if (this.ATask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.ATask);
+        }
+
+        if (this.FTask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.FTask);
+        }
+
+        if (this.PTask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.PTask);
+        }
+
+        if (this.DTask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.DTask);
+        }
+
+        if (this.CTask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.CTask);
+        }
+
+        if (this.ITask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.ITask);
+        }
+
+        if (this.ETask == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.ETask);
+        }
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.ATask = null;
+            } else {
+                this.ATask = in.readString(this.ATask instanceof Utf8 ? (Utf8) this.ATask : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.FTask = null;
+            } else {
+                this.FTask = in.readString(this.FTask instanceof Utf8 ? (Utf8) this.FTask : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.PTask = null;
+            } else {
+                this.PTask = in.readString(this.PTask instanceof Utf8 ? (Utf8) this.PTask : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.DTask = null;
+            } else {
+                this.DTask = in.readString(this.DTask instanceof Utf8 ? (Utf8) this.DTask : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.CTask = null;
+            } else {
+                this.CTask = in.readString(this.CTask instanceof Utf8 ? (Utf8) this.CTask : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.ITask = null;
+            } else {
+                this.ITask = in.readString(this.ITask instanceof Utf8 ? (Utf8) this.ITask : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.ETask = null;
+            } else {
+                this.ETask = in.readString(this.ETask instanceof Utf8 ? (Utf8) this.ETask : null);
+            }
+
+        } else {
+            for (int i = 0; i < 8; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.ATask = null;
+                        } else {
+                            this.ATask =
+                                    in.readString(
+                                            this.ATask instanceof Utf8 ? (Utf8) this.ATask : null);
+                        }
+                        break;
+
+                    case 2:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.FTask = null;
+                        } else {
+                            this.FTask =
+                                    in.readString(
+                                            this.FTask instanceof Utf8 ? (Utf8) this.FTask : null);
+                        }
+                        break;
+
+                    case 3:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.PTask = null;
+                        } else {
+                            this.PTask =
+                                    in.readString(
+                                            this.PTask instanceof Utf8 ? (Utf8) this.PTask : null);
+                        }
+                        break;
+
+                    case 4:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.DTask = null;
+                        } else {
+                            this.DTask =
+                                    in.readString(
+                                            this.DTask instanceof Utf8 ? (Utf8) this.DTask : null);
+                        }
+                        break;
+
+                    case 5:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.CTask = null;
+                        } else {
+                            this.CTask =
+                                    in.readString(
+                                            this.CTask instanceof Utf8 ? (Utf8) this.CTask : null);
+                        }
+                        break;
+
+                    case 6:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.ITask = null;
+                        } else {
+                            this.ITask =
+                                    in.readString(
+                                            this.ITask instanceof Utf8 ? (Utf8) this.ITask : null);
+                        }
+                        break;
+
+                    case 7:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.ETask = null;
+                        } else {
+                            this.ETask =
+                                    in.readString(
+                                            this.ETask instanceof Utf8 ? (Utf8) this.ETask : null);
+                        }
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

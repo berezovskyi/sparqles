@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 2125895546380566315L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,22 +24,93 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
         return SCHEMA$;
     }
 
-    @Deprecated public java.util.List<sparqles.avro.analytics.IndexViewCalculationData> coherences;
-    @Deprecated public java.util.List<sparqles.avro.analytics.IndexViewCalculationData> rss;
-    @Deprecated public double VoID;
-    @Deprecated public double VoIDPart;
-    @Deprecated public double SD;
-    @Deprecated public double SDPart;
-    @Deprecated public double Coherence;
-    @Deprecated public double RS;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<IndexViewCalculation> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<IndexViewCalculation> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<IndexViewCalculation> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<IndexViewCalculation> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<IndexViewCalculation> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this IndexViewCalculation to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a IndexViewCalculation from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a IndexViewCalculation instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static IndexViewCalculation fromByteBuffer(java.nio.ByteBuffer b)
+            throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private java.util.List<sparqles.avro.analytics.IndexViewCalculationData> coherences;
+    private java.util.List<sparqles.avro.analytics.IndexViewCalculationData> rss;
+    private double VoID;
+    private double VoIDPart;
+    private double SD;
+    private double SDPart;
+    private double Coherence;
+    private double RS;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public IndexViewCalculation() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param coherences The new value for coherences
+     * @param rss The new value for rss
+     * @param VoID The new value for VoID
+     * @param VoIDPart The new value for VoIDPart
+     * @param SD The new value for SD
+     * @param SDPart The new value for SDPart
+     * @param Coherence The new value for Coherence
+     * @param RS The new value for RS
+     */
     public IndexViewCalculation(
             java.util.List<sparqles.avro.analytics.IndexViewCalculationData> coherences,
             java.util.List<sparqles.avro.analytics.IndexViewCalculationData> rss,
@@ -53,11 +130,18 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
         this.RS = RS;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -77,11 +161,12 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             case 7:
                 return RS;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -111,11 +196,15 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
                 RS = (java.lang.Double) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'coherences' field. */
+    /**
+     * Gets the value of the 'coherences' field.
+     *
+     * @return The value of the 'coherences' field.
+     */
     public java.util.List<sparqles.avro.analytics.IndexViewCalculationData> getCoherences() {
         return coherences;
     }
@@ -130,7 +219,11 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
         this.coherences = value;
     }
 
-    /** Gets the value of the 'rss' field. */
+    /**
+     * Gets the value of the 'rss' field.
+     *
+     * @return The value of the 'rss' field.
+     */
     public java.util.List<sparqles.avro.analytics.IndexViewCalculationData> getRss() {
         return rss;
     }
@@ -144,8 +237,12 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
         this.rss = value;
     }
 
-    /** Gets the value of the 'VoID' field. */
-    public java.lang.Double getVoID() {
+    /**
+     * Gets the value of the 'VoID' field.
+     *
+     * @return The value of the 'VoID' field.
+     */
+    public double getVoID() {
         return VoID;
     }
 
@@ -154,12 +251,16 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setVoID(java.lang.Double value) {
+    public void setVoID(double value) {
         this.VoID = value;
     }
 
-    /** Gets the value of the 'VoIDPart' field. */
-    public java.lang.Double getVoIDPart() {
+    /**
+     * Gets the value of the 'VoIDPart' field.
+     *
+     * @return The value of the 'VoIDPart' field.
+     */
+    public double getVoIDPart() {
         return VoIDPart;
     }
 
@@ -168,12 +269,16 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setVoIDPart(java.lang.Double value) {
+    public void setVoIDPart(double value) {
         this.VoIDPart = value;
     }
 
-    /** Gets the value of the 'SD' field. */
-    public java.lang.Double getSD() {
+    /**
+     * Gets the value of the 'SD' field.
+     *
+     * @return The value of the 'SD' field.
+     */
+    public double getSD() {
         return SD;
     }
 
@@ -182,12 +287,16 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setSD(java.lang.Double value) {
+    public void setSD(double value) {
         this.SD = value;
     }
 
-    /** Gets the value of the 'SDPart' field. */
-    public java.lang.Double getSDPart() {
+    /**
+     * Gets the value of the 'SDPart' field.
+     *
+     * @return The value of the 'SDPart' field.
+     */
+    public double getSDPart() {
         return SDPart;
     }
 
@@ -196,12 +305,16 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setSDPart(java.lang.Double value) {
+    public void setSDPart(double value) {
         this.SDPart = value;
     }
 
-    /** Gets the value of the 'Coherence' field. */
-    public java.lang.Double getCoherence() {
+    /**
+     * Gets the value of the 'Coherence' field.
+     *
+     * @return The value of the 'Coherence' field.
+     */
+    public double getCoherence() {
         return Coherence;
     }
 
@@ -210,12 +323,16 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setCoherence(java.lang.Double value) {
+    public void setCoherence(double value) {
         this.Coherence = value;
     }
 
-    /** Gets the value of the 'RS' field. */
-    public java.lang.Double getRS() {
+    /**
+     * Gets the value of the 'RS' field.
+     *
+     * @return The value of the 'RS' field.
+     */
+    public double getRS() {
         return RS;
     }
 
@@ -224,31 +341,52 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setRS(java.lang.Double value) {
+    public void setRS(double value) {
         this.RS = value;
     }
 
-    /** Creates a new IndexViewCalculation RecordBuilder */
+    /**
+     * Creates a new IndexViewCalculation RecordBuilder.
+     *
+     * @return A new IndexViewCalculation RecordBuilder
+     */
     public static sparqles.avro.analytics.IndexViewCalculation.Builder newBuilder() {
         return new sparqles.avro.analytics.IndexViewCalculation.Builder();
     }
 
-    /** Creates a new IndexViewCalculation RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new IndexViewCalculation RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new IndexViewCalculation RecordBuilder
+     */
     public static sparqles.avro.analytics.IndexViewCalculation.Builder newBuilder(
             sparqles.avro.analytics.IndexViewCalculation.Builder other) {
-        return new sparqles.avro.analytics.IndexViewCalculation.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.IndexViewCalculation.Builder();
+        } else {
+            return new sparqles.avro.analytics.IndexViewCalculation.Builder(other);
+        }
     }
 
     /**
      * Creates a new IndexViewCalculation RecordBuilder by copying an existing IndexViewCalculation
-     * instance
+     * instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new IndexViewCalculation RecordBuilder
      */
     public static sparqles.avro.analytics.IndexViewCalculation.Builder newBuilder(
             sparqles.avro.analytics.IndexViewCalculation other) {
-        return new sparqles.avro.analytics.IndexViewCalculation.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.IndexViewCalculation.Builder();
+        } else {
+            return new sparqles.avro.analytics.IndexViewCalculation.Builder(other);
+        }
     }
 
     /** RecordBuilder for IndexViewCalculation instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<IndexViewCalculation>
             implements org.apache.avro.data.RecordBuilder<IndexViewCalculation> {
@@ -264,49 +402,57 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.IndexViewCalculation.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.IndexViewCalculation.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.coherences)) {
                 this.coherences = data().deepCopy(fields()[0].schema(), other.coherences);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
             }
             if (isValidValue(fields()[1], other.rss)) {
                 this.rss = data().deepCopy(fields()[1].schema(), other.rss);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.VoID)) {
                 this.VoID = data().deepCopy(fields()[2].schema(), other.VoID);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.VoIDPart)) {
                 this.VoIDPart = data().deepCopy(fields()[3].schema(), other.VoIDPart);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.SD)) {
                 this.SD = data().deepCopy(fields()[4].schema(), other.SD);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.SDPart)) {
                 this.SDPart = data().deepCopy(fields()[5].schema(), other.SDPart);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.Coherence)) {
                 this.Coherence = data().deepCopy(fields()[6].schema(), other.Coherence);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
             }
             if (isValidValue(fields()[7], other.RS)) {
                 this.RS = data().deepCopy(fields()[7].schema(), other.RS);
-                fieldSetFlags()[7] = true;
+                fieldSetFlags()[7] = other.fieldSetFlags()[7];
             }
         }
 
-        /** Creates a Builder by copying an existing IndexViewCalculation instance */
+        /**
+         * Creates a Builder by copying an existing IndexViewCalculation instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.IndexViewCalculation other) {
-            super(sparqles.avro.analytics.IndexViewCalculation.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.coherences)) {
                 this.coherences = data().deepCopy(fields()[0].schema(), other.coherences);
                 fieldSetFlags()[0] = true;
@@ -341,12 +487,21 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             }
         }
 
-        /** Gets the value of the 'coherences' field */
+        /**
+         * Gets the value of the 'coherences' field.
+         *
+         * @return The value.
+         */
         public java.util.List<sparqles.avro.analytics.IndexViewCalculationData> getCoherences() {
             return coherences;
         }
 
-        /** Sets the value of the 'coherences' field */
+        /**
+         * Sets the value of the 'coherences' field.
+         *
+         * @param value The value of 'coherences'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setCoherences(
                 java.util.List<sparqles.avro.analytics.IndexViewCalculationData> value) {
             validate(fields()[0], value);
@@ -355,24 +510,41 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'coherences' field has been set */
+        /**
+         * Checks whether the 'coherences' field has been set.
+         *
+         * @return True if the 'coherences' field has been set, false otherwise.
+         */
         public boolean hasCoherences() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'coherences' field */
+        /**
+         * Clears the value of the 'coherences' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearCoherences() {
             coherences = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'rss' field */
+        /**
+         * Gets the value of the 'rss' field.
+         *
+         * @return The value.
+         */
         public java.util.List<sparqles.avro.analytics.IndexViewCalculationData> getRss() {
             return rss;
         }
 
-        /** Sets the value of the 'rss' field */
+        /**
+         * Sets the value of the 'rss' field.
+         *
+         * @param value The value of 'rss'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setRss(
                 java.util.List<sparqles.avro.analytics.IndexViewCalculationData> value) {
             validate(fields()[1], value);
@@ -381,24 +553,41 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'rss' field has been set */
+        /**
+         * Checks whether the 'rss' field has been set.
+         *
+         * @return True if the 'rss' field has been set, false otherwise.
+         */
         public boolean hasRss() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'rss' field */
+        /**
+         * Clears the value of the 'rss' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearRss() {
             rss = null;
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'VoID' field */
-        public java.lang.Double getVoID() {
+        /**
+         * Gets the value of the 'VoID' field.
+         *
+         * @return The value.
+         */
+        public double getVoID() {
             return VoID;
         }
 
-        /** Sets the value of the 'VoID' field */
+        /**
+         * Sets the value of the 'VoID' field.
+         *
+         * @param value The value of 'VoID'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setVoID(double value) {
             validate(fields()[2], value);
             this.VoID = value;
@@ -406,23 +595,40 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'VoID' field has been set */
+        /**
+         * Checks whether the 'VoID' field has been set.
+         *
+         * @return True if the 'VoID' field has been set, false otherwise.
+         */
         public boolean hasVoID() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'VoID' field */
+        /**
+         * Clears the value of the 'VoID' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearVoID() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'VoIDPart' field */
-        public java.lang.Double getVoIDPart() {
+        /**
+         * Gets the value of the 'VoIDPart' field.
+         *
+         * @return The value.
+         */
+        public double getVoIDPart() {
             return VoIDPart;
         }
 
-        /** Sets the value of the 'VoIDPart' field */
+        /**
+         * Sets the value of the 'VoIDPart' field.
+         *
+         * @param value The value of 'VoIDPart'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setVoIDPart(double value) {
             validate(fields()[3], value);
             this.VoIDPart = value;
@@ -430,23 +636,40 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'VoIDPart' field has been set */
+        /**
+         * Checks whether the 'VoIDPart' field has been set.
+         *
+         * @return True if the 'VoIDPart' field has been set, false otherwise.
+         */
         public boolean hasVoIDPart() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'VoIDPart' field */
+        /**
+         * Clears the value of the 'VoIDPart' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearVoIDPart() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'SD' field */
-        public java.lang.Double getSD() {
+        /**
+         * Gets the value of the 'SD' field.
+         *
+         * @return The value.
+         */
+        public double getSD() {
             return SD;
         }
 
-        /** Sets the value of the 'SD' field */
+        /**
+         * Sets the value of the 'SD' field.
+         *
+         * @param value The value of 'SD'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setSD(double value) {
             validate(fields()[4], value);
             this.SD = value;
@@ -454,23 +677,40 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'SD' field has been set */
+        /**
+         * Checks whether the 'SD' field has been set.
+         *
+         * @return True if the 'SD' field has been set, false otherwise.
+         */
         public boolean hasSD() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'SD' field */
+        /**
+         * Clears the value of the 'SD' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearSD() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'SDPart' field */
-        public java.lang.Double getSDPart() {
+        /**
+         * Gets the value of the 'SDPart' field.
+         *
+         * @return The value.
+         */
+        public double getSDPart() {
             return SDPart;
         }
 
-        /** Sets the value of the 'SDPart' field */
+        /**
+         * Sets the value of the 'SDPart' field.
+         *
+         * @param value The value of 'SDPart'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setSDPart(double value) {
             validate(fields()[5], value);
             this.SDPart = value;
@@ -478,23 +718,40 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'SDPart' field has been set */
+        /**
+         * Checks whether the 'SDPart' field has been set.
+         *
+         * @return True if the 'SDPart' field has been set, false otherwise.
+         */
         public boolean hasSDPart() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'SDPart' field */
+        /**
+         * Clears the value of the 'SDPart' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearSDPart() {
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'Coherence' field */
-        public java.lang.Double getCoherence() {
+        /**
+         * Gets the value of the 'Coherence' field.
+         *
+         * @return The value.
+         */
+        public double getCoherence() {
             return Coherence;
         }
 
-        /** Sets the value of the 'Coherence' field */
+        /**
+         * Sets the value of the 'Coherence' field.
+         *
+         * @param value The value of 'Coherence'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setCoherence(double value) {
             validate(fields()[6], value);
             this.Coherence = value;
@@ -502,23 +759,40 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'Coherence' field has been set */
+        /**
+         * Checks whether the 'Coherence' field has been set.
+         *
+         * @return True if the 'Coherence' field has been set, false otherwise.
+         */
         public boolean hasCoherence() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'Coherence' field */
+        /**
+         * Clears the value of the 'Coherence' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearCoherence() {
             fieldSetFlags()[6] = false;
             return this;
         }
 
-        /** Gets the value of the 'RS' field */
-        public java.lang.Double getRS() {
+        /**
+         * Gets the value of the 'RS' field.
+         *
+         * @return The value.
+         */
+        public double getRS() {
             return RS;
         }
 
-        /** Sets the value of the 'RS' field */
+        /**
+         * Sets the value of the 'RS' field.
+         *
+         * @param value The value of 'RS'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder setRS(double value) {
             validate(fields()[7], value);
             this.RS = value;
@@ -526,18 +800,27 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'RS' field has been set */
+        /**
+         * Checks whether the 'RS' field has been set.
+         *
+         * @return True if the 'RS' field has been set, false otherwise.
+         */
         public boolean hasRS() {
             return fieldSetFlags()[7];
         }
 
-        /** Clears the value of the 'RS' field */
+        /**
+         * Clears the value of the 'RS' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewCalculation.Builder clearRS() {
             fieldSetFlags()[7] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public IndexViewCalculation build() {
             try {
                 IndexViewCalculation record = new IndexViewCalculation();
@@ -572,8 +855,248 @@ public class IndexViewCalculation extends org.apache.avro.specific.SpecificRecor
                 record.RS =
                         fieldSetFlags()[7] ? this.RS : (java.lang.Double) defaultValue(fields()[7]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<IndexViewCalculation> WRITER$ =
+            (org.apache.avro.io.DatumWriter<IndexViewCalculation>)
+                    MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<IndexViewCalculation> READER$ =
+            (org.apache.avro.io.DatumReader<IndexViewCalculation>)
+                    MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        long size0 = this.coherences.size();
+        out.writeArrayStart();
+        out.setItemCount(size0);
+        long actualSize0 = 0;
+        for (sparqles.avro.analytics.IndexViewCalculationData e0 : this.coherences) {
+            actualSize0++;
+            out.startItem();
+            e0.customEncode(out);
+        }
+        out.writeArrayEnd();
+        if (actualSize0 != size0)
+            throw new java.util.ConcurrentModificationException(
+                    "Array-size written was "
+                            + size0
+                            + ", but element count was "
+                            + actualSize0
+                            + ".");
+
+        long size1 = this.rss.size();
+        out.writeArrayStart();
+        out.setItemCount(size1);
+        long actualSize1 = 0;
+        for (sparqles.avro.analytics.IndexViewCalculationData e1 : this.rss) {
+            actualSize1++;
+            out.startItem();
+            e1.customEncode(out);
+        }
+        out.writeArrayEnd();
+        if (actualSize1 != size1)
+            throw new java.util.ConcurrentModificationException(
+                    "Array-size written was "
+                            + size1
+                            + ", but element count was "
+                            + actualSize1
+                            + ".");
+
+        out.writeDouble(this.VoID);
+
+        out.writeDouble(this.VoIDPart);
+
+        out.writeDouble(this.SD);
+
+        out.writeDouble(this.SDPart);
+
+        out.writeDouble(this.Coherence);
+
+        out.writeDouble(this.RS);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            long size0 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.IndexViewCalculationData> a0 = this.coherences;
+            if (a0 == null) {
+                a0 =
+                        new SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData>(
+                                (int) size0, SCHEMA$.getField("coherences").schema());
+                this.coherences = a0;
+            } else a0.clear();
+            SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData> ga0 =
+                    (a0 instanceof SpecificData.Array
+                            ? (SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData>)
+                                    a0
+                            : null);
+            for (; 0 < size0; size0 = in.arrayNext()) {
+                for (; size0 != 0; size0--) {
+                    sparqles.avro.analytics.IndexViewCalculationData e0 =
+                            (ga0 != null ? ga0.peek() : null);
+                    if (e0 == null) {
+                        e0 = new sparqles.avro.analytics.IndexViewCalculationData();
+                    }
+                    e0.customDecode(in);
+                    a0.add(e0);
+                }
+            }
+
+            long size1 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.IndexViewCalculationData> a1 = this.rss;
+            if (a1 == null) {
+                a1 =
+                        new SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData>(
+                                (int) size1, SCHEMA$.getField("rss").schema());
+                this.rss = a1;
+            } else a1.clear();
+            SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData> ga1 =
+                    (a1 instanceof SpecificData.Array
+                            ? (SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData>)
+                                    a1
+                            : null);
+            for (; 0 < size1; size1 = in.arrayNext()) {
+                for (; size1 != 0; size1--) {
+                    sparqles.avro.analytics.IndexViewCalculationData e1 =
+                            (ga1 != null ? ga1.peek() : null);
+                    if (e1 == null) {
+                        e1 = new sparqles.avro.analytics.IndexViewCalculationData();
+                    }
+                    e1.customDecode(in);
+                    a1.add(e1);
+                }
+            }
+
+            this.VoID = in.readDouble();
+
+            this.VoIDPart = in.readDouble();
+
+            this.SD = in.readDouble();
+
+            this.SDPart = in.readDouble();
+
+            this.Coherence = in.readDouble();
+
+            this.RS = in.readDouble();
+
+        } else {
+            for (int i = 0; i < 8; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        long size0 = in.readArrayStart();
+                        java.util.List<sparqles.avro.analytics.IndexViewCalculationData> a0 =
+                                this.coherences;
+                        if (a0 == null) {
+                            a0 =
+                                    new SpecificData.Array<
+                                            sparqles.avro.analytics.IndexViewCalculationData>(
+                                            (int) size0, SCHEMA$.getField("coherences").schema());
+                            this.coherences = a0;
+                        } else a0.clear();
+                        SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData> ga0 =
+                                (a0 instanceof SpecificData.Array
+                                        ? (SpecificData.Array<
+                                                        sparqles.avro.analytics
+                                                                .IndexViewCalculationData>)
+                                                a0
+                                        : null);
+                        for (; 0 < size0; size0 = in.arrayNext()) {
+                            for (; size0 != 0; size0--) {
+                                sparqles.avro.analytics.IndexViewCalculationData e0 =
+                                        (ga0 != null ? ga0.peek() : null);
+                                if (e0 == null) {
+                                    e0 = new sparqles.avro.analytics.IndexViewCalculationData();
+                                }
+                                e0.customDecode(in);
+                                a0.add(e0);
+                            }
+                        }
+                        break;
+
+                    case 1:
+                        long size1 = in.readArrayStart();
+                        java.util.List<sparqles.avro.analytics.IndexViewCalculationData> a1 =
+                                this.rss;
+                        if (a1 == null) {
+                            a1 =
+                                    new SpecificData.Array<
+                                            sparqles.avro.analytics.IndexViewCalculationData>(
+                                            (int) size1, SCHEMA$.getField("rss").schema());
+                            this.rss = a1;
+                        } else a1.clear();
+                        SpecificData.Array<sparqles.avro.analytics.IndexViewCalculationData> ga1 =
+                                (a1 instanceof SpecificData.Array
+                                        ? (SpecificData.Array<
+                                                        sparqles.avro.analytics
+                                                                .IndexViewCalculationData>)
+                                                a1
+                                        : null);
+                        for (; 0 < size1; size1 = in.arrayNext()) {
+                            for (; size1 != 0; size1--) {
+                                sparqles.avro.analytics.IndexViewCalculationData e1 =
+                                        (ga1 != null ? ga1.peek() : null);
+                                if (e1 == null) {
+                                    e1 = new sparqles.avro.analytics.IndexViewCalculationData();
+                                }
+                                e1.customDecode(in);
+                                a1.add(e1);
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        this.VoID = in.readDouble();
+                        break;
+
+                    case 3:
+                        this.VoIDPart = in.readDouble();
+                        break;
+
+                    case 4:
+                        this.SD = in.readDouble();
+                        break;
+
+                    case 5:
+                        this.SDPart = in.readDouble();
+                        break;
+
+                    case 6:
+                        this.Coherence = in.readDouble();
+                        break;
+
+                    case 7:
+                        this.RS = in.readDouble();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

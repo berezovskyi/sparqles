@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -7717181572167394328L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,20 +24,86 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
         return SCHEMA$;
     }
 
-    @Deprecated
-    public java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> serverName;
+    private static final SpecificData MODEL$ = new SpecificData();
 
-    @Deprecated public double VoIDDescription;
-    @Deprecated public double SDDescription;
-    @Deprecated public double NoDescription;
+    private static final BinaryMessageEncoder<IndexViewDiscoverability> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<IndexViewDiscoverability> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<IndexViewDiscoverability> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<IndexViewDiscoverability> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<IndexViewDiscoverability> createDecoder(
+            SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this IndexViewDiscoverability to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a IndexViewDiscoverability from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a IndexViewDiscoverability instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static IndexViewDiscoverability fromByteBuffer(java.nio.ByteBuffer b)
+            throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> serverName;
+    private double VoIDDescription;
+    private double SDDescription;
+    private double NoDescription;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public IndexViewDiscoverability() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param serverName The new value for serverName
+     * @param VoIDDescription The new value for VoIDDescription
+     * @param SDDescription The new value for SDDescription
+     * @param NoDescription The new value for NoDescription
+     */
     public IndexViewDiscoverability(
             java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> serverName,
             java.lang.Double VoIDDescription,
@@ -43,11 +115,18 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
         this.NoDescription = NoDescription;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -59,11 +138,12 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
             case 3:
                 return NoDescription;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -82,11 +162,15 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
                 NoDescription = (java.lang.Double) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'serverName' field. */
+    /**
+     * Gets the value of the 'serverName' field.
+     *
+     * @return The value of the 'serverName' field.
+     */
     public java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> getServerName() {
         return serverName;
     }
@@ -101,8 +185,12 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
         this.serverName = value;
     }
 
-    /** Gets the value of the 'VoIDDescription' field. */
-    public java.lang.Double getVoIDDescription() {
+    /**
+     * Gets the value of the 'VoIDDescription' field.
+     *
+     * @return The value of the 'VoIDDescription' field.
+     */
+    public double getVoIDDescription() {
         return VoIDDescription;
     }
 
@@ -111,12 +199,16 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
      *
      * @param value the value to set.
      */
-    public void setVoIDDescription(java.lang.Double value) {
+    public void setVoIDDescription(double value) {
         this.VoIDDescription = value;
     }
 
-    /** Gets the value of the 'SDDescription' field. */
-    public java.lang.Double getSDDescription() {
+    /**
+     * Gets the value of the 'SDDescription' field.
+     *
+     * @return The value of the 'SDDescription' field.
+     */
+    public double getSDDescription() {
         return SDDescription;
     }
 
@@ -125,12 +217,16 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
      *
      * @param value the value to set.
      */
-    public void setSDDescription(java.lang.Double value) {
+    public void setSDDescription(double value) {
         this.SDDescription = value;
     }
 
-    /** Gets the value of the 'NoDescription' field. */
-    public java.lang.Double getNoDescription() {
+    /**
+     * Gets the value of the 'NoDescription' field.
+     *
+     * @return The value of the 'NoDescription' field.
+     */
+    public double getNoDescription() {
         return NoDescription;
     }
 
@@ -139,31 +235,52 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
      *
      * @param value the value to set.
      */
-    public void setNoDescription(java.lang.Double value) {
+    public void setNoDescription(double value) {
         this.NoDescription = value;
     }
 
-    /** Creates a new IndexViewDiscoverability RecordBuilder */
+    /**
+     * Creates a new IndexViewDiscoverability RecordBuilder.
+     *
+     * @return A new IndexViewDiscoverability RecordBuilder
+     */
     public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder() {
         return new sparqles.avro.analytics.IndexViewDiscoverability.Builder();
     }
 
-    /** Creates a new IndexViewDiscoverability RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new IndexViewDiscoverability RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new IndexViewDiscoverability RecordBuilder
+     */
     public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder(
             sparqles.avro.analytics.IndexViewDiscoverability.Builder other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.IndexViewDiscoverability.Builder();
+        } else {
+            return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
+        }
     }
 
     /**
      * Creates a new IndexViewDiscoverability RecordBuilder by copying an existing
-     * IndexViewDiscoverability instance
+     * IndexViewDiscoverability instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new IndexViewDiscoverability RecordBuilder
      */
     public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder(
             sparqles.avro.analytics.IndexViewDiscoverability other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.IndexViewDiscoverability.Builder();
+        } else {
+            return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
+        }
     }
 
     /** RecordBuilder for IndexViewDiscoverability instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<IndexViewDiscoverability>
             implements org.apache.avro.data.RecordBuilder<IndexViewDiscoverability> {
@@ -175,33 +292,41 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.IndexViewDiscoverability.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.IndexViewDiscoverability.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.serverName)) {
                 this.serverName = data().deepCopy(fields()[0].schema(), other.serverName);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
             }
             if (isValidValue(fields()[1], other.VoIDDescription)) {
                 this.VoIDDescription = data().deepCopy(fields()[1].schema(), other.VoIDDescription);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.SDDescription)) {
                 this.SDDescription = data().deepCopy(fields()[2].schema(), other.SDDescription);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.NoDescription)) {
                 this.NoDescription = data().deepCopy(fields()[3].schema(), other.NoDescription);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
         }
 
-        /** Creates a Builder by copying an existing IndexViewDiscoverability instance */
+        /**
+         * Creates a Builder by copying an existing IndexViewDiscoverability instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.IndexViewDiscoverability other) {
-            super(sparqles.avro.analytics.IndexViewDiscoverability.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.serverName)) {
                 this.serverName = data().deepCopy(fields()[0].schema(), other.serverName);
                 fieldSetFlags()[0] = true;
@@ -220,13 +345,22 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
             }
         }
 
-        /** Gets the value of the 'serverName' field */
+        /**
+         * Gets the value of the 'serverName' field.
+         *
+         * @return The value.
+         */
         public java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData>
                 getServerName() {
             return serverName;
         }
 
-        /** Sets the value of the 'serverName' field */
+        /**
+         * Sets the value of the 'serverName' field.
+         *
+         * @param value The value of 'serverName'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder setServerName(
                 java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> value) {
             validate(fields()[0], value);
@@ -235,24 +369,41 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
             return this;
         }
 
-        /** Checks whether the 'serverName' field has been set */
+        /**
+         * Checks whether the 'serverName' field has been set.
+         *
+         * @return True if the 'serverName' field has been set, false otherwise.
+         */
         public boolean hasServerName() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'serverName' field */
+        /**
+         * Clears the value of the 'serverName' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder clearServerName() {
             serverName = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'VoIDDescription' field */
-        public java.lang.Double getVoIDDescription() {
+        /**
+         * Gets the value of the 'VoIDDescription' field.
+         *
+         * @return The value.
+         */
+        public double getVoIDDescription() {
             return VoIDDescription;
         }
 
-        /** Sets the value of the 'VoIDDescription' field */
+        /**
+         * Sets the value of the 'VoIDDescription' field.
+         *
+         * @param value The value of 'VoIDDescription'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder setVoIDDescription(
                 double value) {
             validate(fields()[1], value);
@@ -261,23 +412,40 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
             return this;
         }
 
-        /** Checks whether the 'VoIDDescription' field has been set */
+        /**
+         * Checks whether the 'VoIDDescription' field has been set.
+         *
+         * @return True if the 'VoIDDescription' field has been set, false otherwise.
+         */
         public boolean hasVoIDDescription() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'VoIDDescription' field */
+        /**
+         * Clears the value of the 'VoIDDescription' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder clearVoIDDescription() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'SDDescription' field */
-        public java.lang.Double getSDDescription() {
+        /**
+         * Gets the value of the 'SDDescription' field.
+         *
+         * @return The value.
+         */
+        public double getSDDescription() {
             return SDDescription;
         }
 
-        /** Sets the value of the 'SDDescription' field */
+        /**
+         * Sets the value of the 'SDDescription' field.
+         *
+         * @param value The value of 'SDDescription'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder setSDDescription(
                 double value) {
             validate(fields()[2], value);
@@ -286,23 +454,40 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
             return this;
         }
 
-        /** Checks whether the 'SDDescription' field has been set */
+        /**
+         * Checks whether the 'SDDescription' field has been set.
+         *
+         * @return True if the 'SDDescription' field has been set, false otherwise.
+         */
         public boolean hasSDDescription() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'SDDescription' field */
+        /**
+         * Clears the value of the 'SDDescription' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder clearSDDescription() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'NoDescription' field */
-        public java.lang.Double getNoDescription() {
+        /**
+         * Gets the value of the 'NoDescription' field.
+         *
+         * @return The value.
+         */
+        public double getNoDescription() {
             return NoDescription;
         }
 
-        /** Sets the value of the 'NoDescription' field */
+        /**
+         * Sets the value of the 'NoDescription' field.
+         *
+         * @param value The value of 'NoDescription'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder setNoDescription(
                 double value) {
             validate(fields()[3], value);
@@ -311,18 +496,27 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
             return this;
         }
 
-        /** Checks whether the 'NoDescription' field has been set */
+        /**
+         * Checks whether the 'NoDescription' field has been set.
+         *
+         * @return True if the 'NoDescription' field has been set, false otherwise.
+         */
         public boolean hasNoDescription() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'NoDescription' field */
+        /**
+         * Clears the value of the 'NoDescription' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability.Builder clearNoDescription() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public IndexViewDiscoverability build() {
             try {
                 IndexViewDiscoverability record = new IndexViewDiscoverability();
@@ -346,8 +540,154 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
                                 ? this.NoDescription
                                 : (java.lang.Double) defaultValue(fields()[3]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<IndexViewDiscoverability> WRITER$ =
+            (org.apache.avro.io.DatumWriter<IndexViewDiscoverability>)
+                    MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<IndexViewDiscoverability> READER$ =
+            (org.apache.avro.io.DatumReader<IndexViewDiscoverability>)
+                    MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        long size0 = this.serverName.size();
+        out.writeArrayStart();
+        out.setItemCount(size0);
+        long actualSize0 = 0;
+        for (sparqles.avro.analytics.IndexViewDiscoverabilityData e0 : this.serverName) {
+            actualSize0++;
+            out.startItem();
+            e0.customEncode(out);
+        }
+        out.writeArrayEnd();
+        if (actualSize0 != size0)
+            throw new java.util.ConcurrentModificationException(
+                    "Array-size written was "
+                            + size0
+                            + ", but element count was "
+                            + actualSize0
+                            + ".");
+
+        out.writeDouble(this.VoIDDescription);
+
+        out.writeDouble(this.SDDescription);
+
+        out.writeDouble(this.NoDescription);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            long size0 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> a0 =
+                    this.serverName;
+            if (a0 == null) {
+                a0 =
+                        new SpecificData.Array<
+                                sparqles.avro.analytics.IndexViewDiscoverabilityData>(
+                                (int) size0, SCHEMA$.getField("serverName").schema());
+                this.serverName = a0;
+            } else a0.clear();
+            SpecificData.Array<sparqles.avro.analytics.IndexViewDiscoverabilityData> ga0 =
+                    (a0 instanceof SpecificData.Array
+                            ? (SpecificData.Array<
+                                            sparqles.avro.analytics.IndexViewDiscoverabilityData>)
+                                    a0
+                            : null);
+            for (; 0 < size0; size0 = in.arrayNext()) {
+                for (; size0 != 0; size0--) {
+                    sparqles.avro.analytics.IndexViewDiscoverabilityData e0 =
+                            (ga0 != null ? ga0.peek() : null);
+                    if (e0 == null) {
+                        e0 = new sparqles.avro.analytics.IndexViewDiscoverabilityData();
+                    }
+                    e0.customDecode(in);
+                    a0.add(e0);
+                }
+            }
+
+            this.VoIDDescription = in.readDouble();
+
+            this.SDDescription = in.readDouble();
+
+            this.NoDescription = in.readDouble();
+
+        } else {
+            for (int i = 0; i < 4; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        long size0 = in.readArrayStart();
+                        java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> a0 =
+                                this.serverName;
+                        if (a0 == null) {
+                            a0 =
+                                    new SpecificData.Array<
+                                            sparqles.avro.analytics.IndexViewDiscoverabilityData>(
+                                            (int) size0, SCHEMA$.getField("serverName").schema());
+                            this.serverName = a0;
+                        } else a0.clear();
+                        SpecificData.Array<sparqles.avro.analytics.IndexViewDiscoverabilityData>
+                                ga0 =
+                                        (a0 instanceof SpecificData.Array
+                                                ? (SpecificData.Array<
+                                                                sparqles.avro.analytics
+                                                                        .IndexViewDiscoverabilityData>)
+                                                        a0
+                                                : null);
+                        for (; 0 < size0; size0 = in.arrayNext()) {
+                            for (; size0 != 0; size0--) {
+                                sparqles.avro.analytics.IndexViewDiscoverabilityData e0 =
+                                        (ga0 != null ? ga0.peek() : null);
+                                if (e0 == null) {
+                                    e0 = new sparqles.avro.analytics.IndexViewDiscoverabilityData();
+                                }
+                                e0.customDecode(in);
+                                a0.add(e0);
+                            }
+                        }
+                        break;
+
+                    case 1:
+                        this.VoIDDescription = in.readDouble();
+                        break;
+
+                    case 2:
+                        this.SDDescription = in.readDouble();
+                        break;
+
+                    case 3:
+                        this.NoDescription = in.readDouble();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

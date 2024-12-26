@@ -5,10 +5,17 @@
  */
 package sparqles.avro.performance;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class Run extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 4884504287540360486L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,21 +25,90 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public long frestout;
-    @Deprecated public int solutions;
-    @Deprecated public long inittime;
-    @Deprecated public long exectime;
-    @Deprecated public long closetime;
-    @Deprecated public java.lang.CharSequence Exception;
-    @Deprecated public long exectout;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<Run> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<Run> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<Run> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<Run> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<Run> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this Run to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a Run from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a Run instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static Run fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private long frestout;
+    private int solutions;
+    private long inittime;
+    private long exectime;
+    private long closetime;
+    private java.lang.CharSequence Exception;
+    private long exectout;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public Run() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param frestout The new value for frestout
+     * @param solutions The new value for solutions
+     * @param inittime The new value for inittime
+     * @param exectime The new value for exectime
+     * @param closetime The new value for closetime
+     * @param Exception The new value for Exception
+     * @param exectout The new value for exectout
+     */
     public Run(
             java.lang.Long frestout,
             java.lang.Integer solutions,
@@ -50,11 +126,18 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
         this.exectout = exectout;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -72,11 +155,12 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             case 6:
                 return exectout;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -102,12 +186,16 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
                 exectout = (java.lang.Long) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'frestout' field. */
-    public java.lang.Long getFrestout() {
+    /**
+     * Gets the value of the 'frestout' field.
+     *
+     * @return The value of the 'frestout' field.
+     */
+    public long getFrestout() {
         return frestout;
     }
 
@@ -116,12 +204,16 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setFrestout(java.lang.Long value) {
+    public void setFrestout(long value) {
         this.frestout = value;
     }
 
-    /** Gets the value of the 'solutions' field. */
-    public java.lang.Integer getSolutions() {
+    /**
+     * Gets the value of the 'solutions' field.
+     *
+     * @return The value of the 'solutions' field.
+     */
+    public int getSolutions() {
         return solutions;
     }
 
@@ -130,12 +222,16 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setSolutions(java.lang.Integer value) {
+    public void setSolutions(int value) {
         this.solutions = value;
     }
 
-    /** Gets the value of the 'inittime' field. */
-    public java.lang.Long getInittime() {
+    /**
+     * Gets the value of the 'inittime' field.
+     *
+     * @return The value of the 'inittime' field.
+     */
+    public long getInittime() {
         return inittime;
     }
 
@@ -144,12 +240,16 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setInittime(java.lang.Long value) {
+    public void setInittime(long value) {
         this.inittime = value;
     }
 
-    /** Gets the value of the 'exectime' field. */
-    public java.lang.Long getExectime() {
+    /**
+     * Gets the value of the 'exectime' field.
+     *
+     * @return The value of the 'exectime' field.
+     */
+    public long getExectime() {
         return exectime;
     }
 
@@ -158,12 +258,16 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setExectime(java.lang.Long value) {
+    public void setExectime(long value) {
         this.exectime = value;
     }
 
-    /** Gets the value of the 'closetime' field. */
-    public java.lang.Long getClosetime() {
+    /**
+     * Gets the value of the 'closetime' field.
+     *
+     * @return The value of the 'closetime' field.
+     */
+    public long getClosetime() {
         return closetime;
     }
 
@@ -172,11 +276,15 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setClosetime(java.lang.Long value) {
+    public void setClosetime(long value) {
         this.closetime = value;
     }
 
-    /** Gets the value of the 'Exception' field. */
+    /**
+     * Gets the value of the 'Exception' field.
+     *
+     * @return The value of the 'Exception' field.
+     */
     public java.lang.CharSequence getException() {
         return Exception;
     }
@@ -190,8 +298,12 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
         this.Exception = value;
     }
 
-    /** Gets the value of the 'exectout' field. */
-    public java.lang.Long getExectout() {
+    /**
+     * Gets the value of the 'exectout' field.
+     *
+     * @return The value of the 'exectout' field.
+     */
+    public long getExectout() {
         return exectout;
     }
 
@@ -200,28 +312,51 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setExectout(java.lang.Long value) {
+    public void setExectout(long value) {
         this.exectout = value;
     }
 
-    /** Creates a new Run RecordBuilder */
+    /**
+     * Creates a new Run RecordBuilder.
+     *
+     * @return A new Run RecordBuilder
+     */
     public static sparqles.avro.performance.Run.Builder newBuilder() {
         return new sparqles.avro.performance.Run.Builder();
     }
 
-    /** Creates a new Run RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new Run RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new Run RecordBuilder
+     */
     public static sparqles.avro.performance.Run.Builder newBuilder(
             sparqles.avro.performance.Run.Builder other) {
-        return new sparqles.avro.performance.Run.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.performance.Run.Builder();
+        } else {
+            return new sparqles.avro.performance.Run.Builder(other);
+        }
     }
 
-    /** Creates a new Run RecordBuilder by copying an existing Run instance */
+    /**
+     * Creates a new Run RecordBuilder by copying an existing Run instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new Run RecordBuilder
+     */
     public static sparqles.avro.performance.Run.Builder newBuilder(
             sparqles.avro.performance.Run other) {
-        return new sparqles.avro.performance.Run.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.performance.Run.Builder();
+        } else {
+            return new sparqles.avro.performance.Run.Builder(other);
+        }
     }
 
     /** RecordBuilder for Run instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Run>
             implements org.apache.avro.data.RecordBuilder<Run> {
 
@@ -235,45 +370,53 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.performance.Run.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.performance.Run.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.frestout)) {
                 this.frestout = data().deepCopy(fields()[0].schema(), other.frestout);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
             }
             if (isValidValue(fields()[1], other.solutions)) {
                 this.solutions = data().deepCopy(fields()[1].schema(), other.solutions);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.inittime)) {
                 this.inittime = data().deepCopy(fields()[2].schema(), other.inittime);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.exectime)) {
                 this.exectime = data().deepCopy(fields()[3].schema(), other.exectime);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.closetime)) {
                 this.closetime = data().deepCopy(fields()[4].schema(), other.closetime);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.Exception)) {
                 this.Exception = data().deepCopy(fields()[5].schema(), other.Exception);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.exectout)) {
                 this.exectout = data().deepCopy(fields()[6].schema(), other.exectout);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
             }
         }
 
-        /** Creates a Builder by copying an existing Run instance */
+        /**
+         * Creates a Builder by copying an existing Run instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.performance.Run other) {
-            super(sparqles.avro.performance.Run.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.frestout)) {
                 this.frestout = data().deepCopy(fields()[0].schema(), other.frestout);
                 fieldSetFlags()[0] = true;
@@ -304,12 +447,21 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'frestout' field */
-        public java.lang.Long getFrestout() {
+        /**
+         * Gets the value of the 'frestout' field.
+         *
+         * @return The value.
+         */
+        public long getFrestout() {
             return frestout;
         }
 
-        /** Sets the value of the 'frestout' field */
+        /**
+         * Sets the value of the 'frestout' field.
+         *
+         * @param value The value of 'frestout'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setFrestout(long value) {
             validate(fields()[0], value);
             this.frestout = value;
@@ -317,23 +469,40 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'frestout' field has been set */
+        /**
+         * Checks whether the 'frestout' field has been set.
+         *
+         * @return True if the 'frestout' field has been set, false otherwise.
+         */
         public boolean hasFrestout() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'frestout' field */
+        /**
+         * Clears the value of the 'frestout' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearFrestout() {
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'solutions' field */
-        public java.lang.Integer getSolutions() {
+        /**
+         * Gets the value of the 'solutions' field.
+         *
+         * @return The value.
+         */
+        public int getSolutions() {
             return solutions;
         }
 
-        /** Sets the value of the 'solutions' field */
+        /**
+         * Sets the value of the 'solutions' field.
+         *
+         * @param value The value of 'solutions'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setSolutions(int value) {
             validate(fields()[1], value);
             this.solutions = value;
@@ -341,23 +510,40 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'solutions' field has been set */
+        /**
+         * Checks whether the 'solutions' field has been set.
+         *
+         * @return True if the 'solutions' field has been set, false otherwise.
+         */
         public boolean hasSolutions() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'solutions' field */
+        /**
+         * Clears the value of the 'solutions' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearSolutions() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'inittime' field */
-        public java.lang.Long getInittime() {
+        /**
+         * Gets the value of the 'inittime' field.
+         *
+         * @return The value.
+         */
+        public long getInittime() {
             return inittime;
         }
 
-        /** Sets the value of the 'inittime' field */
+        /**
+         * Sets the value of the 'inittime' field.
+         *
+         * @param value The value of 'inittime'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setInittime(long value) {
             validate(fields()[2], value);
             this.inittime = value;
@@ -365,23 +551,40 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'inittime' field has been set */
+        /**
+         * Checks whether the 'inittime' field has been set.
+         *
+         * @return True if the 'inittime' field has been set, false otherwise.
+         */
         public boolean hasInittime() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'inittime' field */
+        /**
+         * Clears the value of the 'inittime' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearInittime() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'exectime' field */
-        public java.lang.Long getExectime() {
+        /**
+         * Gets the value of the 'exectime' field.
+         *
+         * @return The value.
+         */
+        public long getExectime() {
             return exectime;
         }
 
-        /** Sets the value of the 'exectime' field */
+        /**
+         * Sets the value of the 'exectime' field.
+         *
+         * @param value The value of 'exectime'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setExectime(long value) {
             validate(fields()[3], value);
             this.exectime = value;
@@ -389,23 +592,40 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'exectime' field has been set */
+        /**
+         * Checks whether the 'exectime' field has been set.
+         *
+         * @return True if the 'exectime' field has been set, false otherwise.
+         */
         public boolean hasExectime() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'exectime' field */
+        /**
+         * Clears the value of the 'exectime' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearExectime() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'closetime' field */
-        public java.lang.Long getClosetime() {
+        /**
+         * Gets the value of the 'closetime' field.
+         *
+         * @return The value.
+         */
+        public long getClosetime() {
             return closetime;
         }
 
-        /** Sets the value of the 'closetime' field */
+        /**
+         * Sets the value of the 'closetime' field.
+         *
+         * @param value The value of 'closetime'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setClosetime(long value) {
             validate(fields()[4], value);
             this.closetime = value;
@@ -413,23 +633,40 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'closetime' field has been set */
+        /**
+         * Checks whether the 'closetime' field has been set.
+         *
+         * @return True if the 'closetime' field has been set, false otherwise.
+         */
         public boolean hasClosetime() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'closetime' field */
+        /**
+         * Clears the value of the 'closetime' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearClosetime() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'Exception' field */
+        /**
+         * Gets the value of the 'Exception' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getException() {
             return Exception;
         }
 
-        /** Sets the value of the 'Exception' field */
+        /**
+         * Sets the value of the 'Exception' field.
+         *
+         * @param value The value of 'Exception'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setException(java.lang.CharSequence value) {
             validate(fields()[5], value);
             this.Exception = value;
@@ -437,24 +674,41 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'Exception' field has been set */
+        /**
+         * Checks whether the 'Exception' field has been set.
+         *
+         * @return True if the 'Exception' field has been set, false otherwise.
+         */
         public boolean hasException() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'Exception' field */
+        /**
+         * Clears the value of the 'Exception' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearException() {
             Exception = null;
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'exectout' field */
-        public java.lang.Long getExectout() {
+        /**
+         * Gets the value of the 'exectout' field.
+         *
+         * @return The value.
+         */
+        public long getExectout() {
             return exectout;
         }
 
-        /** Sets the value of the 'exectout' field */
+        /**
+         * Sets the value of the 'exectout' field.
+         *
+         * @param value The value of 'exectout'.
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder setExectout(long value) {
             validate(fields()[6], value);
             this.exectout = value;
@@ -462,18 +716,27 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'exectout' field has been set */
+        /**
+         * Checks whether the 'exectout' field has been set.
+         *
+         * @return True if the 'exectout' field has been set, false otherwise.
+         */
         public boolean hasExectout() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'exectout' field */
+        /**
+         * Clears the value of the 'exectout' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.performance.Run.Builder clearExectout() {
             fieldSetFlags()[6] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public Run build() {
             try {
                 Run record = new Run();
@@ -506,8 +769,128 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.exectout
                                 : (java.lang.Long) defaultValue(fields()[6]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<Run> WRITER$ =
+            (org.apache.avro.io.DatumWriter<Run>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<Run> READER$ =
+            (org.apache.avro.io.DatumReader<Run>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        out.writeLong(this.frestout);
+
+        out.writeInt(this.solutions);
+
+        out.writeLong(this.inittime);
+
+        out.writeLong(this.exectime);
+
+        out.writeLong(this.closetime);
+
+        if (this.Exception == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.Exception);
+        }
+
+        out.writeLong(this.exectout);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            this.frestout = in.readLong();
+
+            this.solutions = in.readInt();
+
+            this.inittime = in.readLong();
+
+            this.exectime = in.readLong();
+
+            this.closetime = in.readLong();
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.Exception = null;
+            } else {
+                this.Exception =
+                        in.readString(
+                                this.Exception instanceof Utf8 ? (Utf8) this.Exception : null);
+            }
+
+            this.exectout = in.readLong();
+
+        } else {
+            for (int i = 0; i < 7; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        this.frestout = in.readLong();
+                        break;
+
+                    case 1:
+                        this.solutions = in.readInt();
+                        break;
+
+                    case 2:
+                        this.inittime = in.readLong();
+                        break;
+
+                    case 3:
+                        this.exectime = in.readLong();
+                        break;
+
+                    case 4:
+                        this.closetime = in.readLong();
+                        break;
+
+                    case 5:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.Exception = null;
+                        } else {
+                            this.Exception =
+                                    in.readString(
+                                            this.Exception instanceof Utf8
+                                                    ? (Utf8) this.Exception
+                                                    : null);
+                        }
+                        break;
+
+                    case 6:
+                        this.exectout = in.readLong();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

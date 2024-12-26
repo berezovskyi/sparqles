@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -7721487622059393994L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,22 +24,92 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public boolean VoID;
-    @Deprecated public boolean VoIDPart;
-    @Deprecated public boolean SD;
-    @Deprecated public boolean SDPart;
-    @Deprecated public double coherence;
-    @Deprecated public double RS;
-    @Deprecated public long lastUpdate;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<CalculationView> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<CalculationView> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<CalculationView> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<CalculationView> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<CalculationView> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this CalculationView to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a CalculationView from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a CalculationView instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static CalculationView fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private boolean VoID;
+    private boolean VoIDPart;
+    private boolean SD;
+    private boolean SDPart;
+    private double coherence;
+    private double RS;
+    private long lastUpdate;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public CalculationView() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param VoID The new value for VoID
+     * @param VoIDPart The new value for VoIDPart
+     * @param SD The new value for SD
+     * @param SDPart The new value for SDPart
+     * @param coherence The new value for coherence
+     * @param RS The new value for RS
+     * @param lastUpdate The new value for lastUpdate
+     */
     public CalculationView(
             sparqles.avro.Endpoint endpoint,
             java.lang.Boolean VoID,
@@ -53,11 +129,18 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
         this.lastUpdate = lastUpdate;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -77,11 +160,12 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             case 7:
                 return lastUpdate;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -110,11 +194,15 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
                 lastUpdate = (java.lang.Long) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -128,8 +216,12 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'VoID' field. */
-    public java.lang.Boolean getVoID() {
+    /**
+     * Gets the value of the 'VoID' field.
+     *
+     * @return The value of the 'VoID' field.
+     */
+    public boolean getVoID() {
         return VoID;
     }
 
@@ -138,12 +230,16 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setVoID(java.lang.Boolean value) {
+    public void setVoID(boolean value) {
         this.VoID = value;
     }
 
-    /** Gets the value of the 'VoIDPart' field. */
-    public java.lang.Boolean getVoIDPart() {
+    /**
+     * Gets the value of the 'VoIDPart' field.
+     *
+     * @return The value of the 'VoIDPart' field.
+     */
+    public boolean getVoIDPart() {
         return VoIDPart;
     }
 
@@ -152,12 +248,16 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setVoIDPart(java.lang.Boolean value) {
+    public void setVoIDPart(boolean value) {
         this.VoIDPart = value;
     }
 
-    /** Gets the value of the 'SD' field. */
-    public java.lang.Boolean getSD() {
+    /**
+     * Gets the value of the 'SD' field.
+     *
+     * @return The value of the 'SD' field.
+     */
+    public boolean getSD() {
         return SD;
     }
 
@@ -166,12 +266,16 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setSD(java.lang.Boolean value) {
+    public void setSD(boolean value) {
         this.SD = value;
     }
 
-    /** Gets the value of the 'SDPart' field. */
-    public java.lang.Boolean getSDPart() {
+    /**
+     * Gets the value of the 'SDPart' field.
+     *
+     * @return The value of the 'SDPart' field.
+     */
+    public boolean getSDPart() {
         return SDPart;
     }
 
@@ -180,12 +284,16 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setSDPart(java.lang.Boolean value) {
+    public void setSDPart(boolean value) {
         this.SDPart = value;
     }
 
-    /** Gets the value of the 'coherence' field. */
-    public java.lang.Double getCoherence() {
+    /**
+     * Gets the value of the 'coherence' field.
+     *
+     * @return The value of the 'coherence' field.
+     */
+    public double getCoherence() {
         return coherence;
     }
 
@@ -194,12 +302,16 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setCoherence(java.lang.Double value) {
+    public void setCoherence(double value) {
         this.coherence = value;
     }
 
-    /** Gets the value of the 'RS' field. */
-    public java.lang.Double getRS() {
+    /**
+     * Gets the value of the 'RS' field.
+     *
+     * @return The value of the 'RS' field.
+     */
+    public double getRS() {
         return RS;
     }
 
@@ -208,12 +320,16 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setRS(java.lang.Double value) {
+    public void setRS(double value) {
         this.RS = value;
     }
 
-    /** Gets the value of the 'lastUpdate' field. */
-    public java.lang.Long getLastUpdate() {
+    /**
+     * Gets the value of the 'lastUpdate' field.
+     *
+     * @return The value of the 'lastUpdate' field.
+     */
+    public long getLastUpdate() {
         return lastUpdate;
     }
 
@@ -222,35 +338,57 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setLastUpdate(java.lang.Long value) {
+    public void setLastUpdate(long value) {
         this.lastUpdate = value;
     }
 
-    /** Creates a new CalculationView RecordBuilder */
+    /**
+     * Creates a new CalculationView RecordBuilder.
+     *
+     * @return A new CalculationView RecordBuilder
+     */
     public static sparqles.avro.analytics.CalculationView.Builder newBuilder() {
         return new sparqles.avro.analytics.CalculationView.Builder();
     }
 
-    /** Creates a new CalculationView RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new CalculationView RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new CalculationView RecordBuilder
+     */
     public static sparqles.avro.analytics.CalculationView.Builder newBuilder(
             sparqles.avro.analytics.CalculationView.Builder other) {
-        return new sparqles.avro.analytics.CalculationView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.CalculationView.Builder();
+        } else {
+            return new sparqles.avro.analytics.CalculationView.Builder(other);
+        }
     }
 
     /**
-     * Creates a new CalculationView RecordBuilder by copying an existing CalculationView instance
+     * Creates a new CalculationView RecordBuilder by copying an existing CalculationView instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new CalculationView RecordBuilder
      */
     public static sparqles.avro.analytics.CalculationView.Builder newBuilder(
             sparqles.avro.analytics.CalculationView other) {
-        return new sparqles.avro.analytics.CalculationView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.CalculationView.Builder();
+        } else {
+            return new sparqles.avro.analytics.CalculationView.Builder(other);
+        }
     }
 
     /** RecordBuilder for CalculationView instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<CalculationView>
             implements org.apache.avro.data.RecordBuilder<CalculationView> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private boolean VoID;
         private boolean VoIDPart;
         private boolean SD;
@@ -261,53 +399,66 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.CalculationView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.CalculationView.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.VoID)) {
                 this.VoID = data().deepCopy(fields()[1].schema(), other.VoID);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.VoIDPart)) {
                 this.VoIDPart = data().deepCopy(fields()[2].schema(), other.VoIDPart);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.SD)) {
                 this.SD = data().deepCopy(fields()[3].schema(), other.SD);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.SDPart)) {
                 this.SDPart = data().deepCopy(fields()[4].schema(), other.SDPart);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.coherence)) {
                 this.coherence = data().deepCopy(fields()[5].schema(), other.coherence);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.RS)) {
                 this.RS = data().deepCopy(fields()[6].schema(), other.RS);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
             }
             if (isValidValue(fields()[7], other.lastUpdate)) {
                 this.lastUpdate = data().deepCopy(fields()[7].schema(), other.lastUpdate);
-                fieldSetFlags()[7] = true;
+                fieldSetFlags()[7] = other.fieldSetFlags()[7];
             }
         }
 
-        /** Creates a Builder by copying an existing CalculationView instance */
+        /**
+         * Creates a Builder by copying an existing CalculationView instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.CalculationView other) {
-            super(sparqles.avro.analytics.CalculationView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.VoID)) {
                 this.VoID = data().deepCopy(fields()[1].schema(), other.VoID);
                 fieldSetFlags()[1] = true;
@@ -338,38 +489,105 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setEndpoint(
                 sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.CalculationView.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'VoID' field */
-        public java.lang.Boolean getVoID() {
+        /**
+         * Gets the value of the 'VoID' field.
+         *
+         * @return The value.
+         */
+        public boolean getVoID() {
             return VoID;
         }
 
-        /** Sets the value of the 'VoID' field */
+        /**
+         * Sets the value of the 'VoID' field.
+         *
+         * @param value The value of 'VoID'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setVoID(boolean value) {
             validate(fields()[1], value);
             this.VoID = value;
@@ -377,23 +595,40 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'VoID' field has been set */
+        /**
+         * Checks whether the 'VoID' field has been set.
+         *
+         * @return True if the 'VoID' field has been set, false otherwise.
+         */
         public boolean hasVoID() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'VoID' field */
+        /**
+         * Clears the value of the 'VoID' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearVoID() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'VoIDPart' field */
-        public java.lang.Boolean getVoIDPart() {
+        /**
+         * Gets the value of the 'VoIDPart' field.
+         *
+         * @return The value.
+         */
+        public boolean getVoIDPart() {
             return VoIDPart;
         }
 
-        /** Sets the value of the 'VoIDPart' field */
+        /**
+         * Sets the value of the 'VoIDPart' field.
+         *
+         * @param value The value of 'VoIDPart'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setVoIDPart(boolean value) {
             validate(fields()[2], value);
             this.VoIDPart = value;
@@ -401,23 +636,40 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'VoIDPart' field has been set */
+        /**
+         * Checks whether the 'VoIDPart' field has been set.
+         *
+         * @return True if the 'VoIDPart' field has been set, false otherwise.
+         */
         public boolean hasVoIDPart() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'VoIDPart' field */
+        /**
+         * Clears the value of the 'VoIDPart' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearVoIDPart() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'SD' field */
-        public java.lang.Boolean getSD() {
+        /**
+         * Gets the value of the 'SD' field.
+         *
+         * @return The value.
+         */
+        public boolean getSD() {
             return SD;
         }
 
-        /** Sets the value of the 'SD' field */
+        /**
+         * Sets the value of the 'SD' field.
+         *
+         * @param value The value of 'SD'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setSD(boolean value) {
             validate(fields()[3], value);
             this.SD = value;
@@ -425,23 +677,40 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'SD' field has been set */
+        /**
+         * Checks whether the 'SD' field has been set.
+         *
+         * @return True if the 'SD' field has been set, false otherwise.
+         */
         public boolean hasSD() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'SD' field */
+        /**
+         * Clears the value of the 'SD' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearSD() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'SDPart' field */
-        public java.lang.Boolean getSDPart() {
+        /**
+         * Gets the value of the 'SDPart' field.
+         *
+         * @return The value.
+         */
+        public boolean getSDPart() {
             return SDPart;
         }
 
-        /** Sets the value of the 'SDPart' field */
+        /**
+         * Sets the value of the 'SDPart' field.
+         *
+         * @param value The value of 'SDPart'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setSDPart(boolean value) {
             validate(fields()[4], value);
             this.SDPart = value;
@@ -449,23 +718,40 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'SDPart' field has been set */
+        /**
+         * Checks whether the 'SDPart' field has been set.
+         *
+         * @return True if the 'SDPart' field has been set, false otherwise.
+         */
         public boolean hasSDPart() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'SDPart' field */
+        /**
+         * Clears the value of the 'SDPart' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearSDPart() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'coherence' field */
-        public java.lang.Double getCoherence() {
+        /**
+         * Gets the value of the 'coherence' field.
+         *
+         * @return The value.
+         */
+        public double getCoherence() {
             return coherence;
         }
 
-        /** Sets the value of the 'coherence' field */
+        /**
+         * Sets the value of the 'coherence' field.
+         *
+         * @param value The value of 'coherence'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setCoherence(double value) {
             validate(fields()[5], value);
             this.coherence = value;
@@ -473,23 +759,40 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'coherence' field has been set */
+        /**
+         * Checks whether the 'coherence' field has been set.
+         *
+         * @return True if the 'coherence' field has been set, false otherwise.
+         */
         public boolean hasCoherence() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'coherence' field */
+        /**
+         * Clears the value of the 'coherence' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearCoherence() {
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'RS' field */
-        public java.lang.Double getRS() {
+        /**
+         * Gets the value of the 'RS' field.
+         *
+         * @return The value.
+         */
+        public double getRS() {
             return RS;
         }
 
-        /** Sets the value of the 'RS' field */
+        /**
+         * Sets the value of the 'RS' field.
+         *
+         * @param value The value of 'RS'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setRS(double value) {
             validate(fields()[6], value);
             this.RS = value;
@@ -497,23 +800,40 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'RS' field has been set */
+        /**
+         * Checks whether the 'RS' field has been set.
+         *
+         * @return True if the 'RS' field has been set, false otherwise.
+         */
         public boolean hasRS() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'RS' field */
+        /**
+         * Clears the value of the 'RS' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearRS() {
             fieldSetFlags()[6] = false;
             return this;
         }
 
-        /** Gets the value of the 'lastUpdate' field */
-        public java.lang.Long getLastUpdate() {
+        /**
+         * Gets the value of the 'lastUpdate' field.
+         *
+         * @return The value.
+         */
+        public long getLastUpdate() {
             return lastUpdate;
         }
 
-        /** Sets the value of the 'lastUpdate' field */
+        /**
+         * Sets the value of the 'lastUpdate' field.
+         *
+         * @param value The value of 'lastUpdate'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder setLastUpdate(long value) {
             validate(fields()[7], value);
             this.lastUpdate = value;
@@ -521,25 +841,43 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'lastUpdate' field has been set */
+        /**
+         * Checks whether the 'lastUpdate' field has been set.
+         *
+         * @return True if the 'lastUpdate' field has been set, false otherwise.
+         */
         public boolean hasLastUpdate() {
             return fieldSetFlags()[7];
         }
 
-        /** Clears the value of the 'lastUpdate' field */
+        /**
+         * Clears the value of the 'lastUpdate' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.CalculationView.Builder clearLastUpdate() {
             fieldSetFlags()[7] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public CalculationView build() {
             try {
                 CalculationView record = new CalculationView();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.VoID =
                         fieldSetFlags()[1]
                                 ? this.VoID
@@ -567,8 +905,120 @@ public class CalculationView extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.lastUpdate
                                 : (java.lang.Long) defaultValue(fields()[7]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<CalculationView> WRITER$ =
+            (org.apache.avro.io.DatumWriter<CalculationView>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<CalculationView> READER$ =
+            (org.apache.avro.io.DatumReader<CalculationView>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        out.writeBoolean(this.VoID);
+
+        out.writeBoolean(this.VoIDPart);
+
+        out.writeBoolean(this.SD);
+
+        out.writeBoolean(this.SDPart);
+
+        out.writeDouble(this.coherence);
+
+        out.writeDouble(this.RS);
+
+        out.writeLong(this.lastUpdate);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            this.VoID = in.readBoolean();
+
+            this.VoIDPart = in.readBoolean();
+
+            this.SD = in.readBoolean();
+
+            this.SDPart = in.readBoolean();
+
+            this.coherence = in.readDouble();
+
+            this.RS = in.readDouble();
+
+            this.lastUpdate = in.readLong();
+
+        } else {
+            for (int i = 0; i < 8; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        this.VoID = in.readBoolean();
+                        break;
+
+                    case 2:
+                        this.VoIDPart = in.readBoolean();
+                        break;
+
+                    case 3:
+                        this.SD = in.readBoolean();
+                        break;
+
+                    case 4:
+                        this.SDPart = in.readBoolean();
+                        break;
+
+                    case 5:
+                        this.coherence = in.readDouble();
+                        break;
+
+                    case 6:
+                        this.RS = in.readDouble();
+                        break;
+
+                    case 7:
+                        this.lastUpdate = in.readLong();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

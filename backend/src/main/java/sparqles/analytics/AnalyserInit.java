@@ -57,10 +57,9 @@ public class AnalyserInit {
                 new TreeSet<DResult>(
                         new Comparator<DResult>() {
                             public int compare(DResult o1, DResult o2) {
-                                int diff =
-                                        o1.getEndpointResult()
-                                                .getStart()
-                                                .compareTo(o2.getEndpointResult().getStart());
+                                int diff = Comparator.comparingLong(
+                                    (DResult value) -> value.getEndpointResult().getStart())
+                                    .compare(o1, o2);
                                 return diff;
                             }
                         });
@@ -85,10 +84,9 @@ public class AnalyserInit {
                 new TreeSet<PResult>(
                         new Comparator<PResult>() {
                             public int compare(PResult o1, PResult o2) {
-                                int diff =
-                                        o1.getEndpointResult()
-                                                .getStart()
-                                                .compareTo(o2.getEndpointResult().getStart());
+                                int diff = Comparator.comparingLong(
+                                        (PResult value) -> value.getEndpointResult().getStart())
+                                    .compare(o1, o2);
                                 return diff;
                             }
                         });
@@ -113,10 +111,9 @@ public class AnalyserInit {
                 new TreeSet<FResult>(
                         new Comparator<FResult>() {
                             public int compare(FResult o1, FResult o2) {
-                                int diff =
-                                        o1.getEndpointResult()
-                                                .getStart()
-                                                .compareTo(o2.getEndpointResult().getStart());
+                                int diff = Comparator.comparingLong(
+                                        (FResult value) -> value.getEndpointResult().getStart())
+                                    .compare(o1, o2);
                                 return diff;
                             }
                         });
@@ -142,10 +139,9 @@ public class AnalyserInit {
                 new TreeSet<AResult>(
                         new Comparator<AResult>() {
                             public int compare(AResult o1, AResult o2) {
-                                int diff =
-                                        o1.getEndpointResult()
-                                                .getStart()
-                                                .compareTo(o2.getEndpointResult().getStart());
+                                int diff = Comparator.comparingLong(
+                                        (AResult value) -> value.getEndpointResult().getStart())
+                                    .compare(o1, o2);
                                 return diff;
                             }
                         });
@@ -170,10 +166,9 @@ public class AnalyserInit {
                 new TreeSet<CResult>(
                         new Comparator<CResult>() {
                             public int compare(CResult o1, CResult o2) {
-                                int diff =
-                                        o1.getEndpointResult()
-                                                .getStart()
-                                                .compareTo(o2.getEndpointResult().getStart());
+                                int diff = Comparator.comparingLong(
+                                        (CResult value) -> value.getEndpointResult().getStart())
+                                    .compare(o1, o2);
                                 return diff;
                             }
                         });

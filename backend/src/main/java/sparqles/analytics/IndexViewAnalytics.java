@@ -39,6 +39,7 @@ import sparqles.avro.analytics.IndexViewInteroperability;
 import sparqles.avro.analytics.IndexViewPerformance;
 import sparqles.avro.analytics.IndexViewPerformanceData;
 import sparqles.avro.analytics.IndexViewPerformanceDataValues;
+import sparqles.avro.discovery.DResult;
 import sparqles.core.CONSTANTS;
 import sparqles.core.Task;
 import sparqles.utils.MongoDBManager;
@@ -182,7 +183,9 @@ public class IndexViewAnalytics implements Task<Index> {
                             public int compare(
                                     IndexViewCalculationDataValues o1,
                                     IndexViewCalculationDataValues o2) {
-                                int diff = o1.getValue().compareTo(o2.getValue());
+                                int diff = Comparator.comparingDouble(
+                                        (IndexViewCalculationDataValues value) -> value.getValue())
+                                    .compare(o1, o2);
                                 if (diff == 0) diff = -1;
                                 return diff;
                             }
@@ -214,7 +217,9 @@ public class IndexViewAnalytics implements Task<Index> {
                             public int compare(
                                     IndexViewCalculationDataValues o1,
                                     IndexViewCalculationDataValues o2) {
-                                int diff = o1.getValue().compareTo(o2.getValue());
+                                int diff = Comparator.comparingDouble(
+                                        (IndexViewCalculationDataValues value) -> value.getValue())
+                                    .compare(o1, o2);
                                 if (diff == 0) diff = -1;
                                 return diff;
                             }
@@ -288,7 +293,9 @@ public class IndexViewAnalytics implements Task<Index> {
                             public int compare(
                                     IndexViewDiscoverabilityDataValues o1,
                                     IndexViewDiscoverabilityDataValues o2) {
-                                int diff = o1.getValue().compareTo(o2.getValue());
+                                int diff = Comparator.comparingDouble(
+                                        (IndexViewDiscoverabilityDataValues value) -> value.getValue())
+                                    .compare(o1, o2);
                                 if (diff == 0) diff = -1;
                                 return diff;
                             }

@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 5954098580558978738L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,21 +24,90 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public double askMeanCold;
-    @Deprecated public double askMeanWarm;
-    @Deprecated public double joinMeanCold;
-    @Deprecated public double joinMeanWarm;
-    @Deprecated public long lastUpdate;
-    @Deprecated public long threshold;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<PerformanceView> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<PerformanceView> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<PerformanceView> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<PerformanceView> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<PerformanceView> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this PerformanceView to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a PerformanceView from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a PerformanceView instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static PerformanceView fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private double askMeanCold;
+    private double askMeanWarm;
+    private double joinMeanCold;
+    private double joinMeanWarm;
+    private long lastUpdate;
+    private long threshold;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public PerformanceView() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param askMeanCold The new value for askMeanCold
+     * @param askMeanWarm The new value for askMeanWarm
+     * @param joinMeanCold The new value for joinMeanCold
+     * @param joinMeanWarm The new value for joinMeanWarm
+     * @param lastUpdate The new value for lastUpdate
+     * @param threshold The new value for threshold
+     */
     public PerformanceView(
             sparqles.avro.Endpoint endpoint,
             java.lang.Double askMeanCold,
@@ -50,11 +125,18 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
         this.threshold = threshold;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -72,11 +154,12 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             case 6:
                 return threshold;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -102,11 +185,15 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
                 threshold = (java.lang.Long) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -120,8 +207,12 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'askMeanCold' field. */
-    public java.lang.Double getAskMeanCold() {
+    /**
+     * Gets the value of the 'askMeanCold' field.
+     *
+     * @return The value of the 'askMeanCold' field.
+     */
+    public double getAskMeanCold() {
         return askMeanCold;
     }
 
@@ -130,12 +221,16 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setAskMeanCold(java.lang.Double value) {
+    public void setAskMeanCold(double value) {
         this.askMeanCold = value;
     }
 
-    /** Gets the value of the 'askMeanWarm' field. */
-    public java.lang.Double getAskMeanWarm() {
+    /**
+     * Gets the value of the 'askMeanWarm' field.
+     *
+     * @return The value of the 'askMeanWarm' field.
+     */
+    public double getAskMeanWarm() {
         return askMeanWarm;
     }
 
@@ -144,12 +239,16 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setAskMeanWarm(java.lang.Double value) {
+    public void setAskMeanWarm(double value) {
         this.askMeanWarm = value;
     }
 
-    /** Gets the value of the 'joinMeanCold' field. */
-    public java.lang.Double getJoinMeanCold() {
+    /**
+     * Gets the value of the 'joinMeanCold' field.
+     *
+     * @return The value of the 'joinMeanCold' field.
+     */
+    public double getJoinMeanCold() {
         return joinMeanCold;
     }
 
@@ -158,12 +257,16 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setJoinMeanCold(java.lang.Double value) {
+    public void setJoinMeanCold(double value) {
         this.joinMeanCold = value;
     }
 
-    /** Gets the value of the 'joinMeanWarm' field. */
-    public java.lang.Double getJoinMeanWarm() {
+    /**
+     * Gets the value of the 'joinMeanWarm' field.
+     *
+     * @return The value of the 'joinMeanWarm' field.
+     */
+    public double getJoinMeanWarm() {
         return joinMeanWarm;
     }
 
@@ -172,12 +275,16 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setJoinMeanWarm(java.lang.Double value) {
+    public void setJoinMeanWarm(double value) {
         this.joinMeanWarm = value;
     }
 
-    /** Gets the value of the 'lastUpdate' field. */
-    public java.lang.Long getLastUpdate() {
+    /**
+     * Gets the value of the 'lastUpdate' field.
+     *
+     * @return The value of the 'lastUpdate' field.
+     */
+    public long getLastUpdate() {
         return lastUpdate;
     }
 
@@ -186,12 +293,16 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setLastUpdate(java.lang.Long value) {
+    public void setLastUpdate(long value) {
         this.lastUpdate = value;
     }
 
-    /** Gets the value of the 'threshold' field. */
-    public java.lang.Long getThreshold() {
+    /**
+     * Gets the value of the 'threshold' field.
+     *
+     * @return The value of the 'threshold' field.
+     */
+    public long getThreshold() {
         return threshold;
     }
 
@@ -200,35 +311,57 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setThreshold(java.lang.Long value) {
+    public void setThreshold(long value) {
         this.threshold = value;
     }
 
-    /** Creates a new PerformanceView RecordBuilder */
+    /**
+     * Creates a new PerformanceView RecordBuilder.
+     *
+     * @return A new PerformanceView RecordBuilder
+     */
     public static sparqles.avro.analytics.PerformanceView.Builder newBuilder() {
         return new sparqles.avro.analytics.PerformanceView.Builder();
     }
 
-    /** Creates a new PerformanceView RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new PerformanceView RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new PerformanceView RecordBuilder
+     */
     public static sparqles.avro.analytics.PerformanceView.Builder newBuilder(
             sparqles.avro.analytics.PerformanceView.Builder other) {
-        return new sparqles.avro.analytics.PerformanceView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.PerformanceView.Builder();
+        } else {
+            return new sparqles.avro.analytics.PerformanceView.Builder(other);
+        }
     }
 
     /**
-     * Creates a new PerformanceView RecordBuilder by copying an existing PerformanceView instance
+     * Creates a new PerformanceView RecordBuilder by copying an existing PerformanceView instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new PerformanceView RecordBuilder
      */
     public static sparqles.avro.analytics.PerformanceView.Builder newBuilder(
             sparqles.avro.analytics.PerformanceView other) {
-        return new sparqles.avro.analytics.PerformanceView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.PerformanceView.Builder();
+        } else {
+            return new sparqles.avro.analytics.PerformanceView.Builder(other);
+        }
     }
 
     /** RecordBuilder for PerformanceView instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<PerformanceView>
             implements org.apache.avro.data.RecordBuilder<PerformanceView> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private double askMeanCold;
         private double askMeanWarm;
         private double joinMeanCold;
@@ -238,49 +371,62 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.PerformanceView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.PerformanceView.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.askMeanCold)) {
                 this.askMeanCold = data().deepCopy(fields()[1].schema(), other.askMeanCold);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.askMeanWarm)) {
                 this.askMeanWarm = data().deepCopy(fields()[2].schema(), other.askMeanWarm);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.joinMeanCold)) {
                 this.joinMeanCold = data().deepCopy(fields()[3].schema(), other.joinMeanCold);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.joinMeanWarm)) {
                 this.joinMeanWarm = data().deepCopy(fields()[4].schema(), other.joinMeanWarm);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.lastUpdate)) {
                 this.lastUpdate = data().deepCopy(fields()[5].schema(), other.lastUpdate);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.threshold)) {
                 this.threshold = data().deepCopy(fields()[6].schema(), other.threshold);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
             }
         }
 
-        /** Creates a Builder by copying an existing PerformanceView instance */
+        /**
+         * Creates a Builder by copying an existing PerformanceView instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.PerformanceView other) {
-            super(sparqles.avro.analytics.PerformanceView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.askMeanCold)) {
                 this.askMeanCold = data().deepCopy(fields()[1].schema(), other.askMeanCold);
                 fieldSetFlags()[1] = true;
@@ -307,38 +453,105 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setEndpoint(
                 sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.PerformanceView.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'askMeanCold' field */
-        public java.lang.Double getAskMeanCold() {
+        /**
+         * Gets the value of the 'askMeanCold' field.
+         *
+         * @return The value.
+         */
+        public double getAskMeanCold() {
             return askMeanCold;
         }
 
-        /** Sets the value of the 'askMeanCold' field */
+        /**
+         * Sets the value of the 'askMeanCold' field.
+         *
+         * @param value The value of 'askMeanCold'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setAskMeanCold(double value) {
             validate(fields()[1], value);
             this.askMeanCold = value;
@@ -346,23 +559,40 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'askMeanCold' field has been set */
+        /**
+         * Checks whether the 'askMeanCold' field has been set.
+         *
+         * @return True if the 'askMeanCold' field has been set, false otherwise.
+         */
         public boolean hasAskMeanCold() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'askMeanCold' field */
+        /**
+         * Clears the value of the 'askMeanCold' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearAskMeanCold() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'askMeanWarm' field */
-        public java.lang.Double getAskMeanWarm() {
+        /**
+         * Gets the value of the 'askMeanWarm' field.
+         *
+         * @return The value.
+         */
+        public double getAskMeanWarm() {
             return askMeanWarm;
         }
 
-        /** Sets the value of the 'askMeanWarm' field */
+        /**
+         * Sets the value of the 'askMeanWarm' field.
+         *
+         * @param value The value of 'askMeanWarm'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setAskMeanWarm(double value) {
             validate(fields()[2], value);
             this.askMeanWarm = value;
@@ -370,23 +600,40 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'askMeanWarm' field has been set */
+        /**
+         * Checks whether the 'askMeanWarm' field has been set.
+         *
+         * @return True if the 'askMeanWarm' field has been set, false otherwise.
+         */
         public boolean hasAskMeanWarm() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'askMeanWarm' field */
+        /**
+         * Clears the value of the 'askMeanWarm' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearAskMeanWarm() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'joinMeanCold' field */
-        public java.lang.Double getJoinMeanCold() {
+        /**
+         * Gets the value of the 'joinMeanCold' field.
+         *
+         * @return The value.
+         */
+        public double getJoinMeanCold() {
             return joinMeanCold;
         }
 
-        /** Sets the value of the 'joinMeanCold' field */
+        /**
+         * Sets the value of the 'joinMeanCold' field.
+         *
+         * @param value The value of 'joinMeanCold'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setJoinMeanCold(double value) {
             validate(fields()[3], value);
             this.joinMeanCold = value;
@@ -394,23 +641,40 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'joinMeanCold' field has been set */
+        /**
+         * Checks whether the 'joinMeanCold' field has been set.
+         *
+         * @return True if the 'joinMeanCold' field has been set, false otherwise.
+         */
         public boolean hasJoinMeanCold() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'joinMeanCold' field */
+        /**
+         * Clears the value of the 'joinMeanCold' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearJoinMeanCold() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'joinMeanWarm' field */
-        public java.lang.Double getJoinMeanWarm() {
+        /**
+         * Gets the value of the 'joinMeanWarm' field.
+         *
+         * @return The value.
+         */
+        public double getJoinMeanWarm() {
             return joinMeanWarm;
         }
 
-        /** Sets the value of the 'joinMeanWarm' field */
+        /**
+         * Sets the value of the 'joinMeanWarm' field.
+         *
+         * @param value The value of 'joinMeanWarm'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setJoinMeanWarm(double value) {
             validate(fields()[4], value);
             this.joinMeanWarm = value;
@@ -418,23 +682,40 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'joinMeanWarm' field has been set */
+        /**
+         * Checks whether the 'joinMeanWarm' field has been set.
+         *
+         * @return True if the 'joinMeanWarm' field has been set, false otherwise.
+         */
         public boolean hasJoinMeanWarm() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'joinMeanWarm' field */
+        /**
+         * Clears the value of the 'joinMeanWarm' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearJoinMeanWarm() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'lastUpdate' field */
-        public java.lang.Long getLastUpdate() {
+        /**
+         * Gets the value of the 'lastUpdate' field.
+         *
+         * @return The value.
+         */
+        public long getLastUpdate() {
             return lastUpdate;
         }
 
-        /** Sets the value of the 'lastUpdate' field */
+        /**
+         * Sets the value of the 'lastUpdate' field.
+         *
+         * @param value The value of 'lastUpdate'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setLastUpdate(long value) {
             validate(fields()[5], value);
             this.lastUpdate = value;
@@ -442,23 +723,40 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'lastUpdate' field has been set */
+        /**
+         * Checks whether the 'lastUpdate' field has been set.
+         *
+         * @return True if the 'lastUpdate' field has been set, false otherwise.
+         */
         public boolean hasLastUpdate() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'lastUpdate' field */
+        /**
+         * Clears the value of the 'lastUpdate' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearLastUpdate() {
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'threshold' field */
-        public java.lang.Long getThreshold() {
+        /**
+         * Gets the value of the 'threshold' field.
+         *
+         * @return The value.
+         */
+        public long getThreshold() {
             return threshold;
         }
 
-        /** Sets the value of the 'threshold' field */
+        /**
+         * Sets the value of the 'threshold' field.
+         *
+         * @param value The value of 'threshold'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder setThreshold(long value) {
             validate(fields()[6], value);
             this.threshold = value;
@@ -466,25 +764,43 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'threshold' field has been set */
+        /**
+         * Checks whether the 'threshold' field has been set.
+         *
+         * @return True if the 'threshold' field has been set, false otherwise.
+         */
         public boolean hasThreshold() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'threshold' field */
+        /**
+         * Clears the value of the 'threshold' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.PerformanceView.Builder clearThreshold() {
             fieldSetFlags()[6] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public PerformanceView build() {
             try {
                 PerformanceView record = new PerformanceView();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.askMeanCold =
                         fieldSetFlags()[1]
                                 ? this.askMeanCold
@@ -510,8 +826,112 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.threshold
                                 : (java.lang.Long) defaultValue(fields()[6]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<PerformanceView> WRITER$ =
+            (org.apache.avro.io.DatumWriter<PerformanceView>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<PerformanceView> READER$ =
+            (org.apache.avro.io.DatumReader<PerformanceView>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        out.writeDouble(this.askMeanCold);
+
+        out.writeDouble(this.askMeanWarm);
+
+        out.writeDouble(this.joinMeanCold);
+
+        out.writeDouble(this.joinMeanWarm);
+
+        out.writeLong(this.lastUpdate);
+
+        out.writeLong(this.threshold);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            this.askMeanCold = in.readDouble();
+
+            this.askMeanWarm = in.readDouble();
+
+            this.joinMeanCold = in.readDouble();
+
+            this.joinMeanWarm = in.readDouble();
+
+            this.lastUpdate = in.readLong();
+
+            this.threshold = in.readLong();
+
+        } else {
+            for (int i = 0; i < 7; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        this.askMeanCold = in.readDouble();
+                        break;
+
+                    case 2:
+                        this.askMeanWarm = in.readDouble();
+                        break;
+
+                    case 3:
+                        this.joinMeanCold = in.readDouble();
+                        break;
+
+                    case 4:
+                        this.joinMeanWarm = in.readDouble();
+                        break;
+
+                    case 5:
+                        this.lastUpdate = in.readLong();
+                        break;
+
+                    case 6:
+                        this.threshold = in.readLong();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

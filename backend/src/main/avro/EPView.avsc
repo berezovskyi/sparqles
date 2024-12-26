@@ -2,10 +2,10 @@
 "namespace": "sparqles.avro.analytics",
 "type": "record",
 "name": "EPView",
-"fields": [ 
+"fields": [
 	{"name": "endpoint", "type": "sparqles.avro.Endpoint"},
-	{"name": "availability", "type": { 
-		"namespace": "sparqles.avro.analytics",	
+	{"name": "availability", "type": {
+		"namespace": "sparqles.avro.analytics",
 		"name": "EPViewAvailability",
       	"type": "record",
       	"fields" : [
@@ -16,15 +16,15 @@
       		{ "name": "uptimeLast31d", "type": "double"},
       		{ "name": "uptimeOverall", "type": "double"},
       		{ "name": "data", "type": {
-      			"namespace": "sparqles.avro.analytics",	
+      			"namespace": "sparqles.avro.analytics",
 				"name": "EPViewAvailabilityData",
       			"type": "record",
       			"fields" : [
       				{ "name": "key", "type": "string"},
-      				{ "name": "values", "type": 
-      					{"type": "array", "items": 
+      				{ "name": "values", "type":
+      					{"type": "array", "items":
 							{
-    							"namespace": "sparqles.avro.analytics",	
+    							"namespace": "sparqles.avro.analytics",
  								"name": "EPViewAvailabilityDataPoint",
       							"type": "record",
         						"fields" : [
@@ -46,19 +46,19 @@
 			"name":"EPViewPerformance",
 			"fields":[
 				{"name": "threshold", "type": "long"},
-				{"name": "ask" , "type": 
-					{"type": "array", "items": 
+				{"name": "ask" , "type":
+					{"type": "array", "items":
 						{
-    						"namespace": "sparqles.avro.analytics",	
+    						"namespace": "sparqles.avro.analytics",
  							"name": "EPViewPerformanceData",
       						"type": "record",
         					"fields" : [
         						{ "name": "key", "type": "string"},
         						{ "name": "color", "type": "string"},
         						{ "name": "data" , "type":
-   	 								{ "type": "array", "items": 
-    									{	
-    										"namespace": "sparqles.avro.analytics",	
+   	 								{ "type": "array", "items":
+    									{
+    										"namespace": "sparqles.avro.analytics",
  											"name": "EPViewPerformanceDataValues",
      										"type": "record",
         									"fields" : [
@@ -70,7 +70,7 @@
       								}
    	 							}
         					]
-      					}	
+      					}
       				}
 				},
 				{"name": "join" , "type": {"type": "array", "items": "array", "items" : "sparqles.avro.analytics.EPViewPerformanceData"}}
@@ -83,10 +83,10 @@
 			"type":"record",
 			"name":"EPViewInteroperability",
 			"fields":[
-				{"name": "SPARQL1Features" , "type": 
-					{"type": "array", "items": 
+				{"name": "SPARQL1Features" , "type":
+					{"type": "array", "items":
 						{
-    						"namespace": "sparqles.avro.analytics",	
+    						"namespace": "sparqles.avro.analytics",
  							"name": "EPViewInteroperabilityData",
       						"type": "record",
         					"fields" : [
@@ -94,7 +94,7 @@
         						{ "name": "value", "type": "boolean"},
         						{ "name": "exception", "type": ["string", "null"]}
         					]
-      					}	
+      					}
       				}
 				},
 				{"name": "SPARQL11Features" , "type": {"type": "array", "items": "array", "items" : "sparqles.avro.analytics.EPViewInteroperabilityData"}}
@@ -107,25 +107,26 @@
 			"type":"record",
 			"name":"EPViewDiscoverability",
 			"fields":[
-				{"name": "serverName" , "type" : "string"}, 
-				{"name": "VoIDDescription" , "type": 
-					{"type": "array", "items": 
+				{"name": "serverName" , "type" : "string"},
+				{"name": "VoIDDescription" , "type":
+					{"type": "array", "items":
 						{
-    						"namespace": "sparqles.avro.analytics",	
+    						"namespace": "sparqles.avro.analytics",
  							"name": "EPViewDiscoverabilityData",
       						"type": "record",
         					"fields" : [
         						{ "name": "label", "type": "string"},
         						{ "name": "value", "type": "boolean"}
         					]
-      					}	
+      					}
       				}
 				},
 				{"name": "SDDescription" , "type": {"type": "array", "items": "array", "items" : "sparqles.avro.analytics.EPViewDiscoverabilityData"}}
    	 		]
    	 	}
  	},
- 	{"name": "calculation", "type":
+ 	{"name": "calculation", "type":[
+    "null",
 		{
 			"namespace":"sparqles.avro.analytics",
 			"type":"record",
@@ -138,8 +139,8 @@
 				{"name": "distinctSubjects", "type": "long"},
 				{"name": "distinctObjects", "type": "long"},
 				{"name": "exampleResources", "type":
-					 {"type": "array", "items": 
-					 	  {	
+					 {"type": "array", "items":
+					 	  {
 						  	"name": "uri", "type": "string"
 						  }
 					 }
@@ -152,6 +153,7 @@
 				{"name": "RS", "type": "double"}
    	 		]
    	 	}
+    ]
  	}
-   	]
+]
 }

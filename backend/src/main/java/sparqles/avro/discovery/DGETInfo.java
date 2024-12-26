@@ -5,10 +5,16 @@
  */
 package sparqles.avro.discovery;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -2432498232695213931L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,25 +24,98 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public boolean allowedByRobotsTXT;
-    @Deprecated public java.lang.CharSequence Operation;
-    @Deprecated public java.lang.CharSequence URL;
-    @Deprecated public java.lang.CharSequence Exception;
-    @Deprecated public java.lang.CharSequence ResponseType;
-    @Deprecated public java.lang.CharSequence ResponseCode;
-    @Deprecated public java.lang.CharSequence ResponseServer;
-    @Deprecated public java.lang.CharSequence ResponseLink;
-    @Deprecated public java.lang.CharSequence Content;
-    @Deprecated public java.util.Map<java.lang.CharSequence, java.lang.Object> SPARQLDESCpreds;
-    @Deprecated public java.util.Map<java.lang.CharSequence, java.lang.Object> voiDpreds;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<DGETInfo> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<DGETInfo> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<DGETInfo> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<DGETInfo> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<DGETInfo> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this DGETInfo to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a DGETInfo from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a DGETInfo instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static DGETInfo fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private boolean allowedByRobotsTXT;
+    private java.lang.CharSequence Operation;
+    private java.lang.CharSequence URL;
+    private java.lang.CharSequence Exception;
+    private java.lang.CharSequence ResponseType;
+    private java.lang.CharSequence ResponseCode;
+    private java.lang.CharSequence ResponseServer;
+    private java.lang.CharSequence ResponseLink;
+    private java.lang.CharSequence Content;
+    private java.util.Map<java.lang.CharSequence, java.lang.Object> SPARQLDESCpreds;
+    private java.util.Map<java.lang.CharSequence, java.lang.Object> voiDpreds;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public DGETInfo() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param allowedByRobotsTXT The new value for allowedByRobotsTXT
+     * @param Operation The new value for Operation
+     * @param URL The new value for URL
+     * @param Exception The new value for Exception
+     * @param ResponseType The new value for ResponseType
+     * @param ResponseCode The new value for ResponseCode
+     * @param ResponseServer The new value for ResponseServer
+     * @param ResponseLink The new value for ResponseLink
+     * @param Content The new value for Content
+     * @param SPARQLDESCpreds The new value for SPARQLDESCpreds
+     * @param voiDpreds The new value for voiDpreds
+     */
     public DGETInfo(
             java.lang.Boolean allowedByRobotsTXT,
             java.lang.CharSequence Operation,
@@ -62,11 +141,18 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.voiDpreds = voiDpreds;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -92,11 +178,12 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             case 10:
                 return voiDpreds;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -134,12 +221,16 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
                 voiDpreds = (java.util.Map<java.lang.CharSequence, java.lang.Object>) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'allowedByRobotsTXT' field. */
-    public java.lang.Boolean getAllowedByRobotsTXT() {
+    /**
+     * Gets the value of the 'allowedByRobotsTXT' field.
+     *
+     * @return The value of the 'allowedByRobotsTXT' field.
+     */
+    public boolean getAllowedByRobotsTXT() {
         return allowedByRobotsTXT;
     }
 
@@ -148,11 +239,15 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setAllowedByRobotsTXT(java.lang.Boolean value) {
+    public void setAllowedByRobotsTXT(boolean value) {
         this.allowedByRobotsTXT = value;
     }
 
-    /** Gets the value of the 'Operation' field. */
+    /**
+     * Gets the value of the 'Operation' field.
+     *
+     * @return The value of the 'Operation' field.
+     */
     public java.lang.CharSequence getOperation() {
         return Operation;
     }
@@ -166,7 +261,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.Operation = value;
     }
 
-    /** Gets the value of the 'URL' field. */
+    /**
+     * Gets the value of the 'URL' field.
+     *
+     * @return The value of the 'URL' field.
+     */
     public java.lang.CharSequence getURL() {
         return URL;
     }
@@ -180,7 +279,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.URL = value;
     }
 
-    /** Gets the value of the 'Exception' field. */
+    /**
+     * Gets the value of the 'Exception' field.
+     *
+     * @return The value of the 'Exception' field.
+     */
     public java.lang.CharSequence getException() {
         return Exception;
     }
@@ -194,7 +297,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.Exception = value;
     }
 
-    /** Gets the value of the 'ResponseType' field. */
+    /**
+     * Gets the value of the 'ResponseType' field.
+     *
+     * @return The value of the 'ResponseType' field.
+     */
     public java.lang.CharSequence getResponseType() {
         return ResponseType;
     }
@@ -208,7 +315,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.ResponseType = value;
     }
 
-    /** Gets the value of the 'ResponseCode' field. */
+    /**
+     * Gets the value of the 'ResponseCode' field.
+     *
+     * @return The value of the 'ResponseCode' field.
+     */
     public java.lang.CharSequence getResponseCode() {
         return ResponseCode;
     }
@@ -222,7 +333,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.ResponseCode = value;
     }
 
-    /** Gets the value of the 'ResponseServer' field. */
+    /**
+     * Gets the value of the 'ResponseServer' field.
+     *
+     * @return The value of the 'ResponseServer' field.
+     */
     public java.lang.CharSequence getResponseServer() {
         return ResponseServer;
     }
@@ -236,7 +351,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.ResponseServer = value;
     }
 
-    /** Gets the value of the 'ResponseLink' field. */
+    /**
+     * Gets the value of the 'ResponseLink' field.
+     *
+     * @return The value of the 'ResponseLink' field.
+     */
     public java.lang.CharSequence getResponseLink() {
         return ResponseLink;
     }
@@ -250,7 +369,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.ResponseLink = value;
     }
 
-    /** Gets the value of the 'Content' field. */
+    /**
+     * Gets the value of the 'Content' field.
+     *
+     * @return The value of the 'Content' field.
+     */
     public java.lang.CharSequence getContent() {
         return Content;
     }
@@ -264,7 +387,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.Content = value;
     }
 
-    /** Gets the value of the 'SPARQLDESCpreds' field. */
+    /**
+     * Gets the value of the 'SPARQLDESCpreds' field.
+     *
+     * @return The value of the 'SPARQLDESCpreds' field.
+     */
     public java.util.Map<java.lang.CharSequence, java.lang.Object> getSPARQLDESCpreds() {
         return SPARQLDESCpreds;
     }
@@ -278,7 +405,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.SPARQLDESCpreds = value;
     }
 
-    /** Gets the value of the 'voiDpreds' field. */
+    /**
+     * Gets the value of the 'voiDpreds' field.
+     *
+     * @return The value of the 'voiDpreds' field.
+     */
     public java.util.Map<java.lang.CharSequence, java.lang.Object> getVoiDpreds() {
         return voiDpreds;
     }
@@ -292,24 +423,47 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.voiDpreds = value;
     }
 
-    /** Creates a new DGETInfo RecordBuilder */
+    /**
+     * Creates a new DGETInfo RecordBuilder.
+     *
+     * @return A new DGETInfo RecordBuilder
+     */
     public static sparqles.avro.discovery.DGETInfo.Builder newBuilder() {
         return new sparqles.avro.discovery.DGETInfo.Builder();
     }
 
-    /** Creates a new DGETInfo RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new DGETInfo RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new DGETInfo RecordBuilder
+     */
     public static sparqles.avro.discovery.DGETInfo.Builder newBuilder(
             sparqles.avro.discovery.DGETInfo.Builder other) {
-        return new sparqles.avro.discovery.DGETInfo.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.discovery.DGETInfo.Builder();
+        } else {
+            return new sparqles.avro.discovery.DGETInfo.Builder(other);
+        }
     }
 
-    /** Creates a new DGETInfo RecordBuilder by copying an existing DGETInfo instance */
+    /**
+     * Creates a new DGETInfo RecordBuilder by copying an existing DGETInfo instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new DGETInfo RecordBuilder
+     */
     public static sparqles.avro.discovery.DGETInfo.Builder newBuilder(
             sparqles.avro.discovery.DGETInfo other) {
-        return new sparqles.avro.discovery.DGETInfo.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.discovery.DGETInfo.Builder();
+        } else {
+            return new sparqles.avro.discovery.DGETInfo.Builder(other);
+        }
     }
 
     /** RecordBuilder for DGETInfo instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<DGETInfo>
             implements org.apache.avro.data.RecordBuilder<DGETInfo> {
 
@@ -327,62 +481,70 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.discovery.DGETInfo.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.discovery.DGETInfo.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.allowedByRobotsTXT)) {
                 this.allowedByRobotsTXT =
                         data().deepCopy(fields()[0].schema(), other.allowedByRobotsTXT);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
             }
             if (isValidValue(fields()[1], other.Operation)) {
                 this.Operation = data().deepCopy(fields()[1].schema(), other.Operation);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.URL)) {
                 this.URL = data().deepCopy(fields()[2].schema(), other.URL);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.Exception)) {
                 this.Exception = data().deepCopy(fields()[3].schema(), other.Exception);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.ResponseType)) {
                 this.ResponseType = data().deepCopy(fields()[4].schema(), other.ResponseType);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.ResponseCode)) {
                 this.ResponseCode = data().deepCopy(fields()[5].schema(), other.ResponseCode);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.ResponseServer)) {
                 this.ResponseServer = data().deepCopy(fields()[6].schema(), other.ResponseServer);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
             }
             if (isValidValue(fields()[7], other.ResponseLink)) {
                 this.ResponseLink = data().deepCopy(fields()[7].schema(), other.ResponseLink);
-                fieldSetFlags()[7] = true;
+                fieldSetFlags()[7] = other.fieldSetFlags()[7];
             }
             if (isValidValue(fields()[8], other.Content)) {
                 this.Content = data().deepCopy(fields()[8].schema(), other.Content);
-                fieldSetFlags()[8] = true;
+                fieldSetFlags()[8] = other.fieldSetFlags()[8];
             }
             if (isValidValue(fields()[9], other.SPARQLDESCpreds)) {
                 this.SPARQLDESCpreds = data().deepCopy(fields()[9].schema(), other.SPARQLDESCpreds);
-                fieldSetFlags()[9] = true;
+                fieldSetFlags()[9] = other.fieldSetFlags()[9];
             }
             if (isValidValue(fields()[10], other.voiDpreds)) {
                 this.voiDpreds = data().deepCopy(fields()[10].schema(), other.voiDpreds);
-                fieldSetFlags()[10] = true;
+                fieldSetFlags()[10] = other.fieldSetFlags()[10];
             }
         }
 
-        /** Creates a Builder by copying an existing DGETInfo instance */
+        /**
+         * Creates a Builder by copying an existing DGETInfo instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.discovery.DGETInfo other) {
-            super(sparqles.avro.discovery.DGETInfo.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.allowedByRobotsTXT)) {
                 this.allowedByRobotsTXT =
                         data().deepCopy(fields()[0].schema(), other.allowedByRobotsTXT);
@@ -430,12 +592,21 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'allowedByRobotsTXT' field */
-        public java.lang.Boolean getAllowedByRobotsTXT() {
+        /**
+         * Gets the value of the 'allowedByRobotsTXT' field.
+         *
+         * @return The value.
+         */
+        public boolean getAllowedByRobotsTXT() {
             return allowedByRobotsTXT;
         }
 
-        /** Sets the value of the 'allowedByRobotsTXT' field */
+        /**
+         * Sets the value of the 'allowedByRobotsTXT' field.
+         *
+         * @param value The value of 'allowedByRobotsTXT'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setAllowedByRobotsTXT(boolean value) {
             validate(fields()[0], value);
             this.allowedByRobotsTXT = value;
@@ -443,23 +614,40 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'allowedByRobotsTXT' field has been set */
+        /**
+         * Checks whether the 'allowedByRobotsTXT' field has been set.
+         *
+         * @return True if the 'allowedByRobotsTXT' field has been set, false otherwise.
+         */
         public boolean hasAllowedByRobotsTXT() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'allowedByRobotsTXT' field */
+        /**
+         * Clears the value of the 'allowedByRobotsTXT' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearAllowedByRobotsTXT() {
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'Operation' field */
+        /**
+         * Gets the value of the 'Operation' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getOperation() {
             return Operation;
         }
 
-        /** Sets the value of the 'Operation' field */
+        /**
+         * Sets the value of the 'Operation' field.
+         *
+         * @param value The value of 'Operation'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setOperation(java.lang.CharSequence value) {
             validate(fields()[1], value);
             this.Operation = value;
@@ -467,24 +655,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'Operation' field has been set */
+        /**
+         * Checks whether the 'Operation' field has been set.
+         *
+         * @return True if the 'Operation' field has been set, false otherwise.
+         */
         public boolean hasOperation() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'Operation' field */
+        /**
+         * Clears the value of the 'Operation' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearOperation() {
             Operation = null;
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'URL' field */
+        /**
+         * Gets the value of the 'URL' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getURL() {
             return URL;
         }
 
-        /** Sets the value of the 'URL' field */
+        /**
+         * Sets the value of the 'URL' field.
+         *
+         * @param value The value of 'URL'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setURL(java.lang.CharSequence value) {
             validate(fields()[2], value);
             this.URL = value;
@@ -492,24 +697,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'URL' field has been set */
+        /**
+         * Checks whether the 'URL' field has been set.
+         *
+         * @return True if the 'URL' field has been set, false otherwise.
+         */
         public boolean hasURL() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'URL' field */
+        /**
+         * Clears the value of the 'URL' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearURL() {
             URL = null;
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'Exception' field */
+        /**
+         * Gets the value of the 'Exception' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getException() {
             return Exception;
         }
 
-        /** Sets the value of the 'Exception' field */
+        /**
+         * Sets the value of the 'Exception' field.
+         *
+         * @param value The value of 'Exception'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setException(java.lang.CharSequence value) {
             validate(fields()[3], value);
             this.Exception = value;
@@ -517,24 +739,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'Exception' field has been set */
+        /**
+         * Checks whether the 'Exception' field has been set.
+         *
+         * @return True if the 'Exception' field has been set, false otherwise.
+         */
         public boolean hasException() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'Exception' field */
+        /**
+         * Clears the value of the 'Exception' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearException() {
             Exception = null;
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'ResponseType' field */
+        /**
+         * Gets the value of the 'ResponseType' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getResponseType() {
             return ResponseType;
         }
 
-        /** Sets the value of the 'ResponseType' field */
+        /**
+         * Sets the value of the 'ResponseType' field.
+         *
+         * @param value The value of 'ResponseType'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setResponseType(
                 java.lang.CharSequence value) {
             validate(fields()[4], value);
@@ -543,24 +782,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ResponseType' field has been set */
+        /**
+         * Checks whether the 'ResponseType' field has been set.
+         *
+         * @return True if the 'ResponseType' field has been set, false otherwise.
+         */
         public boolean hasResponseType() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'ResponseType' field */
+        /**
+         * Clears the value of the 'ResponseType' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearResponseType() {
             ResponseType = null;
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'ResponseCode' field */
+        /**
+         * Gets the value of the 'ResponseCode' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getResponseCode() {
             return ResponseCode;
         }
 
-        /** Sets the value of the 'ResponseCode' field */
+        /**
+         * Sets the value of the 'ResponseCode' field.
+         *
+         * @param value The value of 'ResponseCode'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setResponseCode(
                 java.lang.CharSequence value) {
             validate(fields()[5], value);
@@ -569,24 +825,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ResponseCode' field has been set */
+        /**
+         * Checks whether the 'ResponseCode' field has been set.
+         *
+         * @return True if the 'ResponseCode' field has been set, false otherwise.
+         */
         public boolean hasResponseCode() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'ResponseCode' field */
+        /**
+         * Clears the value of the 'ResponseCode' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearResponseCode() {
             ResponseCode = null;
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'ResponseServer' field */
+        /**
+         * Gets the value of the 'ResponseServer' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getResponseServer() {
             return ResponseServer;
         }
 
-        /** Sets the value of the 'ResponseServer' field */
+        /**
+         * Sets the value of the 'ResponseServer' field.
+         *
+         * @param value The value of 'ResponseServer'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setResponseServer(
                 java.lang.CharSequence value) {
             validate(fields()[6], value);
@@ -595,24 +868,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ResponseServer' field has been set */
+        /**
+         * Checks whether the 'ResponseServer' field has been set.
+         *
+         * @return True if the 'ResponseServer' field has been set, false otherwise.
+         */
         public boolean hasResponseServer() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'ResponseServer' field */
+        /**
+         * Clears the value of the 'ResponseServer' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearResponseServer() {
             ResponseServer = null;
             fieldSetFlags()[6] = false;
             return this;
         }
 
-        /** Gets the value of the 'ResponseLink' field */
+        /**
+         * Gets the value of the 'ResponseLink' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getResponseLink() {
             return ResponseLink;
         }
 
-        /** Sets the value of the 'ResponseLink' field */
+        /**
+         * Sets the value of the 'ResponseLink' field.
+         *
+         * @param value The value of 'ResponseLink'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setResponseLink(
                 java.lang.CharSequence value) {
             validate(fields()[7], value);
@@ -621,24 +911,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'ResponseLink' field has been set */
+        /**
+         * Checks whether the 'ResponseLink' field has been set.
+         *
+         * @return True if the 'ResponseLink' field has been set, false otherwise.
+         */
         public boolean hasResponseLink() {
             return fieldSetFlags()[7];
         }
 
-        /** Clears the value of the 'ResponseLink' field */
+        /**
+         * Clears the value of the 'ResponseLink' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearResponseLink() {
             ResponseLink = null;
             fieldSetFlags()[7] = false;
             return this;
         }
 
-        /** Gets the value of the 'Content' field */
+        /**
+         * Gets the value of the 'Content' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getContent() {
             return Content;
         }
 
-        /** Sets the value of the 'Content' field */
+        /**
+         * Sets the value of the 'Content' field.
+         *
+         * @param value The value of 'Content'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setContent(java.lang.CharSequence value) {
             validate(fields()[8], value);
             this.Content = value;
@@ -646,24 +953,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'Content' field has been set */
+        /**
+         * Checks whether the 'Content' field has been set.
+         *
+         * @return True if the 'Content' field has been set, false otherwise.
+         */
         public boolean hasContent() {
             return fieldSetFlags()[8];
         }
 
-        /** Clears the value of the 'Content' field */
+        /**
+         * Clears the value of the 'Content' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearContent() {
             Content = null;
             fieldSetFlags()[8] = false;
             return this;
         }
 
-        /** Gets the value of the 'SPARQLDESCpreds' field */
+        /**
+         * Gets the value of the 'SPARQLDESCpreds' field.
+         *
+         * @return The value.
+         */
         public java.util.Map<java.lang.CharSequence, java.lang.Object> getSPARQLDESCpreds() {
             return SPARQLDESCpreds;
         }
 
-        /** Sets the value of the 'SPARQLDESCpreds' field */
+        /**
+         * Sets the value of the 'SPARQLDESCpreds' field.
+         *
+         * @param value The value of 'SPARQLDESCpreds'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setSPARQLDESCpreds(
                 java.util.Map<java.lang.CharSequence, java.lang.Object> value) {
             validate(fields()[9], value);
@@ -672,24 +996,41 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'SPARQLDESCpreds' field has been set */
+        /**
+         * Checks whether the 'SPARQLDESCpreds' field has been set.
+         *
+         * @return True if the 'SPARQLDESCpreds' field has been set, false otherwise.
+         */
         public boolean hasSPARQLDESCpreds() {
             return fieldSetFlags()[9];
         }
 
-        /** Clears the value of the 'SPARQLDESCpreds' field */
+        /**
+         * Clears the value of the 'SPARQLDESCpreds' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearSPARQLDESCpreds() {
             SPARQLDESCpreds = null;
             fieldSetFlags()[9] = false;
             return this;
         }
 
-        /** Gets the value of the 'voiDpreds' field */
+        /**
+         * Gets the value of the 'voiDpreds' field.
+         *
+         * @return The value.
+         */
         public java.util.Map<java.lang.CharSequence, java.lang.Object> getVoiDpreds() {
             return voiDpreds;
         }
 
-        /** Sets the value of the 'voiDpreds' field */
+        /**
+         * Sets the value of the 'voiDpreds' field.
+         *
+         * @param value The value of 'voiDpreds'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder setVoiDpreds(
                 java.util.Map<java.lang.CharSequence, java.lang.Object> value) {
             validate(fields()[10], value);
@@ -698,12 +1039,20 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'voiDpreds' field has been set */
+        /**
+         * Checks whether the 'voiDpreds' field has been set.
+         *
+         * @return True if the 'voiDpreds' field has been set, false otherwise.
+         */
         public boolean hasVoiDpreds() {
             return fieldSetFlags()[10];
         }
 
-        /** Clears the value of the 'voiDpreds' field */
+        /**
+         * Clears the value of the 'voiDpreds' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DGETInfo.Builder clearVoiDpreds() {
             voiDpreds = null;
             fieldSetFlags()[10] = false;
@@ -711,6 +1060,7 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public DGETInfo build() {
             try {
                 DGETInfo record = new DGETInfo();
@@ -761,9 +1111,29 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
                                 : (java.util.Map<java.lang.CharSequence, java.lang.Object>)
                                         defaultValue(fields()[10]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
             }
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<DGETInfo> WRITER$ =
+            (org.apache.avro.io.DatumWriter<DGETInfo>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<DGETInfo> READER$ =
+            (org.apache.avro.io.DatumReader<DGETInfo>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
     }
 }

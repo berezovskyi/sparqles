@@ -5,10 +5,17 @@
  */
 package sparqles.avro.core;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class Robots extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -7234500159875722717L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,19 +25,86 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public java.lang.CharSequence content;
-    @Deprecated public java.lang.CharSequence exception;
-    @Deprecated public int respCode;
-    @Deprecated public long timestamp;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<Robots> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<Robots> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<Robots> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<Robots> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<Robots> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this Robots to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a Robots from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a Robots instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static Robots fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private java.lang.CharSequence content;
+    private java.lang.CharSequence exception;
+    private int respCode;
+    private long timestamp;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public Robots() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param content The new value for content
+     * @param exception The new value for exception
+     * @param respCode The new value for respCode
+     * @param timestamp The new value for timestamp
+     */
     public Robots(
             sparqles.avro.Endpoint endpoint,
             java.lang.CharSequence content,
@@ -44,11 +118,18 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
         this.timestamp = timestamp;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -62,11 +143,12 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             case 4:
                 return timestamp;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -86,11 +168,15 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
                 timestamp = (java.lang.Long) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -104,7 +190,11 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'content' field. */
+    /**
+     * Gets the value of the 'content' field.
+     *
+     * @return The value of the 'content' field.
+     */
     public java.lang.CharSequence getContent() {
         return content;
     }
@@ -118,7 +208,11 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
         this.content = value;
     }
 
-    /** Gets the value of the 'exception' field. */
+    /**
+     * Gets the value of the 'exception' field.
+     *
+     * @return The value of the 'exception' field.
+     */
     public java.lang.CharSequence getException() {
         return exception;
     }
@@ -132,8 +226,12 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
         this.exception = value;
     }
 
-    /** Gets the value of the 'respCode' field. */
-    public java.lang.Integer getRespCode() {
+    /**
+     * Gets the value of the 'respCode' field.
+     *
+     * @return The value of the 'respCode' field.
+     */
+    public int getRespCode() {
         return respCode;
     }
 
@@ -142,12 +240,16 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setRespCode(java.lang.Integer value) {
+    public void setRespCode(int value) {
         this.respCode = value;
     }
 
-    /** Gets the value of the 'timestamp' field. */
-    public java.lang.Long getTimestamp() {
+    /**
+     * Gets the value of the 'timestamp' field.
+     *
+     * @return The value of the 'timestamp' field.
+     */
+    public long getTimestamp() {
         return timestamp;
     }
 
@@ -156,31 +258,55 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setTimestamp(java.lang.Long value) {
+    public void setTimestamp(long value) {
         this.timestamp = value;
     }
 
-    /** Creates a new Robots RecordBuilder */
+    /**
+     * Creates a new Robots RecordBuilder.
+     *
+     * @return A new Robots RecordBuilder
+     */
     public static sparqles.avro.core.Robots.Builder newBuilder() {
         return new sparqles.avro.core.Robots.Builder();
     }
 
-    /** Creates a new Robots RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new Robots RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new Robots RecordBuilder
+     */
     public static sparqles.avro.core.Robots.Builder newBuilder(
             sparqles.avro.core.Robots.Builder other) {
-        return new sparqles.avro.core.Robots.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.core.Robots.Builder();
+        } else {
+            return new sparqles.avro.core.Robots.Builder(other);
+        }
     }
 
-    /** Creates a new Robots RecordBuilder by copying an existing Robots instance */
+    /**
+     * Creates a new Robots RecordBuilder by copying an existing Robots instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new Robots RecordBuilder
+     */
     public static sparqles.avro.core.Robots.Builder newBuilder(sparqles.avro.core.Robots other) {
-        return new sparqles.avro.core.Robots.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.core.Robots.Builder();
+        } else {
+            return new sparqles.avro.core.Robots.Builder(other);
+        }
     }
 
     /** RecordBuilder for Robots instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Robots>
             implements org.apache.avro.data.RecordBuilder<Robots> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private java.lang.CharSequence content;
         private java.lang.CharSequence exception;
         private int respCode;
@@ -188,41 +314,54 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.core.Robots.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.core.Robots.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.content)) {
                 this.content = data().deepCopy(fields()[1].schema(), other.content);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.exception)) {
                 this.exception = data().deepCopy(fields()[2].schema(), other.exception);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.respCode)) {
                 this.respCode = data().deepCopy(fields()[3].schema(), other.respCode);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.timestamp)) {
                 this.timestamp = data().deepCopy(fields()[4].schema(), other.timestamp);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
         }
 
-        /** Creates a Builder by copying an existing Robots instance */
+        /**
+         * Creates a Builder by copying an existing Robots instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.core.Robots other) {
-            super(sparqles.avro.core.Robots.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.content)) {
                 this.content = data().deepCopy(fields()[1].schema(), other.content);
                 fieldSetFlags()[1] = true;
@@ -241,37 +380,104 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder setEndpoint(sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.core.Robots.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'content' field */
+        /**
+         * Gets the value of the 'content' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getContent() {
             return content;
         }
 
-        /** Sets the value of the 'content' field */
+        /**
+         * Sets the value of the 'content' field.
+         *
+         * @param value The value of 'content'.
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder setContent(java.lang.CharSequence value) {
             validate(fields()[1], value);
             this.content = value;
@@ -279,24 +485,41 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'content' field has been set */
+        /**
+         * Checks whether the 'content' field has been set.
+         *
+         * @return True if the 'content' field has been set, false otherwise.
+         */
         public boolean hasContent() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'content' field */
+        /**
+         * Clears the value of the 'content' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder clearContent() {
             content = null;
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'exception' field */
+        /**
+         * Gets the value of the 'exception' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getException() {
             return exception;
         }
 
-        /** Sets the value of the 'exception' field */
+        /**
+         * Sets the value of the 'exception' field.
+         *
+         * @param value The value of 'exception'.
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder setException(java.lang.CharSequence value) {
             validate(fields()[2], value);
             this.exception = value;
@@ -304,24 +527,41 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'exception' field has been set */
+        /**
+         * Checks whether the 'exception' field has been set.
+         *
+         * @return True if the 'exception' field has been set, false otherwise.
+         */
         public boolean hasException() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'exception' field */
+        /**
+         * Clears the value of the 'exception' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder clearException() {
             exception = null;
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'respCode' field */
-        public java.lang.Integer getRespCode() {
+        /**
+         * Gets the value of the 'respCode' field.
+         *
+         * @return The value.
+         */
+        public int getRespCode() {
             return respCode;
         }
 
-        /** Sets the value of the 'respCode' field */
+        /**
+         * Sets the value of the 'respCode' field.
+         *
+         * @param value The value of 'respCode'.
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder setRespCode(int value) {
             validate(fields()[3], value);
             this.respCode = value;
@@ -329,23 +569,40 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'respCode' field has been set */
+        /**
+         * Checks whether the 'respCode' field has been set.
+         *
+         * @return True if the 'respCode' field has been set, false otherwise.
+         */
         public boolean hasRespCode() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'respCode' field */
+        /**
+         * Clears the value of the 'respCode' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder clearRespCode() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'timestamp' field */
-        public java.lang.Long getTimestamp() {
+        /**
+         * Gets the value of the 'timestamp' field.
+         *
+         * @return The value.
+         */
+        public long getTimestamp() {
             return timestamp;
         }
 
-        /** Sets the value of the 'timestamp' field */
+        /**
+         * Sets the value of the 'timestamp' field.
+         *
+         * @param value The value of 'timestamp'.
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder setTimestamp(long value) {
             validate(fields()[4], value);
             this.timestamp = value;
@@ -353,25 +610,43 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'timestamp' field has been set */
+        /**
+         * Checks whether the 'timestamp' field has been set.
+         *
+         * @return True if the 'timestamp' field has been set, false otherwise.
+         */
         public boolean hasTimestamp() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'timestamp' field */
+        /**
+         * Clears the value of the 'timestamp' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.core.Robots.Builder clearTimestamp() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public Robots build() {
             try {
                 Robots record = new Robots();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.content =
                         fieldSetFlags()[1]
                                 ? this.content
@@ -389,8 +664,139 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.timestamp
                                 : (java.lang.Long) defaultValue(fields()[4]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<Robots> WRITER$ =
+            (org.apache.avro.io.DatumWriter<Robots>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<Robots> READER$ =
+            (org.apache.avro.io.DatumReader<Robots>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        if (this.content == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.content);
+        }
+
+        if (this.exception == null) {
+            out.writeIndex(1);
+            out.writeNull();
+        } else {
+            out.writeIndex(0);
+            out.writeString(this.exception);
+        }
+
+        out.writeInt(this.respCode);
+
+        out.writeLong(this.timestamp);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.content = null;
+            } else {
+                this.content =
+                        in.readString(this.content instanceof Utf8 ? (Utf8) this.content : null);
+            }
+
+            if (in.readIndex() != 0) {
+                in.readNull();
+                this.exception = null;
+            } else {
+                this.exception =
+                        in.readString(
+                                this.exception instanceof Utf8 ? (Utf8) this.exception : null);
+            }
+
+            this.respCode = in.readInt();
+
+            this.timestamp = in.readLong();
+
+        } else {
+            for (int i = 0; i < 5; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.content = null;
+                        } else {
+                            this.content =
+                                    in.readString(
+                                            this.content instanceof Utf8
+                                                    ? (Utf8) this.content
+                                                    : null);
+                        }
+                        break;
+
+                    case 2:
+                        if (in.readIndex() != 0) {
+                            in.readNull();
+                            this.exception = null;
+                        } else {
+                            this.exception =
+                                    in.readString(
+                                            this.exception instanceof Utf8
+                                                    ? (Utf8) this.exception
+                                                    : null);
+                        }
+                        break;
+
+                    case 3:
+                        this.respCode = in.readInt();
+                        break;
+
+                    case 4:
+                        this.timestamp = in.readLong();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

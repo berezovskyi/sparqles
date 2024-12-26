@@ -5,10 +5,17 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 7160642562817123913L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,19 +25,87 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public boolean VoID;
-    @Deprecated public boolean SD;
-    @Deprecated public java.lang.CharSequence serverName;
-    @Deprecated public long lastUpdate;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<DiscoverabilityView> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<DiscoverabilityView> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<DiscoverabilityView> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<DiscoverabilityView> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<DiscoverabilityView> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this DiscoverabilityView to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a DiscoverabilityView from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a DiscoverabilityView instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static DiscoverabilityView fromByteBuffer(java.nio.ByteBuffer b)
+            throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private boolean VoID;
+    private boolean SD;
+    private java.lang.CharSequence serverName;
+    private long lastUpdate;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public DiscoverabilityView() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param VoID The new value for VoID
+     * @param SD The new value for SD
+     * @param serverName The new value for serverName
+     * @param lastUpdate The new value for lastUpdate
+     */
     public DiscoverabilityView(
             sparqles.avro.Endpoint endpoint,
             java.lang.Boolean VoID,
@@ -44,11 +119,18 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
         this.lastUpdate = lastUpdate;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -62,11 +144,12 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             case 4:
                 return lastUpdate;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -86,11 +169,15 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
                 lastUpdate = (java.lang.Long) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -104,8 +191,12 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'VoID' field. */
-    public java.lang.Boolean getVoID() {
+    /**
+     * Gets the value of the 'VoID' field.
+     *
+     * @return The value of the 'VoID' field.
+     */
+    public boolean getVoID() {
         return VoID;
     }
 
@@ -114,12 +205,16 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
      *
      * @param value the value to set.
      */
-    public void setVoID(java.lang.Boolean value) {
+    public void setVoID(boolean value) {
         this.VoID = value;
     }
 
-    /** Gets the value of the 'SD' field. */
-    public java.lang.Boolean getSD() {
+    /**
+     * Gets the value of the 'SD' field.
+     *
+     * @return The value of the 'SD' field.
+     */
+    public boolean getSD() {
         return SD;
     }
 
@@ -128,11 +223,15 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
      *
      * @param value the value to set.
      */
-    public void setSD(java.lang.Boolean value) {
+    public void setSD(boolean value) {
         this.SD = value;
     }
 
-    /** Gets the value of the 'serverName' field. */
+    /**
+     * Gets the value of the 'serverName' field.
+     *
+     * @return The value of the 'serverName' field.
+     */
     public java.lang.CharSequence getServerName() {
         return serverName;
     }
@@ -146,8 +245,12 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
         this.serverName = value;
     }
 
-    /** Gets the value of the 'lastUpdate' field. */
-    public java.lang.Long getLastUpdate() {
+    /**
+     * Gets the value of the 'lastUpdate' field.
+     *
+     * @return The value of the 'lastUpdate' field.
+     */
+    public long getLastUpdate() {
         return lastUpdate;
     }
 
@@ -156,36 +259,58 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
      *
      * @param value the value to set.
      */
-    public void setLastUpdate(java.lang.Long value) {
+    public void setLastUpdate(long value) {
         this.lastUpdate = value;
     }
 
-    /** Creates a new DiscoverabilityView RecordBuilder */
+    /**
+     * Creates a new DiscoverabilityView RecordBuilder.
+     *
+     * @return A new DiscoverabilityView RecordBuilder
+     */
     public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder() {
         return new sparqles.avro.analytics.DiscoverabilityView.Builder();
     }
 
-    /** Creates a new DiscoverabilityView RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new DiscoverabilityView RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new DiscoverabilityView RecordBuilder
+     */
     public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder(
             sparqles.avro.analytics.DiscoverabilityView.Builder other) {
-        return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.DiscoverabilityView.Builder();
+        } else {
+            return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
+        }
     }
 
     /**
      * Creates a new DiscoverabilityView RecordBuilder by copying an existing DiscoverabilityView
-     * instance
+     * instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new DiscoverabilityView RecordBuilder
      */
     public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder(
             sparqles.avro.analytics.DiscoverabilityView other) {
-        return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.DiscoverabilityView.Builder();
+        } else {
+            return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
+        }
     }
 
     /** RecordBuilder for DiscoverabilityView instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<DiscoverabilityView>
             implements org.apache.avro.data.RecordBuilder<DiscoverabilityView> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private boolean VoID;
         private boolean SD;
         private java.lang.CharSequence serverName;
@@ -193,41 +318,54 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.DiscoverabilityView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.DiscoverabilityView.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.VoID)) {
                 this.VoID = data().deepCopy(fields()[1].schema(), other.VoID);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.SD)) {
                 this.SD = data().deepCopy(fields()[2].schema(), other.SD);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.serverName)) {
                 this.serverName = data().deepCopy(fields()[3].schema(), other.serverName);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.lastUpdate)) {
                 this.lastUpdate = data().deepCopy(fields()[4].schema(), other.lastUpdate);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
         }
 
-        /** Creates a Builder by copying an existing DiscoverabilityView instance */
+        /**
+         * Creates a Builder by copying an existing DiscoverabilityView instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.DiscoverabilityView other) {
-            super(sparqles.avro.analytics.DiscoverabilityView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.VoID)) {
                 this.VoID = data().deepCopy(fields()[1].schema(), other.VoID);
                 fieldSetFlags()[1] = true;
@@ -246,38 +384,105 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             }
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder setEndpoint(
                 sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.DiscoverabilityView.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'VoID' field */
-        public java.lang.Boolean getVoID() {
+        /**
+         * Gets the value of the 'VoID' field.
+         *
+         * @return The value.
+         */
+        public boolean getVoID() {
             return VoID;
         }
 
-        /** Sets the value of the 'VoID' field */
+        /**
+         * Sets the value of the 'VoID' field.
+         *
+         * @param value The value of 'VoID'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder setVoID(boolean value) {
             validate(fields()[1], value);
             this.VoID = value;
@@ -285,23 +490,40 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             return this;
         }
 
-        /** Checks whether the 'VoID' field has been set */
+        /**
+         * Checks whether the 'VoID' field has been set.
+         *
+         * @return True if the 'VoID' field has been set, false otherwise.
+         */
         public boolean hasVoID() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'VoID' field */
+        /**
+         * Clears the value of the 'VoID' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder clearVoID() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'SD' field */
-        public java.lang.Boolean getSD() {
+        /**
+         * Gets the value of the 'SD' field.
+         *
+         * @return The value.
+         */
+        public boolean getSD() {
             return SD;
         }
 
-        /** Sets the value of the 'SD' field */
+        /**
+         * Sets the value of the 'SD' field.
+         *
+         * @param value The value of 'SD'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder setSD(boolean value) {
             validate(fields()[2], value);
             this.SD = value;
@@ -309,23 +531,40 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             return this;
         }
 
-        /** Checks whether the 'SD' field has been set */
+        /**
+         * Checks whether the 'SD' field has been set.
+         *
+         * @return True if the 'SD' field has been set, false otherwise.
+         */
         public boolean hasSD() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'SD' field */
+        /**
+         * Clears the value of the 'SD' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder clearSD() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'serverName' field */
+        /**
+         * Gets the value of the 'serverName' field.
+         *
+         * @return The value.
+         */
         public java.lang.CharSequence getServerName() {
             return serverName;
         }
 
-        /** Sets the value of the 'serverName' field */
+        /**
+         * Sets the value of the 'serverName' field.
+         *
+         * @param value The value of 'serverName'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder setServerName(
                 java.lang.CharSequence value) {
             validate(fields()[3], value);
@@ -334,24 +573,41 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             return this;
         }
 
-        /** Checks whether the 'serverName' field has been set */
+        /**
+         * Checks whether the 'serverName' field has been set.
+         *
+         * @return True if the 'serverName' field has been set, false otherwise.
+         */
         public boolean hasServerName() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'serverName' field */
+        /**
+         * Clears the value of the 'serverName' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder clearServerName() {
             serverName = null;
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'lastUpdate' field */
-        public java.lang.Long getLastUpdate() {
+        /**
+         * Gets the value of the 'lastUpdate' field.
+         *
+         * @return The value.
+         */
+        public long getLastUpdate() {
             return lastUpdate;
         }
 
-        /** Sets the value of the 'lastUpdate' field */
+        /**
+         * Sets the value of the 'lastUpdate' field.
+         *
+         * @param value The value of 'lastUpdate'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder setLastUpdate(long value) {
             validate(fields()[4], value);
             this.lastUpdate = value;
@@ -359,25 +615,43 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             return this;
         }
 
-        /** Checks whether the 'lastUpdate' field has been set */
+        /**
+         * Checks whether the 'lastUpdate' field has been set.
+         *
+         * @return True if the 'lastUpdate' field has been set, false otherwise.
+         */
         public boolean hasLastUpdate() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'lastUpdate' field */
+        /**
+         * Clears the value of the 'lastUpdate' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.DiscoverabilityView.Builder clearLastUpdate() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public DiscoverabilityView build() {
             try {
                 DiscoverabilityView record = new DiscoverabilityView();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.VoID =
                         fieldSetFlags()[1]
                                 ? this.VoID
@@ -395,8 +669,101 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
                                 ? this.lastUpdate
                                 : (java.lang.Long) defaultValue(fields()[4]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<DiscoverabilityView> WRITER$ =
+            (org.apache.avro.io.DatumWriter<DiscoverabilityView>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<DiscoverabilityView> READER$ =
+            (org.apache.avro.io.DatumReader<DiscoverabilityView>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        out.writeBoolean(this.VoID);
+
+        out.writeBoolean(this.SD);
+
+        out.writeString(this.serverName);
+
+        out.writeLong(this.lastUpdate);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            this.VoID = in.readBoolean();
+
+            this.SD = in.readBoolean();
+
+            this.serverName =
+                    in.readString(this.serverName instanceof Utf8 ? (Utf8) this.serverName : null);
+
+            this.lastUpdate = in.readLong();
+
+        } else {
+            for (int i = 0; i < 5; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        this.VoID = in.readBoolean();
+                        break;
+
+                    case 2:
+                        this.SD = in.readBoolean();
+                        break;
+
+                    case 3:
+                        this.serverName =
+                                in.readString(
+                                        this.serverName instanceof Utf8
+                                                ? (Utf8) this.serverName
+                                                : null);
+                        break;
+
+                    case 4:
+                        this.lastUpdate = in.readLong();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

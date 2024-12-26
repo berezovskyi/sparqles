@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class InteroperabilityView extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -1989266332641995296L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,18 +24,85 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public int nbCompliantSPARQL1Features;
-    @Deprecated public int nbCompliantSPARQL11Features;
-    @Deprecated public long lastUpdate;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<InteroperabilityView> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<InteroperabilityView> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<InteroperabilityView> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<InteroperabilityView> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<InteroperabilityView> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this InteroperabilityView to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a InteroperabilityView from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a InteroperabilityView instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static InteroperabilityView fromByteBuffer(java.nio.ByteBuffer b)
+            throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private int nbCompliantSPARQL1Features;
+    private int nbCompliantSPARQL11Features;
+    private long lastUpdate;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public InteroperabilityView() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param nbCompliantSPARQL1Features The new value for nbCompliantSPARQL1Features
+     * @param nbCompliantSPARQL11Features The new value for nbCompliantSPARQL11Features
+     * @param lastUpdate The new value for lastUpdate
+     */
     public InteroperabilityView(
             sparqles.avro.Endpoint endpoint,
             java.lang.Integer nbCompliantSPARQL1Features,
@@ -41,11 +114,18 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
         this.lastUpdate = lastUpdate;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -57,11 +137,12 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
             case 3:
                 return lastUpdate;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -78,11 +159,15 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
                 lastUpdate = (java.lang.Long) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -96,8 +181,12 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'nbCompliantSPARQL1Features' field. */
-    public java.lang.Integer getNbCompliantSPARQL1Features() {
+    /**
+     * Gets the value of the 'nbCompliantSPARQL1Features' field.
+     *
+     * @return The value of the 'nbCompliantSPARQL1Features' field.
+     */
+    public int getNbCompliantSPARQL1Features() {
         return nbCompliantSPARQL1Features;
     }
 
@@ -106,12 +195,16 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setNbCompliantSPARQL1Features(java.lang.Integer value) {
+    public void setNbCompliantSPARQL1Features(int value) {
         this.nbCompliantSPARQL1Features = value;
     }
 
-    /** Gets the value of the 'nbCompliantSPARQL11Features' field. */
-    public java.lang.Integer getNbCompliantSPARQL11Features() {
+    /**
+     * Gets the value of the 'nbCompliantSPARQL11Features' field.
+     *
+     * @return The value of the 'nbCompliantSPARQL11Features' field.
+     */
+    public int getNbCompliantSPARQL11Features() {
         return nbCompliantSPARQL11Features;
     }
 
@@ -120,12 +213,16 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setNbCompliantSPARQL11Features(java.lang.Integer value) {
+    public void setNbCompliantSPARQL11Features(int value) {
         this.nbCompliantSPARQL11Features = value;
     }
 
-    /** Gets the value of the 'lastUpdate' field. */
-    public java.lang.Long getLastUpdate() {
+    /**
+     * Gets the value of the 'lastUpdate' field.
+     *
+     * @return The value of the 'lastUpdate' field.
+     */
+    public long getLastUpdate() {
         return lastUpdate;
     }
 
@@ -134,75 +231,110 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
      *
      * @param value the value to set.
      */
-    public void setLastUpdate(java.lang.Long value) {
+    public void setLastUpdate(long value) {
         this.lastUpdate = value;
     }
 
-    /** Creates a new InteroperabilityView RecordBuilder */
+    /**
+     * Creates a new InteroperabilityView RecordBuilder.
+     *
+     * @return A new InteroperabilityView RecordBuilder
+     */
     public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder() {
         return new sparqles.avro.analytics.InteroperabilityView.Builder();
     }
 
-    /** Creates a new InteroperabilityView RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new InteroperabilityView RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new InteroperabilityView RecordBuilder
+     */
     public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder(
             sparqles.avro.analytics.InteroperabilityView.Builder other) {
-        return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.InteroperabilityView.Builder();
+        } else {
+            return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
+        }
     }
 
     /**
      * Creates a new InteroperabilityView RecordBuilder by copying an existing InteroperabilityView
-     * instance
+     * instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new InteroperabilityView RecordBuilder
      */
     public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder(
             sparqles.avro.analytics.InteroperabilityView other) {
-        return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.InteroperabilityView.Builder();
+        } else {
+            return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
+        }
     }
 
     /** RecordBuilder for InteroperabilityView instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<InteroperabilityView>
             implements org.apache.avro.data.RecordBuilder<InteroperabilityView> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private int nbCompliantSPARQL1Features;
         private int nbCompliantSPARQL11Features;
         private long lastUpdate;
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.InteroperabilityView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.InteroperabilityView.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.nbCompliantSPARQL1Features)) {
                 this.nbCompliantSPARQL1Features =
                         data().deepCopy(fields()[1].schema(), other.nbCompliantSPARQL1Features);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.nbCompliantSPARQL11Features)) {
                 this.nbCompliantSPARQL11Features =
                         data().deepCopy(fields()[2].schema(), other.nbCompliantSPARQL11Features);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.lastUpdate)) {
                 this.lastUpdate = data().deepCopy(fields()[3].schema(), other.lastUpdate);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
         }
 
-        /** Creates a Builder by copying an existing InteroperabilityView instance */
+        /**
+         * Creates a Builder by copying an existing InteroperabilityView instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.InteroperabilityView other) {
-            super(sparqles.avro.analytics.InteroperabilityView.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.nbCompliantSPARQL1Features)) {
                 this.nbCompliantSPARQL1Features =
                         data().deepCopy(fields()[1].schema(), other.nbCompliantSPARQL1Features);
@@ -219,38 +351,105 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
             }
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder setEndpoint(
                 sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.InteroperabilityView.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'nbCompliantSPARQL1Features' field */
-        public java.lang.Integer getNbCompliantSPARQL1Features() {
+        /**
+         * Gets the value of the 'nbCompliantSPARQL1Features' field.
+         *
+         * @return The value.
+         */
+        public int getNbCompliantSPARQL1Features() {
             return nbCompliantSPARQL1Features;
         }
 
-        /** Sets the value of the 'nbCompliantSPARQL1Features' field */
+        /**
+         * Sets the value of the 'nbCompliantSPARQL1Features' field.
+         *
+         * @param value The value of 'nbCompliantSPARQL1Features'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder setNbCompliantSPARQL1Features(
                 int value) {
             validate(fields()[1], value);
@@ -259,24 +458,41 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'nbCompliantSPARQL1Features' field has been set */
+        /**
+         * Checks whether the 'nbCompliantSPARQL1Features' field has been set.
+         *
+         * @return True if the 'nbCompliantSPARQL1Features' field has been set, false otherwise.
+         */
         public boolean hasNbCompliantSPARQL1Features() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'nbCompliantSPARQL1Features' field */
+        /**
+         * Clears the value of the 'nbCompliantSPARQL1Features' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder
                 clearNbCompliantSPARQL1Features() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'nbCompliantSPARQL11Features' field */
-        public java.lang.Integer getNbCompliantSPARQL11Features() {
+        /**
+         * Gets the value of the 'nbCompliantSPARQL11Features' field.
+         *
+         * @return The value.
+         */
+        public int getNbCompliantSPARQL11Features() {
             return nbCompliantSPARQL11Features;
         }
 
-        /** Sets the value of the 'nbCompliantSPARQL11Features' field */
+        /**
+         * Sets the value of the 'nbCompliantSPARQL11Features' field.
+         *
+         * @param value The value of 'nbCompliantSPARQL11Features'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder setNbCompliantSPARQL11Features(
                 int value) {
             validate(fields()[2], value);
@@ -285,24 +501,41 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'nbCompliantSPARQL11Features' field has been set */
+        /**
+         * Checks whether the 'nbCompliantSPARQL11Features' field has been set.
+         *
+         * @return True if the 'nbCompliantSPARQL11Features' field has been set, false otherwise.
+         */
         public boolean hasNbCompliantSPARQL11Features() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'nbCompliantSPARQL11Features' field */
+        /**
+         * Clears the value of the 'nbCompliantSPARQL11Features' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder
                 clearNbCompliantSPARQL11Features() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'lastUpdate' field */
-        public java.lang.Long getLastUpdate() {
+        /**
+         * Gets the value of the 'lastUpdate' field.
+         *
+         * @return The value.
+         */
+        public long getLastUpdate() {
             return lastUpdate;
         }
 
-        /** Sets the value of the 'lastUpdate' field */
+        /**
+         * Sets the value of the 'lastUpdate' field.
+         *
+         * @param value The value of 'lastUpdate'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder setLastUpdate(long value) {
             validate(fields()[3], value);
             this.lastUpdate = value;
@@ -310,25 +543,43 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
             return this;
         }
 
-        /** Checks whether the 'lastUpdate' field has been set */
+        /**
+         * Checks whether the 'lastUpdate' field has been set.
+         *
+         * @return True if the 'lastUpdate' field has been set, false otherwise.
+         */
         public boolean hasLastUpdate() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'lastUpdate' field */
+        /**
+         * Clears the value of the 'lastUpdate' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.InteroperabilityView.Builder clearLastUpdate() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public InteroperabilityView build() {
             try {
                 InteroperabilityView record = new InteroperabilityView();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.nbCompliantSPARQL1Features =
                         fieldSetFlags()[1]
                                 ? this.nbCompliantSPARQL1Features
@@ -342,8 +593,90 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
                                 ? this.lastUpdate
                                 : (java.lang.Long) defaultValue(fields()[3]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<InteroperabilityView> WRITER$ =
+            (org.apache.avro.io.DatumWriter<InteroperabilityView>)
+                    MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<InteroperabilityView> READER$ =
+            (org.apache.avro.io.DatumReader<InteroperabilityView>)
+                    MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        out.writeInt(this.nbCompliantSPARQL1Features);
+
+        out.writeInt(this.nbCompliantSPARQL11Features);
+
+        out.writeLong(this.lastUpdate);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            this.nbCompliantSPARQL1Features = in.readInt();
+
+            this.nbCompliantSPARQL11Features = in.readInt();
+
+            this.lastUpdate = in.readLong();
+
+        } else {
+            for (int i = 0; i < 4; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        this.nbCompliantSPARQL1Features = in.readInt();
+                        break;
+
+                    case 2:
+                        this.nbCompliantSPARQL11Features = in.readInt();
+                        break;
+
+                    case 3:
+                        this.lastUpdate = in.readLong();
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

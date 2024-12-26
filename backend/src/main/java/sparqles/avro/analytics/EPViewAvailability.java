@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 6992869734652967820L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,21 +24,91 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
         return SCHEMA$;
     }
 
-    @Deprecated public boolean upNow;
-    @Deprecated public int testRuns;
-    @Deprecated public double uptimeLast24h;
-    @Deprecated public double uptimeLast7d;
-    @Deprecated public double uptimeLast31d;
-    @Deprecated public double uptimeOverall;
-    @Deprecated public sparqles.avro.analytics.EPViewAvailabilityData data;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<EPViewAvailability> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<EPViewAvailability> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<EPViewAvailability> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<EPViewAvailability> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<EPViewAvailability> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this EPViewAvailability to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a EPViewAvailability from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a EPViewAvailability instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static EPViewAvailability fromByteBuffer(java.nio.ByteBuffer b)
+            throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private boolean upNow;
+    private int testRuns;
+    private double uptimeLast24h;
+    private double uptimeLast7d;
+    private double uptimeLast31d;
+    private double uptimeOverall;
+    private sparqles.avro.analytics.EPViewAvailabilityData data;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public EPViewAvailability() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param upNow The new value for upNow
+     * @param testRuns The new value for testRuns
+     * @param uptimeLast24h The new value for uptimeLast24h
+     * @param uptimeLast7d The new value for uptimeLast7d
+     * @param uptimeLast31d The new value for uptimeLast31d
+     * @param uptimeOverall The new value for uptimeOverall
+     * @param data The new value for data
+     */
     public EPViewAvailability(
             java.lang.Boolean upNow,
             java.lang.Integer testRuns,
@@ -50,11 +126,18 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
         this.data = data;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -72,11 +155,12 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             case 6:
                 return data;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -102,12 +186,16 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
                 data = (sparqles.avro.analytics.EPViewAvailabilityData) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'upNow' field. */
-    public java.lang.Boolean getUpNow() {
+    /**
+     * Gets the value of the 'upNow' field.
+     *
+     * @return The value of the 'upNow' field.
+     */
+    public boolean getUpNow() {
         return upNow;
     }
 
@@ -116,12 +204,16 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      *
      * @param value the value to set.
      */
-    public void setUpNow(java.lang.Boolean value) {
+    public void setUpNow(boolean value) {
         this.upNow = value;
     }
 
-    /** Gets the value of the 'testRuns' field. */
-    public java.lang.Integer getTestRuns() {
+    /**
+     * Gets the value of the 'testRuns' field.
+     *
+     * @return The value of the 'testRuns' field.
+     */
+    public int getTestRuns() {
         return testRuns;
     }
 
@@ -130,12 +222,16 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      *
      * @param value the value to set.
      */
-    public void setTestRuns(java.lang.Integer value) {
+    public void setTestRuns(int value) {
         this.testRuns = value;
     }
 
-    /** Gets the value of the 'uptimeLast24h' field. */
-    public java.lang.Double getUptimeLast24h() {
+    /**
+     * Gets the value of the 'uptimeLast24h' field.
+     *
+     * @return The value of the 'uptimeLast24h' field.
+     */
+    public double getUptimeLast24h() {
         return uptimeLast24h;
     }
 
@@ -144,12 +240,16 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      *
      * @param value the value to set.
      */
-    public void setUptimeLast24h(java.lang.Double value) {
+    public void setUptimeLast24h(double value) {
         this.uptimeLast24h = value;
     }
 
-    /** Gets the value of the 'uptimeLast7d' field. */
-    public java.lang.Double getUptimeLast7d() {
+    /**
+     * Gets the value of the 'uptimeLast7d' field.
+     *
+     * @return The value of the 'uptimeLast7d' field.
+     */
+    public double getUptimeLast7d() {
         return uptimeLast7d;
     }
 
@@ -158,12 +258,16 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      *
      * @param value the value to set.
      */
-    public void setUptimeLast7d(java.lang.Double value) {
+    public void setUptimeLast7d(double value) {
         this.uptimeLast7d = value;
     }
 
-    /** Gets the value of the 'uptimeLast31d' field. */
-    public java.lang.Double getUptimeLast31d() {
+    /**
+     * Gets the value of the 'uptimeLast31d' field.
+     *
+     * @return The value of the 'uptimeLast31d' field.
+     */
+    public double getUptimeLast31d() {
         return uptimeLast31d;
     }
 
@@ -172,12 +276,16 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      *
      * @param value the value to set.
      */
-    public void setUptimeLast31d(java.lang.Double value) {
+    public void setUptimeLast31d(double value) {
         this.uptimeLast31d = value;
     }
 
-    /** Gets the value of the 'uptimeOverall' field. */
-    public java.lang.Double getUptimeOverall() {
+    /**
+     * Gets the value of the 'uptimeOverall' field.
+     *
+     * @return The value of the 'uptimeOverall' field.
+     */
+    public double getUptimeOverall() {
         return uptimeOverall;
     }
 
@@ -186,11 +294,15 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      *
      * @param value the value to set.
      */
-    public void setUptimeOverall(java.lang.Double value) {
+    public void setUptimeOverall(double value) {
         this.uptimeOverall = value;
     }
 
-    /** Gets the value of the 'data' field. */
+    /**
+     * Gets the value of the 'data' field.
+     *
+     * @return The value of the 'data' field.
+     */
     public sparqles.avro.analytics.EPViewAvailabilityData getData() {
         return data;
     }
@@ -204,27 +316,48 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
         this.data = value;
     }
 
-    /** Creates a new EPViewAvailability RecordBuilder */
+    /**
+     * Creates a new EPViewAvailability RecordBuilder.
+     *
+     * @return A new EPViewAvailability RecordBuilder
+     */
     public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder() {
         return new sparqles.avro.analytics.EPViewAvailability.Builder();
     }
 
-    /** Creates a new EPViewAvailability RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new EPViewAvailability RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new EPViewAvailability RecordBuilder
+     */
     public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder(
             sparqles.avro.analytics.EPViewAvailability.Builder other) {
-        return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.EPViewAvailability.Builder();
+        } else {
+            return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
+        }
     }
 
     /**
      * Creates a new EPViewAvailability RecordBuilder by copying an existing EPViewAvailability
-     * instance
+     * instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new EPViewAvailability RecordBuilder
      */
     public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder(
             sparqles.avro.analytics.EPViewAvailability other) {
-        return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.EPViewAvailability.Builder();
+        } else {
+            return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
+        }
     }
 
     /** RecordBuilder for EPViewAvailability instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder
             extends org.apache.avro.specific.SpecificRecordBuilderBase<EPViewAvailability>
             implements org.apache.avro.data.RecordBuilder<EPViewAvailability> {
@@ -236,48 +369,62 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
         private double uptimeLast31d;
         private double uptimeOverall;
         private sparqles.avro.analytics.EPViewAvailabilityData data;
+        private sparqles.avro.analytics.EPViewAvailabilityData.Builder dataBuilder;
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.EPViewAvailability.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.EPViewAvailability.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.upNow)) {
                 this.upNow = data().deepCopy(fields()[0].schema(), other.upNow);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
             }
             if (isValidValue(fields()[1], other.testRuns)) {
                 this.testRuns = data().deepCopy(fields()[1].schema(), other.testRuns);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.uptimeLast24h)) {
                 this.uptimeLast24h = data().deepCopy(fields()[2].schema(), other.uptimeLast24h);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.uptimeLast7d)) {
                 this.uptimeLast7d = data().deepCopy(fields()[3].schema(), other.uptimeLast7d);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.uptimeLast31d)) {
                 this.uptimeLast31d = data().deepCopy(fields()[4].schema(), other.uptimeLast31d);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.uptimeOverall)) {
                 this.uptimeOverall = data().deepCopy(fields()[5].schema(), other.uptimeOverall);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
             if (isValidValue(fields()[6], other.data)) {
                 this.data = data().deepCopy(fields()[6].schema(), other.data);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
+            }
+            if (other.hasDataBuilder()) {
+                this.dataBuilder =
+                        sparqles.avro.analytics.EPViewAvailabilityData.newBuilder(
+                                other.getDataBuilder());
             }
         }
 
-        /** Creates a Builder by copying an existing EPViewAvailability instance */
+        /**
+         * Creates a Builder by copying an existing EPViewAvailability instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.EPViewAvailability other) {
-            super(sparqles.avro.analytics.EPViewAvailability.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.upNow)) {
                 this.upNow = data().deepCopy(fields()[0].schema(), other.upNow);
                 fieldSetFlags()[0] = true;
@@ -306,14 +453,24 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
                 this.data = data().deepCopy(fields()[6].schema(), other.data);
                 fieldSetFlags()[6] = true;
             }
+            this.dataBuilder = null;
         }
 
-        /** Gets the value of the 'upNow' field */
-        public java.lang.Boolean getUpNow() {
+        /**
+         * Gets the value of the 'upNow' field.
+         *
+         * @return The value.
+         */
+        public boolean getUpNow() {
             return upNow;
         }
 
-        /** Sets the value of the 'upNow' field */
+        /**
+         * Sets the value of the 'upNow' field.
+         *
+         * @param value The value of 'upNow'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setUpNow(boolean value) {
             validate(fields()[0], value);
             this.upNow = value;
@@ -321,23 +478,40 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             return this;
         }
 
-        /** Checks whether the 'upNow' field has been set */
+        /**
+         * Checks whether the 'upNow' field has been set.
+         *
+         * @return True if the 'upNow' field has been set, false otherwise.
+         */
         public boolean hasUpNow() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'upNow' field */
+        /**
+         * Clears the value of the 'upNow' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearUpNow() {
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'testRuns' field */
-        public java.lang.Integer getTestRuns() {
+        /**
+         * Gets the value of the 'testRuns' field.
+         *
+         * @return The value.
+         */
+        public int getTestRuns() {
             return testRuns;
         }
 
-        /** Sets the value of the 'testRuns' field */
+        /**
+         * Sets the value of the 'testRuns' field.
+         *
+         * @param value The value of 'testRuns'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setTestRuns(int value) {
             validate(fields()[1], value);
             this.testRuns = value;
@@ -345,23 +519,40 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             return this;
         }
 
-        /** Checks whether the 'testRuns' field has been set */
+        /**
+         * Checks whether the 'testRuns' field has been set.
+         *
+         * @return True if the 'testRuns' field has been set, false otherwise.
+         */
         public boolean hasTestRuns() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'testRuns' field */
+        /**
+         * Clears the value of the 'testRuns' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearTestRuns() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'uptimeLast24h' field */
-        public java.lang.Double getUptimeLast24h() {
+        /**
+         * Gets the value of the 'uptimeLast24h' field.
+         *
+         * @return The value.
+         */
+        public double getUptimeLast24h() {
             return uptimeLast24h;
         }
 
-        /** Sets the value of the 'uptimeLast24h' field */
+        /**
+         * Sets the value of the 'uptimeLast24h' field.
+         *
+         * @param value The value of 'uptimeLast24h'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setUptimeLast24h(double value) {
             validate(fields()[2], value);
             this.uptimeLast24h = value;
@@ -369,23 +560,40 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             return this;
         }
 
-        /** Checks whether the 'uptimeLast24h' field has been set */
+        /**
+         * Checks whether the 'uptimeLast24h' field has been set.
+         *
+         * @return True if the 'uptimeLast24h' field has been set, false otherwise.
+         */
         public boolean hasUptimeLast24h() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'uptimeLast24h' field */
+        /**
+         * Clears the value of the 'uptimeLast24h' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearUptimeLast24h() {
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'uptimeLast7d' field */
-        public java.lang.Double getUptimeLast7d() {
+        /**
+         * Gets the value of the 'uptimeLast7d' field.
+         *
+         * @return The value.
+         */
+        public double getUptimeLast7d() {
             return uptimeLast7d;
         }
 
-        /** Sets the value of the 'uptimeLast7d' field */
+        /**
+         * Sets the value of the 'uptimeLast7d' field.
+         *
+         * @param value The value of 'uptimeLast7d'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setUptimeLast7d(double value) {
             validate(fields()[3], value);
             this.uptimeLast7d = value;
@@ -393,23 +601,40 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             return this;
         }
 
-        /** Checks whether the 'uptimeLast7d' field has been set */
+        /**
+         * Checks whether the 'uptimeLast7d' field has been set.
+         *
+         * @return True if the 'uptimeLast7d' field has been set, false otherwise.
+         */
         public boolean hasUptimeLast7d() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'uptimeLast7d' field */
+        /**
+         * Clears the value of the 'uptimeLast7d' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearUptimeLast7d() {
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'uptimeLast31d' field */
-        public java.lang.Double getUptimeLast31d() {
+        /**
+         * Gets the value of the 'uptimeLast31d' field.
+         *
+         * @return The value.
+         */
+        public double getUptimeLast31d() {
             return uptimeLast31d;
         }
 
-        /** Sets the value of the 'uptimeLast31d' field */
+        /**
+         * Sets the value of the 'uptimeLast31d' field.
+         *
+         * @param value The value of 'uptimeLast31d'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setUptimeLast31d(double value) {
             validate(fields()[4], value);
             this.uptimeLast31d = value;
@@ -417,23 +642,40 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             return this;
         }
 
-        /** Checks whether the 'uptimeLast31d' field has been set */
+        /**
+         * Checks whether the 'uptimeLast31d' field has been set.
+         *
+         * @return True if the 'uptimeLast31d' field has been set, false otherwise.
+         */
         public boolean hasUptimeLast31d() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'uptimeLast31d' field */
+        /**
+         * Clears the value of the 'uptimeLast31d' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearUptimeLast31d() {
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'uptimeOverall' field */
-        public java.lang.Double getUptimeOverall() {
+        /**
+         * Gets the value of the 'uptimeOverall' field.
+         *
+         * @return The value.
+         */
+        public double getUptimeOverall() {
             return uptimeOverall;
         }
 
-        /** Sets the value of the 'uptimeOverall' field */
+        /**
+         * Sets the value of the 'uptimeOverall' field.
+         *
+         * @param value The value of 'uptimeOverall'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setUptimeOverall(double value) {
             validate(fields()[5], value);
             this.uptimeOverall = value;
@@ -441,44 +683,110 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             return this;
         }
 
-        /** Checks whether the 'uptimeOverall' field has been set */
+        /**
+         * Checks whether the 'uptimeOverall' field has been set.
+         *
+         * @return True if the 'uptimeOverall' field has been set, false otherwise.
+         */
         public boolean hasUptimeOverall() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'uptimeOverall' field */
+        /**
+         * Clears the value of the 'uptimeOverall' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearUptimeOverall() {
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'data' field */
+        /**
+         * Gets the value of the 'data' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.analytics.EPViewAvailabilityData getData() {
             return data;
         }
 
-        /** Sets the value of the 'data' field */
+        /**
+         * Sets the value of the 'data' field.
+         *
+         * @param value The value of 'data'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder setData(
                 sparqles.avro.analytics.EPViewAvailabilityData value) {
             validate(fields()[6], value);
+            this.dataBuilder = null;
             this.data = value;
             fieldSetFlags()[6] = true;
             return this;
         }
 
-        /** Checks whether the 'data' field has been set */
+        /**
+         * Checks whether the 'data' field has been set.
+         *
+         * @return True if the 'data' field has been set, false otherwise.
+         */
         public boolean hasData() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'data' field */
+        /**
+         * Gets the Builder instance for the 'data' field and creates one if it doesn't exist yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.EPViewAvailabilityData.Builder getDataBuilder() {
+            if (dataBuilder == null) {
+                if (hasData()) {
+                    setDataBuilder(sparqles.avro.analytics.EPViewAvailabilityData.newBuilder(data));
+                } else {
+                    setDataBuilder(sparqles.avro.analytics.EPViewAvailabilityData.newBuilder());
+                }
+            }
+            return dataBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'data' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.EPViewAvailability.Builder setDataBuilder(
+                sparqles.avro.analytics.EPViewAvailabilityData.Builder value) {
+            clearData();
+            dataBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'data' field has an active Builder instance
+         *
+         * @return True if the 'data' field has an active Builder instance
+         */
+        public boolean hasDataBuilder() {
+            return dataBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'data' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.EPViewAvailability.Builder clearData() {
             data = null;
+            dataBuilder = null;
             fieldSetFlags()[6] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public EPViewAvailability build() {
             try {
                 EPViewAvailability record = new EPViewAvailability();
@@ -506,14 +814,127 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
                         fieldSetFlags()[5]
                                 ? this.uptimeOverall
                                 : (java.lang.Double) defaultValue(fields()[5]);
-                record.data =
-                        fieldSetFlags()[6]
-                                ? this.data
-                                : (sparqles.avro.analytics.EPViewAvailabilityData)
-                                        defaultValue(fields()[6]);
+                if (dataBuilder != null) {
+                    try {
+                        record.data = this.dataBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("data"));
+                        throw e;
+                    }
+                } else {
+                    record.data =
+                            fieldSetFlags()[6]
+                                    ? this.data
+                                    : (sparqles.avro.analytics.EPViewAvailabilityData)
+                                            defaultValue(fields()[6]);
+                }
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<EPViewAvailability> WRITER$ =
+            (org.apache.avro.io.DatumWriter<EPViewAvailability>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<EPViewAvailability> READER$ =
+            (org.apache.avro.io.DatumReader<EPViewAvailability>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        out.writeBoolean(this.upNow);
+
+        out.writeInt(this.testRuns);
+
+        out.writeDouble(this.uptimeLast24h);
+
+        out.writeDouble(this.uptimeLast7d);
+
+        out.writeDouble(this.uptimeLast31d);
+
+        out.writeDouble(this.uptimeOverall);
+
+        this.data.customEncode(out);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            this.upNow = in.readBoolean();
+
+            this.testRuns = in.readInt();
+
+            this.uptimeLast24h = in.readDouble();
+
+            this.uptimeLast7d = in.readDouble();
+
+            this.uptimeLast31d = in.readDouble();
+
+            this.uptimeOverall = in.readDouble();
+
+            if (this.data == null) {
+                this.data = new sparqles.avro.analytics.EPViewAvailabilityData();
+            }
+            this.data.customDecode(in);
+
+        } else {
+            for (int i = 0; i < 7; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        this.upNow = in.readBoolean();
+                        break;
+
+                    case 1:
+                        this.testRuns = in.readInt();
+                        break;
+
+                    case 2:
+                        this.uptimeLast24h = in.readDouble();
+                        break;
+
+                    case 3:
+                        this.uptimeLast7d = in.readDouble();
+                        break;
+
+                    case 4:
+                        this.uptimeLast31d = in.readDouble();
+                        break;
+
+                    case 5:
+                        this.uptimeOverall = in.readDouble();
+                        break;
+
+                    case 6:
+                        if (this.data == null) {
+                            this.data = new sparqles.avro.analytics.EPViewAvailabilityData();
+                        }
+                        this.data.customDecode(in);
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

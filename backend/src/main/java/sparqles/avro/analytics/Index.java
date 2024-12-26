@@ -5,10 +5,16 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class Index extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = 8399375307976379980L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,21 +24,90 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.Endpoint endpoint;
-    @Deprecated public long lastUpdate;
-    @Deprecated public java.util.List<sparqles.avro.analytics.AvailabilityIndex> availability;
-    @Deprecated public sparqles.avro.analytics.IndexViewPerformance performance;
-    @Deprecated public sparqles.avro.analytics.IndexViewInteroperability interoperability;
-    @Deprecated public sparqles.avro.analytics.IndexViewDiscoverability discoverability;
-    @Deprecated public sparqles.avro.analytics.IndexViewCalculation calculation;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<Index> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<Index> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<Index> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<Index> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<Index> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this Index to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a Index from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a Index instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static Index fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.Endpoint endpoint;
+    private long lastUpdate;
+    private java.util.List<sparqles.avro.analytics.AvailabilityIndex> availability;
+    private sparqles.avro.analytics.IndexViewPerformance performance;
+    private sparqles.avro.analytics.IndexViewInteroperability interoperability;
+    private sparqles.avro.analytics.IndexViewDiscoverability discoverability;
+    private sparqles.avro.analytics.IndexViewCalculation calculation;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public Index() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpoint The new value for endpoint
+     * @param lastUpdate The new value for lastUpdate
+     * @param availability The new value for availability
+     * @param performance The new value for performance
+     * @param interoperability The new value for interoperability
+     * @param discoverability The new value for discoverability
+     * @param calculation The new value for calculation
+     */
     public Index(
             sparqles.avro.Endpoint endpoint,
             java.lang.Long lastUpdate,
@@ -50,11 +125,18 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.calculation = calculation;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -72,11 +154,12 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
             case 6:
                 return calculation;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -102,11 +185,15 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                 calculation = (sparqles.avro.analytics.IndexViewCalculation) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpoint' field. */
+    /**
+     * Gets the value of the 'endpoint' field.
+     *
+     * @return The value of the 'endpoint' field.
+     */
     public sparqles.avro.Endpoint getEndpoint() {
         return endpoint;
     }
@@ -120,8 +207,12 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.endpoint = value;
     }
 
-    /** Gets the value of the 'lastUpdate' field. */
-    public java.lang.Long getLastUpdate() {
+    /**
+     * Gets the value of the 'lastUpdate' field.
+     *
+     * @return The value of the 'lastUpdate' field.
+     */
+    public long getLastUpdate() {
         return lastUpdate;
     }
 
@@ -130,11 +221,15 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
      *
      * @param value the value to set.
      */
-    public void setLastUpdate(java.lang.Long value) {
+    public void setLastUpdate(long value) {
         this.lastUpdate = value;
     }
 
-    /** Gets the value of the 'availability' field. */
+    /**
+     * Gets the value of the 'availability' field.
+     *
+     * @return The value of the 'availability' field.
+     */
     public java.util.List<sparqles.avro.analytics.AvailabilityIndex> getAvailability() {
         return availability;
     }
@@ -148,7 +243,11 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.availability = value;
     }
 
-    /** Gets the value of the 'performance' field. */
+    /**
+     * Gets the value of the 'performance' field.
+     *
+     * @return The value of the 'performance' field.
+     */
     public sparqles.avro.analytics.IndexViewPerformance getPerformance() {
         return performance;
     }
@@ -162,7 +261,11 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.performance = value;
     }
 
-    /** Gets the value of the 'interoperability' field. */
+    /**
+     * Gets the value of the 'interoperability' field.
+     *
+     * @return The value of the 'interoperability' field.
+     */
     public sparqles.avro.analytics.IndexViewInteroperability getInteroperability() {
         return interoperability;
     }
@@ -176,7 +279,11 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.interoperability = value;
     }
 
-    /** Gets the value of the 'discoverability' field. */
+    /**
+     * Gets the value of the 'discoverability' field.
+     *
+     * @return The value of the 'discoverability' field.
+     */
     public sparqles.avro.analytics.IndexViewDiscoverability getDiscoverability() {
         return discoverability;
     }
@@ -190,7 +297,11 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.discoverability = value;
     }
 
-    /** Gets the value of the 'calculation' field. */
+    /**
+     * Gets the value of the 'calculation' field.
+     *
+     * @return The value of the 'calculation' field.
+     */
     public sparqles.avro.analytics.IndexViewCalculation getCalculation() {
         return calculation;
     }
@@ -204,81 +315,142 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.calculation = value;
     }
 
-    /** Creates a new Index RecordBuilder */
+    /**
+     * Creates a new Index RecordBuilder.
+     *
+     * @return A new Index RecordBuilder
+     */
     public static sparqles.avro.analytics.Index.Builder newBuilder() {
         return new sparqles.avro.analytics.Index.Builder();
     }
 
-    /** Creates a new Index RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new Index RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new Index RecordBuilder
+     */
     public static sparqles.avro.analytics.Index.Builder newBuilder(
             sparqles.avro.analytics.Index.Builder other) {
-        return new sparqles.avro.analytics.Index.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.Index.Builder();
+        } else {
+            return new sparqles.avro.analytics.Index.Builder(other);
+        }
     }
 
-    /** Creates a new Index RecordBuilder by copying an existing Index instance */
+    /**
+     * Creates a new Index RecordBuilder by copying an existing Index instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new Index RecordBuilder
+     */
     public static sparqles.avro.analytics.Index.Builder newBuilder(
             sparqles.avro.analytics.Index other) {
-        return new sparqles.avro.analytics.Index.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.analytics.Index.Builder();
+        } else {
+            return new sparqles.avro.analytics.Index.Builder(other);
+        }
     }
 
     /** RecordBuilder for Index instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Index>
             implements org.apache.avro.data.RecordBuilder<Index> {
 
         private sparqles.avro.Endpoint endpoint;
+        private sparqles.avro.Endpoint.Builder endpointBuilder;
         private long lastUpdate;
         private java.util.List<sparqles.avro.analytics.AvailabilityIndex> availability;
         private sparqles.avro.analytics.IndexViewPerformance performance;
+        private sparqles.avro.analytics.IndexViewPerformance.Builder performanceBuilder;
         private sparqles.avro.analytics.IndexViewInteroperability interoperability;
+        private sparqles.avro.analytics.IndexViewInteroperability.Builder interoperabilityBuilder;
         private sparqles.avro.analytics.IndexViewDiscoverability discoverability;
+        private sparqles.avro.analytics.IndexViewDiscoverability.Builder discoverabilityBuilder;
         private sparqles.avro.analytics.IndexViewCalculation calculation;
+        private sparqles.avro.analytics.IndexViewCalculation.Builder calculationBuilder;
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.analytics.Index.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.analytics.Index.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointBuilder()) {
+                this.endpointBuilder =
+                        sparqles.avro.Endpoint.newBuilder(other.getEndpointBuilder());
             }
             if (isValidValue(fields()[1], other.lastUpdate)) {
                 this.lastUpdate = data().deepCopy(fields()[1].schema(), other.lastUpdate);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.availability)) {
                 this.availability = data().deepCopy(fields()[2].schema(), other.availability);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.performance)) {
                 this.performance = data().deepCopy(fields()[3].schema(), other.performance);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
+            }
+            if (other.hasPerformanceBuilder()) {
+                this.performanceBuilder =
+                        sparqles.avro.analytics.IndexViewPerformance.newBuilder(
+                                other.getPerformanceBuilder());
             }
             if (isValidValue(fields()[4], other.interoperability)) {
                 this.interoperability =
                         data().deepCopy(fields()[4].schema(), other.interoperability);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
+            }
+            if (other.hasInteroperabilityBuilder()) {
+                this.interoperabilityBuilder =
+                        sparqles.avro.analytics.IndexViewInteroperability.newBuilder(
+                                other.getInteroperabilityBuilder());
             }
             if (isValidValue(fields()[5], other.discoverability)) {
                 this.discoverability = data().deepCopy(fields()[5].schema(), other.discoverability);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
+            }
+            if (other.hasDiscoverabilityBuilder()) {
+                this.discoverabilityBuilder =
+                        sparqles.avro.analytics.IndexViewDiscoverability.newBuilder(
+                                other.getDiscoverabilityBuilder());
             }
             if (isValidValue(fields()[6], other.calculation)) {
                 this.calculation = data().deepCopy(fields()[6].schema(), other.calculation);
-                fieldSetFlags()[6] = true;
+                fieldSetFlags()[6] = other.fieldSetFlags()[6];
+            }
+            if (other.hasCalculationBuilder()) {
+                this.calculationBuilder =
+                        sparqles.avro.analytics.IndexViewCalculation.newBuilder(
+                                other.getCalculationBuilder());
             }
         }
 
-        /** Creates a Builder by copying an existing Index instance */
+        /**
+         * Creates a Builder by copying an existing Index instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.analytics.Index other) {
-            super(sparqles.avro.analytics.Index.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpoint)) {
                 this.endpoint = data().deepCopy(fields()[0].schema(), other.endpoint);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointBuilder = null;
             if (isValidValue(fields()[1], other.lastUpdate)) {
                 this.lastUpdate = data().deepCopy(fields()[1].schema(), other.lastUpdate);
                 fieldSetFlags()[1] = true;
@@ -291,52 +463,123 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                 this.performance = data().deepCopy(fields()[3].schema(), other.performance);
                 fieldSetFlags()[3] = true;
             }
+            this.performanceBuilder = null;
             if (isValidValue(fields()[4], other.interoperability)) {
                 this.interoperability =
                         data().deepCopy(fields()[4].schema(), other.interoperability);
                 fieldSetFlags()[4] = true;
             }
+            this.interoperabilityBuilder = null;
             if (isValidValue(fields()[5], other.discoverability)) {
                 this.discoverability = data().deepCopy(fields()[5].schema(), other.discoverability);
                 fieldSetFlags()[5] = true;
             }
+            this.discoverabilityBuilder = null;
             if (isValidValue(fields()[6], other.calculation)) {
                 this.calculation = data().deepCopy(fields()[6].schema(), other.calculation);
                 fieldSetFlags()[6] = true;
             }
+            this.calculationBuilder = null;
         }
 
-        /** Gets the value of the 'endpoint' field */
+        /**
+         * Gets the value of the 'endpoint' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.Endpoint getEndpoint() {
             return endpoint;
         }
 
-        /** Sets the value of the 'endpoint' field */
+        /**
+         * Sets the value of the 'endpoint' field.
+         *
+         * @param value The value of 'endpoint'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setEndpoint(sparqles.avro.Endpoint value) {
             validate(fields()[0], value);
+            this.endpointBuilder = null;
             this.endpoint = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpoint' field has been set */
+        /**
+         * Checks whether the 'endpoint' field has been set.
+         *
+         * @return True if the 'endpoint' field has been set, false otherwise.
+         */
         public boolean hasEndpoint() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpoint' field */
+        /**
+         * Gets the Builder instance for the 'endpoint' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.Endpoint.Builder getEndpointBuilder() {
+            if (endpointBuilder == null) {
+                if (hasEndpoint()) {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder(endpoint));
+                } else {
+                    setEndpointBuilder(sparqles.avro.Endpoint.newBuilder());
+                }
+            }
+            return endpointBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpoint' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.Index.Builder setEndpointBuilder(
+                sparqles.avro.Endpoint.Builder value) {
+            clearEndpoint();
+            endpointBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpoint' field has an active Builder instance
+         *
+         * @return True if the 'endpoint' field has an active Builder instance
+         */
+        public boolean hasEndpointBuilder() {
+            return endpointBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpoint' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearEndpoint() {
             endpoint = null;
+            endpointBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'lastUpdate' field */
-        public java.lang.Long getLastUpdate() {
+        /**
+         * Gets the value of the 'lastUpdate' field.
+         *
+         * @return The value.
+         */
+        public long getLastUpdate() {
             return lastUpdate;
         }
 
-        /** Sets the value of the 'lastUpdate' field */
+        /**
+         * Sets the value of the 'lastUpdate' field.
+         *
+         * @param value The value of 'lastUpdate'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setLastUpdate(long value) {
             validate(fields()[1], value);
             this.lastUpdate = value;
@@ -344,23 +587,40 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'lastUpdate' field has been set */
+        /**
+         * Checks whether the 'lastUpdate' field has been set.
+         *
+         * @return True if the 'lastUpdate' field has been set, false otherwise.
+         */
         public boolean hasLastUpdate() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'lastUpdate' field */
+        /**
+         * Clears the value of the 'lastUpdate' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearLastUpdate() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'availability' field */
+        /**
+         * Gets the value of the 'availability' field.
+         *
+         * @return The value.
+         */
         public java.util.List<sparqles.avro.analytics.AvailabilityIndex> getAvailability() {
             return availability;
         }
 
-        /** Sets the value of the 'availability' field */
+        /**
+         * Sets the value of the 'availability' field.
+         *
+         * @param value The value of 'availability'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setAvailability(
                 java.util.List<sparqles.avro.analytics.AvailabilityIndex> value) {
             validate(fields()[2], value);
@@ -369,130 +629,392 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'availability' field has been set */
+        /**
+         * Checks whether the 'availability' field has been set.
+         *
+         * @return True if the 'availability' field has been set, false otherwise.
+         */
         public boolean hasAvailability() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'availability' field */
+        /**
+         * Clears the value of the 'availability' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearAvailability() {
             availability = null;
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'performance' field */
+        /**
+         * Gets the value of the 'performance' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.analytics.IndexViewPerformance getPerformance() {
             return performance;
         }
 
-        /** Sets the value of the 'performance' field */
+        /**
+         * Sets the value of the 'performance' field.
+         *
+         * @param value The value of 'performance'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setPerformance(
                 sparqles.avro.analytics.IndexViewPerformance value) {
             validate(fields()[3], value);
+            this.performanceBuilder = null;
             this.performance = value;
             fieldSetFlags()[3] = true;
             return this;
         }
 
-        /** Checks whether the 'performance' field has been set */
+        /**
+         * Checks whether the 'performance' field has been set.
+         *
+         * @return True if the 'performance' field has been set, false otherwise.
+         */
         public boolean hasPerformance() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'performance' field */
+        /**
+         * Gets the Builder instance for the 'performance' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.IndexViewPerformance.Builder getPerformanceBuilder() {
+            if (performanceBuilder == null) {
+                if (hasPerformance()) {
+                    setPerformanceBuilder(
+                            sparqles.avro.analytics.IndexViewPerformance.newBuilder(performance));
+                } else {
+                    setPerformanceBuilder(
+                            sparqles.avro.analytics.IndexViewPerformance.newBuilder());
+                }
+            }
+            return performanceBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'performance' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.Index.Builder setPerformanceBuilder(
+                sparqles.avro.analytics.IndexViewPerformance.Builder value) {
+            clearPerformance();
+            performanceBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'performance' field has an active Builder instance
+         *
+         * @return True if the 'performance' field has an active Builder instance
+         */
+        public boolean hasPerformanceBuilder() {
+            return performanceBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'performance' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearPerformance() {
             performance = null;
+            performanceBuilder = null;
             fieldSetFlags()[3] = false;
             return this;
         }
 
-        /** Gets the value of the 'interoperability' field */
+        /**
+         * Gets the value of the 'interoperability' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.analytics.IndexViewInteroperability getInteroperability() {
             return interoperability;
         }
 
-        /** Sets the value of the 'interoperability' field */
+        /**
+         * Sets the value of the 'interoperability' field.
+         *
+         * @param value The value of 'interoperability'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setInteroperability(
                 sparqles.avro.analytics.IndexViewInteroperability value) {
             validate(fields()[4], value);
+            this.interoperabilityBuilder = null;
             this.interoperability = value;
             fieldSetFlags()[4] = true;
             return this;
         }
 
-        /** Checks whether the 'interoperability' field has been set */
+        /**
+         * Checks whether the 'interoperability' field has been set.
+         *
+         * @return True if the 'interoperability' field has been set, false otherwise.
+         */
         public boolean hasInteroperability() {
             return fieldSetFlags()[4];
         }
 
-        /** Clears the value of the 'interoperability' field */
+        /**
+         * Gets the Builder instance for the 'interoperability' field and creates one if it doesn't
+         * exist yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.IndexViewInteroperability.Builder
+                getInteroperabilityBuilder() {
+            if (interoperabilityBuilder == null) {
+                if (hasInteroperability()) {
+                    setInteroperabilityBuilder(
+                            sparqles.avro.analytics.IndexViewInteroperability.newBuilder(
+                                    interoperability));
+                } else {
+                    setInteroperabilityBuilder(
+                            sparqles.avro.analytics.IndexViewInteroperability.newBuilder());
+                }
+            }
+            return interoperabilityBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'interoperability' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.Index.Builder setInteroperabilityBuilder(
+                sparqles.avro.analytics.IndexViewInteroperability.Builder value) {
+            clearInteroperability();
+            interoperabilityBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'interoperability' field has an active Builder instance
+         *
+         * @return True if the 'interoperability' field has an active Builder instance
+         */
+        public boolean hasInteroperabilityBuilder() {
+            return interoperabilityBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'interoperability' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearInteroperability() {
             interoperability = null;
+            interoperabilityBuilder = null;
             fieldSetFlags()[4] = false;
             return this;
         }
 
-        /** Gets the value of the 'discoverability' field */
+        /**
+         * Gets the value of the 'discoverability' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.analytics.IndexViewDiscoverability getDiscoverability() {
             return discoverability;
         }
 
-        /** Sets the value of the 'discoverability' field */
+        /**
+         * Sets the value of the 'discoverability' field.
+         *
+         * @param value The value of 'discoverability'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setDiscoverability(
                 sparqles.avro.analytics.IndexViewDiscoverability value) {
             validate(fields()[5], value);
+            this.discoverabilityBuilder = null;
             this.discoverability = value;
             fieldSetFlags()[5] = true;
             return this;
         }
 
-        /** Checks whether the 'discoverability' field has been set */
+        /**
+         * Checks whether the 'discoverability' field has been set.
+         *
+         * @return True if the 'discoverability' field has been set, false otherwise.
+         */
         public boolean hasDiscoverability() {
             return fieldSetFlags()[5];
         }
 
-        /** Clears the value of the 'discoverability' field */
+        /**
+         * Gets the Builder instance for the 'discoverability' field and creates one if it doesn't
+         * exist yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.IndexViewDiscoverability.Builder
+                getDiscoverabilityBuilder() {
+            if (discoverabilityBuilder == null) {
+                if (hasDiscoverability()) {
+                    setDiscoverabilityBuilder(
+                            sparqles.avro.analytics.IndexViewDiscoverability.newBuilder(
+                                    discoverability));
+                } else {
+                    setDiscoverabilityBuilder(
+                            sparqles.avro.analytics.IndexViewDiscoverability.newBuilder());
+                }
+            }
+            return discoverabilityBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'discoverability' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.Index.Builder setDiscoverabilityBuilder(
+                sparqles.avro.analytics.IndexViewDiscoverability.Builder value) {
+            clearDiscoverability();
+            discoverabilityBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'discoverability' field has an active Builder instance
+         *
+         * @return True if the 'discoverability' field has an active Builder instance
+         */
+        public boolean hasDiscoverabilityBuilder() {
+            return discoverabilityBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'discoverability' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearDiscoverability() {
             discoverability = null;
+            discoverabilityBuilder = null;
             fieldSetFlags()[5] = false;
             return this;
         }
 
-        /** Gets the value of the 'calculation' field */
+        /**
+         * Gets the value of the 'calculation' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.analytics.IndexViewCalculation getCalculation() {
             return calculation;
         }
 
-        /** Sets the value of the 'calculation' field */
+        /**
+         * Sets the value of the 'calculation' field.
+         *
+         * @param value The value of 'calculation'.
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder setCalculation(
                 sparqles.avro.analytics.IndexViewCalculation value) {
             validate(fields()[6], value);
+            this.calculationBuilder = null;
             this.calculation = value;
             fieldSetFlags()[6] = true;
             return this;
         }
 
-        /** Checks whether the 'calculation' field has been set */
+        /**
+         * Checks whether the 'calculation' field has been set.
+         *
+         * @return True if the 'calculation' field has been set, false otherwise.
+         */
         public boolean hasCalculation() {
             return fieldSetFlags()[6];
         }
 
-        /** Clears the value of the 'calculation' field */
+        /**
+         * Gets the Builder instance for the 'calculation' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.IndexViewCalculation.Builder getCalculationBuilder() {
+            if (calculationBuilder == null) {
+                if (hasCalculation()) {
+                    setCalculationBuilder(
+                            sparqles.avro.analytics.IndexViewCalculation.newBuilder(calculation));
+                } else {
+                    setCalculationBuilder(
+                            sparqles.avro.analytics.IndexViewCalculation.newBuilder());
+                }
+            }
+            return calculationBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'calculation' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.analytics.Index.Builder setCalculationBuilder(
+                sparqles.avro.analytics.IndexViewCalculation.Builder value) {
+            clearCalculation();
+            calculationBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'calculation' field has an active Builder instance
+         *
+         * @return True if the 'calculation' field has an active Builder instance
+         */
+        public boolean hasCalculationBuilder() {
+            return calculationBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'calculation' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.analytics.Index.Builder clearCalculation() {
             calculation = null;
+            calculationBuilder = null;
             fieldSetFlags()[6] = false;
             return this;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public Index build() {
             try {
                 Index record = new Index();
-                record.endpoint =
-                        fieldSetFlags()[0]
-                                ? this.endpoint
-                                : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                if (endpointBuilder != null) {
+                    try {
+                        record.endpoint = this.endpointBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpoint"));
+                        throw e;
+                    }
+                } else {
+                    record.endpoint =
+                            fieldSetFlags()[0]
+                                    ? this.endpoint
+                                    : (sparqles.avro.Endpoint) defaultValue(fields()[0]);
+                }
                 record.lastUpdate =
                         fieldSetFlags()[1]
                                 ? this.lastUpdate
@@ -502,29 +1024,259 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.availability
                                 : (java.util.List<sparqles.avro.analytics.AvailabilityIndex>)
                                         defaultValue(fields()[2]);
-                record.performance =
-                        fieldSetFlags()[3]
-                                ? this.performance
-                                : (sparqles.avro.analytics.IndexViewPerformance)
-                                        defaultValue(fields()[3]);
-                record.interoperability =
-                        fieldSetFlags()[4]
-                                ? this.interoperability
-                                : (sparqles.avro.analytics.IndexViewInteroperability)
-                                        defaultValue(fields()[4]);
-                record.discoverability =
-                        fieldSetFlags()[5]
-                                ? this.discoverability
-                                : (sparqles.avro.analytics.IndexViewDiscoverability)
-                                        defaultValue(fields()[5]);
-                record.calculation =
-                        fieldSetFlags()[6]
-                                ? this.calculation
-                                : (sparqles.avro.analytics.IndexViewCalculation)
-                                        defaultValue(fields()[6]);
+                if (performanceBuilder != null) {
+                    try {
+                        record.performance = this.performanceBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("performance"));
+                        throw e;
+                    }
+                } else {
+                    record.performance =
+                            fieldSetFlags()[3]
+                                    ? this.performance
+                                    : (sparqles.avro.analytics.IndexViewPerformance)
+                                            defaultValue(fields()[3]);
+                }
+                if (interoperabilityBuilder != null) {
+                    try {
+                        record.interoperability = this.interoperabilityBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("interoperability"));
+                        throw e;
+                    }
+                } else {
+                    record.interoperability =
+                            fieldSetFlags()[4]
+                                    ? this.interoperability
+                                    : (sparqles.avro.analytics.IndexViewInteroperability)
+                                            defaultValue(fields()[4]);
+                }
+                if (discoverabilityBuilder != null) {
+                    try {
+                        record.discoverability = this.discoverabilityBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("discoverability"));
+                        throw e;
+                    }
+                } else {
+                    record.discoverability =
+                            fieldSetFlags()[5]
+                                    ? this.discoverability
+                                    : (sparqles.avro.analytics.IndexViewDiscoverability)
+                                            defaultValue(fields()[5]);
+                }
+                if (calculationBuilder != null) {
+                    try {
+                        record.calculation = this.calculationBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("calculation"));
+                        throw e;
+                    }
+                } else {
+                    record.calculation =
+                            fieldSetFlags()[6]
+                                    ? this.calculation
+                                    : (sparqles.avro.analytics.IndexViewCalculation)
+                                            defaultValue(fields()[6]);
+                }
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<Index> WRITER$ =
+            (org.apache.avro.io.DatumWriter<Index>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<Index> READER$ =
+            (org.apache.avro.io.DatumReader<Index>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+        this.endpoint.customEncode(out);
+
+        out.writeLong(this.lastUpdate);
+
+        long size0 = this.availability.size();
+        out.writeArrayStart();
+        out.setItemCount(size0);
+        long actualSize0 = 0;
+        for (sparqles.avro.analytics.AvailabilityIndex e0 : this.availability) {
+            actualSize0++;
+            out.startItem();
+            e0.customEncode(out);
+        }
+        out.writeArrayEnd();
+        if (actualSize0 != size0)
+            throw new java.util.ConcurrentModificationException(
+                    "Array-size written was "
+                            + size0
+                            + ", but element count was "
+                            + actualSize0
+                            + ".");
+
+        this.performance.customEncode(out);
+
+        this.interoperability.customEncode(out);
+
+        this.discoverability.customEncode(out);
+
+        this.calculation.customEncode(out);
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (this.endpoint == null) {
+                this.endpoint = new sparqles.avro.Endpoint();
+            }
+            this.endpoint.customDecode(in);
+
+            this.lastUpdate = in.readLong();
+
+            long size0 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.AvailabilityIndex> a0 = this.availability;
+            if (a0 == null) {
+                a0 =
+                        new SpecificData.Array<sparqles.avro.analytics.AvailabilityIndex>(
+                                (int) size0, SCHEMA$.getField("availability").schema());
+                this.availability = a0;
+            } else a0.clear();
+            SpecificData.Array<sparqles.avro.analytics.AvailabilityIndex> ga0 =
+                    (a0 instanceof SpecificData.Array
+                            ? (SpecificData.Array<sparqles.avro.analytics.AvailabilityIndex>) a0
+                            : null);
+            for (; 0 < size0; size0 = in.arrayNext()) {
+                for (; size0 != 0; size0--) {
+                    sparqles.avro.analytics.AvailabilityIndex e0 =
+                            (ga0 != null ? ga0.peek() : null);
+                    if (e0 == null) {
+                        e0 = new sparqles.avro.analytics.AvailabilityIndex();
+                    }
+                    e0.customDecode(in);
+                    a0.add(e0);
+                }
+            }
+
+            if (this.performance == null) {
+                this.performance = new sparqles.avro.analytics.IndexViewPerformance();
+            }
+            this.performance.customDecode(in);
+
+            if (this.interoperability == null) {
+                this.interoperability = new sparqles.avro.analytics.IndexViewInteroperability();
+            }
+            this.interoperability.customDecode(in);
+
+            if (this.discoverability == null) {
+                this.discoverability = new sparqles.avro.analytics.IndexViewDiscoverability();
+            }
+            this.discoverability.customDecode(in);
+
+            if (this.calculation == null) {
+                this.calculation = new sparqles.avro.analytics.IndexViewCalculation();
+            }
+            this.calculation.customDecode(in);
+
+        } else {
+            for (int i = 0; i < 7; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (this.endpoint == null) {
+                            this.endpoint = new sparqles.avro.Endpoint();
+                        }
+                        this.endpoint.customDecode(in);
+                        break;
+
+                    case 1:
+                        this.lastUpdate = in.readLong();
+                        break;
+
+                    case 2:
+                        long size0 = in.readArrayStart();
+                        java.util.List<sparqles.avro.analytics.AvailabilityIndex> a0 =
+                                this.availability;
+                        if (a0 == null) {
+                            a0 =
+                                    new SpecificData.Array<
+                                            sparqles.avro.analytics.AvailabilityIndex>(
+                                            (int) size0, SCHEMA$.getField("availability").schema());
+                            this.availability = a0;
+                        } else a0.clear();
+                        SpecificData.Array<sparqles.avro.analytics.AvailabilityIndex> ga0 =
+                                (a0 instanceof SpecificData.Array
+                                        ? (SpecificData.Array<
+                                                        sparqles.avro.analytics.AvailabilityIndex>)
+                                                a0
+                                        : null);
+                        for (; 0 < size0; size0 = in.arrayNext()) {
+                            for (; size0 != 0; size0--) {
+                                sparqles.avro.analytics.AvailabilityIndex e0 =
+                                        (ga0 != null ? ga0.peek() : null);
+                                if (e0 == null) {
+                                    e0 = new sparqles.avro.analytics.AvailabilityIndex();
+                                }
+                                e0.customDecode(in);
+                                a0.add(e0);
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        if (this.performance == null) {
+                            this.performance = new sparqles.avro.analytics.IndexViewPerformance();
+                        }
+                        this.performance.customDecode(in);
+                        break;
+
+                    case 4:
+                        if (this.interoperability == null) {
+                            this.interoperability =
+                                    new sparqles.avro.analytics.IndexViewInteroperability();
+                        }
+                        this.interoperability.customDecode(in);
+                        break;
+
+                    case 5:
+                        if (this.discoverability == null) {
+                            this.discoverability =
+                                    new sparqles.avro.analytics.IndexViewDiscoverability();
+                        }
+                        this.discoverability.customDecode(in);
+                        break;
+
+                    case 6:
+                        if (this.calculation == null) {
+                            this.calculation = new sparqles.avro.analytics.IndexViewCalculation();
+                        }
+                        this.calculation.customDecode(in);
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
             }
         }
     }

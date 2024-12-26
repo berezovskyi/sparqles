@@ -110,11 +110,11 @@ public class AAnalyser extends Analytics<AResult> {
                 thisweek = thisWeekStats.getMean();
             }
 
-            Long key = dates[THIS_WEEK].getTimeInMillis();
+            long key = dates[THIS_WEEK].getTimeInMillis();
             boolean exists = false;
             for (EPViewAvailabilityDataPoint dd : epav.getData().getValues()) {
                 //			System.out.println(dd.getX()+" =?= "+key);
-                if (dd.getX().equals(key)) {
+                if (dd.getX() == key) {
                     exists = true;
                     dd.setY(thisweek);
                 }

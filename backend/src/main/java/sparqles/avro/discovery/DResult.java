@@ -5,10 +5,16 @@
  */
 package sparqles.avro.discovery;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class DResult extends org.apache.avro.specific.SpecificRecordBase
         implements org.apache.avro.specific.SpecificRecord {
+    private static final long serialVersionUID = -1692480750071709782L;
+
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
@@ -18,18 +24,84 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         return SCHEMA$;
     }
 
-    @Deprecated public sparqles.avro.EndpointResult endpointResult;
-    @Deprecated public sparqles.avro.discovery.RobotsTXT RobotsTXT;
-    @Deprecated public java.util.List<sparqles.avro.discovery.DGETInfo> descriptionFiles;
-    @Deprecated public java.util.List<sparqles.avro.discovery.QueryInfo> queryInfo;
+    private static final SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<DResult> ENCODER =
+            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<DResult> DECODER =
+            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     *
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<DResult> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     *
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<DResult> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+     * SchemaStore}.
+     *
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<DResult> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this DResult to a ByteBuffer.
+     *
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a DResult from a ByteBuffer.
+     *
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a DResult instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+     *     this class
+     */
+    public static DResult fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private sparqles.avro.EndpointResult endpointResult;
+    private sparqles.avro.discovery.RobotsTXT RobotsTXT;
+    private java.util.List<sparqles.avro.discovery.DGETInfo> descriptionFiles;
+    private java.util.List<sparqles.avro.discovery.QueryInfo> queryInfo;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * the schema. If that is desired then one should use <code>newBuilder()</code>.
      */
     public DResult() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     *
+     * @param endpointResult The new value for endpointResult
+     * @param RobotsTXT The new value for RobotsTXT
+     * @param descriptionFiles The new value for descriptionFiles
+     * @param queryInfo The new value for queryInfo
+     */
     public DResult(
             sparqles.avro.EndpointResult endpointResult,
             sparqles.avro.discovery.RobotsTXT RobotsTXT,
@@ -41,11 +113,18 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         this.queryInfo = queryInfo;
     }
 
+    @Override
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
+    }
+
+    @Override
     public org.apache.avro.Schema getSchema() {
         return SCHEMA$;
     }
 
     // Used by DatumWriter.  Applications should not call.
+    @Override
     public java.lang.Object get(int field$) {
         switch (field$) {
             case 0:
@@ -57,11 +136,12 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
             case 3:
                 return queryInfo;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     // Used by DatumReader.  Applications should not call.
+    @Override
     @SuppressWarnings(value = "unchecked")
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
@@ -78,11 +158,15 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
                 queryInfo = (java.util.List<sparqles.avro.discovery.QueryInfo>) value$;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
-    /** Gets the value of the 'endpointResult' field. */
+    /**
+     * Gets the value of the 'endpointResult' field.
+     *
+     * @return The value of the 'endpointResult' field.
+     */
     public sparqles.avro.EndpointResult getEndpointResult() {
         return endpointResult;
     }
@@ -96,7 +180,11 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         this.endpointResult = value;
     }
 
-    /** Gets the value of the 'RobotsTXT' field. */
+    /**
+     * Gets the value of the 'RobotsTXT' field.
+     *
+     * @return The value of the 'RobotsTXT' field.
+     */
     public sparqles.avro.discovery.RobotsTXT getRobotsTXT() {
         return RobotsTXT;
     }
@@ -110,7 +198,11 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         this.RobotsTXT = value;
     }
 
-    /** Gets the value of the 'descriptionFiles' field. */
+    /**
+     * Gets the value of the 'descriptionFiles' field.
+     *
+     * @return The value of the 'descriptionFiles' field.
+     */
     public java.util.List<sparqles.avro.discovery.DGETInfo> getDescriptionFiles() {
         return descriptionFiles;
     }
@@ -124,7 +216,11 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         this.descriptionFiles = value;
     }
 
-    /** Gets the value of the 'queryInfo' field. */
+    /**
+     * Gets the value of the 'queryInfo' field.
+     *
+     * @return The value of the 'queryInfo' field.
+     */
     public java.util.List<sparqles.avro.discovery.QueryInfo> getQueryInfo() {
         return queryInfo;
     }
@@ -138,70 +234,113 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         this.queryInfo = value;
     }
 
-    /** Creates a new DResult RecordBuilder */
+    /**
+     * Creates a new DResult RecordBuilder.
+     *
+     * @return A new DResult RecordBuilder
+     */
     public static sparqles.avro.discovery.DResult.Builder newBuilder() {
         return new sparqles.avro.discovery.DResult.Builder();
     }
 
-    /** Creates a new DResult RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new DResult RecordBuilder by copying an existing Builder.
+     *
+     * @param other The existing builder to copy.
+     * @return A new DResult RecordBuilder
+     */
     public static sparqles.avro.discovery.DResult.Builder newBuilder(
             sparqles.avro.discovery.DResult.Builder other) {
-        return new sparqles.avro.discovery.DResult.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.discovery.DResult.Builder();
+        } else {
+            return new sparqles.avro.discovery.DResult.Builder(other);
+        }
     }
 
-    /** Creates a new DResult RecordBuilder by copying an existing DResult instance */
+    /**
+     * Creates a new DResult RecordBuilder by copying an existing DResult instance.
+     *
+     * @param other The existing instance to copy.
+     * @return A new DResult RecordBuilder
+     */
     public static sparqles.avro.discovery.DResult.Builder newBuilder(
             sparqles.avro.discovery.DResult other) {
-        return new sparqles.avro.discovery.DResult.Builder(other);
+        if (other == null) {
+            return new sparqles.avro.discovery.DResult.Builder();
+        } else {
+            return new sparqles.avro.discovery.DResult.Builder(other);
+        }
     }
 
     /** RecordBuilder for DResult instances. */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<DResult>
             implements org.apache.avro.data.RecordBuilder<DResult> {
 
         private sparqles.avro.EndpointResult endpointResult;
+        private sparqles.avro.EndpointResult.Builder endpointResultBuilder;
         private sparqles.avro.discovery.RobotsTXT RobotsTXT;
+        private sparqles.avro.discovery.RobotsTXT.Builder RobotsTXTBuilder;
         private java.util.List<sparqles.avro.discovery.DGETInfo> descriptionFiles;
         private java.util.List<sparqles.avro.discovery.QueryInfo> queryInfo;
 
         /** Creates a new Builder */
         private Builder() {
-            super(sparqles.avro.discovery.DResult.SCHEMA$);
+            super(SCHEMA$, MODEL$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder.
+         *
+         * @param other The existing Builder to copy.
+         */
         private Builder(sparqles.avro.discovery.DResult.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.endpointResult)) {
                 this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
+            }
+            if (other.hasEndpointResultBuilder()) {
+                this.endpointResultBuilder =
+                        sparqles.avro.EndpointResult.newBuilder(other.getEndpointResultBuilder());
             }
             if (isValidValue(fields()[1], other.RobotsTXT)) {
                 this.RobotsTXT = data().deepCopy(fields()[1].schema(), other.RobotsTXT);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
+            }
+            if (other.hasRobotsTXTBuilder()) {
+                this.RobotsTXTBuilder =
+                        sparqles.avro.discovery.RobotsTXT.newBuilder(other.getRobotsTXTBuilder());
             }
             if (isValidValue(fields()[2], other.descriptionFiles)) {
                 this.descriptionFiles =
                         data().deepCopy(fields()[2].schema(), other.descriptionFiles);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.queryInfo)) {
                 this.queryInfo = data().deepCopy(fields()[3].schema(), other.queryInfo);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
         }
 
-        /** Creates a Builder by copying an existing DResult instance */
+        /**
+         * Creates a Builder by copying an existing DResult instance
+         *
+         * @param other The existing instance to copy.
+         */
         private Builder(sparqles.avro.discovery.DResult other) {
-            super(sparqles.avro.discovery.DResult.SCHEMA$);
+            super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.endpointResult)) {
                 this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
                 fieldSetFlags()[0] = true;
             }
+            this.endpointResultBuilder = null;
             if (isValidValue(fields()[1], other.RobotsTXT)) {
                 this.RobotsTXT = data().deepCopy(fields()[1].schema(), other.RobotsTXT);
                 fieldSetFlags()[1] = true;
             }
+            this.RobotsTXTBuilder = null;
             if (isValidValue(fields()[2], other.descriptionFiles)) {
                 this.descriptionFiles =
                         data().deepCopy(fields()[2].schema(), other.descriptionFiles);
@@ -213,64 +352,190 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
             }
         }
 
-        /** Gets the value of the 'endpointResult' field */
+        /**
+         * Gets the value of the 'endpointResult' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.EndpointResult getEndpointResult() {
             return endpointResult;
         }
 
-        /** Sets the value of the 'endpointResult' field */
+        /**
+         * Sets the value of the 'endpointResult' field.
+         *
+         * @param value The value of 'endpointResult'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder setEndpointResult(
                 sparqles.avro.EndpointResult value) {
             validate(fields()[0], value);
+            this.endpointResultBuilder = null;
             this.endpointResult = value;
             fieldSetFlags()[0] = true;
             return this;
         }
 
-        /** Checks whether the 'endpointResult' field has been set */
+        /**
+         * Checks whether the 'endpointResult' field has been set.
+         *
+         * @return True if the 'endpointResult' field has been set, false otherwise.
+         */
         public boolean hasEndpointResult() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'endpointResult' field */
+        /**
+         * Gets the Builder instance for the 'endpointResult' field and creates one if it doesn't
+         * exist yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.EndpointResult.Builder getEndpointResultBuilder() {
+            if (endpointResultBuilder == null) {
+                if (hasEndpointResult()) {
+                    setEndpointResultBuilder(
+                            sparqles.avro.EndpointResult.newBuilder(endpointResult));
+                } else {
+                    setEndpointResultBuilder(sparqles.avro.EndpointResult.newBuilder());
+                }
+            }
+            return endpointResultBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'endpointResult' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.discovery.DResult.Builder setEndpointResultBuilder(
+                sparqles.avro.EndpointResult.Builder value) {
+            clearEndpointResult();
+            endpointResultBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'endpointResult' field has an active Builder instance
+         *
+         * @return True if the 'endpointResult' field has an active Builder instance
+         */
+        public boolean hasEndpointResultBuilder() {
+            return endpointResultBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'endpointResult' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder clearEndpointResult() {
             endpointResult = null;
+            endpointResultBuilder = null;
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'RobotsTXT' field */
+        /**
+         * Gets the value of the 'RobotsTXT' field.
+         *
+         * @return The value.
+         */
         public sparqles.avro.discovery.RobotsTXT getRobotsTXT() {
             return RobotsTXT;
         }
 
-        /** Sets the value of the 'RobotsTXT' field */
+        /**
+         * Sets the value of the 'RobotsTXT' field.
+         *
+         * @param value The value of 'RobotsTXT'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder setRobotsTXT(
                 sparqles.avro.discovery.RobotsTXT value) {
             validate(fields()[1], value);
+            this.RobotsTXTBuilder = null;
             this.RobotsTXT = value;
             fieldSetFlags()[1] = true;
             return this;
         }
 
-        /** Checks whether the 'RobotsTXT' field has been set */
+        /**
+         * Checks whether the 'RobotsTXT' field has been set.
+         *
+         * @return True if the 'RobotsTXT' field has been set, false otherwise.
+         */
         public boolean hasRobotsTXT() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'RobotsTXT' field */
+        /**
+         * Gets the Builder instance for the 'RobotsTXT' field and creates one if it doesn't exist
+         * yet.
+         *
+         * @return This builder.
+         */
+        public sparqles.avro.discovery.RobotsTXT.Builder getRobotsTXTBuilder() {
+            if (RobotsTXTBuilder == null) {
+                if (hasRobotsTXT()) {
+                    setRobotsTXTBuilder(sparqles.avro.discovery.RobotsTXT.newBuilder(RobotsTXT));
+                } else {
+                    setRobotsTXTBuilder(sparqles.avro.discovery.RobotsTXT.newBuilder());
+                }
+            }
+            return RobotsTXTBuilder;
+        }
+
+        /**
+         * Sets the Builder instance for the 'RobotsTXT' field
+         *
+         * @param value The builder instance that must be set.
+         * @return This builder.
+         */
+        public sparqles.avro.discovery.DResult.Builder setRobotsTXTBuilder(
+                sparqles.avro.discovery.RobotsTXT.Builder value) {
+            clearRobotsTXT();
+            RobotsTXTBuilder = value;
+            return this;
+        }
+
+        /**
+         * Checks whether the 'RobotsTXT' field has an active Builder instance
+         *
+         * @return True if the 'RobotsTXT' field has an active Builder instance
+         */
+        public boolean hasRobotsTXTBuilder() {
+            return RobotsTXTBuilder != null;
+        }
+
+        /**
+         * Clears the value of the 'RobotsTXT' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder clearRobotsTXT() {
             RobotsTXT = null;
+            RobotsTXTBuilder = null;
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'descriptionFiles' field */
+        /**
+         * Gets the value of the 'descriptionFiles' field.
+         *
+         * @return The value.
+         */
         public java.util.List<sparqles.avro.discovery.DGETInfo> getDescriptionFiles() {
             return descriptionFiles;
         }
 
-        /** Sets the value of the 'descriptionFiles' field */
+        /**
+         * Sets the value of the 'descriptionFiles' field.
+         *
+         * @param value The value of 'descriptionFiles'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder setDescriptionFiles(
                 java.util.List<sparqles.avro.discovery.DGETInfo> value) {
             validate(fields()[2], value);
@@ -279,24 +544,41 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'descriptionFiles' field has been set */
+        /**
+         * Checks whether the 'descriptionFiles' field has been set.
+         *
+         * @return True if the 'descriptionFiles' field has been set, false otherwise.
+         */
         public boolean hasDescriptionFiles() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'descriptionFiles' field */
+        /**
+         * Clears the value of the 'descriptionFiles' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder clearDescriptionFiles() {
             descriptionFiles = null;
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'queryInfo' field */
+        /**
+         * Gets the value of the 'queryInfo' field.
+         *
+         * @return The value.
+         */
         public java.util.List<sparqles.avro.discovery.QueryInfo> getQueryInfo() {
             return queryInfo;
         }
 
-        /** Sets the value of the 'queryInfo' field */
+        /**
+         * Sets the value of the 'queryInfo' field.
+         *
+         * @param value The value of 'queryInfo'.
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder setQueryInfo(
                 java.util.List<sparqles.avro.discovery.QueryInfo> value) {
             validate(fields()[3], value);
@@ -305,12 +587,20 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
-        /** Checks whether the 'queryInfo' field has been set */
+        /**
+         * Checks whether the 'queryInfo' field has been set.
+         *
+         * @return True if the 'queryInfo' field has been set, false otherwise.
+         */
         public boolean hasQueryInfo() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'queryInfo' field */
+        /**
+         * Clears the value of the 'queryInfo' field.
+         *
+         * @return This builder.
+         */
         public sparqles.avro.discovery.DResult.Builder clearQueryInfo() {
             queryInfo = null;
             fieldSetFlags()[3] = false;
@@ -318,17 +608,36 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public DResult build() {
             try {
                 DResult record = new DResult();
-                record.endpointResult =
-                        fieldSetFlags()[0]
-                                ? this.endpointResult
-                                : (sparqles.avro.EndpointResult) defaultValue(fields()[0]);
-                record.RobotsTXT =
-                        fieldSetFlags()[1]
-                                ? this.RobotsTXT
-                                : (sparqles.avro.discovery.RobotsTXT) defaultValue(fields()[1]);
+                if (endpointResultBuilder != null) {
+                    try {
+                        record.endpointResult = this.endpointResultBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("endpointResult"));
+                        throw e;
+                    }
+                } else {
+                    record.endpointResult =
+                            fieldSetFlags()[0]
+                                    ? this.endpointResult
+                                    : (sparqles.avro.EndpointResult) defaultValue(fields()[0]);
+                }
+                if (RobotsTXTBuilder != null) {
+                    try {
+                        record.RobotsTXT = this.RobotsTXTBuilder.build();
+                    } catch (org.apache.avro.AvroMissingFieldException e) {
+                        e.addParentField(record.getSchema().getField("RobotsTXT"));
+                        throw e;
+                    }
+                } else {
+                    record.RobotsTXT =
+                            fieldSetFlags()[1]
+                                    ? this.RobotsTXT
+                                    : (sparqles.avro.discovery.RobotsTXT) defaultValue(fields()[1]);
+                }
                 record.descriptionFiles =
                         fieldSetFlags()[2]
                                 ? this.descriptionFiles
@@ -340,9 +649,29 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
                                 : (java.util.List<sparqles.avro.discovery.QueryInfo>)
                                         defaultValue(fields()[3]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
             }
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<DResult> WRITER$ =
+            (org.apache.avro.io.DatumWriter<DResult>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<DResult> READER$ =
+            (org.apache.avro.io.DatumReader<DResult>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
     }
 }

@@ -104,7 +104,7 @@ public class DTask extends EndpointTask<DResult> {
             // first robots.txt test, insert into DB
             _dbm.insert(rob);
         } else if (_dbm != null) {
-            if (rob.getRespCode().toString().startsWith("5")) {
+            if (String.valueOf(rob.getRespCode()).startsWith("5")) {
                 // there was a server error, try to get the last stored robots.txt
                 if (r.size() == 1) {
                     rob = r.get(0);
