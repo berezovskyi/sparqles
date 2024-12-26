@@ -1,5 +1,3 @@
 package sparqles.utils;
 
-public class Monitor {
-    
-}
+public class Monitor {}

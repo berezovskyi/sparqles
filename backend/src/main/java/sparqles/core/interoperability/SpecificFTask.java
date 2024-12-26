@@ -1,10 +1,9 @@
 package sparqles.core.interoperability;
 
-import sparqles.avro.Endpoint;
-import sparqles.avro.EndpointResult;
-
 import java.util.ArrayList;
 import java.util.List;
+import sparqles.avro.Endpoint;
+import sparqles.avro.EndpointResult;
 
 public enum SpecificFTask {
     /*
@@ -34,12 +33,11 @@ public enum SpecificFTask {
     SPARQL1_SELOPT("sparql10/SEL[OPT].rq"),
     SPARQL1_SELUNION("sparql10/SEL[UNION].rq"),
 
-//SPARQL1_SELORDERBYASC 	("sparql10/SEL[.]*ORDERBY-ASC.rq"),
-//SPARQL1_SELORDERBYDESC 	("sparql10/SEL[.]*ORDERBY-DESC.rq"),
-//SPARQL1_SELORDERBY		("sparql10/SEL[.]*ORDERBY.rq"),
-//SPARQL1_SELORDERBYOFFSET("sparql10/SEL[.]*ORDERBY*OFFSET.rq"),
-    
-    
+    // SPARQL1_SELORDERBYASC 	("sparql10/SEL[.]*ORDERBY-ASC.rq"),
+    // SPARQL1_SELORDERBYDESC 	("sparql10/SEL[.]*ORDERBY-DESC.rq"),
+    // SPARQL1_SELORDERBY		("sparql10/SEL[.]*ORDERBY.rq"),
+    // SPARQL1_SELORDERBYOFFSET("sparql10/SEL[.]*ORDERBY*OFFSET.rq"),
+
     SPARQL11_ASKFILNIN("sparql11/ASK[FIL(!IN)].rq"),
     SPARQL11_CON("sparql11/CON-[.].rq"),
     SPARQL11_SELAVG("sparql11/SEL[AVG].rq"),
@@ -58,34 +56,32 @@ public enum SpecificFTask {
     SPARQL11_SELSUBQ("sparql11/SEL[SUBQ].rq"),
     SPARQL11_SELSUM("sparql11/SEL[SUM].rq"),
     SPARQL11_SELVALUES("sparql11/SEL[VALUES].rq");
-//SPARQL11_SELAVGGROUPBY   	("sparql11/SEL[AVG]*GROUPBY.rq"),
-//SPARQL11_SELCOUNTGROUPBY   	("sparql11/SEL[COUNT]*GROUPBY.rq");
-    
-    
+    // SPARQL11_SELAVGGROUPBY   	("sparql11/SEL[AVG]*GROUPBY.rq"),
+    // SPARQL11_SELCOUNTGROUPBY   	("sparql11/SEL[COUNT]*GROUPBY.rq");
+
     private String query;
-    
+
     private SpecificFTask(String query) {
         this.query = query;
     }
-    
+
     public static List<FRun> allTasks(Endpoint ep) {
         List<FRun> res = new ArrayList<FRun>();
-        
+
         for (SpecificFTask action : values()) {
             res.add(action.get(ep));
         }
         return res;
     }
-    
+
     public String toString() {
         return query;
-        
     }
-    
+
     public FRun get(Endpoint ep) {
         return new FRun(ep, query);
     }
-    
+
     public FRun get(EndpointResult epr) {
         return new FRun(epr.getEndpoint(), query, epr.getStart());
     }

@@ -31,17 +31,13 @@
  */
 package org.osjava.norbert;
 
-/**
- * A norobots Disallow: rule.
- * Any path which begins with the rule's path is
- * not allowed.
- */
+/** A norobots Disallow: rule. Any path which begins with the rule's path is not allowed. */
 class DisallowedRule extends AbstractRule {
-    
+
     public DisallowedRule(String path) {
         super(path);
     }
-    
+
     public Boolean isAllowed(String query) {
         if ("".equals(super.getPath())) {
             return Boolean.TRUE;
@@ -53,6 +49,4 @@ class DisallowedRule extends AbstractRule {
             return Boolean.FALSE;
         }
     }
-    
-    
 }

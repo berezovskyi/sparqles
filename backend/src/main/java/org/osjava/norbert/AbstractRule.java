@@ -31,28 +31,23 @@
  */
 package org.osjava.norbert;
 
-/**
- * Provides implementation for the path property and a handy toString.
- */
+/** Provides implementation for the path property and a handy toString. */
 abstract class AbstractRule implements Rule {
-    
+
     private String path;
-    
+
     public AbstractRule(String path) {
         this.path = path.trim();
     }
-    
-    /**
-     * A url path snippet for which a rule exists
-     */
+
+    /** A url path snippet for which a rule exists */
     public String getPath() {
         return this.path;
     }
-    
+
     public abstract Boolean isAllowed(String query);
-    
+
     public String toString() {
         return getClass().getName() + " on " + this.path;
     }
-    
 }

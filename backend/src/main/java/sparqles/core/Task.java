@@ -1,9 +1,8 @@
 package sparqles.core;
 
+import java.util.concurrent.Callable;
 import org.apache.avro.specific.SpecificRecordBase;
 import sparqles.utils.MongoDBManager;
-
-import java.util.concurrent.Callable;
 
 /**
  * A Task is a {@link Callable} connected to the database.
@@ -13,8 +12,8 @@ import java.util.concurrent.Callable;
  */
 public interface Task<V extends SpecificRecordBase> extends Callable<V> {
 
-//	public void execute();
-    
+    //	public void execute();
+
     /**
      * Set the MongoDBManager.
      *

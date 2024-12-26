@@ -36,38 +36,35 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Contains a series of Rules. It then runs a path against these
- * to decide if it is allowed or not.
+ * Contains a series of Rules. It then runs a path against these to decide if it is allowed or not.
  */
 // TODO: Make this package private?
 class RulesEngine {
-    
+
     private List<Rule> rules;
-    
+
     public RulesEngine() {
         this.rules = new ArrayList<Rule>();
     }
-    
+
     public void allowPath(String path) {
         add(new AllowedRule(path));
     }
-    
+
     public void disallowPath(String path) {
         add(new DisallowedRule(path));
     }
-    
+
     public void add(Rule rule) {
         this.rules.add(rule);
     }
-    
+
     /**
-     * Run each Rule in series on the path.
-     * If a Rule returns a Boolean, return that.
-     * When no more rules are left, return null to indicate there were
-     * no rules for this path..
+     * Run each Rule in series on the path. If a Rule returns a Boolean, return that. When no more
+     * rules are left, return null to indicate there were no rules for this path..
      */
     public Boolean isAllowed(String path) {
-        
+
         Iterator<Rule> iterator = this.rules.iterator();
         while (iterator.hasNext()) {
             Rule rule = (Rule) iterator.next();
@@ -76,16 +73,15 @@ class RulesEngine {
                 return test;
             }
         }
-        
+
         return null;
     }
-    
+
     public boolean isEmpty() {
         return this.rules.isEmpty();
     }
-    
+
     public String toString() {
         return "RulesEngine: " + this.rules;
     }
-    
 }

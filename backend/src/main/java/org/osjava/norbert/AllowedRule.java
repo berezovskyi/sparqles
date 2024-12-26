@@ -31,17 +31,13 @@
  */
 package org.osjava.norbert;
 
-/**
- * A norobots Allow: rule.
- * Any path which begins with the rule's path is
- * allowed.
- */
+/** A norobots Allow: rule. Any path which begins with the rule's path is allowed. */
 class AllowedRule extends AbstractRule {
-    
+
     public AllowedRule(String path) {
         super(path);
     }
-    
+
     public Boolean isAllowed(String query) {
         if ("".equals(super.getPath())) {
             // What does the spec say here? Until I know, I'll just ignore this.
@@ -54,5 +50,4 @@ class AllowedRule extends AbstractRule {
             return Boolean.TRUE;
         }
     }
-    
 }

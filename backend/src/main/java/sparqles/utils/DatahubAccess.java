@@ -4,6 +4,19 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -23,80 +36,63 @@ import sparqles.avro.Endpoint;
 import sparqles.core.CONSTANTS;
 import sparqles.core.EndpointFactory;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-//http://datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000
+// http://datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000
 
 public class DatahubAccess {
     private static final Logger log = LoggerFactory.getLogger(DatahubAccess.class);
-    
-    
-    /**
-     * This class fetch the SPARQL endpoint list from datahub using the datahub API
-     *
-     **/
+
+    /** This class fetch the SPARQL endpoint list from datahub using the datahub API */
     public static Collection<Endpoint> checkEndpointList() {
         Map<String, Endpoint> results = new HashMap<String, Endpoint>();
         try {
             // Do not do this in production!!!
-            HostnameVerifier hostnameVerifier = org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
-            
+            HostnameVerifier hostnameVerifier =
+                    org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
+
             DefaultHttpClient client = new DefaultHttpClient();
-            
+
             SchemeRegistry registry = new SchemeRegistry();
             SSLSocketFactory socketFactory = SSLSocketFactory.getSocketFactory();
             socketFactory.setHostnameVerifier((X509HostnameVerifier) hostnameVerifier);
             registry.register(new Scheme("https", socketFactory, 443));
             SingleClientConnManager mgr = new SingleClientConnManager(client.getParams(), registry);
             DefaultHttpClient httpclient = new DefaultHttpClient(mgr, client.getParams());
-            
-            // Set verifier     
+
+            // Set verifier
             HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-            String apiURL = "https://old.datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000";
+            String apiURL =
+                    "https://old.datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000";
             apiURL = "https://old.datahub.io/api/3/action/resource_search?query=format:api/sparql";
             HttpGet getRequest = new HttpGet(apiURL);
-            
+
             getRequest.addHeader("User-Agent", CONSTANTS.USER_AGENT);
-            
-            
+
             HttpResponse response = httpclient.execute(getRequest);
-            
+
             if (response.getStatusLine().getStatusCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                    + response.getStatusLine().getStatusCode());
+                throw new RuntimeException(
+                        "Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
             }
             HttpEntity entity = response.getEntity();
-            String respString = EntityUtils.toString(entity, ContentType.getOrDefault(entity).getCharset());
-            
+            String respString =
+                    EntityUtils.toString(entity, ContentType.getOrDefault(entity).getCharset());
+
             JsonFactory factory = new JsonFactory();
             ObjectMapper mapper = new ObjectMapper(factory);
             JsonNode rootNode = mapper.readTree(respString);
-            
+
             var resNode = rootNode.get("result");
             var res = (ArrayNode) resNode.get("results");
             log.info("We found {} datasets", res.size());
             Iterator<JsonNode> iter = res.elements();
             int c = 1;
-            
-            
+
             Map<String, Set<String>> map = new HashMap<String, Set<String>>();
             while (iter.hasNext()) {
                 JsonNode node = iter.next();
                 String endpointURL = node.findPath("url").asText().trim();
                 String datasetId = node.findPath("package_id").asText().trim();
-                
+
                 Set<String> s = map.get(endpointURL);
                 if (s == null) {
                     s = new HashSet<String>();
@@ -106,9 +102,9 @@ public class DatahubAccess {
             }
             for (Entry<String, Set<String>> ent : map.entrySet()) {
                 String endpointURL = ent.getKey();
-                
+
                 if (endpointURL.length() == 0) continue;
-                
+
                 Endpoint ep = results.get(endpointURL);
                 if (ep == null) {
                     try {
@@ -130,57 +126,57 @@ public class DatahubAccess {
                 }
                 log.info("[GET] [{}] {}", c++, ep);
             }
-//			httpClient.getConnectionManager().shutdown();
+            //			httpClient.getConnectionManager().shutdown();
         } catch (Exception e2) {
             log.warn("[EXEC] {}", e2);
             e2.printStackTrace();
         }
         log.info("Found {} endpoints", results.size());
-        
+
         return results.values();
     }
-    
+
     private static Endpoint checkForDataset(Endpoint ep, String datasetId, HttpClient httpClient) {
         log.debug("[GET] dataset info for {} and {}", datasetId, ep);
         HttpGet getRequest = null;
         try {
-            getRequest = new HttpGet("https://old.datahub.io/api/3/action/package_show?id=" + datasetId);
+            getRequest =
+                    new HttpGet("https://old.datahub.io/api/3/action/package_show?id=" + datasetId);
             getRequest.addHeader("User-Agent", CONSTANTS.USER_AGENT);
             System.out.println(getRequest);
             HttpResponse response = httpClient.execute(getRequest);
             if (response.getStatusLine().getStatusCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                    + response.getStatusLine().getStatusCode());
+                throw new RuntimeException(
+                        "Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
             }
             String respString = EntityUtils.toString(response.getEntity());
-//			response.close();
-            
+            //			response.close();
+
             JsonFactory factory = new JsonFactory();
             ObjectMapper mapper = new ObjectMapper(factory);
             JsonNode rootNode = mapper.readTree(respString);
             JsonNode res = rootNode.get("result");
 
-//			System.out.println(rootNode);
+            //			System.out.println(rootNode);
             String ckan_url = res.findPath("url").asText();
             List<JsonNode> titles = res.findValues("title");
             String title = null;
             for (JsonNode s : titles) {
-//				System.out.println(s);
-                if (!s.toString().contains("Linking Open"))
-                    title = s.asText();
+                //				System.out.println(s);
+                if (!s.toString().contains("Linking Open")) title = s.asText();
                 if (title != null && title.length() > 200) {
                     title = title.substring(0, 200);
                 }
             }
-            
+
             Dataset d = new Dataset();
             d.setLabel(title);
             d.setUri(ckan_url);
             List<Dataset> l = ep.getDatasets();
             l.add(d);
-            
+
             return ep;
-            
+
         } catch (Exception e) {
             log.warn("[EXEC] " + ep, e);
         }

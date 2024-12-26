@@ -1,5 +1,21 @@
 package sparqles.utils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.GZIPOutputStream;
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.io.DatumReader;
@@ -21,24 +37,6 @@ import sparqles.avro.performance.PResult;
 import sparqles.core.EndpointFactory;
 import sparqles.core.SPARQLESProperties;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.zip.GZIPOutputStream;
-
-
 /**
  * (De)Serialises avro results
  *
@@ -50,8 +48,7 @@ public class FileManager {
     private final File avroFolder;
     private final File resultsFolder;
     private HashMap<String, Map<String, File>> eptask;
-    
-    
+
     public FileManager() {
         String folder = SPARQLESProperties.getDATA_DIR();
         if (folder.startsWith("file:")) {
@@ -60,20 +57,17 @@ public class FileManager {
         rootFolder = new File(folder);
         avroFolder = new File(rootFolder, "avro");
         resultsFolder = new File(rootFolder, "results");
-        
+
         init();
-        
     }
-    
-    
+
     private void init() {
         eptask = new HashMap<String, Map<String, File>>();
-        
+
         if (!rootFolder.exists()) rootFolder.mkdirs();
         if (!avroFolder.exists()) avroFolder.mkdirs();
         if (!resultsFolder.exists()) resultsFolder.mkdirs();
-        
-        
+
         if (rootFolder.isFile()) {
             log.warn("The specified folder {} is not a directory", rootFolder);
             return;
@@ -83,37 +77,36 @@ public class FileManager {
             try {
                 String ep = URLDecoder.decode(name.substring(0, name.lastIndexOf(".")), "UTF-8");
                 String task = name.substring(name.lastIndexOf(".") + 1);
-                
+
                 put(ep, task, f);
             } catch (UnsupportedEncodingException e) {
                 log.warn("UnsupportedEncodingException: {} for {}", e.getMessage(), f);
             }
         }
     }
-    
-    
+
     private void put(String ep, String task, File f) {
         Map<String, File> map = eptask.get(ep);
         if (map == null) {
             map = new HashMap<String, File>();
             eptask.put(ep, map);
         }
-        if (map.containsKey(task))
-            log.warn("Duplicate entry for {}", f);
+        if (map.containsKey(task)) log.warn("Duplicate entry for {}", f);
         map.put(task, f);
     }
-    
-    
+
     public <V> List<V> getResults(String endpointURI, Class<V> cls) {
         try {
             return getResults(EndpointFactory.newEndpoint(new URI(endpointURI)), cls);
         } catch (URISyntaxException e) {
-            Object[] t = {e.getClass().getSimpleName(), e.getMessage(), cls.getSimpleName(), endpointURI};
+            Object[] t = {
+                e.getClass().getSimpleName(), e.getMessage(), cls.getSimpleName(), endpointURI
+            };
             log.error("{}:{} during deserialisation of {} results for {}", t);
             return new ArrayList<V>();
         }
     }
-    
+
     public <V> List<V> getResults(Endpoint ep, Class<V> cls) {
         List<V> l = new ArrayList<V>();
         File f = getFile(ep, cls.getSimpleName());
@@ -124,48 +117,65 @@ public class FileManager {
                 l.add(dfr.next());
             }
         } catch (IOException e) {
-            Object[] t = {e.getClass().getSimpleName(), e.getMessage(), cls.getSimpleName(), ep.getUri().toString()};
+            Object[] t = {
+                e.getClass().getSimpleName(),
+                e.getMessage(),
+                cls.getSimpleName(),
+                ep.getUri().toString()
+            };
             log.error("{}:{} during deserialisation of {} results for {}", t);
         }
         Object[] t = {l.size(), cls.getSimpleName(), ep.getUri().toString()};
         log.info("Deserialised {} {} results for {}", t);
         return l;
     }
-    
+
     public <V extends SpecificRecordBase> boolean writeResult(V res) {
         if (res instanceof DResult) return writeResult((DResult) res);
         else if (res instanceof AResult) return writeResult((AResult) res);
         else if (res instanceof PResult) return writeResult((PResult) res);
         else if (res instanceof FResult) return writeResult((FResult) res);
-        
+
         return true;
     }
-    
+
     public boolean writeResult(FResult res) {
-        return writeResult(res.getEndpointResult().getEndpoint(), res.getClass().getSimpleName(), (SpecificRecordBase) res);
+        return writeResult(
+                res.getEndpointResult().getEndpoint(),
+                res.getClass().getSimpleName(),
+                (SpecificRecordBase) res);
     }
-    
+
     public boolean writeResult(DResult res) {
-        return writeResult(res.getEndpointResult().getEndpoint(), res.getClass().getSimpleName(), (SpecificRecordBase) res);
+        return writeResult(
+                res.getEndpointResult().getEndpoint(),
+                res.getClass().getSimpleName(),
+                (SpecificRecordBase) res);
     }
-    
+
     public boolean writeResult(AResult res) {
-        return writeResult(res.getEndpointResult().getEndpoint(), res.getClass().getSimpleName(), (SpecificRecordBase) res);
+        return writeResult(
+                res.getEndpointResult().getEndpoint(),
+                res.getClass().getSimpleName(),
+                (SpecificRecordBase) res);
     }
-    
+
     public boolean writeResult(PResult res) {
-        return writeResult(res.getEndpointResult().getEndpoint(), res.getClass().getSimpleName(), (SpecificRecordBase) res);
+        return writeResult(
+                res.getEndpointResult().getEndpoint(),
+                res.getClass().getSimpleName(),
+                (SpecificRecordBase) res);
     }
-    
+
     public <V extends SpecificRecordBase> boolean writeResult(Endpoint ep, String task, V result) {
         log.debug("[STORE] {}", result);
-        
+
         try {
             DatumWriter<V> d = new SpecificDatumWriter<V>((Class<V>) result.getClass());
             DataFileWriter<V> dfw = new DataFileWriter<V>(d);
-            
+
             File f = getFile(ep, task);
-            
+
             if (f == null) {
                 f = createAVROFile(ep, task);
                 put(ep.getUri().toString(), task, f);
@@ -178,38 +188,44 @@ public class FileManager {
             log.debug("[STORED] {}", result);
             return true;
         } catch (Exception e) {
-//			e.printStackTrace();
+            //			e.printStackTrace();
             log.warn("[STORE] {}", e);
             return false;
         }
-        
     }
-    
-    
+
     private File createAVROFile(Endpoint ep, String task) {
         try {
-            return new File(avroFolder, URLEncoder.encode(ep.getUri().toString(), "UTF-8") + "." + task + ".avro");
+            return new File(
+                    avroFolder,
+                    URLEncoder.encode(ep.getUri().toString(), "UTF-8") + "." + task + ".avro");
         } catch (UnsupportedEncodingException e) {
-            log.warn("UnsupportedEncodingException: {} for {}", e.getMessage(), ep.getUri().toString());
+            log.warn(
+                    "UnsupportedEncodingException: {} for {}",
+                    e.getMessage(),
+                    ep.getUri().toString());
         }
         return null;
     }
-    
+
     private File createResultFile(Endpoint ep, String query, Long date) {
         try {
-            File folder = new File(resultsFolder, URLEncoder.encode(ep.getUri().toString(), "UTF-8"));
+            File folder =
+                    new File(resultsFolder, URLEncoder.encode(ep.getUri().toString(), "UTF-8"));
             folder.mkdir();
-            
+
             folder = new File(folder, DateFormater.getDataAsString(DateFormater.YYYYMMDD));
             folder.mkdir();
             return new File(folder, query.replaceAll("/", "-") + "_" + date + ".results.gz");
         } catch (UnsupportedEncodingException e) {
-            log.warn("UnsupportedEncodingException: {} for {}", e.getMessage(), ep.getUri().toString());
+            log.warn(
+                    "UnsupportedEncodingException: {} for {}",
+                    e.getMessage(),
+                    ep.getUri().toString());
         }
         return null;
     }
-    
-    
+
     private File getFile(Endpoint ep, String task) {
         Map<String, File> map = eptask.get(ep.getUri().toString());
         if (map == null) {
@@ -217,11 +233,9 @@ public class FileManager {
         }
         return map.get(task);
     }
-    
-    
-    public int writeSPARQLResults(ResultSet results, String queryFile,
-                                  Endpoint ep, Long start) {
-        
+
+    public int writeSPARQLResults(ResultSet results, String queryFile, Endpoint ep, Long start) {
+
         PrintWriter out = null;
         try {
             out = getPARQLResultPrintStream(ep, queryFile, start);
@@ -241,11 +255,10 @@ public class FileManager {
             if (out != null) out.close();
         }
         return -10;
-        
     }
-    
-    public int writeSPARQLResults(Iterator<Triple> triples,
-                                  String queryFile, Endpoint ep, Long start) {
+
+    public int writeSPARQLResults(
+            Iterator<Triple> triples, String queryFile, Endpoint ep, Long start) {
         PrintWriter out = null;
         try {
             out = getPARQLResultPrintStream(ep, queryFile, start);
@@ -264,19 +277,17 @@ public class FileManager {
             if (out != null) out.close();
         }
         return -10;
-        
     }
-    
-    private PrintWriter getPARQLResultPrintStream(Endpoint ep,
-                                                  String queryFile, Long start) throws FileNotFoundException, IOException {
-        
+
+    private PrintWriter getPARQLResultPrintStream(Endpoint ep, String queryFile, Long start)
+            throws FileNotFoundException, IOException {
+
         File f = createResultFile(ep, queryFile, start);
         PrintWriter pw = null;
         pw = new PrintWriter(new GZIPOutputStream(new FileOutputStream(f)));
         return pw;
     }
-    
-    
+
     private String toString(QuerySolution qs, boolean first) {
         StringBuffer vars = new StringBuffer();
         StringBuffer sb = new StringBuffer();
@@ -288,11 +299,8 @@ public class FileManager {
             }
             sb.append(FmtUtils.stringForObject(qs.get(varName)) + "\t");
         }
-        
-        if (first)
-            return vars.toString() + "\n" + sb.toString();
+
+        if (first) return vars.toString() + "\n" + sb.toString();
         return sb.toString();
     }
-    
-    
 }

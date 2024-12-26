@@ -32,18 +32,16 @@
 package org.osjava.norbert;
 
 /**
- * Application exception for anything that might go wrong
- * in the checking of a robots.txt file. It does not
- * wrap an Exception to maintain support for older JDKs.
+ * Application exception for anything that might go wrong in the checking of a robots.txt file. It
+ * does not wrap an Exception to maintain support for older JDKs.
  */
 public class NoRobotException extends Exception {
-    
+
     public NoRobotException(String message) {
         super(message);
     }
-    
+
     public NoRobotException(String message, Throwable t) {
         super(message + " :::: " + t.getMessage());
     }
-    
 }

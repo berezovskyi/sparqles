@@ -1,5 +1,8 @@
 package sparqles.core;
 
+import static sparqles.core.CONSTANTS.*;
+
+import java.net.URISyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.analytics.AAnalyser;
@@ -19,22 +22,16 @@ import sparqles.core.performance.SpecificPTask;
 import sparqles.utils.FileManager;
 import sparqles.utils.MongoDBManager;
 
-import java.net.URISyntaxException;
-
-import static sparqles.core.CONSTANTS.*;
-
 public class TaskFactory {
     private static final Logger log = LoggerFactory.getLogger(TaskFactory.class);
-    
-    
-    public static Task create(String task, String endpoint, MongoDBManager dbm,
-                              FileManager fm) throws URISyntaxException {
+
+    public static Task create(String task, String endpoint, MongoDBManager dbm, FileManager fm)
+            throws URISyntaxException {
         Endpoint ep = EndpointFactory.newEndpoint(endpoint);
         return create(task, ep, dbm, fm);
     }
-    
-    public static Task create(String task, Endpoint ep, MongoDBManager dbm,
-                              FileManager fm) {
+
+    public static Task create(String task, Endpoint ep, MongoDBManager dbm, FileManager fm) {
         Task t = null;
         Analytics a = null;
         if (task.equalsIgnoreCase(PTASK)) {
@@ -57,15 +54,12 @@ public class TaskFactory {
             log.warn("Task {} not supported or known", task);
             t = null;
         }
-        if (dbm != null && t != null)
-            t.setDBManager(dbm);
+        if (dbm != null && t != null) t.setDBManager(dbm);
         if (fm != null && t != null && t instanceof EndpointTask)
             ((EndpointTask) t).setFileManager(fm);
-        if (t instanceof EndpointTask)
-            ((EndpointTask) t).setAnalytics(a);
-        
-        if (t != null)
-            log.trace("Successfully create {} task for {}", task, ep.getUri());
+        if (t instanceof EndpointTask) ((EndpointTask) t).setAnalytics(a);
+
+        if (t != null) log.trace("Successfully create {} task for {}", task, ep.getUri());
         return t;
     }
 }

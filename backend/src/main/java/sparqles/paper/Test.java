@@ -6,13 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
-import org.apache.avro.io.DecoderFactory;
-import org.apache.avro.io.JsonDecoder;
-import org.apache.avro.specific.SpecificDatumReader;
-import sparqles.avro.discovery.DGETInfo;
-import sparqles.avro.discovery.DResult;
-import sparqles.avro.discovery.QueryInfo;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,9 +22,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import org.apache.avro.io.DecoderFactory;
+import org.apache.avro.io.JsonDecoder;
+import org.apache.avro.specific.SpecificDatumReader;
+import sparqles.avro.discovery.DGETInfo;
+import sparqles.avro.discovery.DResult;
+import sparqles.avro.discovery.QueryInfo;
 
 public class Test {
-    
+
     public static void main(String[] args) {
         HashSet<String> aliveEPS = new HashSet<String>();
         try {
@@ -42,26 +41,26 @@ public class Test {
                 aliveEPS.add(ep.toLowerCase());
             }
             System.out.println(aliveEPS.size());
-            
+
         } catch (IOException e1) {
             e1.printStackTrace();
         }
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Gson gson = new Gson();
-            
-            BufferedReader br = Files.newBufferedReader(Paths.get("dtasks.json"), StandardCharsets.UTF_8);
-            
-            
+
+            BufferedReader br =
+                    Files.newBufferedReader(Paths.get("dtasks.json"), StandardCharsets.UTF_8);
+
             Map<String, Map<Date, DGETInfo>> wellknown = new HashMap<String, Map<Date, DGETInfo>>();
             Map<String, Map<Date, DGETInfo>> get = new HashMap<String, Map<Date, DGETInfo>>();
-            
+
             Map<String, Map<Date, QueryInfo>> query = new HashMap<String, Map<Date, QueryInfo>>();
-            
+
             Map<String, List<Date>> map = new HashMap<String, List<Date>>();
             Map<String, DResult[]> objectmap = new HashMap<String, DResult[]>();
             Map<String, Date[]> datemap = new HashMap<String, Date[]>();
-            
+
             HashSet<String> filtered = new HashSet<String>();
             HashSet<String> all = new HashSet<String>();
             DResult res = new DResult();
@@ -74,9 +73,9 @@ public class Test {
                 try {
                     dec = DecoderFactory.get().jsonDecoder(res.getSchema(), dbObject.toString());
                     DResult t = (DResult) r.read(null, dec);
-                    
-                    
-                    String uri = t.getEndpointResult().getEndpoint().getUri().toString().toLowerCase();
+
+                    String uri =
+                            t.getEndpointResult().getEndpoint().getUri().toString().toLowerCase();
                     all.add(uri);
                     if (!aliveEPS.contains(uri)) {
                         filtered.add(uri);
@@ -84,11 +83,9 @@ public class Test {
                             System.out.println(uri);
                         continue;
                     }
-                    
-                    
+
                     Date cur = new Date(t.getEndpointResult().getStart());
-                    
-                    
+
                     if (t.getQueryInfo().size() > 1) System.out.println(t);
                     QueryInfo qi = t.getQueryInfo().get(0);
                     Map<Date, QueryInfo> m = query.get(uri);
@@ -97,7 +94,7 @@ public class Test {
                         query.put(uri, m);
                     }
                     m.put(cur, qi);
-                    
+
                     for (DGETInfo d : t.getDescriptionFiles()) {
                         if (uri.equals("http://eurostat.linked-statistics.org/sparql")) {
                             System.out.println("");
@@ -141,7 +138,7 @@ public class Test {
                     //						datem[1] = cur;
                     //						dobj[1]= t;
                     //					}
-                    
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -155,49 +152,48 @@ public class Test {
             System.out.println("query: " + query.size());
             System.out.println("get: " + get.size());
             System.out.println("well: " + wellknown.size());
-//			System.exit(0);
-            
+            //			System.exit(0);
+
             computeServerNames(get);
-//
-//			System.out.println("\n ### WellKnown ###\n");
+            //
+            //			System.out.println("\n ### WellKnown ###\n");
             computeWellKnown(wellknown, "wellknown");
-//			
-//			System.out.println("\n ### GET ###\n");
+            //
+            //			System.out.println("\n ### GET ###\n");
             computeWellKnown(get, "get");
-//			System.out.println("\n ### QUERY ###\n");
+            //			System.out.println("\n ### QUERY ###\n");
             computeQueryResults(query);
-            
-            
-            //			
+
+            //
             ////			for(String ep: map.keySet())
             ////				System.out.println(ep+" "+map.get(ep));
             ////			System.exit(0);
-            //			
+            //
             //			System.out.println("____");
             //			int total=0;
             //			int diff=0;
             //			int serverNameChanged=0,serverNamesWithoutError=0;
             //
-            //			
-            //			
+            //
+            //
             //			int[][] voidCount = {{0,0},{0,0},{0,0}};
             //			int[][] sdcount = {{0,0},{0,0},{0,0}};
-            //			
+            //
             //			Map<String, Map<String, Integer>> [] respCodes = new Map[2];
             ////			Map<String, Map<String, Integer>> [] servers = new Map[2];
-            //			
+            //
             //			Map<String, Integer> serverNameChangeMap = new HashMap<String, Integer>();
-            //			
+            //
             //			Map<String, Integer[]> [] epsServers = new Map[2];
-            //			
+            //
             //			FileWriter fw = new FileWriter("discoverability.csv");
-            //			
+            //
             //			fw.write("ep,server0,server1\n");
-            //			
+            //
             //			Map<String, Integer> ops = new HashMap<String, Integer>();
             //			ops.put("EPURL",0);ops.put("wellknown",1);
-            //			
-            //			
+            //
+            //
             //			for(String uri: map.keySet()){
             //				String s=uri;
             //				total++;
@@ -208,28 +204,28 @@ public class Test {
             //				}
             //				diff++;
             //				String[] serverNames = new String[2];
-            //				
+            //
             //				for(int i=0; i<2;i++){
             //					if(respCodes[i] == null)
             //						respCodes[i] = new HashMap<String,Map<String, Integer>>();
-            //					
+            //
             //					if(servers[i] == null)
             //						servers[i] = new HashMap<String,Map<String, Integer>>();
-            //					
+            //
             //					if(epsServers[i]==null)
             //						epsServers[i]= new HashMap<String, Integer[]>();
-            //						
+            //
             //					DResult pres = objectmap.get(uri)[i];
-            //					
-            //					
+            //
+            //
             //					System.out.println(pres.getQueryInfo());
-            //					
+            //
             //					boolean voiddesc = false,sddesc=false;
             //					boolean cvoid= false, csd=false;
-            //					
+            //
             //					for(DGETInfo info : pres.getDescriptionFiles()){
             //						String op = info.getOperation().toString();
-            //						
+            //
             //						//update resp code dist
             //						Map<String, Integer> r = respCodes[i].get(op);
             //						if(r==null){
@@ -239,12 +235,12 @@ public class Test {
             //						String respCode=null;
             //						if(info.getResponseCode() == null) respCode ="null";
             //						else respCode = info.getResponseCode().toString();
-            //						
+            //
             //						Integer c = r.get(respCode);
             //						if (c==null) c=0;
             //						r.put(respCode, c+1);
-            //						
-            //						
+            //
+            //
             //						Map<String, Integer> ser = servers[i].get(op);
             //						if(ser==null){
             //							ser = new HashMap<String, Integer>();
@@ -294,7 +290,7 @@ public class Test {
             //						for(DGETInfo info : pres.getDescriptionFiles())
             //							System.out.println(info);
             //						System.out.println("_______");
-            //						
+            //
             //					}
             //				}
             //			}
@@ -303,7 +299,7 @@ public class Test {
             //			System.out.println(" Considered endpoints: "+diff);
             //			System.out.println(" serverNamesWithoutError: "+serverNamesWithoutError);
             //			System.out.println(" serverNameChanged: "+serverNameChanged);
-            //			
+            //
             //			for(int i=0; i<2;i++){
             //				System.out.println("i="+i);
             //				System.out.println("\t"+servers[i].size()+" Servers");
@@ -329,8 +325,8 @@ public class Test {
             //			for(Entry<String, Integer> ent: serverNameChangeMap.entrySet()){
             //				System.out.println(ent.getKey()+" "+ent.getValue());
             //			}
-            //			
-            //			
+            //
+            //
             //			System.out.println("VOID 0"+voidCount[0][0]+" "+voidCount[0][1]);
             //			System.out.println("VOID 1"+voidCount[1][0]+" "+voidCount[1][1]);
             //			System.out.println("VOID 2"+voidCount[2][0]+" "+voidCount[2][1]);
@@ -338,14 +334,14 @@ public class Test {
             //			System.out.println("SD 0"+sdcount[0][0]+" "+sdcount[0][1]);
             //			System.out.println("SD 1"+sdcount[1][0]+" "+sdcount[1][1]);
             //			System.out.println("SD 2"+sdcount[2][0]+" "+sdcount[2][1]);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    private static void computeQueryResults(
-        Map<String, Map<Date, QueryInfo>> query) throws IOException {
+
+    private static void computeQueryResults(Map<String, Map<Date, QueryInfo>> query)
+            throws IOException {
         int removed = 0;
         int added = 0, newdiscoverd = 0;
         Map<String, Integer[]> respCodes = new HashMap<String, Integer[]>();
@@ -379,47 +375,46 @@ public class Test {
             fw.write(ent.getKey() + "\t" + resp[0] + "\t" + resp[1] + "\n");
             if (resp[0] != null || resp[1] != null) {
                 if (resp[0] != null && resp[1] == null)
-                    System.out.println("Exceptions: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
+                    System.out.println(
+                            "Exceptions: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
                 else if (resp[0] == null && resp[1] != null) {
-                    System.out.println("-Exceptions: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
-                    if (resp[1] > 0)
-                        newdiscoverd++;
+                    System.out.println(
+                            "-Exceptions: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
+                    if (resp[1] > 0) newdiscoverd++;
                 } else if (resp[0] == 0 && resp[1] != 0) {
                     System.out.println("ADDED: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
                     added++;
-                    
+
                 } else if (resp[0] != 0 && resp[1] == 0) {
                     System.out.println("REMOVED: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
                     removed++;
                 }
 
-//				if(resp[0]!=null && resp[1] !=null && ){
+                //				if(resp[0]!=null && resp[1] !=null && ){
 
-//				}
+                //				}
             }
         }
         fw.close();
         System.out.println("removed: " + removed);
         System.out.println("addedd: " + added);
         System.out.println("newdiscoverd: " + newdiscoverd);
-        
     }
-    
-    private static void computeWellKnown(
-        Map<String, Map<Date, DGETInfo>> wellknown, String name) throws IOException {
+
+    private static void computeWellKnown(Map<String, Map<Date, DGETInfo>> wellknown, String name)
+            throws IOException {
         Map<String, Boolean[]> voidResults = new HashMap<String, Boolean[]>();
         Map<String, Boolean[]> sdResults = new HashMap<String, Boolean[]>();
         Map<String, String[]> respCodes = new HashMap<String, String[]>();
-        
+
         System.out.println("#######NAME: " + name);
         Map<String, Integer> resp2013 = new HashMap<String, Integer>();
         Map<String, Integer> resp2015 = new HashMap<String, Integer>();
         Map<String, Integer> respChanges = new HashMap<String, Integer>();
-        
-        
+
         FileWriter fw = new FileWriter(new File(name + "_details.tsv"));
         fw.write("EP\trespcode 2013\tvoid 2013\tsd 2013\trespcode 2015\tvoid 2015\tsd 2015\n");
-        
+
         for (Entry<String, Map<Date, DGETInfo>> ent : wellknown.entrySet()) {
             if (ent.getKey().contains("http://data.lenka.no/")) {
                 System.out.println("");
@@ -429,7 +424,8 @@ public class Test {
             String[] resp = new String[2];
             for (Entry<Date, DGETInfo> v : ent.getValue().entrySet()) {
                 if (1900 + v.getKey().getYear() == 2013) {
-                    if (v.getValue().getResponseCode() != null && v.getValue().getResponseCode().toString().equals("200")) {
+                    if (v.getValue().getResponseCode() != null
+                            && v.getValue().getResponseCode().toString().equals("200")) {
                         sd[0] = v.getValue().getSPARQLDESCpreds().size() > 0;
                         vd[0] = v.getValue().getVoiDpreds().size() > 0;
                         resp[0] = v.getValue().getResponseCode().toString();
@@ -440,7 +436,8 @@ public class Test {
                     }
                 }
                 if (1900 + v.getKey().getYear() == 2015) {
-                    if (v.getValue().getResponseCode() != null && v.getValue().getResponseCode().toString().equals("200")) {
+                    if (v.getValue().getResponseCode() != null
+                            && v.getValue().getResponseCode().toString().equals("200")) {
                         sd[1] = v.getValue().getSPARQLDESCpreds().size() > 0;
                         vd[1] = v.getValue().getVoiDpreds().size() > 0;
                         resp[1] = v.getValue().getResponseCode().toString();
@@ -454,74 +451,99 @@ public class Test {
                     }
                 }
             }
-            fw.write(ent.getKey() + "\t" + resp[0] + "\t" + vd[0] + "\t" + sd[0] + "\t" + resp[1] + "\t" + vd[1] + "\t" + sd[1] + "\n");
+            fw.write(
+                    ent.getKey()
+                            + "\t"
+                            + resp[0]
+                            + "\t"
+                            + vd[0]
+                            + "\t"
+                            + sd[0]
+                            + "\t"
+                            + resp[1]
+                            + "\t"
+                            + vd[1]
+                            + "\t"
+                            + sd[1]
+                            + "\n");
             voidResults.put(ent.getKey(), vd);
             sdResults.put(ent.getKey(), sd);
-            
+
             respCodes.put(ent.getKey(), resp);
-            
+
             if (resp[0] != null && resp[1] != null) {
                 if (!resp[0].equalsIgnoreCase(resp[1])) {
-                    String s = resp[0] + "->" + resp[1] + " VOID " + vd[0] + " " + vd[1] + " SD " + sd[0] + " " + sd[1];
+                    String s =
+                            resp[0] + "->" + resp[1] + " VOID " + vd[0] + " " + vd[1] + " SD "
+                                    + sd[0] + " " + sd[1];
                     Integer c = respChanges.get(s);
                     if (c == null) c = 0;
                     respChanges.put(s, c + 1);
-                    
+
                     if (resp[1] != null && resp[1].equals("200") && vd[1] != null && vd[1])
-                        System.out.println("Void added: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
-                    if (resp[0] != null && resp[0].equals("200") && resp[1] != null && !resp[1].equals("200") && vd[0] != null && vd[0])
-                        System.out.println("Void removed: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
+                        System.out.println(
+                                "Void added: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
+                    if (resp[0] != null
+                            && resp[0].equals("200")
+                            && resp[1] != null
+                            && !resp[1].equals("200")
+                            && vd[0] != null
+                            && vd[0])
+                        System.out.println(
+                                "Void removed: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
                     if (resp[1] != null && resp[1].equals("200") && sd[1] != null && sd[1])
-                        System.out.println("SD added: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
-                    if (resp[0] != null && resp[0].equals("200") && resp[1] != null && !resp[1].equals("200") && sd[0] != null && sd[0])
-                        System.out.println("SD removed: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
+                        System.out.println(
+                                "SD added: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
+                    if (resp[0] != null
+                            && resp[0].equals("200")
+                            && resp[1] != null
+                            && !resp[1].equals("200")
+                            && sd[0] != null
+                            && sd[0])
+                        System.out.println(
+                                "SD removed: " + ent.getKey() + " " + resp[0] + " " + resp[1]);
                 }
                 if (resp[1].equals("200") && resp[0].equals("200")) {
                     if (vd[0] != null && vd[1] != null && vd[0] != vd[1]) {
-                        String s = resp[0] + "->" + resp[1] + " VOID " + vd[0] + " " + vd[1] + " SD " + sd[0] + " " + sd[1];
+                        String s =
+                                resp[0] + "->" + resp[1] + " VOID " + vd[0] + " " + vd[1] + " SD "
+                                        + sd[0] + " " + sd[1];
                         if (vd[0]) {
                             System.out.println("VOID REMOVED: " + ent.getKey() + " " + s);
-//							for(Entry<Date, DGETInfo> v: ent.getValue().entrySet()){
-//								System.out.println(v.getKey()+" "+v.getValue());
-//							}
-                        } else
-                            System.out.println("VOID ADDED: " + ent.getKey() + " " + s);
+                            //							for(Entry<Date, DGETInfo> v: ent.getValue().entrySet()){
+                            //								System.out.println(v.getKey()+" "+v.getValue());
+                            //							}
+                        } else System.out.println("VOID ADDED: " + ent.getKey() + " " + s);
                     }
                     if (sd[0] != null && sd[1] != null && sd[0] != sd[1]) {
-                        String s = resp[0] + "->" + resp[1] + " VOID " + vd[0] + " " + vd[1] + " SD " + sd[0] + " " + sd[1];
+                        String s =
+                                resp[0] + "->" + resp[1] + " VOID " + vd[0] + " " + vd[1] + " SD "
+                                        + sd[0] + " " + sd[1];
                         if (sd[0]) {
                             System.out.println("SD REMOVED: " + ent.getKey() + " " + s);
                             for (Entry<Date, DGETInfo> v : ent.getValue().entrySet()) {
                                 System.out.println(v.getKey() + " " + v.getValue());
                             }
-                        } else
-                            System.out.println("SD ADDED: " + ent.getKey() + " " + s);
+                        } else System.out.println("SD ADDED: " + ent.getKey() + " " + s);
                     }
-                    
                 }
-                
             }
             String r = resp[0];
-            if (r == null)
-                r = "error";
+            if (r == null) r = "error";
             Integer c = resp2013.get(r);
             if (c == null) c = 0;
             resp2013.put(r, c + 1);
-            
+
             r = resp[1];
-            if (r == null)
-                r = "error";
+            if (r == null) r = "error";
             c = resp2015.get(r);
             if (c == null) c = 0;
             resp2015.put(r, c + 1);
-            
-            
         }
         fw.close();
-        
+
         System.out.println("ResponseCodes");
-        
-        
+
         System.out.println("\n----2013");
         for (Entry<String, Integer> ent : resp2013.entrySet())
             System.out.println(ent.getKey() + " " + ent.getValue());
@@ -531,9 +553,8 @@ public class Test {
         System.out.println("-------");
         for (Entry<String, Integer> ent : respChanges.entrySet())
             System.out.println(ent.getKey() + " " + ent.getValue());
-        
-        
-        //VOID
+
+        // VOID
         int non = 0, error = 0;
         int y2013 = 0, y2015 = 0;
         Map<String, Integer> voidChange = new HashMap<String, Integer>();
@@ -550,7 +571,7 @@ public class Test {
                 voidChange.put(s, c + 1);
             }
         }
-        
+
         System.out.println("Void: " + voidResults.size() + " none:" + non + " error:" + error);
         System.out.println("Valid 200 responses " + (voidResults.size() - non));
         System.out.println("2013: " + y2013 + " y2015:" + y2015);
@@ -577,20 +598,20 @@ public class Test {
         for (Entry<String, Integer> ent : sdChange.entrySet()) {
             System.out.println(ent.getKey() + " " + ent.getValue());
         }
-        
     }
-    
-    private static void computeServerNames(Map<String, Map<Date, DGETInfo>> get) throws IOException {
+
+    private static void computeServerNames(Map<String, Map<Date, DGETInfo>> get)
+            throws IOException {
         Map<String, String[]> servers = new HashMap<String, String[]>();
-        //EP Server
+        // EP Server
         FileWriter f = new FileWriter(new File("server_names_detail.tsv"));
         f.write("Endpoint\tservername 2013\t servername 2015\n");
         for (Entry<String, Map<Date, DGETInfo>> ent : get.entrySet()) {
             String[] snames = new String[2];
-            
+
             for (Entry<Date, DGETInfo> v : ent.getValue().entrySet()) {
                 String server = "error";
-//				System.out.println(v.getValue().getResponseServer());
+                //				System.out.println(v.getValue().getResponseServer());
                 if (v.getValue().getResponseServer() != null)
                     server = v.getValue().getResponseServer().toString();
                 else {
@@ -598,23 +619,29 @@ public class Test {
                     System.out.println(v.getValue().getResponseCode());
                 }
                 if (1900 + v.getKey().getYear() == 2013) {
-                    if (snames[0] == null || (!server.equalsIgnoreCase("error") && (snames[0].equalsIgnoreCase("error") || snames[0].equalsIgnoreCase("missing"))))
+                    if (snames[0] == null
+                            || (!server.equalsIgnoreCase("error")
+                                    && (snames[0].equalsIgnoreCase("error")
+                                            || snames[0].equalsIgnoreCase("missing"))))
                         snames[0] = server;
-                    
+
                 } else if (1900 + v.getKey().getYear() == 2015) {
-                    if (snames[1] == null || (!server.equalsIgnoreCase("error") && (snames[1].equalsIgnoreCase("error") || snames[1].equalsIgnoreCase("missing"))))
+                    if (snames[1] == null
+                            || (!server.equalsIgnoreCase("error")
+                                    && (snames[1].equalsIgnoreCase("error")
+                                            || snames[1].equalsIgnoreCase("missing"))))
                         snames[1] = server;
                 }
             }
-//			System.out.println(Arrays.toString(snames));
+            //			System.out.println(Arrays.toString(snames));
             servers.put(ent.getKey(), snames);
             f.write(ent.getKey() + "\t" + snames[0] + "\t" + snames[1] + "\n");
         }
         f.close();
-        
+
         Map<String, Integer> sn2013 = new HashMap<String, Integer>();
         Map<String, Integer> sn2015 = new HashMap<String, Integer>();
-        
+
         int non = 0, error = 0;
         Map<String, Integer> serverChange = new HashMap<String, Integer>();
         for (Entry<String, String[]> ent : servers.entrySet()) {
@@ -630,10 +657,8 @@ public class Test {
             if (ent.getValue()[0] != null && ent.getValue()[1] != null) {
                 String sn13 = "null";
                 String sn15 = "null";
-                if (ent.getValue()[0] != null)
-                    sn13 = ent.getValue()[0];
-                if (ent.getValue()[1] != null)
-                    sn15 = ent.getValue()[1];
+                if (ent.getValue()[0] != null) sn13 = ent.getValue()[0];
+                if (ent.getValue()[1] != null) sn15 = ent.getValue()[1];
                 Integer c = sn2013.get(sn13);
                 Integer c1 = sn2015.get(sn15);
                 if (c == null) c = 0;
@@ -642,7 +667,7 @@ public class Test {
                 sn2015.put(sn15, c1 + 1);
             }
         }
-        
+
         System.out.println("Servers: " + servers.size() + " none:" + non + " error:" + error);
         System.out.println(servers.size() - non);
         System.out.println("Changes: " + serverChange.size());
@@ -671,7 +696,5 @@ public class Test {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
     }
 }

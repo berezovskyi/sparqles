@@ -31,16 +31,12 @@
  */
 package org.osjava.norbert;
 
-/**
- * A robots.txt rule. Is a particular path allowed?
- */
+/** A robots.txt rule. Is a particular path allowed? */
 public interface Rule {
-    
+
     /**
-     * Boolean.TRUE means it is allowed.
-     * Boolean.FALSE means it is not allowed.
-     * null means that this rule is not applicable.
+     * Boolean.TRUE means it is allowed. Boolean.FALSE means it is not allowed. null means that this
+     * rule is not applicable.
      */
     Boolean isAllowed(String path);
-    
 }

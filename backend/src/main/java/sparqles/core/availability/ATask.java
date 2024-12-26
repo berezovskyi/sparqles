@@ -1,5 +1,9 @@
 package sparqles.core.availability;
 
+import java.net.ConnectException;
+import java.net.UnknownHostException;
+import java.net.http.HttpConnectTimeoutException;
+import javax.net.ssl.SSLHandshakeException;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.jena.query.QueryExecution;
@@ -14,45 +18,38 @@ import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
 
-import javax.net.ssl.SSLHandshakeException;
-import java.net.ConnectException;
-import java.net.UnknownHostException;
-import java.net.http.HttpConnectTimeoutException;
-
 /**
  * This class performs the required task to study the availability of an endpoint.
- * <p>
- * We first perform a ASK query to check if an endpoint is available.
- * If the ask query is successful but returns false, we perform a SELECT LIMIT 1 query
+ *
+ * <p>We first perform a ASK query to check if an endpoint is available. If the ask query is
+ * successful but returns false, we perform a SELECT LIMIT 1 query
  *
  * @author UmbrichJ
  */
 public class ATask extends EndpointTask<AResult> {
-    
-    /**
-     * static class logger
-     */
+
+    /** static class logger */
     private static final Logger log = LoggerFactory.getLogger(ATask.class);
-    
-    private final static String ASKQUERY = "ASK WHERE{?s ?p ?o}";
-    private final static String SELECTQUERY = "SELECT ?s WHERE{?s ?p ?o} LIMIT 1";
-    
+
+    private static final String ASKQUERY = "ASK WHERE{?s ?p ?o}";
+    private static final String SELECTQUERY = "SELECT ?s WHERE{?s ?p ?o} LIMIT 1";
+
     public ATask(Endpoint ep) {
         super(ep);
     }
-    
-    
+
     @Override
     public AResult process(EndpointResult epr) {
         AResult result = new AResult();
         result.setEndpointResult(epr);
         result.setExplanation("Endpoint is operating normally");
-        
+
         long start = System.currentTimeMillis();
         try {
             QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), ASKQUERY);
             // FIXME: find a new way
-            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
+            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
+            // TaskRun.A_FIRST_RESULT_TIMEOUT);
             boolean response = qe.execAsk();
             if (response) {
                 result.setResponseTime((System.currentTimeMillis() - start));
@@ -72,14 +69,17 @@ public class ATask extends EndpointTask<AResult> {
             String ex = ExceptionHandler.logAndtoString(e);
             result.setException(ex);
             result.setExplanation(ex);
-            
-            log.warn("failed ASK query for {}, {}", _epURI, ExceptionHandler.logAndtoString(e, true));
+
+            log.warn(
+                    "failed ASK query for {}, {}",
+                    _epURI,
+                    ExceptionHandler.logAndtoString(e, true));
             return result;
         } catch (Exception e) {
             return testSelect(epr);
         }
     }
-    
+
     private AResult testSelect(EndpointResult epr) {
         AResult result = new AResult();
         result.setEndpointResult(epr);
@@ -88,9 +88,10 @@ public class ATask extends EndpointTask<AResult> {
         try {
             QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), SELECTQUERY);
             // FIXME
-            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT, TaskRun.A_FIRST_RESULT_TIMEOUT);
+            //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
+            // TaskRun.A_FIRST_RESULT_TIMEOUT);
             boolean response = qe.execSelect().hasNext();
-            
+
             if (response) {
                 result.setResponseTime((System.currentTimeMillis() - start));
                 if ((System.currentTimeMillis() - start) > TaskRun.A_FIRST_RESULT_TIMEOUT) {
@@ -127,7 +128,9 @@ public class ATask extends EndpointTask<AResult> {
                 result.setExplanation(msg);
                 return result;
             }
-            if (e.getCause() instanceof ConnectTimeoutException || e.getCause() instanceof ConnectException || e.getCause() instanceof HttpConnectTimeoutException) {
+            if (e.getCause() instanceof ConnectTimeoutException
+                    || e.getCause() instanceof ConnectException
+                    || e.getCause() instanceof HttpConnectTimeoutException) {
                 result.setIsAvailable(false);
                 String msg = "🐌 connection timeout while connecting to " + _epURI;
                 log.info(msg);
@@ -143,7 +146,8 @@ public class ATask extends EndpointTask<AResult> {
             }
             if (e.getMessage().contains("400")) {
                 result.setIsAvailable(false);
-                String msg = "👾 host did not like our request (400); while connecting to " + _epURI;
+                String msg =
+                        "👾 host did not like our request (400); while connecting to " + _epURI;
                 log.info(msg);
                 result.setExplanation(msg);
                 return result;
@@ -156,13 +160,16 @@ public class ATask extends EndpointTask<AResult> {
                 return result;
             } else if (e.getMessage().contains("502")) {
                 result.setIsAvailable(false);
-                String msg = "🕳 server is likely down behind reverse proxy (502); while connecting to " + _epURI;
+                String msg =
+                        "🕳 server is likely down behind reverse proxy (502); while connecting to "
+                                + _epURI;
                 log.info(msg);
                 result.setExplanation(msg);
                 return result;
             } else if (e.getMessage().contains("503")) {
                 result.setIsAvailable(false);
-                String msg = "🕳 endpoint is overloaded or gone (503); while connecting to " + _epURI;
+                String msg =
+                        "🕳 endpoint is overloaded or gone (503); while connecting to " + _epURI;
                 log.info(msg);
                 result.setExplanation(msg);
                 return result;
@@ -175,8 +182,12 @@ public class ATask extends EndpointTask<AResult> {
             if (e1.getMessage() != null)
                 if (e1.getMessage().contains("401 Authorization Required"))
                     result.setIsPrivate(true);
-            
-            log.warn("failed SELECT query for {}, {} (type {})", _epURI, ExceptionHandler.logAndtoString(e1, true), e1.getClass().getName());
+
+            log.warn(
+                    "failed SELECT query for {}, {} (type {})",
+                    _epURI,
+                    ExceptionHandler.logAndtoString(e1, true),
+                    e1.getClass().getName());
         }
         return result;
     }

@@ -1,5 +1,8 @@
 package sparqles.analytics;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.TreeSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -9,59 +12,60 @@ import sparqles.avro.features.FResult;
 import sparqles.avro.performance.PResult;
 import sparqles.utils.MongoDBManager;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeSet;
-
 public class AnalyserInit {
-    
+
     private static final Logger log = LoggerFactory.getLogger(AnalyserInit.class);
-    
+
     private MongoDBManager _db;
-    
+
     private boolean _onlyLast;
-    
+
     public AnalyserInit(MongoDBManager db) {
         this(db, false);
     }
-    
+
     public AnalyserInit(MongoDBManager db, boolean onlyLast) {
         _db = db;
         _onlyLast = onlyLast;
     }
-    
+
     /**
      * Computes the aggregated statistics for the Availability task
      *
      * @param ep
      */
     public void run() {
-        
+
         List<Endpoint> eps = _db.get(Endpoint.class, Endpoint.SCHEMA$);
         AAnalyser a = new AAnalyser(_db);
         PAnalyser p = new PAnalyser(_db);
         DAnalyser d = new DAnalyser(_db);
         FAnalyser f = new FAnalyser(_db);
-        
+
         log.info("Analysing {} endpoints", eps.size());
         for (Endpoint ep : eps) {
             log.info("ANALYSE {}", ep.getUri());
-            
+
             availability(ep, a);
             discoverability(ep, d);
             interoperability(ep, f);
             performance(ep, p);
         }
     }
-    
+
     private void discoverability(Endpoint ep, DAnalyser d) {
-        TreeSet<DResult> res = new TreeSet<DResult>(new Comparator<DResult>() {
-            public int compare(DResult o1, DResult o2) {
-                int diff = o1.getEndpointResult().getStart().compareTo(o2.getEndpointResult().getStart());
-                return diff;
-            }
-        });
-        
+        TreeSet<DResult> res =
+                new TreeSet<DResult>(
+                        new Comparator<DResult>() {
+                            public int compare(DResult o1, DResult o2) {
+                                int diff =
+                                        o1.getEndpointResult()
+                                                .getStart()
+                                                .compareTo(o2.getEndpointResult().getStart());
+                                return diff;
+                            }
+                        });
+
         List<DResult> epRes = _db.getResults(ep, DResult.class, DResult.SCHEMA$);
         for (DResult epres : epRes) {
             res.add(epres);
@@ -75,17 +79,21 @@ public class AnalyserInit {
             }
         }
         log.info("ANALYSE DISCOVERABILITY {} and {}", ep, epRes.size());
-        
     }
-    
+
     private void performance(Endpoint ep, PAnalyser p) {
-        TreeSet<PResult> res = new TreeSet<PResult>(new Comparator<PResult>() {
-            public int compare(PResult o1, PResult o2) {
-                int diff = o1.getEndpointResult().getStart().compareTo(o2.getEndpointResult().getStart());
-                return diff;
-            }
-        });
-        
+        TreeSet<PResult> res =
+                new TreeSet<PResult>(
+                        new Comparator<PResult>() {
+                            public int compare(PResult o1, PResult o2) {
+                                int diff =
+                                        o1.getEndpointResult()
+                                                .getStart()
+                                                .compareTo(o2.getEndpointResult().getStart());
+                                return diff;
+                            }
+                        });
+
         List<PResult> epRes = _db.getResults(ep, PResult.class, PResult.SCHEMA$);
         for (PResult epres : epRes) {
             res.add(epres);
@@ -100,15 +108,20 @@ public class AnalyserInit {
         }
         log.info("ANALYSE PERFORMANCE {} and {}", ep, epRes.size());
     }
-    
+
     private void interoperability(Endpoint ep, FAnalyser f) {
-        TreeSet<FResult> res = new TreeSet<FResult>(new Comparator<FResult>() {
-            public int compare(FResult o1, FResult o2) {
-                int diff = o1.getEndpointResult().getStart().compareTo(o2.getEndpointResult().getStart());
-                return diff;
-            }
-        });
-        
+        TreeSet<FResult> res =
+                new TreeSet<FResult>(
+                        new Comparator<FResult>() {
+                            public int compare(FResult o1, FResult o2) {
+                                int diff =
+                                        o1.getEndpointResult()
+                                                .getStart()
+                                                .compareTo(o2.getEndpointResult().getStart());
+                                return diff;
+                            }
+                        });
+
         List<FResult> epRes = _db.getResults(ep, FResult.class, FResult.SCHEMA$);
         for (FResult epres : epRes) {
             res.add(epres);
@@ -122,18 +135,22 @@ public class AnalyserInit {
             }
         }
         log.info("ANALYSE INTEROPERABILITY {} and {}", ep, epRes.size());
-        
     }
-    
+
     private void availability(Endpoint ep, AAnalyser a) {
-        
-        TreeSet<AResult> res = new TreeSet<AResult>(new Comparator<AResult>() {
-            public int compare(AResult o1, AResult o2) {
-                int diff = o1.getEndpointResult().getStart().compareTo(o2.getEndpointResult().getStart());
-                return diff;
-            }
-        });
-        
+
+        TreeSet<AResult> res =
+                new TreeSet<AResult>(
+                        new Comparator<AResult>() {
+                            public int compare(AResult o1, AResult o2) {
+                                int diff =
+                                        o1.getEndpointResult()
+                                                .getStart()
+                                                .compareTo(o2.getEndpointResult().getStart());
+                                return diff;
+                            }
+                        });
+
         List<AResult> epRes = _db.getResults(ep, AResult.class, AResult.SCHEMA$);
         for (AResult epres : epRes) {
             res.add(epres);
@@ -146,6 +163,5 @@ public class AnalyserInit {
             }
         }
         log.info("ANALYSE AVAILABILITY {} and {}", ep.getUri(), epRes.size());
-        
     }
 }
