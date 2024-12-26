@@ -13,6 +13,11 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"DiscoverabilityView\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"VoID\",\"type\":\"boolean\"},{\"name\":\"SD\",\"type\":\"boolean\"},{\"name\":\"serverName\",\"type\":\"string\"},{\"name\":\"lastUpdate\",\"type\":\"long\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public boolean VoID;
     @Deprecated public boolean SD;
@@ -37,30 +42,6 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
         this.SD = SD;
         this.serverName = serverName;
         this.lastUpdate = lastUpdate;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new DiscoverabilityView RecordBuilder */
-    public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder() {
-        return new sparqles.avro.analytics.DiscoverabilityView.Builder();
-    }
-
-    /** Creates a new DiscoverabilityView RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder(
-            sparqles.avro.analytics.DiscoverabilityView.Builder other) {
-        return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
-    }
-
-    /**
-     * Creates a new DiscoverabilityView RecordBuilder by copying an existing DiscoverabilityView
-     * instance
-     */
-    public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder(
-            sparqles.avro.analytics.DiscoverabilityView other) {
-        return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -177,6 +158,26 @@ public class DiscoverabilityView extends org.apache.avro.specific.SpecificRecord
      */
     public void setLastUpdate(java.lang.Long value) {
         this.lastUpdate = value;
+    }
+
+    /** Creates a new DiscoverabilityView RecordBuilder */
+    public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder() {
+        return new sparqles.avro.analytics.DiscoverabilityView.Builder();
+    }
+
+    /** Creates a new DiscoverabilityView RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder(
+            sparqles.avro.analytics.DiscoverabilityView.Builder other) {
+        return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
+    }
+
+    /**
+     * Creates a new DiscoverabilityView RecordBuilder by copying an existing DiscoverabilityView
+     * instance
+     */
+    public static sparqles.avro.analytics.DiscoverabilityView.Builder newBuilder(
+            sparqles.avro.analytics.DiscoverabilityView other) {
+        return new sparqles.avro.analytics.DiscoverabilityView.Builder(other);
     }
 
     /** RecordBuilder for DiscoverabilityView instances. */

@@ -11,6 +11,7 @@ public class CONSTANTS {
     public static final String FTASK = "FTask";
     public static final String ITASK = "ITask";
     public static final String ETASK = "ETask";
+    public static final String CTASK = "CTask";
 
     public static final String USER_AGENT =
             "SPARQLES client using HTTPClient/4.2.3 (https://github.com/pyvandenbussche/sparqles)";

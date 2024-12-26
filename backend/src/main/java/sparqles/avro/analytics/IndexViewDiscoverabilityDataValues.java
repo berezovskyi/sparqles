@@ -13,6 +13,11 @@ public class IndexViewDiscoverabilityDataValues extends org.apache.avro.specific
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityDataValues\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence label;
     @Deprecated public double value;
 
@@ -27,32 +32,6 @@ public class IndexViewDiscoverabilityDataValues extends org.apache.avro.specific
             java.lang.CharSequence label, java.lang.Double value) {
         this.label = label;
         this.value = value;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewDiscoverabilityDataValues RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder();
-    }
-
-    /**
-     * Creates a new IndexViewDiscoverabilityDataValues RecordBuilder by copying an existing Builder
-     */
-    public static sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewDiscoverabilityDataValues RecordBuilder by copying an existing
-     * IndexViewDiscoverabilityDataValues instance
-     */
-    public static sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewDiscoverabilityDataValues other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -112,6 +91,28 @@ public class IndexViewDiscoverabilityDataValues extends org.apache.avro.specific
      */
     public void setValue(java.lang.Double value) {
         this.value = value;
+    }
+
+    /** Creates a new IndexViewDiscoverabilityDataValues RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder();
+    }
+
+    /**
+     * Creates a new IndexViewDiscoverabilityDataValues RecordBuilder by copying an existing Builder
+     */
+    public static sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder other) {
+        return new sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewDiscoverabilityDataValues RecordBuilder by copying an existing
+     * IndexViewDiscoverabilityDataValues instance
+     */
+    public static sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewDiscoverabilityDataValues other) {
+        return new sparqles.avro.analytics.IndexViewDiscoverabilityDataValues.Builder(other);
     }
 
     /** RecordBuilder for IndexViewDiscoverabilityDataValues instances. */

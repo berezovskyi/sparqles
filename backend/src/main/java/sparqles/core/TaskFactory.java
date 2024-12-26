@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.analytics.AAnalyser;
 import sparqles.analytics.Analytics;
+import sparqles.analytics.CAnalyser;
 import sparqles.analytics.DAnalyser;
 import sparqles.analytics.FAnalyser;
 import sparqles.analytics.IndexViewAnalytics;
@@ -14,6 +15,7 @@ import sparqles.analytics.PAnalyser;
 import sparqles.analytics.RefreshDataHubTask;
 import sparqles.avro.Endpoint;
 import sparqles.core.availability.ATask;
+import sparqles.core.calculation.CTask;
 import sparqles.core.discovery.DTask;
 import sparqles.core.interoperability.FTask;
 import sparqles.core.interoperability.SpecificFTask;
@@ -46,6 +48,9 @@ public class TaskFactory {
         } else if (task.equalsIgnoreCase(DTASK)) {
             t = new DTask(ep);
             a = new DAnalyser(dbm);
+        } else if (task.equalsIgnoreCase(CTASK)) {
+            t = new CTask(ep);
+            a = new CAnalyser(dbm);
         } else if (task.equalsIgnoreCase(ITASK)) {
             t = new IndexViewAnalytics();
         } else if (task.equalsIgnoreCase(ETASK)) {

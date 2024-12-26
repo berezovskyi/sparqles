@@ -1,7 +1,9 @@
 package sparqles.utils.cli;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
 import org.slf4j.Logger;
@@ -10,13 +12,16 @@ import sparqles.analytics.AnalyserInit;
 import sparqles.analytics.IndexViewAnalytics;
 import sparqles.analytics.RefreshDataHubTask;
 import sparqles.analytics.StatsAnalyser;
+import sparqles.avro.Dataset;
 import sparqles.avro.Endpoint;
 import sparqles.avro.availability.AResult;
+import sparqles.avro.calculation.CResult;
 import sparqles.avro.discovery.DResult;
 import sparqles.avro.features.FResult;
 import sparqles.avro.performance.PResult;
 import sparqles.avro.schedule.Schedule;
 import sparqles.core.CONSTANTS;
+import sparqles.core.EndpointFactory;
 import sparqles.core.SPARQLESProperties;
 import sparqles.schedule.Scheduler;
 import sparqles.utils.DatahubAccess;
@@ -53,6 +58,7 @@ public class SPARQLES extends CLIObject {
 
         opts.addOption(ARGUMENTS.OPTION_RUN);
         opts.addOption(ARGUMENTS.OPTION_INDEX);
+        opts.addOption(ARGUMENTS.OPTION_ADD);
     }
 
     @Override
@@ -97,6 +103,13 @@ public class SPARQLES extends CLIObject {
         if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_STATS)) {
             computeStats();
         }
+        if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_ADD)) {
+            String[] opts = CLIObject.getOptionValue(cmd, ARGUMENTS.PARAM_ADD).trim().split(";");
+            String endpointUri = opts[0];
+            String label = "";
+            if (opts.length > 1) label = opts[1];
+            addEndpoint(endpointUri, label);
+        }
 
         if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_RUN)) {
             String task = CLIObject.getOptionValue(cmd, ARGUMENTS.PARAM_RUN).trim();
@@ -120,6 +133,9 @@ public class SPARQLES extends CLIObject {
             } else if (task.equalsIgnoreCase(CONSTANTS.DTASK)) {
                 OneTimeExecution<DResult> ex = new OneTimeExecution<DResult>(dbm, _fm);
                 ex.run(CONSTANTS.DTASK);
+            } else if (task.equalsIgnoreCase(CONSTANTS.CTASK)) {
+                OneTimeExecution<CResult> ex = new OneTimeExecution<CResult>(dbm, _fm);
+                ex.run(CONSTANTS.CTASK);
             } else {
                 log.warn("Task {} not known", task);
             }
@@ -159,6 +175,24 @@ public class SPARQLES extends CLIObject {
 
         AnalyserInit a = new AnalyserInit(dbm, onlyLast);
         a.run();
+    }
+
+    private void addEndpoint(String endpointUri, String label) {
+        log.info("Adding endpoint with uri \"{}\" and label \"{}\"", endpointUri, label);
+        try {
+            Endpoint ep = EndpointFactory.newEndpoint(endpointUri);
+            if (!label.equals("")) {
+                Dataset d = new Dataset();
+                d.setLabel(label);
+                d.setUri(endpointUri);
+                List<Dataset> l = ep.getDatasets();
+                l.add(d);
+                ep.setDatasets(l);
+            }
+            dbm.insert(ep);
+        } catch (URISyntaxException e) {
+            log.warn("URISyntaxException:{}", e.getMessage());
+        }
     }
 
     private void start() {

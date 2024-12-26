@@ -13,6 +13,11 @@ public class PSingleResult extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"PSingleResult\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"cold\",\"type\":{\"type\":\"record\",\"name\":\"Run\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}},{\"name\":\"warm\",\"type\":\"Run\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence query;
     @Deprecated public sparqles.avro.performance.Run cold;
     @Deprecated public sparqles.avro.performance.Run warm;
@@ -31,27 +36,6 @@ public class PSingleResult extends org.apache.avro.specific.SpecificRecordBase
         this.query = query;
         this.cold = cold;
         this.warm = warm;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new PSingleResult RecordBuilder */
-    public static sparqles.avro.performance.PSingleResult.Builder newBuilder() {
-        return new sparqles.avro.performance.PSingleResult.Builder();
-    }
-
-    /** Creates a new PSingleResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.performance.PSingleResult.Builder newBuilder(
-            sparqles.avro.performance.PSingleResult.Builder other) {
-        return new sparqles.avro.performance.PSingleResult.Builder(other);
-    }
-
-    /** Creates a new PSingleResult RecordBuilder by copying an existing PSingleResult instance */
-    public static sparqles.avro.performance.PSingleResult.Builder newBuilder(
-            sparqles.avro.performance.PSingleResult other) {
-        return new sparqles.avro.performance.PSingleResult.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -130,6 +114,23 @@ public class PSingleResult extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setWarm(sparqles.avro.performance.Run value) {
         this.warm = value;
+    }
+
+    /** Creates a new PSingleResult RecordBuilder */
+    public static sparqles.avro.performance.PSingleResult.Builder newBuilder() {
+        return new sparqles.avro.performance.PSingleResult.Builder();
+    }
+
+    /** Creates a new PSingleResult RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.performance.PSingleResult.Builder newBuilder(
+            sparqles.avro.performance.PSingleResult.Builder other) {
+        return new sparqles.avro.performance.PSingleResult.Builder(other);
+    }
+
+    /** Creates a new PSingleResult RecordBuilder by copying an existing PSingleResult instance */
+    public static sparqles.avro.performance.PSingleResult.Builder newBuilder(
+            sparqles.avro.performance.PSingleResult other) {
+        return new sparqles.avro.performance.PSingleResult.Builder(other);
     }
 
     /** RecordBuilder for PSingleResult instances. */

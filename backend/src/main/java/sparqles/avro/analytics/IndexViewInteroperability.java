@@ -13,6 +13,11 @@ public class IndexViewInteroperability extends org.apache.avro.specific.Specific
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewInteroperability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.util.List<sparqles.avro.analytics.IndexViewInterData> data;
 
     /**
@@ -25,30 +30,6 @@ public class IndexViewInteroperability extends org.apache.avro.specific.Specific
     public IndexViewInteroperability(
             java.util.List<sparqles.avro.analytics.IndexViewInterData> data) {
         this.data = data;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewInteroperability RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewInteroperability.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewInteroperability.Builder();
-    }
-
-    /** Creates a new IndexViewInteroperability RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexViewInteroperability.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewInteroperability.Builder other) {
-        return new sparqles.avro.analytics.IndexViewInteroperability.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewInteroperability RecordBuilder by copying an existing
-     * IndexViewInteroperability instance
-     */
-    public static sparqles.avro.analytics.IndexViewInteroperability.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewInteroperability other) {
-        return new sparqles.avro.analytics.IndexViewInteroperability.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -89,6 +70,26 @@ public class IndexViewInteroperability extends org.apache.avro.specific.Specific
      */
     public void setData(java.util.List<sparqles.avro.analytics.IndexViewInterData> value) {
         this.data = value;
+    }
+
+    /** Creates a new IndexViewInteroperability RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewInteroperability.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewInteroperability.Builder();
+    }
+
+    /** Creates a new IndexViewInteroperability RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexViewInteroperability.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewInteroperability.Builder other) {
+        return new sparqles.avro.analytics.IndexViewInteroperability.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewInteroperability RecordBuilder by copying an existing
+     * IndexViewInteroperability instance
+     */
+    public static sparqles.avro.analytics.IndexViewInteroperability.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewInteroperability other) {
+        return new sparqles.avro.analytics.IndexViewInteroperability.Builder(other);
     }
 
     /** RecordBuilder for IndexViewInteroperability instances. */

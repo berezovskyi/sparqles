@@ -13,6 +13,11 @@ public class AvailabilityIndex extends org.apache.avro.specific.SpecificRecordBa
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"AvailabilityIndex\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"string\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence key;
     @Deprecated public java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values;
 
@@ -28,30 +33,6 @@ public class AvailabilityIndex extends org.apache.avro.specific.SpecificRecordBa
             java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values) {
         this.key = key;
         this.values = values;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new AvailabilityIndex RecordBuilder */
-    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder() {
-        return new sparqles.avro.analytics.AvailabilityIndex.Builder();
-    }
-
-    /** Creates a new AvailabilityIndex RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
-            sparqles.avro.analytics.AvailabilityIndex.Builder other) {
-        return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
-    }
-
-    /**
-     * Creates a new AvailabilityIndex RecordBuilder by copying an existing AvailabilityIndex
-     * instance
-     */
-    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
-            sparqles.avro.analytics.AvailabilityIndex other) {
-        return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -113,6 +94,26 @@ public class AvailabilityIndex extends org.apache.avro.specific.SpecificRecordBa
     public void setValues(
             java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> value) {
         this.values = value;
+    }
+
+    /** Creates a new AvailabilityIndex RecordBuilder */
+    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder() {
+        return new sparqles.avro.analytics.AvailabilityIndex.Builder();
+    }
+
+    /** Creates a new AvailabilityIndex RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
+            sparqles.avro.analytics.AvailabilityIndex.Builder other) {
+        return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
+    }
+
+    /**
+     * Creates a new AvailabilityIndex RecordBuilder by copying an existing AvailabilityIndex
+     * instance
+     */
+    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
+            sparqles.avro.analytics.AvailabilityIndex other) {
+        return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
     }
 
     /** RecordBuilder for AvailabilityIndex instances. */

@@ -13,6 +13,11 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"InteroperabilityView\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"nbCompliantSPARQL1Features\",\"type\":\"int\"},{\"name\":\"nbCompliantSPARQL11Features\",\"type\":\"int\"},{\"name\":\"lastUpdate\",\"type\":\"long\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public int nbCompliantSPARQL1Features;
     @Deprecated public int nbCompliantSPARQL11Features;
@@ -34,30 +39,6 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
         this.nbCompliantSPARQL1Features = nbCompliantSPARQL1Features;
         this.nbCompliantSPARQL11Features = nbCompliantSPARQL11Features;
         this.lastUpdate = lastUpdate;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new InteroperabilityView RecordBuilder */
-    public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder() {
-        return new sparqles.avro.analytics.InteroperabilityView.Builder();
-    }
-
-    /** Creates a new InteroperabilityView RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder(
-            sparqles.avro.analytics.InteroperabilityView.Builder other) {
-        return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
-    }
-
-    /**
-     * Creates a new InteroperabilityView RecordBuilder by copying an existing InteroperabilityView
-     * instance
-     */
-    public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder(
-            sparqles.avro.analytics.InteroperabilityView other) {
-        return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -155,6 +136,26 @@ public class InteroperabilityView extends org.apache.avro.specific.SpecificRecor
      */
     public void setLastUpdate(java.lang.Long value) {
         this.lastUpdate = value;
+    }
+
+    /** Creates a new InteroperabilityView RecordBuilder */
+    public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder() {
+        return new sparqles.avro.analytics.InteroperabilityView.Builder();
+    }
+
+    /** Creates a new InteroperabilityView RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder(
+            sparqles.avro.analytics.InteroperabilityView.Builder other) {
+        return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
+    }
+
+    /**
+     * Creates a new InteroperabilityView RecordBuilder by copying an existing InteroperabilityView
+     * instance
+     */
+    public static sparqles.avro.analytics.InteroperabilityView.Builder newBuilder(
+            sparqles.avro.analytics.InteroperabilityView other) {
+        return new sparqles.avro.analytics.InteroperabilityView.Builder(other);
     }
 
     /** RecordBuilder for InteroperabilityView instances. */

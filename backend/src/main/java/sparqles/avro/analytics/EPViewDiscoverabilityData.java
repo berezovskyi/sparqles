@@ -13,6 +13,11 @@ public class EPViewDiscoverabilityData extends org.apache.avro.specific.Specific
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewDiscoverabilityData\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"boolean\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence label;
     @Deprecated public boolean value;
 
@@ -26,30 +31,6 @@ public class EPViewDiscoverabilityData extends org.apache.avro.specific.Specific
     public EPViewDiscoverabilityData(java.lang.CharSequence label, java.lang.Boolean value) {
         this.label = label;
         this.value = value;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewDiscoverabilityData RecordBuilder */
-    public static sparqles.avro.analytics.EPViewDiscoverabilityData.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewDiscoverabilityData.Builder();
-    }
-
-    /** Creates a new EPViewDiscoverabilityData RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewDiscoverabilityData.Builder newBuilder(
-            sparqles.avro.analytics.EPViewDiscoverabilityData.Builder other) {
-        return new sparqles.avro.analytics.EPViewDiscoverabilityData.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewDiscoverabilityData RecordBuilder by copying an existing
-     * EPViewDiscoverabilityData instance
-     */
-    public static sparqles.avro.analytics.EPViewDiscoverabilityData.Builder newBuilder(
-            sparqles.avro.analytics.EPViewDiscoverabilityData other) {
-        return new sparqles.avro.analytics.EPViewDiscoverabilityData.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -109,6 +90,26 @@ public class EPViewDiscoverabilityData extends org.apache.avro.specific.Specific
      */
     public void setValue(java.lang.Boolean value) {
         this.value = value;
+    }
+
+    /** Creates a new EPViewDiscoverabilityData RecordBuilder */
+    public static sparqles.avro.analytics.EPViewDiscoverabilityData.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewDiscoverabilityData.Builder();
+    }
+
+    /** Creates a new EPViewDiscoverabilityData RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewDiscoverabilityData.Builder newBuilder(
+            sparqles.avro.analytics.EPViewDiscoverabilityData.Builder other) {
+        return new sparqles.avro.analytics.EPViewDiscoverabilityData.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewDiscoverabilityData RecordBuilder by copying an existing
+     * EPViewDiscoverabilityData instance
+     */
+    public static sparqles.avro.analytics.EPViewDiscoverabilityData.Builder newBuilder(
+            sparqles.avro.analytics.EPViewDiscoverabilityData other) {
+        return new sparqles.avro.analytics.EPViewDiscoverabilityData.Builder(other);
     }
 
     /** RecordBuilder for EPViewDiscoverabilityData instances. */

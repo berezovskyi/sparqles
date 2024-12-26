@@ -15,109 +15,7 @@ public class ARGUMENTS {
 
     public static final int SHORT_ARG = 0;
     public static final int LONG_ARG = 1;
-    /*
-     * GENERAL ARGUMENTS
-     */
-    public static final String[] PARAM_PROP_FILE = createParam("p", "prop");
-    public static final Option OPTION_PROP_FILE =
-            createOption(
-                    "property file",
-                    1,
-                    "SPARQLES (additional) property file",
-                    PARAM_PROP_FILE[SHORT_ARG],
-                    PARAM_PROP_FILE[LONG_ARG],
-                    true);
-    public static final String[] PARAM_FLAG_DEBUG = createParam("d", "verbose");
-    public static final Option OPTION_DEBUG =
-            createOption(
-                    "flag",
-                    0,
-                    "enable verbose mode",
-                    PARAM_FLAG_DEBUG[SHORT_ARG],
-                    PARAM_FLAG_DEBUG[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_INIT = createParam("i", "init");
-    public static final Option OPTION_INIT =
-            createOption(
-                    "flag",
-                    0,
-                    "init datahub list",
-                    PARAM_FLAG_INIT[SHORT_ARG],
-                    PARAM_FLAG_INIT[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_UPDATE_EPS = createParam("u", "update");
-    public static final Option OPTION_UPDATE_EPS =
-            createOption(
-                    "flag",
-                    0,
-                    "update datahub list",
-                    PARAM_FLAG_UPDATE_EPS[SHORT_ARG],
-                    PARAM_FLAG_UPDATE_EPS[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_START = createParam("s", "start");
-    public static final Option OPTION_START =
-            createOption(
-                    "flag",
-                    0,
-                    "start the service",
-                    PARAM_FLAG_START[SHORT_ARG],
-                    PARAM_FLAG_START[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_RECOMPUTE = createParam("r", "recompute");
-    public static final Option OPTION_RECOMPUTE =
-            createOption(
-                    "flag",
-                    0,
-                    "recompute the analytics",
-                    PARAM_FLAG_RECOMPUTE[SHORT_ARG],
-                    PARAM_FLAG_RECOMPUTE[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_RESCHEDULE = createParam("rs", "reschedule");
-    public static final Option OPTION_RESCHEDULE =
-            createOption(
-                    "flag",
-                    0,
-                    "create default schedule",
-                    PARAM_FLAG_RESCHEDULE[SHORT_ARG],
-                    PARAM_FLAG_RESCHEDULE[LONG_ARG],
-                    false);
-    public static final String[] PARAM_RUN = createParam("run", "run");
-    ;
-    public static final Option OPTION_RUN =
-            createOption(
-                    "task",
-                    1,
-                    "run task (itask, atask)",
-                    PARAM_RUN[SHORT_ARG],
-                    PARAM_RUN[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_INDEX = createParam("iv", "indexview");
-    public static final Option OPTION_INDEX =
-            createOption(
-                    "flag",
-                    0,
-                    "run indexview computation",
-                    PARAM_FLAG_INDEX[SHORT_ARG],
-                    PARAM_FLAG_INDEX[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_RECOMPUTELAST = createParam("rl", "recomputeLast");
-    public static final Option OPTION_RECOMPUTELAST =
-            createOption(
-                    "flag",
-                    0,
-                    "recompute the last analytics",
-                    PARAM_FLAG_RECOMPUTELAST[SHORT_ARG],
-                    PARAM_FLAG_RECOMPUTELAST[LONG_ARG],
-                    false);
-    public static final String[] PARAM_FLAG_STATS = createParam("st", "stats");
-    public static final Option OPTION_STATS =
-            createOption(
-                    "flag",
-                    0,
-                    "mongodb stats",
-                    PARAM_FLAG_STATS[SHORT_ARG],
-                    PARAM_FLAG_STATS[LONG_ARG],
-                    false);
+
     /*
      * HELP
      */
@@ -137,6 +35,123 @@ public class ARGUMENTS {
                         PARAM_HELP1[LONG_ARG],
                         false));
     }
+
+    /*
+     * GENERAL ARGUMENTS
+     */
+    public static final String[] PARAM_PROP_FILE = createParam("p", "prop");
+    public static final String[] PARAM_FLAG_DEBUG = createParam("d", "verbose");
+    public static final String[] PARAM_FLAG_INIT = createParam("i", "init");
+    public static final String[] PARAM_FLAG_UPDATE_EPS = createParam("u", "update");
+    public static final String[] PARAM_FLAG_START = createParam("s", "start");
+    public static final String[] PARAM_FLAG_RECOMPUTE = createParam("r", "recompute");
+    public static final String[] PARAM_FLAG_RESCHEDULE = createParam("rs", "reschedule");
+    public static final String[] PARAM_RUN = createParam("run", "run");
+    public static final String[] PARAM_FLAG_INDEX = createParam("iv", "indexview");
+    public static final String[] PARAM_FLAG_RECOMPUTELAST = createParam("rl", "recomputeLast");
+    public static final String[] PARAM_FLAG_STATS = createParam("st", "stats");
+    public static final String[] PARAM_ADD = createParam("ae", "addEndpoint");
+
+    public static final Option OPTION_PROP_FILE =
+            createOption(
+                    "property file",
+                    1,
+                    "SPARQLES (additional) property file",
+                    PARAM_PROP_FILE[SHORT_ARG],
+                    PARAM_PROP_FILE[LONG_ARG],
+                    true);
+    public static final Option OPTION_DEBUG =
+            createOption(
+                    "flag",
+                    0,
+                    "enable verbose mode",
+                    PARAM_FLAG_DEBUG[SHORT_ARG],
+                    PARAM_FLAG_DEBUG[LONG_ARG],
+                    false);
+    public static final Option OPTION_INIT =
+            createOption(
+                    "flag",
+                    0,
+                    "init datahub list",
+                    PARAM_FLAG_INIT[SHORT_ARG],
+                    PARAM_FLAG_INIT[LONG_ARG],
+                    false);
+    public static final Option OPTION_START =
+            createOption(
+                    "flag",
+                    0,
+                    "start the service",
+                    PARAM_FLAG_START[SHORT_ARG],
+                    PARAM_FLAG_START[LONG_ARG],
+                    false);
+    public static final Option OPTION_RECOMPUTE =
+            createOption(
+                    "flag",
+                    0,
+                    "recompute the analytics",
+                    PARAM_FLAG_RECOMPUTE[SHORT_ARG],
+                    PARAM_FLAG_RECOMPUTE[LONG_ARG],
+                    false);
+    public static final Option OPTION_RESCHEDULE =
+            createOption(
+                    "flag",
+                    0,
+                    "create default schedule",
+                    PARAM_FLAG_RESCHEDULE[SHORT_ARG],
+                    PARAM_FLAG_RESCHEDULE[LONG_ARG],
+                    false);
+    public static final Option OPTION_RUN =
+            createOption(
+                    "task",
+                    1,
+                    "run task (itask, atask)",
+                    PARAM_RUN[SHORT_ARG],
+                    PARAM_RUN[LONG_ARG],
+                    false);
+    public static final Option OPTION_INDEX =
+            createOption(
+                    "flag",
+                    0,
+                    "run indexview computation",
+                    PARAM_FLAG_INDEX[SHORT_ARG],
+                    PARAM_FLAG_INDEX[LONG_ARG],
+                    false);
+
+    public static final Option OPTION_RECOMPUTELAST =
+            createOption(
+                    "flag",
+                    0,
+                    "recompute the last analytics",
+                    PARAM_FLAG_RECOMPUTELAST[SHORT_ARG],
+                    PARAM_FLAG_RECOMPUTELAST[LONG_ARG],
+                    false);
+
+    public static final Option OPTION_UPDATE_EPS =
+            createOption(
+                    "flag",
+                    0,
+                    "update datahub list",
+                    PARAM_FLAG_UPDATE_EPS[SHORT_ARG],
+                    PARAM_FLAG_UPDATE_EPS[LONG_ARG],
+                    false);
+
+    public static final Option OPTION_STATS =
+            createOption(
+                    "flag",
+                    0,
+                    "mongodb stats",
+                    PARAM_FLAG_STATS[SHORT_ARG],
+                    PARAM_FLAG_STATS[LONG_ARG],
+                    false);
+
+    public static final Option OPTION_ADD =
+            createOption(
+                    "endpoint",
+                    3,
+                    "add a new endpoint to monitor",
+                    PARAM_ADD[SHORT_ARG],
+                    PARAM_ADD[LONG_ARG],
+                    false);
 
     /**
      * @param string

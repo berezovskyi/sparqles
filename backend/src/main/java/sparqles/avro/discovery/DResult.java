@@ -12,7 +12,12 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
-                            "{\"type\":\"record\",\"name\":\"DResult\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"RobotsTXT\",\"type\":{\"type\":\"record\",\"name\":\"RobotsTXT\",\"fields\":[{\"name\":\"hasRobotsTXT\",\"type\":\"boolean\",\"default\":false},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"sitemapXML\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQL\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQLMatch\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLVoiD\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]}]}},{\"name\":\"descriptionFiles\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"DGETInfo\",\"fields\":[{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseType\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseCode\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseServer\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseLink\",\"type\":[\"string\",\"null\"]},{\"name\":\"Content\",\"type\":[\"string\",\"null\"]},{\"name\":\"SPARQLDESCpreds\",\"type\":{\"type\":\"map\",\"values\":[\"int\"]}},{\"name\":\"voiDpreds\",\"type\":{\"type\":\"map\",\"values\":[\"int\"]}}]}}},{\"name\":\"queryInfo\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"QueryInfo\",\"fields\":[{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Results\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}}}]}");
+                            "{\"type\":\"record\",\"name\":\"DResult\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"RobotsTXT\",\"type\":{\"type\":\"record\",\"name\":\"RobotsTXT\",\"fields\":[{\"name\":\"hasRobotsTXT\",\"type\":\"boolean\",\"default\":false},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"sitemapXML\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQL\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQLMatch\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLVoiD\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]}]}},{\"name\":\"descriptionFiles\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"DGETInfo\",\"fields\":[{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseType\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseCode\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseServer\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseLink\",\"type\":[\"string\",\"null\"]},{\"name\":\"Content\",\"type\":[\"string\",\"null\"]},{\"name\":\"SPARQLDESCpreds\",\"type\":{\"type\":\"map\",\"values\":[\"int\"]}},{\"name\":\"voiDpreds\",\"type\":{\"type\":\"map\",\"values\":[\"int\"]}}]}}},{\"name\":\"queryInfo\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"QueryInfo\",\"fields\":[{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Results\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}}}],\"import\":\"EndpointResult.avsc\"}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.EndpointResult endpointResult;
     @Deprecated public sparqles.avro.discovery.RobotsTXT RobotsTXT;
     @Deprecated public java.util.List<sparqles.avro.discovery.DGETInfo> descriptionFiles;
@@ -34,27 +39,6 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
         this.RobotsTXT = RobotsTXT;
         this.descriptionFiles = descriptionFiles;
         this.queryInfo = queryInfo;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new DResult RecordBuilder */
-    public static sparqles.avro.discovery.DResult.Builder newBuilder() {
-        return new sparqles.avro.discovery.DResult.Builder();
-    }
-
-    /** Creates a new DResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.discovery.DResult.Builder newBuilder(
-            sparqles.avro.discovery.DResult.Builder other) {
-        return new sparqles.avro.discovery.DResult.Builder(other);
-    }
-
-    /** Creates a new DResult RecordBuilder by copying an existing DResult instance */
-    public static sparqles.avro.discovery.DResult.Builder newBuilder(
-            sparqles.avro.discovery.DResult other) {
-        return new sparqles.avro.discovery.DResult.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -152,6 +136,23 @@ public class DResult extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setQueryInfo(java.util.List<sparqles.avro.discovery.QueryInfo> value) {
         this.queryInfo = value;
+    }
+
+    /** Creates a new DResult RecordBuilder */
+    public static sparqles.avro.discovery.DResult.Builder newBuilder() {
+        return new sparqles.avro.discovery.DResult.Builder();
+    }
+
+    /** Creates a new DResult RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.discovery.DResult.Builder newBuilder(
+            sparqles.avro.discovery.DResult.Builder other) {
+        return new sparqles.avro.discovery.DResult.Builder(other);
+    }
+
+    /** Creates a new DResult RecordBuilder by copying an existing DResult instance */
+    public static sparqles.avro.discovery.DResult.Builder newBuilder(
+            sparqles.avro.discovery.DResult other) {
+        return new sparqles.avro.discovery.DResult.Builder(other);
     }
 
     /** RecordBuilder for DResult instances. */

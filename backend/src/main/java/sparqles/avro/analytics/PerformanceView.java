@@ -13,6 +13,11 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"PerformanceView\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"askMeanCold\",\"type\":\"double\"},{\"name\":\"askMeanWarm\",\"type\":\"double\"},{\"name\":\"joinMeanCold\",\"type\":\"double\"},{\"name\":\"joinMeanWarm\",\"type\":\"double\"},{\"name\":\"lastUpdate\",\"type\":\"long\"},{\"name\":\"threshold\",\"type\":\"long\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public double askMeanCold;
     @Deprecated public double askMeanWarm;
@@ -43,29 +48,6 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
         this.joinMeanWarm = joinMeanWarm;
         this.lastUpdate = lastUpdate;
         this.threshold = threshold;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new PerformanceView RecordBuilder */
-    public static sparqles.avro.analytics.PerformanceView.Builder newBuilder() {
-        return new sparqles.avro.analytics.PerformanceView.Builder();
-    }
-
-    /** Creates a new PerformanceView RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.PerformanceView.Builder newBuilder(
-            sparqles.avro.analytics.PerformanceView.Builder other) {
-        return new sparqles.avro.analytics.PerformanceView.Builder(other);
-    }
-
-    /**
-     * Creates a new PerformanceView RecordBuilder by copying an existing PerformanceView instance
-     */
-    public static sparqles.avro.analytics.PerformanceView.Builder newBuilder(
-            sparqles.avro.analytics.PerformanceView other) {
-        return new sparqles.avro.analytics.PerformanceView.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -220,6 +202,25 @@ public class PerformanceView extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setThreshold(java.lang.Long value) {
         this.threshold = value;
+    }
+
+    /** Creates a new PerformanceView RecordBuilder */
+    public static sparqles.avro.analytics.PerformanceView.Builder newBuilder() {
+        return new sparqles.avro.analytics.PerformanceView.Builder();
+    }
+
+    /** Creates a new PerformanceView RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.PerformanceView.Builder newBuilder(
+            sparqles.avro.analytics.PerformanceView.Builder other) {
+        return new sparqles.avro.analytics.PerformanceView.Builder(other);
+    }
+
+    /**
+     * Creates a new PerformanceView RecordBuilder by copying an existing PerformanceView instance
+     */
+    public static sparqles.avro.analytics.PerformanceView.Builder newBuilder(
+            sparqles.avro.analytics.PerformanceView other) {
+        return new sparqles.avro.analytics.PerformanceView.Builder(other);
     }
 
     /** RecordBuilder for PerformanceView instances. */

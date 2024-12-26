@@ -12,12 +12,18 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
-                            "{\"type\":\"record\",\"name\":\"Schedule\",\"namespace\":\"sparqles.avro.schedule\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"ATask\",\"type\":[\"string\",\"null\"]},{\"name\":\"FTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"PTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"DTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"ITask\",\"type\":[\"string\",\"null\"]},{\"name\":\"ETask\",\"type\":[\"string\",\"null\"]}]}");
+                            "{\"type\":\"record\",\"name\":\"Schedule\",\"namespace\":\"sparqles.avro.schedule\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"ATask\",\"type\":[\"string\",\"null\"]},{\"name\":\"FTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"PTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"DTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"CTask\",\"type\":[\"string\",\"null\"]},{\"name\":\"ITask\",\"type\":[\"string\",\"null\"]},{\"name\":\"ETask\",\"type\":[\"string\",\"null\"]}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public java.lang.CharSequence ATask;
     @Deprecated public java.lang.CharSequence FTask;
     @Deprecated public java.lang.CharSequence PTask;
     @Deprecated public java.lang.CharSequence DTask;
+    @Deprecated public java.lang.CharSequence CTask;
     @Deprecated public java.lang.CharSequence ITask;
     @Deprecated public java.lang.CharSequence ETask;
 
@@ -34,6 +40,7 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             java.lang.CharSequence FTask,
             java.lang.CharSequence PTask,
             java.lang.CharSequence DTask,
+            java.lang.CharSequence CTask,
             java.lang.CharSequence ITask,
             java.lang.CharSequence ETask) {
         this.endpoint = endpoint;
@@ -41,29 +48,9 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.FTask = FTask;
         this.PTask = PTask;
         this.DTask = DTask;
+        this.CTask = CTask;
         this.ITask = ITask;
         this.ETask = ETask;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new Schedule RecordBuilder */
-    public static sparqles.avro.schedule.Schedule.Builder newBuilder() {
-        return new sparqles.avro.schedule.Schedule.Builder();
-    }
-
-    /** Creates a new Schedule RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.schedule.Schedule.Builder newBuilder(
-            sparqles.avro.schedule.Schedule.Builder other) {
-        return new sparqles.avro.schedule.Schedule.Builder(other);
-    }
-
-    /** Creates a new Schedule RecordBuilder by copying an existing Schedule instance */
-    public static sparqles.avro.schedule.Schedule.Builder newBuilder(
-            sparqles.avro.schedule.Schedule other) {
-        return new sparqles.avro.schedule.Schedule.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -84,8 +71,10 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             case 4:
                 return DTask;
             case 5:
-                return ITask;
+                return CTask;
             case 6:
+                return ITask;
+            case 7:
                 return ETask;
             default:
                 throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -112,9 +101,12 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
                 DTask = (java.lang.CharSequence) value$;
                 break;
             case 5:
-                ITask = (java.lang.CharSequence) value$;
+                CTask = (java.lang.CharSequence) value$;
                 break;
             case 6:
+                ITask = (java.lang.CharSequence) value$;
+                break;
+            case 7:
                 ETask = (java.lang.CharSequence) value$;
                 break;
             default:
@@ -192,6 +184,20 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.DTask = value;
     }
 
+    /** Gets the value of the 'CTask' field. */
+    public java.lang.CharSequence getCTask() {
+        return CTask;
+    }
+
+    /**
+     * Sets the value of the 'CTask' field.
+     *
+     * @param value the value to set.
+     */
+    public void setCTask(java.lang.CharSequence value) {
+        this.CTask = value;
+    }
+
     /** Gets the value of the 'ITask' field. */
     public java.lang.CharSequence getITask() {
         return ITask;
@@ -220,6 +226,23 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         this.ETask = value;
     }
 
+    /** Creates a new Schedule RecordBuilder */
+    public static sparqles.avro.schedule.Schedule.Builder newBuilder() {
+        return new sparqles.avro.schedule.Schedule.Builder();
+    }
+
+    /** Creates a new Schedule RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.schedule.Schedule.Builder newBuilder(
+            sparqles.avro.schedule.Schedule.Builder other) {
+        return new sparqles.avro.schedule.Schedule.Builder(other);
+    }
+
+    /** Creates a new Schedule RecordBuilder by copying an existing Schedule instance */
+    public static sparqles.avro.schedule.Schedule.Builder newBuilder(
+            sparqles.avro.schedule.Schedule other) {
+        return new sparqles.avro.schedule.Schedule.Builder(other);
+    }
+
     /** RecordBuilder for Schedule instances. */
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Schedule>
             implements org.apache.avro.data.RecordBuilder<Schedule> {
@@ -229,6 +252,7 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
         private java.lang.CharSequence FTask;
         private java.lang.CharSequence PTask;
         private java.lang.CharSequence DTask;
+        private java.lang.CharSequence CTask;
         private java.lang.CharSequence ITask;
         private java.lang.CharSequence ETask;
 
@@ -260,13 +284,17 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
                 this.DTask = data().deepCopy(fields()[4].schema(), other.DTask);
                 fieldSetFlags()[4] = true;
             }
-            if (isValidValue(fields()[5], other.ITask)) {
-                this.ITask = data().deepCopy(fields()[5].schema(), other.ITask);
+            if (isValidValue(fields()[5], other.CTask)) {
+                this.CTask = data().deepCopy(fields()[5].schema(), other.CTask);
                 fieldSetFlags()[5] = true;
             }
-            if (isValidValue(fields()[6], other.ETask)) {
-                this.ETask = data().deepCopy(fields()[6].schema(), other.ETask);
+            if (isValidValue(fields()[6], other.ITask)) {
+                this.ITask = data().deepCopy(fields()[6].schema(), other.ITask);
                 fieldSetFlags()[6] = true;
+            }
+            if (isValidValue(fields()[7], other.ETask)) {
+                this.ETask = data().deepCopy(fields()[7].schema(), other.ETask);
+                fieldSetFlags()[7] = true;
             }
         }
 
@@ -293,13 +321,17 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
                 this.DTask = data().deepCopy(fields()[4].schema(), other.DTask);
                 fieldSetFlags()[4] = true;
             }
-            if (isValidValue(fields()[5], other.ITask)) {
-                this.ITask = data().deepCopy(fields()[5].schema(), other.ITask);
+            if (isValidValue(fields()[5], other.CTask)) {
+                this.CTask = data().deepCopy(fields()[5].schema(), other.CTask);
                 fieldSetFlags()[5] = true;
             }
-            if (isValidValue(fields()[6], other.ETask)) {
-                this.ETask = data().deepCopy(fields()[6].schema(), other.ETask);
+            if (isValidValue(fields()[6], other.ITask)) {
+                this.ITask = data().deepCopy(fields()[6].schema(), other.ITask);
                 fieldSetFlags()[6] = true;
+            }
+            if (isValidValue(fields()[7], other.ETask)) {
+                this.ETask = data().deepCopy(fields()[7].schema(), other.ETask);
+                fieldSetFlags()[7] = true;
             }
         }
 
@@ -428,6 +460,31 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
+        /** Gets the value of the 'CTask' field */
+        public java.lang.CharSequence getCTask() {
+            return CTask;
+        }
+
+        /** Sets the value of the 'CTask' field */
+        public sparqles.avro.schedule.Schedule.Builder setCTask(java.lang.CharSequence value) {
+            validate(fields()[5], value);
+            this.CTask = value;
+            fieldSetFlags()[5] = true;
+            return this;
+        }
+
+        /** Checks whether the 'CTask' field has been set */
+        public boolean hasCTask() {
+            return fieldSetFlags()[5];
+        }
+
+        /** Clears the value of the 'CTask' field */
+        public sparqles.avro.schedule.Schedule.Builder clearCTask() {
+            CTask = null;
+            fieldSetFlags()[5] = false;
+            return this;
+        }
+
         /** Gets the value of the 'ITask' field */
         public java.lang.CharSequence getITask() {
             return ITask;
@@ -435,21 +492,21 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
 
         /** Sets the value of the 'ITask' field */
         public sparqles.avro.schedule.Schedule.Builder setITask(java.lang.CharSequence value) {
-            validate(fields()[5], value);
+            validate(fields()[6], value);
             this.ITask = value;
-            fieldSetFlags()[5] = true;
+            fieldSetFlags()[6] = true;
             return this;
         }
 
         /** Checks whether the 'ITask' field has been set */
         public boolean hasITask() {
-            return fieldSetFlags()[5];
+            return fieldSetFlags()[6];
         }
 
         /** Clears the value of the 'ITask' field */
         public sparqles.avro.schedule.Schedule.Builder clearITask() {
             ITask = null;
-            fieldSetFlags()[5] = false;
+            fieldSetFlags()[6] = false;
             return this;
         }
 
@@ -460,21 +517,21 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
 
         /** Sets the value of the 'ETask' field */
         public sparqles.avro.schedule.Schedule.Builder setETask(java.lang.CharSequence value) {
-            validate(fields()[6], value);
+            validate(fields()[7], value);
             this.ETask = value;
-            fieldSetFlags()[6] = true;
+            fieldSetFlags()[7] = true;
             return this;
         }
 
         /** Checks whether the 'ETask' field has been set */
         public boolean hasETask() {
-            return fieldSetFlags()[6];
+            return fieldSetFlags()[7];
         }
 
         /** Clears the value of the 'ETask' field */
         public sparqles.avro.schedule.Schedule.Builder clearETask() {
             ETask = null;
-            fieldSetFlags()[6] = false;
+            fieldSetFlags()[7] = false;
             return this;
         }
 
@@ -502,14 +559,18 @@ public class Schedule extends org.apache.avro.specific.SpecificRecordBase
                         fieldSetFlags()[4]
                                 ? this.DTask
                                 : (java.lang.CharSequence) defaultValue(fields()[4]);
-                record.ITask =
+                record.CTask =
                         fieldSetFlags()[5]
-                                ? this.ITask
+                                ? this.CTask
                                 : (java.lang.CharSequence) defaultValue(fields()[5]);
-                record.ETask =
+                record.ITask =
                         fieldSetFlags()[6]
-                                ? this.ETask
+                                ? this.ITask
                                 : (java.lang.CharSequence) defaultValue(fields()[6]);
+                record.ETask =
+                        fieldSetFlags()[7]
+                                ? this.ETask
+                                : (java.lang.CharSequence) defaultValue(fields()[7]);
                 return record;
             } catch (Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);

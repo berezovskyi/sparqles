@@ -13,6 +13,11 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewAvailability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"upNow\",\"type\":\"boolean\"},{\"name\":\"testRuns\",\"type\":\"int\"},{\"name\":\"uptimeLast24h\",\"type\":\"double\"},{\"name\":\"uptimeLast7d\",\"type\":\"double\"},{\"name\":\"uptimeLast31d\",\"type\":\"double\"},{\"name\":\"uptimeOverall\",\"type\":\"double\"},{\"name\":\"data\",\"type\":{\"type\":\"record\",\"name\":\"EPViewAvailabilityData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"long\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public boolean upNow;
     @Deprecated public int testRuns;
     @Deprecated public double uptimeLast24h;
@@ -43,30 +48,6 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
         this.uptimeLast31d = uptimeLast31d;
         this.uptimeOverall = uptimeOverall;
         this.data = data;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewAvailability RecordBuilder */
-    public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewAvailability.Builder();
-    }
-
-    /** Creates a new EPViewAvailability RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewAvailability.Builder other) {
-        return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewAvailability RecordBuilder by copying an existing EPViewAvailability
-     * instance
-     */
-    public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewAvailability other) {
-        return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -221,6 +202,26 @@ public class EPViewAvailability extends org.apache.avro.specific.SpecificRecordB
      */
     public void setData(sparqles.avro.analytics.EPViewAvailabilityData value) {
         this.data = value;
+    }
+
+    /** Creates a new EPViewAvailability RecordBuilder */
+    public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewAvailability.Builder();
+    }
+
+    /** Creates a new EPViewAvailability RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder(
+            sparqles.avro.analytics.EPViewAvailability.Builder other) {
+        return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewAvailability RecordBuilder by copying an existing EPViewAvailability
+     * instance
+     */
+    public static sparqles.avro.analytics.EPViewAvailability.Builder newBuilder(
+            sparqles.avro.analytics.EPViewAvailability other) {
+        return new sparqles.avro.analytics.EPViewAvailability.Builder(other);
     }
 
     /** RecordBuilder for EPViewAvailability instances. */

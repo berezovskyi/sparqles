@@ -13,6 +13,11 @@ public class EPViewPerformanceDataValues extends org.apache.avro.specific.Specif
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewPerformanceDataValues\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence label;
     @Deprecated public double value;
     @Deprecated public java.lang.CharSequence exception;
@@ -31,30 +36,6 @@ public class EPViewPerformanceDataValues extends org.apache.avro.specific.Specif
         this.label = label;
         this.value = value;
         this.exception = exception;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewPerformanceDataValues RecordBuilder */
-    public static sparqles.avro.analytics.EPViewPerformanceDataValues.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewPerformanceDataValues.Builder();
-    }
-
-    /** Creates a new EPViewPerformanceDataValues RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewPerformanceDataValues.Builder newBuilder(
-            sparqles.avro.analytics.EPViewPerformanceDataValues.Builder other) {
-        return new sparqles.avro.analytics.EPViewPerformanceDataValues.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewPerformanceDataValues RecordBuilder by copying an existing
-     * EPViewPerformanceDataValues instance
-     */
-    public static sparqles.avro.analytics.EPViewPerformanceDataValues.Builder newBuilder(
-            sparqles.avro.analytics.EPViewPerformanceDataValues other) {
-        return new sparqles.avro.analytics.EPViewPerformanceDataValues.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -133,6 +114,26 @@ public class EPViewPerformanceDataValues extends org.apache.avro.specific.Specif
      */
     public void setException(java.lang.CharSequence value) {
         this.exception = value;
+    }
+
+    /** Creates a new EPViewPerformanceDataValues RecordBuilder */
+    public static sparqles.avro.analytics.EPViewPerformanceDataValues.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewPerformanceDataValues.Builder();
+    }
+
+    /** Creates a new EPViewPerformanceDataValues RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewPerformanceDataValues.Builder newBuilder(
+            sparqles.avro.analytics.EPViewPerformanceDataValues.Builder other) {
+        return new sparqles.avro.analytics.EPViewPerformanceDataValues.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewPerformanceDataValues RecordBuilder by copying an existing
+     * EPViewPerformanceDataValues instance
+     */
+    public static sparqles.avro.analytics.EPViewPerformanceDataValues.Builder newBuilder(
+            sparqles.avro.analytics.EPViewPerformanceDataValues other) {
+        return new sparqles.avro.analytics.EPViewPerformanceDataValues.Builder(other);
     }
 
     /** RecordBuilder for EPViewPerformanceDataValues instances. */

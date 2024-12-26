@@ -124,6 +124,34 @@
 				{"name": "SDDescription" , "type": {"type": "array", "items": "array", "items" : "sparqles.avro.analytics.EPViewDiscoverabilityData"}}
    	 		]
    	 	}
+ 	},
+ 	{"name": "calculation", "type":
+		{
+			"namespace":"sparqles.avro.analytics",
+			"type":"record",
+			"name":"EPViewCalculation",
+			"fields":[
+				{"name": "triples", "type": "long"},
+				{"name": "entities", "type": "long"},
+				{"name": "classes", "type": "long"},
+				{"name": "properties", "type": "long"},
+				{"name": "distinctSubjects", "type": "long"},
+				{"name": "distinctObjects", "type": "long"},
+				{"name": "exampleResources", "type":
+					 {"type": "array", "items": 
+					 	  {	
+						  	"name": "uri", "type": "string"
+						  }
+					 }
+				},
+				{"name": "VoID", "type": "string"},
+				{"name": "VoIDPart", "type": "boolean"},
+				{"name": "SD", "type": "string"},
+				{"name": "SDPart", "type": "boolean"},
+				{"name": "coherence", "type": "double"},
+				{"name": "RS", "type": "double"}
+   	 		]
+   	 	}
  	}
    	]
 }

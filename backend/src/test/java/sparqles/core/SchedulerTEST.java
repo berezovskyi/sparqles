@@ -1,5 +1,7 @@
 package sparqles.core;
 
+import static org.junit.Assert.*;
+
 import java.text.ParseException;
 import java.util.Date;
 import org.junit.After;

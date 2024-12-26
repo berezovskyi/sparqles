@@ -14,6 +14,10 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewDiscoverability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"serverName\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}},{\"name\":\"VoIDDescription\",\"type\":\"double\"},{\"name\":\"SDDescription\",\"type\":\"double\"},{\"name\":\"NoDescription\",\"type\":\"double\"}]}");
 
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated
     public java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityData> serverName;
 
@@ -37,30 +41,6 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
         this.VoIDDescription = VoIDDescription;
         this.SDDescription = SDDescription;
         this.NoDescription = NoDescription;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewDiscoverability RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder();
-    }
-
-    /** Creates a new IndexViewDiscoverability RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewDiscoverability.Builder other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewDiscoverability RecordBuilder by copying an existing
-     * IndexViewDiscoverability instance
-     */
-    public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewDiscoverability other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -161,6 +141,26 @@ public class IndexViewDiscoverability extends org.apache.avro.specific.SpecificR
      */
     public void setNoDescription(java.lang.Double value) {
         this.NoDescription = value;
+    }
+
+    /** Creates a new IndexViewDiscoverability RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder();
+    }
+
+    /** Creates a new IndexViewDiscoverability RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewDiscoverability.Builder other) {
+        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewDiscoverability RecordBuilder by copying an existing
+     * IndexViewDiscoverability instance
+     */
+    public static sparqles.avro.analytics.IndexViewDiscoverability.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewDiscoverability other) {
+        return new sparqles.avro.analytics.IndexViewDiscoverability.Builder(other);
     }
 
     /** RecordBuilder for IndexViewDiscoverability instances. */

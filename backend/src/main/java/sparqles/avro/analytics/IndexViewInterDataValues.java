@@ -13,6 +13,11 @@ public class IndexViewInterDataValues extends org.apache.avro.specific.SpecificR
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewInterDataValues\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence label;
     @Deprecated public double value;
 
@@ -26,30 +31,6 @@ public class IndexViewInterDataValues extends org.apache.avro.specific.SpecificR
     public IndexViewInterDataValues(java.lang.CharSequence label, java.lang.Double value) {
         this.label = label;
         this.value = value;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewInterDataValues RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewInterDataValues.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewInterDataValues.Builder();
-    }
-
-    /** Creates a new IndexViewInterDataValues RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexViewInterDataValues.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewInterDataValues.Builder other) {
-        return new sparqles.avro.analytics.IndexViewInterDataValues.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewInterDataValues RecordBuilder by copying an existing
-     * IndexViewInterDataValues instance
-     */
-    public static sparqles.avro.analytics.IndexViewInterDataValues.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewInterDataValues other) {
-        return new sparqles.avro.analytics.IndexViewInterDataValues.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -109,6 +90,26 @@ public class IndexViewInterDataValues extends org.apache.avro.specific.SpecificR
      */
     public void setValue(java.lang.Double value) {
         this.value = value;
+    }
+
+    /** Creates a new IndexViewInterDataValues RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewInterDataValues.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewInterDataValues.Builder();
+    }
+
+    /** Creates a new IndexViewInterDataValues RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexViewInterDataValues.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewInterDataValues.Builder other) {
+        return new sparqles.avro.analytics.IndexViewInterDataValues.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewInterDataValues RecordBuilder by copying an existing
+     * IndexViewInterDataValues instance
+     */
+    public static sparqles.avro.analytics.IndexViewInterDataValues.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewInterDataValues other) {
+        return new sparqles.avro.analytics.IndexViewInterDataValues.Builder(other);
     }
 
     /** RecordBuilder for IndexViewInterDataValues instances. */

@@ -13,6 +13,11 @@ public class IndexAvailabilityDataPoint extends org.apache.avro.specific.Specifi
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexAvailabilityDataPoint\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"x\",\"type\":\"string\"},{\"name\":\"y\",\"type\":\"double\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence x;
     @Deprecated public double y;
 
@@ -26,30 +31,6 @@ public class IndexAvailabilityDataPoint extends org.apache.avro.specific.Specifi
     public IndexAvailabilityDataPoint(java.lang.CharSequence x, java.lang.Double y) {
         this.x = x;
         this.y = y;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexAvailabilityDataPoint RecordBuilder */
-    public static sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder();
-    }
-
-    /** Creates a new IndexAvailabilityDataPoint RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder newBuilder(
-            sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder other) {
-        return new sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexAvailabilityDataPoint RecordBuilder by copying an existing
-     * IndexAvailabilityDataPoint instance
-     */
-    public static sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder newBuilder(
-            sparqles.avro.analytics.IndexAvailabilityDataPoint other) {
-        return new sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -109,6 +90,26 @@ public class IndexAvailabilityDataPoint extends org.apache.avro.specific.Specifi
      */
     public void setY(java.lang.Double value) {
         this.y = value;
+    }
+
+    /** Creates a new IndexAvailabilityDataPoint RecordBuilder */
+    public static sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder();
+    }
+
+    /** Creates a new IndexAvailabilityDataPoint RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder newBuilder(
+            sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder other) {
+        return new sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexAvailabilityDataPoint RecordBuilder by copying an existing
+     * IndexAvailabilityDataPoint instance
+     */
+    public static sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder newBuilder(
+            sparqles.avro.analytics.IndexAvailabilityDataPoint other) {
+        return new sparqles.avro.analytics.IndexAvailabilityDataPoint.Builder(other);
     }
 
     /** RecordBuilder for IndexAvailabilityDataPoint instances. */

@@ -13,6 +13,11 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence uri;
     @Deprecated public java.util.List<sparqles.avro.Dataset> datasets;
 
@@ -26,25 +31,6 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase
     public Endpoint(java.lang.CharSequence uri, java.util.List<sparqles.avro.Dataset> datasets) {
         this.uri = uri;
         this.datasets = datasets;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new Endpoint RecordBuilder */
-    public static sparqles.avro.Endpoint.Builder newBuilder() {
-        return new sparqles.avro.Endpoint.Builder();
-    }
-
-    /** Creates a new Endpoint RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.Endpoint.Builder newBuilder(sparqles.avro.Endpoint.Builder other) {
-        return new sparqles.avro.Endpoint.Builder(other);
-    }
-
-    /** Creates a new Endpoint RecordBuilder by copying an existing Endpoint instance */
-    public static sparqles.avro.Endpoint.Builder newBuilder(sparqles.avro.Endpoint other) {
-        return new sparqles.avro.Endpoint.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -104,6 +90,21 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setDatasets(java.util.List<sparqles.avro.Dataset> value) {
         this.datasets = value;
+    }
+
+    /** Creates a new Endpoint RecordBuilder */
+    public static sparqles.avro.Endpoint.Builder newBuilder() {
+        return new sparqles.avro.Endpoint.Builder();
+    }
+
+    /** Creates a new Endpoint RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.Endpoint.Builder newBuilder(sparqles.avro.Endpoint.Builder other) {
+        return new sparqles.avro.Endpoint.Builder(other);
+    }
+
+    /** Creates a new Endpoint RecordBuilder by copying an existing Endpoint instance */
+    public static sparqles.avro.Endpoint.Builder newBuilder(sparqles.avro.Endpoint other) {
+        return new sparqles.avro.Endpoint.Builder(other);
     }
 
     /** RecordBuilder for Endpoint instances. */

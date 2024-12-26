@@ -17,6 +17,7 @@ import sparqles.avro.analytics.AvailabilityIndex;
 import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewAvailability;
 import sparqles.avro.analytics.EPViewAvailabilityDataPoint;
+import sparqles.avro.analytics.EPViewCalculation;
 import sparqles.avro.analytics.EPViewDiscoverability;
 import sparqles.avro.analytics.EPViewDiscoverabilityData;
 import sparqles.avro.analytics.EPViewInteroperability;
@@ -26,6 +27,9 @@ import sparqles.avro.analytics.EPViewPerformanceData;
 import sparqles.avro.analytics.EPViewPerformanceDataValues;
 import sparqles.avro.analytics.Index;
 import sparqles.avro.analytics.IndexAvailabilityDataPoint;
+import sparqles.avro.analytics.IndexViewCalculation;
+import sparqles.avro.analytics.IndexViewCalculationData;
+import sparqles.avro.analytics.IndexViewCalculationDataValues;
 import sparqles.avro.analytics.IndexViewDiscoverability;
 import sparqles.avro.analytics.IndexViewDiscoverabilityData;
 import sparqles.avro.analytics.IndexViewDiscoverabilityDataValues;
@@ -42,6 +46,8 @@ import sparqles.utils.MongoDBManager;
 public class IndexViewAnalytics implements Task<Index> {
 
     private static final Logger log = LoggerFactory.getLogger(IndexViewAnalytics.class);
+
+    private MongoDBManager _dbm;
     final int askCold = 0, askWarm = 1, joinCold = 2, joinWarm = 3;
     final int sparql1_solMods = 0,
             sparql1_com = 1,
@@ -49,7 +55,6 @@ public class IndexViewAnalytics implements Task<Index> {
             sparql11_agg = 3,
             sparql11_filter = 4,
             sparql11_other = 5;
-    private MongoDBManager _dbm;
 
     @Override
     public Index call() throws Exception {
@@ -89,6 +94,8 @@ public class IndexViewAnalytics implements Task<Index> {
 
         Count[] discoStats = {new Count<String>(), new Count<String>()};
 
+        Count[] calcStats = {new Count<String>(), new Count<String>(), new Count<String>()};
+
         // iterate over all epviews and analyse them
         for (EPView epv : epviews) {
             System.err.println(epv);
@@ -101,8 +108,11 @@ public class IndexViewAnalytics implements Task<Index> {
             // analyse interoperability
             analyseInteroperability(epv.getInteroperability(), interStats);
 
-            // analyse interoperability
+            // analyse discoverability
             analyseDiscoverability(epv.getDiscoverability(), discoStats);
+
+            // analyse calculation
+            analyseCalculation(epv.getCalculation(), calcStats);
         }
 
         // update the index view
@@ -114,12 +124,121 @@ public class IndexViewAnalytics implements Task<Index> {
         // update interoperability stats
         updateInteroperability(idx, interStats);
 
+        // update discoverability stats
         updateDiscoverability(idx, discoStats);
+
+        // update calculation stats
+        updateCalculation(idx, calcStats);
 
         log.info("Updated view {}", idx);
         _dbm.update(idx);
 
         return idx;
+    }
+
+    private void analyseCalculation(EPViewCalculation calculation, Count<String>[] calcStats) {
+        double coherence = calculation.getCoherence();
+        if (coherence < 0)
+            ; // DO NOTHING
+        else if (coherence < 0.25) calcStats[1].add("[0.00-0.25[");
+        else if (coherence < 0.5) calcStats[1].add("[0.25-0.50[");
+        else if (coherence < 0.75) calcStats[1].add("[0.50-0.75[");
+        else if (coherence < 0.95) calcStats[1].add("[0.75-0.95[");
+        else calcStats[1].add("[0.95-1.00]");
+
+        double rs = calculation.getRS();
+        if (rs < 0)
+            ; // DO NOTHING
+        else if (rs < 10) calcStats[2].add("[0-10[");
+        else if (rs < 100) calcStats[2].add("[10-100[");
+        else if (rs < 1000) calcStats[2].add("[100-1000[");
+        else if (rs < 10000) calcStats[2].add("[1000-10000[");
+        else calcStats[2].add("[10000-)");
+
+        if (!calculation.getVoID().toString().equals("")) calcStats[0].add("VoID");
+        if (calculation.getVoIDPart()) calcStats[0].add("VoIDPart");
+        if (!calculation.getSD().toString().equals("")) calcStats[0].add("SD");
+        if (calculation.getSDPart()) calcStats[0].add("SDPart");
+        if (calculation.getCoherence() >= 0) calcStats[0].add("Coherence");
+        if (calculation.getRS() >= 0) calcStats[0].add("RS");
+
+        calcStats[0].add("total");
+    }
+
+    private void updateCalculation(Index idx, Count[] object) {
+
+        IndexViewCalculation iv = idx.getCalculation();
+
+        Count<String> coherence = object[1];
+
+        List<IndexViewCalculationData> l1 = new ArrayList<IndexViewCalculationData>();
+        List<IndexViewCalculationDataValues> lv1 = new ArrayList<IndexViewCalculationDataValues>();
+
+        TreeSet<IndexViewCalculationDataValues> set1 =
+                new TreeSet<IndexViewCalculationDataValues>(
+                        new Comparator<IndexViewCalculationDataValues>() {
+
+                            @Override
+                            public int compare(
+                                    IndexViewCalculationDataValues o1,
+                                    IndexViewCalculationDataValues o2) {
+                                int diff = o1.getValue().compareTo(o2.getValue());
+                                if (diff == 0) diff = -1;
+                                return diff;
+                            }
+                        });
+
+        for (String k : coherence.keySet()) {
+            set1.add(
+                    new IndexViewCalculationDataValues(
+                            k, coherence.get(k) / (double) coherence.getTotal()));
+        }
+
+        for (IndexViewCalculationDataValues d : set1.descendingSet()) {
+            lv1.add(d);
+        }
+        l1.add(new IndexViewCalculationData("Coherence", lv1));
+
+        iv.setCoherences(l1);
+
+        Count<String> rs = object[2];
+
+        List<IndexViewCalculationData> l2 = new ArrayList<IndexViewCalculationData>();
+        List<IndexViewCalculationDataValues> lv2 = new ArrayList<IndexViewCalculationDataValues>();
+
+        TreeSet<IndexViewCalculationDataValues> set2 =
+                new TreeSet<IndexViewCalculationDataValues>(
+                        new Comparator<IndexViewCalculationDataValues>() {
+
+                            @Override
+                            public int compare(
+                                    IndexViewCalculationDataValues o1,
+                                    IndexViewCalculationDataValues o2) {
+                                int diff = o1.getValue().compareTo(o2.getValue());
+                                if (diff == 0) diff = -1;
+                                return diff;
+                            }
+                        });
+
+        for (String k : rs.keySet()) {
+            set2.add(new IndexViewCalculationDataValues(k, rs.get(k) / (double) rs.getTotal()));
+        }
+
+        for (IndexViewCalculationDataValues d : set2.descendingSet()) {
+            lv2.add(d);
+        }
+        l2.add(new IndexViewCalculationData("RS", lv2));
+
+        iv.setRss(l2);
+
+        Count<String> stats = object[0];
+        double totalVal = (double) stats.get("total");
+        iv.setVoID(stats.get("VoID") / totalVal);
+        iv.setVoIDPart(stats.get("VoIDPart") / totalVal);
+        iv.setSD(stats.get("SD") / totalVal);
+        iv.setSDPart(stats.get("SDPart") / totalVal);
+        iv.setCoherence(stats.get("Coherence") / totalVal);
+        iv.setRS(stats.get("RS") / totalVal);
     }
 
     private void analyseDiscoverability(
@@ -526,6 +645,17 @@ public class IndexViewAnalytics implements Task<Index> {
         idxd.setVoIDDescription(-1D);
         idxd.setServerName(new ArrayList<IndexViewDiscoverabilityData>());
         idx.setDiscoverability(idxd);
+
+        IndexViewCalculation idxc = new IndexViewCalculation();
+        idxc.setVoID(-1D);
+        idxc.setVoIDPart(-1D);
+        idxc.setSD(-1D);
+        idxc.setSDPart(-1D);
+        idxc.setCoherence(-1D);
+        idxc.setRS(-1D);
+        idxc.setCoherences(new ArrayList<IndexViewCalculationData>());
+        idxc.setRss(new ArrayList<IndexViewCalculationData>());
+        idx.setCalculation(idxc);
 
         return idx;
     }

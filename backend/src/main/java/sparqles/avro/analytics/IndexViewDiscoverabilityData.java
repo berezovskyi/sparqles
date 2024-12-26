@@ -13,6 +13,11 @@ public class IndexViewDiscoverabilityData extends org.apache.avro.specific.Speci
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityData\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence key;
 
     @Deprecated
@@ -30,30 +35,6 @@ public class IndexViewDiscoverabilityData extends org.apache.avro.specific.Speci
             java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityDataValues> values) {
         this.key = key;
         this.values = values;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewDiscoverabilityData RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder();
-    }
-
-    /** Creates a new IndexViewDiscoverabilityData RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewDiscoverabilityData RecordBuilder by copying an existing
-     * IndexViewDiscoverabilityData instance
-     */
-    public static sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewDiscoverabilityData other) {
-        return new sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -116,6 +97,26 @@ public class IndexViewDiscoverabilityData extends org.apache.avro.specific.Speci
     public void setValues(
             java.util.List<sparqles.avro.analytics.IndexViewDiscoverabilityDataValues> value) {
         this.values = value;
+    }
+
+    /** Creates a new IndexViewDiscoverabilityData RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder();
+    }
+
+    /** Creates a new IndexViewDiscoverabilityData RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder other) {
+        return new sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewDiscoverabilityData RecordBuilder by copying an existing
+     * IndexViewDiscoverabilityData instance
+     */
+    public static sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewDiscoverabilityData other) {
+        return new sparqles.avro.analytics.IndexViewDiscoverabilityData.Builder(other);
     }
 
     /** RecordBuilder for IndexViewDiscoverabilityData instances. */

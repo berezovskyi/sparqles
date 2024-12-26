@@ -13,6 +13,11 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"Robots\",\"namespace\":\"sparqles.avro.core\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"content\",\"type\":[\"string\",\"null\"]},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"respCode\",\"type\":\"int\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public java.lang.CharSequence content;
     @Deprecated public java.lang.CharSequence exception;
@@ -37,26 +42,6 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
         this.exception = exception;
         this.respCode = respCode;
         this.timestamp = timestamp;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new Robots RecordBuilder */
-    public static sparqles.avro.core.Robots.Builder newBuilder() {
-        return new sparqles.avro.core.Robots.Builder();
-    }
-
-    /** Creates a new Robots RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.core.Robots.Builder newBuilder(
-            sparqles.avro.core.Robots.Builder other) {
-        return new sparqles.avro.core.Robots.Builder(other);
-    }
-
-    /** Creates a new Robots RecordBuilder by copying an existing Robots instance */
-    public static sparqles.avro.core.Robots.Builder newBuilder(sparqles.avro.core.Robots other) {
-        return new sparqles.avro.core.Robots.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -173,6 +158,22 @@ public class Robots extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setTimestamp(java.lang.Long value) {
         this.timestamp = value;
+    }
+
+    /** Creates a new Robots RecordBuilder */
+    public static sparqles.avro.core.Robots.Builder newBuilder() {
+        return new sparqles.avro.core.Robots.Builder();
+    }
+
+    /** Creates a new Robots RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.core.Robots.Builder newBuilder(
+            sparqles.avro.core.Robots.Builder other) {
+        return new sparqles.avro.core.Robots.Builder(other);
+    }
+
+    /** Creates a new Robots RecordBuilder by copying an existing Robots instance */
+    public static sparqles.avro.core.Robots.Builder newBuilder(sparqles.avro.core.Robots other) {
+        return new sparqles.avro.core.Robots.Builder(other);
     }
 
     /** RecordBuilder for Robots instances. */

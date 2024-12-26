@@ -13,6 +13,11 @@ public class QueryInfo extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"QueryInfo\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Results\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence URL;
     @Deprecated public java.lang.CharSequence Operation;
     @Deprecated public java.lang.CharSequence Exception;
@@ -37,27 +42,6 @@ public class QueryInfo extends org.apache.avro.specific.SpecificRecordBase
         this.Exception = Exception;
         this.allowedByRobotsTXT = allowedByRobotsTXT;
         this.Results = Results;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new QueryInfo RecordBuilder */
-    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder() {
-        return new sparqles.avro.discovery.QueryInfo.Builder();
-    }
-
-    /** Creates a new QueryInfo RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
-            sparqles.avro.discovery.QueryInfo.Builder other) {
-        return new sparqles.avro.discovery.QueryInfo.Builder(other);
-    }
-
-    /** Creates a new QueryInfo RecordBuilder by copying an existing QueryInfo instance */
-    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
-            sparqles.avro.discovery.QueryInfo other) {
-        return new sparqles.avro.discovery.QueryInfo.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -174,6 +158,23 @@ public class QueryInfo extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setResults(java.util.List<java.lang.CharSequence> value) {
         this.Results = value;
+    }
+
+    /** Creates a new QueryInfo RecordBuilder */
+    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder() {
+        return new sparqles.avro.discovery.QueryInfo.Builder();
+    }
+
+    /** Creates a new QueryInfo RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
+            sparqles.avro.discovery.QueryInfo.Builder other) {
+        return new sparqles.avro.discovery.QueryInfo.Builder(other);
+    }
+
+    /** Creates a new QueryInfo RecordBuilder by copying an existing QueryInfo instance */
+    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
+            sparqles.avro.discovery.QueryInfo other) {
+        return new sparqles.avro.discovery.QueryInfo.Builder(other);
     }
 
     /** RecordBuilder for QueryInfo instances. */

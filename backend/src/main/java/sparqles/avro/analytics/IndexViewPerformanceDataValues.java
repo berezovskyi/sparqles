@@ -13,6 +13,11 @@ public class IndexViewPerformanceDataValues extends org.apache.avro.specific.Spe
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewPerformanceDataValues\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence label;
     @Deprecated public double value;
 
@@ -26,30 +31,6 @@ public class IndexViewPerformanceDataValues extends org.apache.avro.specific.Spe
     public IndexViewPerformanceDataValues(java.lang.CharSequence label, java.lang.Double value) {
         this.label = label;
         this.value = value;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewPerformanceDataValues RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder();
-    }
-
-    /** Creates a new IndexViewPerformanceDataValues RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder other) {
-        return new sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewPerformanceDataValues RecordBuilder by copying an existing
-     * IndexViewPerformanceDataValues instance
-     */
-    public static sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewPerformanceDataValues other) {
-        return new sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -109,6 +90,26 @@ public class IndexViewPerformanceDataValues extends org.apache.avro.specific.Spe
      */
     public void setValue(java.lang.Double value) {
         this.value = value;
+    }
+
+    /** Creates a new IndexViewPerformanceDataValues RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder();
+    }
+
+    /** Creates a new IndexViewPerformanceDataValues RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder other) {
+        return new sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewPerformanceDataValues RecordBuilder by copying an existing
+     * IndexViewPerformanceDataValues instance
+     */
+    public static sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewPerformanceDataValues other) {
+        return new sparqles.avro.analytics.IndexViewPerformanceDataValues.Builder(other);
     }
 
     /** RecordBuilder for IndexViewPerformanceDataValues instances. */

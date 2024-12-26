@@ -13,6 +13,11 @@ public class EndpointResult extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public long start;
     @Deprecated public long end;
@@ -29,27 +34,6 @@ public class EndpointResult extends org.apache.avro.specific.SpecificRecordBase
         this.endpoint = endpoint;
         this.start = start;
         this.end = end;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EndpointResult RecordBuilder */
-    public static sparqles.avro.EndpointResult.Builder newBuilder() {
-        return new sparqles.avro.EndpointResult.Builder();
-    }
-
-    /** Creates a new EndpointResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.EndpointResult.Builder newBuilder(
-            sparqles.avro.EndpointResult.Builder other) {
-        return new sparqles.avro.EndpointResult.Builder(other);
-    }
-
-    /** Creates a new EndpointResult RecordBuilder by copying an existing EndpointResult instance */
-    public static sparqles.avro.EndpointResult.Builder newBuilder(
-            sparqles.avro.EndpointResult other) {
-        return new sparqles.avro.EndpointResult.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -128,6 +112,23 @@ public class EndpointResult extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setEnd(java.lang.Long value) {
         this.end = value;
+    }
+
+    /** Creates a new EndpointResult RecordBuilder */
+    public static sparqles.avro.EndpointResult.Builder newBuilder() {
+        return new sparqles.avro.EndpointResult.Builder();
+    }
+
+    /** Creates a new EndpointResult RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.EndpointResult.Builder newBuilder(
+            sparqles.avro.EndpointResult.Builder other) {
+        return new sparqles.avro.EndpointResult.Builder(other);
+    }
+
+    /** Creates a new EndpointResult RecordBuilder by copying an existing EndpointResult instance */
+    public static sparqles.avro.EndpointResult.Builder newBuilder(
+            sparqles.avro.EndpointResult other) {
+        return new sparqles.avro.EndpointResult.Builder(other);
     }
 
     /** RecordBuilder for EndpointResult instances. */

@@ -13,6 +13,11 @@ public class EPViewDiscoverability extends org.apache.avro.specific.SpecificReco
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewDiscoverability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"serverName\",\"type\":\"string\"},{\"name\":\"VoIDDescription\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewDiscoverabilityData\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"boolean\"}]}}},{\"name\":\"SDDescription\",\"type\":{\"type\":\"array\",\"items\":\"EPViewDiscoverabilityData\"}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence serverName;
 
     @Deprecated
@@ -35,30 +40,6 @@ public class EPViewDiscoverability extends org.apache.avro.specific.SpecificReco
         this.serverName = serverName;
         this.VoIDDescription = VoIDDescription;
         this.SDDescription = SDDescription;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewDiscoverability RecordBuilder */
-    public static sparqles.avro.analytics.EPViewDiscoverability.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewDiscoverability.Builder();
-    }
-
-    /** Creates a new EPViewDiscoverability RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewDiscoverability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewDiscoverability.Builder other) {
-        return new sparqles.avro.analytics.EPViewDiscoverability.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewDiscoverability RecordBuilder by copying an existing
-     * EPViewDiscoverability instance
-     */
-    public static sparqles.avro.analytics.EPViewDiscoverability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewDiscoverability other) {
-        return new sparqles.avro.analytics.EPViewDiscoverability.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -141,6 +122,26 @@ public class EPViewDiscoverability extends org.apache.avro.specific.SpecificReco
     public void setSDDescription(
             java.util.List<sparqles.avro.analytics.EPViewDiscoverabilityData> value) {
         this.SDDescription = value;
+    }
+
+    /** Creates a new EPViewDiscoverability RecordBuilder */
+    public static sparqles.avro.analytics.EPViewDiscoverability.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewDiscoverability.Builder();
+    }
+
+    /** Creates a new EPViewDiscoverability RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewDiscoverability.Builder newBuilder(
+            sparqles.avro.analytics.EPViewDiscoverability.Builder other) {
+        return new sparqles.avro.analytics.EPViewDiscoverability.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewDiscoverability RecordBuilder by copying an existing
+     * EPViewDiscoverability instance
+     */
+    public static sparqles.avro.analytics.EPViewDiscoverability.Builder newBuilder(
+            sparqles.avro.analytics.EPViewDiscoverability other) {
+        return new sparqles.avro.analytics.EPViewDiscoverability.Builder(other);
     }
 
     /** RecordBuilder for EPViewDiscoverability instances. */

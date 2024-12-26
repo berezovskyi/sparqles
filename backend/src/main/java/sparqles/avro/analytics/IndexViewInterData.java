@@ -13,6 +13,11 @@ public class IndexViewInterData extends org.apache.avro.specific.SpecificRecordB
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"IndexViewInterData\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence key;
     @Deprecated public java.lang.CharSequence color;
     @Deprecated public java.util.List<sparqles.avro.analytics.IndexViewInterDataValues> data;
@@ -31,30 +36,6 @@ public class IndexViewInterData extends org.apache.avro.specific.SpecificRecordB
         this.key = key;
         this.color = color;
         this.data = data;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new IndexViewInterData RecordBuilder */
-    public static sparqles.avro.analytics.IndexViewInterData.Builder newBuilder() {
-        return new sparqles.avro.analytics.IndexViewInterData.Builder();
-    }
-
-    /** Creates a new IndexViewInterData RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.IndexViewInterData.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewInterData.Builder other) {
-        return new sparqles.avro.analytics.IndexViewInterData.Builder(other);
-    }
-
-    /**
-     * Creates a new IndexViewInterData RecordBuilder by copying an existing IndexViewInterData
-     * instance
-     */
-    public static sparqles.avro.analytics.IndexViewInterData.Builder newBuilder(
-            sparqles.avro.analytics.IndexViewInterData other) {
-        return new sparqles.avro.analytics.IndexViewInterData.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -133,6 +114,26 @@ public class IndexViewInterData extends org.apache.avro.specific.SpecificRecordB
      */
     public void setData(java.util.List<sparqles.avro.analytics.IndexViewInterDataValues> value) {
         this.data = value;
+    }
+
+    /** Creates a new IndexViewInterData RecordBuilder */
+    public static sparqles.avro.analytics.IndexViewInterData.Builder newBuilder() {
+        return new sparqles.avro.analytics.IndexViewInterData.Builder();
+    }
+
+    /** Creates a new IndexViewInterData RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.IndexViewInterData.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewInterData.Builder other) {
+        return new sparqles.avro.analytics.IndexViewInterData.Builder(other);
+    }
+
+    /**
+     * Creates a new IndexViewInterData RecordBuilder by copying an existing IndexViewInterData
+     * instance
+     */
+    public static sparqles.avro.analytics.IndexViewInterData.Builder newBuilder(
+            sparqles.avro.analytics.IndexViewInterData other) {
+        return new sparqles.avro.analytics.IndexViewInterData.Builder(other);
     }
 
     /** RecordBuilder for IndexViewInterData instances. */

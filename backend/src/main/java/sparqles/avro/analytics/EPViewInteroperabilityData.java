@@ -13,6 +13,11 @@ public class EPViewInteroperabilityData extends org.apache.avro.specific.Specifi
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewInteroperabilityData\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"boolean\"},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence label;
     @Deprecated public boolean value;
     @Deprecated public java.lang.CharSequence exception;
@@ -31,30 +36,6 @@ public class EPViewInteroperabilityData extends org.apache.avro.specific.Specifi
         this.label = label;
         this.value = value;
         this.exception = exception;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewInteroperabilityData RecordBuilder */
-    public static sparqles.avro.analytics.EPViewInteroperabilityData.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewInteroperabilityData.Builder();
-    }
-
-    /** Creates a new EPViewInteroperabilityData RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewInteroperabilityData.Builder newBuilder(
-            sparqles.avro.analytics.EPViewInteroperabilityData.Builder other) {
-        return new sparqles.avro.analytics.EPViewInteroperabilityData.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewInteroperabilityData RecordBuilder by copying an existing
-     * EPViewInteroperabilityData instance
-     */
-    public static sparqles.avro.analytics.EPViewInteroperabilityData.Builder newBuilder(
-            sparqles.avro.analytics.EPViewInteroperabilityData other) {
-        return new sparqles.avro.analytics.EPViewInteroperabilityData.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -133,6 +114,26 @@ public class EPViewInteroperabilityData extends org.apache.avro.specific.Specifi
      */
     public void setException(java.lang.CharSequence value) {
         this.exception = value;
+    }
+
+    /** Creates a new EPViewInteroperabilityData RecordBuilder */
+    public static sparqles.avro.analytics.EPViewInteroperabilityData.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewInteroperabilityData.Builder();
+    }
+
+    /** Creates a new EPViewInteroperabilityData RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewInteroperabilityData.Builder newBuilder(
+            sparqles.avro.analytics.EPViewInteroperabilityData.Builder other) {
+        return new sparqles.avro.analytics.EPViewInteroperabilityData.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewInteroperabilityData RecordBuilder by copying an existing
+     * EPViewInteroperabilityData instance
+     */
+    public static sparqles.avro.analytics.EPViewInteroperabilityData.Builder newBuilder(
+            sparqles.avro.analytics.EPViewInteroperabilityData other) {
+        return new sparqles.avro.analytics.EPViewInteroperabilityData.Builder(other);
     }
 
     /** RecordBuilder for EPViewInteroperabilityData instances. */

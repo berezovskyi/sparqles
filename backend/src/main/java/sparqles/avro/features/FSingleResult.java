@@ -13,6 +13,11 @@ public class FSingleResult extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"FSingleResult\",\"namespace\":\"sparqles.avro.features\",\"fields\":[{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"run\",\"type\":{\"type\":\"record\",\"name\":\"Run\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence query;
     @Deprecated public sparqles.avro.performance.Run run;
 
@@ -26,27 +31,6 @@ public class FSingleResult extends org.apache.avro.specific.SpecificRecordBase
     public FSingleResult(java.lang.CharSequence query, sparqles.avro.performance.Run run) {
         this.query = query;
         this.run = run;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new FSingleResult RecordBuilder */
-    public static sparqles.avro.features.FSingleResult.Builder newBuilder() {
-        return new sparqles.avro.features.FSingleResult.Builder();
-    }
-
-    /** Creates a new FSingleResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.features.FSingleResult.Builder newBuilder(
-            sparqles.avro.features.FSingleResult.Builder other) {
-        return new sparqles.avro.features.FSingleResult.Builder(other);
-    }
-
-    /** Creates a new FSingleResult RecordBuilder by copying an existing FSingleResult instance */
-    public static sparqles.avro.features.FSingleResult.Builder newBuilder(
-            sparqles.avro.features.FSingleResult other) {
-        return new sparqles.avro.features.FSingleResult.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -106,6 +90,23 @@ public class FSingleResult extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setRun(sparqles.avro.performance.Run value) {
         this.run = value;
+    }
+
+    /** Creates a new FSingleResult RecordBuilder */
+    public static sparqles.avro.features.FSingleResult.Builder newBuilder() {
+        return new sparqles.avro.features.FSingleResult.Builder();
+    }
+
+    /** Creates a new FSingleResult RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.features.FSingleResult.Builder newBuilder(
+            sparqles.avro.features.FSingleResult.Builder other) {
+        return new sparqles.avro.features.FSingleResult.Builder(other);
+    }
+
+    /** Creates a new FSingleResult RecordBuilder by copying an existing FSingleResult instance */
+    public static sparqles.avro.features.FSingleResult.Builder newBuilder(
+            sparqles.avro.features.FSingleResult other) {
+        return new sparqles.avro.features.FSingleResult.Builder(other);
     }
 
     /** RecordBuilder for FSingleResult instances. */

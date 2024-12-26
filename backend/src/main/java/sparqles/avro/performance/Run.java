@@ -13,6 +13,11 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"Run\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public long frestout;
     @Deprecated public int solutions;
     @Deprecated public long inittime;
@@ -43,27 +48,6 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
         this.closetime = closetime;
         this.Exception = Exception;
         this.exectout = exectout;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new Run RecordBuilder */
-    public static sparqles.avro.performance.Run.Builder newBuilder() {
-        return new sparqles.avro.performance.Run.Builder();
-    }
-
-    /** Creates a new Run RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.performance.Run.Builder newBuilder(
-            sparqles.avro.performance.Run.Builder other) {
-        return new sparqles.avro.performance.Run.Builder(other);
-    }
-
-    /** Creates a new Run RecordBuilder by copying an existing Run instance */
-    public static sparqles.avro.performance.Run.Builder newBuilder(
-            sparqles.avro.performance.Run other) {
-        return new sparqles.avro.performance.Run.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -218,6 +202,23 @@ public class Run extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setExectout(java.lang.Long value) {
         this.exectout = value;
+    }
+
+    /** Creates a new Run RecordBuilder */
+    public static sparqles.avro.performance.Run.Builder newBuilder() {
+        return new sparqles.avro.performance.Run.Builder();
+    }
+
+    /** Creates a new Run RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.performance.Run.Builder newBuilder(
+            sparqles.avro.performance.Run.Builder other) {
+        return new sparqles.avro.performance.Run.Builder(other);
+    }
+
+    /** Creates a new Run RecordBuilder by copying an existing Run instance */
+    public static sparqles.avro.performance.Run.Builder newBuilder(
+            sparqles.avro.performance.Run other) {
+        return new sparqles.avro.performance.Run.Builder(other);
     }
 
     /** RecordBuilder for Run instances. */

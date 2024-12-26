@@ -13,6 +13,11 @@ public class EPViewAvailabilityData extends org.apache.avro.specific.SpecificRec
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewAvailabilityData\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"long\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence key;
     @Deprecated public java.util.List<sparqles.avro.analytics.EPViewAvailabilityDataPoint> values;
 
@@ -28,30 +33,6 @@ public class EPViewAvailabilityData extends org.apache.avro.specific.SpecificRec
             java.util.List<sparqles.avro.analytics.EPViewAvailabilityDataPoint> values) {
         this.key = key;
         this.values = values;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewAvailabilityData RecordBuilder */
-    public static sparqles.avro.analytics.EPViewAvailabilityData.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewAvailabilityData.Builder();
-    }
-
-    /** Creates a new EPViewAvailabilityData RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewAvailabilityData.Builder newBuilder(
-            sparqles.avro.analytics.EPViewAvailabilityData.Builder other) {
-        return new sparqles.avro.analytics.EPViewAvailabilityData.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewAvailabilityData RecordBuilder by copying an existing
-     * EPViewAvailabilityData instance
-     */
-    public static sparqles.avro.analytics.EPViewAvailabilityData.Builder newBuilder(
-            sparqles.avro.analytics.EPViewAvailabilityData other) {
-        return new sparqles.avro.analytics.EPViewAvailabilityData.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -114,6 +95,26 @@ public class EPViewAvailabilityData extends org.apache.avro.specific.SpecificRec
     public void setValues(
             java.util.List<sparqles.avro.analytics.EPViewAvailabilityDataPoint> value) {
         this.values = value;
+    }
+
+    /** Creates a new EPViewAvailabilityData RecordBuilder */
+    public static sparqles.avro.analytics.EPViewAvailabilityData.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewAvailabilityData.Builder();
+    }
+
+    /** Creates a new EPViewAvailabilityData RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewAvailabilityData.Builder newBuilder(
+            sparqles.avro.analytics.EPViewAvailabilityData.Builder other) {
+        return new sparqles.avro.analytics.EPViewAvailabilityData.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewAvailabilityData RecordBuilder by copying an existing
+     * EPViewAvailabilityData instance
+     */
+    public static sparqles.avro.analytics.EPViewAvailabilityData.Builder newBuilder(
+            sparqles.avro.analytics.EPViewAvailabilityData other) {
+        return new sparqles.avro.analytics.EPViewAvailabilityData.Builder(other);
     }
 
     /** RecordBuilder for EPViewAvailabilityData instances. */

@@ -34,12 +34,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
 import sparqles.avro.analytics.AvailabilityView;
+import sparqles.avro.analytics.CalculationView;
 import sparqles.avro.analytics.DiscoverabilityView;
 import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.Index;
 import sparqles.avro.analytics.InteroperabilityView;
 import sparqles.avro.analytics.PerformanceView;
 import sparqles.avro.availability.AResult;
+import sparqles.avro.calculation.CResult;
 import sparqles.avro.core.Robots;
 import sparqles.avro.discovery.DResult;
 import sparqles.avro.features.FResult;
@@ -54,12 +56,14 @@ public class MongoDBManager {
     public static final String COLL_PERF = "ptasks";
     public static final String COLL_DISC = "dtasks";
     public static final String COLL_FEAT = "ftasks";
+    public static final String COLL_CALC = "ctasks";
     public static final String COLL_ENDS = "endpoints";
     public static final String COLL_INDEX = "index";
     public static final String COLL_AMONTHS = "amonths";
     public static final String COLL_AVAIL_AGG = "atasks_agg";
     public static final String COLL_PERF_AGG = "ptasks_agg";
     public static final String COLL_DISC_AGG = "dtasks_agg";
+    public static final String COLL_CALC_AGG = "ctasks_agg";
     public static final String COLL_FEAT_AGG = "ftasks_agg";
     public static final String COLL_EP_VIEW = "epview";
     private static final Logger log = LoggerFactory.getLogger(MongoDBManager.class);
@@ -67,12 +71,15 @@ public class MongoDBManager {
     private static final String VIEW_KEY = "endpoint.uri";
     private static final String EP_KEY = "uri";
     private static Map<Class, String[]> obj2col = new HashMap<Class, String[]>();
+    private MongoClient client;
+    private DB db;
 
     static {
         obj2col.put(DResult.class, new String[] {COLL_DISC, RESULT_KEY});
         obj2col.put(AResult.class, new String[] {COLL_AVAIL, RESULT_KEY});
         obj2col.put(PResult.class, new String[] {COLL_PERF, RESULT_KEY});
         obj2col.put(FResult.class, new String[] {COLL_FEAT, RESULT_KEY});
+        obj2col.put(CResult.class, new String[] {COLL_CALC, RESULT_KEY});
         obj2col.put(Endpoint.class, new String[] {COLL_ENDS, EP_KEY});
         obj2col.put(Robots.class, new String[] {COLL_ROBOTS, VIEW_KEY});
         obj2col.put(Schedule.class, new String[] {COLL_SCHED, RESULT_KEY});
@@ -83,10 +90,8 @@ public class MongoDBManager {
         obj2col.put(PerformanceView.class, new String[] {COLL_PERF_AGG, VIEW_KEY});
         obj2col.put(InteroperabilityView.class, new String[] {COLL_FEAT_AGG, VIEW_KEY});
         obj2col.put(DiscoverabilityView.class, new String[] {COLL_DISC_AGG, VIEW_KEY});
+        obj2col.put(CalculationView.class, new String[] {COLL_CALC_AGG, VIEW_KEY});
     }
-
-    private MongoClient client;
-    private DB db;
 
     public MongoDBManager() {
         setup();
@@ -116,6 +121,7 @@ public class MongoDBManager {
                 COLL_AVAIL_AGG,
                 COLL_PERF_AGG,
                 COLL_DISC_AGG,
+                COLL_CALC_AGG,
                 COLL_FEAT_AGG,
                 COLL_FEAT_AGG,
                 COLL_EP_VIEW,
@@ -152,7 +158,12 @@ public class MongoDBManager {
 
     public void initAggregateCollections() {
         String[] cols = {
-            COLL_AVAIL_AGG, COLL_PERF_AGG, COLL_DISC_AGG, COLL_FEAT_AGG, COLL_FEAT_AGG
+            COLL_AVAIL_AGG,
+            COLL_PERF_AGG,
+            COLL_DISC_AGG,
+            COLL_CALC_AGG,
+            COLL_FEAT_AGG,
+            COLL_FEAT_AGG
         };
         for (String col : cols) {
             DBCollection c = db.getCollection(col);
@@ -245,6 +256,13 @@ public class MongoDBManager {
             return update(
                     COLL_DISC_AGG,
                     ((DiscoverabilityView) res).getEndpoint(),
+                    res,
+                    res.getSchema(),
+                    VIEW_KEY);
+        if (res instanceof CalculationView)
+            return update(
+                    COLL_CALC_AGG,
+                    ((CalculationView) res).getEndpoint(),
                     res,
                     res.getSchema(),
                     VIEW_KEY);
@@ -574,6 +592,7 @@ public class MongoDBManager {
         res = res && remove(ep, InteroperabilityView.class);
         res = res && remove(ep, DiscoverabilityView.class);
         res = res && remove(ep, PerformanceView.class);
+        res = res && remove(ep, CalculationView.class);
         return res;
     }
 
@@ -616,5 +635,26 @@ public class MongoDBManager {
     public boolean close() {
         client.close();
         return true;
+    }
+
+    public long getFirstAvailabitlityTime() {
+        long result = 0;
+        DBCursor cursor = null;
+        try {
+            DBCollection collection = db.getCollection(COLL_AVAIL);
+            DBObject filter = new BasicDBObject();
+            DBObject projection = (DBObject) JSON.parse("{'endpointResult.start':1, '_id':0}");
+            DBObject sort = new BasicDBObject();
+            sort.put("endpointResult.start", 1);
+            cursor = collection.find(filter, projection).sort(sort).limit(1);
+            result =
+                    Long.parseLong(
+                            ((DBObject) cursor.next().get("endpointResult"))
+                                    .get("start")
+                                    .toString());
+        } finally {
+            cursor.close();
+        }
+        return result;
     }
 }

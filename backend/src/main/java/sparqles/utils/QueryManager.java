@@ -25,7 +25,6 @@ public class QueryManager {
                 log.error("Query file not found: {}", qFile, e);
             }
         } else {
-            QueryManager.class.getClassLoader();
             InputStream res = ClassLoader.getSystemResourceAsStream(folder + qFile);
             if (res != null) scanner = new Scanner(res);
         }

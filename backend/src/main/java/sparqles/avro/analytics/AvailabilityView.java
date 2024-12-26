@@ -13,6 +13,11 @@ public class AvailabilityView extends org.apache.avro.specific.SpecificRecordBas
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"AvailabilityView\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"upNow\",\"type\":\"boolean\"},{\"name\":\"uptimeLast24h\",\"type\":\"double\"},{\"name\":\"uptimeLast7d\",\"type\":\"double\"},{\"name\":\"lastUpdate\",\"type\":\"long\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public boolean upNow;
     @Deprecated public double uptimeLast24h;
@@ -37,29 +42,6 @@ public class AvailabilityView extends org.apache.avro.specific.SpecificRecordBas
         this.uptimeLast24h = uptimeLast24h;
         this.uptimeLast7d = uptimeLast7d;
         this.lastUpdate = lastUpdate;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new AvailabilityView RecordBuilder */
-    public static sparqles.avro.analytics.AvailabilityView.Builder newBuilder() {
-        return new sparqles.avro.analytics.AvailabilityView.Builder();
-    }
-
-    /** Creates a new AvailabilityView RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.AvailabilityView.Builder newBuilder(
-            sparqles.avro.analytics.AvailabilityView.Builder other) {
-        return new sparqles.avro.analytics.AvailabilityView.Builder(other);
-    }
-
-    /**
-     * Creates a new AvailabilityView RecordBuilder by copying an existing AvailabilityView instance
-     */
-    public static sparqles.avro.analytics.AvailabilityView.Builder newBuilder(
-            sparqles.avro.analytics.AvailabilityView other) {
-        return new sparqles.avro.analytics.AvailabilityView.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -176,6 +158,25 @@ public class AvailabilityView extends org.apache.avro.specific.SpecificRecordBas
      */
     public void setLastUpdate(java.lang.Long value) {
         this.lastUpdate = value;
+    }
+
+    /** Creates a new AvailabilityView RecordBuilder */
+    public static sparqles.avro.analytics.AvailabilityView.Builder newBuilder() {
+        return new sparqles.avro.analytics.AvailabilityView.Builder();
+    }
+
+    /** Creates a new AvailabilityView RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.AvailabilityView.Builder newBuilder(
+            sparqles.avro.analytics.AvailabilityView.Builder other) {
+        return new sparqles.avro.analytics.AvailabilityView.Builder(other);
+    }
+
+    /**
+     * Creates a new AvailabilityView RecordBuilder by copying an existing AvailabilityView instance
+     */
+    public static sparqles.avro.analytics.AvailabilityView.Builder newBuilder(
+            sparqles.avro.analytics.AvailabilityView other) {
+        return new sparqles.avro.analytics.AvailabilityView.Builder(other);
     }
 
     /** RecordBuilder for AvailabilityView instances. */

@@ -13,6 +13,11 @@ public class Dataset extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"Dataset\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public java.lang.CharSequence uri;
     @Deprecated public java.lang.CharSequence label;
 
@@ -26,25 +31,6 @@ public class Dataset extends org.apache.avro.specific.SpecificRecordBase
     public Dataset(java.lang.CharSequence uri, java.lang.CharSequence label) {
         this.uri = uri;
         this.label = label;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new Dataset RecordBuilder */
-    public static sparqles.avro.Dataset.Builder newBuilder() {
-        return new sparqles.avro.Dataset.Builder();
-    }
-
-    /** Creates a new Dataset RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.Dataset.Builder newBuilder(sparqles.avro.Dataset.Builder other) {
-        return new sparqles.avro.Dataset.Builder(other);
-    }
-
-    /** Creates a new Dataset RecordBuilder by copying an existing Dataset instance */
-    public static sparqles.avro.Dataset.Builder newBuilder(sparqles.avro.Dataset other) {
-        return new sparqles.avro.Dataset.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -104,6 +90,21 @@ public class Dataset extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setLabel(java.lang.CharSequence value) {
         this.label = value;
+    }
+
+    /** Creates a new Dataset RecordBuilder */
+    public static sparqles.avro.Dataset.Builder newBuilder() {
+        return new sparqles.avro.Dataset.Builder();
+    }
+
+    /** Creates a new Dataset RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.Dataset.Builder newBuilder(sparqles.avro.Dataset.Builder other) {
+        return new sparqles.avro.Dataset.Builder(other);
+    }
+
+    /** Creates a new Dataset RecordBuilder by copying an existing Dataset instance */
+    public static sparqles.avro.Dataset.Builder newBuilder(sparqles.avro.Dataset other) {
+        return new sparqles.avro.Dataset.Builder(other);
     }
 
     /** RecordBuilder for Dataset instances. */

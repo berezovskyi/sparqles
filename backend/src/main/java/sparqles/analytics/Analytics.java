@@ -10,12 +10,17 @@ import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewAvailability;
 import sparqles.avro.analytics.EPViewAvailabilityData;
 import sparqles.avro.analytics.EPViewAvailabilityDataPoint;
+import sparqles.avro.analytics.EPViewCalculation;
 import sparqles.avro.analytics.EPViewDiscoverability;
 import sparqles.avro.analytics.EPViewDiscoverabilityData;
 import sparqles.avro.analytics.EPViewInteroperability;
 import sparqles.avro.analytics.EPViewInteroperabilityData;
 import sparqles.avro.analytics.EPViewPerformance;
 import sparqles.avro.analytics.EPViewPerformanceData;
+import sparqles.avro.availability.AResult;
+import sparqles.avro.discovery.DResult;
+import sparqles.avro.features.FResult;
+import sparqles.avro.performance.PResult;
 import sparqles.utils.MongoDBManager;
 
 /**
@@ -26,7 +31,7 @@ import sparqles.utils.MongoDBManager;
  */
 public abstract class Analytics<V extends SpecificRecordBase> {
 
-    private static Logger Log = LoggerFactory.getLogger(Analytics.class);
+    private static Logger log = LoggerFactory.getLogger(Analytics.class);
 
     protected final MongoDBManager _db;
 
@@ -38,7 +43,7 @@ public abstract class Analytics<V extends SpecificRecordBase> {
         EPView view = null;
         List<EPView> views = _db.getResults(ep, EPView.class, EPView.SCHEMA$);
         if (views.size() != 1) {
-            Log.warn("We have {} EPView, expected was 1", views.size());
+            log.warn("We have {} EPView, expected was 1", views.size());
         }
         if (views.size() == 0) {
             view = new EPView();
@@ -72,6 +77,23 @@ public abstract class Analytics<V extends SpecificRecordBase> {
                             new ArrayList<EPViewDiscoverabilityData>(),
                             new ArrayList<EPViewDiscoverabilityData>());
             view.setDiscoverability(dv);
+
+            EPViewCalculation cv =
+                    new EPViewCalculation(
+                            -1l,
+                            -1l,
+                            -1l,
+                            -1l,
+                            -1l,
+                            -1l,
+                            new java.util.ArrayList<java.lang.CharSequence>(),
+                            "",
+                            false,
+                            "",
+                            false,
+                            -1.0,
+                            -1.0);
+            view.setCalculation(cv);
 
             _db.insert(view);
         } else {

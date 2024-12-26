@@ -93,6 +93,7 @@ public class NoRobotClient {
     //            throw new NoRobotException("Problem while parsing "+txtUrl, nre);
     //        }
     //    }
+
     public void parse(String txt, URL baseUrl) throws NoRobotException {
         this.baseUrl = baseUrl;
         parseText(txt);

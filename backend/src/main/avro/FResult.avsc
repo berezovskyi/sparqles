@@ -1,6 +1,8 @@
 {
 	"namespace": "sparqles.avro.features",
  	"type": "record",
+ 	"import" : "EndpointResult.avsc",
+	"import" : "Run.avsc",
  	"name": "FResult",
  	"fields": [
  		{"name": "endpointResult", "type": "sparqles.avro.EndpointResult"},

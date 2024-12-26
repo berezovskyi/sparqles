@@ -13,6 +13,11 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"DGETInfo\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseType\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseCode\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseServer\",\"type\":[\"string\",\"null\"]},{\"name\":\"ResponseLink\",\"type\":[\"string\",\"null\"]},{\"name\":\"Content\",\"type\":[\"string\",\"null\"]},{\"name\":\"SPARQLDESCpreds\",\"type\":{\"type\":\"map\",\"values\":[\"int\"]}},{\"name\":\"voiDpreds\",\"type\":{\"type\":\"map\",\"values\":[\"int\"]}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public boolean allowedByRobotsTXT;
     @Deprecated public java.lang.CharSequence Operation;
     @Deprecated public java.lang.CharSequence URL;
@@ -55,27 +60,6 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
         this.Content = Content;
         this.SPARQLDESCpreds = SPARQLDESCpreds;
         this.voiDpreds = voiDpreds;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new DGETInfo RecordBuilder */
-    public static sparqles.avro.discovery.DGETInfo.Builder newBuilder() {
-        return new sparqles.avro.discovery.DGETInfo.Builder();
-    }
-
-    /** Creates a new DGETInfo RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.discovery.DGETInfo.Builder newBuilder(
-            sparqles.avro.discovery.DGETInfo.Builder other) {
-        return new sparqles.avro.discovery.DGETInfo.Builder(other);
-    }
-
-    /** Creates a new DGETInfo RecordBuilder by copying an existing DGETInfo instance */
-    public static sparqles.avro.discovery.DGETInfo.Builder newBuilder(
-            sparqles.avro.discovery.DGETInfo other) {
-        return new sparqles.avro.discovery.DGETInfo.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -306,6 +290,23 @@ public class DGETInfo extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setVoiDpreds(java.util.Map<java.lang.CharSequence, java.lang.Object> value) {
         this.voiDpreds = value;
+    }
+
+    /** Creates a new DGETInfo RecordBuilder */
+    public static sparqles.avro.discovery.DGETInfo.Builder newBuilder() {
+        return new sparqles.avro.discovery.DGETInfo.Builder();
+    }
+
+    /** Creates a new DGETInfo RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.discovery.DGETInfo.Builder newBuilder(
+            sparqles.avro.discovery.DGETInfo.Builder other) {
+        return new sparqles.avro.discovery.DGETInfo.Builder(other);
+    }
+
+    /** Creates a new DGETInfo RecordBuilder by copying an existing DGETInfo instance */
+    public static sparqles.avro.discovery.DGETInfo.Builder newBuilder(
+            sparqles.avro.discovery.DGETInfo other) {
+        return new sparqles.avro.discovery.DGETInfo.Builder(other);
     }
 
     /** RecordBuilder for DGETInfo instances. */

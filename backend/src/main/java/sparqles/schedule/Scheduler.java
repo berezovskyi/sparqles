@@ -29,10 +29,10 @@ import sparqles.utils.FileManager;
 import sparqles.utils.MongoDBManager;
 
 public class Scheduler {
+    private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
     public static final String CRON_EVERY_HOUR = "0 0 0/1 1/1 * ? *";
     public static final String CRON_EVERY_ONETEN = "0 30 1 1/1 * ? *";
-    private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
     private static final String CRON_EVERY_DAY_AT_715 = "0 15 7 1/1 * ? *";
     private static final String CRON_EVERY_DAY_AT_215 = "0 15 2 1/1 * ? *";
     private static final String CRON_EVERY_MON_WED_FRI_SUN_THU_AT_410 = "0 10 4 ? * WED,THU *";
@@ -55,6 +55,7 @@ public class Scheduler {
         taskSchedule.put(FTASK, CRON_EVERY_SUN_AT_310);
         // discoverability
         taskSchedule.put(DTASK, CRON_EVERY_SAT_AT_310);
+        taskSchedule.put(CTASK, CRON_EVERY_SUN_AT_2330);
         // index
         taskSchedule.put(ITASK, CRON_EVERY_DAY_AT_715);
         // datahub refresh
@@ -120,6 +121,7 @@ public class Scheduler {
         s.setPTask(taskSchedule.get(PTASK));
         s.setFTask(taskSchedule.get(FTASK));
         s.setDTask(taskSchedule.get(DTASK));
+        s.setCTask(taskSchedule.get(CTASK));
         s.setITask(taskSchedule.get(ITASK));
 
         return s;
@@ -163,6 +165,11 @@ public class Scheduler {
                 schedule(
                         TaskFactory.create(DTASK, ep, _dbm, _fm),
                         new CronBasedIterator(sd.getDTask().toString()));
+            }
+            if (sd.getCTask() != null) {
+                schedule(
+                        TaskFactory.create(CTASK, ep, _dbm, _fm),
+                        new CronBasedIterator(sd.getCTask().toString()));
             }
             if (sd.getITask() != null) {
                 schedule(

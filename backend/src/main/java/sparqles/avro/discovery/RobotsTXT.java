@@ -13,6 +13,11 @@ public class RobotsTXT extends org.apache.avro.specific.SpecificRecordBase
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"RobotsTXT\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"hasRobotsTXT\",\"type\":\"boolean\",\"default\":false},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"sitemapXML\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQL\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQLMatch\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLVoiD\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public boolean hasRobotsTXT;
     @Deprecated public boolean allowedByRobotsTXT;
     @Deprecated public boolean sitemapXML;
@@ -43,27 +48,6 @@ public class RobotsTXT extends org.apache.avro.specific.SpecificRecordBase
         this.sitemapXMLSPARQLMatch = sitemapXMLSPARQLMatch;
         this.sitemapXMLVoiD = sitemapXMLVoiD;
         this.Exception = Exception;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new RobotsTXT RecordBuilder */
-    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder() {
-        return new sparqles.avro.discovery.RobotsTXT.Builder();
-    }
-
-    /** Creates a new RobotsTXT RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
-            sparqles.avro.discovery.RobotsTXT.Builder other) {
-        return new sparqles.avro.discovery.RobotsTXT.Builder(other);
-    }
-
-    /** Creates a new RobotsTXT RecordBuilder by copying an existing RobotsTXT instance */
-    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
-            sparqles.avro.discovery.RobotsTXT other) {
-        return new sparqles.avro.discovery.RobotsTXT.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -218,6 +202,23 @@ public class RobotsTXT extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setException(java.lang.CharSequence value) {
         this.Exception = value;
+    }
+
+    /** Creates a new RobotsTXT RecordBuilder */
+    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder() {
+        return new sparqles.avro.discovery.RobotsTXT.Builder();
+    }
+
+    /** Creates a new RobotsTXT RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
+            sparqles.avro.discovery.RobotsTXT.Builder other) {
+        return new sparqles.avro.discovery.RobotsTXT.Builder(other);
+    }
+
+    /** Creates a new RobotsTXT RecordBuilder by copying an existing RobotsTXT instance */
+    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
+            sparqles.avro.discovery.RobotsTXT other) {
+        return new sparqles.avro.discovery.RobotsTXT.Builder(other);
     }
 
     /** RecordBuilder for RobotsTXT instances. */

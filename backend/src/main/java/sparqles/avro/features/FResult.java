@@ -12,7 +12,12 @@ public class FResult extends org.apache.avro.specific.SpecificRecordBase
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
-                            "{\"type\":\"record\",\"name\":\"FResult\",\"namespace\":\"sparqles.avro.features\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"results\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"FSingleResult\",\"fields\":[{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"run\",\"type\":{\"type\":\"record\",\"name\":\"Run\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}}]}}}]}");
+                            "{\"type\":\"record\",\"name\":\"FResult\",\"namespace\":\"sparqles.avro.features\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"results\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"FSingleResult\",\"fields\":[{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"run\",\"type\":{\"type\":\"record\",\"name\":\"Run\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}}]}}}],\"import\":\"EndpointResult.avsc\"}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.EndpointResult endpointResult;
 
     @Deprecated
@@ -30,27 +35,6 @@ public class FResult extends org.apache.avro.specific.SpecificRecordBase
             java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results) {
         this.endpointResult = endpointResult;
         this.results = results;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new FResult RecordBuilder */
-    public static sparqles.avro.features.FResult.Builder newBuilder() {
-        return new sparqles.avro.features.FResult.Builder();
-    }
-
-    /** Creates a new FResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.features.FResult.Builder newBuilder(
-            sparqles.avro.features.FResult.Builder other) {
-        return new sparqles.avro.features.FResult.Builder(other);
-    }
-
-    /** Creates a new FResult RecordBuilder by copying an existing FResult instance */
-    public static sparqles.avro.features.FResult.Builder newBuilder(
-            sparqles.avro.features.FResult other) {
-        return new sparqles.avro.features.FResult.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -116,6 +100,23 @@ public class FResult extends org.apache.avro.specific.SpecificRecordBase
     public void setResults(
             java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> value) {
         this.results = value;
+    }
+
+    /** Creates a new FResult RecordBuilder */
+    public static sparqles.avro.features.FResult.Builder newBuilder() {
+        return new sparqles.avro.features.FResult.Builder();
+    }
+
+    /** Creates a new FResult RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.features.FResult.Builder newBuilder(
+            sparqles.avro.features.FResult.Builder other) {
+        return new sparqles.avro.features.FResult.Builder(other);
+    }
+
+    /** Creates a new FResult RecordBuilder by copying an existing FResult instance */
+    public static sparqles.avro.features.FResult.Builder newBuilder(
+            sparqles.avro.features.FResult other) {
+        return new sparqles.avro.features.FResult.Builder(other);
     }
 
     /** RecordBuilder for FResult instances. */

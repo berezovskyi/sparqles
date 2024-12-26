@@ -12,13 +12,19 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
-                            "{\"type\":\"record\",\"name\":\"Index\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"lastUpdate\",\"type\":\"long\"},{\"name\":\"availability\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AvailabilityIndex\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"string\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}}},{\"name\":\"performance\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewPerformance\",\"fields\":[{\"name\":\"threshold\",\"type\":\"long\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewPerformanceData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewPerformanceDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}}]}},{\"name\":\"interoperability\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewInteroperability\",\"fields\":[{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}}]}},{\"name\":\"discoverability\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverability\",\"fields\":[{\"name\":\"serverName\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}},{\"name\":\"VoIDDescription\",\"type\":\"double\"},{\"name\":\"SDDescription\",\"type\":\"double\"},{\"name\":\"NoDescription\",\"type\":\"double\"}]}}]}");
+                            "{\"type\":\"record\",\"name\":\"Index\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"lastUpdate\",\"type\":\"long\"},{\"name\":\"availability\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AvailabilityIndex\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"string\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}}},{\"name\":\"performance\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewPerformance\",\"fields\":[{\"name\":\"threshold\",\"type\":\"long\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewPerformanceData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewPerformanceDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}}]}},{\"name\":\"interoperability\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewInteroperability\",\"fields\":[{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewInterDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}}]}},{\"name\":\"discoverability\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverability\",\"fields\":[{\"name\":\"serverName\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewDiscoverabilityDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}},{\"name\":\"VoIDDescription\",\"type\":\"double\"},{\"name\":\"SDDescription\",\"type\":\"double\"},{\"name\":\"NoDescription\",\"type\":\"double\"}]}},{\"name\":\"calculation\",\"type\":{\"type\":\"record\",\"name\":\"IndexViewCalculation\",\"fields\":[{\"name\":\"coherences\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewCalculationData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexViewCalculationDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"}]}}}]}}},{\"name\":\"rss\",\"type\":{\"type\":\"array\",\"items\":\"IndexViewCalculationData\"}},{\"name\":\"VoID\",\"type\":\"double\"},{\"name\":\"VoIDPart\",\"type\":\"double\"},{\"name\":\"SD\",\"type\":\"double\"},{\"name\":\"SDPart\",\"type\":\"double\"},{\"name\":\"Coherence\",\"type\":\"double\"},{\"name\":\"RS\",\"type\":\"double\"}]}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.Endpoint endpoint;
     @Deprecated public long lastUpdate;
     @Deprecated public java.util.List<sparqles.avro.analytics.AvailabilityIndex> availability;
     @Deprecated public sparqles.avro.analytics.IndexViewPerformance performance;
     @Deprecated public sparqles.avro.analytics.IndexViewInteroperability interoperability;
     @Deprecated public sparqles.avro.analytics.IndexViewDiscoverability discoverability;
+    @Deprecated public sparqles.avro.analytics.IndexViewCalculation calculation;
 
     /**
      * Default constructor. Note that this does not initialize fields to their default values from
@@ -33,34 +39,15 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
             java.util.List<sparqles.avro.analytics.AvailabilityIndex> availability,
             sparqles.avro.analytics.IndexViewPerformance performance,
             sparqles.avro.analytics.IndexViewInteroperability interoperability,
-            sparqles.avro.analytics.IndexViewDiscoverability discoverability) {
+            sparqles.avro.analytics.IndexViewDiscoverability discoverability,
+            sparqles.avro.analytics.IndexViewCalculation calculation) {
         this.endpoint = endpoint;
         this.lastUpdate = lastUpdate;
         this.availability = availability;
         this.performance = performance;
         this.interoperability = interoperability;
         this.discoverability = discoverability;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new Index RecordBuilder */
-    public static sparqles.avro.analytics.Index.Builder newBuilder() {
-        return new sparqles.avro.analytics.Index.Builder();
-    }
-
-    /** Creates a new Index RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.Index.Builder newBuilder(
-            sparqles.avro.analytics.Index.Builder other) {
-        return new sparqles.avro.analytics.Index.Builder(other);
-    }
-
-    /** Creates a new Index RecordBuilder by copying an existing Index instance */
-    public static sparqles.avro.analytics.Index.Builder newBuilder(
-            sparqles.avro.analytics.Index other) {
-        return new sparqles.avro.analytics.Index.Builder(other);
+        this.calculation = calculation;
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -82,6 +69,8 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                 return interoperability;
             case 5:
                 return discoverability;
+            case 6:
+                return calculation;
             default:
                 throw new org.apache.avro.AvroRuntimeException("Bad index");
         }
@@ -108,6 +97,9 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                 break;
             case 5:
                 discoverability = (sparqles.avro.analytics.IndexViewDiscoverability) value$;
+                break;
+            case 6:
+                calculation = (sparqles.avro.analytics.IndexViewCalculation) value$;
                 break;
             default:
                 throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -198,6 +190,37 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         this.discoverability = value;
     }
 
+    /** Gets the value of the 'calculation' field. */
+    public sparqles.avro.analytics.IndexViewCalculation getCalculation() {
+        return calculation;
+    }
+
+    /**
+     * Sets the value of the 'calculation' field.
+     *
+     * @param value the value to set.
+     */
+    public void setCalculation(sparqles.avro.analytics.IndexViewCalculation value) {
+        this.calculation = value;
+    }
+
+    /** Creates a new Index RecordBuilder */
+    public static sparqles.avro.analytics.Index.Builder newBuilder() {
+        return new sparqles.avro.analytics.Index.Builder();
+    }
+
+    /** Creates a new Index RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.Index.Builder newBuilder(
+            sparqles.avro.analytics.Index.Builder other) {
+        return new sparqles.avro.analytics.Index.Builder(other);
+    }
+
+    /** Creates a new Index RecordBuilder by copying an existing Index instance */
+    public static sparqles.avro.analytics.Index.Builder newBuilder(
+            sparqles.avro.analytics.Index other) {
+        return new sparqles.avro.analytics.Index.Builder(other);
+    }
+
     /** RecordBuilder for Index instances. */
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Index>
             implements org.apache.avro.data.RecordBuilder<Index> {
@@ -208,6 +231,7 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
         private sparqles.avro.analytics.IndexViewPerformance performance;
         private sparqles.avro.analytics.IndexViewInteroperability interoperability;
         private sparqles.avro.analytics.IndexViewDiscoverability discoverability;
+        private sparqles.avro.analytics.IndexViewCalculation calculation;
 
         /** Creates a new Builder */
         private Builder() {
@@ -242,6 +266,10 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                 this.discoverability = data().deepCopy(fields()[5].schema(), other.discoverability);
                 fieldSetFlags()[5] = true;
             }
+            if (isValidValue(fields()[6], other.calculation)) {
+                this.calculation = data().deepCopy(fields()[6].schema(), other.calculation);
+                fieldSetFlags()[6] = true;
+            }
         }
 
         /** Creates a Builder by copying an existing Index instance */
@@ -271,6 +299,10 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
             if (isValidValue(fields()[5], other.discoverability)) {
                 this.discoverability = data().deepCopy(fields()[5].schema(), other.discoverability);
                 fieldSetFlags()[5] = true;
+            }
+            if (isValidValue(fields()[6], other.calculation)) {
+                this.calculation = data().deepCopy(fields()[6].schema(), other.calculation);
+                fieldSetFlags()[6] = true;
             }
         }
 
@@ -427,6 +459,32 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
             return this;
         }
 
+        /** Gets the value of the 'calculation' field */
+        public sparqles.avro.analytics.IndexViewCalculation getCalculation() {
+            return calculation;
+        }
+
+        /** Sets the value of the 'calculation' field */
+        public sparqles.avro.analytics.Index.Builder setCalculation(
+                sparqles.avro.analytics.IndexViewCalculation value) {
+            validate(fields()[6], value);
+            this.calculation = value;
+            fieldSetFlags()[6] = true;
+            return this;
+        }
+
+        /** Checks whether the 'calculation' field has been set */
+        public boolean hasCalculation() {
+            return fieldSetFlags()[6];
+        }
+
+        /** Clears the value of the 'calculation' field */
+        public sparqles.avro.analytics.Index.Builder clearCalculation() {
+            calculation = null;
+            fieldSetFlags()[6] = false;
+            return this;
+        }
+
         @Override
         public Index build() {
             try {
@@ -459,6 +517,11 @@ public class Index extends org.apache.avro.specific.SpecificRecordBase
                                 ? this.discoverability
                                 : (sparqles.avro.analytics.IndexViewDiscoverability)
                                         defaultValue(fields()[5]);
+                record.calculation =
+                        fieldSetFlags()[6]
+                                ? this.calculation
+                                : (sparqles.avro.analytics.IndexViewCalculation)
+                                        defaultValue(fields()[6]);
                 return record;
             } catch (Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);

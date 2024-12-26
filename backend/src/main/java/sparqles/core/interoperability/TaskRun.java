@@ -38,22 +38,6 @@ public abstract class TaskRun {
         _start = start;
     }
 
-    private static String toString(QuerySolution qs, boolean first) {
-        StringBuffer vars = new StringBuffer();
-        StringBuffer sb = new StringBuffer();
-        Iterator<String> varns = qs.varNames();
-        while (varns.hasNext()) {
-            String varName = varns.next();
-            if (first) {
-                vars.append(varName + "\t");
-            }
-            sb.append(FmtUtils.stringForObject(qs.get(varName)) + "\t");
-        }
-
-        if (first) return vars.toString() + "\n" + sb.toString();
-        return sb.toString();
-    }
-
     public String getQuery() {
         return _query;
     }
@@ -176,5 +160,21 @@ public abstract class TaskRun {
         }
 
         return sols;
+    }
+
+    private static String toString(QuerySolution qs, boolean first) {
+        StringBuffer vars = new StringBuffer();
+        StringBuffer sb = new StringBuffer();
+        Iterator<String> varns = qs.varNames();
+        while (varns.hasNext()) {
+            String varName = varns.next();
+            if (first) {
+                vars.append(varName + "\t");
+            }
+            sb.append(FmtUtils.stringForObject(qs.get(varName)) + "\t");
+        }
+
+        if (first) return vars.toString() + "\n" + sb.toString();
+        return sb.toString();
     }
 }

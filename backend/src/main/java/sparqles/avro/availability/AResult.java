@@ -12,7 +12,12 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
     public static final org.apache.avro.Schema SCHEMA$ =
             new org.apache.avro.Schema.Parser()
                     .parse(
-                            "{\"type\":\"record\",\"name\":\"AResult\",\"namespace\":\"sparqles.avro.availability\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"responseTime\",\"type\":\"long\"},{\"name\":\"isAvailable\",\"type\":\"boolean\",\"default\":false},{\"name\":\"isPrivate\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"explanation\",\"type\":[\"string\",\"null\"]}]}");
+                            "{\"type\":\"record\",\"name\":\"AResult\",\"namespace\":\"sparqles.avro.availability\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"responseTime\",\"type\":\"long\"},{\"name\":\"isAvailable\",\"type\":\"boolean\",\"default\":false},{\"name\":\"isPrivate\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"explanation\",\"type\":[\"string\",\"null\"]}],\"import\":\"EndpointResult.avsc\"}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public sparqles.avro.EndpointResult endpointResult;
     @Deprecated public long responseTime;
     @Deprecated public boolean isAvailable;
@@ -40,27 +45,6 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
         this.isPrivate = isPrivate;
         this.Exception = Exception;
         this.explanation = explanation;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new AResult RecordBuilder */
-    public static sparqles.avro.availability.AResult.Builder newBuilder() {
-        return new sparqles.avro.availability.AResult.Builder();
-    }
-
-    /** Creates a new AResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.availability.AResult.Builder newBuilder(
-            sparqles.avro.availability.AResult.Builder other) {
-        return new sparqles.avro.availability.AResult.Builder(other);
-    }
-
-    /** Creates a new AResult RecordBuilder by copying an existing AResult instance */
-    public static sparqles.avro.availability.AResult.Builder newBuilder(
-            sparqles.avro.availability.AResult other) {
-        return new sparqles.avro.availability.AResult.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -196,6 +180,23 @@ public class AResult extends org.apache.avro.specific.SpecificRecordBase
      */
     public void setExplanation(java.lang.CharSequence value) {
         this.explanation = value;
+    }
+
+    /** Creates a new AResult RecordBuilder */
+    public static sparqles.avro.availability.AResult.Builder newBuilder() {
+        return new sparqles.avro.availability.AResult.Builder();
+    }
+
+    /** Creates a new AResult RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.availability.AResult.Builder newBuilder(
+            sparqles.avro.availability.AResult.Builder other) {
+        return new sparqles.avro.availability.AResult.Builder(other);
+    }
+
+    /** Creates a new AResult RecordBuilder by copying an existing AResult instance */
+    public static sparqles.avro.availability.AResult.Builder newBuilder(
+            sparqles.avro.availability.AResult other) {
+        return new sparqles.avro.availability.AResult.Builder(other);
     }
 
     /** RecordBuilder for AResult instances. */

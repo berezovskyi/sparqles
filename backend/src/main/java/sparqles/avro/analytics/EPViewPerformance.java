@@ -13,6 +13,11 @@ public class EPViewPerformance extends org.apache.avro.specific.SpecificRecordBa
             new org.apache.avro.Schema.Parser()
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewPerformance\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"threshold\",\"type\":\"long\"},{\"name\":\"ask\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewPerformanceData\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"},{\"name\":\"data\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewPerformanceDataValues\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"double\"},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]}]}}}]}}},{\"name\":\"join\",\"type\":{\"type\":\"array\",\"items\":\"EPViewPerformanceData\"}}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated public long threshold;
     @Deprecated public java.util.List<sparqles.avro.analytics.EPViewPerformanceData> ask;
     @Deprecated public java.util.List<sparqles.avro.analytics.EPViewPerformanceData> join;
@@ -31,30 +36,6 @@ public class EPViewPerformance extends org.apache.avro.specific.SpecificRecordBa
         this.threshold = threshold;
         this.ask = ask;
         this.join = join;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewPerformance RecordBuilder */
-    public static sparqles.avro.analytics.EPViewPerformance.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewPerformance.Builder();
-    }
-
-    /** Creates a new EPViewPerformance RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewPerformance.Builder newBuilder(
-            sparqles.avro.analytics.EPViewPerformance.Builder other) {
-        return new sparqles.avro.analytics.EPViewPerformance.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewPerformance RecordBuilder by copying an existing EPViewPerformance
-     * instance
-     */
-    public static sparqles.avro.analytics.EPViewPerformance.Builder newBuilder(
-            sparqles.avro.analytics.EPViewPerformance other) {
-        return new sparqles.avro.analytics.EPViewPerformance.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -133,6 +114,26 @@ public class EPViewPerformance extends org.apache.avro.specific.SpecificRecordBa
      */
     public void setJoin(java.util.List<sparqles.avro.analytics.EPViewPerformanceData> value) {
         this.join = value;
+    }
+
+    /** Creates a new EPViewPerformance RecordBuilder */
+    public static sparqles.avro.analytics.EPViewPerformance.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewPerformance.Builder();
+    }
+
+    /** Creates a new EPViewPerformance RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewPerformance.Builder newBuilder(
+            sparqles.avro.analytics.EPViewPerformance.Builder other) {
+        return new sparqles.avro.analytics.EPViewPerformance.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewPerformance RecordBuilder by copying an existing EPViewPerformance
+     * instance
+     */
+    public static sparqles.avro.analytics.EPViewPerformance.Builder newBuilder(
+            sparqles.avro.analytics.EPViewPerformance other) {
+        return new sparqles.avro.analytics.EPViewPerformance.Builder(other);
     }
 
     /** RecordBuilder for EPViewPerformance instances. */

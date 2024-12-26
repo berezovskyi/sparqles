@@ -14,6 +14,10 @@ public class EPViewInteroperability extends org.apache.avro.specific.SpecificRec
                     .parse(
                             "{\"type\":\"record\",\"name\":\"EPViewInteroperability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"SPARQL1Features\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewInteroperabilityData\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"boolean\"},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]}]}}},{\"name\":\"SPARQL11Features\",\"type\":{\"type\":\"array\",\"items\":\"EPViewInteroperabilityData\"}}]}");
 
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
     @Deprecated
     public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features;
 
@@ -32,30 +36,6 @@ public class EPViewInteroperability extends org.apache.avro.specific.SpecificRec
             java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features) {
         this.SPARQL1Features = SPARQL1Features;
         this.SPARQL11Features = SPARQL11Features;
-    }
-
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /** Creates a new EPViewInteroperability RecordBuilder */
-    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewInteroperability.Builder();
-    }
-
-    /** Creates a new EPViewInteroperability RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewInteroperability.Builder other) {
-        return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
-    }
-
-    /**
-     * Creates a new EPViewInteroperability RecordBuilder by copying an existing
-     * EPViewInteroperability instance
-     */
-    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewInteroperability other) {
-        return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -120,6 +100,26 @@ public class EPViewInteroperability extends org.apache.avro.specific.SpecificRec
     public void setSPARQL11Features(
             java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
         this.SPARQL11Features = value;
+    }
+
+    /** Creates a new EPViewInteroperability RecordBuilder */
+    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder() {
+        return new sparqles.avro.analytics.EPViewInteroperability.Builder();
+    }
+
+    /** Creates a new EPViewInteroperability RecordBuilder by copying an existing Builder */
+    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
+            sparqles.avro.analytics.EPViewInteroperability.Builder other) {
+        return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
+    }
+
+    /**
+     * Creates a new EPViewInteroperability RecordBuilder by copying an existing
+     * EPViewInteroperability instance
+     */
+    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
+            sparqles.avro.analytics.EPViewInteroperability other) {
+        return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
     }
 
     /** RecordBuilder for EPViewInteroperability instances. */

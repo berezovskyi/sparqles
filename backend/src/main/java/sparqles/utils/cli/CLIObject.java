@@ -14,58 +14,6 @@ public abstract class CLIObject {
     private static final Logger log = LoggerFactory.getLogger(CLIObject.class);
     private Options _opts;
 
-    public CLIObject() {
-        init();
-    }
-
-    /**
-     * @param cmd
-     * @param paramSparqlQuery
-     * @return
-     */
-    public static String getOptionValue(CommandLine cmd, String[] param) {
-        if (cmd.hasOption(param[ARGUMENTS.SHORT_ARG]))
-            return cmd.getOptionValue(param[ARGUMENTS.SHORT_ARG]);
-        if (cmd.hasOption(param[ARGUMENTS.LONG_ARG]))
-            return cmd.getOptionValue(param[ARGUMENTS.LONG_ARG]);
-        return null;
-    }
-
-    /**
-     * @param cmd
-     * @param paramProxyPort
-     * @param object
-     * @return
-     */
-    public static String getOptionValue(CommandLine cmd, String[] param, String defaultValue) {
-        String s = getOptionValue(cmd, param);
-        if (s == null) return defaultValue;
-        return s;
-    }
-
-    public static String[] getOptionValues(CommandLine cmd, String[] param) {
-        if (cmd.hasOption(param[ARGUMENTS.SHORT_ARG]))
-            return cmd.getOptionValues(param[ARGUMENTS.SHORT_ARG]);
-        if (cmd.hasOption(param[ARGUMENTS.LONG_ARG]))
-            return cmd.getOptionValues(param[ARGUMENTS.LONG_ARG]);
-        return null;
-    }
-
-    /**
-     * @param paramDebug
-     * @return
-     */
-    public static boolean hasOption(CommandLine cmd, String[] param) {
-        if (cmd.hasOption(param[ARGUMENTS.SHORT_ARG])) return true;
-        if (cmd.hasOption(param[ARGUMENTS.LONG_ARG])) return true;
-
-        return false;
-    }
-
-    public static boolean hasOption(CommandLine cmd, String param) {
-        return cmd.hasOption(param);
-    }
-
     public Options getOptions() {
         return _opts;
     }
@@ -74,6 +22,10 @@ public abstract class CLIObject {
 
     public String getCommand() {
         return this.getClass().getSimpleName();
+    }
+
+    public CLIObject() {
+        init();
     }
 
     protected void init() {
@@ -131,5 +83,53 @@ public abstract class CLIObject {
             System.exit(-1);
         }
         return cmd;
+    }
+
+    /**
+     * @param cmd
+     * @param paramSparqlQuery
+     * @return
+     */
+    public static String getOptionValue(CommandLine cmd, String[] param) {
+        if (cmd.hasOption(param[ARGUMENTS.SHORT_ARG]))
+            return cmd.getOptionValue(param[ARGUMENTS.SHORT_ARG]);
+        if (cmd.hasOption(param[ARGUMENTS.LONG_ARG]))
+            return cmd.getOptionValue(param[ARGUMENTS.LONG_ARG]);
+        return null;
+    }
+
+    /**
+     * @param cmd
+     * @param paramProxyPort
+     * @param object
+     * @return
+     */
+    public static String getOptionValue(CommandLine cmd, String[] param, String defaultValue) {
+        String s = getOptionValue(cmd, param);
+        if (s == null) return defaultValue;
+        return s;
+    }
+
+    public static String[] getOptionValues(CommandLine cmd, String[] param) {
+        if (cmd.hasOption(param[ARGUMENTS.SHORT_ARG]))
+            return cmd.getOptionValues(param[ARGUMENTS.SHORT_ARG]);
+        if (cmd.hasOption(param[ARGUMENTS.LONG_ARG]))
+            return cmd.getOptionValues(param[ARGUMENTS.LONG_ARG]);
+        return null;
+    }
+
+    /**
+     * @param paramDebug
+     * @return
+     */
+    public static boolean hasOption(CommandLine cmd, String[] param) {
+        if (cmd.hasOption(param[ARGUMENTS.SHORT_ARG])) return true;
+        if (cmd.hasOption(param[ARGUMENTS.LONG_ARG])) return true;
+
+        return false;
+    }
+
+    public static boolean hasOption(CommandLine cmd, String param) {
+        return cmd.hasOption(param);
     }
 }
