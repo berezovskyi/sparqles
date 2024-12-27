@@ -6,7 +6,7 @@
   <artifactId>sparqles</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-    <jdkLevel>21</jdkLevel>
+    <jdkLevel>17</jdkLevel>
     <maven.compiler.release>${jdkLevel}</maven.compiler.release>
     <maven.compiler.target>${jdkLevel}</maven.compiler.target>
     <maven.compiler.source>${jdkLevel}</maven.compiler.source>
@@ -55,7 +55,7 @@
                   <version>3.6.0</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
-                  <version>21</version>
+                  <version>17</version>
                 </requireJavaVersion>
                 <bannedDependencies>
                   <excludes>
