@@ -125,9 +125,7 @@
    	 		]
    	 	}
  	},
- 	{"name": "calculation", "type":[
-    "null",
-		{
+ 	{"name": "calculation", "type":	{
 			"namespace":"sparqles.avro.analytics",
 			"type":"record",
 			"name":"EPViewCalculation",
@@ -144,7 +142,7 @@
 						  	"name": "uri", "type": "string"
 						  }
 					 }
-				},
+        },
 				{"name": "VoID", "type": "string"},
 				{"name": "VoIDPart", "type": "boolean"},
 				{"name": "SD", "type": "string"},
@@ -152,9 +150,22 @@
 				{"name": "coherence", "type": "double"},
 				{"name": "RS", "type": "double"}
    	 		]
-   	 	}
-    ],
-    "default": null
+   	 	},
+      "default": {
+        "triples": -1,
+        "entities": -1,
+        "classes": -1,
+        "properties": -1,
+        "distinctSubjects": -1,
+        "distinctObjects": -1,
+        "exampleResources": [],
+        "VoID": "n/a",
+        "VoIDPart": false,
+        "SD": "n/a",
+        "SDPart": false,
+        "coherence": -1.0,
+        "RS": -1.0
+      }
  	}
 ]
 }
