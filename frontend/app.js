@@ -54,7 +54,8 @@ app.get('/', function (req, res) {
             }
           )
 
-          var availability = amonths;
+          // var availability = amonths;
+          var availability = null; // do not use amoths, use index.availability
           if (typeof availability != undefined && availability != null && availability.length > 0) {
             // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
             for (var i = 0; i < availability.length; i++) {
