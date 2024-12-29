@@ -54,8 +54,11 @@ app.get('/', function (req, res) {
             }
           )
 
-          // var availability = amonths;
-          var availability = null; // do not use amoths, use index.availability
+          console.log(`All availability data: ${JSON.stringify(index.availability)}`);
+          console.log(`All amonths data: ${JSON.stringify(amonths)}`);
+
+          var availability = amonths;
+          // var availability = null; // do not use amoths, use index.availability
           if (typeof availability != undefined && availability != null && availability.length > 0) {
             // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
             for (var i = 0; i < availability.length; i++) {
@@ -70,9 +73,12 @@ app.get('/', function (req, res) {
             availability = index.availability;
 
             function indexValuesToAmonthFormat(entry) {
+              console.log(`Current index.avail entry: ${JSON.stringify(amonths)}`);
               return entry.values.map(function (value) {
-                return [Date.parse(parseInt(value.x) * 1000), value.y];
-              });
+                // return [new Date(parseInt(value.x)).toISOString(), value.y * 100];
+                // return [value.x, value.y * 100];
+                return [parseInt(value.x), value.y * 100];
+              }).sort((a,b) => a[0] - b[0]);
             }
 
             availability = [
@@ -81,8 +87,9 @@ app.get('/', function (req, res) {
               { "key": "[90-95)", "index": 3, "values": indexValuesToAmonthFormat(availability[2]) },
               { "key": "[95-100]", "index": 4, "values": indexValuesToAmonthFormat(availability[3]) }
             ];
-          }
 
+            console.log(`Final values from index.avail: ${JSON.stringify(availability)}`);
+          }
           
           //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
 

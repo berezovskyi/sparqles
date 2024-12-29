@@ -67,25 +67,33 @@ block content
     var colors = d3.scale.category20();
     keyColor = function(d, i) {
       // return grey colour for values to be largely ignored
-      if (d.key === "[0-5)") {
+      if (d.key === "[0-5)" || d.key === "missing") {
         return "#c4c4c4";
       }
       return colors(d.key);
     };
     
+    labelColor = function(d, i) {
+      // return grey colour for values to be largely ignored
+      if (d?.data?.label === "missing") {
+        return "#c4c4c4";
+      }
+      return colors(d?.data?.label);
+    };
+
     // Availability
     nv.addGraph(function() {
       var chart = nv.models.stackedAreaChart()
-        .x(function(d) { return d[0] })
+        .x(function(d) { return new Date(d[0]) })
         .y(function(d) { return d[1] })
         //.yDomain([0,1])
         .color(keyColor)
         .showControls(false);
         //.clipEdge(true);
       
-      //chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d)) });
+      chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d)) });
       //make sure everyone has the same time displayed.
-      chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d+ ((new Date().getTimezoneOffset()+60) * 60000))) });
+      //- chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d+ ((new Date().getTimezoneOffset()+60) * 60000))) });
       chart.yAxis.tickFormat(d3.format('.0f'));
       
       d3.select('#avail')
@@ -154,7 +162,8 @@ block content
         .valueFormat(d3.format('.2%'))
         .showLegend(false)
         .height(550)
-        .color(d3.scale.category10().range())
+        //- .color(d3.scale.category10().range())
+        .color(labelColor)
         .margin({top: 0, right: 5, bottom: 40, left: 0})
         .donut(true);
       chart.pie

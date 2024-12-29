@@ -5,6 +5,7 @@
 /data/
 
 *.tmp
+*~
 
 # Node
 npm-debug.log
