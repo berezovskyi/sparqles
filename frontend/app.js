@@ -71,7 +71,7 @@ app.get('/', function (req, res) {
 
             function indexValuesToAmonthFormat(entry) {
               return entry.values.map(function (value) {
-                return [Date.parse(value.x * 1000), value.y];
+                return [Date.parse(parseInt(value.x) * 1000), value.y];
               });
             }
 
