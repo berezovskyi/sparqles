@@ -63,12 +63,14 @@ public class IndexViewAnalytics implements Task<Index> {
     // get the index view
     Collection<Index> idxs = _dbm.get(Index.class, Index.SCHEMA$);
     Index idx = null;
-    if (idxs.size() == 0) {
+    if (idxs == null || idxs.isEmpty()) {
       idx = createIndex();
       _dbm.insert(idx);
     } else if (idxs.size() > 1) {
-      //			log.warn("Too many results");
-    } else idx = idxs.iterator().next();
+      log.error("Too many results");
+    } else {
+      idx = idxs.iterator().next();
+    }
 
     // get epview
     Collection<EPView> epviews = _dbm.get(EPView.class, EPView.SCHEMA$);
@@ -139,6 +141,7 @@ public class IndexViewAnalytics implements Task<Index> {
   }
 
   private void recalculateAvailabilityMonthly() {
+    log.info("Recalculating availability monthly");
     try {
       Gson gson = new Gson();
 
@@ -230,7 +233,7 @@ public class IndexViewAnalytics implements Task<Index> {
         // increment the month to process
         cal.add(Calendar.MONTH, 1);
       }
-
+      log.debug("Recalculating availability monthly COMPLETE");
     } catch (IOException e) {
       log.info("Exception while processing availability monthly (IO)", e);
     } catch (Exception e) {
