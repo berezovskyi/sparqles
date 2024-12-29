@@ -68,12 +68,19 @@ app.get('/', function (req, res) {
           }
           else {
             availability = index.availability;
-            for (var i = 0; i < availability.length; i++) {
-              if (availability[i]['key'] == '[0;5]') availability[i]['key'] = '[0-5)'
-              if (availability[i]['key'] == ']5;90]') availability[i]['key'] = '[5-90)'
-              if (availability[i]['key'] == ']90;95]') availability[i]['key'] = '[90-95)'
-              if (availability[i]['key'] == ']95;100]') availability[i]['key'] = '[95-100]'
+
+            function indexValuesToAmonthFormat(entry) {
+              return entry.values.map(function (value) {
+                return [Date.parse(value.x * 1000), value.y];
+              });
             }
+
+            availability = [
+              { "key": "[0-5)", "index": 1, "values": indexValuesToAmonthFormat(availability[0]) },
+              { "key": "[5-90)", "index": 2, "values": indexValuesToAmonthFormat(availability[1]) },
+              { "key": "[90-95)", "index": 3, "values": indexValuesToAmonthFormat(availability[2]) },
+              { "key": "[95-100]", "index": 4, "values": indexValuesToAmonthFormat(availability[3]) }
+            ];
           }
 
           
