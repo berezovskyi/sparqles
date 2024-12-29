@@ -12,12 +12,12 @@ import sparqles.utils.MongoDBManager;
  */
 public interface Task<V extends SpecificRecordBase> extends Callable<V> {
 
-    //	public void execute();
+  //	public void execute();
 
-    /**
-     * Set the MongoDBManager.
-     *
-     * @param dbm
-     */
-    void setDBManager(MongoDBManager dbm);
+  /**
+   * Set the MongoDBManager.
+   *
+   * @param dbm
+   */
+  void setDBManager(MongoDBManager dbm);
 }

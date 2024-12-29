@@ -18,55 +18,53 @@ import sparqles.utils.MongoDBManager;
 
 public class AAnalyticsTEST {
 
-    private MongoDBManager m;
+  private MongoDBManager m;
 
-    @Before
-    public void setUp() throws Exception {
-        SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
-        m = new MongoDBManager();
+  @Before
+  public void setUp() throws Exception {
+    SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
+    m = new MongoDBManager();
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    m.close();
+  }
+
+  @Test
+  public void test() throws URISyntaxException {
+    m.initAggregateCollections();
+    AAnalyser a = new AAnalyser(m);
+
+    Endpoint ep = EndpointFactory.newEndpoint("http://dbpedia.org/sparql");
+    System.out.println("Analyse");
+
+    TreeSet<AResult> res =
+        new TreeSet<AResult>(
+            new Comparator<AResult>() {
+              public int compare(AResult o1, AResult o2) {
+                int diff =
+                    o1.getEndpointResult().getStart().compareTo(o2.getEndpointResult().getStart());
+                return diff;
+              }
+            });
+
+    List<AResult> epRes = m.getResults(ep, AResult.class, AResult.SCHEMA$);
+    System.out.println(epRes.size());
+    System.out.println("Results: " + epRes.size());
+    for (AResult epres : epRes) {
+      res.add(epres);
+      //			System.out.println(new Date(epres.getEndpointResult().getStart()));
     }
 
-    @After
-    public void tearDown() throws Exception {
-        m.close();
+    //		if(_onlyLast&&epRes.size()!=0){
+    //			a.analyse(res.last());
+    //		}else{
+    for (AResult ares : res) {
+      a.analyse(ares);
     }
+    //		}
+    //		log.info("ANALYSE AVAILABILITY {} and {}",ep, epRes.size());
 
-    @Test
-    public void test() throws URISyntaxException {
-        m.initAggregateCollections();
-        AAnalyser a = new AAnalyser(m);
-
-        Endpoint ep = EndpointFactory.newEndpoint("http://dbpedia.org/sparql");
-        System.out.println("Analyse");
-
-        TreeSet<AResult> res =
-                new TreeSet<AResult>(
-                        new Comparator<AResult>() {
-                            public int compare(AResult o1, AResult o2) {
-                                int diff =
-                                        o1.getEndpointResult()
-                                                .getStart()
-                                                .compareTo(o2.getEndpointResult().getStart());
-                                return diff;
-                            }
-                        });
-
-        List<AResult> epRes = m.getResults(ep, AResult.class, AResult.SCHEMA$);
-        System.out.println(epRes.size());
-        System.out.println("Results: " + epRes.size());
-        for (AResult epres : epRes) {
-            res.add(epres);
-            //			System.out.println(new Date(epres.getEndpointResult().getStart()));
-        }
-
-        //		if(_onlyLast&&epRes.size()!=0){
-        //			a.analyse(res.last());
-        //		}else{
-        for (AResult ares : res) {
-            a.analyse(ares);
-        }
-        //		}
-        //		log.info("ANALYSE AVAILABILITY {} and {}",ep, epRes.size());
-
-    }
+  }
 }
