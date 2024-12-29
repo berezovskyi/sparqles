@@ -53,14 +53,29 @@ app.get('/', function (req, res) {
               else return v
             }
           )
-          // rename availability colors range
-          for (var i = 0; i < amonths.length; i++) {
-            if (amonths[i]['key'] == '0-5') amonths[i]['key'] = '[0-5)'
-            if (amonths[i]['key'] == '5-75') amonths[i]['key'] = '[5-75)'
-            if (amonths[i]['key'] == '75-95') amonths[i]['key'] = '[75-95)'
-            if (amonths[i]['key'] == '95-99') amonths[i]['key'] = '[95-99)'
-            if (amonths[i]['key'] == '99-100') amonths[i]['key'] = '[99-100]'
+
+          var availability = amonths;
+          if (typeof availability != undefined && availability != null && availability.length > 0) {
+            // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
+            for (var i = 0; i < availability.length; i++) {
+              if (availability[i]['key'] == '0-5') availability[i]['key'] = '[0-5)'
+              if (availability[i]['key'] == '5-75') availability[i]['key'] = '[5-75)'
+              if (availability[i]['key'] == '75-95') availability[i]['key'] = '[75-95)'
+              if (availability[i]['key'] == '95-99') availability[i]['key'] = '[95-99)'
+              if (availability[i]['key'] == '99-100') availability[i]['key'] = '[99-100]'
+            }
           }
+          else {
+            availability = index.availability;
+            for (var i = 0; i < availability.length; i++) {
+              if (availability[i]['key'] == '[0;5]') availability[i]['key'] = '[0-5)'
+              if (availability[i]['key'] == ']5;90]') availability[i]['key'] = '[5-90)'
+              if (availability[i]['key'] == ']90;95]') availability[i]['key'] = '[90-95)'
+              if (availability[i]['key'] == ']95;100]') availability[i]['key'] = '[95-100]'
+            }
+          }
+
+          
           //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
 
           //PERFORMANCE
@@ -96,7 +111,7 @@ app.get('/', function (req, res) {
                     configInstanceTitle: configApp.get('configInstanceTitle'),
                     baseUri: configApp.get('baseUri'),
                     gitRepo: configApp.get('gitRepo'),
-                    amonths: amonths,
+                    amonths: availability, // TODO: refactor naming
                     index: index,
                     indexInterop: indexInterop,
                     nbEndpointsSearch: nbEndpointsSearch,

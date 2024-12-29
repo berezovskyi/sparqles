@@ -65,7 +65,13 @@ block content
           svg#disco(style='height: 350px;margin-top:-50px;')
   script.
     var colors = d3.scale.category20();
-    keyColor = function(d, i) {return colors(d.key)};
+    keyColor = function(d, i) {
+      // return grey colour for values to be largely ignored
+      if (d.key === "[0-5)") {
+        return "#c4c4c4";
+      }
+      return colors(d.key);
+    };
     
     // Availability
     nv.addGraph(function() {
