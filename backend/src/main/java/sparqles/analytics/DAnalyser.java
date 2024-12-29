@@ -196,9 +196,7 @@ public class DAnalyser extends Analytics<DResult> {
         DiscoverabilityView view = null;
         List<DiscoverabilityView> views = new ArrayList<DiscoverabilityView>();
         if (_db != null) {
-            try {
-                views = _db.getResults(ep, DiscoverabilityView.class, DiscoverabilityView.SCHEMA$);
-            }
+            views = _db.getResults(ep, DiscoverabilityView.class, DiscoverabilityView.SCHEMA$);
         }
         if (views.size() != 1) {
             log.warn("We have {} FeatureView, expected was 1", views.size());
