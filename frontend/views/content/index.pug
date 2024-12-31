@@ -63,6 +63,46 @@ block content
           br
           span(onmouseover!=`tooltip.show('${configDisco["Server Name"]}')`, onmouseout='tooltip.hide();') Server name:
           svg#disco(style='height: 350px;margin-top:-50px;')
+      article.wrpl(style='min-width: 400px;')
+        .wrplInnerBox(style='height: 380px;')
+          a(title='', href='#')
+            h2 
+              span(onmouseover='tooltip.show(\'#{configProfiles["profiles"]}\')', onmouseout='tooltip.hide();') Profiles (VoID & Coherence)
+          div
+            b #{parseFloat((indexCalculation.VoID*100).toFixed(2))+ '%'} 
+            | of the endpoints have a 
+            b calculated VoID descriptions 
+            | (including 
+            b #{parseFloat((indexCalculation.VoIDPart*100).toFixed(2))+ '%'} 
+            | partially calculated)
+          div
+            b #{parseFloat((indexCalculation.Coherence*100).toFixed(2))+ '%'} 
+            | of the endpoints have a 
+            b calculated coherence
+          br
+          span(onmouseover='tooltip.show(\'#{configProfiles["Coherence"]}\')', onmouseout='tooltip.hide();') Coherence:
+          svg#coher(style='height: 350px;margin-top:-50px;')
+      article.wrpl(style='min-width: 400px;')
+        .wrplInnerBox(style='height: 380px;')
+          a(title='', href='#')
+            h2 
+              span(onmouseover='tooltip.show(\'#{configProfiles["profiles"]}\')', onmouseout='tooltip.hide();') Profiles (SD & RS)
+          div
+            b #{parseFloat((indexCalculation.SD*100).toFixed(2))+ '%'} 
+            | of the endpoints have a 
+            b calculated Service description 
+            | (including 
+            b #{parseFloat((indexCalculation.SDPart*100).toFixed(2))+ '%'} 
+            | partially calculated)
+          div
+            b #{parseFloat((indexCalculation.RS*100).toFixed(2))+ '%'} 
+            | of the endpoints have a 
+            b calculated relation specialty
+          br
+          span(onmouseover='tooltip.show(\'#{configProfiles["RS"]}\')', onmouseout='tooltip.hide();') Relationship specialty:
+          svg#rs(style='height: 350px;margin-top:-50px;')
+      script.
+
   script.
     var colors = d3.scale.category20();
     keyColor = function(d, i) {
