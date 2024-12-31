@@ -3,14 +3,24 @@ package sparqles.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.time.Duration;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.jena.http.sys.HttpRequestModifier;
+import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
+import org.apache.jena.sparql.exec.http.Params;
+import org.apache.jena.sparql.exec.http.QueryExecutionHTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
+import sparqles.core.interoperability.TaskRun;
 
 public class QueryManager {
 
+  public static final UserAgentRequestModifier USER_AGENT_REQUEST_MODIFIER = new UserAgentRequestModifier();
   private static final Logger log = LoggerFactory.getLogger(QueryManager.class);
 
   public static String getQuery(String folder, String qFile) {
@@ -58,19 +68,43 @@ public class QueryManager {
   }
 
   public static QueryExecution getExecution(Endpoint ep, String query) throws Exception {
-    return getExecution(ep.getUri().toString(), query);
+    return getExecution(ep.getUri().toString(), query, -1);
   }
 
-  public static QueryExecution getExecution(String epURL, String query) throws Exception {
-    try {
-      // FIXME
-      //            HttpEnv.getDftHttpClient()
-      //			HttpOp.setUserAgent(CONSTANTS.USER_AGENT);
-      log.debug("INIT QueryExecution for {} with query  {}", epURL, query.replaceAll("\n", ""));
-      return QueryExecution.service(epURL, query);
-    } catch (Exception e) {
-      throw e;
-      //            throw new Exception(e.getMessage());
+  public static QueryExecution getExecution(String epURL, String query) {
+    return getExecution(epURL, query, -1);
+  }
+
+  public static QueryExecution getExecution(Endpoint ep, String query, Duration timeout) {
+    return getExecution(ep.getUri().toString(), query, timeout.toSeconds());
+  }
+
+  public static QueryExecution getExecution(String epURL, String query, Duration timeout) {
+    return getExecution(epURL, query, timeout.toSeconds());
+  }
+
+  /**
+   *
+   * @param epURL HTTP SPARQL endpoint URI
+   * @param query a valid SPARQL query
+   * @param timeout in seconds
+   * @return
+   * @throws Exception
+   */
+  public static QueryExecution getExecution(String epURL, String query, long timeout) {
+    log.debug("INIT QueryExecution for {} with query  {}", epURL, query.replaceAll("\n", ""));
+    QueryExecutionHTTP qe = QueryExecution.service(epURL, query);
+    if (timeout != -1) {
+      qe.getContext().set(ARQ.httpQueryTimeout, timeout);
+    }
+    qe.getContext().set(ARQ.httpRequestModifer, USER_AGENT_REQUEST_MODIFIER);
+    return qe;
+  }
+
+  public static class UserAgentRequestModifier implements HttpRequestModifier {
+    @Override
+    public void modify(Params params, Map<String, String> httpHeaders) {
+      httpHeaders.put("User-Agent", "Mozilla/5.0 (compatible; SPARQLES/0.3.0; +https://sparqles.sv.berezovskyi.me)");
     }
   }
 }

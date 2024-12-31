@@ -59,12 +59,6 @@ public abstract class TaskRun {
       // FIXME: find a new way to set these timeouts
       //            qexec.setTimeout(FIRST_RESULT_TIMEOUT, FIRST_RESULT_TIMEOUT);
       qexec.getContext().set(ARQ.httpQueryTimeout, FIRST_RESULT_TIMEOUT);
-      qexec.getContext().set(ARQ.httpRequestModifer, new HttpRequestModifier() {
-        @Override
-        public void modify(Params params, Map<String, String> httpHeaders) {
-          httpHeaders.put("User-Agent", "Mozilla/5.0 (compatible; SPARQLES/0.3.0; +https://sparqles.sv.berezovskyi.me)");
-        }
-      });
       cnxion = System.currentTimeMillis();
 
       if (q.isSelectType()) {

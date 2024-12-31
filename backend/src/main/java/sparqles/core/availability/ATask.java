@@ -3,7 +3,11 @@ package sparqles.core.availability;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.net.http.HttpConnectTimeoutException;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLHandshakeException;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
@@ -21,6 +25,8 @@ import sparqles.core.EndpointTask;
 import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
+
+import static java.time.temporal.ChronoUnit.MILLIS;
 
 /**
  * This class performs the required task to study the availability of an endpoint.
@@ -50,17 +56,11 @@ public class ATask extends EndpointTask<AResult> {
 
     long start = System.currentTimeMillis();
     try {
-      QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), ASKQUERY);
+      QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), ASKQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
       // FIXME: find a new way
       //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
       // TaskRun.A_FIRST_RESULT_TIMEOUT);
       qe.getContext().set(ARQ.httpQueryTimeout, TaskRun.A_FIRST_RESULT_TIMEOUT);
-      qe.getContext().set(ARQ.httpRequestModifer, new HttpRequestModifier() {
-        @Override
-        public void modify(Params params, Map<String, String> httpHeaders) {
-          httpHeaders.put("User-Agent", "Mozilla/5.0 (compatible; SPARQLES/0.3.0; +https://sparqles.sv.berezovskyi.me)");
-        }
-      });
 
       boolean response = qe.execAsk();
       if (response) {
@@ -77,7 +77,7 @@ public class ATask extends EndpointTask<AResult> {
       } else {
         return testSelect(epr);
       }
-    } catch (InterruptedException e) {
+    } catch (QueryExceptionHTTP e) {
       String ex = ExceptionHandler.logAndtoString(e);
       result.setException(ex);
       result.setExplanation(ex);
