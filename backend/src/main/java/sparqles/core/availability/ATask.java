@@ -38,7 +38,7 @@ public class ATask extends EndpointTask<AResult> {
   public AResult process(EndpointResult epr) {
     AResult result = new AResult();
     result.setEndpointResult(epr);
-    result.setExplanation("Endpoint is operating normally");
+    result.setExplanation("✅ Endpoint is operating normally");
 
     long start = System.currentTimeMillis();
     try {
@@ -82,12 +82,13 @@ public class ATask extends EndpointTask<AResult> {
             || faultKind == FaultKind.BAD_RESPONSE
             || faultKind == FaultKind.DOWN_TIMEOUT
             || faultKind == FaultKind.BAD_SERVER_ERROR) {
-          return testSelect(epr);
+          result = testSelect(epr);
         } else {
           updateAResultFromFault(faultKind, result);
         }
       }
     }
+    log.info("{} availability: {}", _epURI, result.getExplanation());
     return result;
   }
 
