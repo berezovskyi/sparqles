@@ -1,9 +1,12 @@
 package sparqles.utils;
 
 import java.net.ConnectException;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.net.http.HttpConnectTimeoutException;
 import javax.net.ssl.SSLHandshakeException;
+
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.jena.query.QueryException;
@@ -59,6 +62,8 @@ public class FaultDiagnostic {
       return FaultKind.DOWN_TIMEOUT;
     } else if (e instanceof UnknownHostException) {
       return FaultKind.DOWN_HOST_NOT_FOUND;
+    } else if (ExceptionUtils.indexOfThrowable(e, SocketException.class) != -1) {
+      return FaultKind.DOWN_ENDPOINT;
     } else if (e instanceof QueryException) {
       if (e.getMessage().contains("Endpoint returned Content-Type:")) {
         return FaultKind.BAD_RESPONSE;
