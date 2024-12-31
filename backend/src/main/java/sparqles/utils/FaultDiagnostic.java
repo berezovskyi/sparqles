@@ -21,12 +21,16 @@ public class FaultDiagnostic {
       throw new NullPointerException("Exception shall not be null");
     }
     if (e instanceof QueryExceptionHTTP qe) {
-      log.trace("QueryExceptionHTTP message={}", qe.getMessage());
-      log.trace("QueryExceptionHTTP responseMessage={}", qe.getResponseMessage());
-      log.trace("QueryExceptionHTTP statusCode={}", qe.getStatusCode());
-      log.trace("QueryExceptionHTTP statusLine={}", qe.getStatusLine());
-      log.trace("QueryExceptionHTTP cause", qe.getCause());
-      log.trace("QueryExceptionHTTP response={}", StringUtils.trunc(qe.getResponse()));
+      if (log.isTraceEnabled()) {
+        log.trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        log.trace("QueryExceptionHTTP message={}", qe.getMessage());
+        log.trace("QueryExceptionHTTP responseMessage={}", qe.getResponseMessage());
+        log.trace("QueryExceptionHTTP statusCode={}", qe.getStatusCode());
+        log.trace("QueryExceptionHTTP statusLine={}", qe.getStatusLine());
+        log.trace("QueryExceptionHTTP cause", qe.getCause());
+        log.trace("QueryExceptionHTTP response={}", StringUtils.trunc(qe.getResponse()));
+        log.trace("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      }
       if (e.getCause() instanceof UnknownHostException) {
         return FaultKind.DOWN_HOST_NOT_FOUND;
       }
