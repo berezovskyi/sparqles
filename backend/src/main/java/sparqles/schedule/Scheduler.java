@@ -132,7 +132,7 @@ public class Scheduler {
    * Check endpoint availability once an hour, spread out evenly
    */
   private static CharSequence randomATaskCron() {
-    return String.format("0 %d/60 * ? * * *", random.nextInt(60) + 1);
+    return String.format("0 %d/60 * ? * * *", random.nextInt(60));
   }
 
   /**
@@ -140,7 +140,7 @@ public class Scheduler {
    */
   private static CharSequence randomPTaskCron() {
     var randHours = random.nextInt(19, 24 + 5) % 24;
-    var randMinutes = random.nextInt(1, 7) * 10;
+    var randMinutes = random.nextInt(60);
 
     return String.format("0 %d %d ? * * *", randMinutes,randHours);
   }
