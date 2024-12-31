@@ -3,6 +3,8 @@ package sparqles.core.availability;
 import static java.time.temporal.ChronoUnit.MILLIS;
 
 import java.time.Duration;
+
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
 import org.slf4j.Logger;
@@ -75,8 +77,9 @@ public class ATask extends EndpointTask<AResult> {
                 + " (type={})",
             e.getClass().getName());
         log.debug("Stacktrace", e);
-        log.debug("Full stacktrace", ExceptionHandler.toFullString(e));
-        log.debug("Full cause", ExceptionHandler.toFullCause(e));
+        log.debug("Full stacktrace:\n{}", ExceptionHandler.toFullString(e));
+        log.debug("Full cause:\n{}", ExceptionHandler.toFullCause(e));
+        log.debug("Root cause:\n{}", ExceptionUtils.getRootCauseMessage(e));
       } else {
         if (faultKind == FaultKind.BAD_REQUEST
             || faultKind == FaultKind.BAD_RESPONSE

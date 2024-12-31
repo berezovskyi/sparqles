@@ -8,9 +8,15 @@ import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.jena.query.QueryException;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import sparqles.analytics.DAnalyser;
 
 public class FaultDiagnostic {
+  private static final Logger log = LoggerFactory.getLogger(FaultDiagnostic.class);
+
   public static FaultKind faultKindForJenaQuery(Exception e) {
+    log.trace("Diagnosing Jena query fault", e);
     if (e == null) {
       throw new NullPointerException("Exception shall not be null");
     }
@@ -26,19 +32,20 @@ public class FaultDiagnostic {
       if (e.getCause() instanceof SSLHandshakeException) {
         return FaultKind.DOWN_TLS_CONFIGURATION_ERROR;
       } else if (e.getCause() instanceof HttpException) {
-        var e1 = e.getCause();
-        return faultKindForApacheHttpException(e1);
+        return faultKindForApacheHttpException(e.getCause());
       }
     }
     else if (e instanceof QueryException) {
       if (e.getMessage().contains("Endpoint returned Content-Type:")) {
         return FaultKind.BAD_RESPONSE;
       }
+      log.debug("Unknown fault", e);
       return FaultKind.UNKNOWN;
     }
     else if (e instanceof HttpException) {
       return faultKindForApacheHttpException(e);
-    } else if (e instanceof ConnectTimeoutException || e instanceof ConnectException) {
+    } else if (e instanceof ConnectTimeoutException || e instanceof ConnectException
+      || e instanceof HttpConnectTimeoutException) {
       return FaultKind.DOWN_TIMEOUT;
     } else if (e instanceof UnknownHostException) {
       return FaultKind.DOWN_HOST_NOT_FOUND;
@@ -47,6 +54,7 @@ public class FaultDiagnostic {
         if (e.getMessage().contains("401 Authorization Required")) return FaultKind.AUTH_401;
     }
 
+    log.debug("Unknown fault", e);
     return FaultKind.UNKNOWN;
   }
 
@@ -66,6 +74,8 @@ public class FaultDiagnostic {
     } else if (e.getMessage().contains("504")) {
       return FaultKind.DOWN_TIMEOUT;
     }
+
+    log.debug("Unknown fault", e);
     return FaultKind.UNKNOWN;
   }
 }
