@@ -26,9 +26,11 @@ public class PAnalyser extends Analytics<PResult> {
 
   @Override
   public boolean analyse(PResult pres) {
-    log.info("Analyse {}", pres);
-
     Endpoint ep = pres.getEndpointResult().getEndpoint();
+
+    log.info("Analyzing PResult for endpoint={}", ep.getUri());
+    log.debug("Analyse {}", pres);
+
 
     PerformanceView pview = getView(ep);
     EPView epview = getEPView(ep);
