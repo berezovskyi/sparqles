@@ -5,7 +5,6 @@ import static java.time.temporal.ChronoUnit.MILLIS;
 import java.time.Duration;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
-import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
