@@ -96,7 +96,7 @@ public class QueryManager {
     log.debug(
         "INIT QueryExecution for {} with query  {}",
         epURL,
-        StringUtils.stringCutoff(query.replaceAll("\n", ""), CONSTANTS.STRING_LEN));
+        StringUtils.trunc(query.replaceAll("\n", ""), CONSTANTS.STRING_LEN));
     QueryExecutionHTTP qe = QueryExecution.service(epURL, query);
     if (timeout != -1) {
       qe.getContext().set(ARQ.httpQueryTimeout, timeout);

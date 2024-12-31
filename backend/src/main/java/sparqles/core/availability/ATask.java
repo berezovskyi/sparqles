@@ -68,7 +68,7 @@ public class ATask extends EndpointTask<AResult> {
       if (faultKind == FaultKind.UNKNOWN) {
         result.setIsAvailable(false);
         String ex = ExceptionHandler.logAndtoString(e);
-        result.setException(StringUtils.stringCutoff(ex));
+        result.setException(StringUtils.trunc(ex));
         result.setExplanation(
             "Unknown error encountered while attempting an ASK query");
         log.warn(
@@ -126,7 +126,7 @@ public class ATask extends EndpointTask<AResult> {
       if (faultKind == FaultKind.UNKNOWN) {
         result.setIsAvailable(false);
         String ex = ExceptionHandler.logAndtoString(e);
-        result.setException(StringUtils.stringCutoff(ex));
+        result.setException(StringUtils.trunc(ex));
         result.setExplanation(
             "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)");
         log.warn(
