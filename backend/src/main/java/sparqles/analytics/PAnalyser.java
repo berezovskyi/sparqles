@@ -31,7 +31,6 @@ public class PAnalyser extends Analytics<PResult> {
     log.info("Analyzing PResult for endpoint={}", ep.getUri());
     log.debug("Analyse {}", pres);
 
-
     PerformanceView pview = getView(ep);
     EPView epview = getEPView(ep);
 

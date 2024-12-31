@@ -68,7 +68,7 @@ public class ExceptionHandler {
     StringWriter sw = new StringWriter();
     PrintWriter pw = new PrintWriter(sw);
     Throwable cause = e;
-    for(int i = 1; ; i++) {
+    for (int i = 1; ; i++) {
       pw.printf("%d: %s\n", i, cause.getClass().getCanonicalName());
       cause = e.getCause();
       if (cause == null) break;

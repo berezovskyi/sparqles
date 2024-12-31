@@ -3,7 +3,6 @@ package sparqles.core.availability;
 import static java.time.temporal.ChronoUnit.MILLIS;
 
 import java.time.Duration;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
