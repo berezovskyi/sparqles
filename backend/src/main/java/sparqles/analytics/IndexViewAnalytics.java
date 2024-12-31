@@ -38,7 +38,6 @@ import sparqles.avro.analytics.IndexViewInteroperability;
 import sparqles.avro.analytics.IndexViewPerformance;
 import sparqles.avro.analytics.IndexViewPerformanceData;
 import sparqles.avro.analytics.IndexViewPerformanceDataValues;
-import sparqles.core.CONSTANTS;
 import sparqles.core.SPARQLESProperties;
 import sparqles.core.Task;
 import sparqles.paper.objects.AMonth;
@@ -716,7 +715,7 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private Index createIndex() {
     Index idx = new Index();
-    idx.setEndpoint(CONSTANTS.SPARQLES);
+    idx.setEndpoint(SPARQLESProperties.getSparqlesEndpoint());
 
     AvailabilityIndex aidx =
         new AvailabilityIndex("[0;5]", new ArrayList<IndexAvailabilityDataPoint>());

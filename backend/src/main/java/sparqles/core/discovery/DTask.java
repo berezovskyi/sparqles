@@ -41,6 +41,7 @@ import sparqles.avro.discovery.QueryInfo;
 import sparqles.avro.discovery.RobotsTXT;
 import sparqles.core.CONSTANTS;
 import sparqles.core.EndpointTask;
+import sparqles.core.SPARQLESProperties;
 import sparqles.utils.ConnectionManager;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
@@ -296,11 +297,8 @@ public class DTask extends EndpointTask<DResult> {
     info.setVoiDpreds(voidPred);
 
     HttpGet request = new HttpGet(url);
-    request.addHeader(
-        "accept",
-        "application/rdf+xml, application/x-turtle, application/rdf+n3, application/xml,"
-            + " text/turtle, text/rdf, text/plain;q=0.1");
-    request.addHeader("User-Agent", CONSTANTS.USER_AGENT);
+    request.addHeader("accept", CONSTANTS.ANY_RDF_MIME_ACCEPT);
+    request.addHeader("User-Agent", SPARQLESProperties.getUserAgent());
     log.info("GET {}", request);
     HttpResponse resp;
     try {
@@ -385,7 +383,7 @@ public class DTask extends EndpointTask<DResult> {
   }
 
   private boolean checkRobotsTxt(Robots rob, String uri) {
-    NoRobotClient _nrc = new NoRobotClient(CONSTANTS.USER_AGENT);
+    NoRobotClient _nrc = new NoRobotClient(CONSTANTS.USER_AGENT_STRING_RAW);
 
     try {
       URI host = new URI(uri);

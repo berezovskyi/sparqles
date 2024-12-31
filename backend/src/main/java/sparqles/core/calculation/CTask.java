@@ -1,9 +1,10 @@
 package sparqles.core.calculation;
 
+import static java.time.temporal.ChronoUnit.*;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.Set;
 import org.apache.commons.math3.stat.descriptive.moment.Kurtosis;
@@ -17,8 +18,6 @@ import sparqles.avro.EndpointResult;
 import sparqles.avro.calculation.CResult;
 import sparqles.core.EndpointTask;
 import sparqles.utils.QueryManager;
-
-import static java.time.temporal.ChronoUnit.*;
 
 public class CTask extends EndpointTask<CResult> {
   private static final Logger log = LoggerFactory.getLogger(CTask.class);
@@ -275,7 +274,8 @@ public class CTask extends EndpointTask<CResult> {
     long result = -1;
     try {
       ResultSet results;
-      try (QueryExecution qexec = QueryManager.getExecution(endpointURL, queryText, Duration.of(10, MINUTES))) {
+      try (QueryExecution qexec =
+          QueryManager.getExecution(endpointURL, queryText, Duration.of(10, MINUTES))) {
         results = qexec.execSelect();
         if (results.hasNext()) {
           QuerySolution thisRow = results.next();

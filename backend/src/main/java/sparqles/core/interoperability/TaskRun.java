@@ -1,12 +1,8 @@
 package sparqles.core.interoperability;
 
 import java.util.Iterator;
-import java.util.Map;
-
 import org.apache.jena.graph.Triple;
-import org.apache.jena.http.sys.HttpRequestModifier;
 import org.apache.jena.query.*;
-import org.apache.jena.sparql.exec.http.Params;
 import org.apache.jena.sparql.util.FmtUtils;
 import org.slf4j.Logger;
 import sparqles.avro.Endpoint;
@@ -20,7 +16,7 @@ public abstract class TaskRun {
   public static final long FIRST_RESULT_TIMEOUT = 60 * 1000;
   public static final long EXECUTION_TIMEOUT = 15 * 60 * 1000;
   public static final long A_FIRST_RESULT_TIMEOUT = 10 * 1000;
-//  public static final long A_EXECUTION_TIMEOUT = 60 * 1000;
+  //  public static final long A_EXECUTION_TIMEOUT = 60 * 1000;
   protected FileManager _fm;
   protected String _query;
   protected String _queryFile;
@@ -56,8 +52,6 @@ public abstract class TaskRun {
       Query q = QueryFactory.create(this._query);
       QueryExecution qexec = QueryManager.getExecution(_ep, _query);
 
-      // FIXME: find a new way to set these timeouts
-      //            qexec.setTimeout(FIRST_RESULT_TIMEOUT, FIRST_RESULT_TIMEOUT);
       qexec.getContext().set(ARQ.httpQueryTimeout, FIRST_RESULT_TIMEOUT);
       cnxion = System.currentTimeMillis();
 

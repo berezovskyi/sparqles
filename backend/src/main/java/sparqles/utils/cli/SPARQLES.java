@@ -64,6 +64,7 @@ public class SPARQLES extends CLIObject {
   @Override
   protected void execute(CommandLine cmd) {
     parseCMD(cmd);
+//    System.setProperty("javax.net.debug", "ssl:handshake:verbose");
 
     // reinitialise datahub
     if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_INIT)) {
@@ -196,8 +197,6 @@ public class SPARQLES extends CLIObject {
   }
 
   private void start() {
-    System.setProperty("javax.net.debug", "ssl:handshake:verbose");
-
     scheduler.init(dbm);
     try {
       long start = System.currentTimeMillis();

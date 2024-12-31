@@ -1,21 +1,17 @@
 package sparqles.core.availability;
 
+import static java.time.temporal.ChronoUnit.MILLIS;
+
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.net.http.HttpConnectTimeoutException;
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLHandshakeException;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
-import org.apache.jena.http.sys.HttpRequestModifier;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
-import org.apache.jena.sparql.exec.http.Params;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -25,8 +21,7 @@ import sparqles.core.EndpointTask;
 import sparqles.core.interoperability.TaskRun;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
-
-import static java.time.temporal.ChronoUnit.MILLIS;
+import sparqles.utils.StringUtils;
 
 /**
  * This class performs the required task to study the availability of an endpoint.
@@ -56,7 +51,9 @@ public class ATask extends EndpointTask<AResult> {
 
     long start = System.currentTimeMillis();
     try {
-      QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), ASKQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
+      QueryExecution qe =
+          QueryManager.getExecution(
+              epr.getEndpoint(), ASKQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
       // FIXME: find a new way
       //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
       // TaskRun.A_FIRST_RESULT_TIMEOUT);
@@ -79,7 +76,7 @@ public class ATask extends EndpointTask<AResult> {
       }
     } catch (QueryExceptionHTTP e) {
       String ex = ExceptionHandler.logAndtoString(e);
-      result.setException(ex);
+      result.setException(StringUtils.stringCutoff(ex));
       result.setExplanation(ex);
 
       log.warn("failed ASK query for {}, {}", _epURI, ExceptionHandler.logAndtoString(e, true));
@@ -150,7 +147,8 @@ public class ATask extends EndpointTask<AResult> {
         result.setIsAvailable(false);
         String msg = "🏰 failed to establish a TLS connection to " + _epURI;
         log.info(msg);
-        log.debug("SSLHandshakeException while connecting to {}: {}", _epURI, e.getCause().getMessage());
+        log.debug(
+            "SSLHandshakeException while connecting to {}: {}", _epURI, e.getCause().getMessage());
         result.setExplanation(msg);
         return result;
       }
@@ -184,8 +182,8 @@ public class ATask extends EndpointTask<AResult> {
     } catch (Exception e1) {
       result.setIsAvailable(false);
       String ex = ExceptionHandler.logAndtoString(e1);
-      result.setException(ex);
-      result.setExplanation(ex);
+      result.setException(StringUtils.stringCutoff(ex));
+      result.setExplanation("Unknown error encountered while attempting an ASK query");
       if (e1.getMessage() != null)
         if (e1.getMessage().contains("401 Authorization Required")) result.setIsPrivate(true);
 

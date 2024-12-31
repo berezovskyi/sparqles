@@ -51,7 +51,8 @@ public class NoRobotClient {
   /**
    * Create a Client for a particular user-agent name.
    *
-   * @param userAgent name for the robot
+   * @param userAgent name for the robot (short one, e.g. {@link
+   *     sparqles.core.CONSTANTS#USER_AGENT_STRING_RAW} )
    */
   public NoRobotClient(String userAgent) {
     this.userAgent = userAgent;
@@ -143,7 +144,7 @@ public class NoRobotClient {
           }
 
           value = line.toLowerCase().substring("user-agent:".length()).trim();
-          if (value.equalsIgnoreCase(userAgent)) {
+          if (value.equalsIgnoreCase(userAgent.toLowerCase())) {
             parsingAllowBlock = true;
             continue;
           }

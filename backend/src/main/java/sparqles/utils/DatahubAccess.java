@@ -33,8 +33,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Dataset;
 import sparqles.avro.Endpoint;
-import sparqles.core.CONSTANTS;
 import sparqles.core.EndpointFactory;
+import sparqles.core.SPARQLESProperties;
 
 // http://datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=1000
 
@@ -65,7 +65,7 @@ public class DatahubAccess {
       apiURL = "https://old.datahub.io/api/3/action/resource_search?query=format:api/sparql";
       HttpGet getRequest = new HttpGet(apiURL);
 
-      getRequest.addHeader("User-Agent", CONSTANTS.USER_AGENT);
+      getRequest.addHeader("User-Agent", SPARQLESProperties.getUserAgent());
 
       HttpResponse response = httpclient.execute(getRequest);
 
@@ -141,7 +141,7 @@ public class DatahubAccess {
     HttpGet getRequest = null;
     try {
       getRequest = new HttpGet("https://old.datahub.io/api/3/action/package_show?id=" + datasetId);
-      getRequest.addHeader("User-Agent", CONSTANTS.USER_AGENT);
+      getRequest.addHeader("User-Agent", SPARQLESProperties.getUserAgent());
       System.out.println(getRequest);
       HttpResponse response = httpClient.execute(getRequest);
       if (response.getStatusLine().getStatusCode() != 200) {

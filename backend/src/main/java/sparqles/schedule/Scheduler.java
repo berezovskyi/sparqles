@@ -27,8 +27,8 @@ import sparqles.utils.MongoDBManager;
 public class Scheduler {
   private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
-//  public static final String CRON_EVERY_HOUR = "0 0 0/1 1/1 * ? *";
-//  public static final String CRON_EVERY_ONETEN = "0 30 1 1/1 * ? *";
+  @Deprecated public static final String CRON_EVERY_HOUR = "0 0 0/1 1/1 * ? *";
+  @Deprecated public static final String CRON_EVERY_ONETEN = "0 30 1 1/1 * ? *";
   private static final String CRON_EVERY_DAY_AT_715 = "0 15 7 1/1 * ? *";
   private static final String CRON_EVERY_DAY_AT_215 = "0 15 2 1/1 * ? *";
   private static final String CRON_EVERY_MON_WED_FRI_SUN_THU_AT_410 = "0 10 4 ? * WED,THU *";
@@ -40,24 +40,25 @@ public class Scheduler {
   private static final String CRON_EVERY_FIVE_MINUTES = "0 0/5 * 1/1 * ? *";
 
   /** The default schedules for various tasks http://www.cronmaker.com/ */
-  private static final Map<String, String> taskSchedule = new HashMap<String, String>();
+  //  private static final Map<String, String> taskSchedule = new HashMap<String, String>();
   private static final Random random = new SecureRandom();
 
-  static {
-    // availability
-//    taskSchedule.put(ATASK, CRON_EVERY_HOUR);
-    // performance
-//    taskSchedule.put(PTASK, CRON_EVERY_ONETEN);
-    // interoperability
-    taskSchedule.put(FTASK, CRON_EVERY_SUN_AT_310);
-    // discoverability
-    taskSchedule.put(DTASK, CRON_EVERY_SAT_AT_310);
-    taskSchedule.put(CTASK, CRON_EVERY_SUN_AT_2330);
-    // index
-    taskSchedule.put(ITASK, CRON_EVERY_DAY_AT_715);
-    // datahub refresh
-    taskSchedule.put(ETASK, CRON_EVERY_DAY_AT_215);
-  }
+  //
+  //  static {
+  //    // availability
+  ////    taskSchedule.put(ATASK, CRON_EVERY_HOUR);
+  //    // performance
+  ////    taskSchedule.put(PTASK, CRON_EVERY_ONETEN);
+  //    // interoperability
+  //    taskSchedule.put(FTASK, CRON_EVERY_SUN_AT_310);
+  //    // discoverability
+  //    taskSchedule.put(DTASK, CRON_EVERY_SAT_AT_310);
+  //    taskSchedule.put(CTASK, CRON_EVERY_SUN_AT_2330);
+  //    // index
+  //    taskSchedule.put(ITASK, CRON_EVERY_DAY_AT_715);
+  //    // datahub refresh
+  //    taskSchedule.put(ETASK, CRON_EVERY_DAY_AT_215);
+  //  }
 
   private final ScheduledExecutorService SERVICE, ASERVICE;
   private FileManager _fm;
@@ -99,10 +100,9 @@ public class Scheduler {
 
     // add the analytics schedules for
     Schedule s = new Schedule();
-    // FIXME: null / wrong URI in the Mongo
-    s.setEndpoint(SPARQLES);
-    s.setITask(taskSchedule.get(ITASK));
-    s.setETask(taskSchedule.get(ETASK));
+    s.setEndpoint(SPARQLESProperties.getSparqlesEndpoint());
+    s.setITask(cronForITask(s.getEndpoint()));
+    s.setETask(cronForETask(s.getEndpoint()));
     l.add(s);
 
     return l;
@@ -118,33 +118,49 @@ public class Scheduler {
     Schedule s = new Schedule();
     s.setEndpoint(ep);
 
-    s.setATask(randomATaskCron());
-    s.setPTask(randomPTaskCron());
-    s.setFTask(taskSchedule.get(FTASK));
-    s.setDTask(taskSchedule.get(DTASK));
-    s.setCTask(taskSchedule.get(CTASK));
-    s.setITask(taskSchedule.get(ITASK));
+    s.setATask(randomATaskCron(ep));
+    s.setPTask(randomPTaskCron(ep));
+    s.setFTask(cronForFTask(ep));
+    s.setDTask(cronForDTask(ep));
+    s.setCTask(cronForCTask(ep));
+    s.setITask(cronForITask(ep));
 
     return s;
   }
 
-  /**
-   * Check endpoint availability once an hour, spread out evenly
-   */
-  private static CharSequence randomATaskCron() {
+  /** Check endpoint availability once an hour, spread out evenly */
+  private static CharSequence randomATaskCron(Endpoint ep) {
     return String.format("0 %d/60 * ? * * *", random.nextInt(60));
   }
 
-  /**
-   * Avoid hitting SPARQL endpoints with expensive queries during "business" hours
-   */
-  private static CharSequence randomPTaskCron() {
+  /** Avoid hitting SPARQL endpoints with expensive queries during "business" hours */
+  private static CharSequence randomPTaskCron(Endpoint ep) {
     var randHours = random.nextInt(19, 24 + 5) % 24;
     var randMinutes = random.nextInt(60);
 
-    return String.format("0 %d %d ? * * *", randMinutes,randHours);
+    return String.format("0 %d %d ? * * *", randMinutes, randHours);
   }
 
+  private static CharSequence cronForDTask(Endpoint ep) {
+    return CRON_EVERY_SAT_AT_310;
+  }
+
+  private static CharSequence cronForFTask(Endpoint ep) {
+    return CRON_EVERY_SUN_AT_310;
+  }
+
+  private static CharSequence cronForCTask(Endpoint ep) {
+    return CRON_EVERY_SUN_AT_2330;
+  }
+
+  private static CharSequence cronForITask(Endpoint ep) {
+    return CRON_EVERY_DAY_AT_715;
+  }
+
+  private static CharSequence cronForETask(Endpoint etask) {
+    //    return CRON_EVERY_DAY_AT_215;
+    return null; // old.datahub is not updated any more, disable the task for now
+  }
 
   /**
    * Initial the scheduler with the schedules from the underlying DB.

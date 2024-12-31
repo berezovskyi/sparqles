@@ -44,7 +44,8 @@ public class AAnalyticsTEST {
             new Comparator<AResult>() {
               public int compare(AResult o1, AResult o2) {
                 int diff =
-                    o1.getEndpointResult().getStart().compareTo(o2.getEndpointResult().getStart());
+                    Comparator.comparingLong((AResult it) -> it.getEndpointResult().getStart())
+                        .compare(o1, o2);
                 return diff;
               }
             });

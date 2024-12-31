@@ -3,12 +3,17 @@ package sparqles.core;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sparqles.avro.Endpoint;
 
 public class SPARQLESProperties {
   private static final Logger log = LoggerFactory.getLogger(SPARQLESProperties.class);
+  private static Endpoint SPARQLES;
+
+  private static String SPARQLES_HOST = "http://sparqles.okfn.org/";
 
   private static String DATA_DIR = "./data";
 
@@ -68,6 +73,14 @@ public class SPARQLESProperties {
     return TASK_THREADS;
   }
 
+  public static Endpoint getSparqlesEndpoint() {
+    return SPARQLES;
+  }
+
+  public static String getUserAgent() {
+    return String.format(CONSTANTS.USER_AGENT_STRING, SPARQLES_HOST);
+  }
+
   public static String getENDPOINT_LIST() {
     return ENDPOINT_LIST;
   }
@@ -83,6 +96,7 @@ public class SPARQLESProperties {
   }
 
   public static void init(Properties props) {
+    SPARQLES_HOST = props.getProperty("host", SPARQLES_HOST);
 
     DATA_DIR = props.getProperty("data.dir", DATA_DIR);
 
@@ -102,6 +116,13 @@ public class SPARQLESProperties {
     FTASK_WAITTIME = Integer.valueOf(props.getProperty("ftask.waittime", "" + SPARQL_WAITTIME));
 
     SCHEDULE_CRON = props.getProperty("schedule.cron");
+
+    try {
+      SPARQLES = EndpointFactory.newEndpoint(SPARQLES_HOST);
+    } catch (URISyntaxException e) {
+      log.error("Bad URI for the SPARQLES instance: {} (uri={})", e.getMessage(), SPARQLES_HOST);
+      throw new RuntimeException(e);
+    }
 
     Object[] t = {DATA_DIR, DB_HOST, DB_PORT};
     log.debug("[LOAD] properties: {}", props);

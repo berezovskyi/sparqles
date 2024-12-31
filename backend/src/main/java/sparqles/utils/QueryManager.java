@@ -6,8 +6,6 @@ import java.io.InputStream;
 import java.time.Duration;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.jena.http.sys.HttpRequestModifier;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
@@ -16,11 +14,13 @@ import org.apache.jena.sparql.exec.http.QueryExecutionHTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
-import sparqles.core.interoperability.TaskRun;
+import sparqles.core.CONSTANTS;
+import sparqles.core.SPARQLESProperties;
 
 public class QueryManager {
 
-  public static final UserAgentRequestModifier USER_AGENT_REQUEST_MODIFIER = new UserAgentRequestModifier();
+  public static final UserAgentRequestModifier USER_AGENT_REQUEST_MODIFIER =
+      new UserAgentRequestModifier();
   private static final Logger log = LoggerFactory.getLogger(QueryManager.class);
 
   public static String getQuery(String folder, String qFile) {
@@ -84,6 +84,7 @@ public class QueryManager {
   }
 
   /**
+   * ,
    *
    * @param epURL HTTP SPARQL endpoint URI
    * @param query a valid SPARQL query
@@ -92,7 +93,10 @@ public class QueryManager {
    * @throws Exception
    */
   public static QueryExecution getExecution(String epURL, String query, long timeout) {
-    log.debug("INIT QueryExecution for {} with query  {}", epURL, query.replaceAll("\n", ""));
+    log.debug(
+        "INIT QueryExecution for {} with query  {}",
+        epURL,
+        StringUtils.stringCutoff(query.replaceAll("\n", ""), CONSTANTS.STRING_LEN));
     QueryExecutionHTTP qe = QueryExecution.service(epURL, query);
     if (timeout != -1) {
       qe.getContext().set(ARQ.httpQueryTimeout, timeout);
@@ -104,7 +108,7 @@ public class QueryManager {
   public static class UserAgentRequestModifier implements HttpRequestModifier {
     @Override
     public void modify(Params params, Map<String, String> httpHeaders) {
-      httpHeaders.put("User-Agent", "Mozilla/5.0 (compatible; SPARQLES/0.3.0; +https://sparqles.sv.berezovskyi.me)");
+      httpHeaders.put("User-Agent", SPARQLESProperties.getUserAgent());
     }
   }
 }
