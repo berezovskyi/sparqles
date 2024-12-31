@@ -2,13 +2,9 @@ package sparqles.schedule;
 
 import static sparqles.core.CONSTANTS.*;
 
+import java.security.SecureRandom;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -31,8 +27,8 @@ import sparqles.utils.MongoDBManager;
 public class Scheduler {
   private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
-  public static final String CRON_EVERY_HOUR = "0 0 0/1 1/1 * ? *";
-  public static final String CRON_EVERY_ONETEN = "0 30 1 1/1 * ? *";
+//  public static final String CRON_EVERY_HOUR = "0 0 0/1 1/1 * ? *";
+//  public static final String CRON_EVERY_ONETEN = "0 30 1 1/1 * ? *";
   private static final String CRON_EVERY_DAY_AT_715 = "0 15 7 1/1 * ? *";
   private static final String CRON_EVERY_DAY_AT_215 = "0 15 2 1/1 * ? *";
   private static final String CRON_EVERY_MON_WED_FRI_SUN_THU_AT_410 = "0 10 4 ? * WED,THU *";
@@ -45,12 +41,13 @@ public class Scheduler {
 
   /** The default schedules for various tasks http://www.cronmaker.com/ */
   private static final Map<String, String> taskSchedule = new HashMap<String, String>();
+  private static final Random random = new SecureRandom();
 
   static {
     // availability
-    taskSchedule.put(ATASK, CRON_EVERY_HOUR);
+//    taskSchedule.put(ATASK, CRON_EVERY_HOUR);
     // performance
-    taskSchedule.put(PTASK, CRON_EVERY_ONETEN);
+//    taskSchedule.put(PTASK, CRON_EVERY_ONETEN);
     // interoperability
     taskSchedule.put(FTASK, CRON_EVERY_SUN_AT_310);
     // discoverability
@@ -102,6 +99,7 @@ public class Scheduler {
 
     // add the analytics schedules for
     Schedule s = new Schedule();
+    // FIXME: null / wrong URI in the Mongo
     s.setEndpoint(SPARQLES);
     s.setITask(taskSchedule.get(ITASK));
     s.setETask(taskSchedule.get(ETASK));
@@ -120,8 +118,8 @@ public class Scheduler {
     Schedule s = new Schedule();
     s.setEndpoint(ep);
 
-    s.setATask(taskSchedule.get(ATASK));
-    s.setPTask(taskSchedule.get(PTASK));
+    s.setATask(randomATaskCron());
+    s.setPTask(randomPTaskCron());
     s.setFTask(taskSchedule.get(FTASK));
     s.setDTask(taskSchedule.get(DTASK));
     s.setCTask(taskSchedule.get(CTASK));
@@ -129,6 +127,24 @@ public class Scheduler {
 
     return s;
   }
+
+  /**
+   * Check endpoint availability once an hour, spread out evenly
+   */
+  private static CharSequence randomATaskCron() {
+    return String.format("0 %d/60 * ? * * *", random.nextInt(60) + 1);
+  }
+
+  /**
+   * Avoid hitting SPARQL endpoints with expensive queries during "business" hours
+   */
+  private static CharSequence randomPTaskCron() {
+    var randHours = random.nextInt(19, 24 + 5) % 24;
+    var randMinutes = random.nextInt(1, 7) * 10;
+
+    return String.format("0 %d %d ? * * *", randMinutes,randHours);
+  }
+
 
   /**
    * Initial the scheduler with the schedules from the underlying DB.
