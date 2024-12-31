@@ -30,7 +30,7 @@ public class PRun extends TaskRun {
     try {
       Thread.sleep(SPARQLESProperties.getPTASK_WAITTIME());
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      log.warn("Interrupted before a WARM run could be attempted");
     }
     log.debug("RUN WARM {} over {}", _queryFile, _ep.getUri());
     result.setWarm(run());

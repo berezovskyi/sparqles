@@ -7,9 +7,7 @@ import org.apache.jena.sparql.util.FmtUtils;
 import org.slf4j.Logger;
 import sparqles.avro.Endpoint;
 import sparqles.avro.performance.Run;
-import sparqles.utils.ExceptionHandler;
-import sparqles.utils.FileManager;
-import sparqles.utils.QueryManager;
+import sparqles.utils.*;
 
 public abstract class TaskRun {
 
@@ -98,29 +96,41 @@ public abstract class TaskRun {
       //            System.out.println( _ep.getUri() + "\t" + sols
       //                    + "\t" + (cnxion - b4) + "\t" + (iter - b4) + "\t"
       //                    + (close - b4));
-    } catch (QueryException e) {
-      r.setException(ExceptionHandler.getExceptionSummary(e.getMessage()));
-      if (log.isInfoEnabled()) {
-        String cause;
-        if (e.getCause() != null) {
-          cause =
-              ExceptionHandler.getExceptionSummary(e.getCause().getMessage())
-                  + " !"
-                  + e.getCause().getClass().getSimpleName();
-        } else {
-          cause = ExceptionHandler.getExceptionSummary(e.getMessage());
+    } /*catch (QueryException e) {
+        r.setException(ExceptionHandler.getExceptionSummary(e.getMessage()));
+        if (log.isInfoEnabled()) {
+          String cause;
+          if (e.getCause() != null) {
+            cause =
+                ExceptionHandler.getExceptionSummary(e.getCause().getMessage())
+                    + " !"
+                    + e.getCause().getClass().getSimpleName();
+          } else {
+            cause = ExceptionHandler.getExceptionSummary(e.getMessage());
+          }
+          log.info("SPARQL query failed against endpoint {} (cause: {}...)", _ep.getUri(), cause);
         }
-        log.info("SPARQL query failed against endpoint {} (cause: {}...)", _ep.getUri(), cause);
+      } catch (Exception e) {
+        log.debug(
+            "[EXC] {} over {}; {}:{}:",
+            _queryFile,
+            _ep.getUri().toString(),
+            e.getClass().getSimpleName(),
+            e.getMessage(),
+            e.getCause());
+        r.setException(ExceptionHandler.toFullString(e));
+      }*/ catch (Exception e) {
+      var faultKind = FaultDiagnostic.faultKindForJenaQuery(e);
+      if (faultKind == FaultKind.UNKNOWN) {
+        //        String ex = ExceptionHandler.logAndtoString(e);
+        r.setException(StringUtils.trunc(e.getMessage()));
+        log.warn(
+            "Unknown error encountered while attempting a SPARQL query (type={})",
+            e.getClass().getName());
+        log.debug("Stacktrace", e);
+      } else {
+        r.setException(FaultDiagnostic.interpretFault(faultKind));
       }
-    } catch (Exception e) {
-      log.debug(
-          "[EXC] {} over {}; {}:{}:",
-          _queryFile,
-          _ep.getUri().toString(),
-          e.getClass().getSimpleName(),
-          e.getMessage(),
-          e.getCause());
-      r.setException(ExceptionHandler.toFullString(e));
     }
 
     return r;

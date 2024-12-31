@@ -120,4 +120,22 @@ public class FaultDiagnostic {
     log.debug("Unknown fault code={}", code);
     return FaultKind.UNKNOWN;
   }
+
+  public static String interpretFault(FaultKind faultKind) {
+    return switch (faultKind) {
+      case UNKNOWN -> "Unknown fault";
+      case DOWN_HOST_NOT_FOUND -> "🕳️ host not found";
+      case DOWN_404_NOT_FOUND -> "🕳️ 404 endpoint not found";
+      case DOWN_TLS_CONFIGURATION_ERROR -> "🔧 TLS misconfiguration (failed handshake)";
+      case DOWN_TIMEOUT -> "🐌 connection timeout";
+      case DOWN_BAD_GATEWAY -> "🔧 bad gateway";
+      case DOWN_GONE_410 -> "💨 410 gone";
+      case DOWN_ENDPOINT -> "🕳 endpoint down";
+      case AUTH_401 -> "🛡️ server requires authentication";
+      case AUTH_403 -> "🛡️ server denied access";
+      case BAD_REQUEST -> "👾 host did not like our request (400)";
+      case BAD_RESPONSE -> "🗑️ malformed response";
+      case BAD_SERVER_ERROR -> "🔧 server error";
+    };
+  }
 }

@@ -3,6 +3,7 @@ package sparqles.core.availability;
 import static java.time.temporal.ChronoUnit.MILLIS;
 
 import java.time.Duration;
+import java.util.Objects;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
@@ -139,24 +140,12 @@ public class ATask extends EndpointTask<AResult> {
     return result;
   }
 
-  private void updateAResultFromFault(FaultKind faultKind, AResult result) {
+  public static void updateAResultFromFault(FaultKind faultKind, AResult result) {
     result.setIsAvailable(false);
-    switch (faultKind) {
-      case UNKNOWN -> {
-        throw new IllegalArgumentException();
-      }
-      case DOWN_HOST_NOT_FOUND -> result.setExplanation("🕳️ host not found");
-      case DOWN_404_NOT_FOUND -> result.setExplanation("🕳️ 404 endpoint not found");
-      case DOWN_TLS_CONFIGURATION_ERROR ->
-          result.setExplanation("🔧 TLS misconfiguration (failed handshake)");
-      case DOWN_TIMEOUT -> result.setExplanation("🐌 connection timeout");
-      case DOWN_BAD_GATEWAY -> result.setExplanation("🔧 bad gateway");
-      case DOWN_GONE_410 -> result.setExplanation("💨 410 gone");
-      case DOWN_ENDPOINT -> result.setExplanation("🕳 endpoint down");
-      case AUTH_401 -> result.setExplanation("🛡️ server requires authentication");
-      case AUTH_403 -> result.setExplanation("🛡️ server denied access");
-      case BAD_REQUEST -> result.setExplanation("👾 host did not like our request (400)");
-      case BAD_RESPONSE -> result.setExplanation("🗑️ malformed response");
+    if (Objects.requireNonNull(faultKind) == FaultKind.UNKNOWN) {
+      throw new IllegalArgumentException();
+    } else {
+      result.setExplanation(FaultDiagnostic.interpretFault(faultKind));
     }
   }
 }
