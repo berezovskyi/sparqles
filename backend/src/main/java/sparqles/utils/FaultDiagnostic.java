@@ -101,6 +101,8 @@ public class FaultDiagnostic {
       return FaultKind.AUTH_401;
     } else if (code == 403) {
       return FaultKind.AUTH_403;
+    } else if (code == 404) {
+      return FaultKind.DOWN_404_NOT_FOUND;
     } else if (code == 500) {
       return FaultKind.BAD_SERVER_ERROR;
     } else if (code == 502) {
