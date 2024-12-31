@@ -69,11 +69,9 @@ public class ATask extends EndpointTask<AResult> {
         result.setIsAvailable(false);
         String ex = ExceptionHandler.logAndtoString(e);
         result.setException(StringUtils.trunc(ex));
-        result.setExplanation(
-            "Unknown error encountered while attempting an ASK query");
+        result.setExplanation("Unknown error encountered while attempting an ASK query");
         log.warn(
-            "Unknown error encountered while attempting an ASK query"
-                + " (type={})",
+            "Unknown error encountered while attempting an ASK query" + " (type={})",
             e.getClass().getName());
         log.debug("Stacktrace", e);
         log.debug("Full stacktrace:\n{}", ExceptionHandler.toFullString(e));

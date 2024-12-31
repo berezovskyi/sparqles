@@ -40,22 +40,20 @@ public class FaultDiagnostic {
       } else if (e.getCause() instanceof HttpException || qe.getStatusCode() >= 400) {
         return faultKindForApacheHttpException(qe.getStatusCode());
       }
-    }
-    else if (e instanceof ResultSetException) {
+    } else if (e instanceof ResultSetException) {
       if (e.getMessage().contains("Not a result set syntax:")) {
         // (potentially) RDF but not a suitable for this SPARQL query response
         return FaultKind.BAD_RESPONSE;
       }
       log.debug("Unknown fault", e);
       return FaultKind.UNKNOWN;
-    }
-    else if (e instanceof QueryException) {
+    } else if (e instanceof QueryException) {
       if (e.getMessage().contains("Endpoint returned Content-Type:")) {
         return FaultKind.BAD_RESPONSE;
       }
       log.debug("Unknown fault", e);
       return FaultKind.UNKNOWN;
-    }  else if (e instanceof HttpException) {
+    } else if (e instanceof HttpException) {
       return faultKindForApacheHttpException(e);
     } else if (e instanceof ConnectTimeoutException
         || e instanceof ConnectException
