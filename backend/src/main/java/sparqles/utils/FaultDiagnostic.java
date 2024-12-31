@@ -19,8 +19,7 @@ public class FaultDiagnostic {
     if (e == null) {
       throw new NullPointerException("Exception shall not be null");
     }
-    if (e instanceof QueryExceptionHTTP) {
-      var qe = (QueryExceptionHTTP) e;
+    if (e instanceof QueryExceptionHTTP qe) {
       if (e.getCause() instanceof UnknownHostException) {
         return FaultKind.DOWN_HOST_NOT_FOUND;
       }
@@ -31,7 +30,7 @@ public class FaultDiagnostic {
       }
       if (e.getCause() instanceof SSLHandshakeException) {
         return FaultKind.DOWN_TLS_CONFIGURATION_ERROR;
-      } else if (e.getCause() instanceof HttpException) {
+      } else if (e.getCause() instanceof HttpException || qe.getStatusCode() >= 400) {
         return faultKindForApacheHttpException(qe.getStatusCode());
       }
     } else if (e instanceof QueryException) {
