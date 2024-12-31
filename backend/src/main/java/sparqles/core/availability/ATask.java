@@ -60,9 +60,8 @@ public class ATask extends EndpointTask<AResult> {
           result.setExplanation("Endpoint is operating normally");
         }
         log.debug("executed ask {}", epr.getEndpoint().getUri().toString());
-        return result;
       } else {
-        return testSelect(epr);
+        result = testSelect(epr);
       }
     } catch (Exception e) {
       var faultKind = FaultDiagnostic.faultKindForJenaQuery(e);
@@ -89,7 +88,8 @@ public class ATask extends EndpointTask<AResult> {
         }
       }
     }
-    log.info("{} availability: {}", _epURI, result.getExplanation());
+    log.info(
+        "{} availability: {} ({} ms)", _epURI, result.getExplanation(), result.getResponseTime());
     return result;
   }
 
@@ -114,11 +114,9 @@ public class ATask extends EndpointTask<AResult> {
           result.setExplanation("Endpoint is operating normally");
         }
         log.debug("executed select {}", epr.getEndpoint().getUri().toString());
-        return result;
       } else {
         result.setIsAvailable(response);
         log.debug("executed no response {}", epr.getEndpoint().getUri().toString());
-        return result;
       }
     } catch (Exception e) {
       var faultKind = FaultDiagnostic.faultKindForJenaQuery(e);
@@ -137,6 +135,8 @@ public class ATask extends EndpointTask<AResult> {
         updateAResultFromFault(faultKind, result);
       }
     }
+    log.info(
+        "{} availability: {} ({} ms)", _epURI, result.getExplanation(), result.getResponseTime());
     return result;
   }
 
