@@ -9,7 +9,7 @@ import sparqles.utils.ExceptionHandler;
 public class SchedulerMonitor extends Thread {
 
   private static final Logger log = LoggerFactory.getLogger(SchedulerMonitor.class);
-  private final Long SLEEP_TIME = 10 * 60 * 1000L;
+  private final Long SLEEP_TIME = 15 * 1000L;
   private final ConcurrentLinkedQueue<ScheduledFuture> future =
       new ConcurrentLinkedQueue<ScheduledFuture>();
   private final ConcurrentLinkedQueue<ScheduledFuture> afuture =
