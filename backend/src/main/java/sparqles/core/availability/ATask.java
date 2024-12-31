@@ -3,12 +3,15 @@ package sparqles.core.availability;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.net.http.HttpConnectTimeoutException;
+import java.util.Map;
 import javax.net.ssl.SSLHandshakeException;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.jena.http.sys.HttpRequestModifier;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
+import org.apache.jena.sparql.exec.http.Params;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
@@ -52,6 +55,13 @@ public class ATask extends EndpointTask<AResult> {
       //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
       // TaskRun.A_FIRST_RESULT_TIMEOUT);
       qe.getContext().set(ARQ.httpQueryTimeout, TaskRun.A_FIRST_RESULT_TIMEOUT);
+      qe.getContext().set(ARQ.httpRequestModifer, new HttpRequestModifier() {
+        @Override
+        public void modify(Params params, Map<String, String> httpHeaders) {
+          httpHeaders.put("User-Agent", "Mozilla/5.0 (compatible; SPARQLES/0.3.0; +https://sparqles.sv.berezovskyi.me)");
+        }
+      });
+
       boolean response = qe.execAsk();
       if (response) {
         result.setResponseTime((System.currentTimeMillis() - start));
