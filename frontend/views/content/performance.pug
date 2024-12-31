@@ -60,8 +60,9 @@ block content
                     a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`)
                       span(onmouseover=`tooltip.show('${generateTooltip(ep.endpoint.datasets)}')`, onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
                 else
+                  - var label = ep.endpoint.datasets[0]?.label
                   td 
-                    a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{ep.endpoint.datasets[0]?.label}
+                    a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{label}
                 //-Display Threshold 
                 td.tdright 
                   if ep.threshold>0  && ep.threshold%100==0
