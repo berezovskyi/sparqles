@@ -196,6 +196,8 @@ public class SPARQLES extends CLIObject {
   }
 
   private void start() {
+    System.setProperty("javax.net.debug", "ssl:handshake:verbose");
+
     scheduler.init(dbm);
     try {
       long start = System.currentTimeMillis();
