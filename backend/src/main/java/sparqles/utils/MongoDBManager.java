@@ -117,7 +117,7 @@ public class MongoDBManager {
 
     } catch (UnknownHostException e) {
       log.error(
-          "Coulld not connect to MongoDB instance, {}", ExceptionHandler.logAndtoString(e, true));
+          "Could not connect to MongoDB instance, {}", ExceptionHandler.logAndtoString(e, true));
     }
     try {
       String[] cols = {
@@ -200,12 +200,12 @@ public class MongoDBManager {
       DBObject dbObject = getObject(e, schema);
       WriteResult wr = c.insert(dbObject, WriteConcern.ACKNOWLEDGED);
       if (wr.getError() != null) {
-        log.info("INSERT ERROR {}:{} #>{}", collName, s, wr.getError());
+        log.warn("INSERT ERROR {}:{} #>{}", collName, s, wr.getError());
         log.debug("INSERT ERROR {}:{} #>{}", collName, e.toString(), wr.getError());
         return false;
       } else {
-        log.info("INSERT SUCCESS {}:{}", collName, s);
-        log.debug("INSERT SUCCESS {}:{}", collName, e.toString());
+        log.debug("INSERT SUCCESS {}:{}", collName, s);
+        log.trace("INSERT SUCCESS {}:{}", collName, e.toString());
       }
       return true;
     } catch (DuplicateKey ex) {
@@ -260,12 +260,12 @@ public class MongoDBManager {
 
       WriteResult wr = c.update(q, dbObject);
       if (wr.getError() != null) {
-        log.info("UPDATE ERROR {}:{} #>{}", collName, ep.getUri(), wr.getError());
+        log.warn("UPDATE ERROR {}:{} #>{}", collName, ep.getUri(), wr.getError());
         log.debug("UPDATE ERROR {}:{} #>{}", collName, e.toString(), wr.getError());
         return false;
       } else {
-        log.info("UPDATE SUCCESS {}:{}", collName, ep.getUri());
-        log.debug("UPDATE SUCCESS {}:{}", collName, e.toString());
+        log.debug("UPDATE SUCCESS {}:{}", collName, ep.getUri());
+        log.trace("UPDATE SUCCESS {}:{}", collName, e.toString());
       }
 
       return true;
@@ -358,7 +358,7 @@ public class MongoDBManager {
                     QueryBuilder.start(RESULT_KEY).is(ep.getUri().toString()).get(),
                     QueryBuilder.start("endpointResult.start").greaterThan(since).get())
                 .get();
-        log.info("[EXEC] {}", q);
+        log.debug("[EXEC] {}", q);
         curs = c.find(q);
       }
 
@@ -399,7 +399,7 @@ public class MongoDBManager {
                     QueryBuilder.start("endpointResult.start").greaterThan(from).get(),
                     QueryBuilder.start("endpointResult.start").lessThanEquals(to).get())
                 .get();
-        log.info("[EXEC] {}", q);
+        log.debug("[EXEC] {}", q);
         curs = c.find(q);
       }
 
@@ -562,10 +562,10 @@ public class MongoDBManager {
 
       WriteResult wr = c.remove(q, WriteConcern.ACKNOWLEDGED);
       if (wr.getError() != null) {
-        log.info("REMOVE ERROR {}:{} #>{}", v[0], ep.getUri(), wr.getError());
+        log.warn("REMOVE ERROR {}:{} #>{}", v[0], ep.getUri(), wr.getError());
         return false;
       } else {
-        log.info("REMOVE SUCCESS {}:{}", v[0], ep.getUri());
+        log.debug("REMOVE SUCCESS {}:{}", v[0], ep.getUri());
       }
       return true;
     } catch (DuplicateKey ex) {
