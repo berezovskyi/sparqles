@@ -54,6 +54,13 @@ app.get('/', function (req, res) {
             }
           )
 
+          var indexCalculation = JSON.parse(JSON.stringify(index.calculation), function(k, v) {
+            if (k === "data") 
+              this.values = v;
+            else
+              return v;
+          });
+
           console.log(`All availability data: ${JSON.stringify(index.availability)}`);
           console.log(`All amonths data: ${JSON.stringify(amonths)}`);
 
@@ -129,6 +136,7 @@ app.get('/', function (req, res) {
                     amonths: availability, // TODO: refactor naming
                     index: index,
                     indexInterop: indexInterop,
+          		      indexCalculation: indexCalculation,	
                     nbEndpointsSearch: nbEndpointsSearch,
                     nbEndpointsVoID: nbEndpointsVoID,
                     nbEndpointsSD: nbEndpointsSD,
@@ -137,26 +145,35 @@ app.get('/', function (req, res) {
                     nbEndpointsNoDesc: nbEndpointsNoDesc,
                     lastUpdate: lastUpdate.length > 0 ? lastUpdate[0].lastUpdate : 0,
                     perf: {
-                      threshold: 10000 /*mostCommonThreshold[0]*/,
-                      data: [
-                        {
-                          key: 'Cold Tests',
-                          color: '#1f77b4',
-                          values: [
-                            { label: 'Median ASK', value: avgASKCold },
-                            { label: 'Median JOIN', value: avgJOINCold },
-                          ],
-                        },
-                        {
-                          key: 'Warm Tests',
-                          color: '#2ca02c',
-                          values: [
-                            { label: 'Median ASK', value: avgASKWarm },
-                            { label: 'Median JOIN', value: avgJOINWarm },
-                          ],
-                        },
-                      ],
+                      threshold: index.performance?.threshold > 0 ? index.performance.threshold : 10000,
+                      data: index.performance.data.map((entry) => {
+                        return {
+                          key: entry.key,
+                          color: entry.color,
+                          // FIXME: update schema to avoid this
+                          values: entry.data,
+                        }
+                      })
+                      // data: [
+                      //   {
+                      //     key: 'Cold Tests',
+                      //     color: '#1f77b4',
+                      //     values: [
+                      //       { label: 'Median ASK', value: avgASKCold },
+                      //       { label: 'Median JOIN', value: avgJOINCold },
+                      //     ],
+                      //   },
+                      //   {
+                      //     key: 'Warm Tests',
+                      //     color: '#2ca02c',
+                      //     values: [
+                      //       { label: 'Median ASK', value: avgASKWarm },
+                      //       { label: 'Median JOIN', value: avgJOINWarm },
+                      //     ],
+                      //   },
+                      // ],
                     },
+                    // perf: index.performance,
                     configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
                     configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
                     configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
@@ -300,28 +317,34 @@ app.get('/endpoint', function (req, res) {
             }
 
             mongoDBProvider.getLatestDisco(uri, function (error, latestDisco) {
-              var SDDescription = [
-                {
-                  label: 'foo',
-                  value: true,
-                },
-              ]
-              var SDDescription = []
-              var descriptionFiles = latestDisco[0].descriptionFiles
-              for (var i = 0; i < descriptionFiles.length; i++) {
-                var d = descriptionFiles[i]
-                var name = d.Operation
-                if (name == 'EPURL') name = 'HTTP Get'
-                if (name == 'wellknown') name = '/.well-known/void'
-                var preds = false
-                // check if SPARQLDESCpreds object is empty or not
-                if (Object.keys(d.SPARQLDESCpreds).length) {
-                  preds = true
-                }
-                SDDescription.push({
-                  label: name,
-                  value: preds,
-                })
+              var SDDescription = [];
+
+              if (typeof latestDisco == 'undefined' || latestDisco == null) {
+                 SDDescription = [
+                  {
+                    label: 'foo',
+                    value: true,
+                  },
+                ];
+              } else {
+                var descriptionFiles = latestDisco[0]?.descriptionFiles;
+                if (descriptionFiles != null) {
+                for (var i = 0; i < descriptionFiles.length; i++) {
+                  var d = descriptionFiles[i]
+                  var name = d.Operation
+                  if (name == 'EPURL') name = 'HTTP Get'
+                  if (name == 'wellknown') name = '/.well-known/void'
+                  var preds = false
+                  // check if SPARQLDESCpreds object is empty or not
+                  if (Object.keys(d.SPARQLDESCpreds).length) {
+                    preds = true
+                  }
+                  SDDescription.push({
+                    label: name,
+                    value: preds,
+                  })
+                }  
+              }
               }
 
               docs[0].discoverability.SDDescription = SDDescription

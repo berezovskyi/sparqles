@@ -176,3 +176,49 @@ block content
       nv.utils.windowResize(chart.update);
       return chart;
     });
+    
+    // Coherence
+    nv.addGraph(function() {
+      var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .values(function(d) { return d })
+        .valueFormat(d3.format('.2%'))
+        .showLegend(false)
+        .height(550)
+        .color(d3.scale.category10().range())
+        .margin({top: 0, right: 5, bottom: 40, left: 0})
+        .donut(true);
+      chart.pie
+        .startAngle(function(d) { return d.startAngle/2 -Math.PI/2 })
+        .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 });
+      d3.select("#coher")
+        .datum([!{JSON.stringify(indexCalculation.coherences[0].values)}])
+        .transition().duration(500)
+        .call(chart);
+      nv.utils.windowResize(chart.update);
+      return chart;
+    });
+
+    // Relationship speciality
+    nv.addGraph(function() {
+      var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .values(function(d) { return d })
+        .valueFormat(d3.format('.2%'))
+        .showLegend(false)
+        .height(550)
+        .color(d3.scale.category10().range())
+        .margin({top: 0, right: 5, bottom: 40, left: 0})
+        .donut(true);
+      chart.pie
+        .startAngle(function(d) { return d.startAngle/2 -Math.PI/2 })
+        .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 });
+      d3.select("#rs")
+        .datum([!{JSON.stringify(indexCalculation.rss[0].values)}])
+        .transition().duration(500)
+        .call(chart);
+      nv.utils.windowResize(chart.update);
+      return chart;
+    });
