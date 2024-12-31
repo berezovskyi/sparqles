@@ -645,6 +645,7 @@ public class IndexViewAnalytics implements Task<Index> {
   }
 
   private void updateThreshold(long threshold, DescriptiveStatistics thresholdStats) {
+    log.debug("Found threshold: {}", threshold);
     if (threshold > 0) {
       thresholdStats.addValue(threshold);
     }
@@ -678,7 +679,9 @@ public class IndexViewAnalytics implements Task<Index> {
     warm.getData().add(new IndexViewPerformanceDataValues("Average JOIN", v));
 
     // median
-    idx.getPerformance().setThreshold((long) thresholdStats.getPercentile(50));
+    var medianThresh = (long) thresholdStats.getPercentile(50);
+    log.debug("Median thresh: {}", medianThresh);
+    idx.getPerformance().setThreshold(medianThresh);
     idx.getPerformance().setData(data);
   }
 
