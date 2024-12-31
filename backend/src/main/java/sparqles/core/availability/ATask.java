@@ -2,13 +2,7 @@ package sparqles.core.availability;
 
 import static java.time.temporal.ChronoUnit.MILLIS;
 
-import java.net.ConnectException;
-import java.net.UnknownHostException;
-import java.net.http.HttpConnectTimeoutException;
 import java.time.Duration;
-import javax.net.ssl.SSLHandshakeException;
-import org.apache.http.HttpException;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
@@ -19,9 +13,7 @@ import sparqles.avro.EndpointResult;
 import sparqles.avro.availability.AResult;
 import sparqles.core.EndpointTask;
 import sparqles.core.interoperability.TaskRun;
-import sparqles.utils.ExceptionHandler;
-import sparqles.utils.QueryManager;
-import sparqles.utils.StringUtils;
+import sparqles.utils.*;
 
 /**
  * This class performs the required task to study the availability of an endpoint.
@@ -54,9 +46,6 @@ public class ATask extends EndpointTask<AResult> {
       QueryExecution qe =
           QueryManager.getExecution(
               epr.getEndpoint(), ASKQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
-      // FIXME: find a new way
-      //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
-      // TaskRun.A_FIRST_RESULT_TIMEOUT);
       qe.getContext().set(ARQ.httpQueryTimeout, TaskRun.A_FIRST_RESULT_TIMEOUT);
 
       boolean response = qe.execAsk();
@@ -74,16 +63,31 @@ public class ATask extends EndpointTask<AResult> {
       } else {
         return testSelect(epr);
       }
-    } catch (QueryExceptionHTTP e) {
-      String ex = ExceptionHandler.logAndtoString(e);
-      result.setException(StringUtils.stringCutoff(ex));
-      result.setExplanation(ex);
-
-      log.warn("failed ASK query for {}, {}", _epURI, ExceptionHandler.logAndtoString(e, true));
-      return result;
     } catch (Exception e) {
-      return testSelect(epr);
+      var faultKind = FaultDiagnostic.faultKindForJenaQuery(e);
+      if (faultKind == FaultKind.UNKNOWN) {
+        result.setIsAvailable(false);
+        String ex = ExceptionHandler.logAndtoString(e);
+        result.setException(StringUtils.stringCutoff(ex));
+        result.setExplanation(
+            "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)");
+        log.warn(
+            "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)"
+                + " (type={})",
+            e.getClass().getName());
+        log.debug("Stacktrace", e);
+      } else {
+        if (faultKind == FaultKind.BAD_REQUEST
+            || faultKind == FaultKind.BAD_RESPONSE
+            || faultKind == FaultKind.DOWN_TIMEOUT
+            || faultKind == FaultKind.BAD_SERVER_ERROR) {
+          return testSelect(epr);
+        } else {
+          updateAResultFromFault(faultKind, result);
+        }
+      }
     }
+    return result;
   }
 
   private AResult testSelect(EndpointResult epr) {
@@ -92,10 +96,9 @@ public class ATask extends EndpointTask<AResult> {
     result.setExplanation("Endpoint is operating normally");
     long start = System.currentTimeMillis();
     try {
-      QueryExecution qe = QueryManager.getExecution(epr.getEndpoint(), SELECTQUERY);
-      // FIXME
-      //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
-      // TaskRun.A_FIRST_RESULT_TIMEOUT);
+      QueryExecution qe =
+          QueryManager.getExecution(
+              epr.getEndpoint(), SELECTQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
       boolean response = qe.execSelect().hasNext();
 
       if (response) {
@@ -114,85 +117,44 @@ public class ATask extends EndpointTask<AResult> {
         log.debug("executed no response {}", epr.getEndpoint().getUri().toString());
         return result;
       }
-    } catch (ConnectTimeoutException | ConnectException e) {
-      result.setIsAvailable(false);
-      String msg = "🐌 connection timeout while connecting to " + _epURI;
-      log.info(msg);
-      result.setExplanation(msg);
-      return result;
-    } catch (UnknownHostException e) {
-      result.setIsAvailable(false);
-      String msg = "🕳️ host not found while connecting to " + _epURI;
-      log.info(msg);
-      result.setExplanation(msg);
-      return result;
-    } catch (QueryExceptionHTTP | HttpException e) {
-      if (e.getCause() instanceof UnknownHostException) {
+    } catch (Exception e) {
+      var faultKind = FaultDiagnostic.faultKindForJenaQuery(e);
+      if (faultKind == FaultKind.UNKNOWN) {
         result.setIsAvailable(false);
-        String msg = "🕳️ host not found while connecting to " + _epURI;
-        log.info(msg);
-        result.setExplanation(msg);
-        return result;
+        String ex = ExceptionHandler.logAndtoString(e);
+        result.setException(StringUtils.stringCutoff(ex));
+        result.setExplanation(
+            "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)");
+        log.warn(
+            "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)"
+                + " (type={})",
+            e.getClass().getName());
+        log.debug("Stacktrace", e);
+      } else {
+        updateAResultFromFault(faultKind, result);
       }
-      if (e.getCause() instanceof ConnectTimeoutException
-          || e.getCause() instanceof ConnectException
-          || e.getCause() instanceof HttpConnectTimeoutException) {
-        result.setIsAvailable(false);
-        String msg = "🐌 connection timeout while connecting to " + _epURI;
-        log.info(msg);
-        result.setExplanation(msg);
-        return result;
-      }
-      if (e.getCause() instanceof SSLHandshakeException) {
-        result.setIsAvailable(false);
-        String msg = "🏰 failed to establish a TLS connection to " + _epURI;
-        log.info(msg);
-        log.debug(
-            "SSLHandshakeException while connecting to {}: {}", _epURI, e.getCause().getMessage());
-        result.setExplanation(msg);
-        return result;
-      }
-      if (e.getMessage().contains("400")) {
-        result.setIsAvailable(false);
-        String msg = "👾 host did not like our request (400); while connecting to " + _epURI;
-        log.info(msg);
-        result.setExplanation(msg);
-        return result;
-      } else if (e.getMessage().contains("401")) {
-        result.setIsAvailable(false);
-        String msg = "✋ host requires authn (401); while connecting to " + _epURI;
-        log.info(msg);
-        result.setExplanation(msg);
-        result.setIsPrivate(true);
-        return result;
-      } else if (e.getMessage().contains("502")) {
-        result.setIsAvailable(false);
-        String msg =
-            "🕳 server is likely down behind reverse proxy (502); while connecting to " + _epURI;
-        log.info(msg);
-        result.setExplanation(msg);
-        return result;
-      } else if (e.getMessage().contains("503")) {
-        result.setIsAvailable(false);
-        String msg = "🕳 endpoint is overloaded or gone (503); while connecting to " + _epURI;
-        log.info(msg);
-        result.setExplanation(msg);
-        return result;
-      }
-    } catch (Exception e1) {
-      result.setIsAvailable(false);
-      String ex = ExceptionHandler.logAndtoString(e1);
-      result.setException(StringUtils.stringCutoff(ex));
-      result.setExplanation("Unknown error encountered while attempting an ASK query");
-      if (e1.getMessage() != null)
-        if (e1.getMessage().contains("401 Authorization Required")) result.setIsPrivate(true);
-
-      log.warn(
-          "failed SELECT query for {}, {} (type {})",
-          _epURI,
-          ExceptionHandler.logAndtoString(e1, true),
-          e1.getClass().getName());
     }
     return result;
+  }
+
+  private void updateAResultFromFault(FaultKind faultKind, AResult result) {
+    result.setIsAvailable(false);
+    switch (faultKind) {
+      case UNKNOWN -> {
+        throw new IllegalArgumentException();
+      }
+      case DOWN_HOST_NOT_FOUND -> result.setExplanation("🕳️ host not found");
+      case DOWN_404_NOT_FOUND -> result.setExplanation("🕳️ 404 endpoint not found");
+      case DOWN_TLS_CONFIGURATION_ERROR ->
+          result.setExplanation("🔧 TLS misconfiguration (failed handshake)");
+      case DOWN_TIMEOUT -> result.setExplanation("🐌 connection timeout");
+      case DOWN_BAD_GATEWAY -> result.setExplanation("🔧 bad gateway");
+      case DOWN_GONE_410 -> result.setExplanation("💨 410 gone");
+      case DOWN_ENDPOINT -> result.setExplanation("🕳 endpoint down");
+      case AUTH_401 -> result.setExplanation("🛡️ server requires authentication");
+      case AUTH_403 -> result.setExplanation("🛡️ server denied access");
+      case BAD_REQUEST -> result.setExplanation("👾 host did not like our request (400)");
+      case BAD_RESPONSE -> result.setExplanation("🗑️ malformed response");
+    }
   }
 }
