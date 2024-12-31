@@ -64,6 +64,18 @@ public class ExceptionHandler {
     return sw.toString();
   }
 
+  public static String toFullCause(Exception e) {
+    StringWriter sw = new StringWriter();
+    PrintWriter pw = new PrintWriter(sw);
+    Throwable cause = e;
+    for(int i = 1; ; i++) {
+      pw.printf("%d: %s\n", i, cause.getClass().getCanonicalName());
+      cause = e.getCause();
+      if (cause == null) break;
+    }
+    return sw.toString();
+  }
+
   private static String getExceptionID(Exception e) {
     //		System.out.println(exceptionID);
 

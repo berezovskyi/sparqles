@@ -75,6 +75,8 @@ public class ATask extends EndpointTask<AResult> {
                 + " (type={})",
             e.getClass().getName());
         log.debug("Stacktrace", e);
+        log.debug("Full stacktrace", ExceptionHandler.toFullString(e));
+        log.debug("Full cause", ExceptionHandler.toFullCause(e));
       } else {
         if (faultKind == FaultKind.BAD_REQUEST
             || faultKind == FaultKind.BAD_RESPONSE
