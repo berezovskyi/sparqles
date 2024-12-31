@@ -6,6 +6,7 @@ import java.net.http.HttpConnectTimeoutException;
 import javax.net.ssl.SSLHandshakeException;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.jena.query.QueryException;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
 
 public class FaultDiagnostic {
@@ -28,7 +29,14 @@ public class FaultDiagnostic {
         var e1 = e.getCause();
         return faultKindForApacheHttpException(e1);
       }
-    } else if (e instanceof HttpException) {
+    }
+    else if (e instanceof QueryException) {
+      if (e.getMessage().contains("Endpoint returned Content-Type:")) {
+        return FaultKind.BAD_RESPONSE;
+      }
+      return FaultKind.UNKNOWN;
+    }
+    else if (e instanceof HttpException) {
       return faultKindForApacheHttpException(e);
     } else if (e instanceof ConnectTimeoutException || e instanceof ConnectException) {
       return FaultKind.DOWN_TIMEOUT;
