@@ -102,7 +102,7 @@ public class IndexViewAnalytics implements Task<Index> {
 
     // iterate over all epviews and analyse them
     for (EPView epv : epviews) {
-      System.err.println(epv);
+      log.trace("EPView: {}", epv);
       // analyse availability
       recalculateAvailabilityMonthly();
       analyseAvailability(epv.getAvailability(), weekHist);
@@ -188,7 +188,7 @@ public class IndexViewAnalytics implements Task<Index> {
         // get the end of the month
         Calendar calEnd = (Calendar) cal.clone();
         calEnd.add(Calendar.MONTH, 1);
-        System.out.println(
+        log.debug(
             "Computing month aggregation from date ["
                 + sdf.format(cal.getTime())
                 + " to "
