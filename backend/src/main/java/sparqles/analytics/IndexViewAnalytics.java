@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
@@ -84,6 +85,7 @@ public class IndexViewAnalytics implements Task<Index> {
       new SummaryStatistics(),
       new SummaryStatistics()
     };
+    var thresholdStats = new DescriptiveStatistics();
 
     SimpleHistogram[] interStats = {
       new SimpleHistogram(),
@@ -106,7 +108,7 @@ public class IndexViewAnalytics implements Task<Index> {
       analyseAvailability(epv.getAvailability(), weekHist);
 
       // analyse performance
-      analysePerformance(epv.getPerformance(), perfStats);
+      analysePerformance(epv.getPerformance(), perfStats, thresholdStats);
 
       // analyse interoperability
       analyseInteroperability(epv.getInteroperability(), interStats);
@@ -122,7 +124,7 @@ public class IndexViewAnalytics implements Task<Index> {
     updateAvailabilityStats(idx, weekHist);
 
     // update performance stats
-    updatePerformanceStats(idx, perfStats);
+    updatePerformanceStats(idx, perfStats, thresholdStats);
 
     // update interoperability stats
     updateInteroperability(idx, interStats);
@@ -633,9 +635,19 @@ public class IndexViewAnalytics implements Task<Index> {
 
   }
 
-  private void analysePerformance(EPViewPerformance performance, SummaryStatistics[] perfStats) {
+  private void analysePerformance(
+      EPViewPerformance performance,
+      SummaryStatistics[] perfStats,
+      DescriptiveStatistics thresholdStats) {
     update(performance.getAsk(), perfStats[askCold], perfStats[askWarm]);
     update(performance.getJoin(), perfStats[joinCold], perfStats[joinWarm]);
+    updateThreshold(performance.getThreshold(), thresholdStats);
+  }
+
+  private void updateThreshold(long threshold, DescriptiveStatistics thresholdStats) {
+    if (threshold > 0) {
+      thresholdStats.addValue(threshold);
+    }
   }
 
   private void analyseAvailability(
@@ -645,7 +657,8 @@ public class IndexViewAnalytics implements Task<Index> {
     }
   }
 
-  private void updatePerformanceStats(Index idx, SummaryStatistics[] perfStats) {
+  private void updatePerformanceStats(
+      Index idx, SummaryStatistics[] perfStats, DescriptiveStatistics thresholdStats) {
     ArrayList<IndexViewPerformanceData> data = new ArrayList<IndexViewPerformanceData>();
     List<IndexViewPerformanceDataValues> l = new ArrayList<IndexViewPerformanceDataValues>();
     IndexViewPerformanceData cold = new IndexViewPerformanceData("Cold Tests", "#1f77b4", l);
@@ -664,7 +677,8 @@ public class IndexViewAnalytics implements Task<Index> {
     v = (perfStats[joinWarm].getN() == 0) ? -1D : perfStats[joinWarm].getMean();
     warm.getData().add(new IndexViewPerformanceDataValues("Average JOIN", v));
 
-    idx.getPerformance().setThreshold(-1L);
+    // median
+    idx.getPerformance().setThreshold((long) thresholdStats.getPercentile(50));
     idx.getPerformance().setData(data);
   }
 
@@ -699,6 +713,7 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private void update(
       List<EPViewPerformanceData> results, SummaryStatistics cold, SummaryStatistics warm) {
+
     for (EPViewPerformanceData pdata : results) {
       if (pdata.getKey().toString().contains("Cold")) {
         for (EPViewPerformanceDataValues v : pdata.getData()) {
