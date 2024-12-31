@@ -1,13 +1,12 @@
 package sparqles.core.interoperability;
 
 import java.util.Iterator;
+import java.util.Map;
+
 import org.apache.jena.graph.Triple;
-import org.apache.jena.query.Query;
-import org.apache.jena.query.QueryException;
-import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.QuerySolution;
-import org.apache.jena.query.ResultSet;
+import org.apache.jena.http.sys.HttpRequestModifier;
+import org.apache.jena.query.*;
+import org.apache.jena.sparql.exec.http.Params;
 import org.apache.jena.sparql.util.FmtUtils;
 import org.slf4j.Logger;
 import sparqles.avro.Endpoint;
@@ -20,8 +19,8 @@ public abstract class TaskRun {
 
   public static final long FIRST_RESULT_TIMEOUT = 60 * 1000;
   public static final long EXECUTION_TIMEOUT = 15 * 60 * 1000;
-  public static final long A_FIRST_RESULT_TIMEOUT = 30 * 1000;
-  public static final long A_EXECUTION_TIMEOUT = 60 * 1000;
+  public static final long A_FIRST_RESULT_TIMEOUT = 10 * 1000;
+//  public static final long A_EXECUTION_TIMEOUT = 60 * 1000;
   protected FileManager _fm;
   protected String _query;
   protected String _queryFile;
@@ -59,6 +58,13 @@ public abstract class TaskRun {
 
       // FIXME: find a new way to set these timeouts
       //            qexec.setTimeout(FIRST_RESULT_TIMEOUT, FIRST_RESULT_TIMEOUT);
+      qexec.getContext().set(ARQ.httpQueryTimeout, FIRST_RESULT_TIMEOUT);
+      qexec.getContext().set(ARQ.httpRequestModifer, new HttpRequestModifier() {
+        @Override
+        public void modify(Params params, Map<String, String> httpHeaders) {
+          httpHeaders.put("User-Agent", "Mozilla/5.0 (compatible; SPARQLES/0.3.0; +https://sparqles.sv.berezovskyi.me)");
+        }
+      });
       cnxion = System.currentTimeMillis();
 
       if (q.isSelectType()) {

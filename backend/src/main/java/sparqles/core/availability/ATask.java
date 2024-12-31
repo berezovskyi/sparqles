@@ -6,6 +6,7 @@ import java.net.http.HttpConnectTimeoutException;
 import javax.net.ssl.SSLHandshakeException;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
 import org.slf4j.Logger;
@@ -50,6 +51,7 @@ public class ATask extends EndpointTask<AResult> {
       // FIXME: find a new way
       //            qe.setTimeout(TaskRun.A_FIRST_RESULT_TIMEOUT,
       // TaskRun.A_FIRST_RESULT_TIMEOUT);
+      qe.getContext().set(ARQ.httpQueryTimeout, TaskRun.A_FIRST_RESULT_TIMEOUT);
       boolean response = qe.execAsk();
       if (response) {
         result.setResponseTime((System.currentTimeMillis() - start));
@@ -138,6 +140,7 @@ public class ATask extends EndpointTask<AResult> {
         result.setIsAvailable(false);
         String msg = "🏰 failed to establish a TLS connection to " + _epURI;
         log.info(msg);
+        log.debug("SSLHandshakeException while connecting to {}: {}", _epURI, e.getCause().getMessage());
         result.setExplanation(msg);
         return result;
       }
