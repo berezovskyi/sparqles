@@ -47,12 +47,6 @@ public class FaultDiagnostic {
       }
       log.debug("Unknown fault", e);
       return FaultKind.UNKNOWN;
-    } else if (e instanceof QueryException) {
-      if (e.getMessage().contains("Endpoint returned Content-Type:")) {
-        return FaultKind.BAD_RESPONSE;
-      }
-      log.debug("Unknown fault", e);
-      return FaultKind.UNKNOWN;
     } else if (e instanceof HttpException) {
       return faultKindForApacheHttpException(e);
     } else if (e instanceof ConnectTimeoutException
@@ -61,6 +55,12 @@ public class FaultDiagnostic {
       return FaultKind.DOWN_TIMEOUT;
     } else if (e instanceof UnknownHostException) {
       return FaultKind.DOWN_HOST_NOT_FOUND;
+    } else if (e instanceof QueryException) {
+      if (e.getMessage().contains("Endpoint returned Content-Type:")) {
+        return FaultKind.BAD_RESPONSE;
+      }
+      log.debug("Unknown fault", e);
+      return FaultKind.UNKNOWN;
     } else {
       if (e.getMessage() != null)
         if (e.getMessage().contains("401 Authorization Required")) return FaultKind.AUTH_401;
