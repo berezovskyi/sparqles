@@ -70,9 +70,9 @@ public class ATask extends EndpointTask<AResult> {
         String ex = ExceptionHandler.logAndtoString(e);
         result.setException(StringUtils.stringCutoff(ex));
         result.setExplanation(
-            "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)");
+            "Unknown error encountered while attempting an ASK query");
         log.warn(
-            "Unknown error encountered while attempting an ASK query fallback (SELECT LIMIT 1)"
+            "Unknown error encountered while attempting an ASK query"
                 + " (type={})",
             e.getClass().getName());
         log.debug("Stacktrace", e);
