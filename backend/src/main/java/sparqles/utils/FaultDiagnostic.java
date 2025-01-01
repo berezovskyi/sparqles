@@ -1,5 +1,6 @@
 package sparqles.utils;
 
+import java.io.EOFException;
 import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -45,7 +46,8 @@ public class FaultDiagnostic {
         return FaultKind.DOWN_TLS_CONFIGURATION_ERROR;
       } else if (e.getCause() instanceof HttpException || qe.getStatusCode() >= 400) {
         return faultKindForApacheHttpException(qe.getStatusCode());
-      } else if (ExceptionUtils.indexOfThrowable(e, SocketException.class) != -1) {
+      } else if (ExceptionUtils.indexOfThrowable(e, SocketException.class) != -1
+          || ExceptionUtils.indexOfThrowable(e, EOFException.class) != -1) {
         return FaultKind.DOWN_ENDPOINT;
       }
     } else if (e instanceof ResultSetException) {
