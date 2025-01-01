@@ -100,11 +100,12 @@ public class IndexViewAnalytics implements Task<Index> {
 
     Count[] calcStats = {new Count<String>(), new Count<String>(), new Count<String>()};
 
+    // analyse availability
+    recalculateAvailabilityMonthly();
+
     // iterate over all epviews and analyse them
     for (EPView epv : epviews) {
       log.trace("EPView: {}", epv);
-      // analyse availability
-      recalculateAvailabilityMonthly();
       analyseAvailability(epv.getAvailability(), weekHist);
 
       // analyse performance
@@ -646,7 +647,8 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private void updateThreshold(long threshold, DescriptiveStatistics thresholdStats) {
     log.debug("Found threshold: {}", threshold);
-    if (threshold > 0) {
+    // 100002 is the LIMIT used to detect a threshold
+    if (threshold > 0 && threshold < 100_002) {
       thresholdStats.addValue(threshold);
     }
   }
