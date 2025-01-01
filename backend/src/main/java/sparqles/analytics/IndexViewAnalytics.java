@@ -1,18 +1,11 @@
 package sparqles.analytics;
 
-import com.google.gson.Gson;
-import com.mongodb.MongoClient;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-import org.jongo.Jongo;
-import org.jongo.MongoCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sparqles.avro.Endpoint;
 import sparqles.avro.analytics.AvailabilityIndex;
 import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewAvailability;
@@ -41,7 +34,6 @@ import sparqles.avro.analytics.IndexViewPerformanceData;
 import sparqles.avro.analytics.IndexViewPerformanceDataValues;
 import sparqles.core.SPARQLESProperties;
 import sparqles.core.Task;
-import sparqles.paper.objects.AMonth;
 import sparqles.utils.MongoDBManager;
 
 public class IndexViewAnalytics implements Task<Index> {
@@ -144,103 +136,7 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private void recalculateAvailabilityMonthly() {
     log.info("Recalculating availability monthly");
-    try {
-      Gson gson = new Gson();
-
-      //            SPARQLESProperties.init(new
-      // java.io.File("src/main/resources/sparqles_docker.properties"));
-
-      // read the list of endpoints
-      //            MongoDBManager dbm = new MongoDBManager();
-      var dbm = _dbm;
-      Collection<Endpoint> eps = dbm.get(Endpoint.class, Endpoint.SCHEMA$);
-
-      // check if there is any stat to run or if it is up to date
-      // open connection to mongodb aEvol collection
-      Jongo jongo =
-          new Jongo(
-              new MongoClient(
-                      SPARQLESProperties.getDB_HOST() + ":" + SPARQLESProperties.getDB_PORT())
-                  .getDB(SPARQLESProperties.getDB_NAME()));
-      MongoCollection amonthsColl = jongo.getCollection(MongoDBManager.COLL_AMONTHS);
-      // get last month
-      AMonth lastMonth = amonthsColl.findOne().orderBy("{date: -1}").as(AMonth.class);
-      Calendar cal = Calendar.getInstance();
-      Calendar calNow = Calendar.getInstance();
-      calNow.set(Calendar.DAY_OF_MONTH, 1);
-      calNow.set(Calendar.HOUR, 0);
-      calNow.set(Calendar.MINUTE, 0);
-      calNow.set(Calendar.SECOND, 0);
-      calNow.add(Calendar.MONTH, -1);
-      if (lastMonth == null) {
-        cal.setTimeInMillis((dbm.getFirstAvailabitlityTime() / 1000) * 1000);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        cal.set(Calendar.HOUR, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-      } else {
-        cal.setTime(lastMonth.getDate());
-        cal.add(Calendar.MONTH, 1);
-      }
-
-      // in case there is at least a full new month to process
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-      while (calNow.compareTo(cal) > 0) {
-        // get the end of the month
-        Calendar calEnd = (Calendar) cal.clone();
-        calEnd.add(Calendar.MONTH, 1);
-        log.debug(
-            "Computing month aggregation from date ["
-                + sdf.format(cal.getTime())
-                + " to "
-                + sdf.format(calEnd.getTime())
-                + "[");
-
-        // String json = readUrl("https://sparqles.demo.openlinksw.com/api/endpoint/lis");
-        // AvailEpFromList[] epArray = gson.fromJson(json, AvailEpFromList[].class);
-        MongoCollection atasksColl = jongo.getCollection(MongoDBManager.COLL_AVAIL);
-        //				System.out.println(atasksColl.count("{'endpointResult.start': {$gt : #}}",
-        // cal.getTimeInMillis()));
-
-        AMonth newMonth = new AMonth();
-        newMonth.setDate(cal.getTime());
-
-        // for each endpoint in the collection
-        for (Endpoint e : eps) {
-          // get number of avail and unavail tests
-          long nbAvail =
-              atasksColl.count(
-                  "{'endpointResult.endpoint.uri': '"
-                      + e.getUri()
-                      + "', 'isAvailable':true, 'endpointResult.start': {$gte : "
-                      + cal.getTimeInMillis()
-                      + ", $lt : "
-                      + calEnd.getTimeInMillis()
-                      + "}}}");
-          long nbUnavail =
-              atasksColl.count(
-                  "{'endpointResult.endpoint.uri': '"
-                      + e.getUri()
-                      + "', 'isAvailable':false, 'endpointResult.start': {$gte : "
-                      + cal.getTimeInMillis()
-                      + ", $lt : "
-                      + calEnd.getTimeInMillis()
-                      + "}}}");
-          newMonth.addEndpoint(nbAvail, nbUnavail);
-        }
-
-        // add the new month to the collection
-        amonthsColl.insert(newMonth);
-
-        // increment the month to process
-        cal.add(Calendar.MONTH, 1);
-      }
-      log.debug("Recalculating availability monthly COMPLETE");
-    } catch (IOException e) {
-      log.info("Exception while processing availability monthly (IO)", e);
-    } catch (Exception e) {
-      log.info("Exception while processing availability monthly (unknown)", e);
-    }
+    AEvol.recalculateMonthly(_dbm);
   }
 
   private void analyseCalculation(EPViewCalculation calculation, Count<String>[] calcStats) {

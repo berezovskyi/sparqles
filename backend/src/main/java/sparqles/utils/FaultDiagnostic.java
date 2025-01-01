@@ -5,7 +5,6 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.net.http.HttpConnectTimeoutException;
 import javax.net.ssl.SSLHandshakeException;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.http.HttpException;
 import org.apache.http.conn.ConnectTimeoutException;

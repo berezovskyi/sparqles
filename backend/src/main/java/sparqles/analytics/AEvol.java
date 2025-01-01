@@ -1,6 +1,5 @@
 package sparqles.analytics;
 
-import com.google.gson.Gson;
 import com.mongodb.MongoClient;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,14 +8,18 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.TimeZone;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sparqles.avro.Endpoint;
 import sparqles.core.SPARQLESProperties;
 import sparqles.paper.objects.AMonth;
 import sparqles.utils.MongoDBManager;
 
 public class AEvol {
+  private static final Logger log = LoggerFactory.getLogger(AEvol.class);
 
   /**
    * @param args
@@ -26,13 +29,19 @@ public class AEvol {
   }
 
   public AEvol(String[] args) {
+    SPARQLESProperties.init(new java.io.File("src/main/resources/sparqles_docker.properties"));
+
+    // read the list of endpoints
+    MongoDBManager dbm = new MongoDBManager();
     try {
-      Gson gson = new Gson();
+      recalculateMonthly(dbm);
+    } catch (Exception e) {
+      log.error("Error while recalculating monthly data", e);
+    }
+  }
 
-      SPARQLESProperties.init(new java.io.File("src/main/resources/sparqles_docker.properties"));
-
-      // read the list of endpoints
-      MongoDBManager dbm = new MongoDBManager();
+  public static void recalculateMonthly(MongoDBManager dbm) {
+    try {
       Collection<Endpoint> eps = dbm.get(Endpoint.class, Endpoint.SCHEMA$);
 
       // check if there is any stat to run or if it is up to date
@@ -45,8 +54,8 @@ public class AEvol {
       MongoCollection amonthsColl = jongo.getCollection(MongoDBManager.COLL_AMONTHS);
       // get last month
       AMonth lastMonth = amonthsColl.findOne().orderBy("{date: -1}").as(AMonth.class);
-      Calendar cal = Calendar.getInstance();
-      Calendar calNow = Calendar.getInstance();
+      Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+      Calendar calNow = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
       calNow.set(Calendar.DAY_OF_MONTH, 1);
       calNow.set(Calendar.HOUR, 0);
       calNow.set(Calendar.MINUTE, 0);
@@ -65,11 +74,11 @@ public class AEvol {
 
       // in case there is at least a full new month to process
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-      while (calNow.compareTo(cal) > 0) {
+      while (calNow.compareTo(cal) >= 0) {
         // get the end of the month
         Calendar calEnd = (Calendar) cal.clone();
         calEnd.add(Calendar.MONTH, 1);
-        System.out.println(
+        log.debug(
             "Computing month aggregation from date ["
                 + sdf.format(cal.getTime())
                 + " to "
@@ -115,11 +124,11 @@ public class AEvol {
         // increment the month to process
         cal.add(Calendar.MONTH, 1);
       }
-
+      log.debug("Recalculating availability monthly COMPLETE");
     } catch (IOException e) {
-      e.printStackTrace();
+      log.info("Exception while processing availability monthly (IO)", e);
     } catch (Exception e) {
-      e.printStackTrace();
+      log.info("Exception while processing availability monthly (unknown)", e);
     }
   }
 

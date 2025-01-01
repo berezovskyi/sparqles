@@ -96,30 +96,7 @@ public abstract class TaskRun {
       //            System.out.println( _ep.getUri() + "\t" + sols
       //                    + "\t" + (cnxion - b4) + "\t" + (iter - b4) + "\t"
       //                    + (close - b4));
-    } /*catch (QueryException e) {
-        r.setException(ExceptionHandler.getExceptionSummary(e.getMessage()));
-        if (log.isInfoEnabled()) {
-          String cause;
-          if (e.getCause() != null) {
-            cause =
-                ExceptionHandler.getExceptionSummary(e.getCause().getMessage())
-                    + " !"
-                    + e.getCause().getClass().getSimpleName();
-          } else {
-            cause = ExceptionHandler.getExceptionSummary(e.getMessage());
-          }
-          log.info("SPARQL query failed against endpoint {} (cause: {}...)", _ep.getUri(), cause);
-        }
-      } catch (Exception e) {
-        log.debug(
-            "[EXC] {} over {}; {}:{}:",
-            _queryFile,
-            _ep.getUri().toString(),
-            e.getClass().getSimpleName(),
-            e.getMessage(),
-            e.getCause());
-        r.setException(ExceptionHandler.toFullString(e));
-      }*/ catch (Exception e) {
+    } catch (Exception e) {
       var faultKind = FaultDiagnostic.faultKindForJenaQuery(e);
       if (faultKind == FaultKind.UNKNOWN) {
         //        String ex = ExceptionHandler.logAndtoString(e);

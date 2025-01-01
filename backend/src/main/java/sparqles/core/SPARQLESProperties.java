@@ -13,7 +13,7 @@ public class SPARQLESProperties {
   private static final Logger log = LoggerFactory.getLogger(SPARQLESProperties.class);
   private static Endpoint SPARQLES;
 
-  private static String SPARQLES_HOST = "http://sparqles.okfn.org/";
+  private static String SPARQLES_HOST = CONSTANTS.DEFAULT_HOST;
 
   private static String DATA_DIR = "./data";
 
