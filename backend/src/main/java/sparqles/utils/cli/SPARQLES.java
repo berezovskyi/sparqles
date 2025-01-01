@@ -88,9 +88,11 @@ public class SPARQLES extends CLIObject {
     }
     if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_RESCHEDULE)) {
       Collection<Schedule> epss = Scheduler.createDefaultSchedule(dbm);
+      log.info("Created a new schedule for {} endpoints", epss.size());
       dbm.initScheduleCollection();
       dbm.setup();
       dbm.insert(epss);
+      log.info("Persisted the schedule for {} endpoints", epss.size());
     }
     if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_RECOMPUTE)) {
       recomputeAnalytics(false);

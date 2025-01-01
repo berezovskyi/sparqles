@@ -155,6 +155,7 @@ public class MongoDBManager {
   public void initScheduleCollection() {
     DBCollection c = db.getCollection(COLL_SCHED);
     c.drop();
+    log.warn("Collection '{}' dropped", COLL_SCHED);
   }
 
   public void initAggregateCollections() {
