@@ -33,7 +33,7 @@ block content
               span(onmouseover!=`tooltip.show('${configPerformance["performance"]}')`, onmouseout='tooltip.hide();') Performance
           span
             b #{numberWithCommas(perf.threshold)} 
-            | is the most common 
+            | is the median 
             span(onmouseover!=`tooltip.show('${configPerformance["Result-size thresholds"]}')`, onmouseout='tooltip.hide();') result-size threshold
           svg#perf
       article.wrpl(style='min-width: 400px;')
