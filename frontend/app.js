@@ -55,7 +55,7 @@ app.get('/', function (req, res) {
           )
 
           var indexCalculation = JSON.parse(JSON.stringify(index.calculation), function(k, v) {
-            if (k === "data") 
+            if (k === "data")
               this.values = v;
             else
               return v;
@@ -64,8 +64,8 @@ app.get('/', function (req, res) {
           console.log(`All availability data: ${JSON.stringify(index.availability)}`);
           console.log(`All amonths data: ${JSON.stringify(amonths)}`);
 
-          // var availability = amonths;
-          var availability = null; // do not use amoths, use index.availability
+          var availability = amonths;
+          //var availability = null; // do not use amoths, use index.availability
           if (typeof availability != undefined && availability != null && availability.length > 0) {
             // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
             for (var i = 0; i < availability.length; i++) {
@@ -97,7 +97,7 @@ app.get('/', function (req, res) {
 
             console.log(`Final values from index.avail: ${JSON.stringify(availability)}`);
           }
-          
+
           //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
 
           //PERFORMANCE
@@ -136,14 +136,14 @@ app.get('/', function (req, res) {
                     amonths: availability, // TODO: refactor naming
                     index: index,
                     indexInterop: indexInterop,
-          		      indexCalculation: indexCalculation,	
+          		     indexCalculation: indexCalculation,
                     nbEndpointsSearch: nbEndpointsSearch,
                     nbEndpointsVoID: nbEndpointsVoID,
                     nbEndpointsSD: nbEndpointsSD,
                     nbEndpointsServerName: nbEndpointsServerName,
                     nbEndpointsTotal: nbEndpointsTotal,
                     nbEndpointsNoDesc: nbEndpointsNoDesc,
-                    lastUpdate: lastUpdate.length > 0 ? lastUpdate[0].lastUpdate : 0,
+                    lastUpdate: lastUpdate.length > 0 ?  new Date(lastUpdate[0].lastUpdate) : 0,
                     perf: {
                       threshold: index.performance?.threshold > 0 ? index.performance.threshold : 10000,
                       data: index.performance.data.map((entry) => {
@@ -343,7 +343,7 @@ app.get('/endpoint', function (req, res) {
                     label: name,
                     value: preds,
                   })
-                }  
+                }
               }
               }
 
