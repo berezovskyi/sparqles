@@ -5,401 +5,762 @@
  */
 package sparqles.avro.discovery;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class QueryInfo extends org.apache.avro.specific.SpecificRecordBase
-        implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ =
-            new org.apache.avro.Schema.Parser()
-                    .parse(
-                            "{\"type\":\"record\",\"name\":\"QueryInfo\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Results\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}");
-    @Deprecated public java.lang.CharSequence URL;
-    @Deprecated public java.lang.CharSequence Operation;
-    @Deprecated public java.lang.CharSequence Exception;
-    @Deprecated public boolean allowedByRobotsTXT;
-    @Deprecated public java.util.List<java.lang.CharSequence> Results;
+    implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -6620100892292357578L;
+
+  public static final org.apache.avro.Schema SCHEMA$ =
+      new org.apache.avro.Schema.Parser()
+          .parse(
+              "{\"type\":\"record\",\"name\":\"QueryInfo\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"URL\",\"type\":\"string\"},{\"name\":\"Operation\",\"type\":\"string\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"Results\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}");
+
+  public static org.apache.avro.Schema getClassSchema() {
+    return SCHEMA$;
+  }
+
+  private static final SpecificData MODEL$ = new SpecificData();
+
+  private static final BinaryMessageEncoder<QueryInfo> ENCODER =
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+  private static final BinaryMessageDecoder<QueryInfo> DECODER =
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   *
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<QueryInfo> getEncoder() {
+    return ENCODER;
+  }
+
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   *
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<QueryInfo> getDecoder() {
+    return DECODER;
+  }
+
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+   * SchemaStore}.
+   *
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<QueryInfo> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+  }
+
+  /**
+   * Serializes this QueryInfo to a ByteBuffer.
+   *
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
+
+  /**
+   * Deserializes a QueryInfo from a ByteBuffer.
+   *
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a QueryInfo instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+   *     this class
+   */
+  public static QueryInfo fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
+  private java.lang.CharSequence URL;
+  private java.lang.CharSequence Operation;
+  private java.lang.CharSequence Exception;
+  private boolean allowedByRobotsTXT;
+  private java.util.List<java.lang.CharSequence> Results;
+
+  /**
+   * Default constructor. Note that this does not initialize fields to their default values from the
+   * schema. If that is desired then one should use <code>newBuilder()</code>.
+   */
+  public QueryInfo() {}
+
+  /**
+   * All-args constructor.
+   *
+   * @param URL The new value for URL
+   * @param Operation The new value for Operation
+   * @param Exception The new value for Exception
+   * @param allowedByRobotsTXT The new value for allowedByRobotsTXT
+   * @param Results The new value for Results
+   */
+  public QueryInfo(
+      java.lang.CharSequence URL,
+      java.lang.CharSequence Operation,
+      java.lang.CharSequence Exception,
+      java.lang.Boolean allowedByRobotsTXT,
+      java.util.List<java.lang.CharSequence> Results) {
+    this.URL = URL;
+    this.Operation = Operation;
+    this.Exception = Exception;
+    this.allowedByRobotsTXT = allowedByRobotsTXT;
+    this.Results = Results;
+  }
+
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() {
+    return MODEL$;
+  }
+
+  @Override
+  public org.apache.avro.Schema getSchema() {
+    return SCHEMA$;
+  }
+
+  // Used by DatumWriter.  Applications should not call.
+  @Override
+  public java.lang.Object get(int field$) {
+    switch (field$) {
+      case 0:
+        return URL;
+      case 1:
+        return Operation;
+      case 2:
+        return Exception;
+      case 3:
+        return allowedByRobotsTXT;
+      case 4:
+        return Results;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  // Used by DatumReader.  Applications should not call.
+  @Override
+  @SuppressWarnings(value = "unchecked")
+  public void put(int field$, java.lang.Object value$) {
+    switch (field$) {
+      case 0:
+        URL = (java.lang.CharSequence) value$;
+        break;
+      case 1:
+        Operation = (java.lang.CharSequence) value$;
+        break;
+      case 2:
+        Exception = (java.lang.CharSequence) value$;
+        break;
+      case 3:
+        allowedByRobotsTXT = (java.lang.Boolean) value$;
+        break;
+      case 4:
+        Results = (java.util.List<java.lang.CharSequence>) value$;
+        break;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  /**
+   * Gets the value of the 'URL' field.
+   *
+   * @return The value of the 'URL' field.
+   */
+  public java.lang.CharSequence getURL() {
+    return URL;
+  }
+
+  /**
+   * Sets the value of the 'URL' field.
+   *
+   * @param value the value to set.
+   */
+  public void setURL(java.lang.CharSequence value) {
+    this.URL = value;
+  }
+
+  /**
+   * Gets the value of the 'Operation' field.
+   *
+   * @return The value of the 'Operation' field.
+   */
+  public java.lang.CharSequence getOperation() {
+    return Operation;
+  }
+
+  /**
+   * Sets the value of the 'Operation' field.
+   *
+   * @param value the value to set.
+   */
+  public void setOperation(java.lang.CharSequence value) {
+    this.Operation = value;
+  }
+
+  /**
+   * Gets the value of the 'Exception' field.
+   *
+   * @return The value of the 'Exception' field.
+   */
+  public java.lang.CharSequence getException() {
+    return Exception;
+  }
+
+  /**
+   * Sets the value of the 'Exception' field.
+   *
+   * @param value the value to set.
+   */
+  public void setException(java.lang.CharSequence value) {
+    this.Exception = value;
+  }
+
+  /**
+   * Gets the value of the 'allowedByRobotsTXT' field.
+   *
+   * @return The value of the 'allowedByRobotsTXT' field.
+   */
+  public boolean getAllowedByRobotsTXT() {
+    return allowedByRobotsTXT;
+  }
+
+  /**
+   * Sets the value of the 'allowedByRobotsTXT' field.
+   *
+   * @param value the value to set.
+   */
+  public void setAllowedByRobotsTXT(boolean value) {
+    this.allowedByRobotsTXT = value;
+  }
+
+  /**
+   * Gets the value of the 'Results' field.
+   *
+   * @return The value of the 'Results' field.
+   */
+  public java.util.List<java.lang.CharSequence> getResults() {
+    return Results;
+  }
+
+  /**
+   * Sets the value of the 'Results' field.
+   *
+   * @param value the value to set.
+   */
+  public void setResults(java.util.List<java.lang.CharSequence> value) {
+    this.Results = value;
+  }
+
+  /**
+   * Creates a new QueryInfo RecordBuilder.
+   *
+   * @return A new QueryInfo RecordBuilder
+   */
+  public static sparqles.avro.discovery.QueryInfo.Builder newBuilder() {
+    return new sparqles.avro.discovery.QueryInfo.Builder();
+  }
+
+  /**
+   * Creates a new QueryInfo RecordBuilder by copying an existing Builder.
+   *
+   * @param other The existing builder to copy.
+   * @return A new QueryInfo RecordBuilder
+   */
+  public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
+      sparqles.avro.discovery.QueryInfo.Builder other) {
+    if (other == null) {
+      return new sparqles.avro.discovery.QueryInfo.Builder();
+    } else {
+      return new sparqles.avro.discovery.QueryInfo.Builder(other);
+    }
+  }
+
+  /**
+   * Creates a new QueryInfo RecordBuilder by copying an existing QueryInfo instance.
+   *
+   * @param other The existing instance to copy.
+   * @return A new QueryInfo RecordBuilder
+   */
+  public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
+      sparqles.avro.discovery.QueryInfo other) {
+    if (other == null) {
+      return new sparqles.avro.discovery.QueryInfo.Builder();
+    } else {
+      return new sparqles.avro.discovery.QueryInfo.Builder(other);
+    }
+  }
+
+  /** RecordBuilder for QueryInfo instances. */
+  @org.apache.avro.specific.AvroGenerated
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<QueryInfo>
+      implements org.apache.avro.data.RecordBuilder<QueryInfo> {
+
+    private java.lang.CharSequence URL;
+    private java.lang.CharSequence Operation;
+    private java.lang.CharSequence Exception;
+    private boolean allowedByRobotsTXT;
+    private java.util.List<java.lang.CharSequence> Results;
+
+    /** Creates a new Builder */
+    private Builder() {
+      super(SCHEMA$, MODEL$);
+    }
 
     /**
-     * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * Creates a Builder by copying an existing Builder.
+     *
+     * @param other The existing Builder to copy.
      */
-    public QueryInfo() {}
-
-    /** All-args constructor. */
-    public QueryInfo(
-            java.lang.CharSequence URL,
-            java.lang.CharSequence Operation,
-            java.lang.CharSequence Exception,
-            java.lang.Boolean allowedByRobotsTXT,
-            java.util.List<java.lang.CharSequence> Results) {
-        this.URL = URL;
-        this.Operation = Operation;
-        this.Exception = Exception;
-        this.allowedByRobotsTXT = allowedByRobotsTXT;
-        this.Results = Results;
+    private Builder(sparqles.avro.discovery.QueryInfo.Builder other) {
+      super(other);
+      if (isValidValue(fields()[0], other.URL)) {
+        this.URL = data().deepCopy(fields()[0].schema(), other.URL);
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (isValidValue(fields()[1], other.Operation)) {
+        this.Operation = data().deepCopy(fields()[1].schema(), other.Operation);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+      if (isValidValue(fields()[2], other.Exception)) {
+        this.Exception = data().deepCopy(fields()[2].schema(), other.Exception);
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.allowedByRobotsTXT)) {
+        this.allowedByRobotsTXT = data().deepCopy(fields()[3].schema(), other.allowedByRobotsTXT);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (isValidValue(fields()[4], other.Results)) {
+        this.Results = data().deepCopy(fields()[4].schema(), other.Results);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
+      }
     }
 
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
+    /**
+     * Creates a Builder by copying an existing QueryInfo instance
+     *
+     * @param other The existing instance to copy.
+     */
+    private Builder(sparqles.avro.discovery.QueryInfo other) {
+      super(SCHEMA$, MODEL$);
+      if (isValidValue(fields()[0], other.URL)) {
+        this.URL = data().deepCopy(fields()[0].schema(), other.URL);
+        fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.Operation)) {
+        this.Operation = data().deepCopy(fields()[1].schema(), other.Operation);
+        fieldSetFlags()[1] = true;
+      }
+      if (isValidValue(fields()[2], other.Exception)) {
+        this.Exception = data().deepCopy(fields()[2].schema(), other.Exception);
+        fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.allowedByRobotsTXT)) {
+        this.allowedByRobotsTXT = data().deepCopy(fields()[3].schema(), other.allowedByRobotsTXT);
+        fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.Results)) {
+        this.Results = data().deepCopy(fields()[4].schema(), other.Results);
+        fieldSetFlags()[4] = true;
+      }
     }
 
-    /** Creates a new QueryInfo RecordBuilder */
-    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder() {
-        return new sparqles.avro.discovery.QueryInfo.Builder();
-    }
-
-    /** Creates a new QueryInfo RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
-            sparqles.avro.discovery.QueryInfo.Builder other) {
-        return new sparqles.avro.discovery.QueryInfo.Builder(other);
-    }
-
-    /** Creates a new QueryInfo RecordBuilder by copying an existing QueryInfo instance */
-    public static sparqles.avro.discovery.QueryInfo.Builder newBuilder(
-            sparqles.avro.discovery.QueryInfo other) {
-        return new sparqles.avro.discovery.QueryInfo.Builder(other);
-    }
-
-    public org.apache.avro.Schema getSchema() {
-        return SCHEMA$;
-    }
-
-    // Used by DatumWriter.  Applications should not call.
-    public java.lang.Object get(int field$) {
-        switch (field$) {
-            case 0:
-                return URL;
-            case 1:
-                return Operation;
-            case 2:
-                return Exception;
-            case 3:
-                return allowedByRobotsTXT;
-            case 4:
-                return Results;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
-
-    // Used by DatumReader.  Applications should not call.
-    @SuppressWarnings(value = "unchecked")
-    public void put(int field$, java.lang.Object value$) {
-        switch (field$) {
-            case 0:
-                URL = (java.lang.CharSequence) value$;
-                break;
-            case 1:
-                Operation = (java.lang.CharSequence) value$;
-                break;
-            case 2:
-                Exception = (java.lang.CharSequence) value$;
-                break;
-            case 3:
-                allowedByRobotsTXT = (java.lang.Boolean) value$;
-                break;
-            case 4:
-                Results = (java.util.List<java.lang.CharSequence>) value$;
-                break;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
-
-    /** Gets the value of the 'URL' field. */
+    /**
+     * Gets the value of the 'URL' field.
+     *
+     * @return The value.
+     */
     public java.lang.CharSequence getURL() {
-        return URL;
+      return URL;
     }
 
     /**
      * Sets the value of the 'URL' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'URL'.
+     * @return This builder.
      */
-    public void setURL(java.lang.CharSequence value) {
-        this.URL = value;
+    public sparqles.avro.discovery.QueryInfo.Builder setURL(java.lang.CharSequence value) {
+      validate(fields()[0], value);
+      this.URL = value;
+      fieldSetFlags()[0] = true;
+      return this;
     }
 
-    /** Gets the value of the 'Operation' field. */
+    /**
+     * Checks whether the 'URL' field has been set.
+     *
+     * @return True if the 'URL' field has been set, false otherwise.
+     */
+    public boolean hasURL() {
+      return fieldSetFlags()[0];
+    }
+
+    /**
+     * Clears the value of the 'URL' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.QueryInfo.Builder clearURL() {
+      URL = null;
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'Operation' field.
+     *
+     * @return The value.
+     */
     public java.lang.CharSequence getOperation() {
-        return Operation;
+      return Operation;
     }
 
     /**
      * Sets the value of the 'Operation' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'Operation'.
+     * @return This builder.
      */
-    public void setOperation(java.lang.CharSequence value) {
-        this.Operation = value;
+    public sparqles.avro.discovery.QueryInfo.Builder setOperation(java.lang.CharSequence value) {
+      validate(fields()[1], value);
+      this.Operation = value;
+      fieldSetFlags()[1] = true;
+      return this;
     }
 
-    /** Gets the value of the 'Exception' field. */
+    /**
+     * Checks whether the 'Operation' field has been set.
+     *
+     * @return True if the 'Operation' field has been set, false otherwise.
+     */
+    public boolean hasOperation() {
+      return fieldSetFlags()[1];
+    }
+
+    /**
+     * Clears the value of the 'Operation' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.QueryInfo.Builder clearOperation() {
+      Operation = null;
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'Exception' field.
+     *
+     * @return The value.
+     */
     public java.lang.CharSequence getException() {
-        return Exception;
+      return Exception;
     }
 
     /**
      * Sets the value of the 'Exception' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'Exception'.
+     * @return This builder.
      */
-    public void setException(java.lang.CharSequence value) {
-        this.Exception = value;
+    public sparqles.avro.discovery.QueryInfo.Builder setException(java.lang.CharSequence value) {
+      validate(fields()[2], value);
+      this.Exception = value;
+      fieldSetFlags()[2] = true;
+      return this;
     }
 
-    /** Gets the value of the 'allowedByRobotsTXT' field. */
-    public java.lang.Boolean getAllowedByRobotsTXT() {
-        return allowedByRobotsTXT;
+    /**
+     * Checks whether the 'Exception' field has been set.
+     *
+     * @return True if the 'Exception' field has been set, false otherwise.
+     */
+    public boolean hasException() {
+      return fieldSetFlags()[2];
+    }
+
+    /**
+     * Clears the value of the 'Exception' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.QueryInfo.Builder clearException() {
+      Exception = null;
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'allowedByRobotsTXT' field.
+     *
+     * @return The value.
+     */
+    public boolean getAllowedByRobotsTXT() {
+      return allowedByRobotsTXT;
     }
 
     /**
      * Sets the value of the 'allowedByRobotsTXT' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'allowedByRobotsTXT'.
+     * @return This builder.
      */
-    public void setAllowedByRobotsTXT(java.lang.Boolean value) {
-        this.allowedByRobotsTXT = value;
+    public sparqles.avro.discovery.QueryInfo.Builder setAllowedByRobotsTXT(boolean value) {
+      validate(fields()[3], value);
+      this.allowedByRobotsTXT = value;
+      fieldSetFlags()[3] = true;
+      return this;
     }
 
-    /** Gets the value of the 'Results' field. */
+    /**
+     * Checks whether the 'allowedByRobotsTXT' field has been set.
+     *
+     * @return True if the 'allowedByRobotsTXT' field has been set, false otherwise.
+     */
+    public boolean hasAllowedByRobotsTXT() {
+      return fieldSetFlags()[3];
+    }
+
+    /**
+     * Clears the value of the 'allowedByRobotsTXT' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.QueryInfo.Builder clearAllowedByRobotsTXT() {
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'Results' field.
+     *
+     * @return The value.
+     */
     public java.util.List<java.lang.CharSequence> getResults() {
-        return Results;
+      return Results;
     }
 
     /**
      * Sets the value of the 'Results' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'Results'.
+     * @return This builder.
      */
-    public void setResults(java.util.List<java.lang.CharSequence> value) {
-        this.Results = value;
+    public sparqles.avro.discovery.QueryInfo.Builder setResults(
+        java.util.List<java.lang.CharSequence> value) {
+      validate(fields()[4], value);
+      this.Results = value;
+      fieldSetFlags()[4] = true;
+      return this;
     }
 
-    /** RecordBuilder for QueryInfo instances. */
-    public static class Builder
-            extends org.apache.avro.specific.SpecificRecordBuilderBase<QueryInfo>
-            implements org.apache.avro.data.RecordBuilder<QueryInfo> {
-
-        private java.lang.CharSequence URL;
-        private java.lang.CharSequence Operation;
-        private java.lang.CharSequence Exception;
-        private boolean allowedByRobotsTXT;
-        private java.util.List<java.lang.CharSequence> Results;
-
-        /** Creates a new Builder */
-        private Builder() {
-            super(sparqles.avro.discovery.QueryInfo.SCHEMA$);
-        }
-
-        /** Creates a Builder by copying an existing Builder */
-        private Builder(sparqles.avro.discovery.QueryInfo.Builder other) {
-            super(other);
-            if (isValidValue(fields()[0], other.URL)) {
-                this.URL = data().deepCopy(fields()[0].schema(), other.URL);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.Operation)) {
-                this.Operation = data().deepCopy(fields()[1].schema(), other.Operation);
-                fieldSetFlags()[1] = true;
-            }
-            if (isValidValue(fields()[2], other.Exception)) {
-                this.Exception = data().deepCopy(fields()[2].schema(), other.Exception);
-                fieldSetFlags()[2] = true;
-            }
-            if (isValidValue(fields()[3], other.allowedByRobotsTXT)) {
-                this.allowedByRobotsTXT =
-                        data().deepCopy(fields()[3].schema(), other.allowedByRobotsTXT);
-                fieldSetFlags()[3] = true;
-            }
-            if (isValidValue(fields()[4], other.Results)) {
-                this.Results = data().deepCopy(fields()[4].schema(), other.Results);
-                fieldSetFlags()[4] = true;
-            }
-        }
-
-        /** Creates a Builder by copying an existing QueryInfo instance */
-        private Builder(sparqles.avro.discovery.QueryInfo other) {
-            super(sparqles.avro.discovery.QueryInfo.SCHEMA$);
-            if (isValidValue(fields()[0], other.URL)) {
-                this.URL = data().deepCopy(fields()[0].schema(), other.URL);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.Operation)) {
-                this.Operation = data().deepCopy(fields()[1].schema(), other.Operation);
-                fieldSetFlags()[1] = true;
-            }
-            if (isValidValue(fields()[2], other.Exception)) {
-                this.Exception = data().deepCopy(fields()[2].schema(), other.Exception);
-                fieldSetFlags()[2] = true;
-            }
-            if (isValidValue(fields()[3], other.allowedByRobotsTXT)) {
-                this.allowedByRobotsTXT =
-                        data().deepCopy(fields()[3].schema(), other.allowedByRobotsTXT);
-                fieldSetFlags()[3] = true;
-            }
-            if (isValidValue(fields()[4], other.Results)) {
-                this.Results = data().deepCopy(fields()[4].schema(), other.Results);
-                fieldSetFlags()[4] = true;
-            }
-        }
-
-        /** Gets the value of the 'URL' field */
-        public java.lang.CharSequence getURL() {
-            return URL;
-        }
-
-        /** Sets the value of the 'URL' field */
-        public sparqles.avro.discovery.QueryInfo.Builder setURL(java.lang.CharSequence value) {
-            validate(fields()[0], value);
-            this.URL = value;
-            fieldSetFlags()[0] = true;
-            return this;
-        }
-
-        /** Checks whether the 'URL' field has been set */
-        public boolean hasURL() {
-            return fieldSetFlags()[0];
-        }
-
-        /** Clears the value of the 'URL' field */
-        public sparqles.avro.discovery.QueryInfo.Builder clearURL() {
-            URL = null;
-            fieldSetFlags()[0] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'Operation' field */
-        public java.lang.CharSequence getOperation() {
-            return Operation;
-        }
-
-        /** Sets the value of the 'Operation' field */
-        public sparqles.avro.discovery.QueryInfo.Builder setOperation(
-                java.lang.CharSequence value) {
-            validate(fields()[1], value);
-            this.Operation = value;
-            fieldSetFlags()[1] = true;
-            return this;
-        }
-
-        /** Checks whether the 'Operation' field has been set */
-        public boolean hasOperation() {
-            return fieldSetFlags()[1];
-        }
-
-        /** Clears the value of the 'Operation' field */
-        public sparqles.avro.discovery.QueryInfo.Builder clearOperation() {
-            Operation = null;
-            fieldSetFlags()[1] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'Exception' field */
-        public java.lang.CharSequence getException() {
-            return Exception;
-        }
-
-        /** Sets the value of the 'Exception' field */
-        public sparqles.avro.discovery.QueryInfo.Builder setException(
-                java.lang.CharSequence value) {
-            validate(fields()[2], value);
-            this.Exception = value;
-            fieldSetFlags()[2] = true;
-            return this;
-        }
-
-        /** Checks whether the 'Exception' field has been set */
-        public boolean hasException() {
-            return fieldSetFlags()[2];
-        }
-
-        /** Clears the value of the 'Exception' field */
-        public sparqles.avro.discovery.QueryInfo.Builder clearException() {
-            Exception = null;
-            fieldSetFlags()[2] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'allowedByRobotsTXT' field */
-        public java.lang.Boolean getAllowedByRobotsTXT() {
-            return allowedByRobotsTXT;
-        }
-
-        /** Sets the value of the 'allowedByRobotsTXT' field */
-        public sparqles.avro.discovery.QueryInfo.Builder setAllowedByRobotsTXT(boolean value) {
-            validate(fields()[3], value);
-            this.allowedByRobotsTXT = value;
-            fieldSetFlags()[3] = true;
-            return this;
-        }
-
-        /** Checks whether the 'allowedByRobotsTXT' field has been set */
-        public boolean hasAllowedByRobotsTXT() {
-            return fieldSetFlags()[3];
-        }
-
-        /** Clears the value of the 'allowedByRobotsTXT' field */
-        public sparqles.avro.discovery.QueryInfo.Builder clearAllowedByRobotsTXT() {
-            fieldSetFlags()[3] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'Results' field */
-        public java.util.List<java.lang.CharSequence> getResults() {
-            return Results;
-        }
-
-        /** Sets the value of the 'Results' field */
-        public sparqles.avro.discovery.QueryInfo.Builder setResults(
-                java.util.List<java.lang.CharSequence> value) {
-            validate(fields()[4], value);
-            this.Results = value;
-            fieldSetFlags()[4] = true;
-            return this;
-        }
-
-        /** Checks whether the 'Results' field has been set */
-        public boolean hasResults() {
-            return fieldSetFlags()[4];
-        }
-
-        /** Clears the value of the 'Results' field */
-        public sparqles.avro.discovery.QueryInfo.Builder clearResults() {
-            Results = null;
-            fieldSetFlags()[4] = false;
-            return this;
-        }
-
-        @Override
-        public QueryInfo build() {
-            try {
-                QueryInfo record = new QueryInfo();
-                record.URL =
-                        fieldSetFlags()[0]
-                                ? this.URL
-                                : (java.lang.CharSequence) defaultValue(fields()[0]);
-                record.Operation =
-                        fieldSetFlags()[1]
-                                ? this.Operation
-                                : (java.lang.CharSequence) defaultValue(fields()[1]);
-                record.Exception =
-                        fieldSetFlags()[2]
-                                ? this.Exception
-                                : (java.lang.CharSequence) defaultValue(fields()[2]);
-                record.allowedByRobotsTXT =
-                        fieldSetFlags()[3]
-                                ? this.allowedByRobotsTXT
-                                : (java.lang.Boolean) defaultValue(fields()[3]);
-                record.Results =
-                        fieldSetFlags()[4]
-                                ? this.Results
-                                : (java.util.List<java.lang.CharSequence>)
-                                        defaultValue(fields()[4]);
-                return record;
-            } catch (Exception e) {
-                throw new org.apache.avro.AvroRuntimeException(e);
-            }
-        }
+    /**
+     * Checks whether the 'Results' field has been set.
+     *
+     * @return True if the 'Results' field has been set, false otherwise.
+     */
+    public boolean hasResults() {
+      return fieldSetFlags()[4];
     }
+
+    /**
+     * Clears the value of the 'Results' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.QueryInfo.Builder clearResults() {
+      Results = null;
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public QueryInfo build() {
+      try {
+        QueryInfo record = new QueryInfo();
+        record.URL =
+            fieldSetFlags()[0] ? this.URL : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.Operation =
+            fieldSetFlags()[1]
+                ? this.Operation
+                : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.Exception =
+            fieldSetFlags()[2]
+                ? this.Exception
+                : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.allowedByRobotsTXT =
+            fieldSetFlags()[3]
+                ? this.allowedByRobotsTXT
+                : (java.lang.Boolean) defaultValue(fields()[3]);
+        record.Results =
+            fieldSetFlags()[4]
+                ? this.Results
+                : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[4]);
+        return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
+        throw new org.apache.avro.AvroRuntimeException(e);
+      }
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<QueryInfo> WRITER$ =
+      (org.apache.avro.io.DatumWriter<QueryInfo>) MODEL$.createDatumWriter(SCHEMA$);
+
+  @Override
+  public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+    WRITER$.write(this, SpecificData.getEncoder(out));
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<QueryInfo> READER$ =
+      (org.apache.avro.io.DatumReader<QueryInfo>) MODEL$.createDatumReader(SCHEMA$);
+
+  @Override
+  public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+    READER$.read(this, SpecificData.getDecoder(in));
+  }
+
+  @Override
+  protected boolean hasCustomCoders() {
+    return true;
+  }
+
+  @Override
+  public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+    out.writeString(this.URL);
+
+    out.writeString(this.Operation);
+
+    if (this.Exception == null) {
+      out.writeIndex(1);
+      out.writeNull();
+    } else {
+      out.writeIndex(0);
+      out.writeString(this.Exception);
+    }
+
+    out.writeBoolean(this.allowedByRobotsTXT);
+
+    long size0 = this.Results.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.lang.CharSequence e0 : this.Results) {
+      actualSize0++;
+      out.startItem();
+      out.writeString(e0);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException(
+          "Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+  }
+
+  @Override
+  public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.URL = in.readString(this.URL instanceof Utf8 ? (Utf8) this.URL : null);
+
+      this.Operation = in.readString(this.Operation instanceof Utf8 ? (Utf8) this.Operation : null);
+
+      if (in.readIndex() != 0) {
+        in.readNull();
+        this.Exception = null;
+      } else {
+        this.Exception =
+            in.readString(this.Exception instanceof Utf8 ? (Utf8) this.Exception : null);
+      }
+
+      this.allowedByRobotsTXT = in.readBoolean();
+
+      long size0 = in.readArrayStart();
+      java.util.List<java.lang.CharSequence> a0 = this.Results;
+      if (a0 == null) {
+        a0 =
+            new SpecificData.Array<java.lang.CharSequence>(
+                (int) size0, SCHEMA$.getField("Results").schema());
+        this.Results = a0;
+      } else a0.clear();
+      SpecificData.Array<java.lang.CharSequence> ga0 =
+          (a0 instanceof SpecificData.Array
+              ? (SpecificData.Array<java.lang.CharSequence>) a0
+              : null);
+      for (; 0 < size0; size0 = in.arrayNext()) {
+        for (; size0 != 0; size0--) {
+          java.lang.CharSequence e0 = (ga0 != null ? ga0.peek() : null);
+          e0 = in.readString(e0 instanceof Utf8 ? (Utf8) e0 : null);
+          a0.add(e0);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 5; i++) {
+        switch (fieldOrder[i].pos()) {
+          case 0:
+            this.URL = in.readString(this.URL instanceof Utf8 ? (Utf8) this.URL : null);
+            break;
+
+          case 1:
+            this.Operation =
+                in.readString(this.Operation instanceof Utf8 ? (Utf8) this.Operation : null);
+            break;
+
+          case 2:
+            if (in.readIndex() != 0) {
+              in.readNull();
+              this.Exception = null;
+            } else {
+              this.Exception =
+                  in.readString(this.Exception instanceof Utf8 ? (Utf8) this.Exception : null);
+            }
+            break;
+
+          case 3:
+            this.allowedByRobotsTXT = in.readBoolean();
+            break;
+
+          case 4:
+            long size0 = in.readArrayStart();
+            java.util.List<java.lang.CharSequence> a0 = this.Results;
+            if (a0 == null) {
+              a0 =
+                  new SpecificData.Array<java.lang.CharSequence>(
+                      (int) size0, SCHEMA$.getField("Results").schema());
+              this.Results = a0;
+            } else a0.clear();
+            SpecificData.Array<java.lang.CharSequence> ga0 =
+                (a0 instanceof SpecificData.Array
+                    ? (SpecificData.Array<java.lang.CharSequence>) a0
+                    : null);
+            for (; 0 < size0; size0 = in.arrayNext()) {
+              for (; size0 != 0; size0--) {
+                java.lang.CharSequence e0 = (ga0 != null ? ga0.peek() : null);
+                e0 = in.readString(e0 instanceof Utf8 ? (Utf8) e0 : null);
+                a0.add(e0);
+              }
+            }
+            break;
+
+          default:
+            throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }

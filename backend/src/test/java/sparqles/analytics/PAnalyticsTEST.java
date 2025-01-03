@@ -1,5 +1,7 @@
 package sparqles.analytics;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -14,33 +16,33 @@ import sparqles.utils.MongoDBManager;
 
 public class PAnalyticsTEST {
 
-    private MongoDBManager m;
+  private MongoDBManager m;
 
-    @Before
-    public void setUp() throws Exception {
-        SPARQLESProperties.init(new File("src/test/resources/ends.properties"));
-        m = new MongoDBManager();
+  @Before
+  public void setUp() throws Exception {
+    SPARQLESProperties.init(new File("src/test/resources/ends.properties"));
+    m = new MongoDBManager();
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    m.close();
+  }
+
+  @Test
+  public void test() throws URISyntaxException {
+    m.initAggregateCollections();
+    PAnalyser a = new PAnalyser(m);
+
+    Endpoint ep = EndpointFactory.newEndpoint("http://dbpedia.org/sparql");
+    System.out.println("Analyse");
+
+    Collection<PResult> ress = m.getResults(ep, PResult.class, PResult.SCHEMA$);
+    for (PResult pr : ress) {
+      a.analyse(pr);
     }
 
-    @After
-    public void tearDown() throws Exception {
-        m.close();
-    }
+    //		a.analyse(ep);
 
-    @Test
-    public void test() throws URISyntaxException {
-        m.initAggregateCollections();
-        PAnalyser a = new PAnalyser(m);
-
-        Endpoint ep = EndpointFactory.newEndpoint("http://dbpedia.org/sparql");
-        System.out.println("Analyse");
-
-        Collection<PResult> ress = m.getResults(ep, PResult.class, PResult.SCHEMA$);
-        for (PResult pr : ress) {
-            a.analyse(pr);
-        }
-
-        //		a.analyse(ep);
-
-    }
+  }
 }

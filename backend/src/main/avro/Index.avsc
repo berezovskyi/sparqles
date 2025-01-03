@@ -91,7 +91,7 @@
         									]
       									}
       								}
-   	 							}
+   	 						}
         					]
       					}
       				}
@@ -99,7 +99,6 @@
    	 		]
    	 	}
  	},
- 	
  	{"name": "discoverability", "type":
 		{
 			"namespace":"sparqles.avro.analytics",
@@ -137,7 +136,50 @@
    	 		]
    	 	}
    	 	
+ 	},
+ 	{"name": "calculation", "type":
+		{
+			"namespace":"sparqles.avro.analytics",
+			"type":"record",
+			"name":"IndexViewCalculation",
+			"fields":[
+				{"name": "coherences" , "type":
+   	 				{"type": "array", "items": 
+						{	
+    						"namespace": "sparqles.avro.analytics",	
+ 							"name": "IndexViewCalculationData",
+      						"type": "record",
+        					"fields" : [
+        						{ "name": "key", "type": "string"},
+        						{ "name": "values" , "type":
+   	 							{ "type": "array", "items": 
+    									{	
+    										"namespace": "sparqles.avro.analytics",	
+ 											"name": "IndexViewCalculationDataValues",
+      										"type": "record",
+        									"fields" : [
+        										{ "name": "label", "type": "string"},
+        										{ "name": "value", "type": "double"}
+        									]
+      									}
+      								}
+   	 						}
+        					]
+      						}
+      					}
+      				},
+				{"name": "rss" , "type":
+   	 				{"type": "array", "items": "sparqles.avro.analytics.IndexViewCalculationData"}
+      				},
+				{ "name": "VoID", "type": "double"},
+   	 			{ "name": "VoIDPart", "type": "double"},
+   	 			{ "name": "SD", "type": "double"},
+   	 			{ "name": "SDPart", "type": "double"},
+   	 			{ "name": "Coherence", "type": "double"},
+   	 			{ "name": "RS", "type": "double"}
+   	 		]
+   	 	}
+   	 	
  	}
 ] 
 }
-

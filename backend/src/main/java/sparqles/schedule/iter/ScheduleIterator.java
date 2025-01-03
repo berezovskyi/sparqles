@@ -4,5 +4,5 @@ import java.util.Date;
 
 public interface ScheduleIterator {
 
-    Date next();
+  Date next();
 }

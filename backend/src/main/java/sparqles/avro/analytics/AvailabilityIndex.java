@@ -5,225 +5,484 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class AvailabilityIndex extends org.apache.avro.specific.SpecificRecordBase
-        implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ =
-            new org.apache.avro.Schema.Parser()
-                    .parse(
-                            "{\"type\":\"record\",\"name\":\"AvailabilityIndex\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"string\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}");
-    @Deprecated public java.lang.CharSequence key;
-    @Deprecated public java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values;
+    implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -8916363243407959834L;
 
-    /**
-     * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
-     */
-    public AvailabilityIndex() {}
+  public static final org.apache.avro.Schema SCHEMA$ =
+      new org.apache.avro.Schema.Parser()
+          .parse(
+              "{\"type\":\"record\",\"name\":\"AvailabilityIndex\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"key\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"IndexAvailabilityDataPoint\",\"fields\":[{\"name\":\"x\",\"type\":\"string\"},{\"name\":\"y\",\"type\":\"double\"}]}}}]}");
 
-    /** All-args constructor. */
-    public AvailabilityIndex(
-            java.lang.CharSequence key,
-            java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values) {
-        this.key = key;
-        this.values = values;
-    }
+  public static org.apache.avro.Schema getClassSchema() {
+    return SCHEMA$;
+  }
 
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
+  private static final SpecificData MODEL$ = new SpecificData();
 
-    /** Creates a new AvailabilityIndex RecordBuilder */
-    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder() {
-        return new sparqles.avro.analytics.AvailabilityIndex.Builder();
-    }
+  private static final BinaryMessageEncoder<AvailabilityIndex> ENCODER =
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-    /** Creates a new AvailabilityIndex RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
-            sparqles.avro.analytics.AvailabilityIndex.Builder other) {
-        return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
-    }
+  private static final BinaryMessageDecoder<AvailabilityIndex> DECODER =
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
-    /**
-     * Creates a new AvailabilityIndex RecordBuilder by copying an existing AvailabilityIndex
-     * instance
-     */
-    public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
-            sparqles.avro.analytics.AvailabilityIndex other) {
-        return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
-    }
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   *
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<AvailabilityIndex> getEncoder() {
+    return ENCODER;
+  }
 
-    public org.apache.avro.Schema getSchema() {
-        return SCHEMA$;
-    }
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   *
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<AvailabilityIndex> getDecoder() {
+    return DECODER;
+  }
 
-    // Used by DatumWriter.  Applications should not call.
-    public java.lang.Object get(int field$) {
-        switch (field$) {
-            case 0:
-                return key;
-            case 1:
-                return values;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+   * SchemaStore}.
+   *
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<AvailabilityIndex> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+  }
 
-    // Used by DatumReader.  Applications should not call.
-    @SuppressWarnings(value = "unchecked")
-    public void put(int field$, java.lang.Object value$) {
-        switch (field$) {
-            case 0:
-                key = (java.lang.CharSequence) value$;
-                break;
-            case 1:
-                values =
-                        (java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint>) value$;
-                break;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
+  /**
+   * Serializes this AvailabilityIndex to a ByteBuffer.
+   *
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
 
-    /** Gets the value of the 'key' field. */
-    public java.lang.CharSequence getKey() {
+  /**
+   * Deserializes a AvailabilityIndex from a ByteBuffer.
+   *
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a AvailabilityIndex instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+   *     this class
+   */
+  public static AvailabilityIndex fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
+  private java.lang.CharSequence key;
+  private java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values;
+
+  /**
+   * Default constructor. Note that this does not initialize fields to their default values from the
+   * schema. If that is desired then one should use <code>newBuilder()</code>.
+   */
+  public AvailabilityIndex() {}
+
+  /**
+   * All-args constructor.
+   *
+   * @param key The new value for key
+   * @param values The new value for values
+   */
+  public AvailabilityIndex(
+      java.lang.CharSequence key,
+      java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values) {
+    this.key = key;
+    this.values = values;
+  }
+
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() {
+    return MODEL$;
+  }
+
+  @Override
+  public org.apache.avro.Schema getSchema() {
+    return SCHEMA$;
+  }
+
+  // Used by DatumWriter.  Applications should not call.
+  @Override
+  public java.lang.Object get(int field$) {
+    switch (field$) {
+      case 0:
         return key;
+      case 1:
+        return values;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  // Used by DatumReader.  Applications should not call.
+  @Override
+  @SuppressWarnings(value = "unchecked")
+  public void put(int field$, java.lang.Object value$) {
+    switch (field$) {
+      case 0:
+        key = (java.lang.CharSequence) value$;
+        break;
+      case 1:
+        values = (java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint>) value$;
+        break;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  /**
+   * Gets the value of the 'key' field.
+   *
+   * @return The value of the 'key' field.
+   */
+  public java.lang.CharSequence getKey() {
+    return key;
+  }
+
+  /**
+   * Sets the value of the 'key' field.
+   *
+   * @param value the value to set.
+   */
+  public void setKey(java.lang.CharSequence value) {
+    this.key = value;
+  }
+
+  /**
+   * Gets the value of the 'values' field.
+   *
+   * @return The value of the 'values' field.
+   */
+  public java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> getValues() {
+    return values;
+  }
+
+  /**
+   * Sets the value of the 'values' field.
+   *
+   * @param value the value to set.
+   */
+  public void setValues(java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> value) {
+    this.values = value;
+  }
+
+  /**
+   * Creates a new AvailabilityIndex RecordBuilder.
+   *
+   * @return A new AvailabilityIndex RecordBuilder
+   */
+  public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder() {
+    return new sparqles.avro.analytics.AvailabilityIndex.Builder();
+  }
+
+  /**
+   * Creates a new AvailabilityIndex RecordBuilder by copying an existing Builder.
+   *
+   * @param other The existing builder to copy.
+   * @return A new AvailabilityIndex RecordBuilder
+   */
+  public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
+      sparqles.avro.analytics.AvailabilityIndex.Builder other) {
+    if (other == null) {
+      return new sparqles.avro.analytics.AvailabilityIndex.Builder();
+    } else {
+      return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
+    }
+  }
+
+  /**
+   * Creates a new AvailabilityIndex RecordBuilder by copying an existing AvailabilityIndex
+   * instance.
+   *
+   * @param other The existing instance to copy.
+   * @return A new AvailabilityIndex RecordBuilder
+   */
+  public static sparqles.avro.analytics.AvailabilityIndex.Builder newBuilder(
+      sparqles.avro.analytics.AvailabilityIndex other) {
+    if (other == null) {
+      return new sparqles.avro.analytics.AvailabilityIndex.Builder();
+    } else {
+      return new sparqles.avro.analytics.AvailabilityIndex.Builder(other);
+    }
+  }
+
+  /** RecordBuilder for AvailabilityIndex instances. */
+  @org.apache.avro.specific.AvroGenerated
+  public static class Builder
+      extends org.apache.avro.specific.SpecificRecordBuilderBase<AvailabilityIndex>
+      implements org.apache.avro.data.RecordBuilder<AvailabilityIndex> {
+
+    private java.lang.CharSequence key;
+    private java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values;
+
+    /** Creates a new Builder */
+    private Builder() {
+      super(SCHEMA$, MODEL$);
+    }
+
+    /**
+     * Creates a Builder by copying an existing Builder.
+     *
+     * @param other The existing Builder to copy.
+     */
+    private Builder(sparqles.avro.analytics.AvailabilityIndex.Builder other) {
+      super(other);
+      if (isValidValue(fields()[0], other.key)) {
+        this.key = data().deepCopy(fields()[0].schema(), other.key);
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (isValidValue(fields()[1], other.values)) {
+        this.values = data().deepCopy(fields()[1].schema(), other.values);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+    }
+
+    /**
+     * Creates a Builder by copying an existing AvailabilityIndex instance
+     *
+     * @param other The existing instance to copy.
+     */
+    private Builder(sparqles.avro.analytics.AvailabilityIndex other) {
+      super(SCHEMA$, MODEL$);
+      if (isValidValue(fields()[0], other.key)) {
+        this.key = data().deepCopy(fields()[0].schema(), other.key);
+        fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.values)) {
+        this.values = data().deepCopy(fields()[1].schema(), other.values);
+        fieldSetFlags()[1] = true;
+      }
+    }
+
+    /**
+     * Gets the value of the 'key' field.
+     *
+     * @return The value.
+     */
+    public java.lang.CharSequence getKey() {
+      return key;
     }
 
     /**
      * Sets the value of the 'key' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'key'.
+     * @return This builder.
      */
-    public void setKey(java.lang.CharSequence value) {
-        this.key = value;
+    public sparqles.avro.analytics.AvailabilityIndex.Builder setKey(java.lang.CharSequence value) {
+      validate(fields()[0], value);
+      this.key = value;
+      fieldSetFlags()[0] = true;
+      return this;
     }
 
-    /** Gets the value of the 'values' field. */
+    /**
+     * Checks whether the 'key' field has been set.
+     *
+     * @return True if the 'key' field has been set, false otherwise.
+     */
+    public boolean hasKey() {
+      return fieldSetFlags()[0];
+    }
+
+    /**
+     * Clears the value of the 'key' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.analytics.AvailabilityIndex.Builder clearKey() {
+      key = null;
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'values' field.
+     *
+     * @return The value.
+     */
     public java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> getValues() {
-        return values;
+      return values;
     }
 
     /**
      * Sets the value of the 'values' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'values'.
+     * @return This builder.
      */
-    public void setValues(
-            java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> value) {
-        this.values = value;
+    public sparqles.avro.analytics.AvailabilityIndex.Builder setValues(
+        java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> value) {
+      validate(fields()[1], value);
+      this.values = value;
+      fieldSetFlags()[1] = true;
+      return this;
     }
 
-    /** RecordBuilder for AvailabilityIndex instances. */
-    public static class Builder
-            extends org.apache.avro.specific.SpecificRecordBuilderBase<AvailabilityIndex>
-            implements org.apache.avro.data.RecordBuilder<AvailabilityIndex> {
-
-        private java.lang.CharSequence key;
-        private java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> values;
-
-        /** Creates a new Builder */
-        private Builder() {
-            super(sparqles.avro.analytics.AvailabilityIndex.SCHEMA$);
-        }
-
-        /** Creates a Builder by copying an existing Builder */
-        private Builder(sparqles.avro.analytics.AvailabilityIndex.Builder other) {
-            super(other);
-            if (isValidValue(fields()[0], other.key)) {
-                this.key = data().deepCopy(fields()[0].schema(), other.key);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.values)) {
-                this.values = data().deepCopy(fields()[1].schema(), other.values);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /** Creates a Builder by copying an existing AvailabilityIndex instance */
-        private Builder(sparqles.avro.analytics.AvailabilityIndex other) {
-            super(sparqles.avro.analytics.AvailabilityIndex.SCHEMA$);
-            if (isValidValue(fields()[0], other.key)) {
-                this.key = data().deepCopy(fields()[0].schema(), other.key);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.values)) {
-                this.values = data().deepCopy(fields()[1].schema(), other.values);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /** Gets the value of the 'key' field */
-        public java.lang.CharSequence getKey() {
-            return key;
-        }
-
-        /** Sets the value of the 'key' field */
-        public sparqles.avro.analytics.AvailabilityIndex.Builder setKey(
-                java.lang.CharSequence value) {
-            validate(fields()[0], value);
-            this.key = value;
-            fieldSetFlags()[0] = true;
-            return this;
-        }
-
-        /** Checks whether the 'key' field has been set */
-        public boolean hasKey() {
-            return fieldSetFlags()[0];
-        }
-
-        /** Clears the value of the 'key' field */
-        public sparqles.avro.analytics.AvailabilityIndex.Builder clearKey() {
-            key = null;
-            fieldSetFlags()[0] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'values' field */
-        public java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> getValues() {
-            return values;
-        }
-
-        /** Sets the value of the 'values' field */
-        public sparqles.avro.analytics.AvailabilityIndex.Builder setValues(
-                java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> value) {
-            validate(fields()[1], value);
-            this.values = value;
-            fieldSetFlags()[1] = true;
-            return this;
-        }
-
-        /** Checks whether the 'values' field has been set */
-        public boolean hasValues() {
-            return fieldSetFlags()[1];
-        }
-
-        /** Clears the value of the 'values' field */
-        public sparqles.avro.analytics.AvailabilityIndex.Builder clearValues() {
-            values = null;
-            fieldSetFlags()[1] = false;
-            return this;
-        }
-
-        @Override
-        public AvailabilityIndex build() {
-            try {
-                AvailabilityIndex record = new AvailabilityIndex();
-                record.key =
-                        fieldSetFlags()[0]
-                                ? this.key
-                                : (java.lang.CharSequence) defaultValue(fields()[0]);
-                record.values =
-                        fieldSetFlags()[1]
-                                ? this.values
-                                : (java.util.List<
-                                                sparqles.avro.analytics.IndexAvailabilityDataPoint>)
-                                        defaultValue(fields()[1]);
-                return record;
-            } catch (Exception e) {
-                throw new org.apache.avro.AvroRuntimeException(e);
-            }
-        }
+    /**
+     * Checks whether the 'values' field has been set.
+     *
+     * @return True if the 'values' field has been set, false otherwise.
+     */
+    public boolean hasValues() {
+      return fieldSetFlags()[1];
     }
+
+    /**
+     * Clears the value of the 'values' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.analytics.AvailabilityIndex.Builder clearValues() {
+      values = null;
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public AvailabilityIndex build() {
+      try {
+        AvailabilityIndex record = new AvailabilityIndex();
+        record.key =
+            fieldSetFlags()[0] ? this.key : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.values =
+            fieldSetFlags()[1]
+                ? this.values
+                : (java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint>)
+                    defaultValue(fields()[1]);
+        return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
+        throw new org.apache.avro.AvroRuntimeException(e);
+      }
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<AvailabilityIndex> WRITER$ =
+      (org.apache.avro.io.DatumWriter<AvailabilityIndex>) MODEL$.createDatumWriter(SCHEMA$);
+
+  @Override
+  public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+    WRITER$.write(this, SpecificData.getEncoder(out));
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<AvailabilityIndex> READER$ =
+      (org.apache.avro.io.DatumReader<AvailabilityIndex>) MODEL$.createDatumReader(SCHEMA$);
+
+  @Override
+  public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+    READER$.read(this, SpecificData.getDecoder(in));
+  }
+
+  @Override
+  protected boolean hasCustomCoders() {
+    return true;
+  }
+
+  @Override
+  public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+    out.writeString(this.key);
+
+    long size0 = this.values.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (sparqles.avro.analytics.IndexAvailabilityDataPoint e0 : this.values) {
+      actualSize0++;
+      out.startItem();
+      e0.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException(
+          "Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+  }
+
+  @Override
+  public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.key = in.readString(this.key instanceof Utf8 ? (Utf8) this.key : null);
+
+      long size0 = in.readArrayStart();
+      java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> a0 = this.values;
+      if (a0 == null) {
+        a0 =
+            new SpecificData.Array<sparqles.avro.analytics.IndexAvailabilityDataPoint>(
+                (int) size0, SCHEMA$.getField("values").schema());
+        this.values = a0;
+      } else a0.clear();
+      SpecificData.Array<sparqles.avro.analytics.IndexAvailabilityDataPoint> ga0 =
+          (a0 instanceof SpecificData.Array
+              ? (SpecificData.Array<sparqles.avro.analytics.IndexAvailabilityDataPoint>) a0
+              : null);
+      for (; 0 < size0; size0 = in.arrayNext()) {
+        for (; size0 != 0; size0--) {
+          sparqles.avro.analytics.IndexAvailabilityDataPoint e0 = (ga0 != null ? ga0.peek() : null);
+          if (e0 == null) {
+            e0 = new sparqles.avro.analytics.IndexAvailabilityDataPoint();
+          }
+          e0.customDecode(in);
+          a0.add(e0);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 2; i++) {
+        switch (fieldOrder[i].pos()) {
+          case 0:
+            this.key = in.readString(this.key instanceof Utf8 ? (Utf8) this.key : null);
+            break;
+
+          case 1:
+            long size0 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.IndexAvailabilityDataPoint> a0 = this.values;
+            if (a0 == null) {
+              a0 =
+                  new SpecificData.Array<sparqles.avro.analytics.IndexAvailabilityDataPoint>(
+                      (int) size0, SCHEMA$.getField("values").schema());
+              this.values = a0;
+            } else a0.clear();
+            SpecificData.Array<sparqles.avro.analytics.IndexAvailabilityDataPoint> ga0 =
+                (a0 instanceof SpecificData.Array
+                    ? (SpecificData.Array<sparqles.avro.analytics.IndexAvailabilityDataPoint>) a0
+                    : null);
+            for (; 0 < size0; size0 = in.arrayNext()) {
+              for (; size0 != 0; size0--) {
+                sparqles.avro.analytics.IndexAvailabilityDataPoint e0 =
+                    (ga0 != null ? ga0.peek() : null);
+                if (e0 == null) {
+                  e0 = new sparqles.avro.analytics.IndexAvailabilityDataPoint();
+                }
+                e0.customDecode(in);
+                a0.add(e0);
+              }
+            }
+            break;
+
+          default:
+            throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }

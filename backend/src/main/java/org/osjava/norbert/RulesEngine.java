@@ -41,47 +41,47 @@ import java.util.List;
 // TODO: Make this package private?
 class RulesEngine {
 
-    private List<Rule> rules;
+  private List<Rule> rules;
 
-    public RulesEngine() {
-        this.rules = new ArrayList<Rule>();
+  public RulesEngine() {
+    this.rules = new ArrayList<Rule>();
+  }
+
+  public void allowPath(String path) {
+    add(new AllowedRule(path));
+  }
+
+  public void disallowPath(String path) {
+    add(new DisallowedRule(path));
+  }
+
+  public void add(Rule rule) {
+    this.rules.add(rule);
+  }
+
+  /**
+   * Run each Rule in series on the path. If a Rule returns a Boolean, return that. When no more
+   * rules are left, return null to indicate there were no rules for this path..
+   */
+  public Boolean isAllowed(String path) {
+
+    Iterator<Rule> iterator = this.rules.iterator();
+    while (iterator.hasNext()) {
+      Rule rule = (Rule) iterator.next();
+      Boolean test = rule.isAllowed(path);
+      if (test != null) {
+        return test;
+      }
     }
 
-    public void allowPath(String path) {
-        add(new AllowedRule(path));
-    }
+    return null;
+  }
 
-    public void disallowPath(String path) {
-        add(new DisallowedRule(path));
-    }
+  public boolean isEmpty() {
+    return this.rules.isEmpty();
+  }
 
-    public void add(Rule rule) {
-        this.rules.add(rule);
-    }
-
-    /**
-     * Run each Rule in series on the path. If a Rule returns a Boolean, return that. When no more
-     * rules are left, return null to indicate there were no rules for this path..
-     */
-    public Boolean isAllowed(String path) {
-
-        Iterator<Rule> iterator = this.rules.iterator();
-        while (iterator.hasNext()) {
-            Rule rule = (Rule) iterator.next();
-            Boolean test = rule.isAllowed(path);
-            if (test != null) {
-                return test;
-            }
-        }
-
-        return null;
-    }
-
-    public boolean isEmpty() {
-        return this.rules.isEmpty();
-    }
-
-    public String toString() {
-        return "RulesEngine: " + this.rules;
-    }
+  public String toString() {
+    return "RulesEngine: " + this.rules;
+  }
 }

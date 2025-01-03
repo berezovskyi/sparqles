@@ -1,13 +1,13 @@
 package sparqles.paper.objects;
 
 public class AvailEpFromList {
-    private String uri = null;
+  private String uri = null;
 
-    public String getUri() {
-        return uri;
-    }
+  public String getUri() {
+    return uri;
+  }
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
+  public void setUri(String uri) {
+    this.uri = uri;
+  }
 }

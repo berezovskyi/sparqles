@@ -18,71 +18,68 @@ import sparqles.utils.FileManager;
 import sparqles.utils.MongoDBManager;
 
 public class OneTimeExecution<T extends SpecificRecordBase> {
-    private static final Logger log = LoggerFactory.getLogger(OneTimeExecution.class);
-    private MongoDBManager dbm;
-    private FileManager fm;
+  private static final Logger log = LoggerFactory.getLogger(OneTimeExecution.class);
+  private MongoDBManager dbm;
+  private FileManager fm;
 
-    public OneTimeExecution(MongoDBManager dbm, FileManager fm) {
-        this.dbm = dbm;
-        this.fm = fm;
+  public OneTimeExecution(MongoDBManager dbm, FileManager fm) {
+    this.dbm = dbm;
+    this.fm = fm;
+  }
+
+  public void run(String task) {
+    Collection<Endpoint> eps = dbm.get(Endpoint.class, Endpoint.SCHEMA$);
+
+    ExecutorService executor = Executors.newFixedThreadPool(50);
+
+    List<Callable<T>> todo = new ArrayList<Callable<T>>(eps.size());
+
+    for (Endpoint ep : eps) {
+      Task<T> t = TaskFactory.create(task, ep, dbm, fm);
+      log.info("OneTimeSchedule {}", ep);
+      todo.add(t);
+      //			compService.submit(t);
     }
 
-    public void run(String task) {
-        Collection<Endpoint> eps = dbm.get(Endpoint.class, Endpoint.SCHEMA$);
-
-        ExecutorService executor = Executors.newFixedThreadPool(50);
-
-        List<Callable<T>> todo = new ArrayList<Callable<T>>(eps.size());
-
-        for (Endpoint ep : eps) {
-            Task<T> t = TaskFactory.create(task, ep, dbm, fm);
-            log.info("OneTimeSchedule {}", ep);
-            todo.add(t);
-            //			compService.submit(t);
-        }
-
-        List<Future<T>> all = new ArrayList<Future<T>>();
-        try {
-            all = executor.invokeAll(todo);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        int count = 0, failed = 0;
-        for (Future<T> f : all) {
-            try {
-                T t = f.get();
-                if (f.isDone()) {
-                    count++;
-                    log.info("Task for {} completed", t);
-
-                } else {
-                    failed++;
-                    log.info("Task for {} not completed", t);
-                }
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //
-        //	    Future<T> f= null;
-        //	    try {
-        //	    	while((f = compService.poll()) != null){
-        //	    		while(!f.isDone()){
-        //	    			Thread.sleep(500);
-        //	    			log.debug("Waiting unitl task {} is done", f.get());
-        //	    		}
-        //				log.info("Task for {} completed", f.get());
-        //			}
-        //		} catch (Exception e) {
-        //			e.printStackTrace();
-        //		}
-        log.info(
-                "All {} tasks are oprocessed with {} done and {} failed",
-                (count + failed),
-                count,
-                failed);
-        executor.shutdown();
+    List<Future<T>> all = new ArrayList<Future<T>>();
+    try {
+      all = executor.invokeAll(todo);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
+    int count = 0, failed = 0;
+    for (Future<T> f : all) {
+      try {
+        T t = f.get();
+        if (f.isDone()) {
+          count++;
+          log.info("Task for {} completed", t);
+
+        } else {
+          failed++;
+          log.info("Task for {} not completed", t);
+        }
+      } catch (InterruptedException | ExecutionException e) {
+        e.printStackTrace();
+      }
+    }
+
+    //
+    //	    Future<T> f= null;
+    //	    try {
+    //	    	while((f = compService.poll()) != null){
+    //	    		while(!f.isDone()){
+    //	    			Thread.sleep(500);
+    //	    			log.debug("Waiting unitl task {} is done", f.get());
+    //	    		}
+    //				log.info("Task for {} completed", f.get());
+    //			}
+    //		} catch (Exception e) {
+    //			e.printStackTrace();
+    //		}
+    log.info(
+        "All {} tasks are oprocessed with {} done and {} failed", (count + failed), count, failed);
+    executor.shutdown();
+  }
 }

@@ -34,15 +34,15 @@ block content
         article.wrp
           .wrplInnerBox(style='height: 100%;')
             div
-              b #{parseFloat((nbEndpointsUp/nbEndpointsTotal*100).toFixed(2))+ '%'} 
-              | (#{nbEndpointsUp}/#{nbEndpointsTotal}) endpoints are 
-              b available
+              b #{parseFloat((nbEndpointsUp/nbEndpointsTotal*100).toFixed(2))+ '%'}
+              |  (#{nbEndpointsUp}/#{nbEndpointsTotal}) endpoints are
+              b  available
             br
             -//#{JSON.stringify(atasks_agg[0])}
             table#table_current.sortable.psp-table(cellspacing='0', cellpadding='0', border='0', width='100%')
               thead
                 tr
-                  th.sorttable_nosort.tablehead(width='5%') 
+                  th.sorttable_nosort.tablehead(width='5%')
                   th.tablehead(width='45%') SPARQL Endpoint
                   th.tablehead(width='25%') Uptime Last 24h
                   th.tablehead(width='25%') Uptime Last 7 days
@@ -73,13 +73,13 @@ block content
                           span(onmouseover=`tooltip.show('${generateTooltip(ep.endpoint.datasets)}')`, onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
                     else
                       if ep.endpoint.datasets.length>0
-                        td 
+                        td
                           a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{ep.endpoint.datasets[0].label}
-                      else 
+                      else
                         td
                           a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{ep.endpoint.uri}
                     //-Display uptime last 24h
-                    td 
+                    td
                       if ep.uptimeLast24h==0
                         .textDisabled 0%
                       else

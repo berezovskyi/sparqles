@@ -37,11 +37,11 @@ package org.osjava.norbert;
  */
 public class NoRobotException extends Exception {
 
-    public NoRobotException(String message) {
-        super(message);
-    }
+  public NoRobotException(String message) {
+    super(message);
+  }
 
-    public NoRobotException(String message, Throwable t) {
-        super(message + " :::: " + t.getMessage());
-    }
+  public NoRobotException(String message, Throwable t) {
+    super(message + " :::: " + t.getMessage());
+  }
 }

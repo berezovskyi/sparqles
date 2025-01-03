@@ -16,89 +16,83 @@ import sparqles.core.performance.PRun;
 
 public class FTask extends EndpointTask<FResult> {
 
-    private static final Logger log = LoggerFactory.getLogger(FTask.class);
+  private static final Logger log = LoggerFactory.getLogger(FTask.class);
 
-    String query;
-    PrintStream out;
+  String query;
+  PrintStream out;
 
-    Exception query_exc;
-    private SpecificFTask[] _tasks;
+  Exception query_exc;
+  private SpecificFTask[] _tasks;
 
-    public FTask(Endpoint ep, SpecificFTask... tasks) {
-        super(ep);
-        _tasks = tasks;
-        Object[] s = {ep.getUri().toString(), tasks.length, SPARQLESProperties.getFTASK_WAITTIME()};
-        log.debug(
-                "INIT {} with {} tasks and {} ms wait time",
-                this,
-                tasks.length,
-                SPARQLESProperties.getPTASK_WAITTIME());
-    }
+  public FTask(Endpoint ep, SpecificFTask... tasks) {
+    super(ep);
+    _tasks = tasks;
+    Object[] s = {ep.getUri().toString(), tasks.length, SPARQLESProperties.getFTASK_WAITTIME()};
+    log.debug(
+        "INIT {} with {} tasks and {} ms wait time",
+        this,
+        tasks.length,
+        SPARQLESProperties.getPTASK_WAITTIME());
+  }
 
-    @Override
-    public FResult process(EndpointResult epr) {
-        FResult res = new FResult();
-        res.setEndpointResult(epr);
+  @Override
+  public FResult process(EndpointResult epr) {
+    FResult res = new FResult();
+    res.setEndpointResult(epr);
 
-        Map<CharSequence, FSingleResult> results =
-                new HashMap<CharSequence, FSingleResult>(_tasks.length);
+    Map<CharSequence, FSingleResult> results =
+        new HashMap<CharSequence, FSingleResult>(_tasks.length);
 
-        int failures = 0, consequExcept = 0;
-        for (SpecificFTask sp : _tasks) {
-            log.debug("execute {}:{}", this, sp.name());
+    int failures = 0, consequExcept = 0;
+    for (SpecificFTask sp : _tasks) {
+      log.debug("execute {}:{}", this, sp.name());
 
-            FRun run = sp.get(epr);
-            FSingleResult fres = null;
-            if (consequExcept >= _tasks.length) {
-                log.debug("skipping {}:{} due to {} consecutive ex ", this, sp.name());
-                fres = new FSingleResult();
+      FRun run = sp.get(epr);
+      FSingleResult fres = null;
+      if (consequExcept >= _tasks.length) {
+        log.debug("skipping {}:{} due to {} consecutive ex ", this, sp.name());
+        fres = new FSingleResult();
 
-                Run r =
-                        new Run(
-                                PRun.A_FIRST_RESULT_TIMEOUT,
-                                -1,
-                                0L,
-                                0L,
-                                0L,
-                                (CharSequence)
-                                        ("Test Aborted due to "
-                                                + consequExcept
-                                                + " consecutive exceptions"),
-                                PRun.EXECUTION_TIMEOUT);
-                fres.setRun(r);
-                fres.setQuery(run.getQuery());
-            } else {
-                log.debug("executing {}:{}", this, sp.name());
-                fres = run.execute();
-            }
+        Run r =
+            new Run(
+                PRun.A_FIRST_RESULT_TIMEOUT,
+                -1,
+                0L,
+                0L,
+                0L,
+                (CharSequence) ("Test Aborted due to " + consequExcept + " consecutive exceptions"),
+                PRun.EXECUTION_TIMEOUT);
+        fres.setRun(r);
+        fres.setQuery(run.getQuery());
+      } else {
+        log.debug("executing {}:{}", this, sp.name());
+        fres = run.execute();
+      }
 
-            results.put(sp.name(), fres);
+      results.put(sp.name(), fres);
 
-            if (fres.getRun().getException() != null) {
-                failures++;
+      if (fres.getRun().getException() != null) {
+        failures++;
 
-                String exec = fres.getRun().getException().toString();
-                if (exec.contains("QueryExceptionHTTP") || exec.contains("HttpException")) {
-                    consequExcept++;
-                } else {
-                    consequExcept = 0;
-                }
-
-                log.debug("failed {} exec: {}", this, exec);
-            }
-            try {
-                Thread.sleep(SPARQLESProperties.getFTASK_WAITTIME());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        String exec = fres.getRun().getException().toString();
+        if (exec.contains("QueryExceptionHTTP") || exec.contains("HttpException")) {
+          consequExcept++;
+        } else {
+          consequExcept = 0;
         }
-        res.setResults(results);
-        log.info(
-                "executed {} {}/{} tasks without error",
-                this,
-                _tasks.length - failures,
-                _tasks.length);
 
-        return res;
+        log.debug("failed {} exec: {}", this, exec);
+      }
+      try {
+        Thread.sleep(SPARQLESProperties.getFTASK_WAITTIME());
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
     }
+    res.setResults(results);
+    log.info(
+        "executed {} {}/{} tasks without error", this, _tasks.length - failures, _tasks.length);
+
+    return res;
+  }
 }

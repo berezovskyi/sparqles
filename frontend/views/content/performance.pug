@@ -52,7 +52,7 @@ block content
                 //-TODO: if more than one endpoint then display how many and their names 
                 if ep.endpoint.datasets.length>1
                   - var generateTooltip = function(datasets){tooltipHtml='This endpoint includes <b>'+datasets.length+' datasets</b>:<ul>';
-                  -   for(var i in datasets){tooltipHtml+='<li>'+datasets[i].label+'</li>';}
+                  -   for(var i in datasets){tooltipHtml+='<li>'+datasets[i]?.label+'</li>';}
                   -   tooltipHtml+='</ul>';
                   -   return tooltipHtml;
                   - }
@@ -60,8 +60,9 @@ block content
                     a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`)
                       span(onmouseover=`tooltip.show('${generateTooltip(ep.endpoint.datasets)}')`, onmouseout='tooltip.hide();') #{ep.endpoint.uri} (#{ep.endpoint.datasets.length})
                 else
+                  - var label = ep.endpoint.datasets[0]?.label
                   td 
-                    a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{ep.endpoint.datasets[0].label}
+                    a(href!=`/endpoint?uri=${encodeURIComponent(ep.endpoint.uri)}`) #{label}
                 //-Display Threshold 
                 td.tdright 
                   if ep.threshold>0  && ep.threshold%100==0

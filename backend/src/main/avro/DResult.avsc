@@ -1,6 +1,7 @@
 {
 	"namespace": "sparqles.avro.discovery",
  	"type": "record",
+ 	"import" : "EndpointResult.avsc",
  	"name": "DResult",
  	"fields": [
     	{"name": "endpointResult", "type": "sparqles.avro.EndpointResult"},

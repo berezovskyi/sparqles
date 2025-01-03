@@ -10,7 +10,7 @@ block content
       header.wrpl.w-3-3
         h1
           | SPARQL Endpoints Status !{configInstanceTitle}
-        time Last update: #{new Date(lastUpdate)}
+        time Last update: #{lastUpdate.toISOString()}
         details
           summary Description:
           p SPARQL Endpoints Status tool monitors the availability, performance, interoperability and discoverability of SPARQL Endpoints registered in Datahub.
@@ -22,19 +22,19 @@ block content
       article.wrpl(style='min-width: 400px;')
         .wrplInnerBox(style='height: 380px;')
           a(title='', href='./availability')
-            h2 
+            h2
               span(onmouseover!=`tooltip.show('${configAvailability["availability"]}')`, onmouseout='tooltip.hide();') Availability
           svg#avail(style='height: 350px; padding-right:10px;')
       article.wrpl(style='min-width: 400px;')
         .wrplInnerBox(style='height: 380px;')
           - function numberWithCommas(x) {if (x) return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
           a(title='', href='./performance')
-            h2 
+            h2
               span(onmouseover!=`tooltip.show('${configPerformance["performance"]}')`, onmouseout='tooltip.hide();') Performance
           span
-            b #{numberWithCommas(perf.threshold)} 
-            | is the most common 
-            span(onmouseover!=`tooltip.show('${configPerformance["Result-size thresholds"]}')`, onmouseout='tooltip.hide();') result-size threshold
+            b #{numberWithCommas(perf.threshold)}
+            |  is the median
+            span(onmouseover!=`tooltip.show('${configPerformance["Result-size thresholds"]}')`, onmouseout='tooltip.hide();')  result-size threshold
           svg#perf
       article.wrpl(style='min-width: 400px;')
         .wrplInnerBox(style='height: 380px;')
@@ -45,52 +45,106 @@ block content
       article.wrpl(style='min-width: 400px;')
         .wrplInnerBox(style='height: 380px;')
           a(title='', href='./discoverability')
-            h2 
+            h2
               span(onmouseover!=`tooltip.show('${configDisco["discoverability"]}')`, onmouseout='tooltip.hide();') Discoverability
           div
-            b #{parseFloat((nbEndpointsVoID/nbEndpointsTotal*100).toFixed(2))+ '%'} 
-            | of the endpoints provide a 
-            span(onmouseover!=`tooltip.show('${configDisco["VoID Description"]}')`, onmouseout='tooltip.hide();') VoID description
+            b #{parseFloat((nbEndpointsVoID/nbEndpointsTotal*100).toFixed(2))+ '%'}
+            |  of the endpoints provide a
+            span(onmouseover!=`tooltip.show('${configDisco["VoID Description"]}')`, onmouseout='tooltip.hide();')  VoID description
           div
-            b #{parseFloat((nbEndpointsSD/nbEndpointsTotal*100).toFixed(2))+ '%'} 
-            | of the endpoints provide a 
-            span(onmouseover!=`tooltip.show('${configDisco["Service Description"]}')`, onmouseout='tooltip.hide();') SD description
+            b #{parseFloat((nbEndpointsSD/nbEndpointsTotal*100).toFixed(2))+ '%'}
+            |  of the endpoints provide a
+            span(onmouseover!=`tooltip.show('${configDisco["Service Description"]}')`, onmouseout='tooltip.hide();')  SD description
           div
-            b #{parseFloat((nbEndpointsNoDesc/nbEndpointsTotal*100).toFixed(2))+ '%'} 
-            | of the endpoints have 
-            b no 
-            | description
+            b #{parseFloat((nbEndpointsNoDesc/nbEndpointsTotal*100).toFixed(2))+ '%'}
+            |  of the endpoints have
+            b  no
+            |  description
           br
           span(onmouseover!=`tooltip.show('${configDisco["Server Name"]}')`, onmouseout='tooltip.hide();') Server name:
           svg#disco(style='height: 350px;margin-top:-50px;')
+      article.wrpl(style='min-width: 400px;')
+        .wrplInnerBox(style='height: 380px;')
+          a(title='', href='#')
+            h2
+              span(onmouseover='tooltip.show(\'#{configProfiles["profiles"]}\')', onmouseout='tooltip.hide();') Profiles (VoID & Coherence)
+          div
+            b #{parseFloat((indexCalculation.VoID*100).toFixed(2))+ '%'}
+            |  of the endpoints have a
+            b  calculated VoID descriptions
+            |  (including
+            b  #{parseFloat((indexCalculation.VoIDPart*100).toFixed(2))+ '%'}
+            |  partially calculated)
+          div
+            b  #{parseFloat((indexCalculation.Coherence*100).toFixed(2))+ '%'}
+            |  of the endpoints have a
+            b  calculated coherence
+          br
+          span(onmouseover='tooltip.show(\'#{configProfiles["Coherence"]}\')', onmouseout='tooltip.hide();') Coherence:
+          svg#coher(style='height: 350px;margin-top:-50px;')
+      article.wrpl(style='min-width: 400px;')
+        .wrplInnerBox(style='height: 380px;')
+          a(title='', href='#')
+            h2
+              span(onmouseover='tooltip.show(\'#{configProfiles["profiles"]}\')', onmouseout='tooltip.hide();') Profiles (SD & RS)
+          div
+            b #{parseFloat((indexCalculation.SD*100).toFixed(2))+ '%'}
+            |  of the endpoints have a
+            b  calculated Service description
+            |  (including
+            b  #{parseFloat((indexCalculation.SDPart*100).toFixed(2))+ '%'}
+            |  partially calculated)
+          div
+            b #{parseFloat((indexCalculation.RS*100).toFixed(2))+ '%'}
+            |  of the endpoints have a
+            b  calculated relation specialty
+          br
+          span(onmouseover='tooltip.show(\'#{configProfiles["RS"]}\')', onmouseout='tooltip.hide();') Relationship specialty:
+          svg#rs(style='height: 350px;margin-top:-50px;')
+      script.
+
   script.
     var colors = d3.scale.category20();
-    keyColor = function(d, i) {return colors(d.key)};
-    
+    keyColor = function(d, i) {
+      // return grey colour for values to be largely ignored
+      if (d.key === "[0-5)" || d.key === "missing") {
+        return "#c4c4c4";
+      }
+      return colors(d.key);
+    };
+
+    labelColor = function(d, i) {
+      // return grey colour for values to be largely ignored
+      if (d?.data?.label === "missing") {
+        return "#c4c4c4";
+      }
+      return colors(d?.data?.label);
+    };
+
     // Availability
     nv.addGraph(function() {
       var chart = nv.models.stackedAreaChart()
-        .x(function(d) { return d[0] })
+        .x(function(d) { return new Date(d[0]) })
         .y(function(d) { return d[1] })
         //.yDomain([0,1])
         .color(keyColor)
         .showControls(false);
         //.clipEdge(true);
-      
-      //chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d)) });
+
+      chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d)) });
       //make sure everyone has the same time displayed.
-      chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d+ ((new Date().getTimezoneOffset()+60) * 60000))) });
+      //- chart.xAxis.tickFormat(function(d) { return d3.time.format('%Y-%m')(new Date(d+ ((new Date().getTimezoneOffset()+60) * 60000))) });
       chart.yAxis.tickFormat(d3.format('.0f'));
-      
+
       d3.select('#avail')
         .datum(!{JSON.stringify(amonths)})
         .call(chart);
-      
+
       nv.utils.windowResize(chart.update);
       chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
       return chart;
     });
-    
+
     // Performance
     nv.addGraph(function() {
       var chart = nv.models.multiBarHorizontalChart()
@@ -148,7 +202,8 @@ block content
         .valueFormat(d3.format('.2%'))
         .showLegend(false)
         .height(550)
-        .color(d3.scale.category10().range())
+        //- .color(d3.scale.category10().range())
+        .color(labelColor)
         .margin({top: 0, right: 5, bottom: 40, left: 0})
         .donut(true);
       chart.pie
@@ -156,6 +211,52 @@ block content
         .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 });
       d3.select("#disco")
         .datum([!{JSON.stringify(index.discoverability.serverName[0].values)}])
+        .transition().duration(500)
+        .call(chart);
+      nv.utils.windowResize(chart.update);
+      return chart;
+    });
+
+    // Coherence
+    nv.addGraph(function() {
+      var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .values(function(d) { return d })
+        .valueFormat(d3.format('.2%'))
+        .showLegend(false)
+        .height(550)
+        .color(d3.scale.category10().range())
+        .margin({top: 0, right: 5, bottom: 40, left: 0})
+        .donut(true);
+      chart.pie
+        .startAngle(function(d) { return d.startAngle/2 -Math.PI/2 })
+        .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 });
+      d3.select("#coher")
+        .datum([!{JSON.stringify(indexCalculation.coherences[0].values)}])
+        .transition().duration(500)
+        .call(chart);
+      nv.utils.windowResize(chart.update);
+      return chart;
+    });
+
+    // Relationship speciality
+    nv.addGraph(function() {
+      var chart = nv.models.pieChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .values(function(d) { return d })
+        .valueFormat(d3.format('.2%'))
+        .showLegend(false)
+        .height(550)
+        .color(d3.scale.category10().range())
+        .margin({top: 0, right: 5, bottom: 40, left: 0})
+        .donut(true);
+      chart.pie
+        .startAngle(function(d) { return d.startAngle/2 -Math.PI/2 })
+        .endAngle(function(d) { return d.endAngle/2 -Math.PI/2 });
+      d3.select("#rs")
+        .datum([!{JSON.stringify(indexCalculation.rss[0].values)}])
         .transition().duration(500)
         .call(chart);
       nv.utils.windowResize(chart.update);
