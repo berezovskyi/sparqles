@@ -94,7 +94,9 @@ In order to obtain all metrics and update the stats counters, run the following 
     sh bin/sparqles -p src/main/resources/sparqles.properties -run ptask
     sh bin/sparqles -p src/main/resources/sparqles.properties -run itask
     sh bin/sparqles -p src/main/resources/sparqles.properties -run dtask
+    sh bin/sparqles -p src/main/resources/sparqles.properties -run ctask
     sh bin/sparqles -p src/main/resources/sparqles.properties -r
+    sh bin/sparqles -p src/main/resources/sparqles.properties -st
     sh bin/sparqles -p src/main/resources/sparqles.properties -iv
 
 ### From Eclipse
