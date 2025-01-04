@@ -727,7 +727,6 @@ public class IndexViewAnalytics implements Task<Index> {
     }
 
     public double getTotal() {
-      // TODO Auto-generated method stub
       return sampleSize;
     }
   }
