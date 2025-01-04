@@ -150,7 +150,7 @@ public class PAnalyser extends Analytics<PResult> {
     List<PerformanceView> views =
         _db.getResults(ep, PerformanceView.class, PerformanceView.SCHEMA$);
     if (views.size() != 1) {
-      log.warn("We have {} AvailabilityView, expected was 1", views.size());
+      log.warn("We have {} PerformanceView, expected was 1", views.size());
     }
     if (views.size() == 0) {
       view = new PerformanceView();
