@@ -8,25 +8,25 @@ import sparqles.core.SPARQLESProperties;
 
 public class FRun extends TaskRun {
 
-    private static final Logger log = LoggerFactory.getLogger(FRun.class);
+  private static final Logger log = LoggerFactory.getLogger(FRun.class);
 
-    public FRun(Endpoint ep, String queryFile) {
-        this(ep, queryFile, System.currentTimeMillis());
-    }
+  public FRun(Endpoint ep, String queryFile) {
+    this(ep, queryFile, System.currentTimeMillis());
+  }
 
-    public FRun(Endpoint ep, String queryFile, Long start) {
-        super(ep, queryFile, SPARQLESProperties.getFTASK_QUERIES(), start, log);
-    }
+  public FRun(Endpoint ep, String queryFile, Long start) {
+    super(ep, queryFile, SPARQLESProperties.getFTASK_QUERIES(), start, log);
+  }
 
-    public FSingleResult execute() {
-        FSingleResult result = new FSingleResult();
+  public FSingleResult execute() {
+    FSingleResult result = new FSingleResult();
 
-        result.setQuery(_query);
+    result.setQuery(_query);
 
-        log.debug("[run] {} over {}", _queryFile, _ep.getUri());
+    log.debug("[run] {} over {}", _queryFile, _ep.getUri());
 
-        result.setRun(run());
+    result.setRun(run());
 
-        return result;
-    }
+    return result;
+  }
 }

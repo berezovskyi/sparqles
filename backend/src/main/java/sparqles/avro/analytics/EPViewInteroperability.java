@@ -5,238 +5,550 @@
  */
 package sparqles.avro.analytics;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+
 @org.apache.avro.specific.AvroGenerated
 public class EPViewInteroperability extends org.apache.avro.specific.SpecificRecordBase
-        implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ =
-            new org.apache.avro.Schema.Parser()
-                    .parse(
-                            "{\"type\":\"record\",\"name\":\"EPViewInteroperability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"SPARQL1Features\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewInteroperabilityData\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"boolean\"},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]}]}}},{\"name\":\"SPARQL11Features\",\"type\":{\"type\":\"array\",\"items\":\"EPViewInteroperabilityData\"}}]}");
+    implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -8563136173410211251L;
 
-    @Deprecated
-    public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features;
+  public static final org.apache.avro.Schema SCHEMA$ =
+      new org.apache.avro.Schema.Parser()
+          .parse(
+              "{\"type\":\"record\",\"name\":\"EPViewInteroperability\",\"namespace\":\"sparqles.avro.analytics\",\"fields\":[{\"name\":\"SPARQL1Features\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"EPViewInteroperabilityData\",\"fields\":[{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"value\",\"type\":\"boolean\"},{\"name\":\"exception\",\"type\":[\"string\",\"null\"]}]}}},{\"name\":\"SPARQL11Features\",\"type\":{\"type\":\"array\",\"items\":\"EPViewInteroperabilityData\"}}]}");
 
-    @Deprecated
-    public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features;
+  public static org.apache.avro.Schema getClassSchema() {
+    return SCHEMA$;
+  }
 
-    /**
-     * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
-     */
-    public EPViewInteroperability() {}
+  private static final SpecificData MODEL$ = new SpecificData();
 
-    /** All-args constructor. */
-    public EPViewInteroperability(
-            java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features,
-            java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features) {
-        this.SPARQL1Features = SPARQL1Features;
-        this.SPARQL11Features = SPARQL11Features;
-    }
+  private static final BinaryMessageEncoder<EPViewInteroperability> ENCODER =
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
+  private static final BinaryMessageDecoder<EPViewInteroperability> DECODER =
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
-    /** Creates a new EPViewInteroperability RecordBuilder */
-    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder() {
-        return new sparqles.avro.analytics.EPViewInteroperability.Builder();
-    }
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   *
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<EPViewInteroperability> getEncoder() {
+    return ENCODER;
+  }
 
-    /** Creates a new EPViewInteroperability RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewInteroperability.Builder other) {
-        return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
-    }
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   *
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<EPViewInteroperability> getDecoder() {
+    return DECODER;
+  }
 
-    /**
-     * Creates a new EPViewInteroperability RecordBuilder by copying an existing
-     * EPViewInteroperability instance
-     */
-    public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
-            sparqles.avro.analytics.EPViewInteroperability other) {
-        return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
-    }
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+   * SchemaStore}.
+   *
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<EPViewInteroperability> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+  }
 
-    public org.apache.avro.Schema getSchema() {
-        return SCHEMA$;
-    }
+  /**
+   * Serializes this EPViewInteroperability to a ByteBuffer.
+   *
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
 
-    // Used by DatumWriter.  Applications should not call.
-    public java.lang.Object get(int field$) {
-        switch (field$) {
-            case 0:
-                return SPARQL1Features;
-            case 1:
-                return SPARQL11Features;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
+  /**
+   * Deserializes a EPViewInteroperability from a ByteBuffer.
+   *
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a EPViewInteroperability instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+   *     this class
+   */
+  public static EPViewInteroperability fromByteBuffer(java.nio.ByteBuffer b)
+      throws java.io.IOException {
+    return DECODER.decode(b);
+  }
 
-    // Used by DatumReader.  Applications should not call.
-    @SuppressWarnings(value = "unchecked")
-    public void put(int field$, java.lang.Object value$) {
-        switch (field$) {
-            case 0:
-                SPARQL1Features =
-                        (java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>) value$;
-                break;
-            case 1:
-                SPARQL11Features =
-                        (java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>) value$;
-                break;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
+  private java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features;
+  private java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features;
 
-    /** Gets the value of the 'SPARQL1Features' field. */
-    public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> getSPARQL1Features() {
+  /**
+   * Default constructor. Note that this does not initialize fields to their default values from the
+   * schema. If that is desired then one should use <code>newBuilder()</code>.
+   */
+  public EPViewInteroperability() {}
+
+  /**
+   * All-args constructor.
+   *
+   * @param SPARQL1Features The new value for SPARQL1Features
+   * @param SPARQL11Features The new value for SPARQL11Features
+   */
+  public EPViewInteroperability(
+      java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features,
+      java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features) {
+    this.SPARQL1Features = SPARQL1Features;
+    this.SPARQL11Features = SPARQL11Features;
+  }
+
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() {
+    return MODEL$;
+  }
+
+  @Override
+  public org.apache.avro.Schema getSchema() {
+    return SCHEMA$;
+  }
+
+  // Used by DatumWriter.  Applications should not call.
+  @Override
+  public java.lang.Object get(int field$) {
+    switch (field$) {
+      case 0:
         return SPARQL1Features;
+      case 1:
+        return SPARQL11Features;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  // Used by DatumReader.  Applications should not call.
+  @Override
+  @SuppressWarnings(value = "unchecked")
+  public void put(int field$, java.lang.Object value$) {
+    switch (field$) {
+      case 0:
+        SPARQL1Features =
+            (java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>) value$;
+        break;
+      case 1:
+        SPARQL11Features =
+            (java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>) value$;
+        break;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  /**
+   * Gets the value of the 'SPARQL1Features' field.
+   *
+   * @return The value of the 'SPARQL1Features' field.
+   */
+  public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> getSPARQL1Features() {
+    return SPARQL1Features;
+  }
+
+  /**
+   * Sets the value of the 'SPARQL1Features' field.
+   *
+   * @param value the value to set.
+   */
+  public void setSPARQL1Features(
+      java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
+    this.SPARQL1Features = value;
+  }
+
+  /**
+   * Gets the value of the 'SPARQL11Features' field.
+   *
+   * @return The value of the 'SPARQL11Features' field.
+   */
+  public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> getSPARQL11Features() {
+    return SPARQL11Features;
+  }
+
+  /**
+   * Sets the value of the 'SPARQL11Features' field.
+   *
+   * @param value the value to set.
+   */
+  public void setSPARQL11Features(
+      java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
+    this.SPARQL11Features = value;
+  }
+
+  /**
+   * Creates a new EPViewInteroperability RecordBuilder.
+   *
+   * @return A new EPViewInteroperability RecordBuilder
+   */
+  public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder() {
+    return new sparqles.avro.analytics.EPViewInteroperability.Builder();
+  }
+
+  /**
+   * Creates a new EPViewInteroperability RecordBuilder by copying an existing Builder.
+   *
+   * @param other The existing builder to copy.
+   * @return A new EPViewInteroperability RecordBuilder
+   */
+  public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
+      sparqles.avro.analytics.EPViewInteroperability.Builder other) {
+    if (other == null) {
+      return new sparqles.avro.analytics.EPViewInteroperability.Builder();
+    } else {
+      return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
+    }
+  }
+
+  /**
+   * Creates a new EPViewInteroperability RecordBuilder by copying an existing
+   * EPViewInteroperability instance.
+   *
+   * @param other The existing instance to copy.
+   * @return A new EPViewInteroperability RecordBuilder
+   */
+  public static sparqles.avro.analytics.EPViewInteroperability.Builder newBuilder(
+      sparqles.avro.analytics.EPViewInteroperability other) {
+    if (other == null) {
+      return new sparqles.avro.analytics.EPViewInteroperability.Builder();
+    } else {
+      return new sparqles.avro.analytics.EPViewInteroperability.Builder(other);
+    }
+  }
+
+  /** RecordBuilder for EPViewInteroperability instances. */
+  @org.apache.avro.specific.AvroGenerated
+  public static class Builder
+      extends org.apache.avro.specific.SpecificRecordBuilderBase<EPViewInteroperability>
+      implements org.apache.avro.data.RecordBuilder<EPViewInteroperability> {
+
+    private java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features;
+    private java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features;
+
+    /** Creates a new Builder */
+    private Builder() {
+      super(SCHEMA$, MODEL$);
+    }
+
+    /**
+     * Creates a Builder by copying an existing Builder.
+     *
+     * @param other The existing Builder to copy.
+     */
+    private Builder(sparqles.avro.analytics.EPViewInteroperability.Builder other) {
+      super(other);
+      if (isValidValue(fields()[0], other.SPARQL1Features)) {
+        this.SPARQL1Features = data().deepCopy(fields()[0].schema(), other.SPARQL1Features);
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (isValidValue(fields()[1], other.SPARQL11Features)) {
+        this.SPARQL11Features = data().deepCopy(fields()[1].schema(), other.SPARQL11Features);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+    }
+
+    /**
+     * Creates a Builder by copying an existing EPViewInteroperability instance
+     *
+     * @param other The existing instance to copy.
+     */
+    private Builder(sparqles.avro.analytics.EPViewInteroperability other) {
+      super(SCHEMA$, MODEL$);
+      if (isValidValue(fields()[0], other.SPARQL1Features)) {
+        this.SPARQL1Features = data().deepCopy(fields()[0].schema(), other.SPARQL1Features);
+        fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.SPARQL11Features)) {
+        this.SPARQL11Features = data().deepCopy(fields()[1].schema(), other.SPARQL11Features);
+        fieldSetFlags()[1] = true;
+      }
+    }
+
+    /**
+     * Gets the value of the 'SPARQL1Features' field.
+     *
+     * @return The value.
+     */
+    public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> getSPARQL1Features() {
+      return SPARQL1Features;
     }
 
     /**
      * Sets the value of the 'SPARQL1Features' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'SPARQL1Features'.
+     * @return This builder.
      */
-    public void setSPARQL1Features(
-            java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
-        this.SPARQL1Features = value;
+    public sparqles.avro.analytics.EPViewInteroperability.Builder setSPARQL1Features(
+        java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
+      validate(fields()[0], value);
+      this.SPARQL1Features = value;
+      fieldSetFlags()[0] = true;
+      return this;
     }
 
-    /** Gets the value of the 'SPARQL11Features' field. */
+    /**
+     * Checks whether the 'SPARQL1Features' field has been set.
+     *
+     * @return True if the 'SPARQL1Features' field has been set, false otherwise.
+     */
+    public boolean hasSPARQL1Features() {
+      return fieldSetFlags()[0];
+    }
+
+    /**
+     * Clears the value of the 'SPARQL1Features' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.analytics.EPViewInteroperability.Builder clearSPARQL1Features() {
+      SPARQL1Features = null;
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'SPARQL11Features' field.
+     *
+     * @return The value.
+     */
     public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>
-            getSPARQL11Features() {
-        return SPARQL11Features;
+        getSPARQL11Features() {
+      return SPARQL11Features;
     }
 
     /**
      * Sets the value of the 'SPARQL11Features' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'SPARQL11Features'.
+     * @return This builder.
      */
-    public void setSPARQL11Features(
-            java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
-        this.SPARQL11Features = value;
+    public sparqles.avro.analytics.EPViewInteroperability.Builder setSPARQL11Features(
+        java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
+      validate(fields()[1], value);
+      this.SPARQL11Features = value;
+      fieldSetFlags()[1] = true;
+      return this;
     }
 
-    /** RecordBuilder for EPViewInteroperability instances. */
-    public static class Builder
-            extends org.apache.avro.specific.SpecificRecordBuilderBase<EPViewInteroperability>
-            implements org.apache.avro.data.RecordBuilder<EPViewInteroperability> {
-
-        private java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL1Features;
-        private java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> SPARQL11Features;
-
-        /** Creates a new Builder */
-        private Builder() {
-            super(sparqles.avro.analytics.EPViewInteroperability.SCHEMA$);
-        }
-
-        /** Creates a Builder by copying an existing Builder */
-        private Builder(sparqles.avro.analytics.EPViewInteroperability.Builder other) {
-            super(other);
-            if (isValidValue(fields()[0], other.SPARQL1Features)) {
-                this.SPARQL1Features = data().deepCopy(fields()[0].schema(), other.SPARQL1Features);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.SPARQL11Features)) {
-                this.SPARQL11Features =
-                        data().deepCopy(fields()[1].schema(), other.SPARQL11Features);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /** Creates a Builder by copying an existing EPViewInteroperability instance */
-        private Builder(sparqles.avro.analytics.EPViewInteroperability other) {
-            super(sparqles.avro.analytics.EPViewInteroperability.SCHEMA$);
-            if (isValidValue(fields()[0], other.SPARQL1Features)) {
-                this.SPARQL1Features = data().deepCopy(fields()[0].schema(), other.SPARQL1Features);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.SPARQL11Features)) {
-                this.SPARQL11Features =
-                        data().deepCopy(fields()[1].schema(), other.SPARQL11Features);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /** Gets the value of the 'SPARQL1Features' field */
-        public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>
-                getSPARQL1Features() {
-            return SPARQL1Features;
-        }
-
-        /** Sets the value of the 'SPARQL1Features' field */
-        public sparqles.avro.analytics.EPViewInteroperability.Builder setSPARQL1Features(
-                java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
-            validate(fields()[0], value);
-            this.SPARQL1Features = value;
-            fieldSetFlags()[0] = true;
-            return this;
-        }
-
-        /** Checks whether the 'SPARQL1Features' field has been set */
-        public boolean hasSPARQL1Features() {
-            return fieldSetFlags()[0];
-        }
-
-        /** Clears the value of the 'SPARQL1Features' field */
-        public sparqles.avro.analytics.EPViewInteroperability.Builder clearSPARQL1Features() {
-            SPARQL1Features = null;
-            fieldSetFlags()[0] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'SPARQL11Features' field */
-        public java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>
-                getSPARQL11Features() {
-            return SPARQL11Features;
-        }
-
-        /** Sets the value of the 'SPARQL11Features' field */
-        public sparqles.avro.analytics.EPViewInteroperability.Builder setSPARQL11Features(
-                java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> value) {
-            validate(fields()[1], value);
-            this.SPARQL11Features = value;
-            fieldSetFlags()[1] = true;
-            return this;
-        }
-
-        /** Checks whether the 'SPARQL11Features' field has been set */
-        public boolean hasSPARQL11Features() {
-            return fieldSetFlags()[1];
-        }
-
-        /** Clears the value of the 'SPARQL11Features' field */
-        public sparqles.avro.analytics.EPViewInteroperability.Builder clearSPARQL11Features() {
-            SPARQL11Features = null;
-            fieldSetFlags()[1] = false;
-            return this;
-        }
-
-        @Override
-        public EPViewInteroperability build() {
-            try {
-                EPViewInteroperability record = new EPViewInteroperability();
-                record.SPARQL1Features =
-                        fieldSetFlags()[0]
-                                ? this.SPARQL1Features
-                                : (java.util.List<
-                                                sparqles.avro.analytics.EPViewInteroperabilityData>)
-                                        defaultValue(fields()[0]);
-                record.SPARQL11Features =
-                        fieldSetFlags()[1]
-                                ? this.SPARQL11Features
-                                : (java.util.List<
-                                                sparqles.avro.analytics.EPViewInteroperabilityData>)
-                                        defaultValue(fields()[1]);
-                return record;
-            } catch (Exception e) {
-                throw new org.apache.avro.AvroRuntimeException(e);
-            }
-        }
+    /**
+     * Checks whether the 'SPARQL11Features' field has been set.
+     *
+     * @return True if the 'SPARQL11Features' field has been set, false otherwise.
+     */
+    public boolean hasSPARQL11Features() {
+      return fieldSetFlags()[1];
     }
+
+    /**
+     * Clears the value of the 'SPARQL11Features' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.analytics.EPViewInteroperability.Builder clearSPARQL11Features() {
+      SPARQL11Features = null;
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public EPViewInteroperability build() {
+      try {
+        EPViewInteroperability record = new EPViewInteroperability();
+        record.SPARQL1Features =
+            fieldSetFlags()[0]
+                ? this.SPARQL1Features
+                : (java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>)
+                    defaultValue(fields()[0]);
+        record.SPARQL11Features =
+            fieldSetFlags()[1]
+                ? this.SPARQL11Features
+                : (java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData>)
+                    defaultValue(fields()[1]);
+        return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
+        throw new org.apache.avro.AvroRuntimeException(e);
+      }
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<EPViewInteroperability> WRITER$ =
+      (org.apache.avro.io.DatumWriter<EPViewInteroperability>) MODEL$.createDatumWriter(SCHEMA$);
+
+  @Override
+  public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+    WRITER$.write(this, SpecificData.getEncoder(out));
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<EPViewInteroperability> READER$ =
+      (org.apache.avro.io.DatumReader<EPViewInteroperability>) MODEL$.createDatumReader(SCHEMA$);
+
+  @Override
+  public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+    READER$.read(this, SpecificData.getDecoder(in));
+  }
+
+  @Override
+  protected boolean hasCustomCoders() {
+    return true;
+  }
+
+  @Override
+  public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+    long size0 = this.SPARQL1Features.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (sparqles.avro.analytics.EPViewInteroperabilityData e0 : this.SPARQL1Features) {
+      actualSize0++;
+      out.startItem();
+      e0.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException(
+          "Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
+    long size1 = this.SPARQL11Features.size();
+    out.writeArrayStart();
+    out.setItemCount(size1);
+    long actualSize1 = 0;
+    for (sparqles.avro.analytics.EPViewInteroperabilityData e1 : this.SPARQL11Features) {
+      actualSize1++;
+      out.startItem();
+      e1.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize1 != size1)
+      throw new java.util.ConcurrentModificationException(
+          "Array-size written was " + size1 + ", but element count was " + actualSize1 + ".");
+  }
+
+  @Override
+  public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      long size0 = in.readArrayStart();
+      java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> a0 = this.SPARQL1Features;
+      if (a0 == null) {
+        a0 =
+            new SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>(
+                (int) size0, SCHEMA$.getField("SPARQL1Features").schema());
+        this.SPARQL1Features = a0;
+      } else a0.clear();
+      SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData> ga0 =
+          (a0 instanceof SpecificData.Array
+              ? (SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>) a0
+              : null);
+      for (; 0 < size0; size0 = in.arrayNext()) {
+        for (; size0 != 0; size0--) {
+          sparqles.avro.analytics.EPViewInteroperabilityData e0 = (ga0 != null ? ga0.peek() : null);
+          if (e0 == null) {
+            e0 = new sparqles.avro.analytics.EPViewInteroperabilityData();
+          }
+          e0.customDecode(in);
+          a0.add(e0);
+        }
+      }
+
+      long size1 = in.readArrayStart();
+      java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> a1 = this.SPARQL11Features;
+      if (a1 == null) {
+        a1 =
+            new SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>(
+                (int) size1, SCHEMA$.getField("SPARQL11Features").schema());
+        this.SPARQL11Features = a1;
+      } else a1.clear();
+      SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData> ga1 =
+          (a1 instanceof SpecificData.Array
+              ? (SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>) a1
+              : null);
+      for (; 0 < size1; size1 = in.arrayNext()) {
+        for (; size1 != 0; size1--) {
+          sparqles.avro.analytics.EPViewInteroperabilityData e1 = (ga1 != null ? ga1.peek() : null);
+          if (e1 == null) {
+            e1 = new sparqles.avro.analytics.EPViewInteroperabilityData();
+          }
+          e1.customDecode(in);
+          a1.add(e1);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 2; i++) {
+        switch (fieldOrder[i].pos()) {
+          case 0:
+            long size0 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> a0 =
+                this.SPARQL1Features;
+            if (a0 == null) {
+              a0 =
+                  new SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>(
+                      (int) size0, SCHEMA$.getField("SPARQL1Features").schema());
+              this.SPARQL1Features = a0;
+            } else a0.clear();
+            SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData> ga0 =
+                (a0 instanceof SpecificData.Array
+                    ? (SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>) a0
+                    : null);
+            for (; 0 < size0; size0 = in.arrayNext()) {
+              for (; size0 != 0; size0--) {
+                sparqles.avro.analytics.EPViewInteroperabilityData e0 =
+                    (ga0 != null ? ga0.peek() : null);
+                if (e0 == null) {
+                  e0 = new sparqles.avro.analytics.EPViewInteroperabilityData();
+                }
+                e0.customDecode(in);
+                a0.add(e0);
+              }
+            }
+            break;
+
+          case 1:
+            long size1 = in.readArrayStart();
+            java.util.List<sparqles.avro.analytics.EPViewInteroperabilityData> a1 =
+                this.SPARQL11Features;
+            if (a1 == null) {
+              a1 =
+                  new SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>(
+                      (int) size1, SCHEMA$.getField("SPARQL11Features").schema());
+              this.SPARQL11Features = a1;
+            } else a1.clear();
+            SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData> ga1 =
+                (a1 instanceof SpecificData.Array
+                    ? (SpecificData.Array<sparqles.avro.analytics.EPViewInteroperabilityData>) a1
+                    : null);
+            for (; 0 < size1; size1 = in.arrayNext()) {
+              for (; size1 != 0; size1--) {
+                sparqles.avro.analytics.EPViewInteroperabilityData e1 =
+                    (ga1 != null ? ga1.peek() : null);
+                if (e1 == null) {
+                  e1 = new sparqles.avro.analytics.EPViewInteroperabilityData();
+                }
+                e1.customDecode(in);
+                a1.add(e1);
+              }
+            }
+            break;
+
+          default:
+            throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }

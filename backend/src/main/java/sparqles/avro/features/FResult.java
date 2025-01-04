@@ -5,229 +5,551 @@
  */
 package sparqles.avro.features;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class FResult extends org.apache.avro.specific.SpecificRecordBase
-        implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ =
-            new org.apache.avro.Schema.Parser()
-                    .parse(
-                            "{\"type\":\"record\",\"name\":\"FResult\",\"namespace\":\"sparqles.avro.features\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"results\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"FSingleResult\",\"fields\":[{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"run\",\"type\":{\"type\":\"record\",\"name\":\"Run\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}}]}}}]}");
-    @Deprecated public sparqles.avro.EndpointResult endpointResult;
+    implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 7825355288541610040L;
 
-    @Deprecated
-    public java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results;
+  public static final org.apache.avro.Schema SCHEMA$ =
+      new org.apache.avro.Schema.Parser()
+          .parse(
+              "{\"type\":\"record\",\"name\":\"FResult\",\"namespace\":\"sparqles.avro.features\",\"fields\":[{\"name\":\"endpointResult\",\"type\":{\"type\":\"record\",\"name\":\"EndpointResult\",\"namespace\":\"sparqles.avro\",\"fields\":[{\"name\":\"endpoint\",\"type\":{\"type\":\"record\",\"name\":\"Endpoint\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"datasets\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dataset\",\"fields\":[{\"name\":\"uri\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"}]}}}]}},{\"name\":\"start\",\"type\":\"long\"},{\"name\":\"end\",\"type\":\"long\"}],\"import\":\"Endpoint.avsc\"}},{\"name\":\"results\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"FSingleResult\",\"fields\":[{\"name\":\"query\",\"type\":\"string\"},{\"name\":\"run\",\"type\":{\"type\":\"record\",\"name\":\"Run\",\"namespace\":\"sparqles.avro.performance\",\"fields\":[{\"name\":\"frestout\",\"type\":\"long\"},{\"name\":\"solutions\",\"type\":\"int\"},{\"name\":\"inittime\",\"type\":\"long\"},{\"name\":\"exectime\",\"type\":\"long\"},{\"name\":\"closetime\",\"type\":\"long\"},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]},{\"name\":\"exectout\",\"type\":\"long\"}]}}]}}}],\"import\":\"Run.avsc\"}");
+
+  public static org.apache.avro.Schema getClassSchema() {
+    return SCHEMA$;
+  }
+
+  private static final SpecificData MODEL$ = new SpecificData();
+
+  private static final BinaryMessageEncoder<FResult> ENCODER =
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+  private static final BinaryMessageDecoder<FResult> DECODER =
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   *
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<FResult> getEncoder() {
+    return ENCODER;
+  }
+
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   *
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<FResult> getDecoder() {
+    return DECODER;
+  }
+
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+   * SchemaStore}.
+   *
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<FResult> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+  }
+
+  /**
+   * Serializes this FResult to a ByteBuffer.
+   *
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
+
+  /**
+   * Deserializes a FResult from a ByteBuffer.
+   *
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a FResult instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+   *     this class
+   */
+  public static FResult fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
+  private sparqles.avro.EndpointResult endpointResult;
+  private java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results;
+
+  /**
+   * Default constructor. Note that this does not initialize fields to their default values from the
+   * schema. If that is desired then one should use <code>newBuilder()</code>.
+   */
+  public FResult() {}
+
+  /**
+   * All-args constructor.
+   *
+   * @param endpointResult The new value for endpointResult
+   * @param results The new value for results
+   */
+  public FResult(
+      sparqles.avro.EndpointResult endpointResult,
+      java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results) {
+    this.endpointResult = endpointResult;
+    this.results = results;
+  }
+
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() {
+    return MODEL$;
+  }
+
+  @Override
+  public org.apache.avro.Schema getSchema() {
+    return SCHEMA$;
+  }
+
+  // Used by DatumWriter.  Applications should not call.
+  @Override
+  public java.lang.Object get(int field$) {
+    switch (field$) {
+      case 0:
+        return endpointResult;
+      case 1:
+        return results;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  // Used by DatumReader.  Applications should not call.
+  @Override
+  @SuppressWarnings(value = "unchecked")
+  public void put(int field$, java.lang.Object value$) {
+    switch (field$) {
+      case 0:
+        endpointResult = (sparqles.avro.EndpointResult) value$;
+        break;
+      case 1:
+        results =
+            (java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult>) value$;
+        break;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  /**
+   * Gets the value of the 'endpointResult' field.
+   *
+   * @return The value of the 'endpointResult' field.
+   */
+  public sparqles.avro.EndpointResult getEndpointResult() {
+    return endpointResult;
+  }
+
+  /**
+   * Sets the value of the 'endpointResult' field.
+   *
+   * @param value the value to set.
+   */
+  public void setEndpointResult(sparqles.avro.EndpointResult value) {
+    this.endpointResult = value;
+  }
+
+  /**
+   * Gets the value of the 'results' field.
+   *
+   * @return The value of the 'results' field.
+   */
+  public java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> getResults() {
+    return results;
+  }
+
+  /**
+   * Sets the value of the 'results' field.
+   *
+   * @param value the value to set.
+   */
+  public void setResults(
+      java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> value) {
+    this.results = value;
+  }
+
+  /**
+   * Creates a new FResult RecordBuilder.
+   *
+   * @return A new FResult RecordBuilder
+   */
+  public static sparqles.avro.features.FResult.Builder newBuilder() {
+    return new sparqles.avro.features.FResult.Builder();
+  }
+
+  /**
+   * Creates a new FResult RecordBuilder by copying an existing Builder.
+   *
+   * @param other The existing builder to copy.
+   * @return A new FResult RecordBuilder
+   */
+  public static sparqles.avro.features.FResult.Builder newBuilder(
+      sparqles.avro.features.FResult.Builder other) {
+    if (other == null) {
+      return new sparqles.avro.features.FResult.Builder();
+    } else {
+      return new sparqles.avro.features.FResult.Builder(other);
+    }
+  }
+
+  /**
+   * Creates a new FResult RecordBuilder by copying an existing FResult instance.
+   *
+   * @param other The existing instance to copy.
+   * @return A new FResult RecordBuilder
+   */
+  public static sparqles.avro.features.FResult.Builder newBuilder(
+      sparqles.avro.features.FResult other) {
+    if (other == null) {
+      return new sparqles.avro.features.FResult.Builder();
+    } else {
+      return new sparqles.avro.features.FResult.Builder(other);
+    }
+  }
+
+  /** RecordBuilder for FResult instances. */
+  @org.apache.avro.specific.AvroGenerated
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FResult>
+      implements org.apache.avro.data.RecordBuilder<FResult> {
+
+    private sparqles.avro.EndpointResult endpointResult;
+    private sparqles.avro.EndpointResult.Builder endpointResultBuilder;
+    private java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results;
+
+    /** Creates a new Builder */
+    private Builder() {
+      super(SCHEMA$, MODEL$);
+    }
 
     /**
-     * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * Creates a Builder by copying an existing Builder.
+     *
+     * @param other The existing Builder to copy.
      */
-    public FResult() {}
-
-    /** All-args constructor. */
-    public FResult(
-            sparqles.avro.EndpointResult endpointResult,
-            java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results) {
-        this.endpointResult = endpointResult;
-        this.results = results;
+    private Builder(sparqles.avro.features.FResult.Builder other) {
+      super(other);
+      if (isValidValue(fields()[0], other.endpointResult)) {
+        this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (other.hasEndpointResultBuilder()) {
+        this.endpointResultBuilder =
+            sparqles.avro.EndpointResult.newBuilder(other.getEndpointResultBuilder());
+      }
+      if (isValidValue(fields()[1], other.results)) {
+        this.results = data().deepCopy(fields()[1].schema(), other.results);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
     }
 
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
+    /**
+     * Creates a Builder by copying an existing FResult instance
+     *
+     * @param other The existing instance to copy.
+     */
+    private Builder(sparqles.avro.features.FResult other) {
+      super(SCHEMA$, MODEL$);
+      if (isValidValue(fields()[0], other.endpointResult)) {
+        this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
+        fieldSetFlags()[0] = true;
+      }
+      this.endpointResultBuilder = null;
+      if (isValidValue(fields()[1], other.results)) {
+        this.results = data().deepCopy(fields()[1].schema(), other.results);
+        fieldSetFlags()[1] = true;
+      }
     }
 
-    /** Creates a new FResult RecordBuilder */
-    public static sparqles.avro.features.FResult.Builder newBuilder() {
-        return new sparqles.avro.features.FResult.Builder();
-    }
-
-    /** Creates a new FResult RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.features.FResult.Builder newBuilder(
-            sparqles.avro.features.FResult.Builder other) {
-        return new sparqles.avro.features.FResult.Builder(other);
-    }
-
-    /** Creates a new FResult RecordBuilder by copying an existing FResult instance */
-    public static sparqles.avro.features.FResult.Builder newBuilder(
-            sparqles.avro.features.FResult other) {
-        return new sparqles.avro.features.FResult.Builder(other);
-    }
-
-    public org.apache.avro.Schema getSchema() {
-        return SCHEMA$;
-    }
-
-    // Used by DatumWriter.  Applications should not call.
-    public java.lang.Object get(int field$) {
-        switch (field$) {
-            case 0:
-                return endpointResult;
-            case 1:
-                return results;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
-
-    // Used by DatumReader.  Applications should not call.
-    @SuppressWarnings(value = "unchecked")
-    public void put(int field$, java.lang.Object value$) {
-        switch (field$) {
-            case 0:
-                endpointResult = (sparqles.avro.EndpointResult) value$;
-                break;
-            case 1:
-                results =
-                        (java.util.Map<
-                                        java.lang.CharSequence,
-                                        sparqles.avro.features.FSingleResult>)
-                                value$;
-                break;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
-
-    /** Gets the value of the 'endpointResult' field. */
+    /**
+     * Gets the value of the 'endpointResult' field.
+     *
+     * @return The value.
+     */
     public sparqles.avro.EndpointResult getEndpointResult() {
-        return endpointResult;
+      return endpointResult;
     }
 
     /**
      * Sets the value of the 'endpointResult' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'endpointResult'.
+     * @return This builder.
      */
-    public void setEndpointResult(sparqles.avro.EndpointResult value) {
-        this.endpointResult = value;
+    public sparqles.avro.features.FResult.Builder setEndpointResult(
+        sparqles.avro.EndpointResult value) {
+      validate(fields()[0], value);
+      this.endpointResultBuilder = null;
+      this.endpointResult = value;
+      fieldSetFlags()[0] = true;
+      return this;
     }
 
-    /** Gets the value of the 'results' field. */
+    /**
+     * Checks whether the 'endpointResult' field has been set.
+     *
+     * @return True if the 'endpointResult' field has been set, false otherwise.
+     */
+    public boolean hasEndpointResult() {
+      return fieldSetFlags()[0];
+    }
+
+    /**
+     * Gets the Builder instance for the 'endpointResult' field and creates one if it doesn't exist
+     * yet.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.EndpointResult.Builder getEndpointResultBuilder() {
+      if (endpointResultBuilder == null) {
+        if (hasEndpointResult()) {
+          setEndpointResultBuilder(sparqles.avro.EndpointResult.newBuilder(endpointResult));
+        } else {
+          setEndpointResultBuilder(sparqles.avro.EndpointResult.newBuilder());
+        }
+      }
+      return endpointResultBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'endpointResult' field
+     *
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public sparqles.avro.features.FResult.Builder setEndpointResultBuilder(
+        sparqles.avro.EndpointResult.Builder value) {
+      clearEndpointResult();
+      endpointResultBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'endpointResult' field has an active Builder instance
+     *
+     * @return True if the 'endpointResult' field has an active Builder instance
+     */
+    public boolean hasEndpointResultBuilder() {
+      return endpointResultBuilder != null;
+    }
+
+    /**
+     * Clears the value of the 'endpointResult' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.features.FResult.Builder clearEndpointResult() {
+      endpointResult = null;
+      endpointResultBuilder = null;
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'results' field.
+     *
+     * @return The value.
+     */
     public java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult>
-            getResults() {
-        return results;
+        getResults() {
+      return results;
     }
 
     /**
      * Sets the value of the 'results' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'results'.
+     * @return This builder.
      */
-    public void setResults(
-            java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> value) {
-        this.results = value;
+    public sparqles.avro.features.FResult.Builder setResults(
+        java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> value) {
+      validate(fields()[1], value);
+      this.results = value;
+      fieldSetFlags()[1] = true;
+      return this;
     }
 
-    /** RecordBuilder for FResult instances. */
-    public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FResult>
-            implements org.apache.avro.data.RecordBuilder<FResult> {
-
-        private sparqles.avro.EndpointResult endpointResult;
-        private java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> results;
-
-        /** Creates a new Builder */
-        private Builder() {
-            super(sparqles.avro.features.FResult.SCHEMA$);
-        }
-
-        /** Creates a Builder by copying an existing Builder */
-        private Builder(sparqles.avro.features.FResult.Builder other) {
-            super(other);
-            if (isValidValue(fields()[0], other.endpointResult)) {
-                this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.results)) {
-                this.results = data().deepCopy(fields()[1].schema(), other.results);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /** Creates a Builder by copying an existing FResult instance */
-        private Builder(sparqles.avro.features.FResult other) {
-            super(sparqles.avro.features.FResult.SCHEMA$);
-            if (isValidValue(fields()[0], other.endpointResult)) {
-                this.endpointResult = data().deepCopy(fields()[0].schema(), other.endpointResult);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.results)) {
-                this.results = data().deepCopy(fields()[1].schema(), other.results);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /** Gets the value of the 'endpointResult' field */
-        public sparqles.avro.EndpointResult getEndpointResult() {
-            return endpointResult;
-        }
-
-        /** Sets the value of the 'endpointResult' field */
-        public sparqles.avro.features.FResult.Builder setEndpointResult(
-                sparqles.avro.EndpointResult value) {
-            validate(fields()[0], value);
-            this.endpointResult = value;
-            fieldSetFlags()[0] = true;
-            return this;
-        }
-
-        /** Checks whether the 'endpointResult' field has been set */
-        public boolean hasEndpointResult() {
-            return fieldSetFlags()[0];
-        }
-
-        /** Clears the value of the 'endpointResult' field */
-        public sparqles.avro.features.FResult.Builder clearEndpointResult() {
-            endpointResult = null;
-            fieldSetFlags()[0] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'results' field */
-        public java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult>
-                getResults() {
-            return results;
-        }
-
-        /** Sets the value of the 'results' field */
-        public sparqles.avro.features.FResult.Builder setResults(
-                java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> value) {
-            validate(fields()[1], value);
-            this.results = value;
-            fieldSetFlags()[1] = true;
-            return this;
-        }
-
-        /** Checks whether the 'results' field has been set */
-        public boolean hasResults() {
-            return fieldSetFlags()[1];
-        }
-
-        /** Clears the value of the 'results' field */
-        public sparqles.avro.features.FResult.Builder clearResults() {
-            results = null;
-            fieldSetFlags()[1] = false;
-            return this;
-        }
-
-        @Override
-        public FResult build() {
-            try {
-                FResult record = new FResult();
-                record.endpointResult =
-                        fieldSetFlags()[0]
-                                ? this.endpointResult
-                                : (sparqles.avro.EndpointResult) defaultValue(fields()[0]);
-                record.results =
-                        fieldSetFlags()[1]
-                                ? this.results
-                                : (java.util.Map<
-                                                java.lang.CharSequence,
-                                                sparqles.avro.features.FSingleResult>)
-                                        defaultValue(fields()[1]);
-                return record;
-            } catch (Exception e) {
-                throw new org.apache.avro.AvroRuntimeException(e);
-            }
-        }
+    /**
+     * Checks whether the 'results' field has been set.
+     *
+     * @return True if the 'results' field has been set, false otherwise.
+     */
+    public boolean hasResults() {
+      return fieldSetFlags()[1];
     }
+
+    /**
+     * Clears the value of the 'results' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.features.FResult.Builder clearResults() {
+      results = null;
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public FResult build() {
+      try {
+        FResult record = new FResult();
+        if (endpointResultBuilder != null) {
+          try {
+            record.endpointResult = this.endpointResultBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("endpointResult"));
+            throw e;
+          }
+        } else {
+          record.endpointResult =
+              fieldSetFlags()[0]
+                  ? this.endpointResult
+                  : (sparqles.avro.EndpointResult) defaultValue(fields()[0]);
+        }
+        record.results =
+            fieldSetFlags()[1]
+                ? this.results
+                : (java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult>)
+                    defaultValue(fields()[1]);
+        return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
+        throw new org.apache.avro.AvroRuntimeException(e);
+      }
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<FResult> WRITER$ =
+      (org.apache.avro.io.DatumWriter<FResult>) MODEL$.createDatumWriter(SCHEMA$);
+
+  @Override
+  public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+    WRITER$.write(this, SpecificData.getEncoder(out));
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<FResult> READER$ =
+      (org.apache.avro.io.DatumReader<FResult>) MODEL$.createDatumReader(SCHEMA$);
+
+  @Override
+  public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+    READER$.read(this, SpecificData.getDecoder(in));
+  }
+
+  @Override
+  protected boolean hasCustomCoders() {
+    return true;
+  }
+
+  @Override
+  public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+    this.endpointResult.customEncode(out);
+
+    long size0 = this.results.size();
+    out.writeMapStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.util.Map.Entry<java.lang.CharSequence, sparqles.avro.features.FSingleResult> e0 :
+        this.results.entrySet()) {
+      actualSize0++;
+      out.startItem();
+      out.writeString(e0.getKey());
+      sparqles.avro.features.FSingleResult v0 = e0.getValue();
+      v0.customEncode(out);
+    }
+    out.writeMapEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException(
+          "Map-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+  }
+
+  @Override
+  public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      if (this.endpointResult == null) {
+        this.endpointResult = new sparqles.avro.EndpointResult();
+      }
+      this.endpointResult.customDecode(in);
+
+      long size0 = in.readMapStart();
+      java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> m0 =
+          this.results; // Need fresh name due to limitation of macro system
+      if (m0 == null) {
+        m0 =
+            new java.util.HashMap<java.lang.CharSequence, sparqles.avro.features.FSingleResult>(
+                (int) (size0 * 4) / 3 + 1);
+        this.results = m0;
+      } else m0.clear();
+      for (; 0 < size0; size0 = in.mapNext()) {
+        for (; size0 != 0; size0--) {
+          java.lang.CharSequence k0 = null;
+          k0 = in.readString(k0 instanceof Utf8 ? (Utf8) k0 : null);
+          sparqles.avro.features.FSingleResult v0 = null;
+          if (v0 == null) {
+            v0 = new sparqles.avro.features.FSingleResult();
+          }
+          v0.customDecode(in);
+          m0.put(k0, v0);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 2; i++) {
+        switch (fieldOrder[i].pos()) {
+          case 0:
+            if (this.endpointResult == null) {
+              this.endpointResult = new sparqles.avro.EndpointResult();
+            }
+            this.endpointResult.customDecode(in);
+            break;
+
+          case 1:
+            long size0 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence, sparqles.avro.features.FSingleResult> m0 =
+                this.results; // Need fresh name due to limitation of macro system
+            if (m0 == null) {
+              m0 =
+                  new java.util.HashMap<
+                      java.lang.CharSequence, sparqles.avro.features.FSingleResult>(
+                      (int) (size0 * 4) / 3 + 1);
+              this.results = m0;
+            } else m0.clear();
+            for (; 0 < size0; size0 = in.mapNext()) {
+              for (; size0 != 0; size0--) {
+                java.lang.CharSequence k0 = null;
+                k0 = in.readString(k0 instanceof Utf8 ? (Utf8) k0 : null);
+                sparqles.avro.features.FSingleResult v0 = null;
+                if (v0 == null) {
+                  v0 = new sparqles.avro.features.FSingleResult();
+                }
+                v0.customDecode(in);
+                m0.put(k0, v0);
+              }
+            }
+            break;
+
+          default:
+            throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }

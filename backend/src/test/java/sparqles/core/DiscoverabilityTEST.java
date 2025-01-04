@@ -10,41 +10,41 @@ import sparqles.utils.MongoDBManager;
 
 public class DiscoverabilityTEST {
 
-    private MongoDBManager m = null;
+  private MongoDBManager m = null;
 
-    @Before
-    public void setUp() throws Exception {
-        SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
-        //		m = new MongoDBManager();
+  @Before
+  public void setUp() throws Exception {
+    SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
+    //		m = new MongoDBManager();
 
-        //
+    //
 
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    //		m.close();
+  }
+
+  @Test
+  public void test() throws Exception {
+    Endpoint ep = Endpoints.DBPEDIA;
+
+    test(ep);
+  }
+
+  private void test(Endpoint ep) throws Exception {
+    Task<DResult> t = TaskFactory.create(CONSTANTS.DTASK, ep, m, null);
+    DResult res = t.call();
+    System.out.println(res);
+    //		m.insert(res);
+  }
+
+  @Test
+  public void testGroup() throws Exception {
+    Endpoint[] eps = {Endpoints.DBPEDIA, Endpoints.AEMET};
+    for (Endpoint ep : eps) {
+      test(ep);
     }
-
-    @After
-    public void tearDown() throws Exception {
-        //		m.close();
-    }
-
-    @Test
-    public void test() throws Exception {
-        Endpoint ep = Endpoints.DBPEDIA;
-
-        test(ep);
-    }
-
-    private void test(Endpoint ep) throws Exception {
-        Task<DResult> t = TaskFactory.create(CONSTANTS.DTASK, ep, m, null);
-        DResult res = t.call();
-        System.out.println(res);
-        //		m.insert(res);
-    }
-
-    @Test
-    public void testGroup() throws Exception {
-        Endpoint[] eps = {Endpoints.DBPEDIA, Endpoints.AEMET};
-        for (Endpoint ep : eps) {
-            test(ep);
-        }
-    }
+  }
 }

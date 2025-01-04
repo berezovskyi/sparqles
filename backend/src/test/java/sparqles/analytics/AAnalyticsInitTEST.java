@@ -1,5 +1,7 @@
 package sparqles.analytics;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import org.junit.After;
 import org.junit.Before;
@@ -9,24 +11,24 @@ import sparqles.utils.MongoDBManager;
 
 public class AAnalyticsInitTEST {
 
-    private MongoDBManager m;
+  private MongoDBManager m;
 
-    @Before
-    public void setUp() throws Exception {
-        SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
-        m = new MongoDBManager();
-    }
+  @Before
+  public void setUp() throws Exception {
+    SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
+    m = new MongoDBManager();
+  }
 
-    @After
-    public void tearDown() throws Exception {
-        m.close();
-    }
+  @After
+  public void tearDown() throws Exception {
+    m.close();
+  }
 
-    @Test
-    public void test() {
-        m.initAggregateCollections();
+  @Test
+  public void test() {
+    m.initAggregateCollections();
 
-        AnalyserInit a = new AnalyserInit(m);
-        a.run();
-    }
+    AnalyserInit a = new AnalyserInit(m);
+    a.run();
+  }
 }

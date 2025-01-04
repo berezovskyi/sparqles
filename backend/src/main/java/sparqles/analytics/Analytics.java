@@ -10,12 +10,17 @@ import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewAvailability;
 import sparqles.avro.analytics.EPViewAvailabilityData;
 import sparqles.avro.analytics.EPViewAvailabilityDataPoint;
+import sparqles.avro.analytics.EPViewCalculation;
 import sparqles.avro.analytics.EPViewDiscoverability;
 import sparqles.avro.analytics.EPViewDiscoverabilityData;
 import sparqles.avro.analytics.EPViewInteroperability;
 import sparqles.avro.analytics.EPViewInteroperabilityData;
 import sparqles.avro.analytics.EPViewPerformance;
 import sparqles.avro.analytics.EPViewPerformanceData;
+import sparqles.avro.availability.AResult;
+import sparqles.avro.discovery.DResult;
+import sparqles.avro.features.FResult;
+import sparqles.avro.performance.PResult;
 import sparqles.utils.MongoDBManager;
 
 /**
@@ -26,63 +31,80 @@ import sparqles.utils.MongoDBManager;
  */
 public abstract class Analytics<V extends SpecificRecordBase> {
 
-    private static Logger Log = LoggerFactory.getLogger(Analytics.class);
+  private static Logger log = LoggerFactory.getLogger(Analytics.class);
 
-    protected final MongoDBManager _db;
+  protected final MongoDBManager _db;
 
-    public Analytics(MongoDBManager db) {
-        _db = db;
+  public Analytics(MongoDBManager db) {
+    _db = db;
+  }
+
+  protected EPView getEPView(Endpoint ep) {
+    EPView view = null;
+    List<EPView> views = _db.getResults(ep, EPView.class, EPView.SCHEMA$);
+    if (views.size() != 1) {
+      log.warn("We have {} EPView, expected was 1", views.size());
     }
+    if (views.size() == 0) {
+      view = new EPView();
+      view.setEndpoint(ep);
 
-    protected EPView getEPView(Endpoint ep) {
-        EPView view = null;
-        List<EPView> views = _db.getResults(ep, EPView.class, EPView.SCHEMA$);
-        if (views.size() != 1) {
-            Log.warn("We have {} EPView, expected was 1", views.size());
-        }
-        if (views.size() == 0) {
-            view = new EPView();
-            view.setEndpoint(ep);
+      EPViewAvailability av = new EPViewAvailability();
+      view.setAvailability(av);
+      EPViewAvailabilityData data = new EPViewAvailabilityData();
+      av.setData(data);
+      data.setKey("Availability");
+      data.setValues(new ArrayList<EPViewAvailabilityDataPoint>());
 
-            EPViewAvailability av = new EPViewAvailability();
-            view.setAvailability(av);
-            EPViewAvailabilityData data = new EPViewAvailabilityData();
-            av.setData(data);
-            data.setKey("Availability");
-            data.setValues(new ArrayList<EPViewAvailabilityDataPoint>());
+      EPViewPerformance p = new EPViewPerformance();
+      ArrayList<EPViewPerformanceData> askdata = new ArrayList<EPViewPerformanceData>();
+      ArrayList<EPViewPerformanceData> joindata = new ArrayList<EPViewPerformanceData>();
 
-            EPViewPerformance p = new EPViewPerformance();
-            ArrayList<EPViewPerformanceData> askdata = new ArrayList<EPViewPerformanceData>();
-            ArrayList<EPViewPerformanceData> joindata = new ArrayList<EPViewPerformanceData>();
+      p.setAsk(askdata);
+      p.setJoin(joindata);
 
-            p.setAsk(askdata);
-            p.setJoin(joindata);
+      EPViewInteroperability iv = new EPViewInteroperability();
+      iv.setSPARQL11Features(new ArrayList<EPViewInteroperabilityData>());
+      iv.setSPARQL1Features(new ArrayList<EPViewInteroperabilityData>());
 
-            EPViewInteroperability iv = new EPViewInteroperability();
-            iv.setSPARQL11Features(new ArrayList<EPViewInteroperabilityData>());
-            iv.setSPARQL1Features(new ArrayList<EPViewInteroperabilityData>());
+      view.setPerformance(p);
+      view.setAvailability(av);
+      view.setInteroperability(iv);
 
-            view.setPerformance(p);
-            view.setAvailability(av);
-            view.setInteroperability(iv);
+      EPViewDiscoverability dv =
+          new EPViewDiscoverability(
+              "",
+              new ArrayList<EPViewDiscoverabilityData>(),
+              new ArrayList<EPViewDiscoverabilityData>());
+      view.setDiscoverability(dv);
 
-            EPViewDiscoverability dv =
-                    new EPViewDiscoverability(
-                            "",
-                            new ArrayList<EPViewDiscoverabilityData>(),
-                            new ArrayList<EPViewDiscoverabilityData>());
-            view.setDiscoverability(dv);
+      EPViewCalculation cv =
+          new EPViewCalculation(
+              -1l,
+              -1l,
+              -1l,
+              -1l,
+              -1l,
+              -1l,
+              new java.util.ArrayList<java.lang.CharSequence>(),
+              "",
+              false,
+              "",
+              false,
+              -1.0,
+              -1.0);
+      view.setCalculation(cv);
 
-            _db.insert(view);
-        } else {
-            view = views.get(0);
-        }
-        return view;
+      _db.insert(view);
+    } else {
+      view = views.get(0);
     }
+    return view;
+  }
 
-    /**
-     * @param result - the result to analyse
-     * @return true in case of success, false otherwise
-     */
-    public abstract boolean analyse(V result);
+  /**
+   * @param result - the result to analyse
+   * @return true in case of success, false otherwise
+   */
+  public abstract boolean analyse(V result);
 }

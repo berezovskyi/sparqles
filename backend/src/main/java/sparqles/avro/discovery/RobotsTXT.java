@@ -5,517 +5,887 @@
  */
 package sparqles.avro.discovery;
 
-@SuppressWarnings("all")
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+
 @org.apache.avro.specific.AvroGenerated
 public class RobotsTXT extends org.apache.avro.specific.SpecificRecordBase
-        implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ =
-            new org.apache.avro.Schema.Parser()
-                    .parse(
-                            "{\"type\":\"record\",\"name\":\"RobotsTXT\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"hasRobotsTXT\",\"type\":\"boolean\",\"default\":false},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"sitemapXML\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQL\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQLMatch\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLVoiD\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]}]}");
-    @Deprecated public boolean hasRobotsTXT;
-    @Deprecated public boolean allowedByRobotsTXT;
-    @Deprecated public boolean sitemapXML;
-    @Deprecated public boolean sitemapXMLSPARQL;
-    @Deprecated public boolean sitemapXMLSPARQLMatch;
-    @Deprecated public boolean sitemapXMLVoiD;
-    @Deprecated public java.lang.CharSequence Exception;
+    implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 8698781811247583494L;
+
+  public static final org.apache.avro.Schema SCHEMA$ =
+      new org.apache.avro.Schema.Parser()
+          .parse(
+              "{\"type\":\"record\",\"name\":\"RobotsTXT\",\"namespace\":\"sparqles.avro.discovery\",\"fields\":[{\"name\":\"hasRobotsTXT\",\"type\":\"boolean\",\"default\":false},{\"name\":\"allowedByRobotsTXT\",\"type\":\"boolean\",\"default\":true},{\"name\":\"sitemapXML\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQL\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLSPARQLMatch\",\"type\":\"boolean\",\"default\":false},{\"name\":\"sitemapXMLVoiD\",\"type\":\"boolean\",\"default\":false},{\"name\":\"Exception\",\"type\":[\"string\",\"null\"]}]}");
+
+  public static org.apache.avro.Schema getClassSchema() {
+    return SCHEMA$;
+  }
+
+  private static final SpecificData MODEL$ = new SpecificData();
+
+  private static final BinaryMessageEncoder<RobotsTXT> ENCODER =
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+
+  private static final BinaryMessageDecoder<RobotsTXT> DECODER =
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   *
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<RobotsTXT> getEncoder() {
+    return ENCODER;
+  }
+
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   *
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<RobotsTXT> getDecoder() {
+    return DECODER;
+  }
+
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link
+   * SchemaStore}.
+   *
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<RobotsTXT> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+  }
+
+  /**
+   * Serializes this RobotsTXT to a ByteBuffer.
+   *
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
+
+  /**
+   * Deserializes a RobotsTXT from a ByteBuffer.
+   *
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a RobotsTXT instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of
+   *     this class
+   */
+  public static RobotsTXT fromByteBuffer(java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
+  private boolean hasRobotsTXT;
+  private boolean allowedByRobotsTXT;
+  private boolean sitemapXML;
+  private boolean sitemapXMLSPARQL;
+  private boolean sitemapXMLSPARQLMatch;
+  private boolean sitemapXMLVoiD;
+  private java.lang.CharSequence Exception;
+
+  /**
+   * Default constructor. Note that this does not initialize fields to their default values from the
+   * schema. If that is desired then one should use <code>newBuilder()</code>.
+   */
+  public RobotsTXT() {}
+
+  /**
+   * All-args constructor.
+   *
+   * @param hasRobotsTXT The new value for hasRobotsTXT
+   * @param allowedByRobotsTXT The new value for allowedByRobotsTXT
+   * @param sitemapXML The new value for sitemapXML
+   * @param sitemapXMLSPARQL The new value for sitemapXMLSPARQL
+   * @param sitemapXMLSPARQLMatch The new value for sitemapXMLSPARQLMatch
+   * @param sitemapXMLVoiD The new value for sitemapXMLVoiD
+   * @param Exception The new value for Exception
+   */
+  public RobotsTXT(
+      java.lang.Boolean hasRobotsTXT,
+      java.lang.Boolean allowedByRobotsTXT,
+      java.lang.Boolean sitemapXML,
+      java.lang.Boolean sitemapXMLSPARQL,
+      java.lang.Boolean sitemapXMLSPARQLMatch,
+      java.lang.Boolean sitemapXMLVoiD,
+      java.lang.CharSequence Exception) {
+    this.hasRobotsTXT = hasRobotsTXT;
+    this.allowedByRobotsTXT = allowedByRobotsTXT;
+    this.sitemapXML = sitemapXML;
+    this.sitemapXMLSPARQL = sitemapXMLSPARQL;
+    this.sitemapXMLSPARQLMatch = sitemapXMLSPARQLMatch;
+    this.sitemapXMLVoiD = sitemapXMLVoiD;
+    this.Exception = Exception;
+  }
+
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() {
+    return MODEL$;
+  }
+
+  @Override
+  public org.apache.avro.Schema getSchema() {
+    return SCHEMA$;
+  }
+
+  // Used by DatumWriter.  Applications should not call.
+  @Override
+  public java.lang.Object get(int field$) {
+    switch (field$) {
+      case 0:
+        return hasRobotsTXT;
+      case 1:
+        return allowedByRobotsTXT;
+      case 2:
+        return sitemapXML;
+      case 3:
+        return sitemapXMLSPARQL;
+      case 4:
+        return sitemapXMLSPARQLMatch;
+      case 5:
+        return sitemapXMLVoiD;
+      case 6:
+        return Exception;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  // Used by DatumReader.  Applications should not call.
+  @Override
+  @SuppressWarnings(value = "unchecked")
+  public void put(int field$, java.lang.Object value$) {
+    switch (field$) {
+      case 0:
+        hasRobotsTXT = (java.lang.Boolean) value$;
+        break;
+      case 1:
+        allowedByRobotsTXT = (java.lang.Boolean) value$;
+        break;
+      case 2:
+        sitemapXML = (java.lang.Boolean) value$;
+        break;
+      case 3:
+        sitemapXMLSPARQL = (java.lang.Boolean) value$;
+        break;
+      case 4:
+        sitemapXMLSPARQLMatch = (java.lang.Boolean) value$;
+        break;
+      case 5:
+        sitemapXMLVoiD = (java.lang.Boolean) value$;
+        break;
+      case 6:
+        Exception = (java.lang.CharSequence) value$;
+        break;
+      default:
+        throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    }
+  }
+
+  /**
+   * Gets the value of the 'hasRobotsTXT' field.
+   *
+   * @return The value of the 'hasRobotsTXT' field.
+   */
+  public boolean getHasRobotsTXT() {
+    return hasRobotsTXT;
+  }
+
+  /**
+   * Sets the value of the 'hasRobotsTXT' field.
+   *
+   * @param value the value to set.
+   */
+  public void setHasRobotsTXT(boolean value) {
+    this.hasRobotsTXT = value;
+  }
+
+  /**
+   * Gets the value of the 'allowedByRobotsTXT' field.
+   *
+   * @return The value of the 'allowedByRobotsTXT' field.
+   */
+  public boolean getAllowedByRobotsTXT() {
+    return allowedByRobotsTXT;
+  }
+
+  /**
+   * Sets the value of the 'allowedByRobotsTXT' field.
+   *
+   * @param value the value to set.
+   */
+  public void setAllowedByRobotsTXT(boolean value) {
+    this.allowedByRobotsTXT = value;
+  }
+
+  /**
+   * Gets the value of the 'sitemapXML' field.
+   *
+   * @return The value of the 'sitemapXML' field.
+   */
+  public boolean getSitemapXML() {
+    return sitemapXML;
+  }
+
+  /**
+   * Sets the value of the 'sitemapXML' field.
+   *
+   * @param value the value to set.
+   */
+  public void setSitemapXML(boolean value) {
+    this.sitemapXML = value;
+  }
+
+  /**
+   * Gets the value of the 'sitemapXMLSPARQL' field.
+   *
+   * @return The value of the 'sitemapXMLSPARQL' field.
+   */
+  public boolean getSitemapXMLSPARQL() {
+    return sitemapXMLSPARQL;
+  }
+
+  /**
+   * Sets the value of the 'sitemapXMLSPARQL' field.
+   *
+   * @param value the value to set.
+   */
+  public void setSitemapXMLSPARQL(boolean value) {
+    this.sitemapXMLSPARQL = value;
+  }
+
+  /**
+   * Gets the value of the 'sitemapXMLSPARQLMatch' field.
+   *
+   * @return The value of the 'sitemapXMLSPARQLMatch' field.
+   */
+  public boolean getSitemapXMLSPARQLMatch() {
+    return sitemapXMLSPARQLMatch;
+  }
+
+  /**
+   * Sets the value of the 'sitemapXMLSPARQLMatch' field.
+   *
+   * @param value the value to set.
+   */
+  public void setSitemapXMLSPARQLMatch(boolean value) {
+    this.sitemapXMLSPARQLMatch = value;
+  }
+
+  /**
+   * Gets the value of the 'sitemapXMLVoiD' field.
+   *
+   * @return The value of the 'sitemapXMLVoiD' field.
+   */
+  public boolean getSitemapXMLVoiD() {
+    return sitemapXMLVoiD;
+  }
+
+  /**
+   * Sets the value of the 'sitemapXMLVoiD' field.
+   *
+   * @param value the value to set.
+   */
+  public void setSitemapXMLVoiD(boolean value) {
+    this.sitemapXMLVoiD = value;
+  }
+
+  /**
+   * Gets the value of the 'Exception' field.
+   *
+   * @return The value of the 'Exception' field.
+   */
+  public java.lang.CharSequence getException() {
+    return Exception;
+  }
+
+  /**
+   * Sets the value of the 'Exception' field.
+   *
+   * @param value the value to set.
+   */
+  public void setException(java.lang.CharSequence value) {
+    this.Exception = value;
+  }
+
+  /**
+   * Creates a new RobotsTXT RecordBuilder.
+   *
+   * @return A new RobotsTXT RecordBuilder
+   */
+  public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder() {
+    return new sparqles.avro.discovery.RobotsTXT.Builder();
+  }
+
+  /**
+   * Creates a new RobotsTXT RecordBuilder by copying an existing Builder.
+   *
+   * @param other The existing builder to copy.
+   * @return A new RobotsTXT RecordBuilder
+   */
+  public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
+      sparqles.avro.discovery.RobotsTXT.Builder other) {
+    if (other == null) {
+      return new sparqles.avro.discovery.RobotsTXT.Builder();
+    } else {
+      return new sparqles.avro.discovery.RobotsTXT.Builder(other);
+    }
+  }
+
+  /**
+   * Creates a new RobotsTXT RecordBuilder by copying an existing RobotsTXT instance.
+   *
+   * @param other The existing instance to copy.
+   * @return A new RobotsTXT RecordBuilder
+   */
+  public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
+      sparqles.avro.discovery.RobotsTXT other) {
+    if (other == null) {
+      return new sparqles.avro.discovery.RobotsTXT.Builder();
+    } else {
+      return new sparqles.avro.discovery.RobotsTXT.Builder(other);
+    }
+  }
+
+  /** RecordBuilder for RobotsTXT instances. */
+  @org.apache.avro.specific.AvroGenerated
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RobotsTXT>
+      implements org.apache.avro.data.RecordBuilder<RobotsTXT> {
+
+    private boolean hasRobotsTXT;
+    private boolean allowedByRobotsTXT;
+    private boolean sitemapXML;
+    private boolean sitemapXMLSPARQL;
+    private boolean sitemapXMLSPARQLMatch;
+    private boolean sitemapXMLVoiD;
+    private java.lang.CharSequence Exception;
+
+    /** Creates a new Builder */
+    private Builder() {
+      super(SCHEMA$, MODEL$);
+    }
 
     /**
-     * Default constructor. Note that this does not initialize fields to their default values from
-     * the schema. If that is desired then one should use {@link \#newBuilder()}.
+     * Creates a Builder by copying an existing Builder.
+     *
+     * @param other The existing Builder to copy.
      */
-    public RobotsTXT() {}
-
-    /** All-args constructor. */
-    public RobotsTXT(
-            java.lang.Boolean hasRobotsTXT,
-            java.lang.Boolean allowedByRobotsTXT,
-            java.lang.Boolean sitemapXML,
-            java.lang.Boolean sitemapXMLSPARQL,
-            java.lang.Boolean sitemapXMLSPARQLMatch,
-            java.lang.Boolean sitemapXMLVoiD,
-            java.lang.CharSequence Exception) {
-        this.hasRobotsTXT = hasRobotsTXT;
-        this.allowedByRobotsTXT = allowedByRobotsTXT;
-        this.sitemapXML = sitemapXML;
-        this.sitemapXMLSPARQL = sitemapXMLSPARQL;
-        this.sitemapXMLSPARQLMatch = sitemapXMLSPARQLMatch;
-        this.sitemapXMLVoiD = sitemapXMLVoiD;
-        this.Exception = Exception;
+    private Builder(sparqles.avro.discovery.RobotsTXT.Builder other) {
+      super(other);
+      if (isValidValue(fields()[0], other.hasRobotsTXT)) {
+        this.hasRobotsTXT = data().deepCopy(fields()[0].schema(), other.hasRobotsTXT);
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (isValidValue(fields()[1], other.allowedByRobotsTXT)) {
+        this.allowedByRobotsTXT = data().deepCopy(fields()[1].schema(), other.allowedByRobotsTXT);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+      if (isValidValue(fields()[2], other.sitemapXML)) {
+        this.sitemapXML = data().deepCopy(fields()[2].schema(), other.sitemapXML);
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.sitemapXMLSPARQL)) {
+        this.sitemapXMLSPARQL = data().deepCopy(fields()[3].schema(), other.sitemapXMLSPARQL);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (isValidValue(fields()[4], other.sitemapXMLSPARQLMatch)) {
+        this.sitemapXMLSPARQLMatch =
+            data().deepCopy(fields()[4].schema(), other.sitemapXMLSPARQLMatch);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
+      }
+      if (isValidValue(fields()[5], other.sitemapXMLVoiD)) {
+        this.sitemapXMLVoiD = data().deepCopy(fields()[5].schema(), other.sitemapXMLVoiD);
+        fieldSetFlags()[5] = other.fieldSetFlags()[5];
+      }
+      if (isValidValue(fields()[6], other.Exception)) {
+        this.Exception = data().deepCopy(fields()[6].schema(), other.Exception);
+        fieldSetFlags()[6] = other.fieldSetFlags()[6];
+      }
     }
 
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
+    /**
+     * Creates a Builder by copying an existing RobotsTXT instance
+     *
+     * @param other The existing instance to copy.
+     */
+    private Builder(sparqles.avro.discovery.RobotsTXT other) {
+      super(SCHEMA$, MODEL$);
+      if (isValidValue(fields()[0], other.hasRobotsTXT)) {
+        this.hasRobotsTXT = data().deepCopy(fields()[0].schema(), other.hasRobotsTXT);
+        fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.allowedByRobotsTXT)) {
+        this.allowedByRobotsTXT = data().deepCopy(fields()[1].schema(), other.allowedByRobotsTXT);
+        fieldSetFlags()[1] = true;
+      }
+      if (isValidValue(fields()[2], other.sitemapXML)) {
+        this.sitemapXML = data().deepCopy(fields()[2].schema(), other.sitemapXML);
+        fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.sitemapXMLSPARQL)) {
+        this.sitemapXMLSPARQL = data().deepCopy(fields()[3].schema(), other.sitemapXMLSPARQL);
+        fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.sitemapXMLSPARQLMatch)) {
+        this.sitemapXMLSPARQLMatch =
+            data().deepCopy(fields()[4].schema(), other.sitemapXMLSPARQLMatch);
+        fieldSetFlags()[4] = true;
+      }
+      if (isValidValue(fields()[5], other.sitemapXMLVoiD)) {
+        this.sitemapXMLVoiD = data().deepCopy(fields()[5].schema(), other.sitemapXMLVoiD);
+        fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.Exception)) {
+        this.Exception = data().deepCopy(fields()[6].schema(), other.Exception);
+        fieldSetFlags()[6] = true;
+      }
     }
 
-    /** Creates a new RobotsTXT RecordBuilder */
-    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder() {
-        return new sparqles.avro.discovery.RobotsTXT.Builder();
-    }
-
-    /** Creates a new RobotsTXT RecordBuilder by copying an existing Builder */
-    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
-            sparqles.avro.discovery.RobotsTXT.Builder other) {
-        return new sparqles.avro.discovery.RobotsTXT.Builder(other);
-    }
-
-    /** Creates a new RobotsTXT RecordBuilder by copying an existing RobotsTXT instance */
-    public static sparqles.avro.discovery.RobotsTXT.Builder newBuilder(
-            sparqles.avro.discovery.RobotsTXT other) {
-        return new sparqles.avro.discovery.RobotsTXT.Builder(other);
-    }
-
-    public org.apache.avro.Schema getSchema() {
-        return SCHEMA$;
-    }
-
-    // Used by DatumWriter.  Applications should not call.
-    public java.lang.Object get(int field$) {
-        switch (field$) {
-            case 0:
-                return hasRobotsTXT;
-            case 1:
-                return allowedByRobotsTXT;
-            case 2:
-                return sitemapXML;
-            case 3:
-                return sitemapXMLSPARQL;
-            case 4:
-                return sitemapXMLSPARQLMatch;
-            case 5:
-                return sitemapXMLVoiD;
-            case 6:
-                return Exception;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
-
-    // Used by DatumReader.  Applications should not call.
-    @SuppressWarnings(value = "unchecked")
-    public void put(int field$, java.lang.Object value$) {
-        switch (field$) {
-            case 0:
-                hasRobotsTXT = (java.lang.Boolean) value$;
-                break;
-            case 1:
-                allowedByRobotsTXT = (java.lang.Boolean) value$;
-                break;
-            case 2:
-                sitemapXML = (java.lang.Boolean) value$;
-                break;
-            case 3:
-                sitemapXMLSPARQL = (java.lang.Boolean) value$;
-                break;
-            case 4:
-                sitemapXMLSPARQLMatch = (java.lang.Boolean) value$;
-                break;
-            case 5:
-                sitemapXMLVoiD = (java.lang.Boolean) value$;
-                break;
-            case 6:
-                Exception = (java.lang.CharSequence) value$;
-                break;
-            default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
-        }
-    }
-
-    /** Gets the value of the 'hasRobotsTXT' field. */
-    public java.lang.Boolean getHasRobotsTXT() {
-        return hasRobotsTXT;
+    /**
+     * Gets the value of the 'hasRobotsTXT' field.
+     *
+     * @return The value.
+     */
+    public boolean getHasRobotsTXT() {
+      return hasRobotsTXT;
     }
 
     /**
      * Sets the value of the 'hasRobotsTXT' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'hasRobotsTXT'.
+     * @return This builder.
      */
-    public void setHasRobotsTXT(java.lang.Boolean value) {
-        this.hasRobotsTXT = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setHasRobotsTXT(boolean value) {
+      validate(fields()[0], value);
+      this.hasRobotsTXT = value;
+      fieldSetFlags()[0] = true;
+      return this;
     }
 
-    /** Gets the value of the 'allowedByRobotsTXT' field. */
-    public java.lang.Boolean getAllowedByRobotsTXT() {
-        return allowedByRobotsTXT;
+    /**
+     * Checks whether the 'hasRobotsTXT' field has been set.
+     *
+     * @return True if the 'hasRobotsTXT' field has been set, false otherwise.
+     */
+    public boolean hasHasRobotsTXT() {
+      return fieldSetFlags()[0];
+    }
+
+    /**
+     * Clears the value of the 'hasRobotsTXT' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearHasRobotsTXT() {
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'allowedByRobotsTXT' field.
+     *
+     * @return The value.
+     */
+    public boolean getAllowedByRobotsTXT() {
+      return allowedByRobotsTXT;
     }
 
     /**
      * Sets the value of the 'allowedByRobotsTXT' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'allowedByRobotsTXT'.
+     * @return This builder.
      */
-    public void setAllowedByRobotsTXT(java.lang.Boolean value) {
-        this.allowedByRobotsTXT = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setAllowedByRobotsTXT(boolean value) {
+      validate(fields()[1], value);
+      this.allowedByRobotsTXT = value;
+      fieldSetFlags()[1] = true;
+      return this;
     }
 
-    /** Gets the value of the 'sitemapXML' field. */
-    public java.lang.Boolean getSitemapXML() {
-        return sitemapXML;
+    /**
+     * Checks whether the 'allowedByRobotsTXT' field has been set.
+     *
+     * @return True if the 'allowedByRobotsTXT' field has been set, false otherwise.
+     */
+    public boolean hasAllowedByRobotsTXT() {
+      return fieldSetFlags()[1];
+    }
+
+    /**
+     * Clears the value of the 'allowedByRobotsTXT' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearAllowedByRobotsTXT() {
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'sitemapXML' field.
+     *
+     * @return The value.
+     */
+    public boolean getSitemapXML() {
+      return sitemapXML;
     }
 
     /**
      * Sets the value of the 'sitemapXML' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'sitemapXML'.
+     * @return This builder.
      */
-    public void setSitemapXML(java.lang.Boolean value) {
-        this.sitemapXML = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXML(boolean value) {
+      validate(fields()[2], value);
+      this.sitemapXML = value;
+      fieldSetFlags()[2] = true;
+      return this;
     }
 
-    /** Gets the value of the 'sitemapXMLSPARQL' field. */
-    public java.lang.Boolean getSitemapXMLSPARQL() {
-        return sitemapXMLSPARQL;
+    /**
+     * Checks whether the 'sitemapXML' field has been set.
+     *
+     * @return True if the 'sitemapXML' field has been set, false otherwise.
+     */
+    public boolean hasSitemapXML() {
+      return fieldSetFlags()[2];
+    }
+
+    /**
+     * Clears the value of the 'sitemapXML' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXML() {
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'sitemapXMLSPARQL' field.
+     *
+     * @return The value.
+     */
+    public boolean getSitemapXMLSPARQL() {
+      return sitemapXMLSPARQL;
     }
 
     /**
      * Sets the value of the 'sitemapXMLSPARQL' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'sitemapXMLSPARQL'.
+     * @return This builder.
      */
-    public void setSitemapXMLSPARQL(java.lang.Boolean value) {
-        this.sitemapXMLSPARQL = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXMLSPARQL(boolean value) {
+      validate(fields()[3], value);
+      this.sitemapXMLSPARQL = value;
+      fieldSetFlags()[3] = true;
+      return this;
     }
 
-    /** Gets the value of the 'sitemapXMLSPARQLMatch' field. */
-    public java.lang.Boolean getSitemapXMLSPARQLMatch() {
-        return sitemapXMLSPARQLMatch;
+    /**
+     * Checks whether the 'sitemapXMLSPARQL' field has been set.
+     *
+     * @return True if the 'sitemapXMLSPARQL' field has been set, false otherwise.
+     */
+    public boolean hasSitemapXMLSPARQL() {
+      return fieldSetFlags()[3];
+    }
+
+    /**
+     * Clears the value of the 'sitemapXMLSPARQL' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXMLSPARQL() {
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'sitemapXMLSPARQLMatch' field.
+     *
+     * @return The value.
+     */
+    public boolean getSitemapXMLSPARQLMatch() {
+      return sitemapXMLSPARQLMatch;
     }
 
     /**
      * Sets the value of the 'sitemapXMLSPARQLMatch' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'sitemapXMLSPARQLMatch'.
+     * @return This builder.
      */
-    public void setSitemapXMLSPARQLMatch(java.lang.Boolean value) {
-        this.sitemapXMLSPARQLMatch = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXMLSPARQLMatch(boolean value) {
+      validate(fields()[4], value);
+      this.sitemapXMLSPARQLMatch = value;
+      fieldSetFlags()[4] = true;
+      return this;
     }
 
-    /** Gets the value of the 'sitemapXMLVoiD' field. */
-    public java.lang.Boolean getSitemapXMLVoiD() {
-        return sitemapXMLVoiD;
+    /**
+     * Checks whether the 'sitemapXMLSPARQLMatch' field has been set.
+     *
+     * @return True if the 'sitemapXMLSPARQLMatch' field has been set, false otherwise.
+     */
+    public boolean hasSitemapXMLSPARQLMatch() {
+      return fieldSetFlags()[4];
+    }
+
+    /**
+     * Clears the value of the 'sitemapXMLSPARQLMatch' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXMLSPARQLMatch() {
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'sitemapXMLVoiD' field.
+     *
+     * @return The value.
+     */
+    public boolean getSitemapXMLVoiD() {
+      return sitemapXMLVoiD;
     }
 
     /**
      * Sets the value of the 'sitemapXMLVoiD' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'sitemapXMLVoiD'.
+     * @return This builder.
      */
-    public void setSitemapXMLVoiD(java.lang.Boolean value) {
-        this.sitemapXMLVoiD = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXMLVoiD(boolean value) {
+      validate(fields()[5], value);
+      this.sitemapXMLVoiD = value;
+      fieldSetFlags()[5] = true;
+      return this;
     }
 
-    /** Gets the value of the 'Exception' field. */
+    /**
+     * Checks whether the 'sitemapXMLVoiD' field has been set.
+     *
+     * @return True if the 'sitemapXMLVoiD' field has been set, false otherwise.
+     */
+    public boolean hasSitemapXMLVoiD() {
+      return fieldSetFlags()[5];
+    }
+
+    /**
+     * Clears the value of the 'sitemapXMLVoiD' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXMLVoiD() {
+      fieldSetFlags()[5] = false;
+      return this;
+    }
+
+    /**
+     * Gets the value of the 'Exception' field.
+     *
+     * @return The value.
+     */
     public java.lang.CharSequence getException() {
-        return Exception;
+      return Exception;
     }
 
     /**
      * Sets the value of the 'Exception' field.
      *
-     * @param value the value to set.
+     * @param value The value of 'Exception'.
+     * @return This builder.
      */
-    public void setException(java.lang.CharSequence value) {
-        this.Exception = value;
+    public sparqles.avro.discovery.RobotsTXT.Builder setException(java.lang.CharSequence value) {
+      validate(fields()[6], value);
+      this.Exception = value;
+      fieldSetFlags()[6] = true;
+      return this;
     }
 
-    /** RecordBuilder for RobotsTXT instances. */
-    public static class Builder
-            extends org.apache.avro.specific.SpecificRecordBuilderBase<RobotsTXT>
-            implements org.apache.avro.data.RecordBuilder<RobotsTXT> {
-
-        private boolean hasRobotsTXT;
-        private boolean allowedByRobotsTXT;
-        private boolean sitemapXML;
-        private boolean sitemapXMLSPARQL;
-        private boolean sitemapXMLSPARQLMatch;
-        private boolean sitemapXMLVoiD;
-        private java.lang.CharSequence Exception;
-
-        /** Creates a new Builder */
-        private Builder() {
-            super(sparqles.avro.discovery.RobotsTXT.SCHEMA$);
-        }
-
-        /** Creates a Builder by copying an existing Builder */
-        private Builder(sparqles.avro.discovery.RobotsTXT.Builder other) {
-            super(other);
-            if (isValidValue(fields()[0], other.hasRobotsTXT)) {
-                this.hasRobotsTXT = data().deepCopy(fields()[0].schema(), other.hasRobotsTXT);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.allowedByRobotsTXT)) {
-                this.allowedByRobotsTXT =
-                        data().deepCopy(fields()[1].schema(), other.allowedByRobotsTXT);
-                fieldSetFlags()[1] = true;
-            }
-            if (isValidValue(fields()[2], other.sitemapXML)) {
-                this.sitemapXML = data().deepCopy(fields()[2].schema(), other.sitemapXML);
-                fieldSetFlags()[2] = true;
-            }
-            if (isValidValue(fields()[3], other.sitemapXMLSPARQL)) {
-                this.sitemapXMLSPARQL =
-                        data().deepCopy(fields()[3].schema(), other.sitemapXMLSPARQL);
-                fieldSetFlags()[3] = true;
-            }
-            if (isValidValue(fields()[4], other.sitemapXMLSPARQLMatch)) {
-                this.sitemapXMLSPARQLMatch =
-                        data().deepCopy(fields()[4].schema(), other.sitemapXMLSPARQLMatch);
-                fieldSetFlags()[4] = true;
-            }
-            if (isValidValue(fields()[5], other.sitemapXMLVoiD)) {
-                this.sitemapXMLVoiD = data().deepCopy(fields()[5].schema(), other.sitemapXMLVoiD);
-                fieldSetFlags()[5] = true;
-            }
-            if (isValidValue(fields()[6], other.Exception)) {
-                this.Exception = data().deepCopy(fields()[6].schema(), other.Exception);
-                fieldSetFlags()[6] = true;
-            }
-        }
-
-        /** Creates a Builder by copying an existing RobotsTXT instance */
-        private Builder(sparqles.avro.discovery.RobotsTXT other) {
-            super(sparqles.avro.discovery.RobotsTXT.SCHEMA$);
-            if (isValidValue(fields()[0], other.hasRobotsTXT)) {
-                this.hasRobotsTXT = data().deepCopy(fields()[0].schema(), other.hasRobotsTXT);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.allowedByRobotsTXT)) {
-                this.allowedByRobotsTXT =
-                        data().deepCopy(fields()[1].schema(), other.allowedByRobotsTXT);
-                fieldSetFlags()[1] = true;
-            }
-            if (isValidValue(fields()[2], other.sitemapXML)) {
-                this.sitemapXML = data().deepCopy(fields()[2].schema(), other.sitemapXML);
-                fieldSetFlags()[2] = true;
-            }
-            if (isValidValue(fields()[3], other.sitemapXMLSPARQL)) {
-                this.sitemapXMLSPARQL =
-                        data().deepCopy(fields()[3].schema(), other.sitemapXMLSPARQL);
-                fieldSetFlags()[3] = true;
-            }
-            if (isValidValue(fields()[4], other.sitemapXMLSPARQLMatch)) {
-                this.sitemapXMLSPARQLMatch =
-                        data().deepCopy(fields()[4].schema(), other.sitemapXMLSPARQLMatch);
-                fieldSetFlags()[4] = true;
-            }
-            if (isValidValue(fields()[5], other.sitemapXMLVoiD)) {
-                this.sitemapXMLVoiD = data().deepCopy(fields()[5].schema(), other.sitemapXMLVoiD);
-                fieldSetFlags()[5] = true;
-            }
-            if (isValidValue(fields()[6], other.Exception)) {
-                this.Exception = data().deepCopy(fields()[6].schema(), other.Exception);
-                fieldSetFlags()[6] = true;
-            }
-        }
-
-        /** Gets the value of the 'hasRobotsTXT' field */
-        public java.lang.Boolean getHasRobotsTXT() {
-            return hasRobotsTXT;
-        }
-
-        /** Sets the value of the 'hasRobotsTXT' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setHasRobotsTXT(boolean value) {
-            validate(fields()[0], value);
-            this.hasRobotsTXT = value;
-            fieldSetFlags()[0] = true;
-            return this;
-        }
-
-        /** Checks whether the 'hasRobotsTXT' field has been set */
-        public boolean hasHasRobotsTXT() {
-            return fieldSetFlags()[0];
-        }
-
-        /** Clears the value of the 'hasRobotsTXT' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearHasRobotsTXT() {
-            fieldSetFlags()[0] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'allowedByRobotsTXT' field */
-        public java.lang.Boolean getAllowedByRobotsTXT() {
-            return allowedByRobotsTXT;
-        }
-
-        /** Sets the value of the 'allowedByRobotsTXT' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setAllowedByRobotsTXT(boolean value) {
-            validate(fields()[1], value);
-            this.allowedByRobotsTXT = value;
-            fieldSetFlags()[1] = true;
-            return this;
-        }
-
-        /** Checks whether the 'allowedByRobotsTXT' field has been set */
-        public boolean hasAllowedByRobotsTXT() {
-            return fieldSetFlags()[1];
-        }
-
-        /** Clears the value of the 'allowedByRobotsTXT' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearAllowedByRobotsTXT() {
-            fieldSetFlags()[1] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'sitemapXML' field */
-        public java.lang.Boolean getSitemapXML() {
-            return sitemapXML;
-        }
-
-        /** Sets the value of the 'sitemapXML' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXML(boolean value) {
-            validate(fields()[2], value);
-            this.sitemapXML = value;
-            fieldSetFlags()[2] = true;
-            return this;
-        }
-
-        /** Checks whether the 'sitemapXML' field has been set */
-        public boolean hasSitemapXML() {
-            return fieldSetFlags()[2];
-        }
-
-        /** Clears the value of the 'sitemapXML' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXML() {
-            fieldSetFlags()[2] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'sitemapXMLSPARQL' field */
-        public java.lang.Boolean getSitemapXMLSPARQL() {
-            return sitemapXMLSPARQL;
-        }
-
-        /** Sets the value of the 'sitemapXMLSPARQL' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXMLSPARQL(boolean value) {
-            validate(fields()[3], value);
-            this.sitemapXMLSPARQL = value;
-            fieldSetFlags()[3] = true;
-            return this;
-        }
-
-        /** Checks whether the 'sitemapXMLSPARQL' field has been set */
-        public boolean hasSitemapXMLSPARQL() {
-            return fieldSetFlags()[3];
-        }
-
-        /** Clears the value of the 'sitemapXMLSPARQL' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXMLSPARQL() {
-            fieldSetFlags()[3] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'sitemapXMLSPARQLMatch' field */
-        public java.lang.Boolean getSitemapXMLSPARQLMatch() {
-            return sitemapXMLSPARQLMatch;
-        }
-
-        /** Sets the value of the 'sitemapXMLSPARQLMatch' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXMLSPARQLMatch(boolean value) {
-            validate(fields()[4], value);
-            this.sitemapXMLSPARQLMatch = value;
-            fieldSetFlags()[4] = true;
-            return this;
-        }
-
-        /** Checks whether the 'sitemapXMLSPARQLMatch' field has been set */
-        public boolean hasSitemapXMLSPARQLMatch() {
-            return fieldSetFlags()[4];
-        }
-
-        /** Clears the value of the 'sitemapXMLSPARQLMatch' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXMLSPARQLMatch() {
-            fieldSetFlags()[4] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'sitemapXMLVoiD' field */
-        public java.lang.Boolean getSitemapXMLVoiD() {
-            return sitemapXMLVoiD;
-        }
-
-        /** Sets the value of the 'sitemapXMLVoiD' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setSitemapXMLVoiD(boolean value) {
-            validate(fields()[5], value);
-            this.sitemapXMLVoiD = value;
-            fieldSetFlags()[5] = true;
-            return this;
-        }
-
-        /** Checks whether the 'sitemapXMLVoiD' field has been set */
-        public boolean hasSitemapXMLVoiD() {
-            return fieldSetFlags()[5];
-        }
-
-        /** Clears the value of the 'sitemapXMLVoiD' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearSitemapXMLVoiD() {
-            fieldSetFlags()[5] = false;
-            return this;
-        }
-
-        /** Gets the value of the 'Exception' field */
-        public java.lang.CharSequence getException() {
-            return Exception;
-        }
-
-        /** Sets the value of the 'Exception' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder setException(
-                java.lang.CharSequence value) {
-            validate(fields()[6], value);
-            this.Exception = value;
-            fieldSetFlags()[6] = true;
-            return this;
-        }
-
-        /** Checks whether the 'Exception' field has been set */
-        public boolean hasException() {
-            return fieldSetFlags()[6];
-        }
-
-        /** Clears the value of the 'Exception' field */
-        public sparqles.avro.discovery.RobotsTXT.Builder clearException() {
-            Exception = null;
-            fieldSetFlags()[6] = false;
-            return this;
-        }
-
-        @Override
-        public RobotsTXT build() {
-            try {
-                RobotsTXT record = new RobotsTXT();
-                record.hasRobotsTXT =
-                        fieldSetFlags()[0]
-                                ? this.hasRobotsTXT
-                                : (java.lang.Boolean) defaultValue(fields()[0]);
-                record.allowedByRobotsTXT =
-                        fieldSetFlags()[1]
-                                ? this.allowedByRobotsTXT
-                                : (java.lang.Boolean) defaultValue(fields()[1]);
-                record.sitemapXML =
-                        fieldSetFlags()[2]
-                                ? this.sitemapXML
-                                : (java.lang.Boolean) defaultValue(fields()[2]);
-                record.sitemapXMLSPARQL =
-                        fieldSetFlags()[3]
-                                ? this.sitemapXMLSPARQL
-                                : (java.lang.Boolean) defaultValue(fields()[3]);
-                record.sitemapXMLSPARQLMatch =
-                        fieldSetFlags()[4]
-                                ? this.sitemapXMLSPARQLMatch
-                                : (java.lang.Boolean) defaultValue(fields()[4]);
-                record.sitemapXMLVoiD =
-                        fieldSetFlags()[5]
-                                ? this.sitemapXMLVoiD
-                                : (java.lang.Boolean) defaultValue(fields()[5]);
-                record.Exception =
-                        fieldSetFlags()[6]
-                                ? this.Exception
-                                : (java.lang.CharSequence) defaultValue(fields()[6]);
-                return record;
-            } catch (Exception e) {
-                throw new org.apache.avro.AvroRuntimeException(e);
-            }
-        }
+    /**
+     * Checks whether the 'Exception' field has been set.
+     *
+     * @return True if the 'Exception' field has been set, false otherwise.
+     */
+    public boolean hasException() {
+      return fieldSetFlags()[6];
     }
+
+    /**
+     * Clears the value of the 'Exception' field.
+     *
+     * @return This builder.
+     */
+    public sparqles.avro.discovery.RobotsTXT.Builder clearException() {
+      Exception = null;
+      fieldSetFlags()[6] = false;
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public RobotsTXT build() {
+      try {
+        RobotsTXT record = new RobotsTXT();
+        record.hasRobotsTXT =
+            fieldSetFlags()[0] ? this.hasRobotsTXT : (java.lang.Boolean) defaultValue(fields()[0]);
+        record.allowedByRobotsTXT =
+            fieldSetFlags()[1]
+                ? this.allowedByRobotsTXT
+                : (java.lang.Boolean) defaultValue(fields()[1]);
+        record.sitemapXML =
+            fieldSetFlags()[2] ? this.sitemapXML : (java.lang.Boolean) defaultValue(fields()[2]);
+        record.sitemapXMLSPARQL =
+            fieldSetFlags()[3]
+                ? this.sitemapXMLSPARQL
+                : (java.lang.Boolean) defaultValue(fields()[3]);
+        record.sitemapXMLSPARQLMatch =
+            fieldSetFlags()[4]
+                ? this.sitemapXMLSPARQLMatch
+                : (java.lang.Boolean) defaultValue(fields()[4]);
+        record.sitemapXMLVoiD =
+            fieldSetFlags()[5]
+                ? this.sitemapXMLVoiD
+                : (java.lang.Boolean) defaultValue(fields()[5]);
+        record.Exception =
+            fieldSetFlags()[6]
+                ? this.Exception
+                : (java.lang.CharSequence) defaultValue(fields()[6]);
+        return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
+        throw new org.apache.avro.AvroRuntimeException(e);
+      }
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<RobotsTXT> WRITER$ =
+      (org.apache.avro.io.DatumWriter<RobotsTXT>) MODEL$.createDatumWriter(SCHEMA$);
+
+  @Override
+  public void writeExternal(java.io.ObjectOutput out) throws java.io.IOException {
+    WRITER$.write(this, SpecificData.getEncoder(out));
+  }
+
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<RobotsTXT> READER$ =
+      (org.apache.avro.io.DatumReader<RobotsTXT>) MODEL$.createDatumReader(SCHEMA$);
+
+  @Override
+  public void readExternal(java.io.ObjectInput in) throws java.io.IOException {
+    READER$.read(this, SpecificData.getDecoder(in));
+  }
+
+  @Override
+  protected boolean hasCustomCoders() {
+    return true;
+  }
+
+  @Override
+  public void customEncode(org.apache.avro.io.Encoder out) throws java.io.IOException {
+    out.writeBoolean(this.hasRobotsTXT);
+
+    out.writeBoolean(this.allowedByRobotsTXT);
+
+    out.writeBoolean(this.sitemapXML);
+
+    out.writeBoolean(this.sitemapXMLSPARQL);
+
+    out.writeBoolean(this.sitemapXMLSPARQLMatch);
+
+    out.writeBoolean(this.sitemapXMLVoiD);
+
+    if (this.Exception == null) {
+      out.writeIndex(1);
+      out.writeNull();
+    } else {
+      out.writeIndex(0);
+      out.writeString(this.Exception);
+    }
+  }
+
+  @Override
+  public void customDecode(org.apache.avro.io.ResolvingDecoder in) throws java.io.IOException {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.hasRobotsTXT = in.readBoolean();
+
+      this.allowedByRobotsTXT = in.readBoolean();
+
+      this.sitemapXML = in.readBoolean();
+
+      this.sitemapXMLSPARQL = in.readBoolean();
+
+      this.sitemapXMLSPARQLMatch = in.readBoolean();
+
+      this.sitemapXMLVoiD = in.readBoolean();
+
+      if (in.readIndex() != 0) {
+        in.readNull();
+        this.Exception = null;
+      } else {
+        this.Exception =
+            in.readString(this.Exception instanceof Utf8 ? (Utf8) this.Exception : null);
+      }
+
+    } else {
+      for (int i = 0; i < 7; i++) {
+        switch (fieldOrder[i].pos()) {
+          case 0:
+            this.hasRobotsTXT = in.readBoolean();
+            break;
+
+          case 1:
+            this.allowedByRobotsTXT = in.readBoolean();
+            break;
+
+          case 2:
+            this.sitemapXML = in.readBoolean();
+            break;
+
+          case 3:
+            this.sitemapXMLSPARQL = in.readBoolean();
+            break;
+
+          case 4:
+            this.sitemapXMLSPARQLMatch = in.readBoolean();
+            break;
+
+          case 5:
+            this.sitemapXMLVoiD = in.readBoolean();
+            break;
+
+          case 6:
+            if (in.readIndex() != 0) {
+              in.readNull();
+              this.Exception = null;
+            } else {
+              this.Exception =
+                  in.readString(this.Exception instanceof Utf8 ? (Utf8) this.Exception : null);
+            }
+            break;
+
+          default:
+            throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }

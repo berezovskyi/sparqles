@@ -53,14 +53,51 @@ app.get('/', function (req, res) {
               else return v
             }
           )
-          // rename availability colors range
-          for (var i = 0; i < amonths.length; i++) {
-            if (amonths[i]['key'] == '0-5') amonths[i]['key'] = '[0-5)'
-            if (amonths[i]['key'] == '5-75') amonths[i]['key'] = '[5-75)'
-            if (amonths[i]['key'] == '75-95') amonths[i]['key'] = '[75-95)'
-            if (amonths[i]['key'] == '95-99') amonths[i]['key'] = '[95-99)'
-            if (amonths[i]['key'] == '99-100') amonths[i]['key'] = '[99-100]'
+
+          var indexCalculation = JSON.parse(JSON.stringify(index.calculation), function(k, v) {
+            if (k === "data")
+              this.values = v;
+            else
+              return v;
+          });
+
+          console.log(`All availability data: ${JSON.stringify(index.availability)}`);
+          console.log(`All amonths data: ${JSON.stringify(amonths)}`);
+
+          var availability = amonths;
+          //var availability = null; // do not use amoths, use index.availability
+          if (typeof availability != undefined && availability != null && availability.length > 0) {
+            // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
+            for (var i = 0; i < availability.length; i++) {
+              if (availability[i]['key'] == '0-5') availability[i]['key'] = '[0-5)'
+              if (availability[i]['key'] == '5-75') availability[i]['key'] = '[5-75)'
+              if (availability[i]['key'] == '75-95') availability[i]['key'] = '[75-95)'
+              if (availability[i]['key'] == '95-99') availability[i]['key'] = '[95-99)'
+              if (availability[i]['key'] == '99-100') availability[i]['key'] = '[99-100]'
+            }
           }
+          else {
+            availability = index.availability;
+
+            function indexValuesToAmonthFormat(entry) {
+              console.log(`Current index.avail entry: ${JSON.stringify(amonths)}`);
+              return entry.values.map(function (value) {
+                // return [new Date(parseInt(value.x)).toISOString(), value.y * 100];
+                // return [value.x, value.y * 100];
+                return [parseInt(value.x), value.y * 100];
+              }).sort((a,b) => a[0] - b[0]);
+            }
+
+            availability = [
+              { "key": "[0-5)", "index": 1, "values": indexValuesToAmonthFormat(availability[0]) },
+              { "key": "[5-90)", "index": 2, "values": indexValuesToAmonthFormat(availability[1]) },
+              { "key": "[90-95)", "index": 3, "values": indexValuesToAmonthFormat(availability[2]) },
+              { "key": "[95-100]", "index": 4, "values": indexValuesToAmonthFormat(availability[3]) }
+            ];
+
+            console.log(`Final values from index.avail: ${JSON.stringify(availability)}`);
+          }
+
           //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
 
           //PERFORMANCE
@@ -96,37 +133,47 @@ app.get('/', function (req, res) {
                     configInstanceTitle: configApp.get('configInstanceTitle'),
                     baseUri: configApp.get('baseUri'),
                     gitRepo: configApp.get('gitRepo'),
-                    amonths: amonths,
+                    amonths: availability, // TODO: refactor naming
                     index: index,
                     indexInterop: indexInterop,
+          		     indexCalculation: indexCalculation,
                     nbEndpointsSearch: nbEndpointsSearch,
                     nbEndpointsVoID: nbEndpointsVoID,
                     nbEndpointsSD: nbEndpointsSD,
                     nbEndpointsServerName: nbEndpointsServerName,
                     nbEndpointsTotal: nbEndpointsTotal,
                     nbEndpointsNoDesc: nbEndpointsNoDesc,
-                    lastUpdate: lastUpdate.length > 0 ? lastUpdate[0].lastUpdate : 0,
+                    lastUpdate: lastUpdate.length > 0 ?  new Date(lastUpdate[0].lastUpdate) : 0,
                     perf: {
-                      threshold: 10000 /*mostCommonThreshold[0]*/,
-                      data: [
-                        {
-                          key: 'Cold Tests',
-                          color: '#1f77b4',
-                          values: [
-                            { label: 'Median ASK', value: avgASKCold },
-                            { label: 'Median JOIN', value: avgJOINCold },
-                          ],
-                        },
-                        {
-                          key: 'Warm Tests',
-                          color: '#2ca02c',
-                          values: [
-                            { label: 'Median ASK', value: avgASKWarm },
-                            { label: 'Median JOIN', value: avgJOINWarm },
-                          ],
-                        },
-                      ],
+                      threshold: index.performance?.threshold > 0 ? index.performance.threshold : 10000,
+                      data: index.performance.data.map((entry) => {
+                        return {
+                          key: entry.key,
+                          color: entry.color,
+                          // FIXME: update schema to avoid this
+                          values: entry.data,
+                        }
+                      })
+                      // data: [
+                      //   {
+                      //     key: 'Cold Tests',
+                      //     color: '#1f77b4',
+                      //     values: [
+                      //       { label: 'Median ASK', value: avgASKCold },
+                      //       { label: 'Median JOIN', value: avgJOINCold },
+                      //     ],
+                      //   },
+                      //   {
+                      //     key: 'Warm Tests',
+                      //     color: '#2ca02c',
+                      //     values: [
+                      //       { label: 'Median ASK', value: avgASKWarm },
+                      //       { label: 'Median JOIN', value: avgJOINWarm },
+                      //     ],
+                      //   },
+                      // ],
                     },
+                    // perf: index.performance,
                     configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
                     configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
                     configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
@@ -270,28 +317,34 @@ app.get('/endpoint', function (req, res) {
             }
 
             mongoDBProvider.getLatestDisco(uri, function (error, latestDisco) {
-              var SDDescription = [
-                {
-                  label: 'foo',
-                  value: true,
-                },
-              ]
-              var SDDescription = []
-              var descriptionFiles = latestDisco[0].descriptionFiles
-              for (var i = 0; i < descriptionFiles.length; i++) {
-                var d = descriptionFiles[i]
-                var name = d.Operation
-                if (name == 'EPURL') name = 'HTTP Get'
-                if (name == 'wellknown') name = '/.well-known/void'
-                var preds = false
-                // check if SPARQLDESCpreds object is empty or not
-                if (Object.keys(d.SPARQLDESCpreds).length) {
-                  preds = true
+              var SDDescription = [];
+
+              if (typeof latestDisco == 'undefined' || latestDisco == null) {
+                 SDDescription = [
+                  {
+                    label: 'foo',
+                    value: true,
+                  },
+                ];
+              } else {
+                var descriptionFiles = latestDisco[0]?.descriptionFiles;
+                if (descriptionFiles != null) {
+                for (var i = 0; i < descriptionFiles.length; i++) {
+                  var d = descriptionFiles[i]
+                  var name = d.Operation
+                  if (name == 'EPURL') name = 'HTTP Get'
+                  if (name == 'wellknown') name = '/.well-known/void'
+                  var preds = false
+                  // check if SPARQLDESCpreds object is empty or not
+                  if (Object.keys(d.SPARQLDESCpreds).length) {
+                    preds = true
+                  }
+                  SDDescription.push({
+                    label: name,
+                    value: preds,
+                  })
                 }
-                SDDescription.push({
-                  label: name,
-                  value: preds,
-                })
+              }
               }
 
               docs[0].discoverability.SDDescription = SDDescription

@@ -7,17 +7,17 @@ import sparqles.utils.MongoDBManager;
 /**
  * A Task is a {@link Callable} connected to the database.
  *
- * @param <V> - return type restricted to AVRO objects
  * @author umbrichj
+ * @param <V> - return type restricted to AVRO objects
  */
 public interface Task<V extends SpecificRecordBase> extends Callable<V> {
 
-    //	public void execute();
+  //	public void execute();
 
-    /**
-     * Set the MongoDBManager.
-     *
-     * @param dbm
-     */
-    void setDBManager(MongoDBManager dbm);
+  /**
+   * Set the MongoDBManager.
+   *
+   * @param dbm
+   */
+  void setDBManager(MongoDBManager dbm);
 }

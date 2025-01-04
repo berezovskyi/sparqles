@@ -41,6 +41,7 @@ import sparqles.avro.discovery.QueryInfo;
 import sparqles.avro.discovery.RobotsTXT;
 import sparqles.core.CONSTANTS;
 import sparqles.core.EndpointTask;
+import sparqles.core.SPARQLESProperties;
 import sparqles.utils.ConnectionManager;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.QueryManager;
@@ -55,418 +56,407 @@ import sparqles.utils.QueryManager;
  * @author UmbrichJ
  */
 public class DTask extends EndpointTask<DResult> {
-    public static final String header =
-            "application/rdf+xml, text/rdf, text/rdf+xml, application/rdf";
-    public static final String EPURL = "EPURL";
-    private static final Logger log = LoggerFactory.getLogger(DTask.class);
-    private static final ConnectionManager cm = new ConnectionManager(null, 0, null, null, 50);
-    private static final String sparqDescNS = "http://www.w3.org/ns/sparql-service-description#";
-    private static final String voidNS = "http://rdfs.org/ns/void#";
-    private static final String query =
-            ""
-                    + "PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
-                    + "PREFIX void:     <http://rdfs.org/ns/void#>\n"
-                    + "SELECT DISTINCT * \n"
-                    + "WHERE {\n"
-                    + "?ds a void:Dataset .\n"
-                    + "?ds void:sparqlEndpoint %%s .\n"
-                    + "?ds ?p ?o .\n"
-                    + "}";
+  public static final String header =
+      "application/rdf+xml, text/rdf, text/rdf+xml, application/rdf";
+  public static final String EPURL = "EPURL";
+  private static final Logger log = LoggerFactory.getLogger(DTask.class);
+  private static final ConnectionManager cm = new ConnectionManager(null, 0, null, null, 50);
+  private static final String sparqDescNS = "http://www.w3.org/ns/sparql-service-description#";
+  private static final String voidNS = "http://rdfs.org/ns/void#";
+  private static final String query =
+      ""
+          + "PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
+          + "PREFIX void:     <http://rdfs.org/ns/void#>\n"
+          + "SELECT DISTINCT * \n"
+          + "WHERE {\n"
+          + "?ds a void:Dataset .\n"
+          + "?ds void:sparqlEndpoint %%s .\n"
+          + "?ds ?p ?o .\n"
+          + "}";
 
-    public DTask(Endpoint ep) {
-        super(ep);
+  public DTask(Endpoint ep) {
+    super(ep);
+  }
+
+  @Override
+  public DResult process(EndpointResult epr) {
+    DResult result = new DResult();
+    result.setEndpointResult(epr);
+    log.debug("execute {}", _epURI);
+
+    result.setDescriptionFiles((List) new ArrayList<DGETInfo>());
+
+    int failures = 0;
+
+    // RobotsTXT run
+    log.debug("execute {} {}", "robots", _epURI);
+    RobotsTXT rtxt = new RobotsTXT(false, false, false, false, false, false, "");
+    result.setRobotsTXT(rtxt);
+
+    // check everytime for updated robots.txts
+    Robots rob = fetchRobotsTXT();
+
+    // get list of existing robots.txt
+    List<Robots> r = new ArrayList<Robots>();
+    if (_dbm != null) {
+      r = _dbm.getResults(_ep, Robots.class, Robots.SCHEMA$);
+    }
+    if (r.size() == 0 && _dbm != null) {
+      // first robots.txt test, insert into DB
+      _dbm.insert(rob);
+    } else if (_dbm != null) {
+      if (String.valueOf(rob.getRespCode()).startsWith("5")) {
+        // there was a server error, try to get the last stored robots.txt
+        if (r.size() == 1) {
+          rob = r.get(0);
+        }
+      } else {
+        // update robots txt
+        _dbm.update(rob);
+      }
+    }
+    if (rob.getRespCode() == 200) rtxt.setHasRobotsTXT(true);
+
+    boolean isRobotsAllowed = checkRobotsTxt(rob, rob.getEndpoint().getUri().toString());
+    rtxt.setAllowedByRobotsTXT(isRobotsAllowed);
+
+    log.debug("execute {} {}", "sitemap", _epURI);
+    // discovery void and sparqles via semantic sitemap.xml
+    // http://vocab.deri.ie/void/guide#sec_5_2_Discovery_via_sitemaps
+    parseSitemapXML(rob, rtxt, result);
+
+    // inspect HTTP Get
+    // ok we checked the robots.txt, now we do a http get on the sparql URL
+    log.debug("execute {} {}", "httpget", _epURI);
+    try {
+      URI epURL = new URI(_ep.getUri().toString());
+      DGETInfo info = checkForVoid(epURL.toString(), EPURL, rob);
+      result.getDescriptionFiles().add(info);
+    } catch (Exception e) {
+      log.debug("[EXC] HTTP GET " + _epURI, ExceptionHandler.logAndtoString(e, true));
+    }
+    log.debug("execute {} {}", "well-known", _epURI);
+    try {
+      // well-known location
+      URI epURL = new URI(_ep.getUri().toString());
+      URL wellknown =
+          new URI(epURL.getScheme(), epURL.getAuthority(), "/.well-known/void", null, null).toURL();
+      DGETInfo info = checkForVoid(wellknown.toString(), "wellknown", rob);
+      result.getDescriptionFiles().add(info);
+    } catch (Exception e) {
+      log.debug("[EXC] HTTP well known " + _epURI, e);
     }
 
-    @Override
-    public DResult process(EndpointResult epr) {
-        DResult result = new DResult();
-        result.setEndpointResult(epr);
-        log.debug("execute {}", _epURI);
+    List<QueryInfo> queryInfos = new ArrayList<QueryInfo>();
+    result.setQueryInfo(queryInfos);
 
-        result.setDescriptionFiles((List) new ArrayList<DGETInfo>());
+    log.debug("execute {} {}", "query-self", _epURI);
+    // maybe the endpoint has data about itself
+    queryInfos.add(query(_ep.getUri().toString(), "query-self"));
 
-        int failures = 0;
+    log.info("executed {}", this);
 
-        // RobotsTXT run
-        log.debug("execute {} {}", "robots", _epURI);
-        RobotsTXT rtxt = new RobotsTXT(false, false, false, false, false, false, "");
-        result.setRobotsTXT(rtxt);
+    return result;
+  }
 
-        // check everytime for updated robots.txts
-        Robots rob = fetchRobotsTXT();
+  private QueryInfo query(String epURL, String operation) {
+    QueryInfo info = new QueryInfo();
+    info.setURL(epURL);
+    info.setOperation(operation);
 
-        // get list of existing robots.txt
-        List<Robots> r = new ArrayList<Robots>();
-        if (_dbm != null) {
-            r = _dbm.getResults(_ep, Robots.class, Robots.SCHEMA$);
+    String queryString = query.replaceAll("%%s", "<" + _ep.getUri() + ">");
+
+    HashSet<String> voidAset = new HashSet<String>();
+
+    ArrayList<CharSequence> voidA = new ArrayList<CharSequence>();
+    info.setResults(voidA);
+
+    // initializing queryExecution factory with remote service.
+    QueryExecution qexec = null;
+    try {
+      qexec = QueryManager.getExecution(epURL, queryString);
+
+      boolean results = false;
+
+      ResultSet resSet = qexec.execSelect();
+      ResultSetRewindable reswind = ResultSetFactory.makeRewindable(resSet);
+
+      while (reswind.hasNext()) {
+        RDFNode dataset = reswind.next().get("ds");
+        voidAset.add(dataset.toString());
+      }
+
+      voidA.addAll(voidAset);
+      log.info("Found {} results", reswind.getRowNumber());
+    } catch (Exception e1) {
+      info.setException(ExceptionHandler.logAndtoString(e1));
+      log.debug("[EXEC] SPARQL query to " + epURL + " for " + _epURI, e1);
+    } finally {
+      if (qexec != null) qexec.close();
+    }
+    return info;
+  }
+
+  //	<sc:datasetURI> for void
+  // sc:sparqlEndpointLocation
+
+  /**
+   * Find information about sitemap.xml in robots.txt by parsing the robots.txt content for the
+   * "Sitemap:" value. Next, retrieve the sitemap.xml and look for sc:sparqlEndpointLocation
+   *
+   * @param rob
+   * @param rtxt
+   * @param result
+   */
+  private void parseSitemapXML(Robots rob, RobotsTXT rtxt, DResult result) {
+    String robotsContent = rob.getContent().toString();
+
+    URL sitemapURL = null;
+    if (robotsContent != null) {
+      BufferedReader bufReader = new BufferedReader(new StringReader(robotsContent));
+      String line = null;
+      try {
+        while ((line = bufReader.readLine()) != null) {
+          if (line.trim().startsWith("Sitemap")) {
+
+            sitemapURL = new URL(line.substring(line.indexOf(":") + 1).trim());
+            break;
+          }
         }
-        if (r.size() == 0 && _dbm != null) {
-            // first robots.txt test, insert into DB
-            _dbm.insert(rob);
-        } else if (_dbm != null) {
-            if (rob.getRespCode().toString().startsWith("5")) {
-                // there was a server error, try to get the last stored robots.txt
-                if (r.size() == 1) {
-                    rob = r.get(0);
-                }
-            } else {
-                // update robots txt
-                _dbm.update(rob);
-            }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    if (sitemapURL != null) {
+      rtxt.setSitemapXML(true);
+      HttpGet get = null;
+      try {
+
+        get = new HttpGet(sitemapURL.toURI());
+        HttpResponse resp = cm.connect(get);
+        log.debug("parseSitemapXML: Connected to {}", get);
+        String conent = EntityUtils.toString(resp.getEntity());
+        log.debug("parseSitemapXML: received content {}", conent.length());
+
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser saxParser = factory.newSAXParser();
+        saxParser.getXMLReader().setFeature("http://xml.org/sax/features/namespaces", true);
+        InputStream is = new ByteArrayInputStream(conent.getBytes());
+        SitemapHandler handler = new SitemapHandler(rtxt, result, _ep.getUri().toString());
+        saxParser.parse(is, handler);
+        //
+        //				//	System.out.println(conent);
+        //				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        //				dbFactory.setNamespaceAware(true);
+        //				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        //				Document doc = dBuilder.parse(new ByteArrayInputStream(conent.getBytes()));
+        //				doc.getDocumentElement().normalize();
+        //
+        //				NodeList nodeList =
+        // doc.getElementsByTagNameNS("http://sw.deri.org/2007/07/sitemapextension/scschema.xsd",
+        // "sparqlEndpointLocation");
+        //				rtxt.setSitemapXMLSPARQL(nodeList.getLength()!=0);
+        //				for (int temp = 0; temp < nodeList.getLength(); temp++) {
+        //					Node nNode = nodeList.item(temp);
+        ////					System.out.println(nNode.getTextContent());
+        //					if(_ep.getUri().toString().equalsIgnoreCase(nNode.getTextContent())){
+        //						rtxt.setSitemapXMLSPARQLMatch(true);
+        //					}
+        //				}
+        //				nodeList =
+        // doc.getElementsByTagNameNS("http://sw.deri.org/2007/07/sitemapextension/scschema.xsd",
+        // "datasetURI");
+        //				for (int temp = 0; temp < nodeList.getLength(); temp++) {
+        //					Node nNode = nodeList.item(temp);
+        //					DGETInfo info = checkForVoid(nNode.getTextContent(), "sitemap.xml_link",rob);
+        //					result.getDescriptionFiles().add(info);
+        //				}
+      } catch (Exception e) {
+        log.debug("[EXEC] Sitemap for " + _epURI, e);
+        rtxt.setException(ExceptionHandler.logAndtoString(e));
+      } finally {
+        if (get != null) {
+          get.releaseConnection();
         }
-        if (rob.getRespCode() == 200) rtxt.setHasRobotsTXT(true);
+      }
+    }
+  }
 
-        boolean isRobotsAllowed = checkRobotsTxt(rob, rob.getEndpoint().getUri().toString());
-        rtxt.setAllowedByRobotsTXT(isRobotsAllowed);
+  private DGETInfo checkForVoid(String url, String operation, Robots rob) {
+    DGETInfo info = new DGETInfo();
+    info.setOperation(operation);
+    info.setURL(url);
+    info.setResponseServer("missing");
 
-        log.debug("execute {} {}", "sitemap", _epURI);
-        // discovery void and sparqles via semantic sitemap.xml
-        // http://vocab.deri.ie/void/guide#sec_5_2_Discovery_via_sitemaps
-        parseSitemapXML(rob, rtxt, result);
+    boolean isRobotsAllowed = checkRobotsTxt(rob, url);
+    info.setAllowedByRobotsTXT(isRobotsAllowed);
 
-        // inspect HTTP Get
-        // ok we checked the robots.txt, now we do a http get on the sparql URL
-        log.debug("execute {} {}", "httpget", _epURI);
-        try {
-            URI epURL = new URI(_ep.getUri().toString());
-            DGETInfo info = checkForVoid(epURL.toString(), EPURL, rob);
-            result.getDescriptionFiles().add(info);
-        } catch (Exception e) {
-            log.debug("[EXC] HTTP GET " + _epURI, ExceptionHandler.logAndtoString(e, true));
-        }
-        log.debug("execute {} {}", "well-known", _epURI);
-        try {
-            // well-known location
-            URI epURL = new URI(_ep.getUri().toString());
-            URL wellknown =
-                    new URI(
-                                    epURL.getScheme(),
-                                    epURL.getAuthority(),
-                                    "/.well-known/void",
-                                    null,
-                                    null)
-                            .toURL();
-            DGETInfo info = checkForVoid(wellknown.toString(), "wellknown", rob);
-            result.getDescriptionFiles().add(info);
-        } catch (Exception e) {
-            log.debug("[EXC] HTTP well known " + _epURI, e);
-        }
+    HashMap<CharSequence, Object> voidPred = new HashMap<CharSequence, Object>();
+    HashMap<CharSequence, Object> spdsPred = new HashMap<CharSequence, Object>();
+    info.setSPARQLDESCpreds(spdsPred);
+    info.setVoiDpreds(voidPred);
 
-        List<QueryInfo> queryInfos = new ArrayList<QueryInfo>();
-        result.setQueryInfo(queryInfos);
+    HttpGet request = new HttpGet(url);
+    request.addHeader("accept", CONSTANTS.ANY_RDF_MIME_ACCEPT);
+    request.addHeader("User-Agent", SPARQLESProperties.getUserAgent());
+    log.info("GET {}", request);
+    HttpResponse resp;
+    try {
+      resp = cm.connect(request);
+      log.debug("checkForVoid: Connected to {}", request);
+      String type = getType(resp);
 
-        log.debug("execute {} {}", "query-self", _epURI);
-        // maybe the endpoint has data about itself
-        queryInfos.add(query(_ep.getUri().toString(), "query-self"));
+      String status = "" + resp.getStatusLine().getStatusCode();
+      info.setResponseCode(status);
 
-        log.info("executed {}", this);
+      Header[] header = resp.getAllHeaders();
 
-        return result;
+      // 1) CHeck the header for information
+      parseHeaders(info, header);
+      if (status.startsWith("2")) {
+        String content = EntityUtils.toString(resp.getEntity());
+        content = content.replaceAll("\t", " ");
+        info.setContent(content);
+
+        var tripleIter = AsyncParser.asyncParseTriples(url);
+
+        tripleIter.forEachRemaining(
+            t -> {
+              String pred = t.getPredicate().toString();
+              if (pred.startsWith(sparqDescNS)) {
+                update(pred.replace(sparqDescNS, ""), spdsPred);
+              } else if (pred.startsWith(voidNS)) {
+                update(pred.replace(voidNS, ""), voidPred);
+              }
+            });
+      }
+    } catch (Exception e) {
+      log.warn(
+          "failed checking for VOID " + url + " for " + _epURI,
+          ExceptionHandler.logAndtoString(e, true));
+      info.setException(ExceptionHandler.logAndtoString(e));
+    } finally {
+      request.releaseConnection();
+    }
+    return info;
+  }
+
+  private Robots fetchRobotsTXT() {
+    Robots rob = new Robots();
+    rob.setEndpoint(_ep);
+    rob.setRespCode(-1);
+    rob.setContent("");
+    URI robotsOnHost;
+    URI host = null;
+    try {
+      host = new URI(_ep.getUri().toString());
+      robotsOnHost = new URI(host.getScheme(), host.getAuthority(), "/robots.txt", null, null);
+    } catch (URISyntaxException e) {
+      log.debug("[EXEC] ROBOTS for " + _epURI, e);
+      rob.setException(ExceptionHandler.logAndtoString(e));
+      return rob;
     }
 
-    private QueryInfo query(String epURL, String operation) {
-        QueryInfo info = new QueryInfo();
-        info.setURL(epURL);
-        info.setOperation(operation);
+    HttpGet hget = new HttpGet(robotsOnHost);
+    HttpResponse hres;
+    try {
+      hres = cm.connect(hget);
+      HttpEntity hen = hres.getEntity();
 
-        String queryString = query.replaceAll("%%s", "<" + _ep.getUri() + ">");
+      int status = hres.getStatusLine().getStatusCode();
+      rob.setRespCode(status);
+      if (status == 200) {
+        if (hen != null) {
 
-        HashSet<String> voidAset = new HashSet<String>();
-
-        ArrayList<CharSequence> voidA = new ArrayList<CharSequence>();
-        info.setResults(voidA);
-
-        // initializing queryExecution factory with remote service.
-        QueryExecution qexec = null;
-        try {
-            qexec = QueryManager.getExecution(epURL, queryString);
-
-            boolean results = false;
-
-            ResultSet resSet = qexec.execSelect();
-            ResultSetRewindable reswind = ResultSetFactory.makeRewindable(resSet);
-
-            while (reswind.hasNext()) {
-                RDFNode dataset = reswind.next().get("ds");
-                voidAset.add(dataset.toString());
-            }
-
-            voidA.addAll(voidAset);
-            log.info("Found {} results", reswind.getRowNumber());
-        } catch (Exception e1) {
-            info.setException(ExceptionHandler.logAndtoString(e1));
-            log.debug("[EXEC] SPARQL query to " + epURL + " for " + _epURI, e1);
-        } finally {
-            if (qexec != null) qexec.close();
+          String content = EntityUtils.toString(hen);
+          rob.setContent(content);
         }
-        return info;
+      }
+      hget.abort();
+    } catch (Exception e1) {
+      log.debug("[EXEC] ROBOTS for " + _epURI, e1);
+      rob.setException(ExceptionHandler.logAndtoString(e1));
+    } finally {
+      hget.releaseConnection();
     }
+    return rob;
+  }
 
-    //	<sc:datasetURI> for void
-    // sc:sparqlEndpointLocation
+  private boolean checkRobotsTxt(Robots rob, String uri) {
+    NoRobotClient _nrc = new NoRobotClient(CONSTANTS.USER_AGENT_STRING_RAW);
 
-    /**
-     * Find information about sitemap.xml in robots.txt by parsing the robots.txt content for the
-     * "Sitemap:" value. Next, retrieve the sitemap.xml and look for sc:sparqlEndpointLocation
-     *
-     * @param rob
-     * @param rtxt
-     * @param result
-     */
-    private void parseSitemapXML(Robots rob, RobotsTXT rtxt, DResult result) {
-        String robotsContent = rob.getContent().toString();
+    try {
+      URI host = new URI(uri);
+      try {
+        if (!((host.getPath() == null || host.getPath().equals(""))
+            && host.getQuery() == null
+            && host.getFragment() == null))
+          // If the URI host comes for whatever reason with
+          // path, query, or fragment, strip it.
+          _nrc.parse(
+              rob.getContent().toString(),
+              (new URI(host.getScheme(), host.getAuthority(), null, null, null)).toURL());
+        else _nrc.parse(rob.getContent().toString(), host.toURL());
 
-        URL sitemapURL = null;
-        if (robotsContent != null) {
-            BufferedReader bufReader = new BufferedReader(new StringReader(robotsContent));
-            String line = null;
-            try {
-                while ((line = bufReader.readLine()) != null) {
-                    if (line.trim().startsWith("Sitemap")) {
-
-                        sitemapURL = new URL(line.substring(line.indexOf(":") + 1).trim());
-                        break;
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (sitemapURL != null) {
-            rtxt.setSitemapXML(true);
-            HttpGet get = null;
-            try {
-
-                get = new HttpGet(sitemapURL.toURI());
-                HttpResponse resp = cm.connect(get);
-                log.debug("parseSitemapXML: Connected to {}", get);
-                String conent = EntityUtils.toString(resp.getEntity());
-                log.debug("parseSitemapXML: received content {}", conent.length());
-
-                SAXParserFactory factory = SAXParserFactory.newInstance();
-                SAXParser saxParser = factory.newSAXParser();
-                saxParser.getXMLReader().setFeature("http://xml.org/sax/features/namespaces", true);
-                InputStream is = new ByteArrayInputStream(conent.getBytes());
-                SitemapHandler handler = new SitemapHandler(rtxt, result, _ep.getUri().toString());
-                saxParser.parse(is, handler);
-                //
-                //				//	System.out.println(conent);
-                //				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-                //				dbFactory.setNamespaceAware(true);
-                //				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-                //				Document doc = dBuilder.parse(new ByteArrayInputStream(conent.getBytes()));
-                //				doc.getDocumentElement().normalize();
-                //
-                //				NodeList nodeList =
-                // doc.getElementsByTagNameNS("http://sw.deri.org/2007/07/sitemapextension/scschema.xsd",
-                // "sparqlEndpointLocation");
-                //				rtxt.setSitemapXMLSPARQL(nodeList.getLength()!=0);
-                //				for (int temp = 0; temp < nodeList.getLength(); temp++) {
-                //					Node nNode = nodeList.item(temp);
-                ////					System.out.println(nNode.getTextContent());
-                //					if(_ep.getUri().toString().equalsIgnoreCase(nNode.getTextContent())){
-                //						rtxt.setSitemapXMLSPARQLMatch(true);
-                //					}
-                //				}
-                //				nodeList =
-                // doc.getElementsByTagNameNS("http://sw.deri.org/2007/07/sitemapextension/scschema.xsd",
-                // "datasetURI");
-                //				for (int temp = 0; temp < nodeList.getLength(); temp++) {
-                //					Node nNode = nodeList.item(temp);
-                //					DGETInfo info = checkForVoid(nNode.getTextContent(), "sitemap.xml_link",rob);
-                //					result.getDescriptionFiles().add(info);
-                //				}
-            } catch (Exception e) {
-                log.debug("[EXEC] Sitemap for " + _epURI, e);
-                rtxt.setException(ExceptionHandler.logAndtoString(e));
-            } finally {
-                if (get != null) {
-                    get.releaseConnection();
-                }
-            }
-        }
-    }
-
-    private DGETInfo checkForVoid(String url, String operation, Robots rob) {
-        DGETInfo info = new DGETInfo();
-        info.setOperation(operation);
-        info.setURL(url);
-        info.setResponseServer("missing");
-
-        boolean isRobotsAllowed = checkRobotsTxt(rob, url);
-        info.setAllowedByRobotsTXT(isRobotsAllowed);
-
-        HashMap<CharSequence, Object> voidPred = new HashMap<CharSequence, Object>();
-        HashMap<CharSequence, Object> spdsPred = new HashMap<CharSequence, Object>();
-        info.setSPARQLDESCpreds(spdsPred);
-        info.setVoiDpreds(voidPred);
-
-        HttpGet request = new HttpGet(url);
-        request.addHeader(
-                "accept",
-                "application/rdf+xml, application/x-turtle, application/rdf+n3, application/xml,"
-                        + " text/turtle, text/rdf, text/plain;q=0.1");
-        request.addHeader("User-Agent", CONSTANTS.USER_AGENT);
-        log.info("GET {}", request);
-        HttpResponse resp;
-        try {
-            resp = cm.connect(request);
-            log.debug("checkForVoid: Connected to {}", request);
-            String type = getType(resp);
-
-            String status = "" + resp.getStatusLine().getStatusCode();
-            info.setResponseCode(status);
-
-            Header[] header = resp.getAllHeaders();
-
-            // 1) CHeck the header for information
-            parseHeaders(info, header);
-            if (status.startsWith("2")) {
-                String content = EntityUtils.toString(resp.getEntity());
-                content = content.replaceAll("\t", " ");
-                info.setContent(content);
-
-                var tripleIter = AsyncParser.asyncParseTriples(url);
-
-                tripleIter.forEachRemaining(
-                        t -> {
-                            String pred = t.getPredicate().toString();
-                            if (pred.startsWith(sparqDescNS)) {
-                                update(pred.replace(sparqDescNS, ""), spdsPred);
-                            } else if (pred.startsWith(voidNS)) {
-                                update(pred.replace(voidNS, ""), voidPred);
-                            }
-                        });
-            }
-        } catch (Exception e) {
-            log.warn(
-                    "failed checking for VOID " + url + " for " + _epURI,
-                    ExceptionHandler.logAndtoString(e, true));
-            info.setException(ExceptionHandler.logAndtoString(e));
-        } finally {
-            request.releaseConnection();
-        }
-        return info;
-    }
-
-    private Robots fetchRobotsTXT() {
-        Robots rob = new Robots();
-        rob.setEndpoint(_ep);
-        rob.setRespCode(-1);
-        rob.setContent("");
-        URI robotsOnHost;
-        URI host = null;
-        try {
-            host = new URI(_ep.getUri().toString());
-            robotsOnHost =
-                    new URI(host.getScheme(), host.getAuthority(), "/robots.txt", null, null);
-        } catch (URISyntaxException e) {
-            log.debug("[EXEC] ROBOTS for " + _epURI, e);
-            rob.setException(ExceptionHandler.logAndtoString(e));
-            return rob;
-        }
-
-        HttpGet hget = new HttpGet(robotsOnHost);
-        HttpResponse hres;
-        try {
-            hres = cm.connect(hget);
-            HttpEntity hen = hres.getEntity();
-
-            int status = hres.getStatusLine().getStatusCode();
-            rob.setRespCode(status);
-            if (status == 200) {
-                if (hen != null) {
-
-                    String content = EntityUtils.toString(hen);
-                    rob.setContent(content);
-                }
-            }
-            hget.abort();
-        } catch (Exception e1) {
-            log.debug("[EXEC] ROBOTS for " + _epURI, e1);
-            rob.setException(ExceptionHandler.logAndtoString(e1));
-        } finally {
-            hget.releaseConnection();
-        }
-        return rob;
-    }
-
-    private boolean checkRobotsTxt(Robots rob, String uri) {
-        NoRobotClient _nrc = new NoRobotClient(CONSTANTS.USER_AGENT);
-
-        try {
-            URI host = new URI(uri);
-            try {
-                if (!((host.getPath() == null || host.getPath().equals(""))
-                        && host.getQuery() == null
-                        && host.getFragment() == null))
-                    // If the URI host comes for whatever reason with
-                    // path, query, or fragment, strip it.
-                    _nrc.parse(
-                            rob.getContent().toString(),
-                            (new URI(host.getScheme(), host.getAuthority(), null, null, null))
-                                    .toURL());
-                else _nrc.parse(rob.getContent().toString(), host.toURL());
-
-            } catch (NoRobotException e) {
-                log.debug("no robots.txt for " + host);
-                return true;
-            }
-            return _nrc.isUrlAllowed(host.toURL());
-
-        } catch (Exception e1) {
-            log.warn(
-                    "failed checking for ROBOTS PARSE for " + _epURI,
-                    ExceptionHandler.logAndtoString(e1, true));
-        }
+      } catch (NoRobotException e) {
+        log.debug("no robots.txt for " + host);
         return true;
+      }
+      return _nrc.isUrlAllowed(host.toURL());
+
+    } catch (Exception e1) {
+      log.warn(
+          "failed checking for ROBOTS PARSE for " + _epURI,
+          ExceptionHandler.logAndtoString(e1, true));
     }
+    return true;
+  }
 
-    private void parseHeaders(DGETInfo info, Header[] header) {
-        for (int i = 0; i < header.length; i++) {
-            String name = header[i].getName();
-            if (name.equals("Content-Type")) {
-                info.setResponseType(new Utf8(header[i].getValue()));
-            }
-            if (name.equals("Server")) {
-                info.setResponseServer(parseServer(header[i].getValue()));
-            }
-            if (name.equals("Link")) {
-                info.setResponseLink(parseServer(header[i].getValue()));
-            }
-        }
+  private void parseHeaders(DGETInfo info, Header[] header) {
+    for (int i = 0; i < header.length; i++) {
+      String name = header[i].getName();
+      if (name.equals("Content-Type")) {
+        info.setResponseType(new Utf8(header[i].getValue()));
+      }
+      if (name.equals("Server")) {
+        info.setResponseServer(parseServer(header[i].getValue()));
+      }
+      if (name.equals("Link")) {
+        info.setResponseLink(parseServer(header[i].getValue()));
+      }
     }
+  }
 
-    private Lang getLangFromType(String type) {
-        if (type.contains("application/x-turtle") || type.contains("text/turtle")) return Lang.TTL;
-        if (type.contains("application/rdf+xml") || type.contains("application/xml"))
-            return Lang.RDFXML;
-        if (type.contains("text/plain")) return Lang.RDFXML;
-        if (type.contains("text/rdf+n3")) return Lang.N3;
+  private Lang getLangFromType(String type) {
+    if (type.contains("application/x-turtle") || type.contains("text/turtle")) return Lang.TTL;
+    if (type.contains("application/rdf+xml") || type.contains("application/xml"))
+      return Lang.RDFXML;
+    if (type.contains("text/plain")) return Lang.RDFXML;
+    if (type.contains("text/rdf+n3")) return Lang.N3;
 
-        return Lang.RDFXML;
+    return Lang.RDFXML;
+  }
+
+  private CharSequence parseServer(String value) {
+    String server = value.trim();
+    if (server.contains("/")) server = server.substring(0, server.indexOf("/"));
+
+    if (server.contains("(")) server = server.substring(0, server.indexOf("("));
+
+    return new Utf8(server);
+  }
+
+  private void update(CharSequence key, Map<CharSequence, Object> map) {
+    if (map.containsKey(key)) map.put(key, ((Integer) map.get(key)) + 1);
+    else map.put(key, 1);
+  }
+
+  private String getType(HttpResponse response) {
+    String type = "";
+    org.apache.http.Header ct = response.getFirstHeader("Content-Type");
+    if (ct != null) {
+      type = response.getFirstHeader("Content-Type").getValue();
     }
-
-    private CharSequence parseServer(String value) {
-        String server = value.trim();
-        if (server.contains("/")) server = server.substring(0, server.indexOf("/"));
-
-        if (server.contains("(")) server = server.substring(0, server.indexOf("("));
-
-        return new Utf8(server);
-    }
-
-    private void update(CharSequence key, Map<CharSequence, Object> map) {
-        if (map.containsKey(key)) map.put(key, ((Integer) map.get(key)) + 1);
-        else map.put(key, 1);
-    }
-
-    private String getType(HttpResponse response) {
-        String type = "";
-        org.apache.http.Header ct = response.getFirstHeader("Content-Type");
-        if (ct != null) {
-            type = response.getFirstHeader("Content-Type").getValue();
-        }
-        return type;
-    }
+    return type;
+  }
 }

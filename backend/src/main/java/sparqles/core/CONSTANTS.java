@@ -1,32 +1,43 @@
 package sparqles.core;
 
-import java.net.URISyntaxException;
-import sparqles.avro.Endpoint;
-
 public class CONSTANTS {
+  /** Default length at which most strings will be cut off (in logs, message strings etc.) */
+  public static final int STRING_LEN = 1024;
 
-    public static final String ATASK = "ATask";
-    public static final String PTASK = "PTask";
-    public static final String DTASK = "DTask";
-    public static final String FTASK = "FTask";
-    public static final String ITASK = "ITask";
-    public static final String ETASK = "ETask";
+  private static final String SPARQLES_VERSION = "0.3.0";
+  public static final String DEFAULT_HOST = "http://sparqles.okfn.org/";
 
-    public static final String USER_AGENT =
-            "SPARQLES client using HTTPClient/4.2.3 (https://github.com/pyvandenbussche/sparqles)";
-    public static final String ARQ_USER_AGENT =
-            "SPARQLES client using Apache-Jena-ARQ/2.11.1"
-                    + " (https://github.com/pyvandenbussche/sparqles)";
-    public static final int SOCKET_TIMEOUT = 16 * 1000;
-    public static final int CONNECTION_TIMEOUT = 16 * 1000;
+  /** Availability task */
+  public static final String ATASK = "ATask";
 
-    public static Endpoint SPARQLES = null;
+  /** Performance task */
+  public static final String PTASK = "PTask";
 
-    static {
-        try {
-            SPARQLES = EndpointFactory.newEndpoint("http://sparqles.okfn.org/");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-    }
+  /** Discoverability task */
+  public static final String DTASK = "DTask";
+
+  /** Interoperability task */
+  public static final String FTASK = "FTask";
+
+  /** Index view refresh task */
+  public static final String ITASK = "ITask";
+
+  /** Endpoint list refresh task (from Datahub) */
+  public static final String ETASK = "ETask";
+
+  /** Coherence task (proposed measure by the 3DFed project) */
+  public static final String CTASK = "CTask";
+
+  /** Used only for robots.txt */
+  public static final String USER_AGENT_STRING_RAW = "SPARQLESbot";
+
+  public static final String USER_AGENT_STRING =
+      "Mozilla/5.0 (compatible; SPARQLESbot/" + SPARQLES_VERSION + "; +%s)";
+
+  @Deprecated public static final int SOCKET_TIMEOUT = 16 * 1000;
+  @Deprecated public static final int CONNECTION_TIMEOUT = 16 * 1000;
+
+  public static final String ANY_RDF_MIME_ACCEPT =
+      "application/rdf+xml, application/x-turtle, application/rdf+n3, application/xml, text/turtle,"
+          + " text/rdf, text/plain;q=0.1";
 }

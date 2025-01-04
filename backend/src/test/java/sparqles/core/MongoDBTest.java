@@ -25,84 +25,84 @@ import sparqles.utils.MongoDBManager;
 
 public class MongoDBTest {
 
-    protected MongoDBManager m;
-    EndpointResult epr = new EndpointResult(Endpoints.DBPEDIA, 1L, 2L);
-    RobotsTXT r = new RobotsTXT(true, true, false, false, false, false, null);
-    AResult aDummy = new AResult(epr, 1L, true, false, null, "testDummy");
-    FResult fDummy = new FResult(epr, new HashMap<CharSequence, FSingleResult>());
-    PResult pDummy = new PResult(epr, new HashMap<CharSequence, PSingleResult>());
-    DResult dDummy =
-            new DResult(epr, r, (List) new ArrayList<DGETInfo>(), new ArrayList<QueryInfo>());
+  protected MongoDBManager m;
+  EndpointResult epr = new EndpointResult(Endpoints.DBPEDIA, 1L, 2L);
+  RobotsTXT r = new RobotsTXT(true, true, false, false, false, false, null);
+  AResult aDummy = new AResult(epr, 1L, true, false, null, "testDummy");
+  FResult fDummy = new FResult(epr, new HashMap<CharSequence, FSingleResult>());
+  PResult pDummy = new PResult(epr, new HashMap<CharSequence, PSingleResult>());
+  DResult dDummy =
+      new DResult(epr, r, (List) new ArrayList<DGETInfo>(), new ArrayList<QueryInfo>());
 
-    @Before
-    public void setUp() throws Exception {
-        SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
-        m = new MongoDBManager();
-    }
+  @Before
+  public void setUp() throws Exception {
+    SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
+    m = new MongoDBManager();
+  }
 
-    @After
-    public void tearDown() throws Exception {
-        m.close();
-    }
+  @After
+  public void tearDown() throws Exception {
+    m.close();
+  }
 
-    @Test
-    public void testConnection() {
-        MongoDBManager m = new MongoDBManager();
-        assertTrue(m.isRunning());
-    }
+  @Test
+  public void testConnection() {
+    MongoDBManager m = new MongoDBManager();
+    assertTrue(m.isRunning());
+  }
 
-    @Test
-    public void testInsertEP() {
-        m.initEndpointCollection();
-        m.setup();
+  @Test
+  public void testInsertEP() {
+    m.initEndpointCollection();
+    m.setup();
 
-        Endpoint e = Endpoints.DBPEDIA;
+    Endpoint e = Endpoints.DBPEDIA;
 
-        //		assertTrue(m.insert(e));
-        //		assertEquals(1, m.get(Endpoint.class, Endpoint.SCHEMA$).size());
-        //
-        assertTrue(m.insert(e));
-        assertEquals(1, m.get(Endpoint.class, Endpoint.SCHEMA$).size());
-
-        assertTrue(m.remove(e, Endpoint.class));
-        assertEquals(0, m.get(Endpoint.class, Endpoint.SCHEMA$).size());
-    }
-
-    @Test
-    public void testUpdateEP() {
-        m.initEndpointCollection();
-        m.setup();
-
-        Endpoint e = Endpoints.DBPEDIA;
-
-        assertTrue(m.insert(e));
-        List<Endpoint> ee = m.get(Endpoint.class, Endpoint.SCHEMA$);
-        assertEquals(1, ee.size());
-
-        //		assertTrue(m.insert(e));
-        //		ee = m.get(Endpoint.class, Endpoint.SCHEMA$);
-        //		assertEquals(1, ee.size());
-
-        Endpoint edb = ee.get(0);
-        assertEquals(0, edb.getDatasets().size());
-        e.getDatasets().add(new Dataset("Test", "Test"));
-        assertTrue(m.update(e));
-        ee = m.get(Endpoint.class, Endpoint.SCHEMA$);
-        edb = ee.get(0);
-        assertEquals(1, edb.getDatasets().size());
-    }
-
-    //	@Test
-    //	public void testInsertAResult() {
-    //		m.setup();
-    //
-    //		AResult e = aDummy;
-    //
     //		assertTrue(m.insert(e));
-    //		assertEquals(1, m.get(AResult.class, AResult.SCHEMA$).size());
+    //		assertEquals(1, m.get(Endpoint.class, Endpoint.SCHEMA$).size());
     //
+    assertTrue(m.insert(e));
+    assertEquals(1, m.get(Endpoint.class, Endpoint.SCHEMA$).size());
+
+    assertTrue(m.remove(e, Endpoint.class));
+    assertEquals(0, m.get(Endpoint.class, Endpoint.SCHEMA$).size());
+  }
+
+  @Test
+  public void testUpdateEP() {
+    m.initEndpointCollection();
+    m.setup();
+
+    Endpoint e = Endpoints.DBPEDIA;
+
+    assertTrue(m.insert(e));
+    List<Endpoint> ee = m.get(Endpoint.class, Endpoint.SCHEMA$);
+    assertEquals(1, ee.size());
+
     //		assertTrue(m.insert(e));
-    //		assertEquals(2, m.get(AResult.class, AResult.SCHEMA$).size());
-    //	}
+    //		ee = m.get(Endpoint.class, Endpoint.SCHEMA$);
+    //		assertEquals(1, ee.size());
+
+    Endpoint edb = ee.get(0);
+    assertEquals(0, edb.getDatasets().size());
+    e.getDatasets().add(new Dataset("Test", "Test"));
+    assertTrue(m.update(e));
+    ee = m.get(Endpoint.class, Endpoint.SCHEMA$);
+    edb = ee.get(0);
+    assertEquals(1, edb.getDatasets().size());
+  }
+
+  //	@Test
+  //	public void testInsertAResult() {
+  //		m.setup();
+  //
+  //		AResult e = aDummy;
+  //
+  //		assertTrue(m.insert(e));
+  //		assertEquals(1, m.get(AResult.class, AResult.SCHEMA$).size());
+  //
+  //		assertTrue(m.insert(e));
+  //		assertEquals(2, m.get(AResult.class, AResult.SCHEMA$).size());
+  //	}
 
 }
