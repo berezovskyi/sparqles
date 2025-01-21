@@ -22,7 +22,7 @@
     <!--		<v.jena>2.13.0</v.jena>-->
     <!--		<v.jena>3.17.0</v.jena>-->
     <!--		<v.jena>4.10.0</v.jena>-->
-    <v.jena>5.2.0</v.jena>
+    <v.jena>5.3.0</v.jena>
   </properties>
 
 
