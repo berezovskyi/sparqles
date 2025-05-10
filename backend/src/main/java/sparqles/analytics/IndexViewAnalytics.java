@@ -39,7 +39,7 @@ import sparqles.utils.MongoDBManager;
 public class IndexViewAnalytics implements Task<Index> {
   
   private static final Logger log = LoggerFactory.getLogger(IndexViewAnalytics.class);
-  public static final int MAX_DATA_POINTS = 65_536;
+  public static final int MAX_DATA_POINTS = 50_000;
   
   private MongoDBManager _dbm;
   final int askCold = 0, askWarm = 1, joinCold = 2, joinWarm = 3;
@@ -552,9 +552,7 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private void analyseAvailability(
       EPViewAvailability availability, Map<String, SimpleHistogram> weekHist) {
-    List<EPViewAvailabilityDataPoint> truncValues = takeLast(availability.getData().getValues(), MAX_DATA_POINTS);
-    availability.getData().setValues(truncValues);
-    for (EPViewAvailabilityDataPoint value : truncValues) {
+    for (EPViewAvailabilityDataPoint value : availability.getData().getValues()) {
       update(value, weekHist);
     }
   }
@@ -615,6 +613,15 @@ public class IndexViewAnalytics implements Task<Index> {
         if (!exists)
           aidx.getValues()
               .add(new IndexAvailabilityDataPoint(week.getKey(), value / (double) total));
+      }
+    }
+    
+    // truncate
+    for (AvailabilityIndex aidx : aidxs) {
+      List<IndexAvailabilityDataPoint> truncValues = takeLast(aidx.getValues(), MAX_DATA_POINTS);
+      aidx.setValues(truncValues);
+      if (aidx.getValues().size() > MAX_DATA_POINTS) {
+        log.warn("Truncating availability data to {} values", MAX_DATA_POINTS);
       }
     }
   }
