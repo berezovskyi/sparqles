@@ -1,7 +1,15 @@
 package sparqles.analytics;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.slf4j.Logger;
@@ -37,10 +45,16 @@ import sparqles.core.Task;
 import sparqles.utils.MongoDBManager;
 
 public class IndexViewAnalytics implements Task<Index> {
-  
+
   private static final Logger log = LoggerFactory.getLogger(IndexViewAnalytics.class);
+
+  /**
+   * Due to the maximum size of a MongoDB document (16 MiB), we need to limit the number of data
+   * points. These are only index view data points that get truncated - influences the statistics
+   * but not the historical data.
+   */
   public static final int MAX_DATA_POINTS = 50_000;
-  
+
   private MongoDBManager _dbm;
   final int askCold = 0, askWarm = 1, joinCold = 2, joinWarm = 3;
   final int sparql1_solMods = 0,
@@ -556,11 +570,11 @@ public class IndexViewAnalytics implements Task<Index> {
       update(value, weekHist);
     }
   }
-  
+
   private static <T> List<T> takeLast(List<T> values, int n) {
-    return values.subList(values.size()-Math.min(values.size(),n), values.size());
+    return values.subList(values.size() - Math.min(values.size(), n), values.size());
   }
-  
+
   private void updatePerformanceStats(
       Index idx, SummaryStatistics[] perfStats, DescriptiveStatistics thresholdStats) {
     ArrayList<IndexViewPerformanceData> data = new ArrayList<IndexViewPerformanceData>();
@@ -615,7 +629,7 @@ public class IndexViewAnalytics implements Task<Index> {
               .add(new IndexAvailabilityDataPoint(week.getKey(), value / (double) total));
       }
     }
-    
+
     // truncate
     for (AvailabilityIndex aidx : aidxs) {
       List<IndexAvailabilityDataPoint> truncValues = takeLast(aidx.getValues(), MAX_DATA_POINTS);
