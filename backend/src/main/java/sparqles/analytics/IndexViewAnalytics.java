@@ -551,11 +551,15 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private void analyseAvailability(
       EPViewAvailability availability, Map<String, SimpleHistogram> weekHist) {
-    for (EPViewAvailabilityDataPoint value : availability.getData().getValues()) {
+    for (EPViewAvailabilityDataPoint value : takeLast(availability.getData().getValues(), 32768)) {
       update(value, weekHist);
     }
   }
-
+  
+  private static <T> List<T> takeLast(List<T> values, int n) {
+    return values.subList(values.size()-Math.min(values.size(),n), values.size());
+  }
+  
   private void updatePerformanceStats(
       Index idx, SummaryStatistics[] perfStats, DescriptiveStatistics thresholdStats) {
     ArrayList<IndexViewPerformanceData> data = new ArrayList<IndexViewPerformanceData>();
