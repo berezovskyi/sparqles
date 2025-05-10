@@ -37,9 +37,10 @@ import sparqles.core.Task;
 import sparqles.utils.MongoDBManager;
 
 public class IndexViewAnalytics implements Task<Index> {
-
+  
   private static final Logger log = LoggerFactory.getLogger(IndexViewAnalytics.class);
-
+  public static final int MAX_DATA_POINTS = 16_384;
+  
   private MongoDBManager _dbm;
   final int askCold = 0, askWarm = 1, joinCold = 2, joinWarm = 3;
   final int sparql1_solMods = 0,
@@ -551,7 +552,7 @@ public class IndexViewAnalytics implements Task<Index> {
 
   private void analyseAvailability(
       EPViewAvailability availability, Map<String, SimpleHistogram> weekHist) {
-    for (EPViewAvailabilityDataPoint value : takeLast(availability.getData().getValues(), 32768)) {
+    for (EPViewAvailabilityDataPoint value : takeLast(availability.getData().getValues(), MAX_DATA_POINTS)) {
       update(value, weekHist);
     }
   }
