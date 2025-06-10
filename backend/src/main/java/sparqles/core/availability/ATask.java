@@ -43,8 +43,9 @@ public class ATask extends EndpointTask<AResult> {
     result.setExplanation("✅ Endpoint is operating normally");
 
     long start = System.currentTimeMillis();
+    QueryExecution qe = null;
     try {
-      QueryExecution qe =
+      qe =
           QueryManager.getExecution(
               epr.getEndpoint(), ASKQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
       qe.getContext().set(ARQ.httpQueryTimeout, TaskRun.A_FIRST_RESULT_TIMEOUT);
@@ -87,6 +88,15 @@ public class ATask extends EndpointTask<AResult> {
           updateAResultFromFault(faultKind, result);
         }
       }
+    } finally {
+      // Memory optimization: Always close QueryExecution to free resources
+      if (qe != null) {
+        try {
+          qe.close();
+        } catch (Exception e) {
+          log.debug("Error closing QueryExecution", e);
+        }
+      }
     }
     log.info(
         "{} availability: {} ({} ms)", _epURI, result.getExplanation(), result.getResponseTime());
@@ -98,8 +108,9 @@ public class ATask extends EndpointTask<AResult> {
     result.setEndpointResult(epr);
     result.setExplanation("Endpoint is operating normally");
     long start = System.currentTimeMillis();
+    QueryExecution qe = null;
     try {
-      QueryExecution qe =
+      qe =
           QueryManager.getExecution(
               epr.getEndpoint(), SELECTQUERY, Duration.of(TaskRun.A_FIRST_RESULT_TIMEOUT, MILLIS));
       boolean response = qe.execSelect().hasNext();
@@ -133,6 +144,15 @@ public class ATask extends EndpointTask<AResult> {
         log.debug("Stacktrace", e);
       } else {
         updateAResultFromFault(faultKind, result);
+      }
+    } finally {
+      // Memory optimization: Always close QueryExecution to free resources
+      if (qe != null) {
+        try {
+          qe.close();
+        } catch (Exception e) {
+          log.debug("Error closing QueryExecution in testSelect", e);
+        }
       }
     }
     log.info(

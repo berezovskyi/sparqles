@@ -202,14 +202,52 @@ public class SPARQLES extends CLIObject {
     scheduler.init(dbm);
     try {
       long start = System.currentTimeMillis();
+      int cycleCount = 0;
       while (true) {
         log.info(
             "Running since {}", DateFormater.formatInterval(System.currentTimeMillis() - start));
-        Thread.sleep(1800000);
+        
+        // Memory monitoring and optimization every 10 cycles (30 minutes)
+        if (++cycleCount % 10 == 0) {
+          logMemoryUsage();
+          
+          // Force garbage collection if memory usage is high
+          Runtime runtime = Runtime.getRuntime();
+          long usedMemory = runtime.totalMemory() - runtime.freeMemory();
+          long maxMemory = runtime.maxMemory();
+          double memoryUsagePercent = (double) usedMemory / maxMemory * 100;
+          
+          if (memoryUsagePercent > 80) {
+            log.warn("High memory usage detected: {:.1f}%. Forcing garbage collection.", memoryUsagePercent);
+            System.gc();
+            Thread.sleep(1000); // Give GC time to work
+            
+            // Log memory after GC
+            usedMemory = runtime.totalMemory() - runtime.freeMemory();  
+            memoryUsagePercent = (double) usedMemory / maxMemory * 100;
+            log.info("Memory usage after GC: {:.1f}%", memoryUsagePercent);
+          }
+        }
+        
+        Thread.sleep(1800000); // 30 minutes
       }
     } catch (Throwable t) {
       t.printStackTrace();
     }
+  }
+  
+  private void logMemoryUsage() {
+    Runtime runtime = Runtime.getRuntime();
+    long maxMemory = runtime.maxMemory();
+    long totalMemory = runtime.totalMemory();
+    long freeMemory = runtime.freeMemory();
+    long usedMemory = totalMemory - freeMemory;
+    
+    log.info("Memory Usage - Used: {}MB, Free: {}MB, Total: {}MB, Max: {}MB", 
+             usedMemory / 1024 / 1024, 
+             freeMemory / 1024 / 1024,
+             totalMemory / 1024 / 1024, 
+             maxMemory / 1024 / 1024);
   }
 
   private void parseCMD(CommandLine cmd) {

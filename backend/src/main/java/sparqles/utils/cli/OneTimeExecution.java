@@ -30,7 +30,9 @@ public class OneTimeExecution<T extends SpecificRecordBase> {
   public void run(String task) {
     Collection<Endpoint> eps = dbm.get(Endpoint.class, Endpoint.SCHEMA$);
 
-    ExecutorService executor = Executors.newFixedThreadPool(50);
+    int threadCount = Math.min(Runtime.getRuntime().availableProcessors() * 2, eps.size());
+    ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+    log.info("Using {} threads for processing {} endpoints", threadCount, eps.size());
 
     List<Callable<T>> todo = new ArrayList<Callable<T>>(eps.size());
 
