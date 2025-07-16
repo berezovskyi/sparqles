@@ -39,11 +39,11 @@ jobs:
           - jdk: '21'
             distribution: liberica
             experimental: true
-          - jdk: '23'
+          - jdk: '24'
             # current, can test on Oracle JDK while it's supported for 6mo
             distribution: oracle
             experimental: true
-          - jdk: '24-ea'
+          - jdk: '25-ea'
             distribution: zulu
             experimental: true
     continue-on-error: ${{ matrix.experimental }}
