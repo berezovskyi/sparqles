@@ -22,7 +22,7 @@
     <!--		<v.jena>2.13.0</v.jena>-->
     <!--		<v.jena>3.17.0</v.jena>-->
     <!--		<v.jena>4.10.0</v.jena>-->
-    <v.jena>5.3.0</v.jena>
+    <v.jena>5.4.0</v.jena>
   </properties>
 
 
@@ -297,7 +297,7 @@
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
-      <version>2.12.1</version>
+      <version>2.13.0</version>
     </dependency>
     <dependency>
       <groupId>xml-apis</groupId>
