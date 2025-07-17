@@ -26,6 +26,10 @@ build/
 # VS Code
 .vscode/
 
+# Python
+*.pyc
+__pycache__/
+
 repo/
 conf/
 
