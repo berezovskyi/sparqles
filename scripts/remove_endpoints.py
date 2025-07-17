@@ -34,9 +34,9 @@ def remove_never_online_endpoints(db, dry_run=False):
             if count > 0:
                 oldest = aresults_to_delete.sort('endpointResult.start', 1).limit(1)[0]['endpointResult']['start']
                 newest = aresults_to_delete.sort('endpointResult.start', -1).limit(1)[0]['endpointResult']['start']
-                print(f"Would remove endpoint (never online): {uri} ({count} aresults, oldest: {oldest}, newest: {newest})")
+                print(f"Would remove endpoint (never online): {uri} and {count} associated aresults (oldest: {oldest}, newest: {newest})")
             else:
-                print(f"Would remove endpoint (never online): {uri} (0 aresults)")
+                print(f"Would remove endpoint (never online): {uri} and 0 associated aresults")
 
             if not dry_run:
                 db.endpoints.delete_one({'uri': uri})
@@ -55,18 +55,22 @@ def remove_offline_endpoints(db, months, dry_run=False):
             'endpointResult.start': {'$gte': cutoff_timestamp}
         })
         if recent_available_results == 0:
-            aresults_to_delete = db.aresults.find({'endpointResult.endpoint.uri': uri, 'endpointResult.start': {'$lt': cutoff_timestamp}})
-            count = db.aresults.count_documents({'endpointResult.endpoint.uri': uri, 'endpointResult.start': {'$lt': cutoff_timestamp}})
-            if count > 0:
-                oldest = aresults_to_delete.sort('endpointResult.start', 1).limit(1)[0]['endpointResult']['start']
-                newest = aresults_to_delete.sort('endpointResult.start', -1).limit(1)[0]['endpointResult']['start']
-                print(f"Would remove endpoint (offline for {months} months): {uri} ({count} aresults, oldest: {oldest}, newest: {newest})")
-            else:
-                print(f"Would remove endpoint (offline for {months} months): {uri} (0 aresults)")
+            # Find the last time the endpoint was online
+            last_online_result = db.aresults.find({'endpointResult.endpoint.uri': uri, 'isAvailable': True}).sort('endpointResult.start', -1).limit(1)
+            if last_online_result.count() > 0:
+                last_online_timestamp = last_online_result[0]['endpointResult']['start']
+                aresults_to_delete = db.aresults.find({'endpointResult.endpoint.uri': uri, 'endpointResult.start': {'$gte': last_online_timestamp}})
+                count = db.aresults.count_documents({'endpointResult.endpoint.uri': uri, 'endpointResult.start': {'$gte': last_online_timestamp}})
+                if count > 0:
+                    oldest = aresults_to_delete.sort('endpointResult.start', 1).limit(1)[0]['endpointResult']['start']
+                    newest = aresults_to_delete.sort('endpointResult.start', -1).limit(1)[0]['endpointResult']['start']
+                    print(f"Would remove endpoint (offline for {months} months): {uri} and {count} associated aresults since last online (oldest: {oldest}, newest: {newest})")
+                else:
+                    print(f"Would remove endpoint (offline for {months} months): {uri} and 0 associated aresults")
 
-            if not dry_run:
-                db.endpoints.delete_one({'uri': uri})
-                db.aresults.delete_many({'endpointResult.endpoint.uri': uri})
+                if not dry_run:
+                    db.endpoints.delete_one({'uri': uri})
+                    db.aresults.delete_many({'endpointResult.endpoint.uri': uri, 'endpointResult.start': {'$gte': last_online_timestamp}})
 
 def main():
     parser = argparse.ArgumentParser(description='Remove endpoints from the database.')
