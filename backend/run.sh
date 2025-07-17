@@ -10,7 +10,7 @@ CMDARGS="-p src/main/resources/sparqles_docker.properties"
 # DELAY="${DELAY:=300}"
 
 echo "Starting SPARQLes server"
-export JAVA_OPTS="-XX:MaxRAMPercentage=80"
+export JAVA_OPTS="-XX:MaxRAMPercentage=80 -javaagent:/usr/local/sparqles/opentelemetry-javaagent.jar"
 # sleep $GRACE
 
 # while :

@@ -23,6 +23,10 @@ services:
       - './data/backend/:/usr/local/sparqles/data.dir'
     links:
       - database-svc
+      - otel-collector
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=sparqles-backend
   database-svc:
     build: ./database/
     restart: always

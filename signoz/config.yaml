@@ -1,0 +1,85 @@
+# SigNoz query-service config file
+
+# Telemetry data will be stored in this directory.
+# This should be a persistent volume.
+data: /var/lib/signoz
+
+# Config for query-service admin server
+admin:
+  # Port for admin server
+  port: 8081
+
+# Config for query-service HTTP server
+http:
+  # Port for HTTP server
+  port: 8080
+
+# Config for query-service gRPC server
+grpc:
+  # Port for gRPC server
+  port: 8081
+
+# ClickHouse config
+clickhouse:
+  # A comma-separated list of ClickHouse hosts.
+  # For a single node cluster, this will be a single host.
+  # For a multi-node cluster, this will be a list of hosts.
+  hosts:
+    - clickhouse:9000
+  # Database name
+  db: signoz_traces
+  # User name
+  user: default
+  # Password
+  password: ""
+  # A comma-separated list of trace tables.
+  # This should be in the same order as hosts.
+  traceTables:
+    - signoz_traces.distributed_signoz_index_v2
+  # A comma-separated list of span attribute tables.
+  # This should be in the same order as hosts.
+  spanAttributeTables:
+    - signoz_traces.distributed_signoz_span_attributes
+  # A comma-separated list of error tables.
+  # This should be in the same order as hosts.
+  errorTables:
+    - signoz_traces.distributed_signoz_error_index_v2
+  # A comma-separated list of dependency tables.
+  # This should be in the same order as hosts.
+  dependencyTables:
+    - signoz_traces.distributed_dependency_graph_minutes
+  # A comma-separated list of usage tables.
+  # This should be in the same order as hosts.
+  usageTables:
+    - signoz_traces.distributed_usage_explorer
+  # A comma-separated list of top level operation tables.
+  # This should be in the same order as hosts.
+  topLevelOperationTables:
+    - signoz_traces.distributed_top_level_operations
+  # A comma-separated list of cluster tables.
+  # This should be in the same order as hosts.
+  clusterTables:
+    - signoz_traces.clusters
+
+storage:
+  # Type of storage to use.
+  # Supported values are "s3" and "filesystem".
+  type: filesystem
+  # Config for filesystem storage
+  filesystem:
+    # Path to the directory where data will be stored.
+    path: /var/lib/signoz/
+
+# Jaeger UI config
+jaeger:
+  # Enable/disable Jaeger UI
+  enabled: true
+  # Path to the directory where Jaeger UI static files are located.
+  ui_path: /jaeger-ui-build/build/
+
+# Other configs
+other:
+  # Enable/disable high cardinality attributes
+  high_cardinality_attributes: false
+  # Enable/disable experimental features
+  experimental_features: false

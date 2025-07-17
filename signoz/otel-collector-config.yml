@@ -1,0 +1,30 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  clickhousetraces:
+    dsn: tcp://clickhouse:9000/?database=signoz_traces
+    # Useful for debugging
+    # logging_exporter:
+    #   verbosity: detailed
+
+processors:
+  batch:
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [clickhousetraces]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [] # No metrics exporter configured
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [] # No logs exporter configured
