@@ -23,7 +23,7 @@
     <!--		<v.jena>3.17.0</v.jena>-->
     <!--		<v.jena>4.10.0</v.jena>-->
     <v.jena>5.4.0</v.jena>
-    <v.opentelemetry>1.40.0</v.opentelemetry>
+    <v.opentelemetry>1.52.0</v.opentelemetry>
     <v.logback>1.5.8</v.logback>
   </properties>
 
