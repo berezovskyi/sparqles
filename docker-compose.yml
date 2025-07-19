@@ -6,13 +6,14 @@ services:
     environment:
       - NODE_ENV=production
       # - NODE_ENV=development
-      - DBHOST=database-svc
+      - DBHOST=database-svc-ferret
       - PORT=3001
     ports:
       - "127.0.0.1:3001:3001"
+    volumes:
       - './dataset:/dumps'
     links:
-      - database-svc
+      - database-svc-ferret
   backend-svc:
     build: ./backend/
     restart: always
@@ -22,12 +23,31 @@ services:
     volumes:
       - './data/backend/:/usr/local/sparqles/data.dir'
     links:
-      - database-svc
-  database-svc:
-    build: ./database/
+      - database-svc-ferret
+  # database-svc:
+  #   build: ./database/
+  #   restart: always
+  #   volumes:
+  #     - './data/db/:/data/db'
+  #   # ports:
+  #   #   # for debug
+  #   #   - "27017:27017"
+
+  database-svc-ferret:
+    image: ghcr.io/ferretdb/ferretdb:latest
     restart: always
+    environment:
+      - FERRETDB_POSTGRESQL_URL=postgres://user:password@postgres:5432/ferretdb
+    ports:
+      - "27017:27017"
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ferretdb
     volumes:
-      - './data/db/:/data/db'
-    # ports:
-    #   # for debug
-    #   - "27017:27017"
+      - './data/db/:/var/lib/postgresql/data'
