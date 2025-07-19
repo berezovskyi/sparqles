@@ -11,7 +11,7 @@ import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewAvailability;
 import sparqles.avro.analytics.EPViewAvailabilityDataPoint;
 import sparqles.avro.availability.AResult;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class AAnalyser extends Analytics<AResult> {
   public static final int LAST_HOUR = 0;
@@ -22,7 +22,7 @@ public class AAnalyser extends Analytics<AResult> {
   private static final Logger log = LoggerFactory.getLogger(AAnalyser.class);
   public static DateCalculator _dates = new DateCalculator();
 
-  public AAnalyser(MongoDBManager dbm) {
+  public AAnalyser(DbManager dbm) {
     super(dbm);
   }
 

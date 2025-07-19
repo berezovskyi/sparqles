@@ -15,14 +15,14 @@ import sparqles.avro.Endpoint;
 import sparqles.core.Task;
 import sparqles.core.TaskFactory;
 import sparqles.utils.FileManager;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class OneTimeExecution<T extends SpecificRecordBase> {
   private static final Logger log = LoggerFactory.getLogger(OneTimeExecution.class);
-  private MongoDBManager dbm;
+  private DbManager dbm;
   private FileManager fm;
 
-  public OneTimeExecution(MongoDBManager dbm, FileManager fm) {
+  public OneTimeExecution(DbManager dbm, FileManager fm) {
     this.dbm = dbm;
     this.fm = fm;
   }

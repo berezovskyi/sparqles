@@ -21,7 +21,7 @@ import sparqles.avro.availability.AResult;
 import sparqles.avro.discovery.DResult;
 import sparqles.avro.features.FResult;
 import sparqles.avro.performance.PResult;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 /**
  * Interface for all Analytics tasks.
@@ -33,9 +33,9 @@ public abstract class Analytics<V extends SpecificRecordBase> {
 
   private static Logger log = LoggerFactory.getLogger(Analytics.class);
 
-  protected final MongoDBManager _db;
+  protected final DbManager _db;
 
-  public Analytics(MongoDBManager db) {
+  public Analytics(DbManager db) {
     _db = db;
   }
 

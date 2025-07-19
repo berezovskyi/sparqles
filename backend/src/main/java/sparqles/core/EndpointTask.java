@@ -8,7 +8,7 @@ import sparqles.avro.Endpoint;
 import sparqles.avro.EndpointResult;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.FileManager;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 /**
  * Abstract task definition for an endpoint
@@ -20,7 +20,7 @@ public abstract class EndpointTask<V extends SpecificRecordBase> implements Task
   private static final Logger log = LoggerFactory.getLogger(EndpointTask.class);
   protected final String _task;
   private final String _id;
-  protected MongoDBManager _dbm;
+  protected DbManager _dbm;
   protected FileManager _fm;
   protected String _epURI;
   protected Endpoint _ep;
@@ -44,7 +44,7 @@ public abstract class EndpointTask<V extends SpecificRecordBase> implements Task
     _ep = ep;
   }
 
-  public void setDBManager(MongoDBManager dbm) {
+  public void setDBManager(DbManager dbm) {
     _dbm = dbm;
   }
 

@@ -24,6 +24,7 @@ public class SPARQLESProperties {
   private static Integer FTASK_WAITTIME = SPARQL_WAITTIME;
   private static String FTASK_QUERIES;
   private static Integer TASK_THREADS = 10;
+	private static String DB_ENGINE = "mongodb";
   private static String ENDPOINT_LIST;
   private static String DB_HOST = "localhost";
   private static int DB_PORT = 27017;
@@ -52,6 +53,13 @@ public class SPARQLESProperties {
   public static String getPTASK_QUERIES() {
     return PTASK_QUERIES;
   }
+
+	public static void setDB_ENGINE(String engine) {
+		DB_ENGINE = engine;
+	}
+	public static String getDB_engine() {
+		return DB_ENGINE;
+	}
 
   public static Integer getSPARQL_WAITTIME() {
     return SPARQL_WAITTIME;

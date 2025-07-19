@@ -15,12 +15,12 @@ import sparqles.avro.analytics.EPViewPerformanceDataValues;
 import sparqles.avro.analytics.PerformanceView;
 import sparqles.avro.performance.PResult;
 import sparqles.avro.performance.PSingleResult;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class PAnalyser extends Analytics<PResult> {
   private static final Logger log = LoggerFactory.getLogger(PAnalyser.class);
 
-  public PAnalyser(MongoDBManager db) {
+  public PAnalyser(DbManager db) {
     super(db);
   }
 

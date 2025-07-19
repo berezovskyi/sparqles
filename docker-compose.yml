@@ -10,9 +10,11 @@ services:
       - PORT=3001
     ports:
       - "127.0.0.1:3001:3001"
+    volumes:
       - './dataset:/dumps'
     links:
       - database-svc
+      - oxigraph-svc
   backend-svc:
     build: ./backend/
     restart: always
@@ -31,3 +33,10 @@ services:
     # ports:
     #   # for debug
     #   - "27017:27017"
+  oxigraph-svc:
+    image: ghcr.io/oxigraph/oxigraph:latest
+    restart: always
+    ports:
+      - "127.0.0.1:7878:7878"
+    volumes:
+      - './data/oxigraph/:/data'

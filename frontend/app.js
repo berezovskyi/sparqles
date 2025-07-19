@@ -13,8 +13,8 @@ var errorHandler = require('errorhandler')
 var compression = require('compression')
 
 var ConfigProvider = require('./configprovider').ConfigProvider
-var MongoDBProvider = require('./mongodbprovider').MongoDBProvider
-var mongoDBProvider = new MongoDBProvider(process.env.DBHOST || 'localhost', 27017)
+var SPARQLProvider = require('./sparqlprovider').SPARQLProvider;
+var sparqlProvider = new SPARQLProvider(process.env.DBHOST || 'localhost', 7878);
 var configApp = new ConfigProvider('./config.json')
 
 var app = express()
@@ -42,168 +42,168 @@ if (app.get('env') === 'development') {
 }
 
 app.get('/', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.getLastUpdate(function (error, lastUpdate) {
-      mongoDBProvider.getIndex(function (error, index) {
-        mongoDBProvider.getAMonths(function (error, amonths) {
-          var indexInterop = JSON.parse(
-            JSON.stringify(index.interoperability.data),
-            function (k, v) {
-              if (k === 'data') this.values = v
-              else return v
-            }
-          )
+  // sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
+  //   sparqlProvider.getLastUpdate(function (error, lastUpdate) {
+  //     sparqlProvider.getIndex(function (error, index) {
+  //       sparqlProvider.getAMonths(function (error, amonths) {
+  //         var indexInterop = JSON.parse(
+  //           JSON.stringify(index.interoperability.data),
+  //           function (k, v) {
+  //             if (k === 'data') this.values = v
+  //             else return v
+  //           }
+  //         )
 
-          var indexCalculation = JSON.parse(JSON.stringify(index.calculation), function(k, v) {
-            if (k === "data")
-              this.values = v;
-            else
-              return v;
-          });
+  //         var indexCalculation = JSON.parse(JSON.stringify(index.calculation), function(k, v) {
+  //           if (k === "data")
+  //             this.values = v;
+  //           else
+  //             return v;
+  //         });
 
-          console.log(`All availability data: ${JSON.stringify(index.availability)}`);
-          console.log(`All amonths data: ${JSON.stringify(amonths)}`);
+  //         console.log(`All availability data: ${JSON.stringify(index.availability)}`);
+  //         console.log(`All amonths data: ${JSON.stringify(amonths)}`);
 
-          var availability = amonths;
-          //var availability = null; // do not use amoths, use index.availability
-          if (typeof availability != undefined && availability != null && availability.length > 0) {
-            // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
-            for (var i = 0; i < availability.length; i++) {
-              if (availability[i]['key'] == '0-5') availability[i]['key'] = '[0-5)'
-              if (availability[i]['key'] == '5-75') availability[i]['key'] = '[5-75)'
-              if (availability[i]['key'] == '75-95') availability[i]['key'] = '[75-95)'
-              if (availability[i]['key'] == '95-99') availability[i]['key'] = '[95-99)'
-              if (availability[i]['key'] == '99-100') availability[i]['key'] = '[99-100]'
-            }
-          }
-          else {
-            availability = index.availability;
+  //         var availability = amonths;
+  //         //var availability = null; // do not use amoths, use index.availability
+  //         if (typeof availability != undefined && availability != null && availability.length > 0) {
+  //           // TODO: stop this senseless renaming 'zeroFive' to '0-5' to '[0-5)'
+  //           for (var i = 0; i < availability.length; i++) {
+  //             if (availability[i]['key'] == '0-5') availability[i]['key'] = '[0-5)'
+  //             if (availability[i]['key'] == '5-75') availability[i]['key'] = '[5-75)'
+  //             if (availability[i]['key'] == '75-95') availability[i]['key'] = '[75-95)'
+  //             if (availability[i]['key'] == '95-99') availability[i]['key'] = '[95-99)'
+  //             if (availability[i]['key'] == '99-100') availability[i]['key'] = '[99-100]'
+  //           }
+  //         }
+  //         else {
+  //           availability = index.availability;
 
-            function indexValuesToAmonthFormat(entry) {
-              console.log(`Current index.avail entry: ${JSON.stringify(amonths)}`);
-              return entry.values.map(function (value) {
-                // return [new Date(parseInt(value.x)).toISOString(), value.y * 100];
-                // return [value.x, value.y * 100];
-                return [parseInt(value.x), value.y * 100];
-              }).sort((a,b) => a[0] - b[0]);
-            }
+  //           function indexValuesToAmonthFormat(entry) {
+  //             console.log(`Current index.avail entry: ${JSON.stringify(amonths)}`);
+  //             return entry.values.map(function (value) {
+  //               // return [new Date(parseInt(value.x)).toISOString(), value.y * 100];
+  //               // return [value.x, value.y * 100];
+  //               return [parseInt(value.x), value.y * 100];
+  //             }).sort((a,b) => a[0] - b[0]);
+  //           }
 
-            availability = [
-              { "key": "[0-5)", "index": 1, "values": indexValuesToAmonthFormat(availability[0]) },
-              { "key": "[5-90)", "index": 2, "values": indexValuesToAmonthFormat(availability[1]) },
-              { "key": "[90-95)", "index": 3, "values": indexValuesToAmonthFormat(availability[2]) },
-              { "key": "[95-100]", "index": 4, "values": indexValuesToAmonthFormat(availability[3]) }
-            ];
+  //           availability = [
+  //             { "key": "[0-5)", "index": 1, "values": indexValuesToAmonthFormat(availability[0]) },
+  //             { "key": "[5-90)", "index": 2, "values": indexValuesToAmonthFormat(availability[1]) },
+  //             { "key": "[90-95)", "index": 3, "values": indexValuesToAmonthFormat(availability[2]) },
+  //             { "key": "[95-100]", "index": 4, "values": indexValuesToAmonthFormat(availability[3]) }
+  //           ];
 
-            console.log(`Final values from index.avail: ${JSON.stringify(availability)}`);
-          }
+  //           console.log(`Final values from index.avail: ${JSON.stringify(availability)}`);
+  //         }
 
-          //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
+  //         //amonths = JSON.parse(JSON.stringify(amonths).replace("\"0\-5\":", "\"[0-5[\":"));
 
-          //PERFORMANCE
-          mongoDBProvider.getCollection('ptasks_agg', function (error, coll) {
-            coll
-              .find({})
-              .sort({ date_calculated: -1 })
-              .limit(1)
-              .toArray(function (err, docs) {
-                var avgASKCold = docs.length > 0 ? (docs[0].askMedianCold / 1000) % 60 : 0
-                var avgJOINCold = docs.length > 0 ? (docs[0].joinMeanCold / 1000) % 60 : 0
-                var avgASKWarm = docs.length > 0 ? (docs[0].askMedianWarm / 1000) % 60 : 0
-                var avgJOINWarm = docs.length > 0 ? (docs[0].joinMeanWarm / 1000) % 60 : 0
+  //         //PERFORMANCE
+  //         sparqlProvider.getCollection('ptasks_agg', function (error, coll) {
+  //           coll
+  //             .find({})
+  //             .sort({ date_calculated: -1 })
+  //             .limit(1)
+  //             .toArray(function (err, docs) {
+  //               var avgASKCold = docs.length > 0 ? (docs[0].askMedianCold / 1000) % 60 : 0
+  //               var avgJOINCold = docs.length > 0 ? (docs[0].joinMeanCold / 1000) % 60 : 0
+  //               var avgASKWarm = docs.length > 0 ? (docs[0].askMedianWarm / 1000) % 60 : 0
+  //               var avgJOINWarm = docs.length > 0 ? (docs[0].joinMeanWarm / 1000) % 60 : 0
 
-                // get the discoverability stats
-                mongoDBProvider.getDiscoView(function (error, docs) {
-                  //var lastUpdate=0;
-                  var nbEndpointsVoID = 0
-                  var nbEndpointsSD = 0
-                  var nbEndpointsServerName = 0
-                  var nbEndpointsTotal = 0
-                  var nbEndpointsNoDesc = 0
-                  for (i in docs) {
-                    nbEndpointsTotal++
-                    //if(docs[i].lastUpdate>lastUpdate) lastUpdate=docs[i].lastUpdate;
-                    if (docs[i].VoID == true) nbEndpointsVoID++
-                    if (docs[i].SD == true) nbEndpointsSD++
-                    if (docs[i].VoID != true && docs[i].SD != true) nbEndpointsNoDesc++
-                    if (docs[i].serverName.length > 0 && docs[i].serverName != 'missing')
-                      nbEndpointsServerName++
-                  }
-                  res.render('content/index.pug', {
-                    configInstanceTitle: configApp.get('configInstanceTitle'),
-                    baseUri: configApp.get('baseUri'),
-                    gitRepo: configApp.get('gitRepo'),
-                    amonths: availability, // TODO: refactor naming
-                    index: index,
-                    indexInterop: indexInterop,
-          		     indexCalculation: indexCalculation,
-                    nbEndpointsSearch: nbEndpointsSearch,
-                    nbEndpointsVoID: nbEndpointsVoID,
-                    nbEndpointsSD: nbEndpointsSD,
-                    nbEndpointsServerName: nbEndpointsServerName,
-                    nbEndpointsTotal: nbEndpointsTotal,
-                    nbEndpointsNoDesc: nbEndpointsNoDesc,
-                    lastUpdate: lastUpdate.length > 0 ?  new Date(lastUpdate[0].lastUpdate) : 0,
-                    perf: {
-                      threshold: index.performance?.threshold > 0 ? index.performance.threshold : 10000,
-                      data: index.performance.data.map((entry) => {
-                        return {
-                          key: entry.key,
-                          color: entry.color,
-                          // FIXME: update schema to avoid this
-                          values: entry.data,
-                        }
-                      })
-                      // data: [
-                      //   {
-                      //     key: 'Cold Tests',
-                      //     color: '#1f77b4',
-                      //     values: [
-                      //       { label: 'Median ASK', value: avgASKCold },
-                      //       { label: 'Median JOIN', value: avgJOINCold },
-                      //     ],
-                      //   },
-                      //   {
-                      //     key: 'Warm Tests',
-                      //     color: '#2ca02c',
-                      //     values: [
-                      //       { label: 'Median ASK', value: avgASKWarm },
-                      //       { label: 'Median JOIN', value: avgJOINWarm },
-                      //     ],
-                      //   },
-                      // ],
-                    },
-                    // perf: index.performance,
-                    configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
-                    configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
-                    configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
-                    configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json')),
-                  })
-                  /*
-                                res.render('content/index.pug',{
-                                  configInstanceTitle: configApp.get('configInstanceTitle'),
-                                  amonths: amonths,
-                                  index:index,
-                                  indexInterop:indexInterop,
-                                  nbEndpointsSearch: nbEndpointsSearch,
-                                  lastUpdate: lastUpdate[0].lastUpdate,
-                                  perf: {"threshold":10000 ,"data":[{"key": "Cold Tests","color": "#1f77b4","values": [{"label" : "Median ASK" ,"value" : avgASKCold },{"label" : "Median JOIN" ,"value" : avgJOINCold}]},{"key": "Warm Tests","color": "#2ca02c","values": [{"label" : "Median ASK" ,"value" : avgASKWarm} ,{"label" : "Median JOIN" ,"value" : avgJOINWarm}]}]},
-                                  configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
-                                  configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
-                                  configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
-                          configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json'))
-                */
-                })
-              })
-          })
-        })
-      })
-    })
-  })
+  //               // get the discoverability stats
+  //               sparqlProvider.getDiscoView(function (error, docs) {
+  //                 //var lastUpdate=0;
+  //                 var nbEndpointsVoID = 0
+  //                 var nbEndpointsSD = 0
+  //                 var nbEndpointsServerName = 0
+  //                 var nbEndpointsTotal = 0
+  //                 var nbEndpointsNoDesc = 0
+  //                 for (i in docs) {
+  //                   nbEndpointsTotal++
+  //                   //if(docs[i].lastUpdate>lastUpdate) lastUpdate=docs[i].lastUpdate;
+  //                   if (docs[i].VoID == true) nbEndpointsVoID++
+  //                   if (docs[i].SD == true) nbEndpointsSD++
+  //                   if (docs[i].VoID != true && docs[i].SD != true) nbEndpointsNoDesc++
+  //                   if (docs[i].serverName.length > 0 && docs[i].serverName != 'missing')
+  //                     nbEndpointsServerName++
+  //                 }
+  //                 res.render('content/index.pug', {
+  //                   configInstanceTitle: configApp.get('configInstanceTitle'),
+  //                   baseUri: configApp.get('baseUri'),
+  //                   gitRepo: configApp.get('gitRepo'),
+  //                   amonths: availability, // TODO: refactor naming
+  //                   index: index,
+  //                   indexInterop: indexInterop,
+  //         		     indexCalculation: indexCalculation,
+  //                   nbEndpointsSearch: nbEndpointsSearch,
+  //                   nbEndpointsVoID: nbEndpointsVoID,
+  //                   nbEndpointsSD: nbEndpointsSD,
+  //                   nbEndpointsServerName: nbEndpointsServerName,
+  //                   nbEndpointsTotal: nbEndpointsTotal,
+  //                   nbEndpointsNoDesc: nbEndpointsNoDesc,
+  //                   lastUpdate: lastUpdate.length > 0 ?  new Date(lastUpdate[0].lastUpdate) : 0,
+  //                   perf: {
+  //                     threshold: index.performance?.threshold > 0 ? index.performance.threshold : 10000,
+  //                     data: index.performance.data.map((entry) => {
+  //                       return {
+  //                         key: entry.key,
+  //                         color: entry.color,
+  //                         // FIXME: update schema to avoid this
+  //                         values: entry.data,
+  //                       }
+  //                     })
+  //                     // data: [
+  //                     //   {
+  //                     //     key: 'Cold Tests',
+  //                     //     color: '#1f77b4',
+  //                     //     values: [
+  //                     //       { label: 'Median ASK', value: avgASKCold },
+  //                     //       { label: 'Median JOIN', value: avgJOINCold },
+  //                     //     ],
+  //                     //   },
+  //                     //   {
+  //                     //     key: 'Warm Tests',
+  //                     //     color: '#2ca02c',
+  //                     //     values: [
+  //                     //       { label: 'Median ASK', value: avgASKWarm },
+  //                     //       { label: 'Median JOIN', value: avgJOINWarm },
+  //                     //     ],
+  //                     //   },
+  //                     // ],
+  //                   },
+  //                   // perf: index.performance,
+  //                   configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
+  //                   configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
+  //                   configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
+  //                   configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json')),
+  //                 })
+  //                 /*
+  //                               res.render('content/index.pug',{
+  //                                 configInstanceTitle: configApp.get('configInstanceTitle'),
+  //                                 amonths: amonths,
+  //                                 index:index,
+  //                                 indexInterop:indexInterop,
+  //                                 nbEndpointsSearch: nbEndpointsSearch,
+  //                                 lastUpdate: lastUpdate[0].lastUpdate,
+  //                                 perf: {"threshold":10000 ,"data":[{"key": "Cold Tests","color": "#1f77b4","values": [{"label" : "Median ASK" ,"value" : avgASKCold },{"label" : "Median JOIN" ,"value" : avgJOINCold}]},{"key": "Warm Tests","color": "#2ca02c","values": [{"label" : "Median ASK" ,"value" : avgASKWarm} ,{"label" : "Median JOIN" ,"value" : avgJOINWarm}]}]},
+  //                                 configInterop: JSON.parse(fs.readFileSync('./texts/interoperability.json')),
+  //                                 configPerformance: JSON.parse(fs.readFileSync('./texts/performance.json')),
+  //                                 configDisco: JSON.parse(fs.readFileSync('./texts/discoverability.json')),
+  //                         configAvailability: JSON.parse(fs.readFileSync('./texts/availability.json'))
+  //               */
+  //               })
+  //             })
+  //         })
+  //       })
+  //     })
+  //   })
+  // })
 })
 
 app.get('/api/endpointsAutoComplete', function (req, res) {
-  mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
+  sparqlProvider.autocomplete(req.query.q, function (error, docs) {
     //for(i in docs)console.log(docs[i].uri);
     if (docs) {
       res.json(docs)
@@ -212,7 +212,7 @@ app.get('/api/endpointsAutoComplete', function (req, res) {
 })
 
 app.get('/api/endpoint/list', function (req, res) {
-  mongoDBProvider.endpointsList(function (error, docs) {
+  sparqlProvider.endpointsList(function (error, docs) {
     //for(i in docs)console.log(docs[i].uri);
     if (docs) {
       res.header('Content-Type', 'application/json; charset=utf-8')
@@ -222,7 +222,7 @@ app.get('/api/endpoint/list', function (req, res) {
 })
 
 app.get('/api/endpoint/autocomplete', function (req, res) {
-  mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
+  sparqlProvider.autocomplete(req.query.q, function (error, docs) {
     //for(i in docs)console.log(docs[i].uri);
     if (docs) {
       res.json(docs)
@@ -232,7 +232,7 @@ app.get('/api/endpoint/autocomplete', function (req, res) {
 
 app.get('/api/endpoint/info', function (req, res) {
   var uri = req.query.uri
-  mongoDBProvider.getEndpointView(uri, function (error, docs) {
+  sparqlProvider.getEndpointView(uri, function (error, docs) {
     if (docs) {
       res.json(docs)
     } else res.end()
@@ -240,28 +240,28 @@ app.get('/api/endpoint/info', function (req, res) {
 })
 
 app.get('/api/availability', function (req, res) {
-  mongoDBProvider.getAvailView(function (error, docs) {
+  sparqlProvider.getAvailView(function (error, docs) {
     if (docs) {
       res.json(docs)
     } else res.end()
   })
 })
 app.get('/api/discoverability', function (req, res) {
-  mongoDBProvider.getDiscoView(function (error, docs) {
+  sparqlProvider.getDiscoView(function (error, docs) {
     if (docs) {
       res.json(docs)
     } else res.end()
   })
 })
 app.get('/api/performance', function (req, res) {
-  mongoDBProvider.getPerfView(function (error, docs) {
+  sparqlProvider.getPerfView(function (error, docs) {
     if (docs) {
       res.json(docs)
     } else res.end()
   })
 })
 app.get('/api/interoperability', function (req, res) {
-  mongoDBProvider.getInteropView(function (error, docs) {
+  sparqlProvider.getInteropView(function (error, docs) {
     if (docs) {
       res.json(docs)
     } else res.end()
@@ -272,14 +272,14 @@ app.get('/endpoint', function (req, res) {
   var uri = req.query.uri
   var ep = JSON.parse(fs.readFileSync('./examples/endpoint.json'))
   //console.log(req.param('uri'))
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
     //TODO deal with no URI
     console.log(uri)
-    mongoDBProvider.getEndpointView(uri, function (error, docs) {
-      mongoDBProvider.getCollection('endpoints', function (error, collection) {
+    sparqlProvider.getEndpointView(uri, function (error, docs) {
+      sparqlProvider.getCollection('endpoints', function (error, collection) {
         collection.find({ uri: uri }).toArray(function (err, results) {
           // get last 10 performance median runs
-          mongoDBProvider.getLastTenPerformanceMedian(uri, function (error, lastTenObj) {
+          sparqlProvider.getLastTenPerformanceMedian(uri, function (error, lastTenObj) {
             var perfParsed = JSON.parse(JSON.stringify(docs[0].performance), function (k, v) {
               if (k === 'data') this.values = v
               else return v
@@ -316,7 +316,7 @@ app.get('/endpoint', function (req, res) {
               })
             }
 
-            mongoDBProvider.getLatestDisco(uri, function (error, latestDisco) {
+            sparqlProvider.getLatestDisco(uri, function (error, latestDisco) {
               var SDDescription = [];
 
               if (typeof latestDisco == 'undefined' || latestDisco == null) {
@@ -375,9 +375,9 @@ app.get('/endpoint', function (req, res) {
 })
 
 app.get('/fix-encoding', function (req, res) {
-  mongoDBProvider.getCollection('endpoints', function (error, coll) {
+  sparqlProvider.getCollection('endpoints', function (error, coll) {
     coll.find({}).toArray(function (err, endpoints) {
-      mongoDBProvider.getCollection('atasks_agg', function (error, taskColl) {
+      sparqlProvider.getCollection('atasks_agg', function (error, taskColl) {
         for (var i in endpoints) {
           var endpoint = endpoints[i]
           taskColl.update(
@@ -388,7 +388,7 @@ app.get('/fix-encoding', function (req, res) {
         }
       })
 
-      mongoDBProvider.getCollection('dtasks_agg', function (error, taskColl) {
+      sparqlProvider.getCollection('dtasks_agg', function (error, taskColl) {
         for (var i in endpoints) {
           var endpoint = endpoints[i]
           taskColl.update(
@@ -399,7 +399,7 @@ app.get('/fix-encoding', function (req, res) {
         }
       })
 
-      mongoDBProvider.getCollection('ptasks_agg', function (error, taskColl) {
+      sparqlProvider.getCollection('ptasks_agg', function (error, taskColl) {
         for (var i in endpoints) {
           var endpoint = endpoints[i]
           taskColl.update(
@@ -414,8 +414,8 @@ app.get('/fix-encoding', function (req, res) {
 })
 
 app.get('/availability', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.getAvailView(function (error, docs) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
+    sparqlProvider.getAvailView(function (error, docs) {
       var lastUpdate = 0
       var nbEndpointsUp = 0
       console.log(error)
@@ -438,8 +438,8 @@ app.get('/availability', function (req, res) {
 })
 
 app.get('/discoverability', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.getDiscoView(function (error, docs) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
+    sparqlProvider.getDiscoView(function (error, docs) {
       var lastUpdate = 0
       var nbEndpointsVoID = 0
       var nbEndpointsSD = 0
@@ -471,8 +471,8 @@ app.get('/discoverability', function (req, res) {
 })
 
 app.get('/performance', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.getPerfView(function (error, docs) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
+    sparqlProvider.getPerfView(function (error, docs) {
       var lastUpdate = 0
       var nbEndpointsWithThreshold = 0
       var nbEndpointsTotal = 0
@@ -511,10 +511,10 @@ app.get('/performance', function (req, res) {
 })
 
 app.get('/interoperability', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
     var nbSPARQL1Features = 24
     var nbSPARQL11Features = 18
-    mongoDBProvider.getInteropView(function (error, docs) {
+    sparqlProvider.getInteropView(function (error, docs) {
       var lastUpdate = 0
       var nbCompliantSPARQL1Features = 0
       var nbFullCompliantSPARQL1Features = 0
@@ -558,7 +558,7 @@ app.get('/interoperability', function (req, res) {
 })
 
 app.get('/data', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
     var dir = '../dumps/' // data dir
     function bytesToSize(bytes) {
       if (bytes == 0) return '0 Byte'
@@ -587,8 +587,8 @@ app.get('/data', function (req, res) {
 app.use('/dumps', express.static('/dumps'));
 
 app.get('/iswc2013', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
+    sparqlProvider.autocomplete(req.query.q, function (error, docs) {
       res.render('content/iswc2013.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),
@@ -600,8 +600,8 @@ app.get('/iswc2013', function (req, res) {
 })
 
 app.get('/api', function (req, res) {
-  mongoDBProvider.endpointsCount(function (error, nbEndpointsSearch) {
-    mongoDBProvider.autocomplete(req.query.q, function (error, docs) {
+  sparqlProvider.endpointsCount(function (error, nbEndpointsSearch) {
+    sparqlProvider.autocomplete(req.query.q, function (error, docs) {
       res.render('content/api.pug', {
         configInstanceTitle: configApp.get('configInstanceTitle'),
         baseUri: configApp.get('baseUri'),

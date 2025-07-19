@@ -22,7 +22,7 @@ import sparqles.schedule.iter.CronBasedIterator;
 import sparqles.schedule.iter.ScheduleIterator;
 import sparqles.utils.ExceptionHandler;
 import sparqles.utils.FileManager;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class Scheduler {
   private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
@@ -62,7 +62,7 @@ public class Scheduler {
 
   private final ScheduledExecutorService SERVICE, ASERVICE;
   private FileManager _fm;
-  private MongoDBManager _dbm;
+  private DbManager _dbm;
 
   private SchedulerMonitor _monitor;
 
@@ -90,7 +90,7 @@ public class Scheduler {
    * @param dbm
    * @return
    */
-  public static Collection<Schedule> createDefaultSchedule(MongoDBManager dbm) {
+  public static Collection<Schedule> createDefaultSchedule(DbManager dbm) {
     List<Schedule> l = new ArrayList<Schedule>();
     Collection<Endpoint> eps = dbm.get(Endpoint.class, Endpoint.SCHEMA$);
     for (Endpoint ep : eps) {
@@ -167,7 +167,7 @@ public class Scheduler {
    *
    * @param db
    */
-  public void init(MongoDBManager db) {
+  public void init(DbManager db) {
 
     Collection<Schedule> schedules = db.get(Schedule.class, Schedule.SCHEMA$);
     log.info("Scheduling tasks for {} endpoints", schedules.size());
@@ -275,7 +275,7 @@ public class Scheduler {
     }
   }
 
-  public void useDB(MongoDBManager dbm) {
+  public void useDB(DbManager dbm) {
     _dbm = dbm;
   }
 

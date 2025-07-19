@@ -13,12 +13,12 @@ import sparqles.avro.discovery.DGETInfo;
 import sparqles.avro.discovery.DResult;
 import sparqles.avro.discovery.QueryInfo;
 import sparqles.core.discovery.DTask;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class DAnalyser extends Analytics<DResult> {
   private static final Logger log = LoggerFactory.getLogger(DAnalyser.class);
 
-  public DAnalyser(MongoDBManager db) {
+  public DAnalyser(DbManager db) {
     super(db);
   }
 

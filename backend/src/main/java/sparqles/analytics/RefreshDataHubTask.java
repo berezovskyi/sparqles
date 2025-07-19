@@ -8,12 +8,12 @@ import sparqles.avro.analytics.Index;
 import sparqles.core.Task;
 import sparqles.schedule.Scheduler;
 import sparqles.utils.DatahubAccess;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class RefreshDataHubTask implements Task<Index> {
 
   private static final Logger log = LoggerFactory.getLogger(RefreshDataHubTask.class);
-  private MongoDBManager _dbm;
+  private DbManager _dbm;
   private Scheduler _s;
 
   @Override
@@ -90,7 +90,7 @@ public class RefreshDataHubTask implements Task<Index> {
   }
 
   @Override
-  public void setDBManager(MongoDBManager dbm) {
+  public void setDBManager(DbManager dbm) {
     _dbm = dbm;
   }
 

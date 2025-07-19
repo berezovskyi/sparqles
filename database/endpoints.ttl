@@ -1,0 +1,2844 @@
+@prefix ns1: <http://sparqles.com/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://140.109.28.64:2020/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/crowdsourcing-fb> .
+
+<http://156.35.31.156/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/cpv-2003> .
+
+<http://156.35.82.103/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/isic-v4> .
+
+<http://193.145.57.56:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/universitat-pompeu-fabra-linked-data> .
+
+<http://202.45.142.113:10035/repositories/agris> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/agris> .
+
+<http://202.73.13.50:55824/catalogs/performance/repositories/agrovoc> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/agrovoc-skos> .
+
+<http://202.73.13.50:55824/catalogs/performance/repositories/jita> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/jita> .
+
+<http://212.81.220.68:2020/elviajero> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/santillana_guide_dataset> .
+
+<http://acm.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-acm> .
+
+<http://aemet.linkeddata.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/aemet> .
+
+<http://affymetrix.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-affymetrix> .
+
+<http://agalpha.mathbiol.org/repositories/tcga> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/tcga-roadmap> .
+
+<http://agencies.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eu-agencies-bodies> .
+
+<http://aksw.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/aksworg> .
+
+<http://alaska.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-alaska> .
+
+<http://api.kasabi.com/api/sparql-endpoint-near> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/near> .
+
+<http://api.kasabi.com/dataset/bricklink/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bricklink> .
+
+<http://api.kasabi.com/dataset/discogs/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-discogs> .
+
+<http://api.kasabi.com/dataset/ecco-tcp-eighteenth-century-collections-online-texts/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ecco-tcp-linked-data> .
+
+<http://api.kasabi.com/dataset/english-heritage/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/englishheritage_places> .
+
+<http://api.kasabi.com/dataset/federal-reserve-economic-data/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/federal-economic-rdf> .
+
+<http://api.kasabi.com/dataset/foodista/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/foodista> .
+
+<http://api.kasabi.com/dataset/jisc-cetis-project-directory/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/jisc-cetis-directory> .
+
+<http://api.kasabi.com/dataset/musicnet/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/musicnet_codex> .
+
+<http://api.kasabi.com/dataset/nasa/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-nasa> .
+
+<http://api.kasabi.com/dataset/openflights-routes/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/kasabi-openflights-routes> .
+
+<http://api.kasabi.com/dataset/pali-english-lexicon/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/pali-english-lexicon> .
+
+<http://api.kasabi.com/dataset/prelinger-archives/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/prelinger_archives> .
+
+<http://api.kasabi.com/dataset/renewable-energy-generators/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/renewable_energy_generators> .
+
+<http://api.kasabi.com/dataset/sanskrit-english-lexicon/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sanskrit-english-lexicon> .
+
+<http://api.kasabi.com/dataset/un-hazardous-material-numbers/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/un-hazardous-numbers> .
+
+<http://api.kasabi.com/dataset/yahoo-geoplanet/apis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/yahoo_geoplanet> .
+
+<http://api.talis.com/stores/airports/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-our-airports> .
+
+<http://api.talis.com/stores/bbc-backstage/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bbc-music>,
+        <http://thedatahub.org/dataset/bbc-programmes> .
+
+<http://api.talis.com/stores/bbc-wildlife/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bbc-wildlife-finder> .
+
+<http://api.talis.com/stores/climb/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-climb> .
+
+<http://api.talis.com/stores/datagovuk/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/london-gazette> .
+
+<http://api.talis.com/stores/elections/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/european-election-results> .
+
+<http://api.talis.com/stores/eumida/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eumida-linked-data> .
+
+<http://api.talis.com/stores/eupmedia/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eu-parliament-media> .
+
+<http://api.talis.com/stores/eurobarometer/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eurobarometer-standard> .
+
+<http://api.talis.com/stores/eutc-productions/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eutc-productions> .
+
+<http://api.talis.com/stores/fanhubz/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fanhubz> .
+
+<http://api.talis.com/stores/gunnbib-digitalmanuskripter/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ntnusc> .
+
+<http://api.talis.com/stores/jgoodwin-genealogy/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/john-goodwins-family-tree> .
+
+<http://api.talis.com/stores/massobservation/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/massobservationarchivecatalogue> .
+
+<http://api.talis.com/stores/mesh-norwegian/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/normesh> .
+
+<http://api.talis.com/stores/metoffice/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-metoffice> .
+
+<http://api.talis.com/stores/moseley/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-moseley> .
+
+<http://api.talis.com/stores/musicbrainz/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-musicbrainz> .
+
+<http://api.talis.com/stores/nvd/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/nvd> .
+
+<http://api.talis.com/stores/openlibrary/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/talis-openlibrary> .
+
+<http://api.talis.com/stores/ordnance-survey/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ordnance-survey-linked-data> .
+
+<http://api.talis.com/stores/pbac/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/printed-book-auction-catalogues> .
+
+<http://api.talis.com/stores/pokedex/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-pokedex> .
+
+<http://api.talis.com/stores/productdb/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/productdb> .
+
+<http://api.talis.com/stores/rsinger-dev4/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linkedlccn> .
+
+<http://api.talis.com/stores/schemapedia/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/schemapedia> .
+
+<http://api.talis.com/stores/smcjournals/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-incubator-smcjournals> .
+
+<http://api.talis.com/stores/theviewfrom/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/the-view-from> .
+
+<http://api.talis.com/stores/trafficscotland/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/traffic-scotland> .
+
+<http://api.talis.com/stores/whoiswho/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eu-who-is-who> .
+
+<http://api.talis.com/stores/wordnet/services/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/vu-wordnet> .
+
+<http://apps.ideaconsult.net:8080/ontology> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/opentox> .
+
+<http://aseg.cs.concordia.ca/secold/sparqlendpoint> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/secold> .
+
+<http://beta.sparql.uniprot.org> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/uniprot-taxonomy>,
+        <http://thedatahub.org/dataset/uniprot-uniparc>,
+        <http://thedatahub.org/dataset/uniprotkb>,
+        <http://thedatahub.org/dataset/uniref> .
+
+<http://beta.sparql.uniprot.org/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/uniprot-unipathway> .
+
+<http://bfs.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bfs-linked-data> .
+
+<http://bibleontology.com/sparql/index.jsp> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bible-ontology> .
+
+<http://biocarta.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-biocarta> .
+
+<http://biocyc.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-biocyc> .
+
+<http://biolit.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/biolit> .
+
+<http://biomodels.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-biomodels> .
+
+<http://biordf.net/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sadi-semantic-web-services-framework-registry> .
+
+<http://bnb.data.bl.uk/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bluk-bnb>,
+        <http://thedatahub.org/dataset/jiscopenbib-bl_bnb-1> .
+
+<http://budapest.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-budapest> .
+
+<http://cas.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-cas> .
+
+<http://catalogus-professorum.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/catalogus-professorum-lipsiensis> .
+
+<http://cau.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-cau> .
+
+<http://cb.semsol.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/semsol-crunchbase> .
+
+<http://ccny-cuny.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-ccny-cuny> .
+
+<http://cdrewu.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-cdrewu> .
+
+<http://chebi.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-chebi>,
+        <http://thedatahub.org/dataset/chebi> .
+
+<http://chembl.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-chembl> .
+
+<http://citeseer.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-citeseer> .
+
+<http://colinda.org/endpoint.php> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/colinda> .
+
+<http://collection.britishmuseum.org/Sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/british-museum-collection> .
+
+<http://cordis.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-cordis> .
+
+<http://core.kmi.open.ac.uk/squery> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/core> .
+
+<http://corpora.nlp2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lcc> .
+
+<http://courseware.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-courseware> .
+
+<http://cr.eionet.europa.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eea-rod>,
+        <http://thedatahub.org/dataset/eea-vocabularies>,
+        <http://thedatahub.org/dataset/eprtr> .
+
+<http://cr3.eionet.europa.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/gemet> .
+
+<http://crime.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-crime> .
+
+<http://crm.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-crm> .
+
+<http://crystaleye.ch.cam.ac.uk/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/crystal-eye> .
+
+<http://ctd.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-ctd> .
+
+<http://cultura.linkeddata.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/culturalinkeddata> .
+
+<http://curriculum.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-curriculum> .
+
+<http://darmstadt.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-darmstadt> .
+
+<http://dartmouth.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-dartmouth> .
+
+<http://data-gov.ie/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-gov-ie> .
+
+<http://data.aalto.fi/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-open-aalto-data-service> .
+
+<http://data.allie.dbcls.jp/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/allie-abbreviation-and-long-form-database-in-life-science> .
+
+<http://data.archiveshub.ac.uk/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/archiveshub-linkeddata> .
+
+<http://data.bib.uni-mannheim.de/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ub-mannheim-linked-data> .
+
+<http://data.bibbase.org:2020/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bibbase> .
+
+<http://data.bibsys.no/data/query_authority.html> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/radatana> .
+
+<http://data.cnr.it/sparql-proxy/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-cnr-it> .
+
+<http://data.colinda.org/endpoint.php> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/colinda> .
+
+<http://data.copac.ac.uk/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/copac-library-catalogue> .
+
+<http://data.ege.edu.tr/ep/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ege-university-linked-open-data> .
+
+<http://data.fundacionctic.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ctic-public-dataset> .
+
+<http://data.lenka.no/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/norwegian-geo-divisions> .
+
+<http://data.linkedct.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linkedct> .
+
+<http://data.linkededucation.org/request/lak-conference/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lak-dataset> .
+
+<http://data.linkedmdb.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linkedmdb> .
+
+<http://data.linkedu.eu/hud/query> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hud-library-usagedata> .
+
+<http://data.lod2.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/de-budget> .
+
+<http://data.nature.com/query> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/npg> .
+
+<http://data.ngii.go.kr/SPARQL/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/integrated-human-geography-service-for-lod> .
+
+<http://data.nobelprize.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/nobelprizes> .
+
+<http://data.noticias.universia.net/d2r-server/snorql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/http-data-noticias-universia-net> .
+
+<http://data.oceandrilling.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/oceandrilling-codices>,
+        <http://thedatahub.org/dataset/oceandrilling-dbseabed>,
+        <http://thedatahub.org/dataset/oceandrilling-forams>,
+        <http://thedatahub.org/dataset/oceandrilling-janus>,
+        <http://thedatahub.org/dataset/oceandrilling-janusamp>,
+        <http://thedatahub.org/dataset/oceandrilling-ldeo> .
+
+<http://data.open.ac.uk/query> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-open-ac-uk> .
+
+<http://data.organic-edunet.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/organic-edunet> .
+
+<http://data.ox.ac.uk/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ox-ac-uk-catalogue>,
+        <http://thedatahub.org/dataset/ox-ac-uk-catalogue-metadata>,
+        <http://thedatahub.org/dataset/ox-ac-uk-openmeters>,
+        <http://thedatahub.org/dataset/ox-ac-uk-timeseries>,
+        <http://thedatahub.org/dataset/ox-ac-uk-vacancies>,
+        <http://thedatahub.org/dataset/ox-ac-uk-www-ox-ac-uk-events> .
+
+<http://data.semanticuniverse.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/semantic-universe> .
+
+<http://data.semanticweb.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/semantic-web-dog-food> .
+
+<http://data.uni-muenster.de/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lodum> .
+
+<http://dati.camera.it/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/camera-deputati-linked-data> .
+
+<http://datos.bcn.cl/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/datos-bcn-cl> .
+
+<http://datos.bne.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/datos-bne-es> .
+
+<http://dblp.l3s.de/d2r/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/l3s-dblp> .
+
+<http://dblp.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-dblp> .
+
+<http://dbmi-icode-01.dbmi.pitt.edu/linkedSPLs/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-structured-product-labels> .
+
+<http://dbmi-icode-01.dbmi.pitt.edu:2020/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/the-drug-interaction-knowledge-base> .
+
+<http://dbpedia.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-dbpedia> .
+
+<http://dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia> .
+
+<http://dbtune.org/bbc/peel/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbtune-john-peel-sessions> .
+
+<http://dbtune.org/classical/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbtune-classical> .
+
+<http://dbtune.org/jamendo/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/jamendo-dbtune> .
+
+<http://dbtune.org/magnatune/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbtune-magnatune> .
+
+<http://dbtune.org/musicbrainz/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbtune-musicbrainz> .
+
+<http://dbtune.org/myspace/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbtune-myspace> .
+
+<http://de.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-de> .
+
+<http://deepblue.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-deepblue> .
+
+<http://deploy.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-deploy> .
+
+<http://dewey.info/sparql.php> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dewey_decimal_classification> .
+
+<http://digitaleconomy.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-digitaleconomy> .
+
+<http://dimitros.net/query.sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dimitros-net> .
+
+<http://diwis.imis.athena-innovation.gr:8181/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/testee> .
+
+<http://doc.metalex.eu:8000/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dutch-national-regulations-metalex> .
+
+<http://dotac.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-dotac> .
+
+<http://dr.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-kegg-drug> .
+
+<http://drugbank.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-drugbank> .
+
+<http://ec.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-kegg-enzyme> .
+
+<http://ecb.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ecb-linked-data> .
+
+<http://ecb.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ecb-statistics-linked-data> .
+
+<http://ecowlim.tfri.gov.tw/sparql/query> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-open-data-of-ecology> .
+
+<http://ecs.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-ecs> .
+
+<http://eculture2.cs.vu.nl:5020/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rechtspraak> .
+
+<http://eculture2.cs.vu.nl:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eventseer> .
+
+<http://el-devtc01.tugraz.at/~ldv/interlinking/endpoint_handler.php> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/semantic-profiling-network> .
+
+<http://el.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-el> .
+
+<http://en.openei.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/open-energy-info-wiki> .
+
+<http://enaktingpsi.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-enaktingpsi> .
+
+<http://enipedia.tudelft.nl/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/enipedia> .
+
+<http://environment.data.gov.uk/sparql/bwq/query> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/environment-agency-bathing-water-quality> .
+
+<http://epo.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/epo> .
+
+<http://eprints.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-eprints> .
+
+<http://epsrc.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-epsrc> .
+
+<http://era.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-era> .
+
+<http://eris.okfn.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/corscheck> .
+
+<http://eudbpedia.deusto.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-eu> .
+
+<http://eur-lex.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eur-lex-rdf> .
+
+<http://eurecom.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-eurecom> .
+
+<http://europeana-triplestore.isti.cnr.it/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/europeana-lod> .
+
+<http://eurostat.linked-statistics.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/the-eurostat-linked-data> .
+
+<http://eventmedia.eurecom.fr/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/event-media> .
+
+<http://factforge.net/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fact-forge> .
+
+<http://famu.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-famu> .
+
+<http://fao.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fao-linked-data> .
+
+<http://fintrans.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/beneficiaries-of-the-european-commission> .
+
+<http://foreign.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-foreign> .
+
+<http://foreign.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eprints-harvest-rkbexplorer> .
+
+<http://fr.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-fr> .
+
+<http://ft.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-ft> .
+
+<http://fun.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-fun> .
+
+<http://futurewavehosting.com:3030/my-family-lineage/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/my-family-lineage> .
+
+<http://gdlc.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-gdlc> .
+
+<http://genbank.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-genbank> .
+
+<http://gene.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-ncbigene> .
+
+<http://geo.linkeddata.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geolinkeddata> .
+
+<http://gl.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-kegg-glycan> .
+
+<http://goa.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-goa> .
+
+<http://gov.tso.co.uk/coins/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/coins-openuplabs> .
+
+<http://gov.tso.co.uk/dclg/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dclg-openuplabs> .
+
+<http://gov.tso.co.uk/legislation/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/legislation-openuplabs> .
+
+<http://gov.tso.co.uk/transport/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/transport-openuplabs> .
+
+<http://govwild.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/government-web-integration-for-linked-data> .
+
+<http://greek-lod.auth.gr/fire-brigade/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hellenic-fire-brigade> .
+
+<http://greek-lod.auth.gr/police/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hellenic-police> .
+
+<http://greek-lod.math.auth.gr/intervalue/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/intervalue> .
+
+<http://greek-lod.math.auth.gr/kalikratis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/kallikratis-municipalities> .
+
+<http://harvard.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-harvard> .
+
+<http://hawaii.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-hawaii> .
+
+<http://hcls.deri.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hcls-knowledge-base> .
+
+<http://hcls.deri.org:8080/openrdf-sesame/repositories/tcga> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/tcga> .
+
+<http://healthdata.tw.rpi.edu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/twc-healthdata> .
+
+<http://helheim.deusto.es/bizkaisense/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bizkaisense> .
+
+<http://helheim.deusto.es/hedatuz/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hedatuz> .
+
+<http://hgnc.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-hgnc> .
+
+<http://hhpid.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-hhpid> .
+
+<http://homologene.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-homologene> .
+
+<http://howard.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-howard> .
+
+<http://http://opendata.intellidomo.es:8080/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sensores-de-intellidomo> .
+
+<http://hunter-cuny.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-hunter-cuny> .
+
+<http://ibm.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-ibm> .
+
+<http://ichoose.tw.rpi.edu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ichoose> .
+
+<http://id.ndl.go.jp/auth/ndla/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/national-diet-library-authorities> .
+
+<http://id.ndl.go.jp/auth/ndlsh/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/national-diet-library-subject-headings> .
+
+<http://id.sgcb.mcu.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lista-encabezamientos-materia> .
+
+<http://idi.fundacionctic.org/classifications_endpoint/eurovoc> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eurovoc-in-skos> .
+
+<http://ieee.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-ieee> .
+
+<http://ieeevis.tw.rpi.edu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/twc-ieeevis> .
+
+<http://imf.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/imf-linked-data> .
+
+<http://inoh.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-inoh> .
+
+<http://interpro.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-interpro> .
+
+<http://ipi.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-ipi> .
+
+<http://iproclass.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-iproclass> .
+
+<http://irit.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-irit> .
+
+<http://iserve.kmi.open.ac.uk/iserve/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/iserve> .
+
+<http://italy.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-italy> .
+
+<http://ja.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-ja> .
+
+<http://jisc.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-jisc> .
+
+<http://jsu.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-jsu> .
+
+<http://kaiko.getalp.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbnary> .
+
+<http://kasabi.com/api/sparql-endpoint-foodista> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/foodista> .
+
+<http://kaunas.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-kaunas> .
+
+<http://kdata.kr/sparql/endpoint.jsp> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/kdata> .
+
+<http://kegg.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-kegg-pathway> .
+
+<http://kent.zpr.fer.hr:8080/educationalProgram/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/educationalprograms_sisvu> .
+
+<http://kisti.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-kisti> .
+
+<http://kwijibo.talis.com/latc-linksets/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/latc-linksets> .
+
+<http://laas.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-laas> .
+
+<http://lab3.libris.kb.se/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/libris> .
+
+<http://labs.mondeca.com/endpoint/ends> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sparql-endpoint-status> .
+
+<http://lexinfo.net/corpora/alpino/query.php> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/alpino-rdf> .
+
+<http://libver.math.auth.gr/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/libver> .
+
+<http://linguistic.linkeddata.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/spanish-linguistic-datasets> .
+
+<http://link.informatics.stonybrook.edu/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rxnorm> .
+
+<http://linked.opendata.cz/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/publications-of-charles-university-in-prague> .
+
+<http://linkeddata.finki.ukim.mk/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/drug-data-hifm> .
+
+<http://linkeddata.ge.imati.cnr.it:2020/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/environmental-applications-reference-thesaurus> .
+
+<http://linkeddata.uriburner.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/uriburner> .
+
+<http://linkedgeodata.org/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linkedgeodata> .
+
+<http://linkedlifedata.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-life-data> .
+
+<http://linkedopencommerce.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-open-commerce>,
+        <http://thedatahub.org/dataset/ravensburg-local-shopping-graph> .
+
+<http://linkedspending.aksw.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linkedspending> .
+
+<http://lisbon.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-lisbon> .
+
+<http://live.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-live> .
+
+<http://lobid.org/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lobid-organisations>,
+        <http://thedatahub.org/dataset/lobid-resources> .
+
+<http://lod.ac/bdls/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lodac-bdls> .
+
+<http://lod.b3kat.de/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/b3kat> .
+
+<http://lod.euscreen.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/euscreen> .
+
+<http://lod.gesis.org/thesoz/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/gesis-thesoz> .
+
+<http://lod.hebis.de/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hebis-bibliographic-resources> .
+
+<http://lod.kaist.ac.kr/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ktr> .
+
+<http://lod.my-eventos.com/en/services/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lodrussia-math>,
+        <http://thedatahub.org/dataset/lodrussia-nano> .
+
+<http://lod.openlinksw.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/openlink-lod-cache> .
+
+<http://lod.sztaki.hu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sztaki-lod> .
+
+<http://lofd.tw.rpi.edu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lofd> .
+
+<http://logd.tw.rpi.edu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/biographical-directory-of-the-united-states-congress>,
+        <http://thedatahub.org/dataset/farmers-markets-geographic-data-united-states> .
+
+<http://lov.okfn.org/endpoint/lov> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-open-vocabularies-lov> .
+
+<http://lsd.taxonconcept.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geospecies>,
+        <http://thedatahub.org/dataset/taxonconcept> .
+
+<http://meducator.open.ac.uk/resourcesrestapi/rest/meducator/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/meducator> .
+
+<http://meharry.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-meharry> .
+
+<http://mgi.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-mgi> .
+
+<http://minsky.gsi.dit.upm.es/semanticwiki/index.php/Special:SPARQLEndpoint> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/vulnerapedia> .
+
+<http://miuras.inf.um.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ogolod> .
+
+<http://mlode.nlp2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ids>,
+        <http://thedatahub.org/dataset/jrc-names>,
+        <http://thedatahub.org/dataset/mlsa>,
+        <http://thedatahub.org/dataset/sentiws>,
+        <http://thedatahub.org/dataset/wals>,
+        <http://thedatahub.org/dataset/wold> .
+
+<http://monnetproject.deri.ie/lemonsource_query/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lemonwordnet> .
+
+<http://montana.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-montana> .
+
+<http://msm.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-msm> .
+
+<http://n-lex.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/n-lex-as-linked-data> .
+
+<http://ndb.publink.lod2.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/deutsche-biographie> .
+
+<http://neuroweb.med.yale.edu:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/yale_senselab> .
+
+<http://newcastle.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-newcastle> .
+
+<http://nl.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-nl> .
+
+<http://notube.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-notube> .
+
+<http://nsf.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-nsf> .
+
+<http://oai.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-oai> .
+
+<http://obo.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-obo> .
+
+<http://oecd.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/oecd-linked-data> .
+
+<http://ohsu.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-ohsu> .
+
+<http://omim.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-omim> .
+
+<http://opendata-bundestag.de/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bundestagnebeneinkuenfte> .
+
+<http://opendatacommunities.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/english-index-of-multiple-deprivation-ranking-2010>,
+        <http://thedatahub.org/dataset/english-index-of-multiple-deprivation-score-2010>,
+        <http://thedatahub.org/dataset/english-indices-of-multiple-deprivation>,
+        <http://thedatahub.org/dataset/lower-layer-super-output-areas>,
+        <http://thedatahub.org/dataset/odc-imd-rank-2007>,
+        <http://thedatahub.org/dataset/odc-lsoa>,
+        <http://thedatahub.org/dataset/odc-population-2005> .
+
+<http://openuplabs.tso.co.uk/sparql/gov-education> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/education-openuplabs> .
+
+<http://os.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-os> .
+
+<http://os.services.tso.co.uk/geo/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geographic-openuplabs> .
+
+<http://pdb.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-pdb> .
+
+<http://pfam.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-pfam> .
+
+<http://photos.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-photos> .
+
+<http://pisa.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-pisa> .
+
+<http://platform.uberblic.org/api/v1/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/uberblic> .
+
+<http://pomelo.iis.sinica.edu.tw:2020/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/taiwan-geographic-names> .
+
+<http://prelex.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/prelex> .
+
+<http://prodom.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-prodom> .
+
+<http://prosite.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-prosite> .
+
+<http://provenanceweb.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/provenanceweb> .
+
+<http://psm.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-psm> .
+
+<http://pt.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/dbpedia-pt> .
+
+<http://pubchem.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-pubchem> .
+
+<http://publicspending.medialab.ntua.gr/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/public-spending-in-greece> .
+
+<http://pubmed.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-pubmed> .
+
+<http://purl.org/openbibliosets/iucrsparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/iucr-acta-cryst-e> .
+
+<http://purl.org/twc/arrayexpress/virtuoso/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/arrayexpress-e-afmx-1>,
+        <http://thedatahub.org/dataset/arrayexpress_e-mtab-104> .
+
+<http://purl.org/twc/hub/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/twc-hub> .
+
+<http://purl.org/weso/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/combined-nomenclature-2012>,
+        <http://thedatahub.org/dataset/cpa-2008>,
+        <http://thedatahub.org/dataset/cpc-2008>,
+        <http://thedatahub.org/dataset/cpv-2008>,
+        <http://thedatahub.org/dataset/naics-2007>,
+        <http://thedatahub.org/dataset/naics-2012>,
+        <http://thedatahub.org/dataset/nomenclator-asturias>,
+        <http://thedatahub.org/dataset/pscs-catalogue>,
+        <http://thedatahub.org/dataset/sitc-v4> .
+
+<http://rae2001.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-rae2001> .
+
+<http://rdf.farmbio.uu.se/chembl/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/farmbio-chembl> .
+
+<http://rdf.muninn-project.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/muninn-world-war-i> .
+
+<http://rdf.myexperiment.org/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/my-experiment> .
+
+<http://rdf.ng-london.org.uk/raphael> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/raphaelresearchresource> .
+
+<http://rdfabout.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sec-rdfabout> .
+
+<http://reactome.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-reactome> .
+
+<http://resex.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-resex> .
+
+<http://resource.geolba.ac.at/PoolParty/sparql/GeologicTimeScale> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus> .
+
+<http://resource.geolba.ac.at/PoolParty/sparql/GeologicUnit> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus> .
+
+<http://resource.geolba.ac.at/PoolParty/sparql/lithology> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus> .
+
+<http://resource.geolba.ac.at/PoolParty/sparql/tectonicunit> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus> .
+
+<http://resrev.ilrt.bris.ac.uk/data-server-workshop/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/university-of-bristol> .
+
+<http://revyu.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/revyu> .
+
+<http://risks.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-risks> .
+
+<http://river.styx.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/cablegate> .
+
+<http://rn.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-kegg-reaction> .
+
+<http://roma.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-roma> .
+
+<http://roni.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-roni> .
+
+<http://semantic.ckan.net/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/ckan> .
+
+<http://semantic.eea.europa.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eea>,
+        <http://thedatahub.org/dataset/eunis> .
+
+<http://semanticweb.cs.vu.nl/europeana/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/amsterdam-museum-as-edm-lod> .
+
+<http://services.data.gov.uk/business/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/business-data-gov-uk> .
+
+<http://services.data.gov.uk/education/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/education-data-gov-uk> .
+
+<http://services.data.gov.uk/environment/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/environment-data-gov-uk> .
+
+<http://services.data.gov.uk/patents/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/patents-data-gov-uk> .
+
+<http://services.data.gov.uk/reference/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/reference-data-gov-uk> .
+
+<http://services.data.gov.uk/research/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/research-data-gov-uk> .
+
+<http://services.data.gov.uk/statistics/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/statistics-data-gov-uk> .
+
+<http://services.data.gov.uk/transport/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/transport-data-gov-uk> .
+
+<http://services.data.gov/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-gov> .
+
+<http://services.insemtives.eu/forest/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/insemtives> .
+
+<http://setaria.oszk.hu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/hungarian-national-library-catalog> .
+
+<http://sgd.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-sgd> .
+
+<http://skos.um.es/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/unescothes> .
+
+<http://smartlink.open.ac.uk/smartlink/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/smartlink> .
+
+<http://soa4all.isoco.net/luf/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-user-feedback> .
+
+<http://socialarchive.iath.virginia.edu/sparql/eac> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/social-networks-and-archival-context-fall-2011> .
+
+<http://socialarchive.iath.virginia.edu/sparql/snac-viaf> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/social-networks-and-archival-context-fall-2011> .
+
+<http://sonicbanana.cs.wright.edu:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/knoesis-linked-sensor-data> .
+
+<http://southampton.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-southampton> .
+
+<http://sparql.data.southampton.ac.uk/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/data-southampton-ac-uk>,
+        <http://thedatahub.org/dataset/southampton-ac-uk-apps> .
+
+<http://sparql.jesandco.org:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/asn-us> .
+
+<http://sparql.kupkb.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/kupkb> .
+
+<http://sparql.linkedfood.org> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linkedfood> .
+
+<http://sparql.linkedopendata.it/cap> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/cap-italy-rdf> .
+
+<http://sparql.linkedopendata.it/grrp> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/grrp> .
+
+<http://sparql.linkedopendata.it/grrt> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/grrt> .
+
+<http://sparql.linkedopendata.it/istat> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/istat-immigration> .
+
+<http://sparql.linkedopendata.it/loc> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-open-camera> .
+
+<http://sparql.linkedopendata.it/los> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/linked-open-senate> .
+
+<http://sparql.linkedopendata.it/musei> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/museums-in-italy> .
+
+<http://sparql.linkedopendata.it/scuole> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/italian-public-schools-linkedopendata-it> .
+
+<http://sparql.msc2010.org> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/msc> .
+
+<http://sparql.neurocommons.org:8890/nsparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/neurocommons_text_mining_pilot> .
+
+<http://sparql.openmobilenetwork.org> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/openmobilenetwork> .
+
+<http://sparql.reegle.info/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/clean-energy-data-reegle> .
+
+<http://sparql.sindice.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/sudocfr> .
+
+<http://sparql.wikipathways.org/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/wikipathways> .
+
+<http://sparql.yovisto.com/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/yovisto> .
+
+<http://spatial.ucd.ie/lod/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/osm-semantic-network> .
+
+<http://spending.lichfielddc.gov.uk/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lichfield-spending> .
+
+<http://sw.unime.it:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/loius> .
+
+<http://telegraphis.net/data/countries/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/telegraphis> .
+
+<http://tkm.kiom.re.kr/ontology/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/traditional-korean-medicine> .
+
+<http://transparency.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/transparency-linked-data> .
+
+<http://tsu.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-tsu> .
+
+<http://tuskegee.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-tuskegee> .
+
+<http://twarql.org:8890/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/twarql> .
+
+<http://uccaribe.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-uccaribe> .
+
+<http://ulm.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-ulm> .
+
+<http://unists.bio2rdf.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bio2rdf-unists> .
+
+<http://unlocode.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-unlocode> .
+
+<http://unodc.publicdata.eu/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/unodc> .
+
+<http://upr.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-upr> .
+
+<http://utep.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-utep> .
+
+<http://utsa.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-utsa> .
+
+<http://vocab.nerc.ac.uk/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/nvs> .
+
+<http://vocabulary.semantic-web.at/PoolParty/sparql/AustrianSkiTeam> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/austrian_ski_racers> .
+
+<http://vocabulary.semantic-web.at/PoolParty/sparql/OpenData> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/open-data-thesaurus> .
+
+<http://vocabulary.semantic-web.at/PoolParty/sparql/semweb> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/socialsemweb-thesaurus> .
+
+<http://vocabulary.wolterskluwer.de/PoolParty/sparql/arbeitsrecht> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/german-labor-law-thesaurus> .
+
+<http://vocabulary.wolterskluwer.de/PoolParty/sparql/court> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/courts-thesaurus> .
+
+<http://webconf.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-webconf> .
+
+<http://webenemasuno.linkeddata.es/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/webnmasunotraveler> .
+
+<http://webscience.rkbexplorer.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-webscience> .
+
+<http://wiki.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-wiki> .
+
+<http://wiktionary.dbpedia.org/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/wiktionary-dbpedia-org> .
+
+<http://wordnet.okfn.gr:8890/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/greek-wordnet> .
+
+<http://wordnet.rkbexplorer.com/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/rkb-explorer-wordnet> .
+
+<http://worldbank.270a.info/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/world-bank-linked-data> .
+
+<http://www.archivesdefrance.culture.gouv.fr/thesaurus/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/thesaurus-w> .
+
+<http://www.auth.gr/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/aristotle-university> .
+
+<http://www.icane.es/opendata/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/icane> .
+
+<http://www.lotico.com:3030/lotico> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/lotico> .
+
+<http://www.morelab.deusto.es/joseki/articles> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/morelab> .
+
+<http://www.open-biomed.org.uk/sparql/endpoint/bdgp_20081030> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/bdgp> .
+
+<http://www.open-biomed.org.uk/sparql/endpoint/flyatlas> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/openbiomed-flyatlas> .
+
+<http://www.open-biomed.org.uk/sparql/endpoint/flybase> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/flybase> .
+
+<http://www.open-biomed.org.uk/sparql/endpoint/flyted> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/flyted> .
+
+<http://www.open-biomed.org.uk/sparql/endpoint/tcm.> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/tcmgenedit_dataset> .
+
+<http://www.rdfabout.com/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/2000-us-census-rdf>,
+        <http://thedatahub.org/dataset/govtrack> .
+
+<http://www.rechercheisidore.fr/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/isidore> .
+
+<http://www.sparql.org/sparql.html> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/public-record-office-victoria-semantic-wiki> .
+
+<http://www.zaragoza.es/datosabiertos/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/zaragoza-datosabiertos> .
+
+<http://www.zaragoza.es/turruta/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/zaragoza-turismo> .
+
+<http://www4.wiwiss.fu-berlin.de/cordis/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-cordis> .
+
+<http://www4.wiwiss.fu-berlin.de/dailymed/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-dailymed> .
+
+<http://www4.wiwiss.fu-berlin.de/dblp/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-dblp> .
+
+<http://www4.wiwiss.fu-berlin.de/diseasome/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-diseasome> .
+
+<http://www4.wiwiss.fu-berlin.de/drugbank/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-drugbank> .
+
+<http://www4.wiwiss.fu-berlin.de/eccompetition/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-ec-competition> .
+
+<http://www4.wiwiss.fu-berlin.de/euraxess/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-euraxess> .
+
+<http://www4.wiwiss.fu-berlin.de/eures/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-eures> .
+
+<http://www4.wiwiss.fu-berlin.de/eurostat/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-eurostat> .
+
+<http://www4.wiwiss.fu-berlin.de/factbook/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/world-factbook-fu-berlin> .
+
+<http://www4.wiwiss.fu-berlin.de/gutendata/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-project-gutenberg> .
+
+<http://www4.wiwiss.fu-berlin.de/medicare/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-medicare> .
+
+<http://www4.wiwiss.fu-berlin.de/sider/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-sider> .
+
+<http://www4.wiwiss.fu-berlin.de/stitch/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/fu-berlin-stitch> .
+
+<http://xula.eagle-i.net/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-xula> .
+
+<http://zbw.eu/beta/sparql/stw/query> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/stw-thesaurus-for-economics> .
+
+<http://zhishi.me/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/zhishi-me> .
+
+<https://data.ox.ac.uk/sparql/> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/oxpoints> .
+
+<https://eagle-i.ea.vanderbilt.edu/sparqler/sparql> a ns1:Endpoint ;
+    ns1:hasDataset <http://thedatahub.org/dataset/eagle-i-vanderbilt> .
+
+<http://thedatahub.org/dataset/2000-us-census-rdf> a ns1:Dataset ;
+    rdfs:label "2000 U.S. Census in RDF (rdfabout.com)" .
+
+<http://thedatahub.org/dataset/aemet> a ns1:Dataset ;
+    rdfs:label "AEMET metereological dataset" .
+
+<http://thedatahub.org/dataset/agris> a ns1:Dataset ;
+    rdfs:label "AGRIS" .
+
+<http://thedatahub.org/dataset/agrovoc-skos> a ns1:Dataset ;
+    rdfs:label "AGROVOC " .
+
+<http://thedatahub.org/dataset/aksworg> a ns1:Dataset ;
+    rdfs:label "aksw.org Research Group dataset" .
+
+<http://thedatahub.org/dataset/allie-abbreviation-and-long-form-database-in-life-science> a ns1:Dataset ;
+    rdfs:label "Allie Abbreviation And Long Form Database in Life Science" .
+
+<http://thedatahub.org/dataset/alpino-rdf> a ns1:Dataset ;
+    rdfs:label "ALPINO RDF Treebank" .
+
+<http://thedatahub.org/dataset/amsterdam-museum-as-edm-lod> a ns1:Dataset ;
+    rdfs:label "Amsterdam Museum as Linked Open Data in the Europeana Data Model" .
+
+<http://thedatahub.org/dataset/archiveshub-linkeddata> a ns1:Dataset ;
+    rdfs:label "Archives Hub Linked Data" .
+
+<http://thedatahub.org/dataset/aristotle-university> a ns1:Dataset ;
+    rdfs:label "Aristotle University" .
+
+<http://thedatahub.org/dataset/arrayexpress-e-afmx-1> a ns1:Dataset ;
+    rdfs:label "Transcription profiling of human, chimp and mouse brain" .
+
+<http://thedatahub.org/dataset/arrayexpress_e-mtab-104> a ns1:Dataset ;
+    rdfs:label "Transcription profiling of rat bladder after inoculation with bladder cancer cells" .
+
+<http://thedatahub.org/dataset/asn-us> a ns1:Dataset ;
+    rdfs:label "ASN:US" .
+
+<http://thedatahub.org/dataset/austrian_ski_racers> a ns1:Dataset ;
+    rdfs:label "Alpine Ski Racers of Austria" .
+
+<http://thedatahub.org/dataset/b3kat> a ns1:Dataset ;
+    rdfs:label "B3Kat - Library Union Catalogues of Bavaria, Berlin and Brandenburg" .
+
+<http://thedatahub.org/dataset/bbc-music> a ns1:Dataset ;
+    rdfs:label "BBC Music" .
+
+<http://thedatahub.org/dataset/bbc-programmes> a ns1:Dataset ;
+    rdfs:label "BBC Programmes" .
+
+<http://thedatahub.org/dataset/bbc-wildlife-finder> a ns1:Dataset ;
+    rdfs:label "BBC Wildlife Finder" .
+
+<http://thedatahub.org/dataset/bdgp> a ns1:Dataset ;
+    rdfs:label "Bdgp" .
+
+<http://thedatahub.org/dataset/beneficiaries-of-the-european-commission> a ns1:Dataset ;
+    rdfs:label "EU: fintrans.publicdata.eu" .
+
+<http://thedatahub.org/dataset/bfs-linked-data> a ns1:Dataset ;
+    rdfs:label "Bundesamt für Statistik (BFS) - Swiss Federal Statistical Office (FSO) Linked Data" .
+
+<http://thedatahub.org/dataset/bibbase> a ns1:Dataset ;
+    rdfs:label "BibBase" .
+
+<http://thedatahub.org/dataset/bible-ontology> a ns1:Dataset ;
+    rdfs:label "Bible Ontology" .
+
+<http://thedatahub.org/dataset/bio2rdf-affymetrix> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::Affymetrix" .
+
+<http://thedatahub.org/dataset/bio2rdf-biocarta> a ns1:Dataset ;
+    rdfs:label "Bio2RDF - BioCarta" .
+
+<http://thedatahub.org/dataset/bio2rdf-biocyc> a ns1:Dataset ;
+    rdfs:label "Bio2RDF - BioCYC" .
+
+<http://thedatahub.org/dataset/bio2rdf-biomodels> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::biomodels" .
+
+<http://thedatahub.org/dataset/bio2rdf-cas> a ns1:Dataset ;
+    rdfs:label "CAS" .
+
+<http://thedatahub.org/dataset/bio2rdf-chebi> a ns1:Dataset ;
+    rdfs:label "Bio2RDF :: ChEBI" .
+
+<http://thedatahub.org/dataset/bio2rdf-chembl> a ns1:Dataset ;
+    rdfs:label "Bio2RDF - ChEMBL" .
+
+<http://thedatahub.org/dataset/bio2rdf-ctd> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::CTD" .
+
+<http://thedatahub.org/dataset/bio2rdf-dbpedia> a ns1:Dataset ;
+    rdfs:label "Bio2RDF - DBPedia" .
+
+<http://thedatahub.org/dataset/bio2rdf-drugbank> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::Drugbank" .
+
+<http://thedatahub.org/dataset/bio2rdf-genbank> a ns1:Dataset ;
+    rdfs:label "Bio2RDF - GenBank" .
+
+<http://thedatahub.org/dataset/bio2rdf-goa> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::Gene Ontology Annotations" .
+
+<http://thedatahub.org/dataset/bio2rdf-hgnc> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::HGNC" .
+
+<http://thedatahub.org/dataset/bio2rdf-hhpid> a ns1:Dataset ;
+    rdfs:label "BIO2RDF::HHPID" .
+
+<http://thedatahub.org/dataset/bio2rdf-homologene> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::HomoloGene" .
+
+<http://thedatahub.org/dataset/bio2rdf-inoh> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::INOH" .
+
+<http://thedatahub.org/dataset/bio2rdf-interpro> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::InterPro" .
+
+<http://thedatahub.org/dataset/bio2rdf-ipi> a ns1:Dataset ;
+    rdfs:label "Bio2RDF - IPI" .
+
+<http://thedatahub.org/dataset/bio2rdf-iproclass> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::IProClass" .
+
+<http://thedatahub.org/dataset/bio2rdf-kegg-drug> a ns1:Dataset ;
+    rdfs:label "KEGG Drug" .
+
+<http://thedatahub.org/dataset/bio2rdf-kegg-enzyme> a ns1:Dataset ;
+    rdfs:label "KEGG Enzyme" .
+
+<http://thedatahub.org/dataset/bio2rdf-kegg-glycan> a ns1:Dataset ;
+    rdfs:label "KEGG Glycan" .
+
+<http://thedatahub.org/dataset/bio2rdf-kegg-pathway> a ns1:Dataset ;
+    rdfs:label "KEGG Pathway" .
+
+<http://thedatahub.org/dataset/bio2rdf-kegg-reaction> a ns1:Dataset ;
+    rdfs:label "KEGG Reaction" .
+
+<http://thedatahub.org/dataset/bio2rdf-mgi> a ns1:Dataset ;
+    rdfs:label "Mouse Genome Database (MGD) from Mouse Genome Informatics (MGI)" .
+
+<http://thedatahub.org/dataset/bio2rdf-ncbigene> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::NCBI Gene" .
+
+<http://thedatahub.org/dataset/bio2rdf-obo> a ns1:Dataset ;
+    rdfs:label "OBO" .
+
+<http://thedatahub.org/dataset/bio2rdf-omim> a ns1:Dataset ;
+    rdfs:label "Bio2RDF::OMIM" .
+
+<http://thedatahub.org/dataset/bio2rdf-pdb> a ns1:Dataset ;
+    rdfs:label "PDB" .
+
+<http://thedatahub.org/dataset/bio2rdf-pfam> a ns1:Dataset ;
+    rdfs:label "Pfam" .
+
+<http://thedatahub.org/dataset/bio2rdf-prodom> a ns1:Dataset ;
+    rdfs:label "ProDom" .
+
+<http://thedatahub.org/dataset/bio2rdf-prosite> a ns1:Dataset ;
+    rdfs:label "PROSITE" .
+
+<http://thedatahub.org/dataset/bio2rdf-pubchem> a ns1:Dataset ;
+    rdfs:label "PubChem" .
+
+<http://thedatahub.org/dataset/bio2rdf-pubmed> a ns1:Dataset ;
+    rdfs:label "PubMed" .
+
+<http://thedatahub.org/dataset/bio2rdf-reactome> a ns1:Dataset ;
+    rdfs:label "Reactome" .
+
+<http://thedatahub.org/dataset/bio2rdf-sgd> a ns1:Dataset ;
+    rdfs:label "Saccharomyces Genome Database" .
+
+<http://thedatahub.org/dataset/bio2rdf-unists> a ns1:Dataset ;
+    rdfs:label "UniSTS" .
+
+<http://thedatahub.org/dataset/biographical-directory-of-the-united-states-congress> a ns1:Dataset ;
+    rdfs:label "Biographical Directory of the United States Congress" .
+
+<http://thedatahub.org/dataset/biolit> a ns1:Dataset ;
+    rdfs:label "A Short Biographical Dictionary of English Literature (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/bizkaisense> a ns1:Dataset ;
+    rdfs:label "BizkaiSense" .
+
+<http://thedatahub.org/dataset/bluk-bnb> a ns1:Dataset ;
+    rdfs:label "British National Bibliography (BNB) - Linked Open Data" .
+
+<http://thedatahub.org/dataset/bricklink> a ns1:Dataset ;
+    rdfs:label "Bricklink" .
+
+<http://thedatahub.org/dataset/british-museum-collection> a ns1:Dataset ;
+    rdfs:label "British Museum Collection" .
+
+<http://thedatahub.org/dataset/bundestagnebeneinkuenfte> a ns1:Dataset ;
+    rdfs:label "BundestagNebeneinkuenfte" .
+
+<http://thedatahub.org/dataset/business-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "business.data.gov.uk" .
+
+<http://thedatahub.org/dataset/cablegate> a ns1:Dataset ;
+    rdfs:label "cablegate" .
+
+<http://thedatahub.org/dataset/camera-deputati-linked-data> a ns1:Dataset ;
+    rdfs:label "Linked Open Data Camera dei deputati" .
+
+<http://thedatahub.org/dataset/cap-italy-rdf> a ns1:Dataset ;
+    rdfs:label "Postal codes Italy (LinkedOpenData.it)" .
+
+<http://thedatahub.org/dataset/catalogus-professorum-lipsiensis> a ns1:Dataset ;
+    rdfs:label "Catalogus Professorum Lipsiensis" .
+
+<http://thedatahub.org/dataset/chebi> a ns1:Dataset ;
+    rdfs:label "Chemical Entities of Biological Interest (ChEBI)" .
+
+<http://thedatahub.org/dataset/ckan> a ns1:Dataset ;
+    rdfs:label "Comprehensive Knowledge Archive Network" .
+
+<http://thedatahub.org/dataset/clean-energy-data-reegle> a ns1:Dataset ;
+    rdfs:label "Linked Clean Energy Data (reegle.info)" .
+
+<http://thedatahub.org/dataset/coins-openuplabs> a ns1:Dataset ;
+    rdfs:label "OpenUpLabs COINS" .
+
+<http://thedatahub.org/dataset/combined-nomenclature-2012> a ns1:Dataset ;
+    rdfs:label "CN  2012" .
+
+<http://thedatahub.org/dataset/copac-library-catalogue> a ns1:Dataset ;
+    rdfs:label "Copac: union catalogue of major University, Specialist, and National Libraries in the UK and Ireland" .
+
+<http://thedatahub.org/dataset/core> a ns1:Dataset ;
+    rdfs:label "CORE - Semantic Similarity of Open Access publications" .
+
+<http://thedatahub.org/dataset/corscheck> a ns1:Dataset ;
+    rdfs:label "CORS Check - HTTP Header Logs for Linked Open Data" .
+
+<http://thedatahub.org/dataset/courts-thesaurus> a ns1:Dataset ;
+    rdfs:label "Courts thesaurus" .
+
+<http://thedatahub.org/dataset/cpa-2008> a ns1:Dataset ;
+    rdfs:label "CPA 2008" .
+
+<http://thedatahub.org/dataset/cpc-2008> a ns1:Dataset ;
+    rdfs:label "CPC 2008" .
+
+<http://thedatahub.org/dataset/cpv-2003> a ns1:Dataset ;
+    rdfs:label "CPV  2003" .
+
+<http://thedatahub.org/dataset/cpv-2008> a ns1:Dataset ;
+    rdfs:label "CPV 2008" .
+
+<http://thedatahub.org/dataset/crowdsourcing-fb> a ns1:Dataset ;
+    rdfs:label "crowdsourcing-fb" .
+
+<http://thedatahub.org/dataset/crystal-eye> a ns1:Dataset ;
+    rdfs:label "Crystal Eye: Aggregated Crystallographic Data" .
+
+<http://thedatahub.org/dataset/ctic-public-dataset> a ns1:Dataset ;
+    rdfs:label "CTIC Public Dataset Catalogs" .
+
+<http://thedatahub.org/dataset/culturalinkeddata> a ns1:Dataset ;
+    rdfs:label "CulturaLinkedData" .
+
+<http://thedatahub.org/dataset/data-cnr-it> a ns1:Dataset ;
+    rdfs:label "Open Data from the Italian National Research Council" .
+
+<http://thedatahub.org/dataset/data-gov> a ns1:Dataset ;
+    rdfs:label "Data.gov" .
+
+<http://thedatahub.org/dataset/data-gov-ie> a ns1:Dataset ;
+    rdfs:label "DataGovIE - Irish Government Data" .
+
+<http://thedatahub.org/dataset/data-incubator-climb> a ns1:Dataset ;
+    rdfs:label "Climb Dataincubator" .
+
+<http://thedatahub.org/dataset/data-incubator-discogs> a ns1:Dataset ;
+    rdfs:label "Discogs in RDF" .
+
+<http://thedatahub.org/dataset/data-incubator-metoffice> a ns1:Dataset ;
+    rdfs:label "Metoffice Weather Forecasts" .
+
+<http://thedatahub.org/dataset/data-incubator-moseley> a ns1:Dataset ;
+    rdfs:label "Moseley Folk Festival Data" .
+
+<http://thedatahub.org/dataset/data-incubator-musicbrainz> a ns1:Dataset ;
+    rdfs:label "Data Incubator: MusicBrainz" .
+
+<http://thedatahub.org/dataset/data-incubator-nasa> a ns1:Dataset ;
+    rdfs:label "NASA Space Flight & Astronaut data in RDF" .
+
+<http://thedatahub.org/dataset/data-incubator-our-airports> a ns1:Dataset ;
+    rdfs:label "Airport data from Our Airports published as RDF" .
+
+<http://thedatahub.org/dataset/data-incubator-pokedex> a ns1:Dataset ;
+    rdfs:label "Pokedex data in RDF" .
+
+<http://thedatahub.org/dataset/data-incubator-smcjournals> a ns1:Dataset ;
+    rdfs:label "Scottish Mountaineering Council Journals Issues 1-36" .
+
+<http://thedatahub.org/dataset/data-open-ac-uk> a ns1:Dataset ;
+    rdfs:label "data.open.ac.uk, Linked Data from the Open University" .
+
+<http://thedatahub.org/dataset/data-southampton-ac-uk> a ns1:Dataset ;
+    rdfs:label "data.southampton.ac.uk with SPARQL endpoint" .
+
+<http://thedatahub.org/dataset/datos-bcn-cl> a ns1:Dataset ;
+    rdfs:label "Datos.bcn.cl" .
+
+<http://thedatahub.org/dataset/datos-bne-es> a ns1:Dataset ;
+    rdfs:label "datos.bne.es" .
+
+<http://thedatahub.org/dataset/dbnary> a ns1:Dataset ;
+    rdfs:label "dbnary" .
+
+<http://thedatahub.org/dataset/dbpedia> a ns1:Dataset ;
+    rdfs:label "DBpedia" .
+
+<http://thedatahub.org/dataset/dbpedia-de> a ns1:Dataset ;
+    rdfs:label "DBpedia in German" .
+
+<http://thedatahub.org/dataset/dbpedia-el> a ns1:Dataset ;
+    rdfs:label "DBpedia in Greek" .
+
+<http://thedatahub.org/dataset/dbpedia-eu> a ns1:Dataset ;
+    rdfs:label "DBpedia in Basque" .
+
+<http://thedatahub.org/dataset/dbpedia-fr> a ns1:Dataset ;
+    rdfs:label "DBpedia in French" .
+
+<http://thedatahub.org/dataset/dbpedia-ja> a ns1:Dataset ;
+    rdfs:label "DBpedia in Japanese" .
+
+<http://thedatahub.org/dataset/dbpedia-live> a ns1:Dataset ;
+    rdfs:label "DBpedia-Live" .
+
+<http://thedatahub.org/dataset/dbpedia-nl> a ns1:Dataset ;
+    rdfs:label "DBpedia in Dutch" .
+
+<http://thedatahub.org/dataset/dbpedia-pt> a ns1:Dataset ;
+    rdfs:label "DBpedia in Portuguese" .
+
+<http://thedatahub.org/dataset/dbtune-classical> a ns1:Dataset ;
+    rdfs:label "DBTune.org/classical" .
+
+<http://thedatahub.org/dataset/dbtune-john-peel-sessions> a ns1:Dataset ;
+    rdfs:label "DBTune.org John Peel sessions RDF server" .
+
+<http://thedatahub.org/dataset/dbtune-magnatune> a ns1:Dataset ;
+    rdfs:label "DBTune.org Magnatune RDF server" .
+
+<http://thedatahub.org/dataset/dbtune-musicbrainz> a ns1:Dataset ;
+    rdfs:label "DBTune.org Musicbrainz D2R Server" .
+
+<http://thedatahub.org/dataset/dbtune-myspace> a ns1:Dataset ;
+    rdfs:label "DBTune.org MySpace RDF Service" .
+
+<http://thedatahub.org/dataset/dclg-openuplabs> a ns1:Dataset ;
+    rdfs:label "OpenUpLabs DCLG" .
+
+<http://thedatahub.org/dataset/de-budget> a ns1:Dataset ;
+    rdfs:label "Germany - Bundesministerium der Finanzen - Budget" .
+
+<http://thedatahub.org/dataset/deutsche-biographie> a ns1:Dataset ;
+    rdfs:label "Deutsche Biographie" .
+
+<http://thedatahub.org/dataset/dewey_decimal_classification> a ns1:Dataset ;
+    rdfs:label "Dewey Decimal Classification (DDC)" .
+
+<http://thedatahub.org/dataset/dimitros-net> a ns1:Dataset ;
+    rdfs:label "dimitros.net" .
+
+<http://thedatahub.org/dataset/drug-data-hifm> a ns1:Dataset ;
+    rdfs:label "Drug Data from the Health Insurance Fund of Macedonia" .
+
+<http://thedatahub.org/dataset/dutch-national-regulations-metalex> a ns1:Dataset ;
+    rdfs:label "MetaLex Document Server" .
+
+<http://thedatahub.org/dataset/eagle-i-alaska> a ns1:Dataset ;
+    rdfs:label "eagle-i @ University of Alaska Fairbanks" .
+
+<http://thedatahub.org/dataset/eagle-i-cau> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Clark Atlanta University" .
+
+<http://thedatahub.org/dataset/eagle-i-ccny-cuny> a ns1:Dataset ;
+    rdfs:label "eagle-i @ The City College of New York" .
+
+<http://thedatahub.org/dataset/eagle-i-cdrewu> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Charles R. Drew University" .
+
+<http://thedatahub.org/dataset/eagle-i-dartmouth> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Dartmouth College" .
+
+<http://thedatahub.org/dataset/eagle-i-famu> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Florida Agricultural and Mechanical University" .
+
+<http://thedatahub.org/dataset/eagle-i-harvard> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Harvard University" .
+
+<http://thedatahub.org/dataset/eagle-i-hawaii> a ns1:Dataset ;
+    rdfs:label "eagle-i @ University of Hawai’i at Mānoa" .
+
+<http://thedatahub.org/dataset/eagle-i-howard> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Howard University" .
+
+<http://thedatahub.org/dataset/eagle-i-hunter-cuny> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Hunter College" .
+
+<http://thedatahub.org/dataset/eagle-i-jsu> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Jackson State University" .
+
+<http://thedatahub.org/dataset/eagle-i-meharry> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Meharry Medical College" .
+
+<http://thedatahub.org/dataset/eagle-i-montana> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Montana State University" .
+
+<http://thedatahub.org/dataset/eagle-i-msm> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Morehouse School of Medicine" .
+
+<http://thedatahub.org/dataset/eagle-i-ohsu> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Oregon Health and Science University" .
+
+<http://thedatahub.org/dataset/eagle-i-psm> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Ponce School of Medicine" .
+
+<http://thedatahub.org/dataset/eagle-i-tsu> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Texas Southern University" .
+
+<http://thedatahub.org/dataset/eagle-i-tuskegee> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Tuskegee University" .
+
+<http://thedatahub.org/dataset/eagle-i-uccaribe> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Universidad Central del Caribe " .
+
+<http://thedatahub.org/dataset/eagle-i-upr> a ns1:Dataset ;
+    rdfs:label "eagle-i@ University of Puerto Rico - Medical Sciences Campus " .
+
+<http://thedatahub.org/dataset/eagle-i-utep> a ns1:Dataset ;
+    rdfs:label "eagle-i @ University of Texas at El Paso" .
+
+<http://thedatahub.org/dataset/eagle-i-utsa> a ns1:Dataset ;
+    rdfs:label "eagle-i @ University of Texas at San Antonio" .
+
+<http://thedatahub.org/dataset/eagle-i-vanderbilt> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Vanderbilt University" .
+
+<http://thedatahub.org/dataset/eagle-i-xula> a ns1:Dataset ;
+    rdfs:label "eagle-i @ Xavier University of Louisiana" .
+
+<http://thedatahub.org/dataset/ecb-linked-data> a ns1:Dataset ;
+    rdfs:label "European Central Bank (ECB) Linked Data" .
+
+<http://thedatahub.org/dataset/ecb-statistics-linked-data> a ns1:Dataset ;
+    rdfs:label "European Central Bank Statistics (PublicData.eu)" .
+
+<http://thedatahub.org/dataset/ecco-tcp-linked-data> a ns1:Dataset ;
+    rdfs:label "ECCO-TCP Eighteenth Century Texts Linked Data" .
+
+<http://thedatahub.org/dataset/education-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "education.data.gov.uk" .
+
+<http://thedatahub.org/dataset/education-openuplabs> a ns1:Dataset ;
+    rdfs:label "OpenUpLabs Education" .
+
+<http://thedatahub.org/dataset/educationalprograms_sisvu> a ns1:Dataset ;
+    rdfs:label "Educational programs - SISVU" .
+
+<http://thedatahub.org/dataset/eea> a ns1:Dataset ;
+    rdfs:label "European Environment Agency Published Products" .
+
+<http://thedatahub.org/dataset/eea-rod> a ns1:Dataset ;
+    rdfs:label "EEA Reporting Obligations Database" .
+
+<http://thedatahub.org/dataset/eea-vocabularies> a ns1:Dataset ;
+    rdfs:label "EEA Vocabularies" .
+
+<http://thedatahub.org/dataset/ege-university-linked-open-data> a ns1:Dataset ;
+    rdfs:label "Ege University Linked Open Data" .
+
+<http://thedatahub.org/dataset/english-index-of-multiple-deprivation-ranking-2010> a ns1:Dataset ;
+    rdfs:label "English Index of Multiple Deprivation Ranking 2010" .
+
+<http://thedatahub.org/dataset/english-index-of-multiple-deprivation-score-2010> a ns1:Dataset ;
+    rdfs:label "English Index of Multiple Deprivation Score 2010" .
+
+<http://thedatahub.org/dataset/english-indices-of-multiple-deprivation> a ns1:Dataset ;
+    rdfs:label "English Indices of Multiple Deprivation" .
+
+<http://thedatahub.org/dataset/englishheritage_places> a ns1:Dataset ;
+    rdfs:label "English Heritage Places" .
+
+<http://thedatahub.org/dataset/enipedia> a ns1:Dataset ;
+    rdfs:label "Enipedia - Energy Industry Data" .
+
+<http://thedatahub.org/dataset/environment-agency-bathing-water-quality> a ns1:Dataset ;
+    rdfs:label "Environment Agency Bathing Water Quality" .
+
+<http://thedatahub.org/dataset/environment-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "environment.data.gov.uk" .
+
+<http://thedatahub.org/dataset/environmental-applications-reference-thesaurus> a ns1:Dataset ;
+    rdfs:label "EARTh" .
+
+<http://thedatahub.org/dataset/epo> a ns1:Dataset ;
+    rdfs:label "European Patent Office (EPO)" .
+
+<http://thedatahub.org/dataset/eprints-harvest-rkbexplorer> a ns1:Dataset ;
+    rdfs:label "ePrints Harvest (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/eprtr> a ns1:Dataset ;
+    rdfs:label "European Pollutant Release and Transfer Register (E-PRTR)" .
+
+<http://thedatahub.org/dataset/eu-agencies-bodies> a ns1:Dataset ;
+    rdfs:label "EU Agencies and decentralized bodies (Agencies)" .
+
+<http://thedatahub.org/dataset/eu-parliament-media> a ns1:Dataset ;
+    rdfs:label "EU Parliament Media Library" .
+
+<http://thedatahub.org/dataset/eu-who-is-who> a ns1:Dataset ;
+    rdfs:label "EU Who Is Who" .
+
+<http://thedatahub.org/dataset/eumida-linked-data> a ns1:Dataset ;
+    rdfs:label "EUMIDA as Linked Data" .
+
+<http://thedatahub.org/dataset/eunis> a ns1:Dataset ;
+    rdfs:label "European Nature Information System" .
+
+<http://thedatahub.org/dataset/eur-lex-rdf> a ns1:Dataset ;
+    rdfs:label "EUR-Lex as Linked Data" .
+
+<http://thedatahub.org/dataset/eurobarometer-standard> a ns1:Dataset ;
+    rdfs:label "Standard Eurobarometer " .
+
+<http://thedatahub.org/dataset/european-election-results> a ns1:Dataset ;
+    rdfs:label "European Election Results" .
+
+<http://thedatahub.org/dataset/europeana-lod> a ns1:Dataset ;
+    rdfs:label "Europeana Linked Open Data" .
+
+<http://thedatahub.org/dataset/eurovoc-in-skos> a ns1:Dataset ;
+    rdfs:label "EUROVOC in SKOS" .
+
+<http://thedatahub.org/dataset/euscreen> a ns1:Dataset ;
+    rdfs:label "European Television Heritage" .
+
+<http://thedatahub.org/dataset/eutc-productions> a ns1:Dataset ;
+    rdfs:label "Edinburgh University Theatre Company Productions" .
+
+<http://thedatahub.org/dataset/event-media> a ns1:Dataset ;
+    rdfs:label "EventMedia" .
+
+<http://thedatahub.org/dataset/eventseer> a ns1:Dataset ;
+    rdfs:label "Eventseer" .
+
+<http://thedatahub.org/dataset/fact-forge> a ns1:Dataset ;
+    rdfs:label "Fact Forge" .
+
+<http://thedatahub.org/dataset/fanhubz> a ns1:Dataset ;
+    rdfs:label "FanHubz" .
+
+<http://thedatahub.org/dataset/fao-linked-data> a ns1:Dataset ;
+    rdfs:label "Food and Agriculture Organization of the United Nations (FAO) Linked Data" .
+
+<http://thedatahub.org/dataset/farmbio-chembl> a ns1:Dataset ;
+    rdfs:label "ChEMBL-RDF (@ Uppsala University)" .
+
+<http://thedatahub.org/dataset/farmers-markets-geographic-data-united-states> a ns1:Dataset ;
+    rdfs:label "Farmers Markets Geographic Data (United States)" .
+
+<http://thedatahub.org/dataset/federal-economic-rdf> a ns1:Dataset ;
+    rdfs:label "Federal Reserve Economic Data RDF" .
+
+<http://thedatahub.org/dataset/flybase> a ns1:Dataset ;
+    rdfs:label "Flybase" .
+
+<http://thedatahub.org/dataset/flyted> a ns1:Dataset ;
+    rdfs:label "Flyted" .
+
+<http://thedatahub.org/dataset/fu-berlin-cordis> a ns1:Dataset ;
+    rdfs:label "Community Research and Development Information Service (CORDIS)" .
+
+<http://thedatahub.org/dataset/fu-berlin-dailymed> a ns1:Dataset ;
+    rdfs:label "DailyMed" .
+
+<http://thedatahub.org/dataset/fu-berlin-dblp> a ns1:Dataset ;
+    rdfs:label "DBLP Bibliography Database in RDF (FU Berlin)" .
+
+<http://thedatahub.org/dataset/fu-berlin-diseasome> a ns1:Dataset ;
+    rdfs:label "Diseasome" .
+
+<http://thedatahub.org/dataset/fu-berlin-drugbank> a ns1:Dataset ;
+    rdfs:label "DrugBank" .
+
+<http://thedatahub.org/dataset/fu-berlin-ec-competition> a ns1:Dataset ;
+    rdfs:label "European Commission Competition data set (FU Berlin)" .
+
+<http://thedatahub.org/dataset/fu-berlin-euraxess> a ns1:Dataset ;
+    rdfs:label "EURAXESS - Researchers in Motion" .
+
+<http://thedatahub.org/dataset/fu-berlin-eures> a ns1:Dataset ;
+    rdfs:label "European Employment Services (EURES)" .
+
+<http://thedatahub.org/dataset/fu-berlin-eurostat> a ns1:Dataset ;
+    rdfs:label "Eurostat in RDF (FU Berlin)" .
+
+<http://thedatahub.org/dataset/fu-berlin-medicare> a ns1:Dataset ;
+    rdfs:label "MediCare" .
+
+<http://thedatahub.org/dataset/fu-berlin-project-gutenberg> a ns1:Dataset ;
+    rdfs:label "Project Gutenberg in RDF (FU Berlin)" .
+
+<http://thedatahub.org/dataset/fu-berlin-sider> a ns1:Dataset ;
+    rdfs:label "SIDER: Side Effect Resource" .
+
+<http://thedatahub.org/dataset/fu-berlin-stitch> a ns1:Dataset ;
+    rdfs:label "STITCH: Chemical-Protein Interactions" .
+
+<http://thedatahub.org/dataset/gemet> a ns1:Dataset ;
+    rdfs:label "GEneral Multilingual Environmental Thesaurus" .
+
+<http://thedatahub.org/dataset/geographic-openuplabs> a ns1:Dataset ;
+    rdfs:label "OpenUpLabs Geographic" .
+
+<http://thedatahub.org/dataset/geolinkeddata> a ns1:Dataset ;
+    rdfs:label "GeoLinkedData" .
+
+<http://thedatahub.org/dataset/geospecies> a ns1:Dataset ;
+    rdfs:label "GeoSpecies Knowledge Base" .
+
+<http://thedatahub.org/dataset/german-labor-law-thesaurus> a ns1:Dataset ;
+    rdfs:label "German labor law thesaurus" .
+
+<http://thedatahub.org/dataset/gesis-thesoz> a ns1:Dataset ;
+    rdfs:label "TheSoz Thesaurus for the Social Sciences (GESIS)" .
+
+<http://thedatahub.org/dataset/government-web-integration-for-linked-data> a ns1:Dataset ;
+    rdfs:label "GovWILD - Government Web Integration for Linked Data" .
+
+<http://thedatahub.org/dataset/govtrack> a ns1:Dataset ;
+    rdfs:label "GovTrack.us U.S Congress Legislative Data" .
+
+<http://thedatahub.org/dataset/greek-wordnet> a ns1:Dataset ;
+    rdfs:label "Greek Wordnet" .
+
+<http://thedatahub.org/dataset/grrp> a ns1:Dataset ;
+    rdfs:label "Accommodations in Piedmont (LinkedOpenData.it)" .
+
+<http://thedatahub.org/dataset/grrt> a ns1:Dataset ;
+    rdfs:label "Accommodations in Tuscany (LinkedOpenData.it)" .
+
+<http://thedatahub.org/dataset/hcls-knowledge-base> a ns1:Dataset ;
+    rdfs:label "HCLS Knowledge Base" .
+
+<http://thedatahub.org/dataset/hebis-bibliographic-resources> a ns1:Dataset ;
+    rdfs:label "HeBIS - Bibliographic Resources of the Library Union Catalogues of Hessen and parts of the Rhineland Palatinate" .
+
+<http://thedatahub.org/dataset/hedatuz> a ns1:Dataset ;
+    rdfs:label "Hedatuz" .
+
+<http://thedatahub.org/dataset/hellenic-fire-brigade> a ns1:Dataset ;
+    rdfs:label "Hellenic Fire Brigade" .
+
+<http://thedatahub.org/dataset/hellenic-police> a ns1:Dataset ;
+    rdfs:label "Hellenic Police" .
+
+<http://thedatahub.org/dataset/http-data-noticias-universia-net> a ns1:Dataset ;
+    rdfs:label "Noticias Universia" .
+
+<http://thedatahub.org/dataset/hud-library-usagedata> a ns1:Dataset ;
+    rdfs:label "University of Huddersfield -- Circulation and Recommendation Data" .
+
+<http://thedatahub.org/dataset/hungarian-national-library-catalog> a ns1:Dataset ;
+    rdfs:label "Hungarian National Library (NSZL) catalog" .
+
+<http://thedatahub.org/dataset/icane> a ns1:Dataset ;
+    rdfs:label "ICANE" .
+
+<http://thedatahub.org/dataset/ichoose> a ns1:Dataset ;
+    rdfs:label "ichoose" .
+
+<http://thedatahub.org/dataset/ids> a ns1:Dataset ;
+    rdfs:label "Intercontinental Dictionary Series" .
+
+<http://thedatahub.org/dataset/imf-linked-data> a ns1:Dataset ;
+    rdfs:label "International Monetary Fund (IMF) Linked Data" .
+
+<http://thedatahub.org/dataset/insemtives> a ns1:Dataset ;
+    rdfs:label "INSEMTIVES" .
+
+<http://thedatahub.org/dataset/integrated-human-geography-service-for-lod> a ns1:Dataset ;
+    rdfs:label "Integrated Human Geography Service for LOD by National Geographic Information Institute, Korea" .
+
+<http://thedatahub.org/dataset/intervalue> a ns1:Dataset ;
+    rdfs:label "intervalue" .
+
+<http://thedatahub.org/dataset/iserve> a ns1:Dataset ;
+    rdfs:label "iServe: Linked Services Registry" .
+
+<http://thedatahub.org/dataset/isic-v4> a ns1:Dataset ;
+    rdfs:label "ISIC V4" .
+
+<http://thedatahub.org/dataset/isidore> a ns1:Dataset ;
+    rdfs:label "Isidore" .
+
+<http://thedatahub.org/dataset/istat-immigration> a ns1:Dataset ;
+    rdfs:label "ISTAT Immigration (LinkedOpenData.it)" .
+
+<http://thedatahub.org/dataset/italian-public-schools-linkedopendata-it> a ns1:Dataset ;
+    rdfs:label "Italian public schools (LinkedOpenData.it)" .
+
+<http://thedatahub.org/dataset/iucr-acta-cryst-e> a ns1:Dataset ;
+    rdfs:label "Academic Bibliography data available from Acta Cryst E" .
+
+<http://thedatahub.org/dataset/jamendo-dbtune> a ns1:Dataset ;
+    rdfs:label "DBTune.org Jamendo RDF Server" .
+
+<http://thedatahub.org/dataset/jisc-cetis-directory> a ns1:Dataset ;
+    rdfs:label "JISC CETIS PROject Directory " .
+
+<http://thedatahub.org/dataset/jiscopenbib-bl_bnb-1> a ns1:Dataset ;
+    rdfs:label "JISC Open Bibliography British National Bibliography dataset" .
+
+<http://thedatahub.org/dataset/jita> a ns1:Dataset ;
+    rdfs:label "JITA Classification System of Library and Information Science" .
+
+<http://thedatahub.org/dataset/john-goodwins-family-tree> a ns1:Dataset ;
+    rdfs:label "John Goodwin's Family Tree" .
+
+<http://thedatahub.org/dataset/jrc-names> a ns1:Dataset ;
+    rdfs:label "JRC-Names" .
+
+<http://thedatahub.org/dataset/kallikratis-municipalities> a ns1:Dataset ;
+    rdfs:label "Kallikratis municipalities" .
+
+<http://thedatahub.org/dataset/kasabi-openflights-routes> a ns1:Dataset ;
+    rdfs:label "Openflights Routes" .
+
+<http://thedatahub.org/dataset/kdata> a ns1:Dataset ;
+    rdfs:label "kdata" .
+
+<http://thedatahub.org/dataset/knoesis-linked-sensor-data> a ns1:Dataset ;
+    rdfs:label "Linked Sensor Data (Kno.e.sis)" .
+
+<http://thedatahub.org/dataset/ktr> a ns1:Dataset ;
+    rdfs:label "Korean Traditional Recipes" .
+
+<http://thedatahub.org/dataset/kupkb> a ns1:Dataset ;
+    rdfs:label "Kidney and Urinary Pathway Knowledge Base" .
+
+<http://thedatahub.org/dataset/l3s-dblp> a ns1:Dataset ;
+    rdfs:label "DBLP in RDF (L3S)" .
+
+<http://thedatahub.org/dataset/lak-dataset> a ns1:Dataset ;
+    rdfs:label "Learning Analytics and Knowledge (LAK) Dataset" .
+
+<http://thedatahub.org/dataset/latc-linksets> a ns1:Dataset ;
+    rdfs:label "LATC Linksets" .
+
+<http://thedatahub.org/dataset/lcc> a ns1:Dataset ;
+    rdfs:label "Leipzig Corpora Collection (LCC)" .
+
+<http://thedatahub.org/dataset/legislation-openuplabs> a ns1:Dataset ;
+    rdfs:label "OpenUpLabs Legislation" .
+
+<http://thedatahub.org/dataset/lemonwordnet> a ns1:Dataset ;
+    rdfs:label "LemonWordNet" .
+
+<http://thedatahub.org/dataset/libris> a ns1:Dataset ;
+    rdfs:label "LIBRIS" .
+
+<http://thedatahub.org/dataset/libver> a ns1:Dataset ;
+    rdfs:label "Public Library of Veroia" .
+
+<http://thedatahub.org/dataset/lichfield-spending> a ns1:Dataset ;
+    rdfs:label "Lichfield District Council - Spending" .
+
+<http://thedatahub.org/dataset/linked-life-data> a ns1:Dataset ;
+    rdfs:label "Linked Life Data" .
+
+<http://thedatahub.org/dataset/linked-open-aalto-data-service> a ns1:Dataset ;
+    rdfs:label "Linked Open Aalto Data Service" .
+
+<http://thedatahub.org/dataset/linked-open-camera> a ns1:Dataset ;
+    rdfs:label "Linked Open Camera (LinkedOpenData.it)" .
+
+<http://thedatahub.org/dataset/linked-open-commerce> a ns1:Dataset ;
+    rdfs:label "Linked Open Commerce" .
+
+<http://thedatahub.org/dataset/linked-open-data-of-ecology> a ns1:Dataset ;
+    rdfs:label "Linked Open Data of Ecology" .
+
+<http://thedatahub.org/dataset/linked-open-senate> a ns1:Dataset ;
+    rdfs:label "Linked Open Senate (linkedopendata.it)" .
+
+<http://thedatahub.org/dataset/linked-open-vocabularies-lov> a ns1:Dataset ;
+    rdfs:label "Linked Open Vocabularies (LOV)" .
+
+<http://thedatahub.org/dataset/linked-structured-product-labels> a ns1:Dataset ;
+    rdfs:label "Linked Structured Product Labels" .
+
+<http://thedatahub.org/dataset/linked-user-feedback> a ns1:Dataset ;
+    rdfs:label "Linked User Feedback" .
+
+<http://thedatahub.org/dataset/linkedct> a ns1:Dataset ;
+    rdfs:label "LinkedCT" .
+
+<http://thedatahub.org/dataset/linkedfood> a ns1:Dataset ;
+    rdfs:label "Linked Food" .
+
+<http://thedatahub.org/dataset/linkedgeodata> a ns1:Dataset ;
+    rdfs:label "LinkedGeoData" .
+
+<http://thedatahub.org/dataset/linkedlccn> a ns1:Dataset ;
+    rdfs:label "LinkedLCCN" .
+
+<http://thedatahub.org/dataset/linkedmdb> a ns1:Dataset ;
+    rdfs:label "Linked Movie DataBase" .
+
+<http://thedatahub.org/dataset/linkedspending> a ns1:Dataset ;
+    rdfs:label "LinkedSpending: OpenSpending becomes Linked Open Data" .
+
+<http://thedatahub.org/dataset/lista-encabezamientos-materia> a ns1:Dataset ;
+    rdfs:label "Lista de  Encabezamientos de Materia as Linked Open Data" .
+
+<http://thedatahub.org/dataset/lobid-organisations> a ns1:Dataset ;
+    rdfs:label "lobid-organisations" .
+
+<http://thedatahub.org/dataset/lobid-resources> a ns1:Dataset ;
+    rdfs:label "lobid-Bibliographic Resources" .
+
+<http://thedatahub.org/dataset/lodac-bdls> a ns1:Dataset ;
+    rdfs:label "LODAC BDLS" .
+
+<http://thedatahub.org/dataset/lodrussia-math> a ns1:Dataset ;
+    rdfs:label "LODRussia Math" .
+
+<http://thedatahub.org/dataset/lodrussia-nano> a ns1:Dataset ;
+    rdfs:label "LODRussia Nano" .
+
+<http://thedatahub.org/dataset/lodum> a ns1:Dataset ;
+    rdfs:label "LODUM" .
+
+<http://thedatahub.org/dataset/lofd> a ns1:Dataset ;
+    rdfs:label "lofd" .
+
+<http://thedatahub.org/dataset/loius> a ns1:Dataset ;
+    rdfs:label "Linking Italian University Statistics Project" .
+
+<http://thedatahub.org/dataset/london-gazette> a ns1:Dataset ;
+    rdfs:label "The London Gazette - Gazettes Data" .
+
+<http://thedatahub.org/dataset/lotico> a ns1:Dataset ;
+    rdfs:label "Lotico" .
+
+<http://thedatahub.org/dataset/lower-layer-super-output-areas> a ns1:Dataset ;
+    rdfs:label "Lower Layer Super Output Areas" .
+
+<http://thedatahub.org/dataset/massobservationarchivecatalogue> a ns1:Dataset ;
+    rdfs:label "Mass Observation Archive catalogue " .
+
+<http://thedatahub.org/dataset/meducator> a ns1:Dataset ;
+    rdfs:label "mEducator: Linked Educational Resources" .
+
+<http://thedatahub.org/dataset/mlsa> a ns1:Dataset ;
+    rdfs:label " MLSA - A Multi-layered Reference Corpus for German Sentiment Analysis" .
+
+<http://thedatahub.org/dataset/morelab> a ns1:Dataset ;
+    rdfs:label "morelab" .
+
+<http://thedatahub.org/dataset/msc> a ns1:Dataset ;
+    rdfs:label "Mathematics Subject Classification" .
+
+<http://thedatahub.org/dataset/muninn-world-war-i> a ns1:Dataset ;
+    rdfs:label "Muninn World War I" .
+
+<http://thedatahub.org/dataset/museums-in-italy> a ns1:Dataset ;
+    rdfs:label "Italian Museums" .
+
+<http://thedatahub.org/dataset/musicnet_codex> a ns1:Dataset ;
+    rdfs:label "MusicNet Codex" .
+
+<http://thedatahub.org/dataset/my-experiment> a ns1:Dataset ;
+    rdfs:label "myExperiment" .
+
+<http://thedatahub.org/dataset/my-family-lineage> a ns1:Dataset ;
+    rdfs:label "My Family Lineage" .
+
+<http://thedatahub.org/dataset/n-lex-as-linked-data> a ns1:Dataset ;
+    rdfs:label "N-Lex as Linked Data" .
+
+<http://thedatahub.org/dataset/naics-2007> a ns1:Dataset ;
+    rdfs:label "NAICS 2007" .
+
+<http://thedatahub.org/dataset/naics-2012> a ns1:Dataset ;
+    rdfs:label "NAICS 2012" .
+
+<http://thedatahub.org/dataset/national-diet-library-authorities> a ns1:Dataset ;
+    rdfs:label "Web NDL Authorities - National Diet Library of Japan" .
+
+<http://thedatahub.org/dataset/national-diet-library-subject-headings> a ns1:Dataset ;
+    rdfs:label "National Diet Library of Japan subject headings" .
+
+<http://thedatahub.org/dataset/near> a ns1:Dataset ;
+    rdfs:label "Near" .
+
+<http://thedatahub.org/dataset/neurocommons_text_mining_pilot> a ns1:Dataset ;
+    rdfs:label "Neurocommons text mining pilot" .
+
+<http://thedatahub.org/dataset/nobelprizes> a ns1:Dataset ;
+    rdfs:label "Nobel Prizes" .
+
+<http://thedatahub.org/dataset/nomenclator-asturias> a ns1:Dataset ;
+    rdfs:label "Nomenclator Asturias" .
+
+<http://thedatahub.org/dataset/normesh> a ns1:Dataset ;
+    rdfs:label "Norwegian Medical Subject Headings (MeSH)" .
+
+<http://thedatahub.org/dataset/norwegian-geo-divisions> a ns1:Dataset ;
+    rdfs:label "Norwegian geo-divisions" .
+
+<http://thedatahub.org/dataset/npg> a ns1:Dataset ;
+    rdfs:label "Nature Publishing Group - ALL" .
+
+<http://thedatahub.org/dataset/ntnusc> a ns1:Dataset ;
+    rdfs:label "NTNU special collections" .
+
+<http://thedatahub.org/dataset/nvd> a ns1:Dataset ;
+    rdfs:label "Norsk inndeling av vitenskapsdisipliner" .
+
+<http://thedatahub.org/dataset/nvs> a ns1:Dataset ;
+    rdfs:label "NERC Vocabulary Server 2.0" .
+
+<http://thedatahub.org/dataset/oceandrilling-codices> a ns1:Dataset ;
+    rdfs:label "Ocean Drilling - Codices" .
+
+<http://thedatahub.org/dataset/oceandrilling-dbseabed> a ns1:Dataset ;
+    rdfs:label "Ocean Drilling - dbSEABED" .
+
+<http://thedatahub.org/dataset/oceandrilling-forams> a ns1:Dataset ;
+    rdfs:label "Ocean Drilling - Forams" .
+
+<http://thedatahub.org/dataset/oceandrilling-janus> a ns1:Dataset ;
+    rdfs:label "Ocean Drilling - Janus LOD" .
+
+<http://thedatahub.org/dataset/oceandrilling-janusamp> a ns1:Dataset ;
+    rdfs:label "Ocean Drilling - Janus Age Models" .
+
+<http://thedatahub.org/dataset/oceandrilling-ldeo> a ns1:Dataset ;
+    rdfs:label "Ocean Drilling - LDEO log files as data (TEST leg 218 only)" .
+
+<http://thedatahub.org/dataset/odc-imd-rank-2007> a ns1:Dataset ;
+    rdfs:label "Index of Multiple Deprivation Ranking, 2007" .
+
+<http://thedatahub.org/dataset/odc-lsoa> a ns1:Dataset ;
+    rdfs:label "Open Data Communities - Lower layer Super Output Areas" .
+
+<http://thedatahub.org/dataset/odc-population-2005> a ns1:Dataset ;
+    rdfs:label "Estimated mid-year population 2005" .
+
+<http://thedatahub.org/dataset/oecd-linked-data> a ns1:Dataset ;
+    rdfs:label "Organisation for Economic Co-operation and Development (OECD) Linked Data" .
+
+<http://thedatahub.org/dataset/ogolod> a ns1:Dataset ;
+    rdfs:label "Orthology and Diseases Information - OGO" .
+
+<http://thedatahub.org/dataset/open-data-thesaurus> a ns1:Dataset ;
+    rdfs:label "Open Data Thesaurus" .
+
+<http://thedatahub.org/dataset/open-energy-info-wiki> a ns1:Dataset ;
+    rdfs:label "OpenEI - Open Energy Info" .
+
+<http://thedatahub.org/dataset/openbiomed-flyatlas> a ns1:Dataset ;
+    rdfs:label "flyatlas" .
+
+<http://thedatahub.org/dataset/openlink-lod-cache> a ns1:Dataset ;
+    rdfs:label "OpenLink Software LOD Cache" .
+
+<http://thedatahub.org/dataset/openmobilenetwork> a ns1:Dataset ;
+    rdfs:label "OpenMobileNetwork" .
+
+<http://thedatahub.org/dataset/opentox> a ns1:Dataset ;
+    rdfs:label "OpenTox" .
+
+<http://thedatahub.org/dataset/ordnance-survey-linked-data> a ns1:Dataset ;
+    rdfs:label "Ordnance Survey Linked Data" .
+
+<http://thedatahub.org/dataset/organic-edunet> a ns1:Dataset ;
+    rdfs:label "Organic Edunet Linked Open Data" .
+
+<http://thedatahub.org/dataset/osm-semantic-network> a ns1:Dataset ;
+    rdfs:label "OSM Semantic Network" .
+
+<http://thedatahub.org/dataset/ox-ac-uk-catalogue> a ns1:Dataset ;
+    rdfs:label "Dataset catalogue (University of Oxford)" .
+
+<http://thedatahub.org/dataset/ox-ac-uk-catalogue-metadata> a ns1:Dataset ;
+    rdfs:label "Dataset catalogue (University of Oxford)" .
+
+<http://thedatahub.org/dataset/ox-ac-uk-openmeters> a ns1:Dataset ;
+    rdfs:label "OpenMeters (University of Oxford)" .
+
+<http://thedatahub.org/dataset/ox-ac-uk-timeseries> a ns1:Dataset ;
+    rdfs:label "Time-series metadata (University of Oxford)" .
+
+<http://thedatahub.org/dataset/ox-ac-uk-vacancies> a ns1:Dataset ;
+    rdfs:label "Vacancies (University of Oxford)" .
+
+<http://thedatahub.org/dataset/ox-ac-uk-www-ox-ac-uk-events> a ns1:Dataset ;
+    rdfs:label "Events calendar for the University (University of Oxford)" .
+
+<http://thedatahub.org/dataset/oxpoints> a ns1:Dataset ;
+    rdfs:label "OxPoints (University of Oxford)" .
+
+<http://thedatahub.org/dataset/pali-english-lexicon> a ns1:Dataset ;
+    rdfs:label "Pali English Lexicon" .
+
+<http://thedatahub.org/dataset/patents-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "patents.data.gov.uk" .
+
+<http://thedatahub.org/dataset/prelex> a ns1:Dataset ;
+    rdfs:label "PreLex" .
+
+<http://thedatahub.org/dataset/prelinger_archives> a ns1:Dataset ;
+    rdfs:label "Prelinger Archives" .
+
+<http://thedatahub.org/dataset/printed-book-auction-catalogues> a ns1:Dataset ;
+    rdfs:label "English Language Books listed in Printed Book Auction Catalogues from 17th Century Holland" .
+
+<http://thedatahub.org/dataset/productdb> a ns1:Dataset ;
+    rdfs:label "ProductDB" .
+
+<http://thedatahub.org/dataset/provenanceweb> a ns1:Dataset ;
+    rdfs:label "provenanceweb" .
+
+<http://thedatahub.org/dataset/pscs-catalogue> a ns1:Dataset ;
+    rdfs:label "Product Scheme Classifications Catalogue" .
+
+<http://thedatahub.org/dataset/public-record-office-victoria-semantic-wiki> a ns1:Dataset ;
+    rdfs:label "Public Record Office Victoria Semantic Wiki" .
+
+<http://thedatahub.org/dataset/public-spending-in-greece> a ns1:Dataset ;
+    rdfs:label "Public Spending in Greece" .
+
+<http://thedatahub.org/dataset/publications-of-charles-university-in-prague> a ns1:Dataset ;
+    rdfs:label "Publications of Charles University in Prague" .
+
+<http://thedatahub.org/dataset/radatana> a ns1:Dataset ;
+    rdfs:label "Rådata nå! " .
+
+<http://thedatahub.org/dataset/raphaelresearchresource> a ns1:Dataset ;
+    rdfs:label "Raphael Research Resource" .
+
+<http://thedatahub.org/dataset/ravensburg-local-shopping-graph> a ns1:Dataset ;
+    rdfs:label "Ravensburg Local Shopping Graph" .
+
+<http://thedatahub.org/dataset/rechtspraak> a ns1:Dataset ;
+    rdfs:label "Rechtspraak.nl" .
+
+<http://thedatahub.org/dataset/reference-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "reference.data.gov.uk" .
+
+<http://thedatahub.org/dataset/renewable_energy_generators> a ns1:Dataset ;
+    rdfs:label "Renewable Energy Generators" .
+
+<http://thedatahub.org/dataset/research-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "research.data.gov.uk" .
+
+<http://thedatahub.org/dataset/revyu> a ns1:Dataset ;
+    rdfs:label "Revyu.com - Review Anything" .
+
+<http://thedatahub.org/dataset/rkb-explorer-acm> a ns1:Dataset ;
+    rdfs:label "Association for Computing Machinery (ACM) (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-budapest> a ns1:Dataset ;
+    rdfs:label "Budapest University of Technology and Economics (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-citeseer> a ns1:Dataset ;
+    rdfs:label "CiteSeer (Research Index) (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-cordis> a ns1:Dataset ;
+    rdfs:label "Community R&D Information Service (CORDIS) (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-courseware> a ns1:Dataset ;
+    rdfs:label "Resilient Computing Courseware (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-crime> a ns1:Dataset ;
+    rdfs:label "Street level crime reports for England and Wales" .
+
+<http://thedatahub.org/dataset/rkb-explorer-crm> a ns1:Dataset ;
+    rdfs:label "crm" .
+
+<http://thedatahub.org/dataset/rkb-explorer-curriculum> a ns1:Dataset ;
+    rdfs:label "ReSIST MSc in Resilient Computing Curriculum (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-darmstadt> a ns1:Dataset ;
+    rdfs:label "Technische Universität Darmstadt (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-dblp> a ns1:Dataset ;
+    rdfs:label "DBLP Computer Science Bibliography (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-deepblue> a ns1:Dataset ;
+    rdfs:label "Deep Blue (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-deploy> a ns1:Dataset ;
+    rdfs:label "DEPLOY (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-digitaleconomy> a ns1:Dataset ;
+    rdfs:label "digitaleconomy" .
+
+<http://thedatahub.org/dataset/rkb-explorer-dotac> a ns1:Dataset ;
+    rdfs:label "dotAC (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-ecs> a ns1:Dataset ;
+    rdfs:label "School of Electronics and Computer Science, University of Southampton" .
+
+<http://thedatahub.org/dataset/rkb-explorer-enaktingpsi> a ns1:Dataset ;
+    rdfs:label "enaktingpsi" .
+
+<http://thedatahub.org/dataset/rkb-explorer-eprints> a ns1:Dataset ;
+    rdfs:label "ePrints3 Institutional Archive Collection (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-epsrc> a ns1:Dataset ;
+    rdfs:label "epsrc" .
+
+<http://thedatahub.org/dataset/rkb-explorer-era> a ns1:Dataset ;
+    rdfs:label "ERA - Australian Research Council publication ratings (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-eurecom> a ns1:Dataset ;
+    rdfs:label "Institut Eurécom (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-foreign> a ns1:Dataset ;
+    rdfs:label "rkb-explorer-foreign" .
+
+<http://thedatahub.org/dataset/rkb-explorer-ft> a ns1:Dataset ;
+    rdfs:label "France Telecom Recherche et Développement (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-fun> a ns1:Dataset ;
+    rdfs:label "fun" .
+
+<http://thedatahub.org/dataset/rkb-explorer-gdlc> a ns1:Dataset ;
+    rdfs:label "gdlc" .
+
+<http://thedatahub.org/dataset/rkb-explorer-ibm> a ns1:Dataset ;
+    rdfs:label "IBM Research GmbH (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-ieee> a ns1:Dataset ;
+    rdfs:label "IEEE Papers (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-irit> a ns1:Dataset ;
+    rdfs:label "Université Paul Sabatier - Toulouse 3 (RKB Explorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-italy> a ns1:Dataset ;
+    rdfs:label "Diverse Italian ReSIST Partner Institutions (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-jisc> a ns1:Dataset ;
+    rdfs:label "UK JISC (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-kaunas> a ns1:Dataset ;
+    rdfs:label "Vytautas Magnus University, Kaunas (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-kisti> a ns1:Dataset ;
+    rdfs:label "Korean Institute of Science Technology and Information (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-laas> a ns1:Dataset ;
+    rdfs:label "LAAS-CNRS (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-lisbon> a ns1:Dataset ;
+    rdfs:label "Fundação da Faculdade de Ciencas da Universidade de Lisboa (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-newcastle> a ns1:Dataset ;
+    rdfs:label "University of Newcastle upon Tyne (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-notube> a ns1:Dataset ;
+    rdfs:label "notube" .
+
+<http://thedatahub.org/dataset/rkb-explorer-nsf> a ns1:Dataset ;
+    rdfs:label "National Science Foundation (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-oai> a ns1:Dataset ;
+    rdfs:label "Open Archive Initiative Harvest over OAI-PMH (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-os> a ns1:Dataset ;
+    rdfs:label "Ordnance Survey (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-photos> a ns1:Dataset ;
+    rdfs:label "photos" .
+
+<http://thedatahub.org/dataset/rkb-explorer-pisa> a ns1:Dataset ;
+    rdfs:label "Università di Pisa (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-rae2001> a ns1:Dataset ;
+    rdfs:label "Research Assessment Exercise 2001 (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-resex> a ns1:Dataset ;
+    rdfs:label "ReSIST Resilience Mechanisms (RKBExplorer.com)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-risks> a ns1:Dataset ;
+    rdfs:label "RISKS Digest (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-roma> a ns1:Dataset ;
+    rdfs:label "Università degli studi di Roma \"La Sapienza\" (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-roni> a ns1:Dataset ;
+    rdfs:label "roni" .
+
+<http://thedatahub.org/dataset/rkb-explorer-southampton> a ns1:Dataset ;
+    rdfs:label "School of Electronics and Computer Science, University of Southampton (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-ulm> a ns1:Dataset ;
+    rdfs:label "Universität Ulm (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-unlocode> a ns1:Dataset ;
+    rdfs:label "UN/LOCODE (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-webconf> a ns1:Dataset ;
+    rdfs:label "webconf" .
+
+<http://thedatahub.org/dataset/rkb-explorer-webscience> a ns1:Dataset ;
+    rdfs:label "Web Science Conference (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-wiki> a ns1:Dataset ;
+    rdfs:label "ReSIST Project Wiki (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rkb-explorer-wordnet> a ns1:Dataset ;
+    rdfs:label "WordNet (RKBExplorer)" .
+
+<http://thedatahub.org/dataset/rxnorm> a ns1:Dataset ;
+    rdfs:label "RxNorm" .
+
+<http://thedatahub.org/dataset/sadi-semantic-web-services-framework-registry> a ns1:Dataset ;
+    rdfs:label "SADI Semantic Web Services framework registry" .
+
+<http://thedatahub.org/dataset/sanskrit-english-lexicon> a ns1:Dataset ;
+    rdfs:label "Sanskrit English Lexicon" .
+
+<http://thedatahub.org/dataset/santillana_guide_dataset> a ns1:Dataset ;
+    rdfs:label "Santillana Guide Dataset" .
+
+<http://thedatahub.org/dataset/schemapedia> a ns1:Dataset ;
+    rdfs:label "Schemapedia: RDF schema compendium" .
+
+<http://thedatahub.org/dataset/sec-rdfabout> a ns1:Dataset ;
+    rdfs:label "U.S. Securities and Exchange Commission Corporate Ownership RDF Data (rdfabout)" .
+
+<http://thedatahub.org/dataset/secold> a ns1:Dataset ;
+    rdfs:label "Source Code Ecosystem Linked Data" .
+
+<http://thedatahub.org/dataset/semantic-profiling-network> a ns1:Dataset ;
+    rdfs:label "Semantic Profiling Network" .
+
+<http://thedatahub.org/dataset/semantic-universe> a ns1:Dataset ;
+    rdfs:label "Semantic Universe Data" .
+
+<http://thedatahub.org/dataset/semantic-web-dog-food> a ns1:Dataset ;
+    rdfs:label "Semantic Web Dog Food Corpus" .
+
+<http://thedatahub.org/dataset/semsol-crunchbase> a ns1:Dataset ;
+    rdfs:label "Semantic CrunchBase" .
+
+<http://thedatahub.org/dataset/sensores-de-intellidomo> a ns1:Dataset ;
+    rdfs:label "Sensores de IntelliDomo" .
+
+<http://thedatahub.org/dataset/sentiws> a ns1:Dataset ;
+    rdfs:label "SentimentWortschatz" .
+
+<http://thedatahub.org/dataset/sitc-v4> a ns1:Dataset ;
+    rdfs:label "SITC-V4" .
+
+<http://thedatahub.org/dataset/smartlink> a ns1:Dataset ;
+    rdfs:label "SmartLink: Linked Services Non-Functional Properties" .
+
+<http://thedatahub.org/dataset/socialsemweb-thesaurus> a ns1:Dataset ;
+    rdfs:label "Social Semantic Web Thesaurus" .
+
+<http://thedatahub.org/dataset/southampton-ac-uk-apps> a ns1:Dataset ;
+    rdfs:label "Apps using our data (University of Southampton)" .
+
+<http://thedatahub.org/dataset/spanish-linguistic-datasets> a ns1:Dataset ;
+    rdfs:label "Spanish Linguistic Datasets" .
+
+<http://thedatahub.org/dataset/sparql-endpoint-status> a ns1:Dataset ;
+    rdfs:label "SPARQL Endpoint Status" .
+
+<http://thedatahub.org/dataset/statistics-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "statistics.data.gov.uk" .
+
+<http://thedatahub.org/dataset/stw-thesaurus-for-economics> a ns1:Dataset ;
+    rdfs:label "STW Thesaurus for Economics" .
+
+<http://thedatahub.org/dataset/sudocfr> a ns1:Dataset ;
+    rdfs:label "Sudoc bibliographic data" .
+
+<http://thedatahub.org/dataset/sztaki-lod> a ns1:Dataset ;
+    rdfs:label "National Digital Data Archive of Hungary (partial)" .
+
+<http://thedatahub.org/dataset/taiwan-geographic-names> a ns1:Dataset ;
+    rdfs:label "Taiwan geographic names" .
+
+<http://thedatahub.org/dataset/talis-openlibrary> a ns1:Dataset ;
+    rdfs:label "Open Library data mirror in the Talis Platform" .
+
+<http://thedatahub.org/dataset/taxonconcept> a ns1:Dataset ;
+    rdfs:label "TaxonConcept Knowledge Base" .
+
+<http://thedatahub.org/dataset/tcga> a ns1:Dataset ;
+    rdfs:label "The Cancer Genome Atlas" .
+
+<http://thedatahub.org/dataset/tcga-roadmap> a ns1:Dataset ;
+    rdfs:label "TCGA Roadmap" .
+
+<http://thedatahub.org/dataset/tcmgenedit_dataset> a ns1:Dataset ;
+    rdfs:label "TCMGeneDIT Dataset" .
+
+<http://thedatahub.org/dataset/telegraphis> a ns1:Dataset ;
+    rdfs:label "Telegraphis Linked Data" .
+
+<http://thedatahub.org/dataset/testee> a ns1:Dataset ;
+    rdfs:label "xxxxx" .
+
+<http://thedatahub.org/dataset/the-drug-interaction-knowledge-base> a ns1:Dataset ;
+    rdfs:label "The Drug Interaction Knowledge Base" .
+
+<http://thedatahub.org/dataset/the-eurostat-linked-data> a ns1:Dataset ;
+    rdfs:label "The Eurostat Linked Data" .
+
+<http://thedatahub.org/dataset/the-view-from> a ns1:Dataset ;
+    rdfs:label "The View From" .
+
+<http://thedatahub.org/dataset/thesaurus-w> a ns1:Dataset ;
+    rdfs:label "Thesaurus W for Local Archives" .
+
+<http://thedatahub.org/dataset/traditional-korean-medicine> a ns1:Dataset ;
+    rdfs:label "Traditional Korean Medicine Ontology" .
+
+<http://thedatahub.org/dataset/traffic-scotland> a ns1:Dataset ;
+    rdfs:label "Traffic Scotland" .
+
+<http://thedatahub.org/dataset/transparency-linked-data> a ns1:Dataset ;
+    rdfs:label "Transparency International Linked Data" .
+
+<http://thedatahub.org/dataset/transport-data-gov-uk> a ns1:Dataset ;
+    rdfs:label "transport.data.gov.uk" .
+
+<http://thedatahub.org/dataset/transport-openuplabs> a ns1:Dataset ;
+    rdfs:label "OpenUpLabs Transport" .
+
+<http://thedatahub.org/dataset/twarql> a ns1:Dataset ;
+    rdfs:label "Twarql" .
+
+<http://thedatahub.org/dataset/twc-healthdata> a ns1:Dataset ;
+    rdfs:label "HealthData.gov Platform (HDP) on the Semantic Web" .
+
+<http://thedatahub.org/dataset/twc-hub> a ns1:Dataset ;
+    rdfs:label "Instance Hub (all)" .
+
+<http://thedatahub.org/dataset/twc-ieeevis> a ns1:Dataset ;
+    rdfs:label "IEEE VIS Source Data" .
+
+<http://thedatahub.org/dataset/ub-mannheim-linked-data> a ns1:Dataset ;
+    rdfs:label "Linked Data Service der Universitätsbibliothek Mannheim" .
+
+<http://thedatahub.org/dataset/uberblic> a ns1:Dataset ;
+    rdfs:label "Uberblic.org" .
+
+<http://thedatahub.org/dataset/un-hazardous-numbers> a ns1:Dataset ;
+    rdfs:label "UN Hazardous Materials Numbers" .
+
+<http://thedatahub.org/dataset/unescothes> a ns1:Dataset ;
+    rdfs:label "UNESCO Thesaurus" .
+
+<http://thedatahub.org/dataset/uniprot-taxonomy> a ns1:Dataset ;
+    rdfs:label "UniProtKB Taxonomy" .
+
+<http://thedatahub.org/dataset/uniprot-uniparc> a ns1:Dataset ;
+    rdfs:label "UniProt UniParc" .
+
+<http://thedatahub.org/dataset/uniprot-unipathway> a ns1:Dataset ;
+    rdfs:label "UniProt UniPathway" .
+
+<http://thedatahub.org/dataset/uniprotkb> a ns1:Dataset ;
+    rdfs:label "UniProtKB" .
+
+<http://thedatahub.org/dataset/uniref> a ns1:Dataset ;
+    rdfs:label "UniProt UniRef" .
+
+<http://thedatahub.org/dataset/universitat-pompeu-fabra-linked-data> a ns1:Dataset ;
+    rdfs:label "Universitat Pompeu Fabra - linked data" .
+
+<http://thedatahub.org/dataset/university-of-bristol> a ns1:Dataset ;
+    rdfs:label "University of Bristol" .
+
+<http://thedatahub.org/dataset/unodc> a ns1:Dataset ;
+    rdfs:label "UNODC - Statistics on criminal justice" .
+
+<http://thedatahub.org/dataset/uriburner> a ns1:Dataset ;
+    rdfs:label "URIBurner" .
+
+<http://thedatahub.org/dataset/vu-wordnet> a ns1:Dataset ;
+    rdfs:label "WordNet 3.0 (VU Amsterdam)" .
+
+<http://thedatahub.org/dataset/vulnerapedia> a ns1:Dataset ;
+    rdfs:label "vulnerapedia" .
+
+<http://thedatahub.org/dataset/wals> a ns1:Dataset ;
+    rdfs:label "World Atlas of Language Structuctures (WALS) Online" .
+
+<http://thedatahub.org/dataset/webnmasunotraveler> a ns1:Dataset ;
+    rdfs:label "El Viajero's tourism dataset" .
+
+<http://thedatahub.org/dataset/wikipathways> a ns1:Dataset ;
+    rdfs:label "WikiPathways" .
+
+<http://thedatahub.org/dataset/wiktionary-dbpedia-org> a ns1:Dataset ;
+    rdfs:label "wiktionary.dbpedia.org" .
+
+<http://thedatahub.org/dataset/wold> a ns1:Dataset ;
+    rdfs:label "World Loanword Database" .
+
+<http://thedatahub.org/dataset/world-bank-linked-data> a ns1:Dataset ;
+    rdfs:label "World Bank Linked Data" .
+
+<http://thedatahub.org/dataset/world-factbook-fu-berlin> a ns1:Dataset ;
+    rdfs:label "World Factbook (FU Berlin)" .
+
+<http://thedatahub.org/dataset/yahoo_geoplanet> a ns1:Dataset ;
+    rdfs:label "Yahoo Geoplanet RDF" .
+
+<http://thedatahub.org/dataset/yale_senselab> a ns1:Dataset ;
+    rdfs:label "Yale Senselab" .
+
+<http://thedatahub.org/dataset/yovisto> a ns1:Dataset ;
+    rdfs:label "Yovisto - academic video search" .
+
+<http://thedatahub.org/dataset/zaragoza-datosabiertos> a ns1:Dataset ;
+    rdfs:label "Datos Abiertos de Zaragoza" .
+
+<http://thedatahub.org/dataset/zaragoza-turismo> a ns1:Dataset ;
+    rdfs:label "Turismo de Zaragoza" .
+
+<http://thedatahub.org/dataset/zhishi-me> a ns1:Dataset ;
+    rdfs:label "Zhishi.me" .
+
+<http://thedatahub.org/dataset/colinda> a ns1:Dataset ;
+    rdfs:label "COLINDA - Conference Linked Data" .
+
+<http://thedatahub.org/dataset/foodista> a ns1:Dataset ;
+    rdfs:label "Foodista" .
+
+<http://thedatahub.org/dataset/social-networks-and-archival-context-fall-2011> a ns1:Dataset ;
+    rdfs:label "Social Networks and Archival Context Fall 2011" .
+
+<http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus> a ns1:Dataset ;
+    rdfs:label "Geological Survey of Austria (GBA) - Thesaurus" .

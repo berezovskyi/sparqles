@@ -13,12 +13,12 @@ import sparqles.avro.features.FResult;
 import sparqles.avro.features.FSingleResult;
 import sparqles.avro.performance.Run;
 import sparqles.core.interoperability.SpecificFTask;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class FAnalyser extends Analytics<FResult> {
   private static final Logger log = LoggerFactory.getLogger(FAnalyser.class);
 
-  public FAnalyser(MongoDBManager db) {
+  public FAnalyser(DbManager db) {
     super(db);
   }
 

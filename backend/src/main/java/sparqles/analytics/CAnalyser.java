@@ -9,12 +9,12 @@ import sparqles.avro.analytics.CalculationView;
 import sparqles.avro.analytics.EPView;
 import sparqles.avro.analytics.EPViewCalculation;
 import sparqles.avro.calculation.CResult;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class CAnalyser extends Analytics<CResult> {
   private static final Logger log = LoggerFactory.getLogger(CAnalyser.class);
 
-  public CAnalyser(MongoDBManager db) {
+  public CAnalyser(DbManager db) {
     super(db);
   }
 

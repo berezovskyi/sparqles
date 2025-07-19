@@ -42,7 +42,7 @@ import sparqles.avro.analytics.IndexViewPerformanceData;
 import sparqles.avro.analytics.IndexViewPerformanceDataValues;
 import sparqles.core.SPARQLESProperties;
 import sparqles.core.Task;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class IndexViewAnalytics implements Task<Index> {
 
@@ -55,7 +55,7 @@ public class IndexViewAnalytics implements Task<Index> {
    */
   public static final int MAX_DATA_POINTS = 50_000;
 
-  private MongoDBManager _dbm;
+  private DbManager _dbm;
   final int askCold = 0, askWarm = 1, joinCold = 2, joinWarm = 3;
   final int sparql1_solMods = 0,
       sparql1_com = 1,
@@ -719,7 +719,7 @@ public class IndexViewAnalytics implements Task<Index> {
   }
 
   @Override
-  public void setDBManager(MongoDBManager dbm) {
+  public void setDBManager(DbManager dbm) {
     _dbm = dbm;
   }
 

@@ -27,7 +27,8 @@ import sparqles.schedule.Scheduler;
 import sparqles.utils.DatahubAccess;
 import sparqles.utils.DateFormater;
 import sparqles.utils.FileManager;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
+import sparqles.utils.DbManagerFactory;
 
 /**
  * Main CLI class for the SPARQL Endpoint status program
@@ -37,7 +38,7 @@ import sparqles.utils.MongoDBManager;
 public class SPARQLES extends CLIObject {
   private static final Logger log = LoggerFactory.getLogger(SPARQLES.class);
   private Scheduler scheduler;
-  private MongoDBManager dbm;
+  private DbManager dbm;
   private FileManager _fm;
 
   @Override
@@ -67,13 +68,13 @@ public class SPARQLES extends CLIObject {
     //    System.setProperty("javax.net.debug", "ssl:handshake:verbose");
 
     // reinitialise datahub
-    if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_INIT)) {
-      // check the endpoint list
-      Collection<Endpoint> eps = DatahubAccess.checkEndpointList();
-      dbm.initEndpointCollection();
-      dbm.setup();
-      dbm.insert(eps);
-    }
+    // if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_INIT)) {
+    //   // check the endpoint list
+    //   Collection<Endpoint> eps = DatahubAccess.checkEndpointList();
+    //   dbm.initEndpointCollection();
+    //   dbm.setup();
+    //   dbm.insert(eps);
+    // }
     if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_UPDATE_EPS)) {
       // check the endpoint list
       RefreshDataHubTask t = new RefreshDataHubTask();
@@ -86,14 +87,14 @@ public class SPARQLES extends CLIObject {
         e.printStackTrace();
       }
     }
-    if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_RESCHEDULE)) {
-      Collection<Schedule> epss = Scheduler.createDefaultSchedule(dbm);
-      log.info("Created a new schedule for {} endpoints", epss.size());
-      dbm.initScheduleCollection();
-      dbm.setup();
-      dbm.insert(epss);
-      log.info("Persisted the schedule for {} endpoints", epss.size());
-    }
+    // if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_RESCHEDULE)) {
+    //   Collection<Schedule> epss = Scheduler.createDefaultSchedule(dbm);
+    //   log.info("Created a new schedule for {} endpoints", epss.size());
+    //   dbm.initScheduleCollection();
+    //   dbm.setup();
+    //   dbm.insert(epss);
+    //   log.info("Persisted the schedule for {} endpoints", epss.size());
+    // }
     if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_RECOMPUTE)) {
       recomputeAnalytics(false);
     }
@@ -114,35 +115,35 @@ public class SPARQLES extends CLIObject {
       addEndpoint(endpointUri, label);
     }
 
-    if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_RUN)) {
-      String task = CLIObject.getOptionValue(cmd, ARGUMENTS.PARAM_RUN).trim();
-      if (task.equalsIgnoreCase(CONSTANTS.ITASK)) {
-        IndexViewAnalytics a = new IndexViewAnalytics();
-        a.setDBManager(dbm);
-        try {
-          a.call();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      } else if (task.equalsIgnoreCase(CONSTANTS.ATASK)) {
-        OneTimeExecution<AResult> ex = new OneTimeExecution<AResult>(dbm, _fm);
-        ex.run(CONSTANTS.ATASK);
-      } else if (task.equalsIgnoreCase(CONSTANTS.FTASK)) {
-        OneTimeExecution<FResult> ex = new OneTimeExecution<FResult>(dbm, _fm);
-        ex.run(CONSTANTS.FTASK);
-      } else if (task.equalsIgnoreCase(CONSTANTS.PTASK)) {
-        OneTimeExecution<PResult> ex = new OneTimeExecution<PResult>(dbm, _fm);
-        ex.run(CONSTANTS.PTASK);
-      } else if (task.equalsIgnoreCase(CONSTANTS.DTASK)) {
-        OneTimeExecution<DResult> ex = new OneTimeExecution<DResult>(dbm, _fm);
-        ex.run(CONSTANTS.DTASK);
-      } else if (task.equalsIgnoreCase(CONSTANTS.CTASK)) {
-        OneTimeExecution<CResult> ex = new OneTimeExecution<CResult>(dbm, _fm);
-        ex.run(CONSTANTS.CTASK);
-      } else {
-        log.warn("Task {} not known", task);
-      }
-    }
+    // if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_RUN)) {
+    //   String task = CLIObject.getOptionValue(cmd, ARGUMENTS.PARAM_RUN).trim();
+    //   if (task.equalsIgnoreCase(CONSTANTS.ITASK)) {
+    //     IndexViewAnalytics a = new IndexViewAnalytics();
+    //     a.setDBManager(dbm);
+    //     try {
+    //       a.call();
+    //     } catch (Exception e) {
+    //       e.printStackTrace();
+    //     }
+    //   } else if (task.equalsIgnoreCase(CONSTANTS.ATASK)) {
+    //     OneTimeExecution<AResult> ex = new OneTimeExecution<AResult>(dbm, _fm);
+    //     ex.run(CONSTANTS.ATASK);
+    //   } else if (task.equalsIgnoreCase(CONSTANTS.FTASK)) {
+    //     OneTimeExecution<FResult> ex = new OneTimeExecution<FResult>(dbm, _fm);
+    //     ex.run(CONSTANTS.FTASK);
+    //   } else if (task.equalsIgnoreCase(CONSTANTS.PTASK)) {
+    //     OneTimeExecution<PResult> ex = new OneTimeExecution<PResult>(dbm, _fm);
+    //     ex.run(CONSTANTS.PTASK);
+    //   } else if (task.equalsIgnoreCase(CONSTANTS.DTASK)) {
+    //     OneTimeExecution<DResult> ex = new OneTimeExecution<DResult>(dbm, _fm);
+    //     ex.run(CONSTANTS.DTASK);
+    //   } else if (task.equalsIgnoreCase(CONSTANTS.CTASK)) {
+    //     OneTimeExecution<CResult> ex = new OneTimeExecution<CResult>(dbm, _fm);
+    //     ex.run(CONSTANTS.CTASK);
+    //   } else {
+    //     log.warn("Task {} not known", task);
+    //   }
+    // }
 
     if (CLIObject.hasOption(cmd, ARGUMENTS.PARAM_FLAG_START)) {
       start();
@@ -152,88 +153,64 @@ public class SPARQLES extends CLIObject {
   }
 
   private void recomputeIndexView() {
-    IndexViewAnalytics a = new IndexViewAnalytics();
-    a.setDBManager(dbm);
-    try {
-      a.call();
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    // IndexViewAnalytics a = new IndexViewAnalytics();
+    // a.setDBManager(dbm);
+    // try {
+    //   a.call();
+    // } catch (Exception e) {
+    //   // TODO Auto-generated catch block
+    //   e.printStackTrace();
+    // }
   }
 
   private void computeStats() {
-    StatsAnalyser stats = new StatsAnalyser();
-    stats.setDBManager(dbm);
-    try {
-      stats.call();
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    // StatsAnalyser stats = new StatsAnalyser();
+    // stats.setDBManager(dbm);
+    // try {
+    //   stats.call();
+    // } catch (Exception e) {
+    //   // TODO Auto-generated catch block
+    //   e.printStackTrace();
+    // }
   }
 
   private void recomputeAnalytics(boolean onlyLast) {
-    dbm.initAggregateCollections();
+    // dbm.initAggregateCollections();
 
-    AnalyserInit a = new AnalyserInit(dbm, onlyLast);
-    a.run();
+    // AnalyserInit a = new AnalyserInit(dbm, onlyLast);
+    // a.run();
   }
 
   private void addEndpoint(String endpointUri, String label) {
     log.info("Adding endpoint with uri \"{}\" and label \"{}\"", endpointUri, label);
     try {
       Endpoint ep = EndpointFactory.newEndpoint(endpointUri);
-      if (!label.equals("")) {
-        Dataset d = new Dataset();
-        d.setLabel(label);
-        d.setUri(endpointUri);
-        List<Dataset> l = ep.getDatasets();
-        l.add(d);
-        ep.setDatasets(l);
-      }
-      dbm.insert(ep);
+      // if (!label.equals("")) {
+      //   Dataset d = new Dataset();
+      //   d.setLabel(label);
+      //   d.setUri(endpointUri);
+      //   List<Dataset> l = ep.getDatasets();
+      //   l.add(d);
+      //   ep.setDatasets(l);
+      // }
+      // dbm.insert(ep);
     } catch (URISyntaxException e) {
       log.warn("URISyntaxException:{}", e.getMessage());
     }
   }
 
   private void start() {
-    scheduler.init(dbm);
-    try {
-      long start = System.currentTimeMillis();
-      int cycleCount = 0;
-      while (true) {
-        log.info(
-            "Running since {}", DateFormater.formatInterval(System.currentTimeMillis() - start));
-        
-        // Memory monitoring and optimization every 10 cycles (30 minutes)
-        if (++cycleCount % 10 == 0) {
-          logMemoryUsage();
-          
-          // Force garbage collection if memory usage is high
-          Runtime runtime = Runtime.getRuntime();
-          long usedMemory = runtime.totalMemory() - runtime.freeMemory();
-          long maxMemory = runtime.maxMemory();
-          double memoryUsagePercent = (double) usedMemory / maxMemory * 100;
-          
-          if (memoryUsagePercent > 80) {
-            log.warn("High memory usage detected: {:.1f}%. Forcing garbage collection.", memoryUsagePercent);
-            System.gc();
-            Thread.sleep(1000); // Give GC time to work
-            
-            // Log memory after GC
-            usedMemory = runtime.totalMemory() - runtime.freeMemory();  
-            memoryUsagePercent = (double) usedMemory / maxMemory * 100;
-            log.info("Memory usage after GC: {:.1f}%", memoryUsagePercent);
-          }
-        }
-        
-        Thread.sleep(1800000); // 30 minutes
-      }
-    } catch (Throwable t) {
-      t.printStackTrace();
-    }
+    // scheduler.init(dbm);
+    // try {
+    //   long start = System.currentTimeMillis();
+    //   while (true) {
+    //     log.info(
+    //         "Running since {}", DateFormater.formatInterval(System.currentTimeMillis() - start));
+    //     Thread.sleep(1800000);
+    //   }
+    // } catch (Throwable t) {
+    //   t.printStackTrace();
+    // }
   }
   
   private void logMemoryUsage() {
@@ -274,8 +251,8 @@ public class SPARQLES extends CLIObject {
     scheduler = new Scheduler();
 
     if (useDB) {
-      dbm = new MongoDBManager();
-      scheduler.useDB(dbm);
+      dbm = DbManagerFactory.createDbManager();
+      // scheduler.useDB(dbm);
     }
     if (useFM) {
       _fm = new FileManager();

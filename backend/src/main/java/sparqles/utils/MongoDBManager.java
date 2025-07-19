@@ -49,7 +49,7 @@ import sparqles.avro.performance.PResult;
 import sparqles.avro.schedule.Schedule;
 import sparqles.core.SPARQLESProperties;
 
-public class MongoDBManager {
+public class MongoDBManager implements DbManager {
   private static final Logger log = LoggerFactory.getLogger(MongoDBManager.class);
 
   private MongoClient client;

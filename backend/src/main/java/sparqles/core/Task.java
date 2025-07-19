@@ -2,7 +2,7 @@ package sparqles.core;
 
 import java.util.concurrent.Callable;
 import org.apache.avro.specific.SpecificRecordBase;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 /**
  * A Task is a {@link Callable} connected to the database.
@@ -19,5 +19,5 @@ public interface Task<V extends SpecificRecordBase> extends Callable<V> {
    *
    * @param dbm
    */
-  void setDBManager(MongoDBManager dbm);
+  void setDBManager(DbManager dbm);
 }

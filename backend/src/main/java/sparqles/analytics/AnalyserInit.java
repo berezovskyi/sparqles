@@ -11,21 +11,21 @@ import sparqles.avro.calculation.CResult;
 import sparqles.avro.discovery.DResult;
 import sparqles.avro.features.FResult;
 import sparqles.avro.performance.PResult;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class AnalyserInit {
 
   private static final Logger log = LoggerFactory.getLogger(AnalyserInit.class);
 
-  private MongoDBManager _db;
+  private DbManager _db;
 
   private boolean _onlyLast;
 
-  public AnalyserInit(MongoDBManager db) {
+  public AnalyserInit(DbManager db) {
     this(db, false);
   }
 
-  public AnalyserInit(MongoDBManager db, boolean onlyLast) {
+  public AnalyserInit(DbManager db, boolean onlyLast) {
     _db = db;
     _onlyLast = onlyLast;
   }
@@ -33,23 +33,23 @@ public class AnalyserInit {
   /** Computes the aggregated statistics for the Availability task */
   public void run() {
 
-    List<Endpoint> eps = _db.get(Endpoint.class, Endpoint.SCHEMA$);
-    AAnalyser a = new AAnalyser(_db);
-    PAnalyser p = new PAnalyser(_db);
-    DAnalyser d = new DAnalyser(_db);
-    FAnalyser f = new FAnalyser(_db);
-    CAnalyser c = new CAnalyser(_db);
+    // List<Endpoint> eps = _db.get(Endpoint.class, Endpoint.SCHEMA$);
+    // AAnalyser a = new AAnalyser(_db);
+    // PAnalyser p = new PAnalyser(_db);
+    // DAnalyser d = new DAnalyser(_db);
+    // FAnalyser f = new FAnalyser(_db);
+    // CAnalyser c = new CAnalyser(_db);
 
-    log.info("Analysing {} endpoints", eps.size());
-    for (Endpoint ep : eps) {
-      log.info("ANALYSE {}", ep.getUri());
+    // log.info("Analysing {} endpoints", eps.size());
+    // for (Endpoint ep : eps) {
+    //   log.info("ANALYSE {}", ep.getUri());
 
-      availability(ep, a);
-      discoverability(ep, d);
-      interoperability(ep, f);
-      performance(ep, p);
-      calculation(ep, c);
-    }
+    //   availability(ep, a);
+    //   discoverability(ep, d);
+    //   interoperability(ep, f);
+    //   performance(ep, p);
+    //   calculation(ep, c);
+    // }
   }
 
   private void discoverability(Endpoint ep, DAnalyser d) {

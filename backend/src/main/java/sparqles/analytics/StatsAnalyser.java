@@ -21,12 +21,12 @@ import sparqles.avro.features.FResult;
 import sparqles.avro.performance.PResult;
 import sparqles.core.SPARQLESProperties;
 import sparqles.core.Task;
-import sparqles.utils.MongoDBManager;
+import sparqles.utils.DbManager;
 
 public class StatsAnalyser implements Task<Index> {
   static SimpleDateFormat yearweek = new SimpleDateFormat("YYYY-'W'ww");
 
-  private MongoDBManager _dbm;
+  private DbManager _dbm;
 
   public static Date trim(Date date, int hours) {
     final GregorianCalendar calendar = new GregorianCalendar();
@@ -40,7 +40,7 @@ public class StatsAnalyser implements Task<Index> {
 
   public static void main(String[] args) {
     SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
-    MongoDBManager m = new MongoDBManager();
+    DbManager m = new DbManagerFactory.createDbManager();
 
     StatsAnalyser s = new StatsAnalyser();
     s.setDBManager(m);
@@ -214,7 +214,7 @@ public class StatsAnalyser implements Task<Index> {
   }
 
   @Override
-  public void setDBManager(MongoDBManager dbm) {
+  public void setDBManager(DbManager dbm) {
     _dbm = dbm;
   }
 }
