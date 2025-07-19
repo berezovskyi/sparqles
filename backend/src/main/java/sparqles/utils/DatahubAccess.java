@@ -107,13 +107,15 @@ public class DatahubAccess {
 
         Endpoint ep = results.get(endpointURL);
         if (ep == null) {
-          try {
-            ep = EndpointFactory.newEndpoint(new URI(endpointURL));
-            List<Dataset> l = new ArrayList<Dataset>();
-            ep.setDatasets(l);
-            results.put(endpointURL, ep);
-          } catch (URISyntaxException e) {
-            log.warn("URISyntaxException:{}", e.getMessage());
+          if(isEndpointUp(endpointURL)){
+            try {
+              ep = EndpointFactory.newEndpoint(new URI(endpointURL));
+              List<Dataset> l = new ArrayList<Dataset>();
+              ep.setDatasets(l);
+              results.put(endpointURL, ep);
+            } catch (URISyntaxException e) {
+              log.warn("URISyntaxException:{}", e.getMessage());
+            }
           }
         }
         if (ent.getValue().size() != 0) {
@@ -134,6 +136,19 @@ public class DatahubAccess {
     log.info("Found {} endpoints", results.size());
 
     return results.values();
+  }
+
+  private static boolean isEndpointUp(String endpointURL) {
+    try {
+      HttpClient client = new DefaultHttpClient();
+      HttpGet request = new HttpGet(endpointURL);
+      HttpResponse response = client.execute(request);
+      int statusCode = response.getStatusLine().getStatusCode();
+      return statusCode == 200;
+    } catch (Exception e) {
+      log.debug("Endpoint {} is down", endpointURL);
+      return false;
+    }
   }
 
   private static Endpoint checkForDataset(Endpoint ep, String datasetId, HttpClient httpClient) {
