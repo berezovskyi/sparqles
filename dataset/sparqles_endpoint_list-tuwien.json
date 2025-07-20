@@ -1,0 +1,5563 @@
+[
+  {
+    "uri": "http://140.109.28.64:2020/sparql",
+    "datasets": [
+      {
+        "uri": "http://140.109.28.64:2020/sparql",
+        "label": "crowdsourcing-fb"
+      }
+    ]
+  },
+  {
+    "uri": "http://156.35.31.156/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/cpv/2003/cpv-2003.ttl",
+        "label": "CPV  2003"
+      }
+    ]
+  },
+  {
+    "uri": "http://156.35.82.103/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/isic/v4/isic-v4.ttl",
+        "label": "ISIC V4"
+      }
+    ]
+  },
+  {
+    "uri": "http://193.145.57.56:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://193.145.57.56:8890/sparql",
+        "label": "Universitat Pompeu Fabra - linked data"
+      }
+    ]
+  },
+  {
+    "uri": "http://202.45.139.84:10035/catalogs/fao/repositories/agris",
+    "datasets": [
+      {
+        "uri": "http://202.45.139.84:10035/catalogs/fao/repositories/agris",
+        "label": "AGRIS"
+      }
+    ]
+  },
+  {
+    "uri": "http://202.45.139.84:10035/catalogs/fao/repositories/agrovoc",
+    "datasets": [
+      {
+        "uri": "https://aims-fao.atlassian.net/wiki/display/AGV/Releases",
+        "label": "AGROVOC"
+      }
+    ]
+  },
+  {
+    "uri": "http://202.73.13.50:55824/catalogs/performance/repositories/jita",
+    "datasets": [
+      {
+        "uri": "http://aims.fao.org/aos/jita/T?output=xml",
+        "label": "JITA Classification System of Library and Information Science"
+      }
+    ]
+  },
+  {
+    "uri": "http://212.81.220.68:2020/elviajero",
+    "datasets": [
+      {
+        "uri": "http://santillana.linkeddata.es/elviajero/resource/Restaurant/Restaurant1166",
+        "label": "Santillana Guide Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://91.239.64.176:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://91.239.64.176:8890/sparql",
+        "label": "Academic Offer of UNL"
+      }
+    ]
+  },
+  {
+    "uri": "http://abs.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://abs.270a.info/sparql",
+        "label": "Australian Bureau of Statistics (ABS) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://academia6.poolparty.biz/PoolParty/sparql/Tesauro-Materias-BUPM",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2014-09-11T09:00:15.307Z/tesauro-bupm.trig",
+        "label": "Tesauro materias BUPM"
+      }
+    ]
+  },
+  {
+    "uri": "http://acm.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://acm.rkbexplorer.com/sparql/",
+        "label": "Association for Computing Machinery (ACM) (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://adl-gazetteer.geog.ucsb.edu:3030/adl/sparql",
+    "datasets": [
+      {
+        "uri": "http://adl-gazetteer.geog.ucsb.edu:3030/adl/sparql",
+        "label": "Alexandria Digital Library (ADL) Gazetteer"
+      }
+    ]
+  },
+  {
+    "uri": "http://aemet.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://aemet.linkeddata.es/sparql",
+        "label": "AEMET metereological dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://afcsid.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://afcsid.bio2rdf.org/sparql",
+        "label": "Bio2RDF::ACFSID"
+      }
+    ]
+  },
+  {
+    "uri": "http://affymetrix.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://affymetrix.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Affymetrix"
+      }
+    ]
+  },
+  {
+    "uri": "http://agalpha.mathbiol.org/repositories/tcga",
+    "datasets": [
+      {
+        "uri": "http://agalpha.mathbiol.org/repositories/tcga",
+        "label": "TCGA Roadmap"
+      }
+    ]
+  },
+  {
+    "uri": "http://agencies.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://agencies.publicdata.eu/sparql",
+        "label": "EU Agencies and decentralized bodies (Agencies)"
+      }
+    ]
+  },
+  {
+    "uri": "http://agrinepaldata.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://agrinepaldata.com/sparql",
+        "label": "AgriNepalData"
+      }
+    ]
+  },
+  {
+    "uri": "http://aksw.org/sparql",
+    "datasets": [
+      {
+        "uri": "https://tinyurl.com/aksworg-ttl",
+        "label": "aksw.org Research Group dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://alaska.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://alaska.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ University of Alaska Fairbanks"
+      }
+    ]
+  },
+  {
+    "uri": "http://aliada.scanbit.net:8891/sparql",
+    "datasets": [
+      {
+        "uri": "http://aliada.scanbit.net:8891/sparql",
+        "label": "aliada-scanbit-net"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.aucklandmuseum.com",
+    "datasets": [
+      {
+        "uri": "http://api.aucklandmuseum.com",
+        "label": "Auckland Museum Collections Online"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/bricklink/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://kasabi.com/api/search-api-bricklink",
+        "label": "Bricklink"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/ecco-tcp-eighteenth-century-collections-online-texts/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.kasabi.com/dataset/ecco-tcp-eighteenth-century-collections-online-texts/text/CW110133203",
+        "label": "ECCO-TCP Eighteenth Century Texts Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/english-heritage/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://kasabi.com/dataset/english-heritage",
+        "label": "English Heritage Places"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/federal-reserve-economic-data/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.kasabi.com/dataset/federal-reserve-economic-data/apis/sparql",
+        "label": "Federal Reserve Economic Data RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/foodista/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.kasabi.com/dataset/api-foodista/apis/search",
+        "label": "Foodista"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/musicnet/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://musicnet.mspace.fm/blog/2011/01/19/musicnet-uri-scheme-and-linked-data-hosting/",
+        "label": "MusicNet Codex"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/nasa/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://kasabi.com/dataset/nasa/apis/reconciliation",
+        "label": "NASA Space Flight & Astronaut data in RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/openflights-routes/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.kasabi.com/dataset/openflights-routes",
+        "label": "Openflights Routes"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/pali-english-lexicon/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.kasabi.com/dataset/pali-english-lexicon",
+        "label": "Pali English Lexicon"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/prelinger-archives/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://kasabi.com/dataset/prelinger-archives",
+        "label": "Prelinger Archives"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/renewable-energy-generators/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://kasabi.com/dataset/renewable-energy-generators/",
+        "label": "Renewable Energy Generators"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/sanskrit-english-lexicon/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.kasabi.com/dataset/sanskrit-english-lexicon/apis/sparql",
+        "label": "Sanskrit English Lexicon"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/un-hazardous-material-numbers/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.kasabi.com/dataset/un-hazardous-material-numbers/apis/sparql",
+        "label": "UN Hazardous Materials Numbers"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.kasabi.com/dataset/yahoo-geoplanet/apis/sparql",
+    "datasets": [
+      {
+        "uri": "http://kasabi.com/dataset/yahoo-geoplanet",
+        "label": "Yahoo Geoplanet RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/airports/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/airports/services/sparql",
+        "label": "Airport data from Our Airports published as RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/bbc-backstage/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/bbc-backstage/services/sparql",
+        "label": "BBC Music"
+      },
+      {
+        "uri": "http://purl.org/ontology/po",
+        "label": "BBC Programmes"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/bbc-wildlife/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/bbc-wildlife/services/sparql",
+        "label": "BBC Wildlife Finder"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/climb/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://climb.dataincubator.org/dataset",
+        "label": "Climb Dataincubator"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/datagovuk/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.london-gazette.co.uk/mashup/LondonGazetteData.zip",
+        "label": "The London Gazette - Gazettes Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/elections/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://elections.publicdata.eu/data/country/nl",
+        "label": "European Election Results"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/eumida/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://eumida.publicdata.eu/void.ttl",
+        "label": "EUMIDA as Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/eupmedia/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/eupmedia/services/sparql",
+        "label": "EU Parliament Media Library"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/eurobarometer/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/eurobarometer/services/sparql",
+        "label": "Standard Eurobarometer"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/eutc-productions/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/eutc-productions/services/sparql",
+        "label": "Edinburgh University Theatre Company Productions"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/gunnbib-digitalmanuskripter/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/gunnbib-digitalmanuskripter/sparql",
+        "label": "NTNU special collections"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/jgoodwin-genealogy/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.johngoodwin.me.uk/family/?&_output=turtle",
+        "label": "John Goodwin's Family Tree"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/massobservation/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/massobservation/services/sparql",
+        "label": "Mass Observation Archive catalogue"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/metoffice/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://metoffice.dataincubator.org/areas/ta/falkirk/forecast/from/2011-08-01T07:39:00+00:00/for/2011-08-05/Day",
+        "label": "Metoffice Weather Forecasts"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/moseley/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/moseley/services/sparql",
+        "label": "Moseley Folk Festival Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/musicbrainz/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/musicbrainz/services/sparql",
+        "label": "Data Incubator: MusicBrainz"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/nvd/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.ntnu.no/ub/data/nvd/",
+        "label": "Norsk inndeling av vitenskapsdisipliner"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/openlibrary/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/openlibrary/services/sparql",
+        "label": "Open Library data mirror in the Talis Platform"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/ordnance-survey/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/ordnance-survey/services/sparql",
+        "label": "Ordnance Survey Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/pbac/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://keithalexander.co.uk/pbac",
+        "label": "English Language Books listed in Printed Book Auction Catalogues from 17th Century Holland"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/pokedex/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/pokedex/services/sparql",
+        "label": "Pokedex data in RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/productdb/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/productdb/services/sparql",
+        "label": "ProductDB"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/rsinger-dev4/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/rsinger-dev4/services/sparql",
+        "label": "LinkedLCCN"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/schemapedia/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/schemapedia/services/sparql",
+        "label": "Schemapedia: RDF schema compendium"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/smcjournals/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/smcjournals/services/sparql",
+        "label": "Scottish Mountaineering Council Journals Issues 1-36"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/theviewfrom/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://theviewfrom.org/.rdf",
+        "label": "The View From"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/trafficscotland/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://trafficscotland.dataincubator.org/",
+        "label": "Traffic Scotland"
+      }
+    ]
+  },
+  {
+    "uri": "http://api.talis.com/stores/whoiswho/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://api.talis.com/stores/whoiswho/services/sparql",
+        "label": "EU Who Is Who"
+      }
+    ]
+  },
+  {
+    "uri": "http://apps.ideaconsult.net:8080/ontology",
+    "datasets": [
+      {
+        "uri": "http://apps.ideaconsult.net:8080/ontology",
+        "label": "OpenTox"
+      }
+    ]
+  },
+  {
+    "uri": "http://apps.morelab.deusto.es/labman/sparql",
+    "datasets": [
+      {
+        "uri": "http://apps.morelab.deusto.es/labman/sparql",
+        "label": "MORElab"
+      }
+    ]
+  },
+  {
+    "uri": "http://apps.morelab.deusto.es/teseo/sparql",
+    "datasets": [
+      {
+        "uri": "http://apps.morelab.deusto.es/teseo/sparql",
+        "label": "Teseo"
+      }
+    ]
+  },
+  {
+    "uri": "http://aseg.cs.concordia.ca/secold/sparqlendpoint",
+    "datasets": [
+      {
+        "uri": "http://aseg.cs.concordia.ca/secold/download/static/secold_v_001.tar",
+        "label": "Source Code Ecosystem Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://asev.l3s.uni-hannover.de:8085/openrdf-sesame/repositories/TERENCE_STORY",
+    "datasets": [
+      {
+        "uri": "http://asev.l3s.uni-hannover.de:8085/openrdf-sesame/repositories/TERENCE_STORY",
+        "label": "TERENCE Reading Comprehension Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://babelnet.org/sparql/",
+    "datasets": [
+      {
+        "uri": "http://babelnet.org/data/babelnet-2.0-lemon-IRIs.tar.xz",
+        "label": "BabelNet"
+      }
+    ]
+  },
+  {
+    "uri": "http://bfs.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://fao.270a.info/.well-known/void",
+        "label": "Bundesamt für Statistik (BFS) - Swiss Federal Statistical Office (FSO) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://biolit.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://biolit.rkbexplorer.com/sparql",
+        "label": "A Short Biographical Dictionary of English Literature (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://biomodels.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://biomodels.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Biomodels"
+      }
+    ]
+  },
+  {
+    "uri": "http://biopax.biomodels.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://biopax.biomodels.bio2rdf.org/sparql",
+        "label": "Bio2RDF::BioModels::BioPAX"
+      }
+    ]
+  },
+  {
+    "uri": "http://biopax.kegg.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://biopax.kegg.bio2rdf.org/fct/",
+        "label": "Bio2RDF::KEGG::BioPAX"
+      }
+    ]
+  },
+  {
+    "uri": "http://biopax.pharmgkb.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://biopax.pharmgkb.bio2rdf.org/sparql",
+        "label": "Bio2RDF::PharmGKB::BioPAX"
+      }
+    ]
+  },
+  {
+    "uri": "http://bioportal.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://bioportal.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Bioportal"
+      }
+    ]
+  },
+  {
+    "uri": "http://biordf.net/sparql",
+    "datasets": [
+      {
+        "uri": "http://biordf.net/sparql",
+        "label": "SADI Semantic Web Services framework registry"
+      }
+    ]
+  },
+  {
+    "uri": "http://bis.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://bis.270a.info/sparql",
+        "label": "Bank for International Settlements (BIS) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://bnb.data.bl.uk/sparql",
+    "datasets": [
+      {
+        "uri": "http://bnb.data.bl.uk/sparql",
+        "label": "British National Bibliography (BNB) - Linked Open Data"
+      },
+      {
+        "uri": "http://openbiblio.commondatastorage.googleapis.com/BL-BNB-dataset.zip",
+        "label": "JISC Open Bibliography British National Bibliography dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://budapest.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://budapest.rkbexplorer.com/sparql/",
+        "label": "Budapest University of Technology and Economics (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://catalogus-professorum.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://catalogus-professorum.org/sparql",
+        "label": "Catalogus Professorum Lipsiensis"
+      }
+    ]
+  },
+  {
+    "uri": "http://cau.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://cau.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Clark Atlanta University"
+      }
+    ]
+  },
+  {
+    "uri": "http://cb.semsol.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://cb.semsol.org/sparql",
+        "label": "Semantic CrunchBase"
+      }
+    ]
+  },
+  {
+    "uri": "http://ccny-cuny.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://ccny-cuny.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ The City College of New York"
+      }
+    ]
+  },
+  {
+    "uri": "http://cdrewu.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://cdrewu.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i"
+      }
+    ]
+  },
+  {
+    "uri": "http://chebi.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.ebi.ac.uk/chebi/downloadsForward.do",
+        "label": "Chemical Entities of Biological Interest (ChEBI)"
+      }
+    ]
+  },
+  {
+    "uri": "http://chembl.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://chembl.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Chembl"
+      }
+    ]
+  },
+  {
+    "uri": "http://citeseer.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://citeseer.rkbexplorer.com/sparql/",
+        "label": "CiteSeer (Research Index) (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://ckan.eurohelp.es:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://ckan.eurohelp.es:8890/sparql",
+        "label": "Gipuzkoa Demografia"
+      }
+    ]
+  },
+  {
+    "uri": "http://clinicaltrials.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://clinicaltrials.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Clinicaltrials"
+      }
+    ]
+  },
+  {
+    "uri": "http://colinda.org/endpoint.php",
+    "datasets": [
+      {
+        "uri": "http://colinda.org/resource/conference/WWW/2012",
+        "label": "COLINDA - Conference Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://collection.britishmuseum.org/Sparql",
+    "datasets": [
+      {
+        "uri": "http://collection.britishmuseum.org/Sparql",
+        "label": "British Museum Collection"
+      }
+    ]
+  },
+  {
+    "uri": "http://commons.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://commons.dbpedia.org/sparql",
+        "label": "DBpedia Commons"
+      }
+    ]
+  },
+  {
+    "uri": "http://cordis.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://cordis.rkbexplorer.com/sparql/",
+        "label": "Community R&D Information Service (CORDIS) (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://core.kmi.open.ac.uk/squery",
+    "datasets": [
+      {
+        "uri": "http://core.kmi.open.ac.uk/squery",
+        "label": "CORE - Semantic Similarity of Open Access publications"
+      }
+    ]
+  },
+  {
+    "uri": "http://corpora.nlp2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "https://commondatastorage.googleapis.com/ckannet-storage/2012-09-23T174331/sample.xml",
+        "label": "Leipzig Corpora Collection (LCC)"
+      }
+    ]
+  },
+  {
+    "uri": "http://courseware.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://courseware.rkbexplorer.com/sparql/",
+        "label": "Resilient Computing Courseware (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://cr.eionet.europa.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://rod.eionet.europa.eu/void.rdf",
+        "label": "EEA Reporting Obligations Database"
+      },
+      {
+        "uri": "http://prtr.ec.europa.eu/rdf/Facility.rdf",
+        "label": "European Pollutant Release and Transfer Register (E-PRTR)"
+      },
+      {
+        "uri": "http://rdfdata.eionet.europa.eu/eea/data_dump.rdf",
+        "label": "EEA Vocabularies"
+      }
+    ]
+  },
+  {
+    "uri": "http://cr3.eionet.europa.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.eionet.europa.eu/gemet/rdf?langcode=en",
+        "label": "GEneral Multilingual Environmental Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://crashmap.okfn.gr:8890/sparql",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2014-12-03T23:19:53.041Z/roadaccidentsstats.rdf",
+        "label": "Statistics on Fatal Traffic Accidents in greek roads"
+      }
+    ]
+  },
+  {
+    "uri": "http://crime.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://crime.rkbexplorer.com/models/",
+        "label": "Street level crime reports for England and Wales"
+      }
+    ]
+  },
+  {
+    "uri": "http://crm.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://crm.rkbexplorer.com/sparql",
+        "label": "crm"
+      }
+    ]
+  },
+  {
+    "uri": "http://crtm.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://crtm.linkeddata.es/recurso/urbanismo-infraestructuras/transporte/Cercanias/Linea/C-2",
+        "label": "CRTM"
+      }
+    ]
+  },
+  {
+    "uri": "http://crystaleye.ch.cam.ac.uk/sparql/",
+    "datasets": [
+      {
+        "uri": "http://wwmm.ch.cam.ac.uk/crystaleye/feed/all/feed.xml",
+        "label": "Crystal Eye: Aggregated Crystallographic Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ctd.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://ctd.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Ctd"
+      }
+    ]
+  },
+  {
+    "uri": "http://cultura.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://cultura.linkeddata.es/sparql",
+        "label": "CulturaLinkedData"
+      }
+    ]
+  },
+  {
+    "uri": "http://curriculum.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://curriculum.rkbexplorer.com/sparql/",
+        "label": "ReSIST MSc in Resilient Computing Curriculum (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://dacura.cs.tcd.ie/sparql",
+    "datasets": [
+      {
+        "uri": "http://dacura.cs.tcd.ie/sparql",
+        "label": "US Political Violence"
+      }
+    ]
+  },
+  {
+    "uri": "http://darmstadt.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://darmstadt.rkbexplorer.com/sparql/",
+        "label": "Technische Universität Darmstadt (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://dartmouth.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://dartmouth.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Dartmouth College"
+      }
+    ]
+  },
+  {
+    "uri": "http://data-gov.ie/sparql",
+    "datasets": [
+      {
+        "uri": "http://data-gov.ie/sparql",
+        "label": "DataGovIE - Irish Government Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.aalto.fi/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.aalto.fi/sparql",
+        "label": "Linked Open Aalto Data Service"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.allie.dbcls.jp/sparql",
+    "datasets": [
+      {
+        "uri": "ftp://ftp.dbcls.jp/allie/allie_rdf/",
+        "label": "Allie Abbreviation And Long Form Database in Life Science"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.archiveshub.ac.uk/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.archiveshub.ac.uk/sparql",
+        "label": "Archives Hub Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.ariadne-eu.org/sparql.tpl",
+    "datasets": [
+      {
+        "uri": "http://data.ariadne-eu.org",
+        "label": "ARIADNE"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.bib.uni-mannheim.de/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.bib.uni-mannheim.de/sparql",
+        "label": "Linked Data Service der Universitätsbibliothek Mannheim"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.bibbase.org:2020/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.bibbase.org",
+        "label": "BibBase"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.bibsys.no/data/query_authority.html",
+    "datasets": [
+      {
+        "uri": "http://data.bibsys.no/data/query_authority.html",
+        "label": "Rådata nå!"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.cnr.it/sparql-proxy/",
+    "datasets": [
+      {
+        "uri": "http://www.cnr.it/ontology/cnr/",
+        "label": "Open Data from the Italian National Research Council"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.colinda.org/endpoint.php",
+    "datasets": [
+      {
+        "uri": "http://colinda.org/resource/conference/WWW/2012",
+        "label": "COLINDA - Conference Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.copac.ac.uk/sparql",
+    "datasets": [
+      {
+        "uri": "z3950s://copac.ac.uk:210/copac",
+        "label": "Copac: union catalogue of major University, Specialist, and National Libraries in the UK and Ireland"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.duraark.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.duraark.eu/sparql",
+        "label": "DURAARK - Linked Building Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.ege.edu.tr/ep/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.ege.edu.tr/ep/sparql",
+        "label": "Ege University Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.fundacionctic.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.fundacionctic.org/sparql?default-graph-uri=&query=describe+%3Fcatalog+%3Fspatial+%3FparentCountry%0D%0Awhere+%7B%0D%0A%3Fcatalog+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2Fidentifier%3E+%22zaragoza.es%22%3B%0D%0A%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2Fspatial%3E+%3Fspatial.%0D%0A%0D%0A%3Fspatial+%3Chttp%3A%2F%2Fsws.geonames.org%2Fontology%23parentCountry%3E+%3FparentCountry.%0D%0A%0D%0A%7D&format=rdf",
+        "label": "CTIC Public Dataset Catalogs"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.globalchange.gov/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.globalchange.gov/sparql",
+        "label": "Global Change Information System"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.hnm.hu/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.hnm.hu/sparql",
+        "label": "data-hnm-hu"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.lenka.no/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.lenka.no/sparql",
+        "label": "Norwegian geo-divisions"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.lider-project.eu/usage/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.lider-project.eu/usage/de-coffeemachine/2050",
+        "label": "USAGE review corpus"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedct.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.cs.toronto.edu/%7Eoktie/linkedct/linkedct-live-dump-latest.nt.bz2",
+        "label": "LinkedCT"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkededucation.org/request/lak-conference/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.linkededucation.org/request/lak-conference/sparql",
+        "label": "Learning Analytics and Knowledge (LAK) Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkededucation.org/request/ted/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.linkededucation.org/request/ted/sparql",
+        "label": "TED Talks"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedmdb.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.linkedmdb.org/sparql",
+        "label": "Linked Movie DataBase"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/don/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/don/query",
+        "label": "OUNL DSpace in RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/forge/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/forge/query",
+        "label": "FORGE Course information"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/hud/query",
+    "datasets": [
+      {
+        "uri": "http://library.hud.ac.uk/data/usagedata/",
+        "label": "University of Huddersfield -- Circulation and Recommendation Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/kis/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/kis/query",
+        "label": "UNISTAT-KIS in RDF (Key Information Set - UK Universities)"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/kis1112/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/kis1112/query",
+        "label": "UNISTAT-KIS 2011/2012 in RDF (Key Information Set - UK Universities)"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/ocw/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/ocw/query",
+        "label": "Open Courseware Consortium metadata in RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/prod/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/prod/query",
+        "label": "PROD - JISC Project Directory in RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.linkedu.eu/slidewiki/query",
+    "datasets": [
+      {
+        "uri": "http://data.linkedu.eu/slidewiki/query",
+        "label": "Slidewiki (RDF/SPARQL)"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.lod2.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.offenerhaushalt.de/haushalte_2003-2010.csv",
+        "label": "Germany - Bundesministerium der Finanzen - Budget"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.logainm.ie/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.logainm.ie/sparql",
+        "label": "Linked Logainm"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.nature.com/query",
+    "datasets": [
+      {
+        "uri": "http://data.nature.com/query",
+        "label": "Nature Publishing Group - ALL"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.ngii.go.kr/SPARQL/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.ngii.go.kr/rdfSiteMap/",
+        "label": "Integrated Human Geography Service for LOD by National Geographic Information Institute, Korea"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.nobelprize.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.nobelprize.org",
+        "label": "Nobel Prizes"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.noticias.universia.net/d2r-server/snorql/",
+    "datasets": [
+      {
+        "uri": "http://data.noticias.universia.net/d2r-server/snorql/",
+        "label": "Noticias Universia"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.oceandrilling.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.oceandrilling.org/sparql",
+        "label": "Ocean Drilling - Codices"
+      },
+      {
+        "uri": "http://data.oceandrilling.org/sparql",
+        "label": "Ocean Drilling - LDEO log files as data (TEST leg 218 only)"
+      },
+      {
+        "uri": "http://iodp-usio.org/lithology/od9cmp16",
+        "label": "Ocean Drilling - dbSEABED"
+      },
+      {
+        "uri": "http://data.oceandrilling.org/sparql",
+        "label": "Ocean Drilling - Janus LOD"
+      },
+      {
+        "uri": "http://data.oceandrilling.org/sparql",
+        "label": "Ocean Drilling - Forams"
+      },
+      {
+        "uri": "http://data.oceandrilling.org/sparql",
+        "label": "Ocean Drilling - Janus Age Models"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.open.ac.uk/query",
+    "datasets": [
+      {
+        "uri": "http://data.open.ac.uk/query",
+        "label": "data.open.ac.uk, Linked Data from the Open University"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.opendiscoveryspace.eu/sparql.tpl",
+    "datasets": [
+      {
+        "uri": "http://data.opendiscoveryspace.eu/ODS_subset.ttl",
+        "label": "Open Discovery Space (ODS)"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.organic-edunet.eu/snorql/",
+    "datasets": [
+      {
+        "uri": "http://data.organic-edunet.eu/sparql",
+        "label": "Organic Edunet Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.organic-edunet.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.organic-edunet.eu/sparql",
+        "label": "Organic Edunet Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.ox.ac.uk/sparql/",
+    "datasets": [
+      {
+        "uri": "http://data.ox.ac.uk/sparql/",
+        "label": "Dataset catalogue (University of Oxford)"
+      },
+      {
+        "uri": "http://data.ox.ac.uk/sparql/",
+        "label": "Time-series metadata (University of Oxford)"
+      },
+      {
+        "uri": "http://data.ox.ac.uk/sparql/",
+        "label": "Events calendar for the University (University of Oxford)"
+      },
+      {
+        "uri": "http://data.ox.ac.uk/sparql/",
+        "label": "Vacancies (University of Oxford)"
+      },
+      {
+        "uri": "http://data.ox.ac.uk/sparql/",
+        "label": "OpenMeters (University of Oxford)"
+      },
+      {
+        "uri": "http://data.ox.ac.uk/sparql/",
+        "label": "Dataset catalogue (University of Oxford)"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.rism.info/sparql",
+    "datasets": [
+      {
+        "uri": "https://opac.rism.info/id/rismid/454008332?format=rdf",
+        "label": "Répertoire International des Sources Musicales - RISM"
+      },
+      {
+        "uri": "http://data.rism.info/id/rismauthorities/pe2539?format=rdf",
+        "label": "RISM Authority data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.semanticuniverse.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.semanticuniverse.com/resource/semtech-2008",
+        "label": "Semantic Universe Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.semanticweb.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.semanticweb.org/dumps",
+        "label": "Semantic Web Dog Food Corpus"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.szepmuveszeti.hu/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.szepmuveszeti.hu/sparql",
+        "label": "data-szepmuveszeti-hu"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.uni-muenster.de/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.uni-muenster.de/sparql",
+        "label": "LODUM"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.utpl.edu.ec/ecuadorresearch/lod/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.utpl.edu.ec/ecuadorresearch/lod/sparql",
+        "label": "Open Data of Ecuador"
+      }
+    ]
+  },
+  {
+    "uri": "http://data.utpl.edu.ec/utpl/lod/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.utpl.edu.ec/utpl/lod/sparql",
+        "label": "Universidad Técnica Particular de Loja - Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://dati.camera.it/sparql",
+    "datasets": [
+      {
+        "uri": "http://dati.camera.it/sparql",
+        "label": "Italian Chamber of Deputies - official dataset"
+      },
+      {
+        "uri": "http://dati.camera.it/sparql",
+        "label": "BPR ? Bibliography of the Italian Parliament and electoral studies"
+      }
+    ]
+  },
+  {
+    "uri": "http://dati.isprambiente.it/sparql",
+    "datasets": [
+      {
+        "uri": "http://dati.isprambiente.it/sparql",
+        "label": "ISPRA - The Italian Data Buoy Network (RON)"
+      },
+      {
+        "uri": "http://dati.isprambiente.it/sparql",
+        "label": "ISPRA - Soil Consumption Indicators in Italy"
+      },
+      {
+        "uri": "http://dati.isprambiente.it/downloads/dissesto.nt.gz",
+        "label": "ISPRA - Mitigation measures in Italy for national soil protection"
+      },
+      {
+        "uri": "http://dati.isprambiente.it/sparql",
+        "label": "ISPRA - The administrative divisions of Italy (regions/provinces/municipalities)"
+      },
+      {
+        "uri": "http://dati.isprambiente.it/sparql",
+        "label": "ISPRA - The Italian National Tide Gauge Network (RMN)"
+      }
+    ]
+  },
+  {
+    "uri": "http://datos.artium.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://datos.artium.org/sparql",
+        "label": "datos-artium-org"
+      }
+    ]
+  },
+  {
+    "uri": "http://datos.bcn.cl/sparql",
+    "datasets": [
+      {
+        "uri": "http://datos.bcn.cl/portal/documentacion/conjuntos-de-datos/normas/",
+        "label": "Datos.bcn.cl"
+      }
+    ]
+  },
+  {
+    "uri": "http://datos.bne.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://datos.bne.es/sparql",
+        "label": "datos.bne.es"
+      }
+    ]
+  },
+  {
+    "uri": "http://dblp.l3s.de/d2r/sparql",
+    "datasets": [
+      {
+        "uri": "http://dblp.l3s.de/dblp.rdf.gz",
+        "label": "DBLP in RDF (L3S)"
+      }
+    ]
+  },
+  {
+    "uri": "http://dblp.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dblp.rkbexplorer.com/sparql/",
+        "label": "DBLP Computer Science Bibliography (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wiki.dbpedia.org/Downloads",
+        "label": "DBpedia"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbsnp.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://dbsnp.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Dbsnp"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbtune.org/bbc/peel/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dbtune.org/bbc/peel/sparql/",
+        "label": "DBTune.org John Peel sessions RDF server"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbtune.org/classical/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dbtune.org/classical/sparql/",
+        "label": "DBTune.org/classical"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbtune.org/jamendo/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dbtune.org/jamendo/sparql/",
+        "label": "DBTune.org Jamendo RDF Server"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbtune.org/magnatune/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dbtune.org/magnatune/sparql/",
+        "label": "DBTune.org Magnatune RDF server"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbtune.org/musicbrainz/sparql",
+    "datasets": [
+      {
+        "uri": "http://dbtune.org/musicbrainz/sparql",
+        "label": "DBTune.org Musicbrainz D2R Server"
+      }
+    ]
+  },
+  {
+    "uri": "http://dbtune.org/myspace/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dbtune.org/myspace/sparql/",
+        "label": "DBTune.org MySpace RDF Service"
+      }
+    ]
+  },
+  {
+    "uri": "http://de.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://de.dbpedia.org/sparql",
+        "label": "DBpedia in German"
+      }
+    ]
+  },
+  {
+    "uri": "http://deepblue.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://deepblue.rkbexplorer.com/sparql/",
+        "label": "Deep Blue (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://demo.spraakdata.gu.se/ltlod/test/",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:32:42.453Z/saldom-nt.gz",
+        "label": "SALDOM-RDF"
+      },
+      {
+        "uri": "http://spraakbanken.gu.se/rdf/saldo.rdf",
+        "label": "SALDO-RDF"
+      },
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:47:50.165Z/swefn-nt.gz",
+        "label": "SweFN-RDF"
+      },
+      {
+        "uri": "http://spraakbanken.gu.se/rdf/lexin.rdf",
+        "label": "LEXIN-RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://deploy.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://deploy.rkbexplorer.com/sparql/",
+        "label": "DEPLOY (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://dewey.info/sparql.php",
+    "datasets": [
+      {
+        "uri": "http://dewey.info/sparql.php",
+        "label": "Dewey Decimal Classification (DDC)"
+      }
+    ]
+  },
+  {
+    "uri": "http://digitale.bncf.firenze.sbn.it/openrdf-workbench/repositories/NS/query",
+    "datasets": [
+      {
+        "uri": "http://digitale.bncf.firenze.sbn.it/openrdf-workbench/repositories/NS/query",
+        "label": "Thesaurus BNCF"
+      }
+    ]
+  },
+  {
+    "uri": "http://digitaleconomy.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://digitaleconomy.rkbexplorer.com/sparql",
+        "label": "digitaleconomy"
+      }
+    ]
+  },
+  {
+    "uri": "http://diwis.imis.athena-innovation.gr:8181/sparql",
+    "datasets": [
+      {
+        "uri": "http://diwis.imis.athena-innovation.gr:8181/scehma",
+        "label": "xxxxx"
+      }
+    ]
+  },
+  {
+    "uri": "http://doc.metalex.eu:8000/sparql/",
+    "datasets": [
+      {
+        "uri": "http://doc.metalex.eu:8000/sparql/",
+        "label": "MetaLex Document Server"
+      }
+    ]
+  },
+  {
+    "uri": "http://dotac.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://dotac.rkbexplorer.com/sparql/",
+        "label": "dotAC (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://drugbank.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://drugbank.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Drugbank"
+      }
+    ]
+  },
+  {
+    "uri": "http://dutchshipsandsailors.nl/data/sparql/",
+    "datasets": [
+      {
+        "uri": "http://semanticweb.cs.vu.nl/dss/sparql/",
+        "label": "Dutch Ships and Sailors"
+      }
+    ]
+  },
+  {
+    "uri": "http://ecb.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://ecb.270a.info/sparql",
+        "label": "European Central Bank (ECB) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ecb.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://ecb.publicdata.eu/series/127_RA_M_4F_N_4_Z20_N_A1_E.html",
+        "label": "European Central Bank Statistics (PublicData.eu)"
+      }
+    ]
+  },
+  {
+    "uri": "http://ecowlim.tfri.gov.tw/sparql/query",
+    "datasets": [
+      {
+        "uri": "http://ecowlim.tfri.gov.tw/sparql/query",
+        "label": "Linked Open Data of Ecology"
+      }
+    ]
+  },
+  {
+    "uri": "http://ecs.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://ecs.rkbexplorer.com/sparql",
+        "label": "School of Electronics and Computer Science, University of Southampton"
+      }
+    ]
+  },
+  {
+    "uri": "http://eculture2.cs.vu.nl:5020/sparql/",
+    "datasets": [
+      {
+        "uri": "http://eculture2.cs.vu.nl:5020/sparql/",
+        "label": "Rechtspraak.nl"
+      }
+    ]
+  },
+  {
+    "uri": "http://eculture2.cs.vu.nl:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkeddata.few.vu.nl/eventseer/resource/event_16594",
+        "label": "Eventseer"
+      }
+    ]
+  },
+  {
+    "uri": "http://edit.elte.hu/sparql",
+    "datasets": [
+      {
+        "uri": "https://edit.elte.hu",
+        "label": "ELTE Digital Institutional Repository (EDIT)"
+      }
+    ]
+  },
+  {
+    "uri": "http://el-devtc01.tugraz.at/~ldv/interlinking/endpoint_handler.php",
+    "datasets": [
+      {
+        "uri": "http://el-devtc01.tugraz.at/~ldv/interlinking/endpoint_handler.php",
+        "label": "Semantic Profiling Network"
+      }
+    ]
+  },
+  {
+    "uri": "http://el.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wiki.el.dbpedia.org/en/datasets",
+        "label": "DBpedia in Greek"
+      }
+    ]
+  },
+  {
+    "uri": "http://en.openei.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://en.openei.org/sparql",
+        "label": "OpenEI - Open Energy Info"
+      }
+    ]
+  },
+  {
+    "uri": "http://enaktingpsi.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://enaktingpsi.rkbexplorer.com/sparql",
+        "label": "enaktingpsi"
+      }
+    ]
+  },
+  {
+    "uri": "http://enipedia.tudelft.nl/sparql",
+    "datasets": [
+      {
+        "uri": "http://enipedia.tudelft.nl/sparql",
+        "label": "Enipedia - Energy Industry Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://environment.data.gov.uk/sparql/bwq/query",
+    "datasets": [
+      {
+        "uri": "http://environment.data.gov.uk/data/bathing-water-quality.rdf",
+        "label": "Environment Agency Bathing Water Quality"
+      }
+    ]
+  },
+  {
+    "uri": "http://epo.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://epo.publicdata.eu/sparql",
+        "label": "European Patent Office (EPO)"
+      }
+    ]
+  },
+  {
+    "uri": "http://eprints.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://eprints.rkbexplorer.com/sparql/",
+        "label": "ePrints3 Institutional Archive Collection (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://epsrc.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://epsrc.rkbexplorer.com/sparql",
+        "label": "epsrc"
+      }
+    ]
+  },
+  {
+    "uri": "http://era.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://era.rkbexplorer.com/sparql/",
+        "label": "ERA - Australian Research Council publication ratings (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://eris.okfn.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://eris.okfn.org/sparql",
+        "label": "CORS Check - HTTP Header Logs for Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://es.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://es.dbpedia.org/sparql",
+        "label": "DBpedia in Spanish"
+      }
+    ]
+  },
+  {
+    "uri": "http://eu.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://eu.dbpedia.org/sparql",
+        "label": "DBpedia in Basque"
+      }
+    ]
+  },
+  {
+    "uri": "http://eur-lex.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://eur-lex.publicdata.eu/sparql",
+        "label": "EUR-Lex as Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://eurecom.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://eurecom.rkbexplorer.com/sparql/",
+        "label": "Institut Eurécom (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://europeana.ontotext.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://europeana.ontotext.com/sparql",
+        "label": "Europeana SPARQL"
+      }
+    ]
+  },
+  {
+    "uri": "http://eurostat.linked-statistics.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://eurostat.linked-statistics.org/sparql",
+        "label": "The Eurostat Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://eventmedia.eurecom.fr/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkedevents.org/ontology/2010-10-07/rdfxml/",
+        "label": "EventMedia"
+      }
+    ]
+  },
+  {
+    "uri": "http://extbi.lab.aau.dk/sparql/",
+    "datasets": [
+      {
+        "uri": "http://lod.cs.aau.dk/downloads/JIST14/GovAgriBus/agriculture.rdf",
+        "label": "GovAgriBus Denmark"
+      }
+    ]
+  },
+  {
+    "uri": "http://factforge.net/sparql",
+    "datasets": [
+      {
+        "uri": "http://factforge.net/sparql",
+        "label": "Fact Forge"
+      }
+    ]
+  },
+  {
+    "uri": "http://famu.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://famu.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Florida Agricultural and Mechanical University"
+      }
+    ]
+  },
+  {
+    "uri": "http://fao.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://fao.270a.info/sparql",
+        "label": "Food and Agriculture Organization of the United Nations (FAO) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://farolas.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "https://datahub.io/dataset/110da174-8b1e-4cf6-ac0d-d1c92efa557d/resource/5e0ac6ec-1b99-4524-9e3b-eeea5f48a1fd/download/boise.ttl",
+        "label": "FarolApp Streetlight Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://fintrans.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://fintrans.publicdata.eu/sparql",
+        "label": "EU: fintrans.publicdata.eu"
+      }
+    ]
+  },
+  {
+    "uri": "http://foodpedia.tk/sparql",
+    "datasets": [
+      {
+        "uri": "http://foodpedia.tk/sparql",
+        "label": "FOODpedia - Linked Data Dataset about Food Products and Ingredients"
+      }
+    ]
+  },
+  {
+    "uri": "http://foreign.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://foreign.rkbexplorer.com/models/dump.tgz",
+        "label": "rkb-explorer-foreign"
+      }
+    ]
+  },
+  {
+    "uri": "http://foreign.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://foreign.rkbexplorer.com/browse/?type=resource&forceLocal=true&uri=http%3A%2F%2Fresearchrepository.napier.ac.uk%2Fid%2Feprint%2F1615",
+        "label": "ePrints Harvest (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://fr.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://fr.dbpedia.org/sparql",
+        "label": "DBpedia in French"
+      }
+    ]
+  },
+  {
+    "uri": "http://frb.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://frb.270a.info/sparql",
+        "label": "Federal Reserve Board (FRB) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ft.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://ft.rkbexplorer.com/sparql/",
+        "label": "France Telecom Recherche et Développement (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://fun.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://fun.rkbexplorer.com/sparql",
+        "label": "fun"
+      }
+    ]
+  },
+  {
+    "uri": "http://futurewavehosting.com:3030/my-family-lineage/sparql",
+    "datasets": [
+      {
+        "uri": "http://futurewavehosting.com:3030/my-family-lineage/query",
+        "label": "My Family Lineage"
+      }
+    ]
+  },
+  {
+    "uri": "http://gdlc.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://gdlc.rkbexplorer.com/sparql",
+        "label": "gdlc"
+      }
+    ]
+  },
+  {
+    "uri": "http://genage.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://genage.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Genage"
+      }
+    ]
+  },
+  {
+    "uri": "http://genbank.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://genbank.bio2rdf.org/sparql",
+        "label": "Bio2RDF::GenBank"
+      }
+    ]
+  },
+  {
+    "uri": "http://gendr.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://gendr.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Gendr"
+      }
+    ]
+  },
+  {
+    "uri": "http://geo.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://geo.linkeddata.es/sparql",
+        "label": "GeoLinkedData"
+      }
+    ]
+  },
+  {
+    "uri": "http://geografia.ideca.gov.co/fuseki/dataset.html?tab=query&ds=/inf",
+    "datasets": [
+      {
+        "uri": "http://geografia.ideca.gov.co/fuseki/dataset.html?tab=query&ds=/inf",
+        "label": "Mapa de Referencia para Bogotá D.C"
+      },
+      {
+        "uri": "http://geografia.ideca.gov.co/fuseki/dataset.html?tab=query&ds=/inf",
+        "label": "Mapa de Referencia para Bogotá, Distrito Capital"
+      }
+    ]
+  },
+  {
+    "uri": "http://goa.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://goa.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Goa"
+      }
+    ]
+  },
+  {
+    "uri": "http://gov.tso.co.uk/coins/sparql",
+    "datasets": [
+      {
+        "uri": "http://gov.tso.co.uk/coins/sparql",
+        "label": "OpenUpLabs COINS"
+      }
+    ]
+  },
+  {
+    "uri": "http://gov.tso.co.uk/dclg/sparql",
+    "datasets": [
+      {
+        "uri": "http://gov.tso.co.uk/dclg/sparql",
+        "label": "OpenUpLabs DCLG"
+      }
+    ]
+  },
+  {
+    "uri": "http://gov.tso.co.uk/legislation/sparql",
+    "datasets": [
+      {
+        "uri": "http://legislation.data.gov.uk/uksi/2011/1540/made/data.rdf",
+        "label": "OpenUpLabs Legislation"
+      }
+    ]
+  },
+  {
+    "uri": "http://gov.tso.co.uk/transport/sparql",
+    "datasets": [
+      {
+        "uri": "http://gov.tso.co.uk/transport/sparql",
+        "label": "OpenUpLabs Transport"
+      }
+    ]
+  },
+  {
+    "uri": "http://govwild.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://govwild.hpi-web.de/downloads/govwild-json-2012-01-30.zip",
+        "label": "GovWILD - Government Web Integration for Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://greek-lod.auth.gr/fire-brigade/sparql",
+    "datasets": [
+      {
+        "uri": "http://greek-lod.auth.gr/Fire/fire.rdf.gz",
+        "label": "Hellenic Fire Brigade"
+      }
+    ]
+  },
+  {
+    "uri": "http://greek-lod.auth.gr/police/sparql",
+    "datasets": [
+      {
+        "uri": "http://greek-lod.auth.gr/police/sparql",
+        "label": "Hellenic Police"
+      }
+    ]
+  },
+  {
+    "uri": "http://greek-lod.math.auth.gr/intervalue/sparql",
+    "datasets": [
+      {
+        "uri": "http://greek-lod.math.auth.gr/intervalue/sparql",
+        "label": "intervalue"
+      }
+    ]
+  },
+  {
+    "uri": "http://greek-lod.math.auth.gr/kalikratis/sparql",
+    "datasets": [
+      {
+        "uri": "http://greek-lod.math.auth.gr/kalikratis/sparql",
+        "label": "Kallikratis municipalities"
+      }
+    ]
+  },
+  {
+    "uri": "http://harvard.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://harvard.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Harvard University"
+      }
+    ]
+  },
+  {
+    "uri": "http://hawaii.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://hawaii.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ University of Hawai’i at Mānoa"
+      }
+    ]
+  },
+  {
+    "uri": "http://hcls.deri.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://hcls.deri.org/sparql",
+        "label": "HCLS Knowledge Base"
+      }
+    ]
+  },
+  {
+    "uri": "http://hcls.deri.org:8080/openrdf-sesame/repositories/tcga",
+    "datasets": [
+      {
+        "uri": "http://hcls.deri.org:8080/openrdf-sesame/repositories/tcga",
+        "label": "The Cancer Genome Atlas"
+      }
+    ]
+  },
+  {
+    "uri": "http://healthdata.tw.rpi.edu/sparql",
+    "datasets": [
+      {
+        "uri": "http://healthdata.tw.rpi.edu/sparql",
+        "label": "HealthData.gov Platform (HDP) on the Semantic Web"
+      }
+    ]
+  },
+  {
+    "uri": "http://helheim.deusto.es/bizkaisense/sparql",
+    "datasets": [
+      {
+        "uri": "http://helheim.deusto.es/bizkaisense/",
+        "label": "BizkaiSense"
+      }
+    ]
+  },
+  {
+    "uri": "http://helheim.deusto.es/hedatuz/sparql",
+    "datasets": [
+      {
+        "uri": "http://helheim.deusto.es/hedatuz/dump.rdf",
+        "label": "Hedatuz"
+      }
+    ]
+  },
+  {
+    "uri": "http://helheim.deusto.es/linkedstats/sparql",
+    "datasets": [
+      {
+        "uri": "http://helheim.deusto.es/linkedstats/sparql",
+        "label": "LinkedStats"
+      }
+    ]
+  },
+  {
+    "uri": "http://heritagedata.org/live/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/heritagedata/schemes/eh_tbm/concepts/98023.json",
+        "label": "HeritageData"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/1/concepts/409.json",
+        "label": "RCAHMS Monument Types Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/11/concepts/505126.json",
+        "label": "RCAHMW Periods List"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/mda_obj/concepts/95424.json",
+        "label": "FISH Archaeological Objects Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/eh_evd/concepts/82797.json",
+        "label": "English Heritage Evidence Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/eh_tmt2/concepts/68561.json",
+        "label": "English Heritage Monument Types Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/agl_et/concepts/145121.html",
+        "label": "English Heritage Event Types Thesaurus"
+      },
+      {
+        "uri": "http://heritagedata.org/live/sparql",
+        "label": "English Heritage Archaeological Sciences Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/3/concepts/506041.json",
+        "label": "RCAHMS Maritime Craft Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/10/concepts/71390.json",
+        "label": "RCAHMW Monument Types Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/eh_com/concepts/138269.json",
+        "label": "English Heritage Components Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/eh_tmc/concepts/100355.json",
+        "label": "English Heritage Maritime Craft Thesaurus"
+      },
+      {
+        "uri": "http://purl.org/heritagedata/schemes/2/concepts/501158.json",
+        "label": "RCAHMS Archaeological Objects Thesaurus"
+      },
+      {
+        "uri": "http://<http://purl.org/heritagedata/schemes/eh_period/concepts/RO.json",
+        "label": "English Heritage Periods List"
+      }
+    ]
+  },
+  {
+    "uri": "http://hgnc.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://hgnc.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Hgnc"
+      }
+    ]
+  },
+  {
+    "uri": "http://homologene.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://homologene.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Homologene"
+      }
+    ]
+  },
+  {
+    "uri": "http://howard.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://howard.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Howard University"
+      }
+    ]
+  },
+  {
+    "uri": "http://http://crashmap.okfn.gr:8890/sparql",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2014-11-23T07:53:28.464Z/roadaccidents.rdf",
+        "label": "Fatal Traffic Accidents in greek roads"
+      }
+    ]
+  },
+  {
+    "uri": "http://http://opendata.intellidomo.es:8080/sparql/",
+    "datasets": [
+      {
+        "uri": "http://opendata.intellidomo.es/Tripletas_Intellidomo.tar.gz",
+        "label": "Sensores de IntelliDomo"
+      }
+    ]
+  },
+  {
+    "uri": "http://hunter-cuny.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://hunter-cuny.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Hunter College"
+      }
+    ]
+  },
+  {
+    "uri": "http://ibm.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://ibm.rkbexplorer.com/sparql/",
+        "label": "IBM Research GmbH (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://ichoose.tw.rpi.edu/sparql",
+    "datasets": [
+      {
+        "uri": "http://ichoose.tw.rpi.edu/source/ichoose/file/cr-full-dump/version/latest/conversion/ichoose-tw-rpi-edu.nt.gz",
+        "label": "ichoose"
+      }
+    ]
+  },
+  {
+    "uri": "http://id.ndl.go.jp/auth/ndla/",
+    "datasets": [
+      {
+        "uri": "http://id.ndl.go.jp/auth/ndla/",
+        "label": "Web NDL Authorities - National Diet Library of Japan"
+      }
+    ]
+  },
+  {
+    "uri": "http://id.ndl.go.jp/auth/ndlsh/",
+    "datasets": [
+      {
+        "uri": "http://id.ndl.go.jp/auth/ndlsh/",
+        "label": "National Diet Library of Japan subject headings"
+      }
+    ]
+  },
+  {
+    "uri": "http://id.sgcb.mcu.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://id.sgcb.mcu.es/sparql",
+        "label": "Lista de  Encabezamientos de Materia as Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://identifiers.org/services/sparql",
+    "datasets": [
+      {
+        "uri": "http://identifiers.org/services/sparql",
+        "label": "Identifiers.org"
+      }
+    ]
+  },
+  {
+    "uri": "http://idi.fundacionctic.org/classifications_endpoint/eurovoc",
+    "datasets": [
+      {
+        "uri": "http://idi.fundacionctic.org/classifications_endpoint/eurovoc",
+        "label": "EUROVOC in SKOS"
+      }
+    ]
+  },
+  {
+    "uri": "http://ieee.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://ieee.rkbexplorer.com/sparql/",
+        "label": "IEEE Papers (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://ieeevis.tw.rpi.edu/nosparql",
+    "datasets": [
+      {
+        "uri": "http://ieeevis.tw.rpi.edu/novoid.ttl",
+        "label": "Tetherless World Constellation"
+      }
+    ]
+  },
+  {
+    "uri": "http://imash.leeds.ac.uk:8080/openrdf-workbench/repositories/AMOnSPARQL/",
+    "datasets": [
+      {
+        "uri": "http://imash.leeds.ac.uk:8080/openrdf-workbench/repositories/AMOnSPARQL/",
+        "label": "AMOn+: Cultural Variations in Interpersonal Communication Ontology"
+      }
+    ]
+  },
+  {
+    "uri": "http://imf.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://imf.270a.info/dataset/PGI",
+        "label": "International Monetary Fund (IMF) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://inoh.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://inoh.bio2rdf.org/sparql",
+        "label": "Bio2RDF::INOH"
+      }
+    ]
+  },
+  {
+    "uri": "http://interpro.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://interpro.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Interpro"
+      }
+    ]
+  },
+  {
+    "uri": "http://iproclass.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://iproclass.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Iproclass"
+      }
+    ]
+  },
+  {
+    "uri": "http://irefindex.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://irefindex.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Irefindex"
+      }
+    ]
+  },
+  {
+    "uri": "http://irit.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://irit.rkbexplorer.com/sparql/",
+        "label": "Université Paul Sabatier - Toulouse 3 (RKB Explorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://iserve.kmi.open.ac.uk/iserve/sparql",
+    "datasets": [
+      {
+        "uri": "http://iserve.kmi.open.ac.uk/iserve/sparql",
+        "label": "iServe: Linked Services Registry"
+      }
+    ]
+  },
+  {
+    "uri": "http://italy.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://italy.rkbexplorer.com/sparql",
+        "label": "Diverse Italian ReSIST Partner Institutions (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://ja.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://ja.dbpedia.org/dumps/",
+        "label": "DBpedia in Japanese"
+      }
+    ]
+  },
+  {
+    "uri": "http://jisc.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://jisc.rkbexplorer.com/sparql/",
+        "label": "UK JISC (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://jsu.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://jsu.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Jackson State University"
+      }
+    ]
+  },
+  {
+    "uri": "http://kaiko.getalp.org/sparql",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2013-01-16T130120/dictionnaire.ttl",
+        "label": "dbnary"
+      }
+    ]
+  },
+  {
+    "uri": "http://kasabi.com/api/sparql-endpoint-foodista",
+    "datasets": [
+      {
+        "uri": "http://api.kasabi.com/dataset/api-foodista/apis/search",
+        "label": "Foodista"
+      }
+    ]
+  },
+  {
+    "uri": "http://kaunas.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://kaunas.rkbexplorer.com/sparql",
+        "label": "Vytautas Magnus University, Kaunas (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://kegg.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://kegg.bio2rdf.org/sparql",
+        "label": "Bio2RDF::KEGG"
+      }
+    ]
+  },
+  {
+    "uri": "http://kent.zpr.fer.hr:8080/educationalProgram/sparql",
+    "datasets": [
+      {
+        "uri": "http://kent.zpr.fer.hr:8080/educationalProgram/sparql",
+        "label": "Educational programs - SISVU"
+      }
+    ]
+  },
+  {
+    "uri": "http://kisti.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://kisti.rkbexplorer.com/sparql/",
+        "label": "Korean Institute of Science Technology and Information (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://km.aifb.kit.edu/services/xlike-lexicon/",
+    "datasets": [
+      {
+        "uri": "http://km.aifb.kit.edu/resources/xLiD-lexica.nt",
+        "label": "xLiD-Lexica"
+      }
+    ]
+  },
+  {
+    "uri": "http://kwijibo.talis.com/latc-linksets/sparql",
+    "datasets": [
+      {
+        "uri": "http://kwijibo.talis.com/latc-linksets/sparql",
+        "label": "LATC Linksets"
+      }
+    ]
+  },
+  {
+    "uri": "http://laas.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://laas.rkbexplorer.com/sparql/",
+        "label": "LAAS-CNRS (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://lab.environment.data.gov.au/sparql",
+    "datasets": [
+      {
+        "uri": "http://lab.environment.data.gov.au/data/acorn.rdf",
+        "label": "Australian Climate Observations Reference Network - Surface Air Temperature Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://lab3.libris.kb.se/sparql",
+    "datasets": [
+      {
+        "uri": "http://lab3.libris.kb.se/sparql",
+        "label": "LIBRIS"
+      }
+    ]
+  },
+  {
+    "uri": "http://labs.mondeca.com/endpoint/ends",
+    "datasets": [
+      {
+        "uri": "http://labs.mondeca.com/endpoint/ends",
+        "label": "SPARQL Endpoint Status"
+      }
+    ]
+  },
+  {
+    "uri": "http://ld.panlex.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://ld.panlex.org/sparql",
+        "label": "PanLex"
+      }
+    ]
+  },
+  {
+    "uri": "http://ldf.fi/ww1lod/sparql",
+    "datasets": [
+      {
+        "uri": "http://ldf.fi/ww1lod/sparql",
+        "label": "World War 1 as Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://lexinfo.net/corpora/alpino/query.php",
+    "datasets": [
+      {
+        "uri": "http://lexinfo.net/corpora/alpino/",
+        "label": "ALPINO RDF Treebank"
+      }
+    ]
+  },
+  {
+    "uri": "http://libver.math.auth.gr/sparql",
+    "datasets": [
+      {
+        "uri": "http://libver.math.auth.gr/sparql",
+        "label": "Public Library of Veroia"
+      }
+    ]
+  },
+  {
+    "uri": "http://linguistic.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://linguistic.linkeddata.es/sparql",
+        "label": "Spanish Linguistic Datasets"
+      }
+    ]
+  },
+  {
+    "uri": "http://linguistic.linkeddata.es/terminesp/sparql-editor",
+    "datasets": [
+      {
+        "uri": "http://linguistic.linkeddata.es/terminesp/sparql-editor",
+        "label": "Terminesp Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://link.informatics.stonybrook.edu/sparql/",
+    "datasets": [
+      {
+        "uri": "http://download.nlm.nih.gov/umls/kss/rxnorm/RxNorm_full_02072011.zip",
+        "label": "RxNorm"
+      }
+    ]
+  },
+  {
+    "uri": "http://linked-data.org/sparql",
+    "datasets": [
+      {
+        "uri": "https://github.com/phoible",
+        "label": "Phonetics Information Base and Lexicon (PHOIBLE)"
+      }
+    ]
+  },
+  {
+    "uri": "http://linked.opendata.cz/sparql",
+    "datasets": [
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "R&D Programmes"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/publications.zip",
+        "label": "Publikace Univerzity Karlovy v Praze"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "ATC groups"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/czso.cz/dataset/demography/deaths/529303-2011",
+        "label": "Demografie"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Cadastre offices from Czech land registry"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Active ingredients of medicinal products available in Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/nci-thesaurus.zip",
+        "label": "NCI Thesaurus"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/currency.zip",
+        "label": "Měnové kurzy vzhledem k EUR"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/atc.zip",
+        "label": "ATC publikovaná SÚKL"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/wwwinfo.mfcr.cz/income-statement/00573051",
+        "label": "Výkazy zisku a ztrát obcí ČR"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "R&D Projects"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "List of prices of medicinal products marketed in Italian Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Code lists of the legal relationships and documents"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Publications of Charles University in Prague"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Inspections of the Supreme Audit Office of the Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "State funding providers"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Requirements on the COMSODE project based on selected datasets"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Social service facilities and nursing in districts of Czech republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Chemicals reported to the Integrated register of pollution"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Results of R&D"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Job applicants and unemployment rate in regions of Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/legislation/cz/act/2012/89-2012",
+        "label": "Metadata k zákonům z psp.cz"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Selected public health indicators in regions of Czech republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Agendas of institutions of public power of the Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "NDF-RT"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/sukl-spc.zip",
+        "label": "SPC publikovaná SÚKL"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "List of prices of reimbursed medicinal products marketed in Czech republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Unemployment rate in regions of Czech republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Data about business entities from the ARES system - business registry of the Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Bans of the Czech Trade Inspection Authority"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/soudy-nd.zip",
+        "label": "List of courts of the Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/legislation/cz/act/1993/15-1993/version/cz/2011-12-01",
+        "label": "Metadata k zákonům ze zakonyprolidi.cz - dvě ukázková znění"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Audited subjects of Supreme Audit Office of the Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Institutional research plans"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Focus of the Czech Trade Inspection Authority's inspections"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Structure of regions of Czech Republic according to Czech Statistical Office"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Data about Czech business entities from the ARES system - Trade Licensing Register"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/sukl/medicinal-product/0011064",
+        "label": "Léčivé přípravky ze SÚKL"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Inspections of the Czech Trade Inspection Authority"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "List of prices of medicinal products marketed in Kingdom of Spain"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Medicinal products marketed in Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Institutions of public power of the Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Tenders in R&D"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Czech Business Entity identification numbers and names"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Number of inhabitants in districts of Czech Republic in 5year age categories"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Evaluation of VaVaI results for 2013"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/fda-spl.zip",
+        "label": "Strukturované popisy z FDA"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Integrated pollution registry"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Registry of contracts of the Czech Republic - Contracts"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/municipality/00637564",
+        "label": "Obce, okresy a kraje České republiky"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Job applicants in regions of Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Sanctions of the Czech Trade Inspection Authority"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Average salaries in regions of Czech republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Organizations active in R&D"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/ai-interactions.zip",
+        "label": "Interakce mezi účinnými látkami"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Deaths by selected causes of death in regions of Czech Republic"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Registry of contracts of the Czech Republic - Orders"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/court/cz/obvodni-soud-pro-prahu-4",
+        "label": "Soudy České republiky"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Registry of contracts of the Czech Republic - Financial fulfillments"
+      },
+      {
+        "uri": "http://linked.opendata.cz/dump/cpv2008-opendata-cz.zip",
+        "label": "Slovník CPV 2008 - Common Procurement Vocabulary 2008"
+      },
+      {
+        "uri": "http://linked.opendata.cz/resource/region/535826",
+        "label": "Regiony"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "Confiscations of the Czech Trade Inspection Authority"
+      },
+      {
+        "uri": "http://linked.opendata.cz/sparql",
+        "label": "List of laws used in inspection reports of SAO"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedarc.net/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkedarc.net/void.ttl",
+        "label": "linkedarc.net archaeological datasets"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkeddata.es/resource/ldqm/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkeddata.es/resource/ldqm/sparql",
+        "label": "LDQM - Accessibility of DBpedia resources"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkeddata.finki.ukim.mk/sparql",
+    "datasets": [
+      {
+        "uri": "https://drive.google.com/file/d/0B6Rny7U05S9CV0I3bE0zYm9iTWM/view?usp=sharing",
+        "label": "LinkedDrugs: Linked Drug Product Data on a Global Scale"
+      },
+      {
+        "uri": "http://purl.org/net/hifm/data",
+        "label": "Drug Data from the Health Insurance Fund of Macedonia"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkeddata.ge.imati.cnr.it:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/net/DumpThISTRDF",
+        "label": "ThIST"
+      },
+      {
+        "uri": "http://linkeddata.ge.imati.cnr.it:8890/sparql",
+        "label": "EARTh"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkeddata.uriburner.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkeddata.uriburner.com/sparql",
+        "label": "URIBurner"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkeddata4.dia.fi.upm.es:8907/sparql",
+    "datasets": [
+      {
+        "uri": "http://oeg-dev.dia.fi.upm.es/licensius/rdflicense/rdflicense.ttl",
+        "label": "RDFLicense"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedgeodata.org/sparql/",
+    "datasets": [
+      {
+        "uri": "http://downloads.linkedgeodata.org/",
+        "label": "LinkedGeoData"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedlifedata.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkedlifedata.com/sparql",
+        "label": "Ontotext"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedopencommerce.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkedopencommerce.com/sparql",
+        "label": "Linked Open Commerce"
+      },
+      {
+        "uri": "http://www.wifo-ravensburg.de/rdf/sitemap.xml",
+        "label": "Ravensburg Local Shopping Graph"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedspending.aksw.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkedspending.aksw.org/extensions/page/page/export/lscomplete-0.1.tar.gz",
+        "label": "LinkedSpending: OpenSpending becomes Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedspl.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://linkedspl.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Linkedspl"
+      }
+    ]
+  },
+  {
+    "uri": "http://linkedu.eu/catalogue/sparql/",
+    "datasets": [
+      {
+        "uri": "http://linkedu.eu/catalogue/sparql/",
+        "label": "LinkedUp Catalogue of Educational Datasets"
+      }
+    ]
+  },
+  {
+    "uri": "http://lisbon.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://lisbon.rkbexplorer.com/sparql",
+        "label": "Fundação da Faculdade de Ciencas da Universidade de Lisboa (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://live.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wiki.dbpedia.org/Downloads",
+        "label": "DBpedia-Live"
+      }
+    ]
+  },
+  {
+    "uri": "http://lobid.org/sparql/",
+    "datasets": [
+      {
+        "uri": "http://lobid.org/download/dumps/DE-605/enrich/",
+        "label": "lobid-Bibliographic Resources"
+      },
+      {
+        "uri": "http://lobid.org/organisation/DE-Wup4",
+        "label": "lobid-organisations"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.ac/bdls/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.ac/dumps/bdls/",
+        "label": "LODAC BDLS"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.apc.gov.tw/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.apc.gov.tw/sparql",
+        "label": "TIP"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.b3kat.de/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.b3kat.de/sparql",
+        "label": "B3Kat - Library Union Catalogues of Bavaria, Berlin and Brandenburg"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.euscreen.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.euscreen.eu/sparql",
+        "label": "European Television Heritage"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.gesis.org/thesoz/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.gesis.org/thesoz/sparql",
+        "label": "TheSoz Thesaurus for the Social Sciences (GESIS)"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.hebis.de/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.hebis.de/lod/void.ttl",
+        "label": "HeBIS - Bibliographic Resources of the Library Union Catalogues of Hessen and parts of the Rhineland Palatinate"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.kaist.ac.kr/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.kaist.ac.kr/sparql",
+        "label": "Korean Traditional Recipes"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.kipo.kr/data/sparql",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2015-04-16T02:40:37.802Z/patent.gz",
+        "label": "Korea Intellectual Propert Office(KIPO)"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.my-eventos.com/en/services/sparql/",
+    "datasets": [
+      {
+        "uri": "http://lod.my-eventos.com/en/services/sparql/",
+        "label": "LODRussia Nano"
+      },
+      {
+        "uri": "http://lod.my-eventos.com/en/services/sparql/",
+        "label": "LODRussia Math"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.openlinksw.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.openlinksw.com/sparql",
+        "label": "OpenLink Software LOD Cache"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.sztaki.hu/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.sztaki.hu/sparql",
+        "label": "National Digital Data Archive of Hungary (partial)"
+      }
+    ]
+  },
+  {
+    "uri": "http://lod.xdams.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.xdams.org/sparql",
+        "label": "Shoah victims? names"
+      },
+      {
+        "uri": "https://github.com/regestaexe/ReloadProject/tree/master/data/acs/entiMaic.rdf",
+        "label": "Repository for Linked Open Archival Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://lodstats.aksw.org/sparql",
+    "datasets": [
+      {
+        "uri": "https://dl.dropboxusercontent.com/u/4882345/lodstats-rdf/30042016/void.ttl",
+        "label": "LODStats"
+      }
+    ]
+  },
+  {
+    "uri": "http://lofd.tw.rpi.edu/sparql",
+    "datasets": [
+      {
+        "uri": "http://lofd.tw.rpi.edu/sparql",
+        "label": "lofd"
+      }
+    ]
+  },
+  {
+    "uri": "http://logd.tw.rpi.edu/sparql",
+    "datasets": [
+      {
+        "uri": "http://logd.tw.rpi.edu/source/congress-gov/file/biographical-directory-of-the-united-states-congress/version/2012-Jan-04/conversion/congress-gov-biographical-directory-of-the-united-states-congress-2012-Jan-04.void.ttl",
+        "label": "Biographical Directory of the United States Congress"
+      }
+    ]
+  },
+  {
+    "uri": "http://lov.okfn.org/endpoint/lov",
+    "datasets": [
+      {
+        "uri": "http://lov.okfn.org/endpoint/lov",
+        "label": "Linked Open Vocabularies (LOV)"
+      }
+    ]
+  },
+  {
+    "uri": "http://lsd.taxonconcept.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://lod.geospecies.org/sitemap.xml.gz",
+        "label": "GeoSpecies Knowledge Base"
+      },
+      {
+        "uri": "http://lod.taxonconcept.org/ontology/txn.owl",
+        "label": "TaxonConcept Knowledge Base"
+      }
+    ]
+  },
+  {
+    "uri": "http://lsr.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://lsr.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Lsr"
+      }
+    ]
+  },
+  {
+    "uri": "http://meducator.open.ac.uk/resourcesrestapi/rest/meducator/sparql",
+    "datasets": [
+      {
+        "uri": "http://meducator.open.ac.uk/resourcesrestapi/rest/meducator/sparql",
+        "label": "mEducator: Linked Educational Resources"
+      }
+    ]
+  },
+  {
+    "uri": "http://meharry.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://meharry.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Meharry Medical College"
+      }
+    ]
+  },
+  {
+    "uri": "http://mesh.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://mesh.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Mesh"
+      }
+    ]
+  },
+  {
+    "uri": "http://mgi.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://mgi.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Mgi"
+      }
+    ]
+  },
+  {
+    "uri": "http://minsky.gsi.dit.upm.es/semanticwiki/index.php/Special:SPARQLEndpoint",
+    "datasets": [
+      {
+        "uri": "https://commondatastorage.googleapis.com/ckannet-storage/2011-11-03T123441/VulneraPedia.full.v0.5.rdf",
+        "label": "vulnerapedia"
+      }
+    ]
+  },
+  {
+    "uri": "http://miuras.inf.um.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://miuras.inf.um.es/sparql",
+        "label": "Orthology and Diseases Information - OGO"
+      }
+    ]
+  },
+  {
+    "uri": "http://mlode.nlp2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "https://dl.dropbox.com/u/65483422/mlsa-model-diagram.png",
+        "label": "MLSA - A Multi-layered Reference Corpus for German Sentiment Analysis"
+      },
+      {
+        "uri": "http://wortschatz.informatik.uni-leipzig.de/download/SentiWS_v1.8c.zip",
+        "label": "SentimentWortschatz"
+      },
+      {
+        "uri": "http://wold.livingsources.org/language/19.rdf",
+        "label": "World Loanword Database"
+      },
+      {
+        "uri": "https://dl.dropbox.com/u/65483422/ids-model-diagram.png",
+        "label": "Intercontinental Dictionary Series"
+      },
+      {
+        "uri": "http://optima.jrc.it/data/entities.gzip",
+        "label": "JRC-Names-MLODE"
+      }
+    ]
+  },
+  {
+    "uri": "http://modip.aueb.gr/d2rq/sparql",
+    "datasets": [
+      {
+        "uri": "http://modip.aueb.gr/d2rq/sparql",
+        "label": "AUEB Linked Open Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://montana.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://montana.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Montana State University"
+      }
+    ]
+  },
+  {
+    "uri": "http://msm.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://msm.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Morehouse School of Medicine"
+      }
+    ]
+  },
+  {
+    "uri": "http://n-lex.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://n-lex.publicdata.eu/sparql",
+        "label": "N-Lex as Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ncbigene.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://ncbigene.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Ncbigene"
+      }
+    ]
+  },
+  {
+    "uri": "http://ndb.publink.lod2.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.deutsche-biographie.de/sfz99.rdf",
+        "label": "Deutsche Biographie"
+      }
+    ]
+  },
+  {
+    "uri": "http://ndc.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://ndc.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Ndc"
+      }
+    ]
+  },
+  {
+    "uri": "http://netpath.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.netpath.org/",
+        "label": "Bio2RDF::NetPath"
+      }
+    ]
+  },
+  {
+    "uri": "http://neuroweb.med.yale.edu:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://neuroweb.med.yale.edu:8890/sparql",
+        "label": "Yale Senselab"
+      }
+    ]
+  },
+  {
+    "uri": "http://newcastle.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://newcastle.rkbexplorer.com/sparql/",
+        "label": "University of Newcastle upon Tyne (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://nextprot.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://bio2rdf.org/nextprot/describe/rdf?uri=http://bio2rdf.org/nextprot:NX_P19367",
+        "label": "Bio2RDF::neXtProt"
+      }
+    ]
+  },
+  {
+    "uri": "http://nl.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://nl.dbpedia.org/sparql",
+        "label": "DBpedia in Dutch"
+      }
+    ]
+  },
+  {
+    "uri": "http://nomisma.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://nomisma.org/nomisma.org.rdf",
+        "label": "nomisma"
+      }
+    ]
+  },
+  {
+    "uri": "http://notube.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://notube.rkbexplorer.com/sparql",
+        "label": "notube"
+      }
+    ]
+  },
+  {
+    "uri": "http://nsf.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://nsf.rkbexplorer.com/sparql/",
+        "label": "National Science Foundation (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://oai.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://oai.rkbexplorer.com/sparql/",
+        "label": "Open Archive Initiative Harvest over OAI-PMH (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://oecd.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://oecd.270a.info/sparql",
+        "label": "Organisation for Economic Co-operation and Development (OECD) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ohsu.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://ohsu.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Oregon Health and Science University"
+      }
+    ]
+  },
+  {
+    "uri": "http://omim.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://omim.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Omim"
+      }
+    ]
+  },
+  {
+    "uri": "http://onto.beef.org.pl/sparql",
+    "datasets": [
+      {
+        "uri": "http://onto.beef.org.pl/ontobeef/files/ontobeef-agrovoc.ttl",
+        "label": "OntoBeef Domain"
+      }
+    ]
+  },
+  {
+    "uri": "http://onto.mondis.cz/openrdf-sesame/repositories/mondis-record-owlim",
+    "datasets": [
+      {
+        "uri": "http://onto.mondis.cz/openrdf-sesame/repositories/mondis-record-owlim",
+        "label": "MONDIS"
+      }
+    ]
+  },
+  {
+    "uri": "http://opendap.tw.rpi.edu/sparql",
+    "datasets": [
+      {
+        "uri": "https://github.com/tetherless-world/opendap",
+        "label": "twc-opendap"
+      }
+    ]
+  },
+  {
+    "uri": "http://opendata-bundestag.de/sparql",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2013-05-11T113418/bundestagdata_05_05_13.ttl",
+        "label": "BundestagNebeneinkuenfte"
+      }
+    ]
+  },
+  {
+    "uri": "http://opendata.aragon.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://opendata.aragon.es/sparql",
+        "label": "AragoDBPedia"
+      }
+    ]
+  },
+  {
+    "uri": "http://opendata.ccd.uniroma2.it/LMF/sparql/select",
+    "datasets": [
+      {
+        "uri": "http://opendata.ccd.uniroma2.it/LMF/sparql/select",
+        "label": "Open Data @ Tor Vergata"
+      }
+    ]
+  },
+  {
+    "uri": "http://opendatacommunities.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://opendatacommunities.org/data/imd-rank-2010/dump",
+        "label": "English Index of Multiple Deprivation Ranking 2010"
+      },
+      {
+        "uri": "http://opendatacommunities.org/sparql",
+        "label": "English Indices of Multiple Deprivation"
+      },
+      {
+        "uri": "http://opendatacommunities.org/id/population/2005/lsoa/E01000001/age-range/all-ages",
+        "label": "Estimated mid-year population 2005"
+      },
+      {
+        "uri": "http://opendatacommunities-downloads.s3.amazonaws.com/imd-2010-imd-score.ttl.zip",
+        "label": "English Index of Multiple Deprivation Score 2010"
+      },
+      {
+        "uri": "http://opendatacommunities.org/datasets/geography.rdf",
+        "label": "Open Data Communities - Lower layer Super Output Areas"
+      },
+      {
+        "uri": "http://opendatacommunities-downloads.s3.amazonaws.com/lsoa.ttl.zip",
+        "label": "Lower Layer Super Output Areas"
+      },
+      {
+        "uri": "http://opendatacommunities-downloads.s3.amazonaws.com/imd-2007-imd-rank.ttl.zip",
+        "label": "Index of Multiple Deprivation Ranking, 2007"
+      }
+    ]
+  },
+  {
+    "uri": "http://openuplabs.tso.co.uk/sparql/gov-education",
+    "datasets": [
+      {
+        "uri": "http://education.data.gov.uk/doc/school/110158.rdf",
+        "label": "OpenUpLabs Education"
+      }
+    ]
+  },
+  {
+    "uri": "http://orphanet.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://orphanet.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Orphanet"
+      }
+    ]
+  },
+  {
+    "uri": "http://os.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://os.rkbexplorer.com/sparql/",
+        "label": "Ordnance Survey (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://os.services.tso.co.uk/geo/sparql",
+    "datasets": [
+      {
+        "uri": "http://data.ordnancesurvey.co.uk/doc/geometry/122961.rdf",
+        "label": "OpenUpLabs Geographic"
+      }
+    ]
+  },
+  {
+    "uri": "http://pathwaycommons.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://pathwaycommons.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Pathwaycommons"
+      }
+    ]
+  },
+  {
+    "uri": "http://pharmgkb.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://pharmgkb.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Pharmgkb"
+      }
+    ]
+  },
+  {
+    "uri": "http://photos.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://photos.rkbexplorer.com/sparql",
+        "label": "Global"
+      }
+    ]
+  },
+  {
+    "uri": "http://pid.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://pid.bio2rdf.org/sparql",
+        "label": "Bio2RDF::PID"
+      }
+    ]
+  },
+  {
+    "uri": "http://pisa.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://pisa.rkbexplorer.com/sparql/",
+        "label": "Università di Pisa (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://platform.uberblic.org/api/v1/sparql",
+    "datasets": [
+      {
+        "uri": "http://platform.uberblic.org/dumps/",
+        "label": "Uberblic.org"
+      }
+    ]
+  },
+  {
+    "uri": "http://pomelo.iis.sinica.edu.tw:2020/sparql",
+    "datasets": [
+      {
+        "uri": "http://pomelo.iis.sinica.edu.tw:2020",
+        "label": "Taiwan geographic names"
+      }
+    ]
+  },
+  {
+    "uri": "http://prelex.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://prelex.publicdata.eu/sparql",
+        "label": "PreLex"
+      }
+    ]
+  },
+  {
+    "uri": "http://premon.fbk.eu/sparql",
+    "datasets": [
+      {
+        "uri": "https://premon.fbk.eu/download.html",
+        "label": "PreMOn (Predicate Model for Ontologies)"
+      }
+    ]
+  },
+  {
+    "uri": "http://provenanceweb.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://provenanceweb.org/source/provenanceweb/file/cr-full-dump/version/latest/conversion/provenanceweb-org.nt.gz",
+        "label": "provenanceweb"
+      }
+    ]
+  },
+  {
+    "uri": "http://psm.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://psm.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Ponce School of Medicine"
+      }
+    ]
+  },
+  {
+    "uri": "http://pt.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://pt.dbpedia.org/sparql",
+        "label": "DBpedia in Portuguese"
+      }
+    ]
+  },
+  {
+    "uri": "http://pubchem.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://pubchem.bio2rdf.org/sparql",
+        "label": "Bio2RDF::PubChem"
+      }
+    ]
+  },
+  {
+    "uri": "http://publicspending.medialab.ntua.gr/sparql",
+    "datasets": [
+      {
+        "uri": "http://publicspending.medialab.ntua.gr/sparql",
+        "label": "Public Spending in Greece"
+      }
+    ]
+  },
+  {
+    "uri": "http://pubmed.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://pubmed.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Pubmed"
+      }
+    ]
+  },
+  {
+    "uri": "http://purl.org/openbibliosets/iucrsparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/openbibliosets/iucr-rdf",
+        "label": "Academic Bibliography data available from Acta Cryst E"
+      }
+    ]
+  },
+  {
+    "uri": "http://purl.org/twc/arrayexpress/virtuoso/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/twc/arrayexpress/virtuoso/sparql",
+        "label": "Transcription profiling of rat bladder after inoculation with bladder cancer cells"
+      },
+      {
+        "uri": "http://www.w3.org/ns/prov#",
+        "label": "Transcription profiling of human, chimp and mouse brain"
+      }
+    ]
+  },
+  {
+    "uri": "http://purl.org/twc/hub/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/twc/hub/source/hub/file/cr-full-dump/version/latest/conversion/purl-org-twc-hub.nt.gz",
+        "label": "Instance Hub (all)"
+      }
+    ]
+  },
+  {
+    "uri": "http://purl.org/weso/sparql",
+    "datasets": [
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/naics/2007/naics-2007.ttl",
+        "label": "NAICS 2007"
+      },
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/cpa/2008/cpa-2008.ttl",
+        "label": "CPA 2008"
+      },
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/cpc/2008/cpc-2008.ttl",
+        "label": "CPC 2008"
+      },
+      {
+        "uri": "http://purl.org/weso/pscs/data/resource/ds?output=ttl",
+        "label": "Product Scheme Classifications Catalogue"
+      },
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/cpv/2008/cpv-2008.ttl",
+        "label": "CPV 2008"
+      },
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/cn/2012/cn-2012.ttl",
+        "label": "CN  2012"
+      },
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/sitc/v4/sitc-v4.ttl",
+        "label": "SITC-V4"
+      },
+      {
+        "uri": "http://purl.org/weso/datasets/pscs/naics/2012/naics-2012.ttl",
+        "label": "NAICS 2012"
+      },
+      {
+        "uri": "http://purl.org/weso/static/nomenclator/datasets/nomenclator-observations.ttl",
+        "label": "Nomenclator Asturias"
+      }
+    ]
+  },
+  {
+    "uri": "http://rae2001.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://rae2001.rkbexplorer.com/sparql/",
+        "label": "Research Assessment Exercise 2001 (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://rdf.disgenet.org/sparql/",
+    "datasets": [
+      {
+        "uri": "http://rdf.disgenet.org/download/v4.0.0/",
+        "label": "DisGeNET"
+      }
+    ]
+  },
+  {
+    "uri": "http://rdf.farmbio.uu.se/chembl/sparql",
+    "datasets": [
+      {
+        "uri": "http://rdf.farmbio.uu.se/chembl/sparql",
+        "label": "ChEMBL-RDF (@ Uppsala University)"
+      }
+    ]
+  },
+  {
+    "uri": "http://rdf.muninn-project.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://rdf.muninn-project.org/sparql",
+        "label": "Muninn World War I"
+      }
+    ]
+  },
+  {
+    "uri": "http://rdf.myexperiment.org/sparql/",
+    "datasets": [
+      {
+        "uri": "http://rdf.myexperiment.org/myexperiment.rdf.gz",
+        "label": "myExperiment"
+      }
+    ]
+  },
+  {
+    "uri": "http://rdf.ng-london.org.uk/raphael",
+    "datasets": [
+      {
+        "uri": "http://rdf.ng-london.org.uk/workshops/interface2011/",
+        "label": "Raphael Research Resource"
+      }
+    ]
+  },
+  {
+    "uri": "http://rdfabout.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.govtrack.us/data/misc/sec.n3.gz",
+        "label": "U.S. Securities and Exchange Commission Corporate Ownership RDF Data (rdfabout)"
+      }
+    ]
+  },
+  {
+    "uri": "http://reactome.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://reactome.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Reactome"
+      }
+    ]
+  },
+  {
+    "uri": "http://resex.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://resex.rkbexplorer.com/sparql/",
+        "label": "ReSIST Resilience Mechanisms (RKBExplorer.com)"
+      }
+    ]
+  },
+  {
+    "uri": "http://resource.geolba.ac.at/PoolParty/sparql/GeologicTimeScale",
+    "datasets": [
+      {
+        "uri": "http://resource.geolba.ac.at/GeologicUnit",
+        "label": "Geological Survey of Austria (GBA) - Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://resource.geolba.ac.at/PoolParty/sparql/GeologicUnit",
+    "datasets": [
+      {
+        "uri": "http://resource.geolba.ac.at/GeologicUnit",
+        "label": "Geological Survey of Austria (GBA) - Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://resource.geolba.ac.at/PoolParty/sparql/lithology",
+    "datasets": [
+      {
+        "uri": "http://resource.geolba.ac.at/GeologicUnit",
+        "label": "Geological Survey of Austria (GBA) - Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://resource.geolba.ac.at/PoolParty/sparql/tectonicunit",
+    "datasets": [
+      {
+        "uri": "http://resource.geolba.ac.at/GeologicUnit",
+        "label": "Geological Survey of Austria (GBA) - Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://resrev.ilrt.bris.ac.uk/data-server-workshop/sparql",
+    "datasets": [
+      {
+        "uri": "http://resrev.ilrt.bris.ac.uk/data-server-workshop/sparql",
+        "label": "University of Bristol"
+      }
+    ]
+  },
+  {
+    "uri": "http://revyu.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://revyu.com/sparql",
+        "label": "Revyu.com - Review Anything"
+      }
+    ]
+  },
+  {
+    "uri": "http://rhea.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://rhea.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Rhea"
+      }
+    ]
+  },
+  {
+    "uri": "http://rijksmuseum.dydra.com/lizzyjongma/rijksmuseum-collection/sparql",
+    "datasets": [
+      {
+        "uri": "http://rijksmuseum.sealinc.eculture.labs.vu.nl/rdf/201509-rma-edm-collection.ttl.gz",
+        "label": "Rijksmuseum Collection Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ring.ciard.net/sparql1",
+    "datasets": [
+      {
+        "uri": "https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T14:13:09.468Z/ring-rdf-dump-datasets.zip",
+        "label": "The CIARD RING"
+      }
+    ]
+  },
+  {
+    "uri": "http://risks.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://risks.rkbexplorer.com/sparql/",
+        "label": "RISKS Digest (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://river.styx.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://88.80.16.63/torrent/cablegate/cablegate-201012031501.7z.torrent",
+        "label": "cablegate"
+      }
+    ]
+  },
+  {
+    "uri": "http://roma.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://roma.rkbexplorer.com/sparql/",
+        "label": "Università degli studi di Roma \"La Sapienza\" (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://roni.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://roni.rkbexplorer.com/sparql",
+        "label": "roni"
+      }
+    ]
+  },
+  {
+    "uri": "http://ruian.linked.opendata.cz/sparql",
+    "datasets": [
+      {
+        "uri": "http://ruian.linked.opendata.cz/sparql",
+        "label": "RUIAN - registry of land identification, addresses and properties of the Czech Republic"
+      }
+    ]
+  },
+  {
+    "uri": "http://sabiork.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://sabiork.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Sabiork"
+      }
+    ]
+  },
+  {
+    "uri": "http://seek.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://seek.rkbexplorer.com/sparql/",
+        "label": "Linked Education Cloud"
+      }
+    ]
+  },
+  {
+    "uri": "http://semantic-web-journal.com:3030/sparql.tpl",
+    "datasets": [
+      {
+        "uri": "http://semantic-web-journal.com:3030/sparql.tpl",
+        "label": "semantic-web-journal"
+      }
+    ]
+  },
+  {
+    "uri": "http://semantic.ckan.net/sparql/",
+    "datasets": [
+      {
+        "uri": "http://www.ckan.net/dump/ckan.net-daily.json.gz",
+        "label": "Comprehensive Knowledge Archive Network"
+      }
+    ]
+  },
+  {
+    "uri": "http://semantic.eea.europa.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.eea.europa.eu/sitemap-all-content-rdf.xml",
+        "label": "European Environment Agency Published Products"
+      },
+      {
+        "uri": "http://eunis.eea.europa.eu/void.rdf",
+        "label": "European Nature Information System"
+      }
+    ]
+  },
+  {
+    "uri": "http://semanticweb.cs.vu.nl/dss/sparql/",
+    "datasets": [
+      {
+        "uri": "http://semanticweb.cs.vu.nl/dss/sparql/",
+        "label": "Dutch Ships and Sailors"
+      }
+    ]
+  },
+  {
+    "uri": "http://semanticweb.cs.vu.nl/europeana/sparql/",
+    "datasets": [
+      {
+        "uri": "http://semanticweb.cs.vu.nl/europeana/sparql/",
+        "label": "Amsterdam Museum as Linked Open Data in the Europeana Data Model"
+      }
+    ]
+  },
+  {
+    "uri": "http://semanticweb.cs.vu.nl/iati/sparql/",
+    "datasets": [
+      {
+        "uri": "http://semanticweb.cs.vu.nl/iati/sparql/",
+        "label": "IATI as Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://semanticweb.cs.vu.nl/verrijktkoninkrijk/sparql/",
+    "datasets": [
+      {
+        "uri": "http://semanticweb.cs.vu.nl/verrijktkoninkrijk/sparql/",
+        "label": "Verrijkt Koninkrijk"
+      }
+    ]
+  },
+  {
+    "uri": "http://serendipity.utpl.edu.ec/lod/sparql",
+    "datasets": [
+      {
+        "uri": "http://serendipity.utpl.edu.ec/lod/sparql",
+        "label": "Serendipity"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/business/sparql",
+    "datasets": [
+      {
+        "uri": "http://source.data.gov.uk/data/business/bis-research-explorer/2010-03-04/business.data.gov.uk.nt",
+        "label": "business.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/education/sparql",
+    "datasets": [
+      {
+        "uri": "http://education.data.gov.uk/id/school/520965",
+        "label": "education.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/environment/sparql",
+    "datasets": [
+      {
+        "uri": "http://source.data.gov.uk/data/environment/environment/2009-09-30/environment-stats.zip",
+        "label": "environment.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/patents/sparql",
+    "datasets": [
+      {
+        "uri": "http://source.data.gov.uk/data/patents/bis-research-explorer/2010-03-04/patents.data.gov.uk.nt",
+        "label": "patents.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/reference/sparql",
+    "datasets": [
+      {
+        "uri": "http://services.data.gov.uk/reference/sparql",
+        "label": "reference.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/research/sparql",
+    "datasets": [
+      {
+        "uri": "http://source.data.gov.uk/data/research/bis-research-explorer/2010-03-04/research.data.gov.uk.nt",
+        "label": "research.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/statistics/sparql",
+    "datasets": [
+      {
+        "uri": "http://services.data.gov.uk/statistics/sparql",
+        "label": "statistics.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov.uk/transport/sparql",
+    "datasets": [
+      {
+        "uri": "http://services.data.gov.uk/transport/sparql",
+        "label": "transport.data.gov.uk"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.data.gov/sparql",
+    "datasets": [
+      {
+        "uri": "http://services.data.gov/sparql",
+        "label": "Data.gov"
+      }
+    ]
+  },
+  {
+    "uri": "http://services.insemtives.eu/forest/sparql",
+    "datasets": [
+      {
+        "uri": "http://services.insemtives.eu/forest/sparql",
+        "label": "INSEMTIVES"
+      }
+    ]
+  },
+  {
+    "uri": "http://setaria.oszk.hu/sparql",
+    "datasets": [
+      {
+        "uri": "http://setaria.oszk.hu/sparql",
+        "label": "Hungarian National Library (NSZL) catalog"
+      }
+    ]
+  },
+  {
+    "uri": "http://sgd.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://sgd.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Sgd"
+      }
+    ]
+  },
+  {
+    "uri": "http://sider.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://sider.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Sider"
+      }
+    ]
+  },
+  {
+    "uri": "http://skos.um.es/sparql/",
+    "datasets": [
+      {
+        "uri": "http://skos.um.es/sparql/",
+        "label": "UNESCO Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://smartlink.open.ac.uk/smartlink/sparql",
+    "datasets": [
+      {
+        "uri": "http://smartlink.open.ac.uk/smartlink/sparql",
+        "label": "SmartLink: Linked Services Non-Functional Properties"
+      }
+    ]
+  },
+  {
+    "uri": "http://soa4all.isoco.net/luf/sparql",
+    "datasets": [
+      {
+        "uri": "http://soa4all.isoco.net/luf/sparql",
+        "label": "Linked User Feedback"
+      }
+    ]
+  },
+  {
+    "uri": "http://socialarchive.iath.virginia.edu/sparql/eac",
+    "datasets": [
+      {
+        "uri": "https://gist.github.com/1593245",
+        "label": "Social Networks and Archival Context Fall 2011"
+      }
+    ]
+  },
+  {
+    "uri": "http://socialarchive.iath.virginia.edu/sparql/snac-viaf",
+    "datasets": [
+      {
+        "uri": "https://gist.github.com/1593245",
+        "label": "Social Networks and Archival Context Fall 2011"
+      }
+    ]
+  },
+  {
+    "uri": "http://sonicbanana.cs.wright.edu:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://sonicbanana.cs.wright.edu:8890/sparql",
+        "label": "Linked Sensor Data (Kno.e.sis)"
+      }
+    ]
+  },
+  {
+    "uri": "http://southampton.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://southampton.rkbexplorer.com/sparql/",
+        "label": "School of Electronics and Computer Science, University of Southampton (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql-procomun.educalab.es/",
+    "datasets": [
+      {
+        "uri": "http://sparql-procomun.educalab.es/",
+        "label": "Procomún SPARQL"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.contextdatacloud.org",
+    "datasets": [
+      {
+        "uri": "http://www.contextdatacloud.org/resource/loc183",
+        "label": "Linked Crowdsourced Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.data.southampton.ac.uk/",
+    "datasets": [
+      {
+        "uri": "http://sparql.data.southampton.ac.uk/",
+        "label": "data.southampton.ac.uk with SPARQL endpoint"
+      },
+      {
+        "uri": "http://data.southampton.ac.uk/apps.html",
+        "label": "Apps using our data (University of Southampton)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.jesandco.org:8890/sparql",
+    "datasets": [
+      {
+        "uri": "https://commondatastorage.googleapis.com/ckannet-storage/2012-08-17T160730/asn_published_xml.tgz",
+        "label": "ASN:US"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.kupkb.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.kupkb.org/data/kupkb/experiment/gse17138_adult_assay",
+        "label": "Kidney and Urinary Pathway Knowledge Base"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/cap",
+    "datasets": [
+      {
+        "uri": "http://dump.linkedopendata.it/cap",
+        "label": "Postal codes Italy (LinkedOpenData.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/grrp",
+    "datasets": [
+      {
+        "uri": "http://dump.linkedopendata.it/grrp",
+        "label": "Accommodations in Piedmont (LinkedOpenData.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/grrt",
+    "datasets": [
+      {
+        "uri": "http://dump.linkedopendata.it/grrt",
+        "label": "Accommodations in Tuscany (LinkedOpenData.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/istat",
+    "datasets": [
+      {
+        "uri": "http://dump.linkedopendata.it/istat/immigrazione",
+        "label": "ISTAT Immigration (LinkedOpenData.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/loc",
+    "datasets": [
+      {
+        "uri": "http://sparql.linkedopendata.it/loc",
+        "label": "Linked Open Camera (LinkedOpenData.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/los",
+    "datasets": [
+      {
+        "uri": "http://sparql.linkedopendata.it/los",
+        "label": "Linked Open Senate (linkedopendata.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/musei",
+    "datasets": [
+      {
+        "uri": "http://sparql.linkedopendata.it/musei",
+        "label": "Italian Museums"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.linkedopendata.it/scuole",
+    "datasets": [
+      {
+        "uri": "http://dump.linkedopendata.it/scuole",
+        "label": "Italian public schools (LinkedOpenData.it)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.msc2010.org",
+    "datasets": [
+      {
+        "uri": "http://sparql.msc2010.org",
+        "label": "Mathematics Subject Classification"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.neurocommons.org:8890/nsparql/",
+    "datasets": [
+      {
+        "uri": "http://purl.org/hcls/2007/kb-sources/neurocommons-text-mining.tgz",
+        "label": "Neurocommons text mining pilot"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.odw.tw",
+    "datasets": [
+      {
+        "uri": "http://data.odw.tw/record/d3108593.ttl",
+        "label": "Test Site, LOD Lab 317"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.openmobilenetwork.org",
+    "datasets": [
+      {
+        "uri": "http://sparql.openmobilenetwork.org",
+        "label": "OpenMobileNetwork"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.reegle.info/",
+    "datasets": [
+      {
+        "uri": "http://sparql.reegle.info/",
+        "label": "Linked Clean Energy Data (reegle.info)"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.sindice.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.sudoc.fr/012367206.rdf",
+        "label": "Sudoc bibliographic data"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.sstu.ru:3030/speciality-vocabulary/query",
+    "datasets": [
+      {
+        "uri": "https://datahub.io/dataset/c8bb2280-5919-4fbb-85b1-52d03d403e21/resource/38b05231-715e-411e-9c04-4752d08dfa6d/download/specialityfinal-1.owl",
+        "label": "Russian Universities Specialities"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.uniprot.org",
+    "datasets": [
+      {
+        "uri": "http://sparql.uniprot.org",
+        "label": "UniProt UniParc"
+      },
+      {
+        "uri": "http://ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/uniref.rdf.xz",
+        "label": "UniProt UniRef"
+      },
+      {
+        "uri": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/citations.rdf.xz",
+        "label": "UniProt citations"
+      },
+      {
+        "uri": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/databases.rdf.xz",
+        "label": "UniProt databases"
+      },
+      {
+        "uri": "http://sparql.uniprot.org",
+        "label": "UniProt UniPathway"
+      },
+      {
+        "uri": "http://sparql.uniprot.org",
+        "label": "UniProtKB Taxonomy"
+      },
+      {
+        "uri": "http://ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/void.rdf",
+        "label": "UniProt"
+      },
+      {
+        "uri": "http://sparql.uniprot.org",
+        "label": "UniProtKB"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.wikipathways.org/",
+    "datasets": [
+      {
+        "uri": "http://www.wikipathways.org/index.php/Download_Pathways",
+        "label": "WikiPathways"
+      }
+    ]
+  },
+  {
+    "uri": "http://sparql.yovisto.com/",
+    "datasets": [
+      {
+        "uri": "http://sparql.yovisto.com/",
+        "label": "Yovisto - academic video search"
+      }
+    ]
+  },
+  {
+    "uri": "http://spatial.ucd.ie/lod/sparql",
+    "datasets": [
+      {
+        "uri": "http://spatial.ucd.ie/osn/skos/osm_semantic_network.skos.rdf",
+        "label": "OSM Semantic Network"
+      }
+    ]
+  },
+  {
+    "uri": "http://spending.lichfielddc.gov.uk/sparql",
+    "datasets": [
+      {
+        "uri": "http://spending.lichfielddc.gov.uk/apps/spending/public/data/September_2010_v1.csv",
+        "label": "Lichfield District Council - Spending"
+      }
+    ]
+  },
+  {
+    "uri": "http://spike.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://spike.bio2rdf.org/sparql",
+        "label": "Bio2RDF::SPIKE"
+      }
+    ]
+  },
+  {
+    "uri": "http://sw.unime.it:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://sw.unime.it/loius",
+        "label": "Linking Italian University Statistics Project"
+      }
+    ]
+  },
+  {
+    "uri": "http://symbolicdata.org:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://symbolicdata.org/",
+        "label": "SymbolicData"
+      }
+    ]
+  },
+  {
+    "uri": "http://taxonomy.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://taxonomy.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Taxonomy"
+      }
+    ]
+  },
+  {
+    "uri": "http://tcga.deri.ie",
+    "datasets": [
+      {
+        "uri": "http://tcga.deri.ie/",
+        "label": "Linked TCGA"
+      }
+    ]
+  },
+  {
+    "uri": "http://telegraphis.net/data/countries/sparql",
+    "datasets": [
+      {
+        "uri": "http://telegraphis.net/data/countries/countries.rdf",
+        "label": "Telegraphis Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://tkm.kiom.re.kr/ontology/sparql",
+    "datasets": [
+      {
+        "uri": "http://tkm.kiom.re.kr/ontology/sparql",
+        "label": "Traditional Korean Medicine Ontology"
+      }
+    ]
+  },
+  {
+    "uri": "http://tour-pedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://tour-pedia.org/api",
+        "label": "Tourpedia"
+      }
+    ]
+  },
+  {
+    "uri": "http://transparency.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://transparency.270a.info/sparql",
+        "label": "Transparency International Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://tsu.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://tsu.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Texas Southern University"
+      }
+    ]
+  },
+  {
+    "uri": "http://tuskegee.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://tuskegee.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Tuskegee University"
+      }
+    ]
+  },
+  {
+    "uri": "http://twarql.org:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://twarql.org:8890/sparql",
+        "label": "Twarql"
+      }
+    ]
+  },
+  {
+    "uri": "http://uccaribe.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://uccaribe.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Universidad Central del Caribe"
+      }
+    ]
+  },
+  {
+    "uri": "http://uis.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://uis.270a.info/dataset/CUL_DS",
+        "label": "UNESCO Institute for Statistics (UIS) Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://ulm.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://ulm.rkbexplorer.com/sparql/",
+        "label": "Universität Ulm (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://unlocode.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://unlocode.rkbexplorer.com/sparql/",
+        "label": "UN/LOCODE (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://unodc.publicdata.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://unodc.publicdata.eu/sparql",
+        "label": "UNODC - Statistics on criminal justice"
+      }
+    ]
+  },
+  {
+    "uri": "http://upr.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://upr.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i@ University of Puerto Rico - Medical Sciences Campus"
+      }
+    ]
+  },
+  {
+    "uri": "http://utep.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://utep.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ University of Texas at El Paso"
+      }
+    ]
+  },
+  {
+    "uri": "http://utsa.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://utsa.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ University of Texas at San Antonio"
+      }
+    ]
+  },
+  {
+    "uri": "http://virtuoso-eurosentiment.paradigmatecnologico.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://virtuoso-eurosentiment.paradigmatecnologico.com/sparql",
+        "label": "EuroSentiment"
+      }
+    ]
+  },
+  {
+    "uri": "http://visualdataweb.infor.uva.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://visualdataweb.infor.uva.es/sparql",
+        "label": "2001 Spanish Census to RDF"
+      },
+      {
+        "uri": "http://visualdataweb.infor.uva.es/sparql",
+        "label": "DATATURCYL - LOD for tourists in Castilla y León (Spain)"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocab.getty.edu/sparql",
+    "datasets": [
+      {
+        "uri": "http://vocab.getty.edu",
+        "label": "The Getty Thesaurus of Geographic Names"
+      },
+      {
+        "uri": "http://vocab.getty.edu",
+        "label": "Art & Architecture Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocab.nerc.ac.uk/sparql/",
+    "datasets": [
+      {
+        "uri": "http://www.bodc.ac.uk/products/web_services/vocab/",
+        "label": "NERC Vocabulary Server 2.0"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocabularies.unesco.org/sparql-form/",
+    "datasets": [
+      {
+        "uri": "http://vocabularies.unesco.org/exports/thesaurus/latest/",
+        "label": "UNESCO Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocabulary.semantic-web.at/PoolParty/sparql/AustrianSkiTeam",
+    "datasets": [
+      {
+        "uri": "http://vocabulary.semantic-web.at/PoolParty/sparql/AustrianSkiTeam",
+        "label": "Alpine Ski Racers of Austria"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocabulary.semantic-web.at/PoolParty/sparql/OpenData",
+    "datasets": [
+      {
+        "uri": "http://vocabulary.semantic-web.at/PoolParty/sparql/OpenData",
+        "label": "Open Data Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocabulary.semantic-web.at/PoolParty/sparql/semweb",
+    "datasets": [
+      {
+        "uri": "http://vocabulary.semantic-web.at/PoolParty/sparql/semweb",
+        "label": "Social Semantic Web Thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocabulary.wolterskluwer.de/PoolParty/sparql/arbeitsrecht",
+    "datasets": [
+      {
+        "uri": "http://vocabulary.wolterskluwer.de/PoolParty/sparql/arbeitsrecht",
+        "label": "German labor law thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://vocabulary.wolterskluwer.de/PoolParty/sparql/court",
+    "datasets": [
+      {
+        "uri": "http://vocabulary.wolterskluwer.de/PoolParty/sparql/court",
+        "label": "Courts thesaurus"
+      }
+    ]
+  },
+  {
+    "uri": "http://webconf.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://webconf.rkbexplorer.com/sparql",
+        "label": "webconf"
+      }
+    ]
+  },
+  {
+    "uri": "http://webenemasuno.linkeddata.es/sparql",
+    "datasets": [
+      {
+        "uri": "http://webenemasuno.linkeddata.es/sparql",
+        "label": "El Viajero's tourism dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://webscience.rkbexplorer.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://webscience.rkbexplorer.com/sparql",
+        "label": "Web Science Conference (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://wiki.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://wiki.rkbexplorer.com/sparql/",
+        "label": "ReSIST Project Wiki (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://wikidata.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wikidata.dbpedia.org/sparql",
+        "label": "DBpedia Wikidata"
+      }
+    ]
+  },
+  {
+    "uri": "http://wikipathways.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wikipathways.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Wikipathways"
+      }
+    ]
+  },
+  {
+    "uri": "http://wiktionary.dbpedia.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wiktionary.dbpedia.org/sparql",
+        "label": "wiktionary.dbpedia.org"
+      }
+    ]
+  },
+  {
+    "uri": "http://wordnet.okfn.gr:8890/sparql/",
+    "datasets": [
+      {
+        "uri": "http://wordnet.okfn.gr:8890/sparql/",
+        "label": "Greek Wordnet"
+      }
+    ]
+  },
+  {
+    "uri": "http://wordnet.rkbexplorer.com/sparql/",
+    "datasets": [
+      {
+        "uri": "http://wordnet.rkbexplorer.com/sparql/",
+        "label": "WordNet (RKBExplorer)"
+      }
+    ]
+  },
+  {
+    "uri": "http://worldbank.270a.info/sparql",
+    "datasets": [
+      {
+        "uri": "http://worldbank.270a.info/sparql",
+        "label": "World Bank Linked Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://wormbase.bio2rdf.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://wormbase.bio2rdf.org/sparql",
+        "label": "Bio2RDF::Wormbase"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.archivesdefrance.culture.gouv.fr/thesaurus/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.archivesdefrance.culture.gouv.fr/thesaurus/resource/T1-518",
+        "label": "Thesaurus W for Local Archives"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.auth.gr/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.auth.gr/sparql",
+        "label": "Aristotle University"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.crystallography.net:2020/snorql/",
+    "datasets": [
+      {
+        "uri": "http://www.crystallography.net/archives/cod-rdf.nt.xz",
+        "label": "COD inventory"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.ebi.ac.uk/rdf/services/atlas/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.ebi.ac.uk/rdf/services/atlas/sparql",
+        "label": "Gene Expression Atlas RDF"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.eclap.eu/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.eclap.eu/sparql",
+        "label": "ECLAP"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.icane.es/opendata/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.icane.es/opendata/vocab",
+        "label": "ICANE"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.ida.liu.se/projects/semtech/openrdf-sesame/repositories/energy",
+    "datasets": [
+      {
+        "uri": "http://www.ida.liu.se/projects/semtech/energy/Energy_201309.zip",
+        "label": "Energy efficiency assessments and improvements"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.imagesnippets.com/sparql/images",
+    "datasets": [
+      {
+        "uri": "http://www.imagesnippets.com/dataset/",
+        "label": "Imagesnippets Image Descriptions"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.inertia-linkeddata.iti.gr:9090/inertia-endpoint/",
+    "datasets": [
+      {
+        "uri": "http://www.inertia-linkeddata.iti.gr:9090/inertia-endpoint/",
+        "label": "INERTIA (INERTIA Energy Consumption Example Linked Data)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.influencetracker.com:8890/sparql",
+    "datasets": [
+      {
+        "uri": "https://www.dropbox.com/s/a0wnnzz7gqzuyox/IT%20graphs%202016-05-30.rar?dl=0",
+        "label": "Influence Tracker Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.linklion.org:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.linklion.org:8890/sparql",
+        "label": "LinkLion - A Link Repository for the Web of Data"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.lotico.com:3030/lotico/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.lotico.com:3030/lotico/sparql",
+        "label": "Lotico"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.open-biomed.org.uk/sparql/endpoint/bdgp_20081030",
+    "datasets": [
+      {
+        "uri": "http://www.open-biomed.org.uk/open-biomed-data/bdgp-images-all-20110211.tar.gz",
+        "label": "Bdgp"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.open-biomed.org.uk/sparql/endpoint/flyatlas",
+    "datasets": [
+      {
+        "uri": "http://www.open-biomed.org.uk/open-biomed-data/flyatlas-201102.tar.gz",
+        "label": "flyatlas"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.open-biomed.org.uk/sparql/endpoint/flybase",
+    "datasets": [
+      {
+        "uri": "http://www.open-biomed.org.uk/open-biomed-data/flybase-dump-core-fb201102.tar.gz",
+        "label": "Flybase"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.open-biomed.org.uk/sparql/endpoint/flyted",
+    "datasets": [
+      {
+        "uri": "http://www.open-biomed.org.uk/open-biomed-data/flyted-release-fm3-20110210.tar.gz",
+        "label": "Flyted"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.open-biomed.org.uk/sparql/endpoint/tcm",
+    "datasets": [
+      {
+        "uri": "http://www.open-biomed.org.uk/tcmdata/tcm_rdf_data_release3_190609.tar.gz",
+        "label": "TCMGeneDIT Dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.opmw.org/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.opmw.org/sparql",
+        "label": "Wings workflow provenance dataset"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.rdfabout.com/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.govtrack.us/developers/data.xpd",
+        "label": "GovTrack.us U.S Congress Legislative Data"
+      },
+      {
+        "uri": "http://www.rdfabout.com/demo/census/",
+        "label": "2000 U.S. Census in RDF (rdfabout.com)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.rechercheisidore.fr/sparql",
+    "datasets": [
+      {
+        "uri": "http://www.rechercheisidore.fr/sparql",
+        "label": "Isidore"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.sparql.org/sparql.html",
+    "datasets": [
+      {
+        "uri": "http://wiki.prov.vic.gov.au/rdf/Public_Record_Office_Victoria_Semantic_Wiki.rdf",
+        "label": "Public Record Office Victoria Semantic Wiki"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/cordis/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/cordis/sparql",
+        "label": "Community Research and Development Information Service (CORDIS)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/dailymed/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/dailymed/sparql",
+        "label": "DailyMed"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/dblp/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/dblp/sparql",
+        "label": "DBLP Bibliography Database in RDF (FU Berlin)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/diseasome/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/diseasome/sparql",
+        "label": "Diseasome"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/drugbank/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/drugbank/sparql",
+        "label": "DrugBank"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/eccompetition/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/eccompetition/sparql",
+        "label": "European Commission Competition data set (FU Berlin)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/euraxess/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/euraxess/sparql",
+        "label": "EURAXESS - Researchers in Motion"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/eures/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/eures/sparql",
+        "label": "European Employment Services (EURES)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/eurostat/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/eurostat/sparql",
+        "label": "Eurostat in RDF (FU Berlin)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/factbook/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/factbook/sparql",
+        "label": "World Factbook (FU Berlin)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/gutendata/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/gutendata/sparql",
+        "label": "Project Gutenberg in RDF (FU Berlin)"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/medicare/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/medicare/sparql",
+        "label": "MediCare"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/sider/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/sider/sparql",
+        "label": "SIDER: Side Effect Resource"
+      }
+    ]
+  },
+  {
+    "uri": "http://www4.wiwiss.fu-berlin.de/stitch/sparql",
+    "datasets": [
+      {
+        "uri": "http://www4.wiwiss.fu-berlin.de/stitch/sparql",
+        "label": "STITCH: Chemical-Protein Interactions"
+      }
+    ]
+  },
+  {
+    "uri": "http://xula.eagle-i.net/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "http://xula.eagle-i.net/sparqler/sparql",
+        "label": "eagle-i @ Xavier University of Louisiana"
+      }
+    ]
+  },
+  {
+    "uri": "http://zaire.dimis.fim.uni-passau.de:8890/sparql",
+    "datasets": [
+      {
+        "uri": "http://zaire.dimis.fim.uni-passau.de:8890/sparql",
+        "label": "CODE Endpoint"
+      }
+    ]
+  },
+  {
+    "uri": "http://zbw.eu/beta/sparql/stw/query",
+    "datasets": [
+      {
+        "uri": "http://zbw.eu/stw/versions/latest/download/about",
+        "label": "STW Thesaurus for Economics"
+      }
+    ]
+  },
+  {
+    "uri": "http://zhishi.me/sparql",
+    "datasets": [
+      {
+        "uri": "http://zhishi.me/sparql",
+        "label": "Zhishi.me"
+      }
+    ]
+  },
+  {
+    "uri": "https://data.ox.ac.uk/sparql/",
+    "datasets": [
+      {
+        "uri": "https://data.ox.ac.uk/sparql/",
+        "label": "OxPoints (University of Oxford)"
+      }
+    ]
+  },
+  {
+    "uri": "https://dbmi-icode-01.dbmi.pitt.edu/dikb/sparql",
+    "datasets": [
+      {
+        "uri": "https://dbmi-icode-01.dbmi.pitt.edu/dikb/sparql",
+        "label": "The Drug Interaction Knowledge Base"
+      }
+    ]
+  },
+  {
+    "uri": "https://dbmi-icode-01.dbmi.pitt.edu/sparql",
+    "datasets": [
+      {
+        "uri": "https://dbmi-icode-01.dbmi.pitt.edu/linkedSPLs/",
+        "label": "Linked Structured Product Labels"
+      }
+    ]
+  },
+  {
+    "uri": "https://eagle-i.ea.vanderbilt.edu/sparqler/sparql",
+    "datasets": [
+      {
+        "uri": "https://eagle-i.ea.vanderbilt.edu/sparqler/sparql",
+        "label": "eagle-i @ Vanderbilt University"
+      }
+    ]
+  },
+  {
+    "uri": "https://stirdf.jglobal.jst.go.jp/sparql",
+    "datasets": [
+      {
+        "uri": "ftp://ftp.biosciencedbc.jp/archive/nikkaji/LATEST/NBDC_NikkajiRDF_main.zip",
+        "label": "J-GLOBAL knowledge"
+      }
+    ]
+  },
+  {
+    "uri": "https://w3id.org/scholarlydata/sparql",
+    "datasets": [
+      {
+        "uri": "https://w3id.org/scholarlydata",
+        "label": "scholarlydata"
+      }
+    ]
+  },
+  {
+    "uri": "https://www.ebi.ac.uk/rdf/services/biomodels/sparql",
+    "datasets": [
+      {
+        "uri": "https://www.ebi.ac.uk/rdf/services/biomodels/sparql",
+        "label": "BioModels RDF"
+      }
+    ]
+  },
+  {
+    "uri": "https://www.ebi.ac.uk/rdf/services/biosamples/sparql",
+    "datasets": [
+      {
+        "uri": "https://www.ebi.ac.uk/rdf/services/biosamples/sparql",
+        "label": "BioSamples RDF"
+      }
+    ]
+  },
+  {
+    "uri": "https://www.ebi.ac.uk/rdf/services/chembl/sparql",
+    "datasets": [
+      {
+        "uri": "https://www.ebi.ac.uk/rdf/services/chembl/sparql",
+        "label": "ChEMBL RDF"
+      }
+    ]
+  },
+  {
+    "uri": "https://www.ebi.ac.uk/rdf/services/reactome/sparql",
+    "datasets": [
+      {
+        "uri": "https://www.ebi.ac.uk/rdf/services/reactome/sparql",
+        "label": "Reactome RDF"
+      }
+    ]
+  }
+]
