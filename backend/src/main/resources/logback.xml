@@ -1,0 +1,117 @@
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} [%5p] %c:%L - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+    <target>System.err</target>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>ERROR</level>
+    </filter>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} [%5p] %c:%L - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/main.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/main.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} %15.15c{1}:%-3.3L %5p - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ALOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/availability.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/availability.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} %15.15c{1}:%-3.3L %5p - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="DLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/discoverability.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/discoverability.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} %15.15c{1}:%-3.3L %5p - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/interoperability.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/interoperability.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} %15.15c{1}:%-3.3L %5p - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="PLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/performance.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/performance.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} %15.15c{1}:%-3.3L %5p - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="EXLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/exception.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/exception.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yy HH:mm:ss} %15.15c{1}:%-3.3L %5p - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="OTEL"
+    class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+    <captureExperimentalAttributes>true</captureExperimentalAttributes>
+    <captureCodeAttributes>true</captureCodeAttributes>
+    <captureMarkerAttribute>true</captureMarkerAttribute>
+    <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+  </appender>
+
+  <logger name="sparqles.core.availability" level="DEBUG">
+    <appender-ref ref="ALOG" />
+  </logger>
+  <logger name="sparqles.core.discovery" level="DEBUG">
+    <appender-ref ref="DLOG" />
+  </logger>
+  <logger name="sparqles.core.features" level="DEBUG">
+    <appender-ref ref="FLOG" />
+  </logger>
+  <logger name="sparqles.core.performance" level="DEBUG">
+    <appender-ref ref="PLOG" />
+  </logger>
+  <logger name="sparqles.utils.ExceptionHandler" level="INFO">
+    <appender-ref ref="EXLOG" />
+  </logger>
+  <logger name="org.apache.http" level="WARN" />
+  <logger name="org.apache.commons.httpclient.params.DefaultHttpParams" level="INFO" />
+  <logger name="com.hp.hpl.jena.sparql" level="WARN" />
+  <logger name="org.apache.jena" level="WARN" />
+  <logger name="sparqles.core.availability.ATask" level="DEBUG" />
+  <logger name="sparqles.analytics.IndexViewAnalytics" level="DEBUG" />
+
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="STDERR" />
+    <appender-ref ref="FILE" />
+    <appender-ref ref="OTEL" />
+  </root>
+
+</configuration>

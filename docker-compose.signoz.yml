@@ -1,0 +1,36 @@
+version: "3"
+services:
+  otel-collector:
+    image: signoz/otel-collector:0.94.0
+    restart: always
+    command: ["--config=/etc/otel-collector-config.yml"]
+    volumes:
+      - ./signoz/otel-collector-config.yml:/etc/otel-collector-config.yml
+    ports:
+      - "127.0.0.1:4317:4317" # OTLP gRPC receiver
+      - "127.0.0.1:4318:4318" # OTLP HTTP receiver
+    depends_on:
+      - query-service
+
+  query-service:
+    image: signoz/query-service:0.44.0
+    restart: always
+    ports:
+      - "127.0.0.1:8080:8080"
+    command: ["-c", "/etc/config.yaml"]
+    volumes:
+      - ./signoz/config.yaml:/etc/config.yaml
+      - ./signoz/data:/var/lib/signoz
+    depends_on:
+      - clickhouse
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.3.1.2533-alpine
+    restart: always
+    ports:
+      - "127.0.0.1:8123:8123"
+      - "127.0.0.1:9000:9000"
+    volumes:
+      - ./signoz/clickhouse-data:/var/lib/clickhouse
+      - ./signoz/clickhouse-config.xml:/etc/clickhouse-server/config.xml
+      - ./signoz/clickhouse-users.xml:/etc/clickhouse-server/users.xml
