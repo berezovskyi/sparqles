@@ -1,175 +1,127 @@
-// var Db = require('mongodb').Db;
-// var Connection = require('mongodb').Connection;
-// var Server = require('mongodb').Server;
-// var BSON = require('mongodb').BSON;
-// var ObjectID = require('mongodb').ObjectID;
-const { MongoClient, ObjectID } = require('mongodb');
+const { MongoClient } = require('mongodb');
 
-MongoDBProvider = function (host, port) {
-  const url = `mongodb://${host}:${port}`;
-  this.client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-  this.client.connect((err) => {
-    if (err) {
-      console.error('Failed to connect to the database');
-      process.exit(1);
-    }
-    this.db = this.client.db('sparqles');
-  });
-};
-
-//getCollection
-
-MongoDBProvider.prototype.getCollection = function (collectionName, callback) {
-  try {
-    const collection = this.db.collection(collectionName);
-    callback(null, collection);
-  } catch (error) {
-    callback(error);
+class MongoDBProvider {
+  constructor(host, port) {
+    const url = `mongodb://${host}:${port}`;
+    this.client = new MongoClient(url);
+    this.db = null;
+    this.connectPromise = this.client.connect()
+      .then(client => {
+        this.db = client.db('sparqles');
+        console.log('Connected to database');
+      })
+      .catch(err => {
+        console.error('Failed to connect to the database', err);
+        process.exit(1);
+      });
   }
-};
 
-//Availability
-MongoDBProvider.prototype.getAvailView = function (callback) {
-  this.getCollection('atasks_agg', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}, { "_id": 0 }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray(function (error, results) {
-        //collection.find().toArray(function(error, results) {
+  getCollection(collectionName, callback) {
+    this.connectPromise.then(() => {
+      try {
+        const collection = this.db.collection(collectionName);
+        callback(null, collection);
+      } catch (error) {
+        callback(error);
+      }
+    }).catch(err => callback(err));
+  }
 
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  getAvailView(callback) {
+    this.getCollection('atasks_agg', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}, { projection: { "_id": 0 } }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//Interoperability
-MongoDBProvider.prototype.getInteropView = function (callback) {
-  this.getCollection('ftasks_agg', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}, { "_id": 0 }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  getInteropView(callback) {
+    this.getCollection('ftasks_agg', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}, { projection: { "_id": 0 } }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//Performance
-MongoDBProvider.prototype.getPerfView = function (callback) {
-  this.getCollection('ptasks_agg', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}, { "_id": 0 }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  getPerfView(callback) {
+    this.getCollection('ptasks_agg', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}, { projection: { "_id": 0 } }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//Discoverability
-MongoDBProvider.prototype.getDiscoView = function (callback) {
-  this.getCollection('dtasks_agg', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}, { "_id": 0 }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  getDiscoView(callback) {
+    this.getCollection('dtasks_agg', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}, { projection: { "_id": 0 } }).sort({ "endpoint.datasets.0.label": 1, "endpoint.uri": 1 }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//Endpoint view
-MongoDBProvider.prototype.getEndpointView = function (epUri, callback) {
-  this.getCollection('epview', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({ "endpoint.uri": epUri }, { "_id": 0 }).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  getEndpointView(epUri, callback) {
+    this.getCollection('epview', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({ "endpoint.uri": epUri }, { projection: { "_id": 0 } }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//autocomplete
-MongoDBProvider.prototype.autocomplete = function (query, callback) {
-  this.getCollection('endpoints', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({ $or: [{ 'datasets.label': { $regex: '.*' + query + '.*', $options: 'i' } }, { 'uri': { $regex: '.*' + query + '.*', $options: 'i' } }] }, { "_id": 0 }).sort({ "datasets.0.label": 1, "uri": 1 }).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  autocomplete(query, callback) {
+    this.getCollection('endpoints', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({ $or: [{ 'datasets.label': { $regex: '.*' + query + '.*', $options: 'i' } }, { 'uri': { $regex: '.*' + query + '.*', $options: 'i' } }] }, { projection: { "_id": 0 } }).sort({ "datasets.0.label": 1, "uri": 1 }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//endpoints count
-MongoDBProvider.prototype.endpointsCount = function (callback) {
-  this.getCollection('endpoints', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.count(function (err, count) {
-        if (error) callback(error)
-        else callback(null, count)
-      });
-    }
-  });
-};
+  endpointsCount(callback) {
+    this.getCollection('endpoints', (error, collection) => {
+      if (error) return callback(error);
+      collection.countDocuments({})
+        .then(count => callback(null, count))
+        .catch(err => callback(err));
+    });
+  }
 
-//endpoints list
-MongoDBProvider.prototype.endpointsList = function (callback) {
-  this.getCollection('endpoints', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}, { "_id": 0 }).sort({ "uri": 1 }).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  endpointsList(callback) {
+    this.getCollection('endpoints', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}, { projection: { "_id": 0 } }).sort({ "uri": 1 }).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
+  getLastUpdate(callback) {
+    this.getCollection('atasks_agg', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}, { projection: { "lastUpdate": 1 } }).sort({ "lastUpdate": -1 }).limit(1).toArray()
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//Last Update date
-MongoDBProvider.prototype.getLastUpdate = function (callback) {
-  this.getCollection('atasks_agg', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}, { "lastUpdate": 1 }).sort({ "lastUpdate": -1 }).limit(1).toArray(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
+  getIndex(callback) {
+    this.getCollection('index', (error, collection) => {
+      if (error) return callback(error);
+      collection.findOne({})
+        .then(results => callback(null, results))
+        .catch(err => callback(err));
+    });
+  }
 
-//Index
-MongoDBProvider.prototype.getIndex = function (callback) {
-  this.getCollection('index', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.findOne(function (error, results) {
-        if (error) callback(error)
-        else callback(null, results)
-      });
-    }
-  });
-};
-
-//Amonths
-MongoDBProvider.prototype.getAMonths = function (callback) {
-  this.getCollection('amonths', function (error, collection) {
-    if (error) callback(error)
-    else {
-      collection.find({}).sort({ "date": 1 }).toArray(function (error, months) {
-        if (error) callback(error)
-        else {
-
+  getAMonths(callback) {
+    this.getCollection('amonths', (error, collection) => {
+      if (error) return callback(error);
+      collection.find({}).sort({ "date": 1 }).toArray()
+        .then(months => {
           // transform the months view into d3js expected format
           var valZeroFive = [];
           var valfiveSeventyfive = [];
@@ -192,22 +144,19 @@ MongoDBProvider.prototype.getAMonths = function (callback) {
             { "key": "99-100", "index": 5, "values": valnintynineHundred }
           ];
           callback(null, res)
-        }
-      });
-    }
-  });
-};
+        })
+        .catch(err => callback(err));
+    });
+  }
 
-MongoDBProvider.prototype.getLastTenPerformanceMedian = function (uri, callback) {
-  this.getCollection('ptasks', function (error, collection) {
-    if (error) callback(error)
-    else {
+  getLastTenPerformanceMedian(uri, callback) {
+    this.getCollection('ptasks', (error, collection) => {
+      if (error) return callback(error);
       collection.find({ "endpointResult.endpoint.uri": uri })
         .sort({ "endpointResult.end": -1 })
         .limit(10)
-        .toArray(function (error, results) {
-          if (error) return callback(error);
-
+        .toArray()
+        .then(results => {
           var ret = {};
           for (var i = 0; i < results.length; i++) {
             var obj = results[i];
@@ -227,28 +176,22 @@ MongoDBProvider.prototype.getLastTenPerformanceMedian = function (uri, callback)
           }
 
           callback(null, ret);
-
         })
-    }
-  });
-};
+        .catch(err => callback(err));
+    });
+  }
 
-MongoDBProvider.prototype.getLatestDisco = function (uri, callback) {
-  this.getCollection('dtasks', function (error, collection) {
-    if (error) callback(error)
-    else {
+  getLatestDisco(uri, callback) {
+    this.getCollection('dtasks', (error, collection) => {
+      if (error) return callback(error);
       collection.find({ "endpointResult.endpoint.uri": uri })
         .sort({ "endpointResult.end": -1 })
         .limit(1)
-        .toArray(function (error, result) {
-          if (error) return callback(error);
-
-          callback(null, result);
-
-        })
-    }
-  });
-
+        .toArray()
+        .then(result => callback(null, result))
+        .catch(err => callback(err));
+    });
+  }
 }
 
 function median(values) {

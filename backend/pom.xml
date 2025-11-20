@@ -286,13 +286,18 @@
     </dependency>
     <dependency>
       <groupId>org.mongodb</groupId>
-      <artifactId>mongo-java-driver</artifactId>
-      <version>2.11.3</version>
+      <artifactId>mongodb-driver-sync</artifactId>
+      <version>4.11.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver-legacy</artifactId>
+      <version>4.11.1</version>
     </dependency>
     <dependency>
       <groupId>org.jongo</groupId>
       <artifactId>jongo</artifactId>
-      <version>1.1</version>
+      <version>1.5.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>

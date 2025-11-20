@@ -7,11 +7,11 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
-import com.mongodb.MongoException.DuplicateKey;
+import com.mongodb.MongoWriteException;
+import com.mongodb.DuplicateKeyException;
 import com.mongodb.QueryBuilder;
 import com.mongodb.WriteConcern;
 import com.mongodb.WriteResult;
-import com.mongodb.util.JSON;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -109,16 +109,10 @@ public class MongoDBManager {
   }
 
   public void setup() {
-    try {
-      client = new MongoClient(SPARQLESProperties.getDB_HOST(), SPARQLESProperties.getDB_PORT());
+    client = new MongoClient(SPARQLESProperties.getDB_HOST(), SPARQLESProperties.getDB_PORT());
 
-      log.info("[INIT] MongoDB {} ", client);
-      db = client.getDB(SPARQLESProperties.getDB_NAME());
-
-    } catch (UnknownHostException e) {
-      log.error(
-          "Could not connect to MongoDB instance, {}", ExceptionHandler.logAndtoString(e, true));
-    }
+    log.info("[INIT] MongoDB {} ", client);
+    db = client.getDB(SPARQLESProperties.getDB_NAME());
     try {
       String[] cols = {
         COLL_AVAIL_AGG,
@@ -134,12 +128,12 @@ public class MongoDBManager {
       for (String col : cols) {
         DBCollection c = db.getCollection(col);
         if (c.getIndexInfo().size() == 0)
-          c.ensureIndex(new BasicDBObject("endpoint.uri", 1), new BasicDBObject("unique", true));
+          c.createIndex(new BasicDBObject("endpoint.uri", 1), new BasicDBObject("unique", true));
       }
       //
       DBCollection c = db.getCollection(COLL_ENDS);
       DBObject d = new BasicDBObject("uri", 1);
-      if (c.getIndexInfo().size() == 0) c.ensureIndex(d, new BasicDBObject("unique", true));
+      if (c.getIndexInfo().size() == 0) c.createIndex(d, new BasicDBObject("unique", true));
     } catch (Exception e) {
       log.error(
           "Exception while creating indices for MongoDB collections, {}",
@@ -165,7 +159,7 @@ public class MongoDBManager {
     for (String col : cols) {
       DBCollection c = db.getCollection(col);
       c.drop();
-      c.ensureIndex(new BasicDBObject("endpoint.uri", 1), new BasicDBObject("unique", true));
+      c.createIndex(new BasicDBObject("endpoint.uri", 1), new BasicDBObject("unique", true));
     }
   }
 
@@ -200,19 +194,16 @@ public class MongoDBManager {
 
       DBObject dbObject = getObject(e, schema);
       WriteResult wr = c.insert(dbObject, WriteConcern.ACKNOWLEDGED);
-      if (wr.getError() != null) {
-        log.warn("INSERT ERROR {}:{} #>{}", collName, s, wr.getError());
-        log.debug("INSERT ERROR {}:{} #>{}", collName, e.toString(), wr.getError());
-        return false;
-      } else {
-        log.debug("INSERT SUCCESS {}:{}", collName, s);
-        log.trace("INSERT SUCCESS {}:{}", collName, e.toString());
-      }
+      log.debug("INSERT SUCCESS {}:{}", collName, s);
+      log.trace("INSERT SUCCESS {}:{}", collName, e.toString());
       return true;
-    } catch (DuplicateKey ex) {
+    } catch (DuplicateKeyException ex) {
       log.error(
           "INSERT DUPLICATE uri key for {} ({})", e, ExceptionHandler.logAndtoString(ex, true));
       return true;
+    } catch (MongoWriteException ex) {
+       log.error("INSERT ERROR {}:{} #>{}", collName, s, ex.getMessage());
+       return false;
     } catch (MongoException ex) {
       log.error("INSERT MongoDB Exception: {}: {}", e, ExceptionHandler.logAndtoString(ex, true));
     } catch (Exception ex) {
@@ -260,22 +251,19 @@ public class MongoDBManager {
       q.append(key, ep.getUri().toString());
 
       WriteResult wr = c.update(q, dbObject);
-      if (wr.getError() != null) {
-        log.warn("UPDATE ERROR {}:{} #>{}", collName, ep.getUri(), wr.getError());
-        log.debug("UPDATE ERROR {}:{} #>{}", collName, e.toString(), wr.getError());
-        return false;
-      } else {
-        log.debug("UPDATE SUCCESS {}:{}", collName, ep.getUri());
-        log.trace("UPDATE SUCCESS {}:{}", collName, e.toString());
-      }
+      log.debug("UPDATE SUCCESS {}:{}", collName, ep.getUri());
+      log.trace("UPDATE SUCCESS {}:{}", collName, e.toString());
 
       return true;
-    } catch (DuplicateKey ex) {
+    } catch (DuplicateKeyException ex) {
       log.error(
           "INSERT DUPLICATE uri key for {} ({})",
           ep.getUri(),
           ExceptionHandler.logAndtoString(ex, true));
       return true;
+    } catch (MongoWriteException ex) {
+      log.warn("UPDATE ERROR {}:{} #>{}", collName, ep.getUri(), ex.getMessage());
+      return false;
     } catch (MongoException ex) {
       log.error(
           "INSERT MongoDB Exception: {}: {}",
@@ -433,7 +421,7 @@ public class MongoDBManager {
       SpecificDatumWriter w = new SpecificDatumWriter(o.getClass());
       w.write(o, e);
       e.flush();
-      DBObject dbObject = (DBObject) JSON.parse(baos.toString());
+      DBObject dbObject = BasicDBObject.parse(baos.toString());
       return dbObject;
 
     } catch (IOException e1) {
@@ -450,11 +438,11 @@ public class MongoDBManager {
     DBCursor curs = null;
     try {
       if (ep == null) {
-        curs = c.find().batchSize(50).addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+        curs = c.find().batchSize(50).noCursorTimeout(true);
       } else {
         BasicDBObject q = new BasicDBObject();
         q.append(key, ep.getUri().toString());
-        curs = c.find(q).batchSize(50).addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+        curs = c.find(q).batchSize(50).noCursorTimeout(true);
       }
 
       while (curs.hasNext()) {
@@ -493,11 +481,11 @@ public class MongoDBManager {
     final DBCursor curs;
     try {
       if (ep == null) {
-        curs = c.find().batchSize(50).addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+        curs = c.find().batchSize(50).noCursorTimeout(true);
       } else {
         BasicDBObject q = new BasicDBObject();
         q.append(key, ep.getUri().toString());
-        curs = c.find(q).batchSize(50).addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+        curs = c.find(q).batchSize(50).noCursorTimeout(true);
       }
 
       return new Iterator<T>() {
@@ -562,19 +550,17 @@ public class MongoDBManager {
       q.append(v[1], ep.getUri().toString());
 
       WriteResult wr = c.remove(q, WriteConcern.ACKNOWLEDGED);
-      if (wr.getError() != null) {
-        log.warn("REMOVE ERROR {}:{} #>{}", v[0], ep.getUri(), wr.getError());
-        return false;
-      } else {
-        log.debug("REMOVE SUCCESS {}:{}", v[0], ep.getUri());
-      }
+      log.debug("REMOVE SUCCESS {}:{}", v[0], ep.getUri());
       return true;
-    } catch (DuplicateKey ex) {
+    } catch (DuplicateKeyException ex) {
       log.error(
           "REMOVE DUPLICATE uri key for {} ({})",
           ep.getUri(),
           ExceptionHandler.logAndtoString(ex, true));
       return true;
+    } catch (MongoWriteException ex) {
+      log.warn("REMOVE ERROR {}:{} #>{}", v[0], ep.getUri(), ex.getMessage());
+      return false;
     } catch (MongoException ex) {
       log.error(
           "REMOVE MongoDB Exception: {}: {}",
@@ -597,7 +583,7 @@ public class MongoDBManager {
     try {
       DBCollection collection = db.getCollection(COLL_AVAIL);
       DBObject filter = new BasicDBObject();
-      DBObject projection = (DBObject) JSON.parse("{'endpointResult.start':1, '_id':0}");
+      DBObject projection = BasicDBObject.parse("{'endpointResult.start':1, '_id':0}");
       DBObject sort = new BasicDBObject();
       sort.put("endpointResult.start", 1);
       cursor = collection.find(filter, projection).sort(sort).limit(1);

@@ -125,8 +125,6 @@ public class AEvol {
         cal.add(Calendar.MONTH, 1);
       }
       log.debug("Recalculating availability monthly COMPLETE");
-    } catch (IOException e) {
-      log.info("Exception while processing availability monthly (IO)", e);
     } catch (Exception e) {
       log.info("Exception while processing availability monthly (unknown)", e);
     }
