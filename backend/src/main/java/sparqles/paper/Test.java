@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
+import com.mongodb.BasicDBObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -66,7 +66,7 @@ public class Test {
       for (String line = null; (line = br.readLine()) != null; ) {
         JsonElement jelement = new JsonParser().parse(line);
         JsonObject jobject = jelement.getAsJsonObject();
-        DBObject dbObject = (DBObject) JSON.parse(line);
+        DBObject dbObject = BasicDBObject.parse(line);
         SpecificDatumReader r = new SpecificDatumReader<DResult>(DResult.class);
         JsonDecoder dec;
         try {
