@@ -3,6 +3,7 @@ package sparqles.core;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,8 +42,8 @@ public class MongoDBTest {
 
   @Before
   public void setUp() throws Exception {
-    SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
     Properties props = new Properties();
+    props.load(new FileInputStream(new File("src/test/resources/sparqles.properties")));
     props.setProperty("db.host", mongoDBContainer.getHost());
     props.setProperty("db.port", mongoDBContainer.getMappedPort(27017).toString());
     SPARQLESProperties.init(props);

@@ -35,10 +35,10 @@ jobs:
         include:
           - jdk: '21'
             distribution: temurin
-            experimental: true
+            experimental: false
           - jdk: '25'
             distribution: liberica
-            experimental: true
+            experimental: false
           # - jdk: '24'
           #   # current, can test on Oracle JDK while it's supported for 6mo
           #   distribution: oracle
