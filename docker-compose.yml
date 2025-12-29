@@ -1,4 +1,4 @@
-version: "3.9"  # optional since v1.27.0
+# version: "3.9"  # optional since v1.27.0
 services:
   frontend-svc:
     build: ./frontend/
@@ -10,6 +10,7 @@ services:
       - PORT=3001
     ports:
       - "127.0.0.1:3001:3001"
+    volumes:
       - './dataset:/dumps'
     links:
       - database-svc
@@ -30,4 +31,4 @@ services:
       - './data/db/:/data/db'
     # ports:
     #   # for debug
-    #   - "27017:27017"
+    #   - "127.0.0.1:27017:27017"

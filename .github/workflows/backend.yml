@@ -33,19 +33,19 @@ jobs:
         # distribution: ['zulu']
         # experimental: [false]
         include:
-          - jdk: '17'
+          - jdk: '21'
             distribution: temurin
             experimental: true
-          - jdk: '21'
+          - jdk: '25'
             distribution: liberica
             experimental: true
-          - jdk: '24'
-            # current, can test on Oracle JDK while it's supported for 6mo
-            distribution: oracle
-            experimental: true
-          - jdk: '25-ea'
-            distribution: zulu
-            experimental: true
+          # - jdk: '24'
+          #   # current, can test on Oracle JDK while it's supported for 6mo
+          #   distribution: oracle
+          #   experimental: true
+          # - jdk: '25-ea'
+          #   distribution: zulu
+          #   experimental: true
     continue-on-error: ${{ matrix.experimental }}
 
     steps:
