@@ -28,7 +28,7 @@ import sparqles.utils.MongoDBManager;
 
 public class MongoDBTest {
 
-  @ClassRule public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:4.4.29");
+  @ClassRule public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongodb/mongodb-community-server:4.4.30-ubuntu2204");
 
   protected MongoDBManager m;
   EndpointResult epr = new EndpointResult(Endpoints.DBPEDIA, 1L, 2L);
