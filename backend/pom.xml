@@ -17,7 +17,7 @@
     <maven.compiler>2.0.2</maven.compiler>
     <avro.version>1.12.0</avro.version>
     <!--  FIXME: all tests require network/setup  -->
-    <maven.test.skip>true</maven.test.skip>
+    <maven.test.skip>false</maven.test.skip>
     <v.slf4j>2.0.17</v.slf4j>
     <!--		<v.jena>2.13.0</v.jena>-->
     <!--		<v.jena>3.17.0</v.jena>-->
@@ -287,12 +287,12 @@
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongo-java-driver</artifactId>
-      <version>2.11.3</version>
+      <version>3.12.14</version>
     </dependency>
     <dependency>
       <groupId>org.jongo</groupId>
       <artifactId>jongo</artifactId>
-      <version>1.1</version>
+      <version>1.5.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
