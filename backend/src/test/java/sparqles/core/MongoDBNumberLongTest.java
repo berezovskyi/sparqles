@@ -1,17 +1,16 @@
 package sparqles.core;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.Iterator;
-import java.util.Properties;
-import org.junit.After;
-import org.junit.Before;
+import java.util.List;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.testcontainers.containers.MongoDBContainer;
@@ -21,32 +20,19 @@ import sparqles.utils.MongoDBManager;
 public class MongoDBNumberLongTest {
 
   @ClassRule
-  public static MongoDBContainer mongoDBContainer =
+  public static MongoDBContainer mongo =
       new MongoDBContainer("mongodb/mongodb-community-server:4.4.30-ubuntu2204");
-
-  protected MongoDBManager m;
-
-  @Before
-  public void setUp() throws Exception {
-    Properties props = new Properties();
-    props.load(new FileInputStream(new File("src/test/resources/sparqles.properties")));
-    props.setProperty("db.host", mongoDBContainer.getHost());
-    props.setProperty("db.port", mongoDBContainer.getMappedPort(27017).toString());
-    SPARQLESProperties.init(props);
-    m = new MongoDBManager();
-  }
-
-  @After
-  public void tearDown() throws Exception {
-    m.close();
-  }
 
   @Test
   public void testNumberLongDeserialization() {
-    // 1. Insert a document with NumberLong directly using MongoClient
-    MongoClient client =
-        new MongoClient(mongoDBContainer.getHost(), mongoDBContainer.getMappedPort(27017));
-    DB db = client.getDB(SPARQLESProperties.getDB_NAME());
+    String host = mongo.getHost();
+    Integer port = mongo.getFirstMappedPort();
+
+    // 1. Insert a document with NumberLong using the Mongo driver directly
+    MongoClient client = new MongoClient(host, port);
+    DB db = client.getDB("testdb");
+    MongoDBManager m = new MongoDBManager(client, "testdb");
+
     DBCollection coll = db.getCollection(MongoDBManager.COLL_PERF);
 
     // Construct the document structure matching PResult
@@ -87,9 +73,8 @@ public class MongoDBNumberLongTest {
 
     coll.insert(pResultDoc);
 
-    client.close();
-
     // 2. Try to read it back using MongoDBManager (which uses Avro)
+    // Test getIterator (which uses next())
     Iterator<PResult> iter = m.getIterator(PResult.class, PResult.SCHEMA$);
 
     assertTrue("Should have at least one result", iter.hasNext());
@@ -101,12 +86,33 @@ public class MongoDBNumberLongTest {
           "http://example.org/sparql", result.getEndpointResult().getEndpoint().getUri().toString());
       
       // Check if the long value is correctly retrieved
-      long frestout = result.getResults().get("ASKPO").getCold().getFrestout();
+      // Avro uses Utf8 for map keys
+      sparqles.avro.performance.PSingleResult pSingle = result.getResults().get(new org.apache.avro.util.Utf8("ASKPO"));
+      assertNotNull("PSingleResult for ASKPO should not be null", pSingle);
+      
+      long frestout = pSingle.getCold().getFrestout();
       assertEquals(60000L, frestout);
       
     } catch (Exception e) {
       e.printStackTrace();
-      fail("Deserialization failed: " + e.getMessage());
+      fail("Deserialization failed in iterator: " + e.getMessage());
+    }
+
+    // 3. Test getResults (which uses scan())
+    try {
+        List<PResult> list = m.getResults(null, PResult.class, PResult.SCHEMA$);
+        assertTrue("Should have at least one result in list", list.size() > 0);
+        PResult result = list.get(0);
+        
+        sparqles.avro.performance.PSingleResult pSingle = result.getResults().get(new org.apache.avro.util.Utf8("ASKPO"));
+        assertNotNull("PSingleResult for ASKPO should not be null in list", pSingle);
+        
+        long frestout = pSingle.getCold().getFrestout();
+        assertEquals(60000L, frestout);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        fail("Deserialization failed in getResults: " + e.getMessage());
     }
   }
 }

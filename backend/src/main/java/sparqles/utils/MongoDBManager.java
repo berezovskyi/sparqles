@@ -99,6 +99,11 @@ public class MongoDBManager {
     obj2col.put(CalculationView.class, new String[] {COLL_CALC_AGG, VIEW_KEY});
   }
 
+  public MongoDBManager(MongoClient client, String dbName) {
+    this.client = client;
+    this.db = client.getDB(dbName);
+  }
+
   public MongoDBManager() {
     setup();
   }
@@ -353,7 +358,7 @@ public class MongoDBManager {
         SpecificDatumReader r = new SpecificDatumReader<T>(cls);
         JsonDecoder d;
         try {
-          d = DecoderFactory.get().jsonDecoder(schema, o.toString());
+          d = DecoderFactory.get().jsonDecoder(schema, com.mongodb.util.JSON.serialize(o));
           T t = (T) r.read(null, d);
           reslist.add(t);
         } catch (IOException e) {
@@ -394,7 +399,7 @@ public class MongoDBManager {
         SpecificDatumReader r = new SpecificDatumReader<T>(cls);
         JsonDecoder d;
         try {
-          d = DecoderFactory.get().jsonDecoder(schema, o.toString());
+          d = DecoderFactory.get().jsonDecoder(schema, com.mongodb.util.JSON.serialize(o));
           T t = (T) r.read(null, d);
           reslist.add(t);
         } catch (IOException e) {
@@ -447,7 +452,7 @@ public class MongoDBManager {
         SpecificDatumReader r = new SpecificDatumReader<T>(cls);
         JsonDecoder d;
         try {
-          d = DecoderFactory.get().jsonDecoder(schema, o.toString());
+          d = DecoderFactory.get().jsonDecoder(schema, com.mongodb.util.JSON.serialize(o));
           T t = (T) r.read(null, d);
           reslist.add(t);
         } catch (IOException e) {
