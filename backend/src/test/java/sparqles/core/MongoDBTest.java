@@ -6,9 +6,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.testcontainers.containers.MongoDBContainer;
 import sparqles.avro.Dataset;
 import sparqles.avro.Endpoint;
 import sparqles.avro.EndpointResult;
@@ -25,6 +28,8 @@ import sparqles.utils.MongoDBManager;
 
 public class MongoDBTest {
 
+  @ClassRule public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:4.4.29");
+
   protected MongoDBManager m;
   EndpointResult epr = new EndpointResult(Endpoints.DBPEDIA, 1L, 2L);
   RobotsTXT r = new RobotsTXT(true, true, false, false, false, false, null);
@@ -37,6 +42,10 @@ public class MongoDBTest {
   @Before
   public void setUp() throws Exception {
     SPARQLESProperties.init(new File("src/test/resources/sparqles.properties"));
+    Properties props = new Properties();
+    props.setProperty("db.host", mongoDBContainer.getHost());
+    props.setProperty("db.port", mongoDBContainer.getMappedPort(27017).toString());
+    SPARQLESProperties.init(props);
     m = new MongoDBManager();
   }
 
