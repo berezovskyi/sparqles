@@ -4,16 +4,18 @@
 # > db.adminCommand( { setFeatureCompatibilityVersion: "3.4" } )
 FROM mongodb/mongodb-community-server:4.4.30-ubuntu2204
 
-COPY mongoDump.tar.gz /tmp/
+USER root
+RUN mkdir -p /var/log/mongodb && chown mongodb:mongodb /var/log/mongodb
+
+USER mongodb
+COPY --chown=mongodb:mongodb mongoDump.tar.gz /tmp/
 RUN cd /tmp/ && tar -xvzf mongoDump.tar.gz
 
-RUN mongod --fork --logpath /var/log/mongodb.log && \
+RUN mongod --fork --logpath /var/log/mongodb/mongod.log --bind_ip_all && \
 	mongorestore -d sparqles /tmp/dump/sparqles && \
 	mongod --shutdown
 
-# up to 3.2 incl
-# ENTRYPOINT ["/entrypoint.sh"]
-# after 3.2
-ENTRYPOINT ["docker-entrypoint.sh"]
-
+# The base image uses python3 /usr/local/bin/docker-entrypoint.py
+# We can just rely on the base image entrypoint or specify it explicitly if needed.
+# ENTRYPOINT ["python3", "/usr/local/bin/docker-entrypoint.py"]
 CMD ["mongod"]
