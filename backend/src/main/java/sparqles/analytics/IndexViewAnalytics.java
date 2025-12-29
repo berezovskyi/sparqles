@@ -253,13 +253,23 @@ public class IndexViewAnalytics implements Task<Index> {
     iv.setRss(l2);
 
     Count<String> stats = object[0];
-    double totalVal = (double) stats.get("total");
-    iv.setVoID(stats.get("VoID") / totalVal);
-    iv.setVoIDPart(stats.get("VoIDPart") / totalVal);
-    iv.setSD(stats.get("SD") / totalVal);
-    iv.setSDPart(stats.get("SDPart") / totalVal);
-    iv.setCoherence(stats.get("Coherence") / totalVal);
-    iv.setRS(stats.get("RS") / totalVal);
+    double totalVal = stats.getOrDefault("total", 0).doubleValue();
+
+    if (totalVal > 0) {
+      iv.setVoID(stats.getOrDefault("VoID", 0) / totalVal);
+      iv.setVoIDPart(stats.getOrDefault("VoIDPart", 0) / totalVal);
+      iv.setSD(stats.getOrDefault("SD", 0) / totalVal);
+      iv.setSDPart(stats.getOrDefault("SDPart", 0) / totalVal);
+      iv.setCoherence(stats.getOrDefault("Coherence", 0) / totalVal);
+      iv.setRS(stats.getOrDefault("RS", 0) / totalVal);
+    } else {
+      iv.setVoID(0.0);
+      iv.setVoIDPart(0.0);
+      iv.setSD(0.0);
+      iv.setSDPart(0.0);
+      iv.setCoherence(0.0);
+      iv.setRS(0.0);
+    }
   }
 
   private void analyseDiscoverability(
