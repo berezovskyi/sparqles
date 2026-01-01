@@ -2,7 +2,7 @@
 # to upgrade to 3.6, you need to upgrade to 3.4 and run
 # $ docker compose exec database-svc sh -c 'mongo'
 # > db.adminCommand( { setFeatureCompatibilityVersion: "3.4" } )
-FROM mongodb/mongodb-community-server:4.4.30-ubuntu2204
+FROM mongodb/mongodb-community-server:7.0.28-ubuntu2204
 
 USER root
 RUN mkdir -p /var/log/mongodb && chown mongodb:mongodb /var/log/mongodb
