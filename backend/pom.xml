@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <maven.compiler>2.0.2</maven.compiler>
-    <avro.version>1.12.0</avro.version>
+    <avro.version>1.12.1</avro.version>
     <!--  FIXME: all tests require network/setup  -->
     <maven.test.skip>false</maven.test.skip>
     <v.slf4j>2.0.17</v.slf4j>
